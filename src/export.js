@@ -45,6 +45,46 @@ export function embedJson(value) {
 }
 
 /**
+ * The document body before any script runs: the full question set as plain,
+ * readable, printable HTML with the answers marked.
+ *
+ * This is not a courtesy fallback, it is the load-bearing one. An HTML file
+ * sent to someone gets opened in mail previews, chat attachment viewers, and
+ * sandboxes that block inline scripts outright — and a page whose entire
+ * content is built in JS shows up blank in every one of them, with no hint
+ * that anything is wrong. Rendering the questions statically means the file
+ * is always useful; the script upgrades it to the interactive drill when it
+ * is allowed to run, and replaces this wholesale on boot.
+ */
+function staticFallback(items, title, subtitle) {
+  const questions = items.map((q, n) => {
+    const opts = q.options.map((text, k) => {
+      const right = q.correct.includes(k);
+      return `<li class="fopt${right ? ' right' : ''}">` +
+        `<span class="mk">${right ? '&#10003;' : escapeHtml(String.fromCharCode(65 + k))}</span>` +
+        `${escapeHtml(text)}</li>`;
+    }).join('');
+    return `<article class="fq">
+<div class="meta"><span class="chip t1">${escapeHtml(q.topic)}</span><span class="chip t2">${escapeHtml(q.subtopic)}</span></div>
+<div class="stem">${n + 1}. ${escapeHtml(q.stem)}</div>
+${q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : ''}
+<ul class="fopts">${opts}</ul>
+<div class="rev"><div class="lb">Rationale</div><p>${escapeHtml(q.why)}</p>
+${q.trap ? `<div class="trap"><div class="lb2">Watch for</div><p>${escapeHtml(q.trap)}</p></div>` : ''}</div>
+</article>`;
+  }).join('\n');
+
+  return `<div class="top">
+<div><div class="sub">${escapeHtml(subtitle)}</div><h1>${escapeHtml(title)}</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+${questions}`;
+}
+
+/**
  * @param {Record<string, object>} questions slice of the bank to export
  * @param {{title?: string, subtitle?: string, note?: string}} meta
  * @returns {string} a complete HTML document
@@ -119,10 +159,19 @@ button.btn:disabled{opacity:.35;cursor:default}
 .brow.weak .n{color:var(--accent);font-weight:700}
 .hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
 .note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
 </style>
 </head>
 <body>
-<div id="app"></div>
+<div id="app">${staticFallback(items, title, subtitle)}</div>
 <script>
 const Q = ${embedJson(items)};
 const TITLE = ${embedJson(title)};
@@ -131,6 +180,9 @@ const NOTE = ${embedJson(note)};
 
 let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
 const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
 
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
@@ -251,7 +303,13 @@ document.addEventListener('keydown', (e) => {
   if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
 });
 
-render();
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
 </script>
 </body>
 </html>

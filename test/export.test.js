@@ -85,3 +85,37 @@ test('a stem containing markup cannot inject into the document', () => {
 test('escapeHtml covers the attribute-breaking characters', () => {
   assert.equal(escapeHtml('<a href="x">&</a>'), '&lt;a href=&quot;x&quot;&gt;&amp;&lt;/a&gt;');
 });
+
+test('the questions render as static HTML before any script runs', () => {
+  // The load-bearing property: a viewer that blocks inline scripts must still
+  // show the questions rather than a blank page.
+  const html = renderExport(bank);
+  const body = html.slice(html.indexOf('<body>'), html.indexOf('<script>'));
+  assert.ok(body.includes('Who issues the Federal Poverty Guidelines?'), 'stem is in the markup');
+  assert.ok(body.includes('USDHHS issues them annually.'), 'rationale is in the markup');
+  assert.ok(body.includes('Thresholds come from Census.'), 'trap is in the markup');
+  assert.ok(body.includes('Select all that apply.'), 'every question, not just the first');
+});
+
+test('the static view marks the correct answers', () => {
+  const html = renderExport(bank);
+  const body = html.slice(html.indexOf('<body>'), html.indexOf('<script>'));
+  // Two questions, three correct options between them.
+  assert.equal((body.match(/class="fopt right"/g) || []).length, 3);
+});
+
+test('the static view escapes question text', () => {
+  const html = renderExport({
+    q_0001: { ...bank.q_0001, stem: '<img onerror=alert(1)>' },
+  });
+  const body = html.slice(html.indexOf('<body>'), html.indexOf('<script>'));
+  assert.ok(!body.includes('<img'), 'markup in a stem is escaped, not rendered');
+  assert.ok(body.includes('&lt;img'));
+});
+
+test('the script replaces the static view rather than appending to it', () => {
+  const html = renderExport(bank);
+  assert.match(html, /const FALLBACK = app\.innerHTML;/);
+  assert.match(html, /app\.innerHTML =\s*\n?\s*'<div class="top">/);
+  assert.match(html, /catch \(err\)/, 'a boot failure restores the answer key');
+});

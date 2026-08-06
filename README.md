@@ -96,6 +96,15 @@ weakest-first topic breakdown at the end with the same 70% red convention.
 Question ids and source filenames are stripped from the payload — recipients
 get the questions, not a map of your bank.
 
+**The file is never blank.** The questions are written into the document as
+static HTML with the answers marked, and the script replaces that with the
+interactive drill on boot. Preview panes, mail clients and chat attachment
+viewers routinely block inline scripts, and a page that builds its content in
+JS shows up empty in all of them with no indication why. In those viewers the
+recipient gets a readable, printable answer key instead, plus a line telling
+them to save the file and open it in a browser to drill it properly. A
+runtime failure restores the same view rather than wiping the page.
+
 ## Layout
 
 ```
