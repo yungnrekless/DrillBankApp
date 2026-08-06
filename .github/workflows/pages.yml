@@ -1,0 +1,57 @@
+# Deploys docs/ to GitHub Pages.
+#
+# This replaces the built-in "deploy from a branch" path, whose deployment
+# backend stalled repeatedly on this repo: the build succeeded in seconds,
+# then the deploy step sat in deployment_in_progress until it hit its
+# ten-minute timeout and cancelled itself. This workflow uploads the same
+# docs/ folder as an artifact and deploys it through actions/deploy-pages,
+# which does not use that backend.
+#
+# configure-pages runs with enablement: true so it can switch the repository
+# from branch-based Pages to workflow-based on the first run, rather than
+# needing the source changed by hand first.
+name: Deploy drills to Pages
+
+on:
+  push:
+    branches:
+      - claude/drill-engine-weak-area-73veus
+    paths:
+      - 'docs/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it — a half-finished
+# Pages deploy is worse than a slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload docs/
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
