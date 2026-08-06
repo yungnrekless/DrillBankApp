@@ -103,3 +103,36 @@ test('replaying the log reconstructs schedule state', () => {
   assert.equal(state.q_0001.struggling, true);
   assert.equal(state.q_0001.due_date, '2026-08-06', 'due date follows the attempt date, not today');
 });
+
+test('a fresh bank spreads the first session across topics', () => {
+  const wide = {};
+  const topics = ['poverty', 'homelessness', 'teen pregnancy', 'mental illness'];
+  topics.forEach((topic, t) => {
+    for (let i = 0; i < 10; i++) {
+      // qids are assigned in import order, so topic 1 owns the lowest ids.
+      wide[`q_${String(t * 10 + i).padStart(4, '0')}`] = {
+        topic, subtopic: 'x', stem: `${topic} ${i}`, options: ['a', 'b'], correct: [0], rationale: 'r', type: 'single',
+      };
+    }
+  });
+  const queue = buildQueue(wide, {}, [], { limit: 8, today: TODAY });
+  const seen = new Set(queue.map((qid) => wide[qid].topic));
+  assert.equal(seen.size, 4, 'all four topics appear in the first session');
+});
+
+test('weak-topic priority still outranks topic spreading', () => {
+  const attempts = [
+    { qid: 'q_0001', correct: false, timestamp: `${TODAY}T10:00:00Z`, session_id: 's1' },
+    { qid: 'q_0002', correct: false, timestamp: `${TODAY}T10:01:00Z`, session_id: 's1' },
+    { qid: 'q_0003', correct: true, timestamp: `${TODAY}T10:02:00Z`, session_id: 's1' },
+  ];
+  // All three are due today; econ is weak, pharm is not. Spreading across
+  // topics must not promote the pharm question ahead of the weak topic.
+  const schedule = {
+    q_0001: { interval_days: 1, ease: 2.3, due_date: TODAY, last_result: 'wrong', struggling: true, reps: 1 },
+    q_0002: { interval_days: 1, ease: 2.3, due_date: TODAY, last_result: 'wrong', struggling: true, reps: 1 },
+    q_0003: { interval_days: 1, ease: 2.6, due_date: TODAY, last_result: 'right', struggling: false, reps: 1 },
+  };
+  const queue = buildQueue(bank, schedule, attempts, { limit: 2, today: TODAY });
+  assert.deepEqual(queue.sort(), ['q_0001', 'q_0002'], 'both weak-topic questions come first');
+});

@@ -1,152 +1,1388 @@
 {
   "q_0001": {
-    "topic": "economics",
-    "subtopic": "payment mechanisms",
-    "stem": "Under a capitated payment arrangement, which party carries the primary financial risk for utilization above the expected level?",
+    "topic": "poverty",
+    "subtopic": "federal poverty measures",
+    "stem": "A community health nurse is determining whether a family of four is financially eligible for Medicaid and CHIP. Which federal measure applies?",
     "options": [
-      "The individual patient",
-      "The provider organization",
-      "The commercial payer",
-      "The state insurance regulator"
+      "Poverty thresholds issued by the US Bureau of the Census",
+      "Federal Poverty Guidelines issued by USDHHS",
+      "The Supplemental Poverty Measure",
+      "The Consumer Price Index"
     ],
     "correct": [
       1
     ],
-    "rationale": "Capitation pays a fixed per-member-per-month amount regardless of services delivered, so any utilization above what that payment assumes is absorbed by the provider organization.",
+    "rationale": "The Federal Poverty Guidelines are issued every year by USDHHS and determine whether a person or family is financially eligible for assistance programs, including marketplace insurance savings, Medicaid, and CHIP.",
     "type": "single",
-    "trap": "(C) is the reflex answer because payers do carry utilization risk under fee-for-service. Capitation is defined by the transfer of that risk downstream.",
-    "source": "sample_economics.md"
+    "trap": "Thresholds are the Census Bureau's product and exist primarily for statistical purposes. Sort it by what the question is doing: eligibility for a program means guideline; reporting a statistic means threshold.",
+    "source": "ch25.md"
   },
   "q_0002": {
-    "topic": "economics",
-    "subtopic": "payment mechanisms",
-    "stem": "Which of the following are characteristics of a fee-for-service payment model? Select all that apply.",
+    "topic": "poverty",
+    "subtopic": "federal poverty measures",
+    "stem": "Poverty thresholds are issued by which body, and used primarily for what?",
     "options": [
-      "Payment is tied to the volume of services delivered",
-      "Providers bear insurance risk for the covered population",
-      "It creates a financial incentive toward higher utilization",
-      "Revenue is decoupled from the number of encounters",
-      "It is billed per discrete service or procedure"
+      "USDHHS, to determine program eligibility",
+      "US Bureau of the Census, primarily for statistical purposes",
+      "USDA, to set SNAP benefit levels",
+      "Bureau of Labor Statistics, to calculate the Consumer Price Index"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Poverty thresholds come from the US Bureau of the Census and are used primarily for statistical purposes.",
+    "type": "single",
+    "trap": "This is the mirror image of the eligibility question. The two federal terms are the single most testable pair in this section, and they are easiest to invert when the stem names an agency rather than a use.",
+    "source": "ch25.md"
+  },
+  "q_0003": {
+    "topic": "poverty",
+    "subtopic": "federal poverty measures",
+    "stem": "The Federal Poverty Guidelines are updated annually to stay consistent with which measure?",
+    "options": [
+      "The Supplemental Poverty Measure",
+      "Median household income",
+      "The Consumer Price Index",
+      "The federal minimum wage"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "The Consumer Price Index measures change in prices paid by consumers for goods and services, and the guidelines are updated each year to stay consistent with it.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0004": {
+    "topic": "poverty",
+    "subtopic": "federal poverty measures",
+    "stem": "Under the 2020 Poverty Guidelines for the 48 contiguous states and DC, what is the guideline for a family of four?",
+    "options": [
+      "$17,240",
+      "$21,720",
+      "$26,200",
+      "$30,680"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "The 2020 guideline is $12,760 for one person and $26,200 for a family of four.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0005": {
+    "topic": "poverty",
+    "subtopic": "federal poverty measures",
+    "stem": "In the 2020 Poverty Guidelines table for the 48 contiguous states and DC, how much does the guideline increase for each additional person at every step from a family of one through a family of eight?",
+    "options": [
+      "$4,480",
+      "$5,600",
+      "$6,380",
+      "It does not increase by a fixed amount"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "The table's own increments are $4,480 per person at every step from 1 through 8.",
+    "type": "single",
+    "trap": "The textbook prints \"add $5,600 per person,\" but that line applies only to units of eight or more and appears to be an error carried over from the Alaska schedule. Do not state $5,600 as the general per-person rule. The safe phrasing is \"$12,760 for one person, $26,200 for a family of four; higher for Alaska and Hawaii.\"",
+    "source": "ch25.md"
+  },
+  "q_0006": {
+    "topic": "poverty",
+    "subtopic": "federal poverty measures",
+    "stem": "Which statements about the Supplemental Poverty Measure are accurate? Select all that apply.",
+    "options": [
+      "It is reported by the Census Bureau",
+      "Its thresholds vary by geographic area",
+      "Its thresholds vary by homeownership status",
+      "It replaced the Federal Poverty Guidelines for determining program eligibility",
+      "Its thresholds can be higher than those of the official measure"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "rationale": "The Census also reports the Supplemental Poverty Measure, whose thresholds vary by geographic area and homeownership status and can be higher than the official measure.",
+    "type": "sata",
+    "trap": "The SPM is an additional statistical measure, not an eligibility instrument. Eligibility still runs through the USDHHS guidelines.",
+    "source": "ch25.md"
+  },
+  "q_0007": {
+    "topic": "poverty",
+    "subtopic": "poverty statistics",
+    "stem": "What was the official US poverty rate in 2018, and what was notable about it?",
+    "options": [
+      "9.7%, the first increase in a decade",
+      "11.8%, the fourth consecutive annual decline",
+      "16.2%, unchanged from the previous year",
+      "12.9%, the fourth consecutive annual increase"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The 2018 official poverty rate was 11.8%, the fourth consecutive annual decline. It was expected to rise beginning in 2020 because of COVID-19.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0008": {
+    "topic": "poverty",
+    "subtopic": "poverty statistics",
+    "stem": "Which statements about child poverty in the US in 2018 are accurate? Select all that apply.",
+    "options": [
+      "The poverty rate for children under 18 was 16.2%",
+      "Nearly 1 in 6 children lived in poverty",
+      "Approximately 11.9 million children lived in poverty",
+      "The oldest children are the poorest",
+      "Nearly 73% of poor children in America are children of color"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "rationale": "In 2018 the rate for children under 18 was 16.2% — nearly 1 in 6, approximately 11.9 million children — and nearly 73% of poor children in America are children of color. Children are the poorest age group in America.",
+    "type": "sata",
+    "trap": "It is the youngest children who are the poorest, not the oldest. Also note Chapter 23 reports 17% for children 0–17 in 2017; different years, both in the assigned reading, so match the figure to the year in the stem.",
+    "source": "ch25.md"
+  },
+  "q_0009": {
+    "topic": "poverty",
+    "subtopic": "poverty statistics",
+    "stem": "Which statements about poverty among adults 65 and older are accurate? Select all that apply.",
+    "options": [
+      "The 2018 rate was 9.7%",
+      "The rate decreases with advancing age",
+      "The rate is higher among women",
+      "The rate is higher among African Americans and Hispanics",
+      "Under the official measure in 2017, 4.7 million adults 65+ lived in poverty"
     ],
     "correct": [
       0,
       2,
+      3,
       4
     ],
-    "rationale": "Fee-for-service pays per discrete service, so revenue rises with volume and the incentive runs toward more utilization. Insurance risk stays with the payer, and revenue is explicitly coupled to encounter count.",
+    "rationale": "The 2018 rate for adults 65+ was 9.7%; the rate increases with age and is higher among women, African Americans, and Hispanics. Under the official measure, 4.7 million adults 65+ lived in poverty in 2017.",
     "type": "sata",
-    "trap": "(B) and (D) describe capitation, not fee-for-service. Mixing the two is the most common error on this item type.",
-    "source": "sample_economics.md"
+    "trap": "The rate rises with age rather than falling — an easy inversion when the rest of the stem is otherwise familiar.",
+    "source": "ch25.md"
   },
-  "q_0003": {
-    "topic": "economics",
-    "subtopic": "payment mechanisms",
-    "stem": "A health system moves from fee-for-service to a shared-savings contract. Holding quality constant, which behavior does the new contract most directly reward?",
+  "q_0010": {
+    "topic": "poverty",
+    "subtopic": "poverty statistics",
+    "stem": "Among full-time, year-round employed workers, women earn approximately how much per dollar earned by a man?",
     "options": [
-      "Increasing the number of billable encounters",
-      "Reducing avoidable spending below a benchmark",
-      "Shifting care to higher-acuity settings",
-      "Expanding the specialist referral network"
-    ],
-    "correct": [
-      1
-    ],
-    "rationale": "Shared savings pays a portion of the difference between actual spending and a benchmark, so the reward is attached to coming in under that benchmark without degrading quality.",
-    "type": "single",
-    "trap": "(A) is what the *old* contract rewarded. Questions like this test whether you tracked the direction of the incentive change, not the definition itself.",
-    "source": "sample_economics.md"
-  },
-  "q_0004": {
-    "topic": "economics",
-    "subtopic": "cost concepts",
-    "stem": "A clinic has already spent $40,000 on an EHR module that has not been deployed. When deciding whether to continue implementation, that $40,000 is best described as which of the following?",
-    "options": [
-      "A marginal cost",
-      "An opportunity cost",
-      "A sunk cost",
-      "A fixed cost"
+      "$0.62",
+      "$0.72",
+      "$0.82",
+      "$0.92"
     ],
     "correct": [
       2
     ],
-    "rationale": "The money is already spent and cannot be recovered by any future decision, which is exactly what makes a cost sunk. Rational forward-looking decisions should exclude it.",
+    "rationale": "Full-time year-round employed women earn $0.82 per $1.00 a man earns. Median 2018 earnings for full-time work were $55,291 for men and $45,097 for women. The 2018 poverty rate was 12.9% for women, down from 13.6% in 2017, versus 10.6% for men.",
     "type": "single",
-    "trap": "(D) is tempting because the expense does not vary with volume. Fixed vs. variable describes how a cost behaves; sunk vs. recoverable describes whether a decision can still change it.",
-    "source": "sample_economics.md"
+    "source": "ch25.md"
   },
-  "q_0005": {
-    "topic": "economics",
-    "subtopic": "cost concepts",
-    "stem": "Which of the following correctly describes opportunity cost? Select all that apply.",
+  "q_0011": {
+    "topic": "poverty",
+    "subtopic": "types of poverty",
+    "stem": "Which terms does the chapter use to describe types of poverty? Select all that apply.",
     "options": [
-      "It is the value of the next-best alternative forgone",
-      "It appears as a line item on the income statement",
-      "It applies even when no cash changes hands",
-      "It is always equal to the accounting cost of the choice"
+      "Persistent poverty",
+      "Neighborhood poverty",
+      "Crisis poverty",
+      "Multigenerational poverty"
     ],
     "correct": [
       0,
+      1,
+      3
+    ],
+    "rationale": "The chapter states that persistent poverty and neighborhood poverty are used to describe types of poverty, and adds multigenerational poverty.",
+    "type": "sata",
+    "trap": "Crisis poverty appears only in the homelessness section, as a synonym for transitional homelessness. Presenting all four as a set of \"poverty types\" is a defensible synthesis but is not how the book frames it — if the question asks what the book calls types of poverty, leave crisis poverty out.",
+    "source": "ch25.md"
+  },
+  "q_0012": {
+    "topic": "poverty",
+    "subtopic": "types of poverty",
+    "stem": "Which term describes individuals and families who remain poor for long periods and pass poverty on to their descendants?",
+    "options": [
+      "Neighborhood poverty",
+      "Persistent poverty",
+      "Multigenerational poverty",
+      "Crisis poverty"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Persistent poverty is defined as remaining poor for long periods and passing poverty on to descendants.",
+    "type": "single",
+    "trap": "Multigenerational poverty is the near-neighbor here. The book anchors multigenerational poverty to specific named populations rather than to the mechanism of transmission.",
+    "source": "ch25.md"
+  },
+  "q_0013": {
+    "topic": "poverty",
+    "subtopic": "types of poverty",
+    "stem": "Which term describes geographically defined areas of high poverty characterized by dilapidated housing and high levels of unemployment?",
+    "options": [
+      "Persistent poverty",
+      "Multigenerational poverty",
+      "Neighborhood poverty",
+      "Transitional poverty"
+    ],
+    "correct": [
       2
     ],
-    "rationale": "Opportunity cost is the value of the best alternative given up, and it exists whenever a scarce resource is committed, cash or not. It is an economic concept, so it does not appear in the accounting records and rarely equals accounting cost.",
-    "type": "sata",
-    "trap": "(D) is the classic distractor: accounting cost and economic cost coincide only when there is no meaningful forgone alternative.",
-    "source": "sample_economics.md"
-  },
-  "q_0006": {
-    "topic": "pharmacology",
-    "subtopic": "anticoagulants",
-    "stem": "A patient on warfarin has an INR of 6.2 with no active bleeding. Which intervention is the most appropriate initial step?",
-    "options": [
-      "Administer protamine sulfate",
-      "Hold warfarin and recheck the INR",
-      "Give fresh frozen plasma immediately",
-      "Increase the warfarin dose to stabilize the level"
-    ],
-    "correct": [
-      1
-    ],
-    "rationale": "With a supratherapeutic INR and no bleeding, holding the drug and rechecking is the standard first move; the INR falls as the existing dose clears.",
+    "rationale": "Neighborhood poverty is defined by geography — high-poverty areas marked by dilapidated housing and high unemployment.",
     "type": "single",
-    "trap": "(A) reverses heparin, not warfarin. Reversal agent pairings are the highest-yield thing to have automatic here.",
-    "source": "sample_pharmacology.md"
+    "source": "ch25.md"
   },
-  "q_0007": {
-    "topic": "pharmacology",
-    "subtopic": "anticoagulants",
-    "stem": "Which laboratory value is used to monitor unfractionated heparin therapy?",
+  "q_0014": {
+    "topic": "poverty",
+    "subtopic": "types of poverty",
+    "stem": "Multigenerational poverty is described as common among which populations? Select all that apply.",
     "options": [
-      "INR",
-      "aPTT",
-      "Platelet count alone",
-      "Fibrinogen"
-    ],
-    "correct": [
-      1
-    ],
-    "rationale": "Unfractionated heparin is monitored with the aPTT (or anti-Xa), while warfarin is monitored with the INR.",
-    "type": "single",
-    "trap": "(A) is the reflex answer if you pattern-match \"anticoagulant\" to \"INR\" without separating the two drug classes.",
-    "source": "sample_pharmacology.md"
-  },
-  "q_0008": {
-    "topic": "pharmacology",
-    "subtopic": "adverse effects",
-    "stem": "Which findings would raise concern for heparin-induced thrombocytopenia? Select all that apply.",
-    "options": [
-      "Platelet count falling more than 50% from baseline",
-      "Onset typically 5 to 10 days after heparin exposure",
-      "New thrombosis despite anticoagulation",
-      "Immediate improvement after increasing the heparin dose"
+      "African Americans in the South",
+      "Hispanics along the border of Mexico",
+      "American Indians who live in states with multiple reservations",
+      "Recent immigrants in coastal metropolitan areas"
     ],
     "correct": [
       0,
       1,
       2
     ],
-    "rationale": "HIT is an immune-mediated reaction marked by a substantial platelet drop, a characteristic 5-to-10-day onset window, and paradoxical thrombosis.",
+    "rationale": "The chapter names three populations: African Americans in the South, Hispanics along the Mexican border, and American Indians living in states with multiple reservations.",
     "type": "sata",
-    "trap": "(D) inverts the pathophysiology — continuing or escalating heparin makes HIT worse, which is why the management step is to stop it.",
-    "source": "sample_pharmacology.md"
+    "trap": "There are three named populations, not two. Guide v1's figure lists only the first two while its own drill page lists all three — the third is the one that gets dropped.",
+    "source": "ch25.md"
+  },
+  "q_0015": {
+    "topic": "poverty",
+    "subtopic": "poverty and health",
+    "stem": "Which statements about toxic stress in children living in poverty are accurate? Select all that apply.",
+    "options": [
+      "It involves prolonged activation of cortisol, norepinephrine, and adrenaline",
+      "It involves inflammatory mediators such as cytokines",
+      "Much of the lifelong increased risk of cardiovascular and metabolic disease traces to it",
+      "It is mitigated by stable, supportive relationships with adults in early childhood",
+      "It resolves spontaneously once the child reaches school age"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Toxic stress is prolonged activation of stress hormones and inflammatory mediators in children living in poverty; much of the lifelong cardiovascular and metabolic risk traces to it, and stable supportive adult relationships in early childhood mitigate it.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0016": {
+    "topic": "poverty",
+    "subtopic": "poverty and health",
+    "stem": "The fact bank names breastfeeding as a mitigator of toxic stress. By what stated mechanism?",
+    "options": [
+      "Skin-to-skin contact raises maternal oxytocin and prolactin, decreases cortisol, and reduces infant allostatic load",
+      "Breast milk antibodies directly suppress cytokine production in the infant",
+      "Breastfeeding lowers the infant's caloric requirement during stress",
+      "Breastfeeding delays the onset of the infant's own stress response until after infancy"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Skin-to-skin contact raises maternal oxytocin and prolactin, decreases cortisol, and reduces infant allostatic load.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0017": {
+    "topic": "poverty",
+    "subtopic": "poverty and health",
+    "stem": "According to Box 25.1, which are effects of poverty on the health of children? Select all that apply.",
+    "options": [
+      "Higher rates of prematurity, low birth weight, and birth defects",
+      "Elevated blood lead levels",
+      "Iron-deficiency anemia",
+      "Increased risk for homelessness",
+      "Increased opportunities for education, income, and occupation"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Box 25.1 lists higher rates of prematurity, low birth weight and birth defects, higher infant mortality, increased chronic disease, increased traumatic death and injury, nutritional deficits, growth restriction and developmental delays, iron-deficiency anemia, elevated blood lead levels, infections, increased risk for homelessness, and decreased opportunities for education, income, and occupation.",
+    "type": "sata",
+    "trap": "Opportunities for education, income, and occupation decrease, not increase. ---",
+    "source": "ch25.md"
+  },
+  "q_0018": {
+    "topic": "homelessness",
+    "subtopic": "definitions and categories",
+    "stem": "How does HUD define a homeless person?",
+    "options": [
+      "A person with no permanent mailing address",
+      "A person who lacks a fixed, regular, and adequate nighttime residence",
+      "A person living below the federal poverty guideline without housing assistance",
+      "A person who has spent at least 30 consecutive nights in an emergency shelter"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "HUD's definition is \"a person who lacks a fixed, regular, and adequate nighttime residence.\"",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0019": {
+    "topic": "homelessness",
+    "subtopic": "definitions and categories",
+    "stem": "A 46-year-old man has experienced homelessness five separate times over the past three years, totaling about 14 months. He has no documented disabling condition. How is his homelessness best classified?",
+    "options": [
+      "Chronic, because he meets the frequency and duration criteria",
+      "Episodic, because he moves in and out of homelessness",
+      "Transitional, because each episode was brief",
+      "Chronic, because any homelessness exceeding 12 months is chronic"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Chronic homelessness requires a disability AND either four or more episodes in three years totaling at least 12 months, or continuous homelessness for one year. Without the disability, the time criterion alone does not make it chronic. Moving in and out of homelessness is episodic.",
+    "type": "single",
+    "trap": "This is the single most reliable distractor in the homelessness section — a scenario that satisfies the time criterion but omits the disability. Both elements are required.",
+    "source": "ch25.md"
+  },
+  "q_0020": {
+    "topic": "homelessness",
+    "subtopic": "definitions and categories",
+    "stem": "Which category accounts for the majority of homelessness over time?",
+    "options": [
+      "Chronic homelessness",
+      "Episodic homelessness",
+      "Transitional homelessness",
+      "Veteran homelessness"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "Transitional homelessness — typically caused by a catastrophic event leading to a short shelter stay and eventual transition to permanent housing — accounts for the majority of homelessness over time.",
+    "type": "single",
+    "trap": "Chronic homelessness is the intuitive but wrong answer, because it is the most visible and most discussed category. The inversion is easy and it is worth over-learning in this direction.",
+    "source": "ch25.md"
+  },
+  "q_0021": {
+    "topic": "homelessness",
+    "subtopic": "definitions and categories",
+    "stem": "Transitional homelessness is also known by which other name?",
+    "options": [
+      "Episodic poverty",
+      "Crisis poverty",
+      "Situational poverty",
+      "Neighborhood poverty"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Transitional homelessness is also called crisis poverty, and it is the only place the term crisis poverty appears in the chapter.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0022": {
+    "topic": "homelessness",
+    "subtopic": "definitions and categories",
+    "stem": "Which features characterize episodic homelessness? Select all that apply.",
+    "options": [
+      "Moving in and out of homelessness",
+      "Marked by hardship and struggle, including chronic unemployment",
+      "A younger population",
+      "Frequently associated with mental health and substance abuse problems",
+      "Typically resolves into permanent housing after a single short shelter stay"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Episodic homelessness means moving in and out of homelessness, marked by hardship and struggle including chronic unemployment, in a younger population often with mental health and substance abuse problems.",
+    "type": "sata",
+    "trap": "Resolving into permanent housing after one short stay describes transitional homelessness.",
+    "source": "ch25.md"
+  },
+  "q_0023": {
+    "topic": "homelessness",
+    "subtopic": "point-in-time data",
+    "stem": "On a single night in 2019, approximately how many people in the US experienced homelessness, and what proportion were sheltered?",
+    "options": [
+      "About 568,000, with 63% sheltered and 37% unsheltered",
+      "About 568,000, with 37% sheltered and 63% unsheltered",
+      "About 328,000, with 63% sheltered and 37% unsheltered",
+      "About 1.2 million, with half sheltered"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "The 2019 point-in-time count found approximately 568,000 people experiencing homelessness, 63% sheltered in emergency shelters or transitional housing and 37% unsheltered — on the street, in abandoned buildings, or in other places not suitable for human habitation.",
+    "type": "single",
+    "trap": "The sheltered/unsheltered split is easy to reverse. The majority are sheltered.",
+    "source": "ch25.md"
+  },
+  "q_0024": {
+    "topic": "homelessness",
+    "subtopic": "point-in-time data",
+    "stem": "In the 2019 point-in-time count, which statements are accurate? Select all that apply.",
+    "options": [
+      "27% were under age 25",
+      "8% were veterans",
+      "African Americans remain consistently overrepresented",
+      "Homelessness increased 3% in West Coast states from 2018 to 2019",
+      "In several states, at least 95% of the homeless population was unsheltered"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "27% were under 25 and 8% were veterans; African Americans remain consistently overrepresented; homelessness rose 3% in West Coast states between 2018 and 2019, likely due to the moderate climate.",
+    "type": "sata",
+    "trap": "In Maine, Massachusetts, Nebraska, New York, and North Dakota at least 95% of the homeless population was sheltered, not unsheltered.",
+    "source": "ch25.md"
+  },
+  "q_0025": {
+    "topic": "homelessness",
+    "subtopic": "point-in-time data",
+    "stem": "Why do point-in-time counts undercount homelessness? Select all that apply.",
+    "options": [
+      "HUD's definition excludes families doubled up with friends or family",
+      "Some people live in motels, vehicles, or hidden locations and never contact service agencies",
+      "Some people refuse to be interviewed",
+      "Rural homelessness is less apparent because people are hidden from sight",
+      "Counts are conducted only in states that opt in"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "The National Coalition for the Homeless notes that HUD's definition excludes doubled-up families, that many people live in motels, vehicles, or hidden locations and never interact with counting volunteers, and that some refuse interview. Rural homelessness is hidden — in woods in tents or campers, in barns or ice sheds, or on a friend's couch.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0026": {
+    "topic": "homelessness",
+    "subtopic": "effects on health",
+    "stem": "The chapter attributes respiratory conditions and tuberculosis among people experiencing homelessness primarily to which cause?",
+    "options": [
+      "Untreated chronic disease",
+      "Crowded sleeping conditions",
+      "Exposure to cold outdoor air",
+      "High-sodium shelter and fast food"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Respiratory conditions and TB are attributed to crowded sleeping conditions.",
+    "type": "single",
+    "trap": "Each health problem in this section carries its own stated cause, and the causes are interchangeable-looking. Learn them as pairs rather than as a list of conditions.",
+    "source": "ch25.md"
+  },
+  "q_0027": {
+    "topic": "homelessness",
+    "subtopic": "effects on health",
+    "stem": "Why are peripheral vascular disease and hypertension common among people experiencing homelessness, according to the chapter?",
+    "options": [
+      "Because they may be on their feet for long hours daily",
+      "Because of crowded sleeping conditions",
+      "Because of infestations and poor skin integrity",
+      "Because of untreated diabetes"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "The chapter attributes peripheral vascular disease and hypertension to being on their feet for long hours daily.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0028": {
+    "topic": "homelessness",
+    "subtopic": "effects on health",
+    "stem": "The chapter attributes diabetes and nutritional deficits in this population to which cause?",
+    "options": [
+      "Being on their feet for long hours daily",
+      "Shelter and fast food being high in sodium",
+      "Crowded sleeping conditions",
+      "Hypothermia and heat-related illness"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Diabetes and nutritional deficits are attributed to shelter and fast food being high in sodium.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0029": {
+    "topic": "homelessness",
+    "subtopic": "effects on health",
+    "stem": "Which barriers to care are named for people experiencing homelessness? Select all that apply.",
+    "options": [
+      "Not knowing where to get treated",
+      "Lack of transportation and lack of identification",
+      "Embarrassment and self-consciousness about appearance and hygiene",
+      "Nervousness or inability to fill out forms and answer questions",
+      "Statutory exclusion from emergency department care"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "The named barriers are not knowing where to get treated, lack of transportation, lack of identification, embarrassment, nervousness or inability to complete forms and answer questions, and self-consciousness about appearance and hygiene. Care is usually crisis-oriented and sought in emergency departments.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0030": {
+    "topic": "homelessness",
+    "subtopic": "effects on health",
+    "stem": "Which statement best captures the chapter's characterization of health promotion for people experiencing homelessness?",
+    "options": [
+      "Health promotion is the primary focus of shelter-based nursing care",
+      "Health promotion is a luxury, not part of daily life",
+      "Health promotion is delivered mainly through emergency departments",
+      "Health promotion is mandated for all federally funded shelters"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The chapter states directly that health promotion is a luxury, not part of daily life. Care is crisis-oriented and sought in emergency departments.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0031": {
+    "topic": "homelessness",
+    "subtopic": "effects on health",
+    "stem": "Conditions such as TB and HIV/AIDS are described as extremely difficult to treat or control in this population for what stated reason?",
+    "options": [
+      "They require regular uninterrupted treatment, which is not possible without adequate housing",
+      "They are excluded from emergency department protocols",
+      "Shelter policies prohibit storing medications on site",
+      "They are rarely diagnosed before end-stage disease"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Conditions needing regular uninterrupted treatment, such as TB and HIV/AIDS, are extremely difficult to treat or control without adequate housing.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0032": {
+    "topic": "homelessness",
+    "subtopic": "at-risk populations",
+    "stem": "Approximately what proportion of unaccompanied homeless youth are estimated to be LGBTQ?",
+    "options": [
+      "10%",
+      "25%",
+      "40%",
+      "60%"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "An estimated 40% of unaccompanied homeless youth are LGBTQ.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0033": {
+    "topic": "homelessness",
+    "subtopic": "at-risk populations",
+    "stem": "Which findings are described among homeless adolescents? Select all that apply.",
+    "options": [
+      "Earlier onset of sexual activity",
+      "Poorer health status and decreased access to care",
+      "High risk for AIDS and hepatitis B",
+      "Exchanging sex for food, clothing, and shelter, placing girls at high risk for unintended pregnancy",
+      "Lower rates of runaway behavior than housed peers"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Homeless adolescents show earlier onset of sexual activity, poorer health status, decreased access to care, and high risk for AIDS and hepatitis B. Many exchange sex for food, clothing, and shelter. Histories of runaway behavior, physical abuse, and sexual abuse are common — more, not less, than among housed peers.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0034": {
+    "topic": "homelessness",
+    "subtopic": "at-risk populations",
+    "stem": "Which statements about homeless veterans are accurate? Select all that apply.",
+    "options": [
+      "On a single night in January 2019, 37,085 veterans were homeless",
+      "Numbers have dropped nearly 50% since 2009",
+      "About 50% have serious mental illness",
+      "About 70% have substance use issues",
+      "The majority are part of a family unit"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "On a single night in January 2019, 37,085 veterans were homeless; only 2% were part of a family; 90.3% were men and 8.9% women. Numbers dropped nearly 50% since 2009, credited to HUD-VASH, SSVF, and coordinated VA/HUD effort. About 50% have serious mental illness and 70% have substance use issues.",
+    "type": "sata",
+    "trap": "Only 2% were part of a family — the majority are unmarried and may be socially isolated.",
+    "source": "ch25.md"
+  },
+  "q_0035": {
+    "topic": "homelessness",
+    "subtopic": "at-risk populations",
+    "stem": "Approximately what proportion of homeless persons has a severe mental illness?",
+    "options": [
+      "One in ten",
+      "One in five",
+      "One in three",
+      "One in two"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "One in five homeless persons has a severe mental illness, with similar rates of chronic substance abuse. Both are often associated with chronic homelessness.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0036": {
+    "topic": "homelessness",
+    "subtopic": "at-risk populations",
+    "stem": "Which characteristics are described among pregnant women experiencing homelessness? Select all that apply.",
+    "options": [
+      "Younger, unmarried, uninsured, and less educated",
+      "Less likely to initiate and sustain breastfeeding",
+      "Fewer prenatal and well-child visits",
+      "Higher rates of STIs, addiction, and kidney and bladder infections",
+      "Birth outcomes comparable to housed women of the same age"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Homeless pregnant women are at high risk for complex health problems — younger, unmarried, uninsured, less educated, less likely to breastfeed, with fewer prenatal and well-child visits, higher rates of STIs and addiction, poorer nutritional status, more kidney and bladder infections, and poorer birth outcomes including lower birth weight and preterm labor. ---",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0037": {
+    "topic": "teen pregnancy",
+    "subtopic": "trends and adolescent sexual behavior",
+    "stem": "Danawi et al. (2016) identify four social determinants of health that influence teen pregnancy rates. Which are they? Select all that apply.",
+    "options": [
+      "Income",
+      "Education",
+      "Social support networks",
+      "Living environment",
+      "Access to abortion services"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "The four named social determinants are income, education, social support networks, and living environment.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0038": {
+    "topic": "teen pregnancy",
+    "subtopic": "trends and adolescent sexual behavior",
+    "stem": "On the 2019 Youth Risk Behavior Survey, what percentage of surveyed high school students were sexually active?",
+    "options": [
+      "17.4%",
+      "27.4%",
+      "37.4%",
+      "47.4%"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The 2019 YRBS found 27.4% of surveyed high school students were sexually active.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0039": {
+    "topic": "teen pregnancy",
+    "subtopic": "trends and adolescent sexual behavior",
+    "stem": "The Youth Risk Behavior Surveillance System monitors how many categories of health-risk behaviors?",
+    "options": [
+      "Four",
+      "Five",
+      "Six",
+      "Eight"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "The YRBS monitors six categories of health-risk behaviors, one of which is sexual behaviors related to unintended pregnancy and STDs including HIV.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0040": {
+    "topic": "teen pregnancy",
+    "subtopic": "trends and adolescent sexual behavior",
+    "stem": "According to Guttmacher (2019), what proportion of adolescents reported contraceptive use at first intercourse?",
+    "options": [
+      "91% of females and 77% of males",
+      "77% of females and 91% of males",
+      "65% of females and 84% of males",
+      "84% of both females and males"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "77% of females and 91% of males reported contraceptive use at first intercourse.",
+    "type": "single",
+    "trap": "The two figures are easy to swap. The higher figure belongs to males.",
+    "source": "ch25.md"
+  },
+  "q_0041": {
+    "topic": "teen pregnancy",
+    "subtopic": "trends and adolescent sexual behavior",
+    "stem": "What is meant by sexual debut?",
+    "options": [
+      "First experience with intercourse",
+      "First romantic relationship",
+      "Onset of puberty",
+      "First use of contraception"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Sexual debut is the first experience with intercourse, and it has a significant impact on pregnancy risk.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0042": {
+    "topic": "teen pregnancy",
+    "subtopic": "trends and adolescent sexual behavior",
+    "stem": "How does the chapter describe peer reinforcement of teen parenting? Select all that apply.",
+    "options": [
+      "Exaggerating the risks of birth control",
+      "Discouraging abortion and adoption",
+      "Glamorizing the impending birth",
+      "Teens are more likely to be sexually active if their friends are",
+      "Encouraging early entry into prenatal care"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Teens are more likely to be sexually active if their friends are, and peers reinforce teen parenting by exaggerating birth control risks, discouraging abortion and adoption, and glamorizing the impending birth.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0043": {
+    "topic": "teen pregnancy",
+    "subtopic": "trends and adolescent sexual behavior",
+    "stem": "A history of sexual victimization in adolescence is associated with which outcomes? Select all that apply.",
+    "options": [
+      "Earlier initiation of voluntary intercourse",
+      "Being less likely to use birth control",
+      "Being more likely to use drugs or alcohol at first intercourse",
+      "Being more likely to have older partners",
+      "Delayed sexual debut"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "A history of sexual abuse is associated with earlier initiation of voluntary intercourse, lower likelihood of birth control use, greater likelihood of drug or alcohol use at first intercourse, and older partners.",
+    "type": "sata",
+    "trap": "Every consequence runs toward earlier and higher-risk activity. A \"delayed\" option in this stem is always the distractor.",
+    "source": "ch25.md"
+  },
+  "q_0044": {
+    "topic": "teen pregnancy",
+    "subtopic": "contraception",
+    "stem": "What does dual protection mean as the chapter uses the term?",
+    "options": [
+      "Two hormonal contraceptives used together",
+      "A hormonal contraceptive, preferably LARC, plus a condom",
+      "A condom plus emergency contraception on hand",
+      "Contraception plus routine STI screening"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Dual protection is the use of a hormonal contraceptive, preferably LARC, plus a condom — the current recommendation for greatest protection against both pregnancy and STI.",
+    "type": "single",
+    "trap": "The recommendation is specifically hormonal-plus-barrier. Two methods of the same kind is not dual protection, because the point is covering pregnancy and STI simultaneously.",
+    "source": "ch25.md"
+  },
+  "q_0045": {
+    "topic": "teen pregnancy",
+    "subtopic": "contraception",
+    "stem": "Which methods are long-acting reversible contraception? Select all that apply.",
+    "options": [
+      "Intrauterine devices",
+      "Contraceptive implants",
+      "Combined oral contraceptive pills",
+      "Depot injections given every three months"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "rationale": "LARC comprises IUDs and contraceptive implants. ACOG made a strong recommendation in 2012 to encourage adolescent use; LARC has the highest rates of continuation and of preventing pregnancy, rapid repeat pregnancy, and abortion in young women.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0046": {
+    "topic": "teen pregnancy",
+    "subtopic": "caring for the pregnant teen",
+    "stem": "How does the chapter classify pregnant teenagers, and to what does it attribute their complications?",
+    "options": [
+      "Average-risk patients; complications stem mainly from physiologic immaturity",
+      "High-risk obstetrical patients; complications can result from poverty, late entry into prenatal care, sporadic prenatal care, and limited self-care knowledge",
+      "High-risk obstetrical patients; complications stem almost entirely from inadequate nutrition",
+      "Average-risk patients provided prenatal care begins in the first trimester"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The chapter states plainly that pregnant teenagers are considered high-risk obstetrical patients, with complications resulting from poverty, late entry into prenatal care, sporadic prenatal care, and limited self-care knowledge.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0047": {
+    "topic": "teen pregnancy",
+    "subtopic": "caring for the pregnant teen",
+    "stem": "A 16-year-old presents for her third prenatal visit. Regarding assessment for violence, which approach is correct?",
+    "options": [
+      "Ask at the first prenatal visit, since a documented negative screen holds for the pregnancy",
+      "Ask at each visit, because frequent routine assessment is more revealing than a single inquiry",
+      "Ask only if the teen presents with unexplained injuries",
+      "Defer to social work, which screens at intake"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The nurse must ask about violence at each visit; frequent routine assessment is more revealing than a single inquiry at the first prenatal visit.",
+    "type": "single",
+    "trap": "A single first-visit screen is the plausible-sounding distractor. Teens are more likely than adult women to experience violence during pregnancy, perpetrators include partners, family members, and acquaintances, and violence beginning in pregnancy may continue for years with increasing severity.",
+    "source": "ch25.md"
+  },
+  "q_0048": {
+    "topic": "teen pregnancy",
+    "subtopic": "caring for the pregnant teen",
+    "stem": "Which are named special issues in caring for the pregnant teen? Select all that apply.",
+    "options": [
+      "Violence",
+      "Initiation of prenatal care",
+      "Low-birth-weight infants and preterm delivery",
+      "Nutrition, infant care, and repeat pregnancy",
+      "Schooling and educational needs"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "rationale": "The named issue areas are violence, initiation of prenatal care, low-birth-weight infants and preterm delivery, nutrition, infant care, repeat pregnancy, and schooling/educational needs.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0049": {
+    "topic": "teen pregnancy",
+    "subtopic": "caring for the pregnant teen",
+    "stem": "What is the key nutritional consideration for a pregnant adolescent who is still growing?",
+    "options": [
+      "Caloric needs match those of an adult pregnancy",
+      "She must increase caloric nutrients for her own growth as well as for the pregnancy",
+      "Caloric intake should be restricted to limit fetal size and ease delivery",
+      "Supplementation replaces the need for increased caloric intake"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The growing teen must increase caloric nutrients to meet her own growth needs as well as the pregnancy.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0050": {
+    "topic": "teen pregnancy",
+    "subtopic": "caring for the pregnant teen",
+    "stem": "A 15-year-old has just received a positive pregnancy test. When is counseling about options most productive?",
+    "options": [
+      "Immediately, while she is present and the result is fresh",
+      "At a follow-up visit, which is usually more productive than counseling at the time of initial results",
+      "Only after a parent or guardian has been notified",
+      "Only after the first prenatal visit with the obstetric provider"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "A follow-up visit is usually more productive than counseling at the time of initial pregnancy testing results. Counseling should explore strengths and weaknesses, education and career plans, family finances, and personal values.",
+    "type": "single",
+    "trap": "Counseling at the moment of the result feels efficient and responsive, but the chapter is explicit that the follow-up visit produces more.",
+    "source": "ch25.md"
+  },
+  "q_0051": {
+    "topic": "teen pregnancy",
+    "subtopic": "caring for the pregnant teen",
+    "stem": "Regarding abortion and adoption, what is the nurse's stated responsibility?",
+    "options": [
+      "To recommend the option with the best health outcomes",
+      "To know local availability of services and refer appropriately for pregnancy counseling",
+      "To defer all discussion until the second trimester",
+      "To provide counseling personally rather than referring"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The nurse should know about local abortion and adoption services and refer appropriately. Affordable abortion services up to 13 weeks of gestation vary by community, and second-trimester services may require extensive travel and cost. For adoption, the teen needs information on current agency policies, including those allowing continued contact with the adopting family. ---",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0052": {
+    "topic": "mental illness",
+    "subtopic": "definitions and scope",
+    "stem": "How does the chapter define mental health?",
+    "options": [
+      "The absence of any diagnosable mental disorder",
+      "Being able to engage in productive activities, have fulfilling relationships, adapt to change, and cope with adversity",
+      "Stable mood and behavior maintained without treatment",
+      "Functioning within normal limits in family, school, or community activities"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Mental health is being able to engage in productive activities, have fulfilling relationships, adapt to change, and cope with adversity. It is an integral part of personal well-being, family and interpersonal relationships, and contribution to community.",
+    "type": "single",
+    "trap": "Mental health and mental illness sit on a continuum; mental health is not defined as the absence of illness.",
+    "source": "ch25.md"
+  },
+  "q_0053": {
+    "topic": "mental illness",
+    "subtopic": "definitions and scope",
+    "stem": "Which statement correctly distinguishes mental disorders from mental illness?",
+    "options": [
+      "They are interchangeable terms",
+      "Mental disorders are conditions marked by alterations in thinking, mood, or behavior associated with distress or impaired functioning; mental illness is collectively all diagnosable mental disorders",
+      "Mental illness refers only to conditions requiring hospitalization",
+      "Mental disorders are diagnosable; mental illness is a lay term with no clinical definition"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Mental disorders are conditions characterized by alterations in thinking, mood, or behavior associated with distress or impaired functioning. Mental illness is, collectively, all diagnosable mental disorders.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0054": {
+    "topic": "mental illness",
+    "subtopic": "definitions and scope",
+    "stem": "How does SAMHSA define any mental illness (AMI)?",
+    "options": [
+      "Any mental, behavioral, or emotional disorder in the past year that met DSM-5 criteria",
+      "Any disorder causing serious functional impairment that substantially limits major life activities",
+      "Any disorder requiring psychotropic medication in the past year",
+      "Any disorder diagnosed before age 18"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "AMI is defined as persons having any mental, behavioral, or emotional disorder in the past year that met DSM-5 criteria. In 2018 this was 47.6 million adults 18 and over.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0055": {
+    "topic": "mental illness",
+    "subtopic": "definitions and scope",
+    "stem": "How does SAMHSA define serious mental illness (SMI)?",
+    "options": [
+      "Any mental, behavioral, or emotional disorder in the past year meeting DSM-5 criteria",
+      "Someone over 18 with a diagnosable mental, behavioral, or emotional disorder in the last year causing serious functional impairment that substantially interferes with or limits one or more major life activities",
+      "Any disorder requiring inpatient psychiatric admission in the last year",
+      "Any disorder present continuously for more than two years"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "SMI applies to someone over 18 with a diagnosable disorder within the last year causing serious functional impairment that substantially interferes with or limits one or more major life activities. In 2018 this was 11.4 million adults.",
+    "type": "single",
+    "trap": "AMI and SMI are separated by the functional impairment clause, not by diagnosis or by treatment setting. Formal diagnosis depends on a reduction in the person's ability to function as a result of the disorder.",
+    "source": "ch25.md"
+  },
+  "q_0056": {
+    "topic": "mental illness",
+    "subtopic": "definitions and scope",
+    "stem": "What is the term for the under-18 parallel to serious mental illness?",
+    "options": [
+      "Any mental illness",
+      "Childhood-onset mental disorder",
+      "Serious emotional disturbance",
+      "Developmental psychiatric disorder"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "For people under 18, the parallel term is serious emotional disturbance, where the limitation is the ability to function in family, school, or community activities.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0057": {
+    "topic": "mental illness",
+    "subtopic": "definitions and scope",
+    "stem": "According to Healthy People 2030, approximately what proportion of people in the US will be diagnosed with a mental illness at some point in their lifetime?",
+    "options": [
+      "About one quarter",
+      "About one third",
+      "About half",
+      "About two thirds"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "Healthy People 2030 states that about half of all people in the US will be diagnosed with a mental illness at some point in their lifetime.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0058": {
+    "topic": "mental illness",
+    "subtopic": "definitions and scope",
+    "stem": "In 2018, SAMHSA reported how many adults 18 and over had both AMI and at least one substance use disorder?",
+    "options": [
+      "3.2 million",
+      "9.2 million",
+      "11.4 million",
+      "47.6 million"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "9.2 million adults had both AMI and at least one SUD; 3.2 million had co-occurring SMI and SUD; approximately 358,000 adolescents had a SUD and a major depressive episode.",
+    "type": "single",
+    "trap": "3.2 million is the SMI-plus-SUD figure and 11.4 million is SMI alone. The three numbers cluster and are easy to cross-assign.",
+    "source": "ch25.md"
+  },
+  "q_0059": {
+    "topic": "mental illness",
+    "subtopic": "definitions and scope",
+    "stem": "WHO reports the combined global burden of mental health, substance abuse, and neurological disease at approximately what percentage?",
+    "options": [
+      "8%",
+      "14%",
+      "22%",
+      "30%"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "WHO reports the combined global burden at 14% and launched mhGAP, the mental health global action program. The WHO poster reads \"No Health Without Mental Health.\"",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0060": {
+    "topic": "mental illness",
+    "subtopic": "deinstitutionalization",
+    "stem": "What was the main reason for deinstitutionalization?",
+    "options": [
+      "The discovery of psychotropic medications",
+      "Civil rights activism",
+      "The cost of institutional care",
+      "A federal court mandate to close state hospitals"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "The main reason was the cost of institutional care. The discovery of psychotropic medications and civil rights activism were other influences.",
+    "type": "single",
+    "trap": "Psychotropic medications and civil rights activism are both real contributors and both feel like better-sounding answers. The chapter names cost as the main reason and the other two as additional influences — hold that ranking.",
+    "source": "ch25.md"
+  },
+  "q_0061": {
+    "topic": "mental illness",
+    "subtopic": "deinstitutionalization",
+    "stem": "What was the stated goal of deinstitutionalization?",
+    "options": [
+      "To reduce the number of people carrying a psychiatric diagnosis",
+      "To improve quality of life by providing services in the communities where people lived rather than in large institutions",
+      "To transfer responsibility for psychiatric care from states to the federal government",
+      "To consolidate psychiatric care into regional centers of excellence"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The goal was to improve quality of life by delivering services in people's own communities rather than in large institutions. Community mental health centers were the intended destination for that care.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0062": {
+    "topic": "mental illness",
+    "subtopic": "deinstitutionalization",
+    "stem": "Which factors describe the failure of deinstitutionalization in implementation? Select all that apply.",
+    "options": [
+      "Community-based services were not always in place when people were released",
+      "Continuity of care became a problem",
+      "Families were not prepared for the treatment responsibilities they assumed",
+      "Some people were placed in jails and prisons",
+      "Community mental health centers refused to accept discharged patients"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Community-based services were not always in place at release and continuity of care became a problem. Families assumed treatment responsibilities they were not prepared for, and few mental health systems offered education and support programs. Many were discharged to family, nursing homes, apartments, rooming houses, or single-room-occupancy hotels with little or no supervision, and some were placed in jails and prisons. Staff in nursing homes and personal care settings often lacked the skills to treat persons with mental disorders.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0063": {
+    "topic": "mental illness",
+    "subtopic": "deinstitutionalization",
+    "stem": "Which line does the chapter use to summarize deinstitutionalization?",
+    "options": [
+      "\"A solution in search of a problem\"",
+      "\"Noble in conception yet bankrupt in implementation\"",
+      "\"The right care in the wrong place\"",
+      "\"Community care without a community\""
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The chapter's quotable line is \"Deinstitutionalization was noble in conception yet bankrupt in implementation.\"",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0064": {
+    "topic": "mental illness",
+    "subtopic": "deinstitutionalization",
+    "stem": "What did the Americans with Disabilities Act of 1990 mandate?",
+    "options": [
+      "That community mental health centers receive federal block grants",
+      "That individuals with mental and physical disabilities not be discriminated against and be brought into the mainstream through access to employment and public services",
+      "That state psychiatric hospitals be closed within ten years",
+      "That insurers cover mental health at parity with physical health"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The ADA (1990) mandated that individuals with mental and physical disabilities not be discriminated against and be brought into the mainstream through access to employment and public services.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0065": {
+    "topic": "mental illness",
+    "subtopic": "at-risk populations",
+    "stem": "Suicide was the second leading cause of death for which age group?",
+    "options": [
+      "Ages 5 to 14",
+      "Ages 10 to 24",
+      "Ages 15 to 34",
+      "Ages 18 to 25"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Suicide was the second leading cause of death for youth ages 10 to 24. Healthy People 2030 has objectives on reducing adolescent suicide attempts and screening for depression.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0066": {
+    "topic": "mental illness",
+    "subtopic": "at-risk populations",
+    "stem": "Which statement correctly describes the sex difference in youth suicide?",
+    "options": [
+      "Females die by suicide about four times as often as males",
+      "Males die by suicide about four times as often as females, yet females are more likely to have suicidal thoughts",
+      "Males and females die by suicide at equal rates, but males report more suicidal thoughts",
+      "Females die by suicide more often and also report more suicidal thoughts"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Males die by suicide about four times as often as females, yet females are more likely to have suicidal thoughts.",
+    "type": "single",
+    "trap": "The direction splits between completion and ideation. A question that reports both in the same direction is wrong regardless of which direction it picks.",
+    "source": "ch25.md"
+  },
+  "q_0067": {
+    "topic": "mental illness",
+    "subtopic": "at-risk populations",
+    "stem": "Which environmental factors are named as putting children and adolescents at risk for disruption of normal development? Select all that apply.",
+    "options": [
+      "Crowded living conditions",
+      "Violence",
+      "Separation from parents",
+      "Lack of consistent caregivers",
+      "Attendance at a large school"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Children and adolescents are at risk from biological, environmental, and psychosocial factors; the named environmental factors are crowded living conditions, violence, separation from parents, and lack of consistent caregivers. Exposure to community violence relates to significant stress and depression.",
+    "type": "sata",
+    "source": "ch25.md"
+  },
+  "q_0068": {
+    "topic": "mental illness",
+    "subtopic": "at-risk populations",
+    "stem": "The chapter describes stigma in mental illness primarily as which phenomenon?",
+    "options": [
+      "Reluctance of clinicians to document psychiatric diagnoses",
+      "Identifying people by the illness — \"a schizophrenic\" — rather than as a person with the illness",
+      "Insurance exclusion of psychiatric conditions",
+      "Underreporting of symptoms on population surveys"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "People with mental illness are often identified by the illness rather than as a person with the illness.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0069": {
+    "topic": "mental illness",
+    "subtopic": "at-risk populations",
+    "stem": "Why does the onset of schizophrenia carry particular socioeconomic consequences?",
+    "options": [
+      "It typically begins in later adulthood, after retirement savings are set",
+      "Onset often coincides with finishing schooling and starting a career, driving many into underemployment and poverty",
+      "It requires lifelong inpatient care in most cases",
+      "It disqualifies individuals from disability benefits"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Onset often coincides with finishing schooling and starting a career, driving many into underemployment, poverty, and lack of access to health services, housing, and social supports.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0070": {
+    "topic": "mental illness",
+    "subtopic": "at-risk populations",
+    "stem": "Low-income and minority groups face increased risk for mental illness largely because of what?",
+    "options": [
+      "Higher underlying genetic vulnerability",
+      "Lack of access to services",
+      "Higher rates of misdiagnosis",
+      "Greater reluctance to accept treatment"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The chapter attributes increased risk in low-income and minority groups largely to lack of access to services. Cultural attitudes separately affect whether people seek mental health care, how they describe symptoms, duration of care, and outcomes. ---",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0071": {
+    "topic": "levels of prevention",
+    "subtopic": "applying the three levels",
+    "stem": "What does the chapter say about sorting services for these high-risk groups into the three levels of prevention?",
+    "options": [
+      "The three levels sort cleanly once the target population is identified",
+      "It is difficult to separate them, because interventions can be assigned to more than one level",
+      "Only primary and tertiary prevention apply to vulnerable populations",
+      "Secondary prevention is not applicable to homelessness"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "The chapter states plainly that it is difficult to separate services for these high-risk groups into three levels because interventions can be assigned to more than one. Affordable housing may qualify as primary prevention but could also be an important secondary or tertiary intervention.",
+    "type": "single",
+    "trap": "Expect a question that tests this ambiguity rather than clean sorting. If an item seems to demand one level for affordable housing, the chapter's own position is that it can sit in more than one.",
+    "source": "ch25.md"
+  },
+  "q_0072": {
+    "topic": "levels of prevention",
+    "subtopic": "applying the three levels",
+    "stem": "Which interventions are named as primary prevention? Select all that apply.",
+    "options": [
+      "Affordable housing and housing subsidies",
+      "Effective job-training programs and employer incentives",
+      "Birth control services and safe-sex education",
+      "Needle exchange programs and parent education",
+      "Helping enhance self-esteem in those already affected"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Primary prevention includes affordable housing, housing subsidies, effective job-training programs, employer incentives, preventive health care services, multisystem case management, birth control services, safe-sex education, needle exchange programs, parent education, and counseling programs.",
+    "type": "sata",
+    "trap": "Enhancing self-esteem in those already affected is the chapter's worked example of tertiary prevention.",
+    "source": "ch25.md"
+  },
+  "q_0073": {
+    "topic": "levels of prevention",
+    "subtopic": "applying the three levels",
+    "stem": "A nurse targets persons on the verge of becoming high risk because of the threat of homelessness, as well as those who are newly homeless. This is an example of which level of prevention?",
+    "options": [
+      "Primary",
+      "Secondary",
+      "Tertiary",
+      "Quaternary"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "This is the chapter's worked example of secondary prevention, which aims at reducing the prevalence or pathological nature of a condition through early diagnosis, prompt treatment, and limitation of disability.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0074": {
+    "topic": "levels of prevention",
+    "subtopic": "applying the three levels",
+    "stem": "A nurse works to enhance self-esteem among people already affected by homelessness and mental illness. This is an example of which level of prevention?",
+    "options": [
+      "Primary",
+      "Secondary",
+      "Tertiary",
+      "It cannot be classified"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "This is the chapter's worked example of tertiary prevention, which reduces disability that has already resulted and restores function where possible.",
+    "type": "single",
+    "source": "ch25.md"
+  },
+  "q_0075": {
+    "topic": "levels of prevention",
+    "subtopic": "applying the three levels",
+    "stem": "A nurse provides education about stress reduction techniques to seniors attending a health fair. This is an example of which level of prevention?",
+    "options": [
+      "Primary",
+      "Secondary",
+      "Tertiary",
+      "Secondary, because the seniors are already at risk"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "This is the chapter's worked example of primary prevention. The Levels of Prevention box for community mental health lists educating populations about mental health issues, teaching stress reduction techniques, supporting and providing prenatal education, and providing support to caregivers as primary prevention.",
+    "type": "single",
+    "source": "ch25.md"
   }
 }

@@ -116,12 +116,51 @@ export function weakTopics(attempts, questions, threshold = WEAK_THRESHOLD) {
  * Selection, in priority order:
  *   1. never-seen questions in weak topics
  *   2. due questions in weak topics
- *   3. due questions everywhere else
+ *   3. due questions everywhere else (never-seen questions count as due)
  *   4. not-yet-due questions in weak topics (the pull-forward rule)
- *   5. never-seen questions anywhere
  *
- * Within a bucket, struggling questions come first, then oldest due date.
+ * Within a bucket, struggling questions come first, then oldest due date, and
+ * the survivors are dealt round-robin across topics. Without that last step a
+ * fresh bank ties on every criterion and falls through to qid order, so the
+ * first sessions are drawn entirely from whichever topic was imported first —
+ * and the topic-level weak detection cannot see the other topics at all until
+ * the bank has been worked through in import order.
  */
+/** Deal one bucket's entries round-robin across topics, order preserved. */
+function dealAcrossTopics(entries) {
+  const lanes = new Map();
+  for (const e of entries) {
+    if (!lanes.has(e.topic)) lanes.set(e.topic, []);
+    lanes.get(e.topic).push(e);
+  }
+  const queues = [...lanes.values()];
+  const out = [];
+  const deepest = Math.max(0, ...queues.map((l) => l.length));
+  for (let i = 0; i < deepest; i++) {
+    for (const lane of queues) {
+      if (i < lane.length) out.push(lane[i]);
+    }
+  }
+  return out;
+}
+
+/**
+ * Spread topics *within* each priority bucket, never across them. Interleaving
+ * the whole queue would let a bucket-4 question from an untouched topic jump
+ * ahead of a bucket-0 question from a weak one, which is exactly the priority
+ * the buckets exist to enforce.
+ */
+function interleaveByTopic(entries) {
+  const buckets = new Map();
+  for (const e of entries) {
+    if (!buckets.has(e.bucket)) buckets.set(e.bucket, []);
+    buckets.get(e.bucket).push(e);
+  }
+  return [...buckets.keys()]
+    .sort((a, b) => a - b)
+    .flatMap((b) => dealAcrossTopics(buckets.get(b)));
+}
+
 export function buildQueue(questions, schedule, attempts, opts = {}) {
   const { limit = 20, today = todayISO(), threshold = WEAK_THRESHOLD } = opts;
   const weak = new Set(weakTopics(attempts, questions, threshold));
@@ -131,19 +170,21 @@ export function buildQueue(questions, schedule, attempts, opts = {}) {
     const isWeak = weak.has(q.topic);
     const unseen = !s || s.reps === 0;
     const due = s ? daysBetween(today, s.due_date) <= 0 : true;
+    // Note `unseen` implies `due` — a question with no schedule entry is due
+    // by definition — so there is no separate "unseen elsewhere" tier.
     let bucket;
     if (isWeak && unseen) bucket = 0;
     else if (isWeak && due) bucket = 1;
     else if (due) bucket = 2;
     else if (isWeak) bucket = 3;
-    else if (unseen) bucket = 4;
-    else bucket = 5; // not due, not weak — skip unless we're short
+    else bucket = 4; // not due, not weak — skip unless we're short
     return {
       qid,
       bucket,
       struggling: !!s?.struggling,
       overdue: s ? -daysBetween(today, s.due_date) : 9999,
       weak: isWeak,
+      topic: q.topic,
     };
   });
 
@@ -153,10 +194,10 @@ export function buildQueue(questions, schedule, attempts, opts = {}) {
     b.overdue - a.overdue ||
     a.qid.localeCompare(b.qid));
 
-  const queue = scored.filter((s) => s.bucket < 5);
+  const queue = scored.filter((s) => s.bucket < 4);
   // If nothing is due, fall back to the least-recently-scheduled material so
   // a session is never empty.
-  const picked = (queue.length ? queue : scored).slice(0, limit);
+  const picked = interleaveByTopic(queue.length ? queue : scored).slice(0, limit);
   return picked.map((s) => s.qid);
 }
 
