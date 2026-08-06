@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 27 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 27</div><h1>Chapter 27 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">public health model of violence</span><span class="chip t2">socioecological model and CDC framework</span></div>
+<div class="stem">1. What are the four steps of the CDC's public health approach to violence prevention, in order?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Identify risk factors, identify the problem, disseminate strategies, develop strategies</li><li class="fopt right"><span class="mk">&#10003;</span>Identify the problem, identify risk factors, develop and test prevention strategies, disseminate and implement</li><li class="fopt"><span class="mk">C</span>Develop strategies, identify the problem, disseminate strategies, identify risk factors</li><li class="fopt"><span class="mk">D</span>Disseminate strategies, identify risk factors, develop strategies, identify the problem</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The four steps in order are: identify the problem, identify the risk factors, develop and test prevention strategies, and disseminate and implement the strategies.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public health model of violence</span><span class="chip t2">socioecological model and CDC framework</span></div>
+<div class="stem">2. A nurse observes that a neighborhood has high mobility, low cohesiveness, high population density, and a built environment with few green spaces. Which level of the socioecological model does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Individual</li><li class="fopt"><span class="mk">B</span>Relationship</li><li class="fopt right"><span class="mk">&#10003;</span>Community</li><li class="fopt"><span class="mk">D</span>Societal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The community level covers settings such as schools, workplaces, and neighborhoods, including considerations like high mobility, low cohesiveness, population density, built environment, and drug traffic.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public health model of violence</span><span class="chip t2">socioecological model and CDC framework</span></div>
+<div class="stem">3. Which level of the socioecological model addresses a culture that accepts violence and perpetuates disparities between groups in society?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Individual</li><li class="fopt"><span class="mk">B</span>Relationship</li><li class="fopt"><span class="mk">C</span>Community</li><li class="fopt right"><span class="mk">&#10003;</span>Societal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The societal level covers broader factors contributing to a culture that accepts violence, reduces inhibitions against violence, and creates and perpetuates disparities between segments of society.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public health model of violence</span><span class="chip t2">socioecological model and CDC framework</span></div>
+<div class="stem">4. Which factors are named at the individual level of the socioecological model? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A history of abuse, including witnessing abuse</li><li class="fopt right"><span class="mk">&#10003;</span>Substance use</li><li class="fopt right"><span class="mk">&#10003;</span>Mental health disorders</li><li class="fopt"><span class="mk">D</span>Neighborhood population density</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The individual level covers biological and personal history factors such as education, substance use, a history of abuse including witnessing it, and mental health disorders. Neighborhood density is a community-level factor.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public health model of violence</span><span class="chip t2">socioecological model and CDC framework</span></div>
+<div class="stem">5. Which statements does the chapter make explicitly about the socioecological model? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The presence of risks guarantees violence will occur</li><li class="fopt right"><span class="mk">&#10003;</span>Protective factors do not eliminate the risk of violence</li><li class="fopt right"><span class="mk">&#10003;</span>It is important to act across multiple levels of the model simultaneously</li><li class="fopt right"><span class="mk">&#10003;</span>The presence of risk factors does not guarantee violence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter explicitly states that the presence of risks does not guarantee violence, protective factors do not eliminate risk, and it is important to act across multiple levels simultaneously.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option A directly contradicts the chapter's own stated position — risk factors increase likelihood but do not guarantee an outcome.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public health model of violence</span><span class="chip t2">socioecological model and CDC framework</span></div>
+<div class="stem">6. According to Sumner et al. (2015), violence tends to be higher in communities with which characteristics? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Limited economic opportunities</li><li class="fopt right"><span class="mk">&#10003;</span>High concentrations of poor and unemployed people</li><li class="fopt right"><span class="mk">&#10003;</span>Frequent population turnover</li><li class="fopt"><span class="mk">D</span>Abundant civic and voluntary associations</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Violence is higher in communities with limited economic opportunities, high concentrations of poor and unemployed people, frequent moving, limited public/mental health/social services, and fewer civic and voluntary associations — not abundant associations, which is protective. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">homicide and firearms</span></div>
+<div class="stem">7. Which statement about intimate partner homicide (IPH) is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Women are nine times more likely to be killed by a stranger than an intimate partner</li><li class="fopt right"><span class="mk">&#10003;</span>Women are nine times more likely to be killed by an intimate partner than by a stranger</li><li class="fopt"><span class="mk">C</span>Men and women face equal rates of intimate partner homicide</li><li class="fopt"><span class="mk">D</span>IPH rates are unrelated to prior domestic violence history</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Women are nine times more likely to be killed by an intimate partner than by a stranger, and the top risk factor for IPH is previous domestic violence.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">homicide and firearms</span></div>
+<div class="stem">8. Which are named risk factors for intimate partner homicide? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Access to guns</li><li class="fopt right"><span class="mk">&#10003;</span>Nonfatal strangulation</li><li class="fopt right"><span class="mk">&#10003;</span>Estrangement</li><li class="fopt"><span class="mk">D</span>Marital counseling attendance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Named risk factors include previous domestic violence (the top factor), access to guns, estrangement, threats to kill or with a weapon, nonfatal strangulation, and a stepchild in the home if the victim is female.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">homicide and firearms</span></div>
+<div class="stem">9. What percentage of women killed by a husband, boyfriend, or ex-partner had been seen in a health care setting during the year before the homicide?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>25%</li><li class="fopt"><span class="mk">B</span>50%</li><li class="fopt right"><span class="mk">&#10003;</span>75%</li><li class="fopt"><span class="mk">D</span>90%</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>75% of women killed by a husband, boyfriend, or ex-partner had been seen in a health care setting during the year before the homicide — underscoring the importance of screening at routine encounters.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">homicide and firearms</span></div>
+<div class="stem">10. What does the chapter say about a nurse's duty regarding severe abuse and homicide risk?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Nurses have no formal duty regarding homicide risk disclosure</li><li class="fopt right"><span class="mk">&#10003;</span>Nurses have a duty to warn family members of the possibility of homicide when severe abuse is present, just as they warn of smoking hazards</li><li class="fopt"><span class="mk">C</span>This duty applies only to law enforcement, not nurses</li><li class="fopt"><span class="mk">D</span>The duty to warn applies only after a homicide has occurred</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nurses have a duty to warn family members of the possibility of homicide when severe abuse is present, just as they warn them of the hazards of smoking.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">homicide and firearms</span></div>
+<div class="stem">11. Which statement about firearm fatalities is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Females account for 85% of firearm fatality victims</li><li class="fopt right"><span class="mk">&#10003;</span>Males account for 85% of firearm fatality victims and 88% of nonfatal firearm injuries</li><li class="fopt"><span class="mk">C</span>Household gun ownership is associated with increased stranger homicide rates</li><li class="fopt"><span class="mk">D</span>More people die from firearms than suffer nonfatal firearm injuries</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Males account for 85% of firearm fatality victims and 88% of nonfatal firearm injuries. Higher household gun ownership is associated with increased NONstranger firearm homicides, not stranger homicides, and more people suffer nonfatal injuries than die.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">assault and suicide</span></div>
+<div class="stem">12. What is named as the greatest risk factor for an individual's victimization through violence?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Income level</li><li class="fopt right"><span class="mk">&#10003;</span>Age, with youths at significantly higher risk</li><li class="fopt"><span class="mk">C</span>Geographic region</li><li class="fopt"><span class="mk">D</span>Marital status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The greatest risk factor for an individual's victimization through violence is age, and youths are at significantly higher risk.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">assault and suicide</span></div>
+<div class="stem">13. Which statement correctly describes sex differences in assault and homicide victimization?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>More females than males are victims of homicide and assault</li><li class="fopt right"><span class="mk">&#10003;</span>More males than females are victims of homicide and assault, but women are more likely to be victimized by a relative or male partner</li><li class="fopt"><span class="mk">C</span>Men and women are equally likely to be victimized by a relative</li><li class="fopt"><span class="mk">D</span>Homicide and assault show no sex-based patterns</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>More males than females are victims of homicide and assault overall, but women are more likely to be victimized specifically by a relative, especially a male partner.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">assault and suicide</span></div>
+<div class="stem">14. Which statement about suicide rates is accurate, and which population is the notable exception to the general socioeconomic pattern?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Suicide rates are highest among the poorest and least educated, with no exceptions</li><li class="fopt right"><span class="mk">&#10003;</span>Affluent and educated people often have higher suicide rates than disadvantaged people, except Native Alaskan and American Indian populations</li><li class="fopt"><span class="mk">C</span>Suicide rates show no relationship to socioeconomic status</li><li class="fopt"><span class="mk">D</span>Suicide rates are highest among the unemployed, with no notable exceptions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Affluent and educated people often have higher rates of suicide than economically and educationally disadvantaged people; the exception is Native Alaskan and American Indian populations, who are often poor yet have alarmingly high suicide rates.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This inverts the usual &quot;poverty equals worse outcomes&quot; pattern common throughout this chapter, which is exactly why it is testable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">assault and suicide</span></div>
+<div class="stem">15. What proportion of individuals who complete suicide had visited a health care provider in the prior month, and what is the significance of this finding?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A minority; this argues against universal screening</li><li class="fopt right"><span class="mk">&#10003;</span>The majority; this is the rationale for universal screening</li><li class="fopt"><span class="mk">C</span>None; most avoid health care entirely before suicide</li><li class="fopt"><span class="mk">D</span>Exactly half; the data is inconclusive</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The majority of individuals who complete suicide have visited a health care provider in the prior month — this is the rationale for universal screening for suicide risk.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">homicide, assault, and suicide</span><span class="chip t2">assault and suicide</span></div>
+<div class="stem">16. Which statement best describes common reactions among suicide survivors (family/friends)?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They typically feel no guilt or self-blame</li><li class="fopt right"><span class="mk">&#10003;</span>They often feel angry toward the dead person, yet may turn the anger inward, and may question their own liability</li><li class="fopt"><span class="mk">C</span>They generally increase social activities to cope</li><li class="fopt"><span class="mk">D</span>Survivors are unaffected if the death was expected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Survivors often feel angry toward the dead person yet may turn the anger inward, question their own liability for the death, and may limit social activities because others are unable to talk about the suicide. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">statistics and misconceptions</span></div>
+<div class="stem">17. Which statement best reflects the chapter's framing of rape?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rape is fundamentally a crime of passion driven by sexual desire</li><li class="fopt right"><span class="mk">&#10003;</span>Rape is a crime of violence, not passion; the underlying issues are hostility, power, and control</li><li class="fopt"><span class="mk">C</span>Rape is defined primarily by the use of a weapon</li><li class="fopt"><span class="mk">D</span>Rape requires evidence of physical injury to be classified as such</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Rape is a crime of violence, not a crime of passion. The underlying issues are hostility, power, and control rather than sexual desire, and the defining issue is lack of consent of the victim.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">statistics and misconceptions</span></div>
+<div class="stem">18. Which statement correctly reflects the chapter's teaching on evidence of sexual violence?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Absence of physical evidence means sexual violence did not occur</li><li class="fopt right"><span class="mk">&#10003;</span>Absence of physical evidence does not mean sexual violence did not occur</li><li class="fopt"><span class="mk">C</span>Physical evidence is required for a valid disclosure</li><li class="fopt"><span class="mk">D</span>Only visible injuries indicate lack of consent</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Per WHO 2015, cited in the chapter, the absence of physical evidence does not mean that sexual violence such as rape did not occur.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">statistics and misconceptions</span></div>
+<div class="stem">19. Which statements about campus sexual assault are accurate, per the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>One in four college women will be a victim of sexual assault</li><li class="fopt right"><span class="mk">&#10003;</span>About 60% of these assaults are perpetrated by an acquaintance</li><li class="fopt right"><span class="mk">&#10003;</span>Fewer than 5% of incidents are brought to the attention of administrators or authorities</li><li class="fopt"><span class="mk">D</span>Graduate students are more likely to be victimized than undergraduates</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>One in four college women will be assaulted, 60% by an acquaintance, and fewer than 5% are reported to authorities. Female undergraduates are more likely to be victimized than graduate students — the reverse of option D.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">statistics and misconceptions</span></div>
+<div class="stem">20. How does heavy episodic drinking affect the chance of being raped, per the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It has no measurable effect</li><li class="fopt right"><span class="mk">&#10003;</span>It increases the chance eight-fold</li><li class="fopt"><span class="mk">C</span>It decreases the chance by increasing vigilance</li><li class="fopt"><span class="mk">D</span>It only affects male victims</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Heavy episodic drinking increases the chance of being raped eight-fold.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">statistics and misconceptions</span></div>
+<div class="stem">21. Regarding circumstances of reported rapes, which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rural areas are higher-risk than cities, and most rapes occur in the early morning</li><li class="fopt right"><span class="mk">&#10003;</span>Cities are higher-risk than rural areas, and the most critical times are between 8 pm and 2 am, weekends, and summer</li><li class="fopt"><span class="mk">C</span>The majority of rapists are strangers to the victim</li><li class="fopt"><span class="mk">D</span>Time of day and season have no bearing on risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Cities are higher-risk areas than rural areas, with the most critical times being 8 pm to 2 am, weekends, and summer. The majority of rapists are known to the victim, not strangers.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">statistics and misconceptions</span></div>
+<div class="stem">22. Which of the following are misconceptions about rape that the chapter explicitly corrects? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That women say &quot;no&quot; when they really mean &quot;yes&quot;</li><li class="fopt right"><span class="mk">&#10003;</span>That victims are culpable because of how they dress or act</li><li class="fopt"><span class="mk">C</span>That people have the right to change their mind even after seeming initially agreeable</li><li class="fopt"><span class="mk">D</span>That pressure from intoxication-inducement is a violation of the law</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter identifies the &quot;no means yes&quot; myth and victim-blaming based on dress/behavior as myths to be corrected. Options C and D are stated as TRUE facts by the chapter, not misconceptions to correct.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">dating violence and post-assault nursing care</span></div>
+<div class="stem">23. Which four forms of behavior are included under both dating violence and intimate partner violence?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Sexual violence, physical violence, psychological aggression, and stalking</li><li class="fopt"><span class="mk">B</span>Financial abuse, neglect, isolation, and intimidation</li><li class="fopt"><span class="mk">C</span>Physical violence, verbal abuse, financial control, and abandonment</li><li class="fopt"><span class="mk">D</span>Stalking, financial abuse, neglect, and coercion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Dating violence includes sexual violence, physical violence, psychological aggression, and stalking — occurring in person or electronically — and these same four forms also apply to intimate partner violence.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">dating violence and post-assault nursing care</span></div>
+<div class="stem">24. When interviewing a patient after a suspected rape, why should the nurse ask &quot;who hit you?&quot; rather than &quot;what happened to you?&quot; in the context of visible facial injury?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>&quot;What happened to you&quot; is more direct and should be preferred</li><li class="fopt right"><span class="mk">&#10003;</span>&quot;What happened to you&quot; implies the nurse is neither knowledgeable nor comfortable with violence, potentially prompting a fabricated cause</li><li class="fopt"><span class="mk">C</span>Both phrasings produce identical disclosure rates</li><li class="fopt"><span class="mk">D</span>Neither phrasing affects disclosure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Asking &quot;what happened to you?&quot; implies the nurse is neither knowledgeable nor comfortable with violence, which may prompt the woman to fabricate a more acceptable cause of her injury. The direct &quot;who hit you?&quot; signals comfort and openness to disclosure.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the single most quotable and testable line in the intimate partner violence screening section — the specific wording matters, not just the general idea of &quot;ask about violence.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">dating violence and post-assault nursing care</span></div>
+<div class="stem">25. When cutting clothing off a gunshot victim to provide care, what evidence-preservation principle should the nurse follow?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Cut directly through the bullet hole for the fastest access</li><li class="fopt right"><span class="mk">&#10003;</span>Avoid cutting through the bullet hole; cut to the side of it to preserve the point of origin for investigation</li><li class="fopt"><span class="mk">C</span>Evidence preservation is not a nursing responsibility</li><li class="fopt"><span class="mk">D</span>Discard all clothing immediately regardless of cut location</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>When cutting the shirt off a person shot in the chest, avoid cutting through the bullet hole — cut to the side of the hole to protect the point of origin of the bullet for later criminal investigation.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">dating violence and post-assault nursing care</span></div>
+<div class="stem">26. Why should a single-session debriefing be completed during the initial examination after a sexual assault?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because most victims request repeat sessions</li><li class="fopt right"><span class="mk">&#10003;</span>Because many victims deny the event once the initial crisis has passed</li><li class="fopt"><span class="mk">C</span>Because insurance requires a single visit</li><li class="fopt"><span class="mk">D</span>Because follow-up sessions are more effective than initial debriefing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Because many victims deny the event once the initial crisis has passed, a single-session debriefing should be completed during the initial examination.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sexual violence and rape</span><span class="chip t2">dating violence and post-assault nursing care</span></div>
+<div class="stem">27. What are the CDC's five &quot;STOP SV&quot; strategies to prevent sexual violence? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Promoting social norms that protect against violence</li><li class="fopt right"><span class="mk">&#10003;</span>Providing opportunities to empower girls and women</li><li class="fopt right"><span class="mk">&#10003;</span>Creating protective environments</li><li class="fopt"><span class="mk">D</span>Increasing criminal penalties as the primary strategy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The five STOP SV strategies are promoting protective social norms, teaching skills to prevent sexual violence, providing opportunities to empower girls and women, creating protective environments, and supporting victims/survivors — increasing criminal penalties is not among the five. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">human trafficking</span><span class="chip t2">identifying and responding to trafficking</span></div>
+<div class="stem">28. Which statement best describes why trafficking victims often go unidentified in health care settings?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They rarely have any contact with health care providers</li><li class="fopt right"><span class="mk">&#10003;</span>Most will contact a provider, often through the ED, but are seldom appropriately identified as trafficking victims</li><li class="fopt"><span class="mk">C</span>Health care providers are required to ignore trafficking indicators</li><li class="fopt"><span class="mk">D</span>Trafficking victims are always identified correctly on first contact</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Most trafficked individuals will come into contact with a health care provider, often through the emergency department, at some point during captivity — yet they are seldom appropriately identified as victims of trafficking.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">human trafficking</span><span class="chip t2">identifying and responding to trafficking</span></div>
+<div class="stem">29. Which are named red flags suggesting a patient may be a trafficking victim? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A companion who answers all questions for the patient</li><li class="fopt right"><span class="mk">&#10003;</span>Inability to provide a home address</li><li class="fopt right"><span class="mk">&#10003;</span>Unawareness of the city or state where services are being received</li><li class="fopt"><span class="mk">D</span>Arriving to the appointment alone and answering all questions independently</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Red flags include a companion who won't let the patient answer, inability to provide an address, no identification documents, and being unaware of the city/state — arriving alone and answering independently would be the opposite of a red flag.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">human trafficking</span><span class="chip t2">identifying and responding to trafficking</span></div>
+<div class="stem">30. What is the correct first step when a nurse suspects a patient may be a trafficking victim?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Immediately contact law enforcement regardless of the patient's wishes</li><li class="fopt right"><span class="mk">&#10003;</span>Interview the patient alone; explaining this is routine practice can decrease suspicion in the captor</li><li class="fopt"><span class="mk">C</span>Confront the accompanying person directly about the suspicion</li><li class="fopt"><span class="mk">D</span>Wait for the patient to volunteer information unprompted</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The nurse should interview the patient alone, which facilitates disclosure. Explaining that interviewing patients alone is routine practice in the setting can decrease suspicion in the captor.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">human trafficking</span><span class="chip t2">identifying and responding to trafficking</span></div>
+<div class="stem">31. If a suspected trafficking victim is an adult and NOT in immediate danger, what is the correct sequence for involving law enforcement?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Contact law enforcement immediately without informing the patient</li><li class="fopt right"><span class="mk">&#10003;</span>Notify the patient before engaging law enforcement, to improve trust and facilitate disclosure</li><li class="fopt"><span class="mk">C</span>Never involve law enforcement for adult victims</li><li class="fopt"><span class="mk">D</span>Wait for the patient to request law enforcement involvement before any other action</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If not in immediate danger, notify the patient before engaging law enforcement on their behalf — involving the patient may improve trust and facilitate disclosure. If immediate danger is suspected, contact law enforcement directly.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The sequencing decision depends on immediacy of danger: immediate danger bypasses the notify-first step; no immediate danger requires notifying the patient first. For minors, a call to child protective services is necessary regardless.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">human trafficking</span><span class="chip t2">identifying and responding to trafficking</span></div>
+<div class="stem">32. What is the phone number and key feature of the National Human Trafficking Resource Center hotline?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>911; available only during business hours</li><li class="fopt right"><span class="mk">&#10003;</span>1-888-373-7888; toll-free, available 24 hours/day, in 180 languages</li><li class="fopt"><span class="mk">C</span>A local number that varies by state</li><li class="fopt"><span class="mk">D</span>Available only in English and Spanish</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The National Human Trafficking Resource Center hotline is 1-888-373-7888, toll-free, available 24 hours a day, in 180 languages.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">human trafficking</span><span class="chip t2">identifying and responding to trafficking</span></div>
+<div class="stem">33. In 2018, which type of trafficking was reported most frequently to the National Human Trafficking Hotline?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Labor trafficking</li><li class="fopt right"><span class="mk">&#10003;</span>Sex trafficking</li><li class="fopt"><span class="mk">C</span>Sex and labor combined</li><li class="fopt"><span class="mk">D</span>Unspecified trafficking</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In 2018 the hotline reported 41,088 contacts; sex trafficking was the top type reported (7,859), followed by labor (1,249), then combined sex and labor (637), with 1,202 unspecified. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">development of abusive patterns</span><span class="chip t2">risk factors and intergenerational transmission</span></div>
+<div class="stem">34. What are the three characterizing factors in the development of abusive patterns, and which is most predictably present?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Poverty, education level, and marital status; poverty is most predictable</li><li class="fopt right"><span class="mk">&#10003;</span>Upbringing, living conditions, and increased stress; previous exposure to some form of violence is most predictably present</li><li class="fopt"><span class="mk">C</span>Age, gender, and occupation; occupation is most predictable</li><li class="fopt"><span class="mk">D</span>Substance use, mental illness, and unemployment; mental illness is most predictable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three characterizing factors are upbringing, living conditions, and increased stress. Of these, the one most predictably present is previous exposure to some form of violence.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">development of abusive patterns</span><span class="chip t2">risk factors and intergenerational transmission</span></div>
+<div class="stem">35. Which statement correctly describes the intergenerational mechanism of abuse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Only men who witnessed childhood abuse are more likely to abuse their own children</li><li class="fopt right"><span class="mk">&#10003;</span>Both men and women who witnessed abuse as children were more likely to abuse their children</li><li class="fopt"><span class="mk">C</span>Witnessing childhood abuse has no bearing on adult behavior</li><li class="fopt"><span class="mk">D</span>Financial solvency has no relationship to child abuse incidence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Both men and women who witnessed abuse as children were more likely to abuse their own children, and childhood physical punishment teaches children to use violent conflict resolution as adults. Financial solvency and support tended to DECREASE the incidence of child abuse.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">development of abusive patterns</span><span class="chip t2">risk factors and intergenerational transmission</span></div>
+<div class="stem">36. Which statement best reflects why frequent household moves warrant careful nursing assessment?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Frequent moving is only a risk factor for abuse, never a sign of concealment</li><li class="fopt right"><span class="mk">&#10003;</span>Frequent moving may be both a risk factor for abuse and a sign of a family avoiding detection</li><li class="fopt"><span class="mk">C</span>Frequent moving has no established relationship to family violence</li><li class="fopt"><span class="mk">D</span>Frequent moving is protective because it reduces community scrutiny</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Because frequent moving may be both a risk factor for abuse and a sign of an abusive family trying to avoid detection, nurses should assess such families carefully for abuse.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A stem describing a family that has moved several times in a short period is cuing careful assessment, not reassurance that nothing is wrong.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">development of abusive patterns</span><span class="chip t2">risk factors and intergenerational transmission</span></div>
+<div class="stem">37. Which statements about cross-contamination between types of family violence are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Physical abuse of women may be accompanied by sexual abuse</li><li class="fopt right"><span class="mk">&#10003;</span>When one child is abused, others in the family may also be abused</li><li class="fopt right"><span class="mk">&#10003;</span>Severe wife abusers may commit other acts of violence, especially child abuse</li><li class="fopt"><span class="mk">D</span>Abuse of one family member guarantees the safety of other members</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states no member of the family is guaranteed immunity from abuse and neglect — directly contradicting option D. Nurses who detect one form of abuse should suspect other forms may be present.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">development of abusive patterns</span><span class="chip t2">risk factors and intergenerational transmission</span></div>
+<div class="stem">38. What does the chapter identify as the personality profile most associated with abusers? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Low tolerance for frustration and emotional instability</li><li class="fopt right"><span class="mk">&#10003;</span>Verbally aggressive, hostile personality style</li><li class="fopt right"><span class="mk">&#10003;</span>Emotional insecurity leading to dependence on a child or spouse to meet needs for feeling valued</li><li class="fopt"><span class="mk">D</span>High tolerance for frustration and emotionally stable temperament</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Abusers tend to show hostile, verbally aggressive personality styles, low tolerance for frustration, emotional instability, and emotional insecurity that creates dependence on a child or spouse — the opposite of high frustration tolerance and emotional stability. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">types, statistics, and indicators</span></div>
+<div class="stem">39. The chapter's stated objective names four general types of child abuse. The body text adds a fifth. Which type is added in the body text but excluded from the four-type objective?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Physical abuse</li><li class="fopt"><span class="mk">B</span>Emotional abuse</li><li class="fopt right"><span class="mk">&#10003;</span>Trafficking</li><li class="fopt"><span class="mk">D</span>Neglect</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter objective states four types: neglect, physical, emotional, and sexual. The body text (p. 492) lists five, adding trafficking.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>If a question asks for &quot;the four types,&quot; trafficking is the distractor. If a SATA item offers five options including trafficking, trafficking is likely intended as correct. Know both framings.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">types, statistics, and indicators</span></div>
+<div class="stem">40. Which statements about child abuse statistics (2018) are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>At least 1 in 7 children experienced abuse or neglect the previous year</li><li class="fopt right"><span class="mk">&#10003;</span>Children in their first year of life have the highest rate of being victims</li><li class="fopt right"><span class="mk">&#10003;</span>Children living in poverty are five times more likely to be abused and neglected</li><li class="fopt"><span class="mk">D</span>The majority of perpetrators are strangers to the victim</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>At least 1 in 7 children experienced abuse/neglect; infants have the highest victimization rate; poverty increases risk five-fold. The majority of perpetrators (77.5%) are a parent of the victim, not a stranger.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">types, statistics, and indicators</span></div>
+<div class="stem">41. In families where only one child is targeted for abuse, which factors are named as increasing the likelihood a particular child is singled out? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The child resembles a relative</li><li class="fopt right"><span class="mk">&#10003;</span>The child is particularly bright, capable, or strong willed</li><li class="fopt right"><span class="mk">&#10003;</span>The child tries to resist the violence</li><li class="fopt"><span class="mk">D</span>The child is the youngest and most passive</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Named qualities that provoke a parent include resembling a relative, being handicapped, resisting the violence, or being bright, capable, or strong willed — not simply being the youngest and most passive.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">types, statistics, and indicators</span></div>
+<div class="stem">42. Which are among the eleven indicators of child abuse listed in the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Subdural hematomas</li><li class="fopt right"><span class="mk">&#10003;</span>Recent or healed fractures</li><li class="fopt right"><span class="mk">&#10003;</span>Unusual fear of the nurse or others</li><li class="fopt"><span class="mk">D</span>Consistently improved hygiene compared to siblings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Indicators include unexplained injury, burns and scarring, recent or healed fractures, subdural hematomas, trauma to the genitalia, whiplash from shaking, dehydration/malnourishment, inappropriate food/drugs, poor general care (not improved hygiene), unusual fear, and being called a &quot;bad&quot; child.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">types, statistics, and indicators</span></div>
+<div class="stem">43. What does the chapter say about bedwetting in the context of ongoing child abuse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Bedwetting has no relationship to abuse patterns</li><li class="fopt right"><span class="mk">&#10003;</span>Bedwetting is often a trigger for further abuse, creating a particularly vicious cycle</li><li class="fopt"><span class="mk">C</span>Bedwetting always resolves once abuse is reported</li><li class="fopt"><span class="mk">D</span>Bedwetting is a reliable indicator that abuse is not occurring</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Bedwetting is often a trigger for further abuse, which creates a particularly vicious cycle — one of the physical/behavioral stress symptoms named alongside hyperactivity, withdrawal, and other stress-related conditions like asthma, stuttering, enuresis, and encopresis.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">neglect, sexual abuse, and incest</span></div>
+<div class="stem">44. How does the chapter reconcile &quot;physical neglect is most often associated with extreme poverty&quot; with &quot;neglect is not directly related to poverty&quot;?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The two statements are contradictory errors</li><li class="fopt right"><span class="mk">&#10003;</span>Physical neglect specifically correlates with extreme poverty, but neglect as a broader category occurs across the socioeconomic spectrum</li><li class="fopt"><span class="mk">C</span>Only emotional neglect is unrelated to poverty; physical neglect never occurs outside poverty</li><li class="fopt"><span class="mk">D</span>Neglect is entirely unrelated to any socioeconomic factor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Physical neglect (failure to provide food, clothing, shelter, medical care) is most often associated with extreme poverty, but the chapter states neglect as a whole is NOT directly related to poverty and occurs across the socioeconomic spectrum of families — meaning emotional neglect and neglect broadly are not confined to poor families.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A stem implying that neglect only happens in poor families is wrong; the chapter explicitly separates physical neglect's poverty association from neglect's broader distribution.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">neglect, sexual abuse, and incest</span></div>
+<div class="stem">45. Which statement best describes the typical pattern of father-daughter incest, per the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The father typically relies on overt physical force</li><li class="fopt right"><span class="mk">&#10003;</span>The daughter is usually about 9 years old at onset, often the oldest or only daughter, and the father relies on threats, bribes, or exploiting the child's need for affection rather than physical force</li><li class="fopt"><span class="mk">C</span>Incest is confined to specific socioeconomic or racial groups</li><li class="fopt"><span class="mk">D</span>Mothers never engage in child sexual abuse</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The daughter is usually about 9 years old at onset and often the oldest or only daughter; the father or stepfather seldom uses physical force, relying instead on threats, bribes, intimidation, or exploiting the daughter's need for affection. Incest occurs across all races, religions, and socioeconomic classes, and mothers do engage in child sexual abuse as well.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">neglect, sexual abuse, and incest</span></div>
+<div class="stem">46. How does the chapter reframe an adolescent running away from a violent home?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is always a sign of delinquency requiring disciplinary action</li><li class="fopt right"><span class="mk">&#10003;</span>It may be a healthy response to a violent family situation, not simply delinquency</li><li class="fopt"><span class="mk">C</span>Running away indicates the abuse allegations are likely false</li><li class="fopt"><span class="mk">D</span>It has no connection to family violence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Running away is usually considered a sign of delinquency; however, an adolescent who runs away may be using a healthy response to a violent family situation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This reframe is explicitly flagged as a likely correct-answer stem — the &quot;obvious&quot; answer (delinquency) is the trap.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">child abuse and neglect</span><span class="chip t2">neglect, sexual abuse, and incest</span></div>
+<div class="stem">47. How does the chapter frame a &quot;replacement pregnancy&quot; after a child has been removed by the courts?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As definitive evidence of continued poor judgment</li><li class="fopt right"><span class="mk">&#10003;</span>As a normal grief response and an opportunity for intensive intervention</li><li class="fopt"><span class="mk">C</span>As grounds for automatic termination of parental rights</li><li class="fopt"><span class="mk">D</span>As unrelated to the child's removal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Abusive parents trying to replace a removed child is described as a normal response to the grief of losing a child, and the pregnancy can be perceived by the nurse as an opportunity for intensive intervention to prevent abuse of the expected child — rather than a sign of continued poor judgment or pathology. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">prediction, screening, and process of abuse</span></div>
+<div class="stem">48. According to the chapter, which factor is most predictive of intimate partner abuse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A violent childhood history in the woman</li><li class="fopt right"><span class="mk">&#10003;</span>The male partner's violent background combined with possessiveness, controlling behavior, and extreme jealousy</li><li class="fopt"><span class="mk">C</span>The couple's income level</li><li class="fopt"><span class="mk">D</span>The length of the relationship</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Using evidence of a violent childhood to identify women at risk is less useful, because abuse cannot be predicted from characteristics of the individual woman. The violent background of an abusive male, combined with tendencies to be possessive, controlling, and extremely jealous, is most predictive of abuse.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Predicting IPV works on the male's characteristics, not the female's. Distractors will offer victim characteristics as the predictive factor — that is backwards from what the chapter states.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">prediction, screening, and process of abuse</span></div>
+<div class="stem">49. What does the chapter say about substance abuse and battering?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Substance abuse directly causes intimate partner violence</li><li class="fopt right"><span class="mk">&#10003;</span>Substance abuse is associated with battering, but cannot be said to cause the violence</li><li class="fopt"><span class="mk">C</span>There is no established association between substance abuse and battering</li><li class="fopt"><span class="mk">D</span>Substance abuse is only relevant to elder abuse, not IPV</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Substance abuse is also associated with battering, although it cannot be said to cause the violence — association is not the same as causation.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">prediction, screening, and process of abuse</span></div>
+<div class="stem">50. Where on the body are abuse-related injuries often carefully inflicted so they can be disguised by clothing? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Breasts and abdomen</li><li class="fopt right"><span class="mk">&#10003;</span>Upper thighs and back</li><li class="fopt"><span class="mk">C</span>Face and hands</li><li class="fopt"><span class="mk">D</span>Feet</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Attacks are often carefully inflicted on parts of the body that can easily be disguised by clothing — breasts, abdomen, upper thighs, and back. Bruises and lacerations of the face, head, and trunk are also common but are not the &quot;disguisable&quot; pattern described.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">prediction, screening, and process of abuse</span></div>
+<div class="stem">51. A woman describes minimizing an incident of violence early in her relationship, with both partners blaming external stressors, followed by her partner's apology. According to the process of abuse described by Ford-Gilboe et al., what tends to happen over time?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Abuse tends to de-escalate in frequency and severity as the relationship matures</li><li class="fopt right"><span class="mk">&#10003;</span>Abuse tends to escalate in frequency and severity over time, and the man's remorse tends to lessen</li><li class="fopt"><span class="mk">C</span>The pattern remains static indefinitely once established</li><li class="fopt"><span class="mk">D</span>External blame decreases while personal accountability increases equally for both partners</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Abuse tends to escalate in frequency and severity over time, and the man's remorse tends to lessen. Women often come to feel responsible for the relationship's success and may blame themselves.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">prediction, screening, and process of abuse</span></div>
+<div class="stem">52. Why is &quot;leave immediately&quot; not automatically the safest advice for a woman in an abusive relationship?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Leaving has no bearing on safety outcomes</li><li class="fopt right"><span class="mk">&#10003;</span>Women who try to leave an abusive relationship are at significant risk for homicide</li><li class="fopt"><span class="mk">C</span>Leaving always resolves the danger immediately</li><li class="fopt"><span class="mk">D</span>The chapter recommends staying in all cases for safety</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Women who try to leave an abusive relationship are at significant risk for homicide — as a woman tries to leave, the risk for homicide increases. This does not mean she should stay; it means leaving requires careful safety planning, an order of protection, and shelter arrangements rather than being treated as automatically safe.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Any answer option treating immediate departure as automatically the safest choice, without a safety plan, is the trap.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">prediction, screening, and process of abuse</span></div>
+<div class="stem">53. At which stage of an abusive relationship does the chapter say marital counseling may be useful, and what is true of all other stages?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Marital counseling is useful at all stages equally</li><li class="fopt right"><span class="mk">&#10003;</span>Marital counseling may be useful at the early stage but is generally contraindicated at all other stages due to safety risk</li><li class="fopt"><span class="mk">C</span>Marital counseling is never appropriate at any stage</li><li class="fopt"><span class="mk">D</span>Marital counseling is most useful only after the relationship has ended</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Although marital counseling may be useful at the early stage, it is generally contraindicated at all other stages because of the risk to the woman's safety.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">prediction, screening, and process of abuse</span></div>
+<div class="stem">54. What is the nurse's top priority when encountering a family with severe abuse present?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Preserving the family unit at all costs</li><li class="fopt right"><span class="mk">&#10003;</span>The safety of the woman and her children as the priority</li><li class="fopt"><span class="mk">C</span>Immediately pursuing criminal charges against the abuser</li><li class="fopt"><span class="mk">D</span>Marital counseling to resolve underlying conflict</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A nurse encountering a family in which there is severe abuse needs to consider the safety of the woman and her children as the priority.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">prediction, screening, and process of abuse</span></div>
+<div class="stem">55. How does the chapter describe a formerly battered woman who feels depressed and lonely after the relationship has ended?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>This indicates unresolved pathology requiring intensive intervention</li><li class="fopt right"><span class="mk">&#10003;</span>This is a normal response for which support is needed</li><li class="fopt"><span class="mk">C</span>This suggests the woman wishes to return to the relationship</li><li class="fopt"><span class="mk">D</span>This is an unusual and concerning reaction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A formerly battered woman who is feeling depressed and lonely after the relationship has ended is exhibiting a normal response, including grief for the ended relationship, for which support is needed.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">violence during pregnancy and strangulation</span></div>
+<div class="stem">56. What is the recommended frequency for assessing pregnant women for abuse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Once, at the first prenatal visit only</li><li class="fopt right"><span class="mk">&#10003;</span>At each prenatal care visit, plus postpartum home visits assessing for both child and partner abuse</li><li class="fopt"><span class="mk">C</span>Only if visible injury is present</li><li class="fopt"><span class="mk">D</span>Only during the third trimester</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>All pregnant women should be assessed for abuse at each prenatal care visit, and postpartum home visits should include assessment for both child abuse and partner abuse.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">violence during pregnancy and strangulation</span></div>
+<div class="stem">57. Which mechanism links a man's control of contraception to subsequent abuse risk?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Contraceptive control has no relationship to abuse</li><li class="fopt right"><span class="mk">&#10003;</span>A man's control of contraception, a form of abusive controlling behavior, may lead to unintended pregnancy and subsequent abuse</li><li class="fopt"><span class="mk">C</span>Contraceptive control only affects unmarried couples</li><li class="fopt"><span class="mk">D</span>This mechanism applies only to postpartum abuse, not prenatal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A man's control of contraception, a form of abusive controlling behavior, may lead to unintended pregnancy and subsequent abuse; his refusal to use a condom also places the woman at increased risk for STDs including HIV.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">violence during pregnancy and strangulation</span></div>
+<div class="stem">58. Why might a strangulation victim be hesitant to report the assault, and why is this dangerous?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because strangulation always leaves immediate, visible bruising that is embarrassing to disclose</li><li class="fopt right"><span class="mk">&#10003;</span>Because visible evidence may not appear until hours or days later, so victims fear they won't be believed, despite strangulation being a violent and deadly act</li><li class="fopt"><span class="mk">C</span>Because strangulation is not associated with any risk of death</li><li class="fopt"><span class="mk">D</span>Because strangulation is unrelated to intimate partner violence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Strangulation may not leave visible evidence until hours or days after the incident, so victims are often hesitant to report because they fear they will not be believed. It is described as &quot;a violent and deadly act&quot; and is a form of IPV that is often overlooked.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intimate partner violence</span><span class="chip t2">violence during pregnancy and strangulation</span></div>
+<div class="stem">59. Which physical signs should raise suspicion for nonfatal strangulation? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Subconjunctival hemorrhage</li><li class="fopt right"><span class="mk">&#10003;</span>Bruising on the upper neck, chin, or face</li><li class="fopt right"><span class="mk">&#10003;</span>Conjunctival petechiae</li><li class="fopt"><span class="mk">D</span>Isolated ankle swelling</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Physical signs of nonfatal strangulation include linear abrasions, bruising on the upper neck/chin/face, subconjunctival hemorrhage, conjunctival petechiae, and neck swelling or tenderness — not ankle swelling, which is unrelated. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">elder abuse</span><span class="chip t2">definitions, types, and prevalence</span></div>
+<div class="stem">60. According to the CDC, at what age does a person qualify as an &quot;older adult&quot; for the purposes of defining elder abuse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>55 or older</li><li class="fopt right"><span class="mk">&#10003;</span>60 or older</li><li class="fopt"><span class="mk">C</span>65 or older</li><li class="fopt"><span class="mk">D</span>70 or older</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The CDC defines an older adult as a person age 60 or older for purposes of the elder abuse definition — an intentional act or failure to act that causes a risk of harm to an older adult.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is easy to confuse with the more familiar age-65 threshold used elsewhere in health policy. For elder abuse specifically, the chapter uses 60.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">elder abuse</span><span class="chip t2">definitions, types, and prevalence</span></div>
+<div class="stem">61. Which prevalence statistics for elder abuse are accurate, per the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>CDC: abuse affects about 1 in 10 elders who live at home</li><li class="fopt right"><span class="mk">&#10003;</span>WHO (2020): about 1 in 6 people 60 or older experienced abuse in community settings in the past year</li><li class="fopt right"><span class="mk">&#10003;</span>Rates are also high in nursing homes and long-term care facilities</li><li class="fopt"><span class="mk">D</span>Elder abuse is exclusively a community-setting phenomenon, absent in institutional care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>CDC estimates 1 in 10 elders living at home are affected; WHO's 2020 estimate is 1 in 6 people 60+ in community settings in the past year; rates are also high in nursing homes and long-term care facilities — contradicting option D.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">elder abuse</span><span class="chip t2">definitions, types, and prevalence</span></div>
+<div class="stem">62. Which of the following are among the CDC's six named types of elder abuse? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Abandonment — the caregiver leaves and no longer provides care</li><li class="fopt right"><span class="mk">&#10003;</span>Financial — misuse of the elder's money, property, or assets</li><li class="fopt right"><span class="mk">&#10003;</span>Emotional — behaviors that demean or affect self-esteem, including not letting the person see family</li><li class="fopt"><span class="mk">D</span>Medical — inappropriate prescribing by a physician</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The six named types are physical, sexual, emotional, neglect, abandonment, and financial. &quot;Medical abuse&quot; as a standalone category is not among the six named types.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">elder abuse</span><span class="chip t2">definitions, types, and prevalence</span></div>
+<div class="stem">63. What does the chapter identify as the most common form of psychological abuse of older adults?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Physical confinement</li><li class="fopt right"><span class="mk">&#10003;</span>Rejection or simply ignoring older adults, signaling they are worthless and useless</li><li class="fopt"><span class="mk">C</span>Financial exploitation</li><li class="fopt"><span class="mk">D</span>Excessive caregiving attention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The most common form of psychological abuse is rejection or simply ignoring older adults, indicating that they are worthless and useless to others.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">elder abuse</span><span class="chip t2">definitions, types, and prevalence</span></div>
+<div class="stem">64. Which factors are named as precipitating elder abuse? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The elder may be a physical, emotional, or financial burden on the caregiver</li><li class="fopt right"><span class="mk">&#10003;</span>The elder may have previously been the abuser</li><li class="fopt right"><span class="mk">&#10003;</span>Caregiver depression related to caring for confused and frail elders</li><li class="fopt"><span class="mk">D</span>Abundant caregiver respite resources reducing family stress</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Precipitating factors include the elder being a burden leading to caregiver frustration and resentment, the elder having previously been an abuser, and caregiver depression from around-the-clock caregiving demands — abundant respite resources would reduce risk, not precipitate abuse, making option D the opposite of a risk factor.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">elder abuse</span><span class="chip t2">definitions, types, and prevalence</span></div>
+<div class="stem">65. Why does the chapter caution that determining whether an elder's injuries result from abuse can be difficult?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Elder injuries are always clearly attributable to a single cause</li><li class="fopt right"><span class="mk">&#10003;</span>It is often difficult to determine whether injuries result from abuse, falls, or other natural causes, given the fragility of elders' skin and vascular systems</li><li class="fopt"><span class="mk">C</span>Elder abuse never presents with physical injury</li><li class="fopt"><span class="mk">D</span>Only law enforcement can make this determination, never nursing assessment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>It is often difficult to determine whether the injuries of elders result from abuse, falls, or other natural causes, because of the fragility of elders' skin and vascular systems; careful assessment through observation and discussion can help determine the cause.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">elder abuse</span><span class="chip t2">definitions, types, and prevalence</span></div>
+<div class="stem">66. Which of the CDC's six recommended actions to prevent elder abuse are listed? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Listen to older adults and caregivers to understand challenges</li><li class="fopt right"><span class="mk">&#10003;</span>Report abuse or suspected abuse to Adult Protective Services</li><li class="fopt right"><span class="mk">&#10003;</span>Check in often on adults with few friends and family</li><li class="fopt"><span class="mk">D</span>Discourage caregivers from seeking outside support to maintain family privacy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The six recommended actions include listen, report, educate, learn the difference between abuse signs and normal aging, check in often, and provide overburdened caregivers with support — the opposite of discouraging outside support. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">67. Per the textbook's Levels of Prevention box for violence, which intervention represents primary prevention?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Early screening for abuse</li><li class="fopt right"><span class="mk">&#10003;</span>Strengthening the individual and family by teaching parenting skills</li><li class="fopt"><span class="mk">C</span>Referring to community organizations once abuse signs are evident</li><li class="fopt"><span class="mk">D</span>Case management coordination after abuse is confirmed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary prevention is strengthening the individual and family by teaching parenting skills. Secondary is early screening plus teaching stress management and recreation; tertiary is referral to community organizations once signs of abuse are evident.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">68. Per Box 27.3, which of the following prevention activities are tagged as secondary prevention? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Assessing for marital discord</li><li class="fopt right"><span class="mk">&#10003;</span>Counseling for at-risk parents</li><li class="fopt right"><span class="mk">&#10003;</span>Assisting with controlling anger</li><li class="fopt"><span class="mk">D</span>Teaching parenting techniques</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 27.3 tags assessing during routine exams, assessing for marital discord, counseling at-risk parents, and assisting with anger control as secondary prevention. Teaching parenting techniques is tagged as primary prevention.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">69. According to the chapter, in what role do nurses primarily engage when providing tertiary prevention for families experiencing violence?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Law enforcement liaison</li><li class="fopt right"><span class="mk">&#10003;</span>Case manager, coordinating other agencies and activities</li><li class="fopt"><span class="mk">C</span>Marital counselor</li><li class="fopt"><span class="mk">D</span>Primary prevention educator</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nurses engage in tertiary prevention by acting as a case manager and coordinating the other agencies and activities involved.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">70. What are the five principles of giving care to families experiencing violence? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Intolerance for violence</li><li class="fopt right"><span class="mk">&#10003;</span>Respect and caring for all family members</li><li class="fopt right"><span class="mk">&#10003;</span>Safety as the first priority</li><li class="fopt"><span class="mk">D</span>Punitive judgment toward the abuser to reinforce accountability</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The five principles are intolerance for violence, respect and caring for all family members, safety as the first priority, absolute honesty, and empowerment. Punitive judgment is explicitly rejected — the chapter states the behavior, not the person, should be condemned.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;Intolerance for violence&quot; and &quot;condemning the behavior, not the person&quot; coexist without contradiction — a nurse can categorically oppose violence while still treating the abuser with respect as a person. An answer framing the nursing stance as punitive toward the abuser is wrong even though intolerance for violence is one of the five principles.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">71. What does the chapter say about nurses' mandatory reporting obligations for child abuse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Reporting is required only when abuse is confirmed, not merely suspected</li><li class="fopt right"><span class="mk">&#10003;</span>Nurses are mandatory reporters of child abuse, even when only suspected, in all states</li><li class="fopt"><span class="mk">C</span>Mandatory reporting applies only in states with specific nurse-reporting statutes</li><li class="fopt"><span class="mk">D</span>Nurses may choose whether to report based on family circumstances</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nurses are mandatory reporters of child abuse, even when only suspected, in all states. They are also mandatory reporters of elder abuse and abuse of physically/cognitively dependent adults, and of felony assaults of anyone in most states.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">72. What documented bias affects provider willingness to report suspected abuse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Providers report poor and affluent families at equal rates</li><li class="fopt right"><span class="mk">&#10003;</span>Providers may be more willing to report abuse in a poor family than in a middle-class one</li><li class="fopt"><span class="mk">C</span>Providers are more willing to report abuse in affluent families</li><li class="fopt"><span class="mk">D</span>Reporting rates show no relationship to family socioeconomic status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Physicians and nurses are sometimes reluctant to report abuse, and they may be more willing to report abuse in a poor family than in a middle-class one, or think an older adult or child is better off at home.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A stem where a nurse hesitates to report because a family appears affluent or professional is testing recognition of this exact bias — report consistently regardless of social class.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">73. How does the chapter frame referral to protective service agencies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As an automatic step toward removal of the victim</li><li class="fopt right"><span class="mk">&#10003;</span>As a way to get help, rather than an automatic step toward removal or criminal justice action</li><li class="fopt"><span class="mk">C</span>As a purely punitive legal mechanism</li><li class="fopt"><span class="mk">D</span>As applicable only to confirmed cases of abuse</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Referral to protective service agencies is a way to get help, rather than an automatic step toward removal of the victim or toward criminal justice action.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">74. What does the chapter recommend regarding family involvement when a nurse reports suspected abuse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Reporting should be done covertly, without informing the family</li><li class="fopt right"><span class="mk">&#10003;</span>Families should be included in reporting, with absolute honesty about what will be reported and what the nurse is feeling</li><li class="fopt"><span class="mk">C</span>Family involvement should be avoided to protect the reporting nurse</li><li class="fopt"><span class="mk">D</span>Only the abuser should be informed, not other family members</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Families should be included in any reporting so they can have input. Absolute honesty about what will be reported to officials, what the family can expect, what is being entered into records, and what the nurse is feeling is essential.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">75. The Nurse-Family Partnership (NFP) program delivers which service, and what outcome has it demonstrated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Group therapy for batterers; reduced recidivism</li><li class="fopt right"><span class="mk">&#10003;</span>Intensive prenatal and postnatal home visits by RNs to low-income first-time mothers, ideally to the child's second birthday; reduced child maltreatment rates</li><li class="fopt"><span class="mk">C</span>Emergency shelter placement; reduced homelessness</li><li class="fopt"><span class="mk">D</span>School-based curricula for adolescents; reduced bullying</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>NFP provides intensive prenatal and postnatal home visits, ideally to the child's second birthday, delivered by registered nurses to low-income first-time mothers, and has been shown to reduce the rate of child maltreatment.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing interventions and prevention</span><span class="chip t2">levels of prevention and legal responsibilities</span></div>
+<div class="stem">76. What does the chapter teach about firearm safety as a primary prevention measure? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Handguns are far more likely to kill family members than intruders</li><li class="fopt right"><span class="mk">&#10003;</span>If a gun is kept, it should be stored unloaded and locked, with ammunition stored separately</li><li class="fopt right"><span class="mk">&#10003;</span>Firearm accidents are a leading cause of death for young children</li><li class="fopt"><span class="mk">D</span>Nursing assessments should avoid asking about guns in the home to respect privacy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter teaches that handguns more often kill family members than intruders, firearm accidents are a leading cause of death for young children, and safe storage means unloaded, locked, with ammunition stored separately. Nursing assessments SHOULD include a question about guns in the home — the opposite of avoiding the topic.</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"public health model of violence","subtopic":"socioecological model and CDC framework","stem":"What are the four steps of the CDC's public health approach to violence prevention, in order?","options":["Identify risk factors, identify the problem, disseminate strategies, develop strategies","Identify the problem, identify risk factors, develop and test prevention strategies, disseminate and implement","Develop strategies, identify the problem, disseminate strategies, identify risk factors","Disseminate strategies, identify risk factors, develop strategies, identify the problem"],"correct":[1],"sata":false,"why":"The four steps in order are: identify the problem, identify the risk factors, develop and test prevention strategies, and disseminate and implement the strategies.","trap":null},{"topic":"public health model of violence","subtopic":"socioecological model and CDC framework","stem":"A nurse observes that a neighborhood has high mobility, low cohesiveness, high population density, and a built environment with few green spaces. Which level of the socioecological model does this describe?","options":["Individual","Relationship","Community","Societal"],"correct":[2],"sata":false,"why":"The community level covers settings such as schools, workplaces, and neighborhoods, including considerations like high mobility, low cohesiveness, population density, built environment, and drug traffic.","trap":null},{"topic":"public health model of violence","subtopic":"socioecological model and CDC framework","stem":"Which level of the socioecological model addresses a culture that accepts violence and perpetuates disparities between groups in society?","options":["Individual","Relationship","Community","Societal"],"correct":[3],"sata":false,"why":"The societal level covers broader factors contributing to a culture that accepts violence, reduces inhibitions against violence, and creates and perpetuates disparities between segments of society.","trap":null},{"topic":"public health model of violence","subtopic":"socioecological model and CDC framework","stem":"Which factors are named at the individual level of the socioecological model? Select all that apply.","options":["A history of abuse, including witnessing abuse","Substance use","Mental health disorders","Neighborhood population density"],"correct":[0,1,2],"sata":true,"why":"The individual level covers biological and personal history factors such as education, substance use, a history of abuse including witnessing it, and mental health disorders. Neighborhood density is a community-level factor.","trap":null},{"topic":"public health model of violence","subtopic":"socioecological model and CDC framework","stem":"Which statements does the chapter make explicitly about the socioecological model? Select all that apply.","options":["The presence of risks guarantees violence will occur","Protective factors do not eliminate the risk of violence","It is important to act across multiple levels of the model simultaneously","The presence of risk factors does not guarantee violence"],"correct":[1,2,3],"sata":true,"why":"The chapter explicitly states that the presence of risks does not guarantee violence, protective factors do not eliminate risk, and it is important to act across multiple levels simultaneously.","trap":"Option A directly contradicts the chapter's own stated position — risk factors increase likelihood but do not guarantee an outcome."},{"topic":"public health model of violence","subtopic":"socioecological model and CDC framework","stem":"According to Sumner et al. (2015), violence tends to be higher in communities with which characteristics? Select all that apply.","options":["Limited economic opportunities","High concentrations of poor and unemployed people","Frequent population turnover","Abundant civic and voluntary associations"],"correct":[0,1,2],"sata":true,"why":"Violence is higher in communities with limited economic opportunities, high concentrations of poor and unemployed people, frequent moving, limited public/mental health/social services, and fewer civic and voluntary associations — not abundant associations, which is protective. ---","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"homicide and firearms","stem":"Which statement about intimate partner homicide (IPH) is accurate?","options":["Women are nine times more likely to be killed by a stranger than an intimate partner","Women are nine times more likely to be killed by an intimate partner than by a stranger","Men and women face equal rates of intimate partner homicide","IPH rates are unrelated to prior domestic violence history"],"correct":[1],"sata":false,"why":"Women are nine times more likely to be killed by an intimate partner than by a stranger, and the top risk factor for IPH is previous domestic violence.","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"homicide and firearms","stem":"Which are named risk factors for intimate partner homicide? Select all that apply.","options":["Access to guns","Nonfatal strangulation","Estrangement","Marital counseling attendance"],"correct":[0,1,2],"sata":true,"why":"Named risk factors include previous domestic violence (the top factor), access to guns, estrangement, threats to kill or with a weapon, nonfatal strangulation, and a stepchild in the home if the victim is female.","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"homicide and firearms","stem":"What percentage of women killed by a husband, boyfriend, or ex-partner had been seen in a health care setting during the year before the homicide?","options":["25%","50%","75%","90%"],"correct":[2],"sata":false,"why":"75% of women killed by a husband, boyfriend, or ex-partner had been seen in a health care setting during the year before the homicide — underscoring the importance of screening at routine encounters.","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"homicide and firearms","stem":"What does the chapter say about a nurse's duty regarding severe abuse and homicide risk?","options":["Nurses have no formal duty regarding homicide risk disclosure","Nurses have a duty to warn family members of the possibility of homicide when severe abuse is present, just as they warn of smoking hazards","This duty applies only to law enforcement, not nurses","The duty to warn applies only after a homicide has occurred"],"correct":[1],"sata":false,"why":"Nurses have a duty to warn family members of the possibility of homicide when severe abuse is present, just as they warn them of the hazards of smoking.","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"homicide and firearms","stem":"Which statement about firearm fatalities is accurate?","options":["Females account for 85% of firearm fatality victims","Males account for 85% of firearm fatality victims and 88% of nonfatal firearm injuries","Household gun ownership is associated with increased stranger homicide rates","More people die from firearms than suffer nonfatal firearm injuries"],"correct":[1],"sata":false,"why":"Males account for 85% of firearm fatality victims and 88% of nonfatal firearm injuries. Higher household gun ownership is associated with increased NONstranger firearm homicides, not stranger homicides, and more people suffer nonfatal injuries than die.","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"assault and suicide","stem":"What is named as the greatest risk factor for an individual's victimization through violence?","options":["Income level","Age, with youths at significantly higher risk","Geographic region","Marital status"],"correct":[1],"sata":false,"why":"The greatest risk factor for an individual's victimization through violence is age, and youths are at significantly higher risk.","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"assault and suicide","stem":"Which statement correctly describes sex differences in assault and homicide victimization?","options":["More females than males are victims of homicide and assault","More males than females are victims of homicide and assault, but women are more likely to be victimized by a relative or male partner","Men and women are equally likely to be victimized by a relative","Homicide and assault show no sex-based patterns"],"correct":[1],"sata":false,"why":"More males than females are victims of homicide and assault overall, but women are more likely to be victimized specifically by a relative, especially a male partner.","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"assault and suicide","stem":"Which statement about suicide rates is accurate, and which population is the notable exception to the general socioeconomic pattern?","options":["Suicide rates are highest among the poorest and least educated, with no exceptions","Affluent and educated people often have higher suicide rates than disadvantaged people, except Native Alaskan and American Indian populations","Suicide rates show no relationship to socioeconomic status","Suicide rates are highest among the unemployed, with no notable exceptions"],"correct":[1],"sata":false,"why":"Affluent and educated people often have higher rates of suicide than economically and educationally disadvantaged people; the exception is Native Alaskan and American Indian populations, who are often poor yet have alarmingly high suicide rates.","trap":"This inverts the usual \"poverty equals worse outcomes\" pattern common throughout this chapter, which is exactly why it is testable."},{"topic":"homicide, assault, and suicide","subtopic":"assault and suicide","stem":"What proportion of individuals who complete suicide had visited a health care provider in the prior month, and what is the significance of this finding?","options":["A minority; this argues against universal screening","The majority; this is the rationale for universal screening","None; most avoid health care entirely before suicide","Exactly half; the data is inconclusive"],"correct":[1],"sata":false,"why":"The majority of individuals who complete suicide have visited a health care provider in the prior month — this is the rationale for universal screening for suicide risk.","trap":null},{"topic":"homicide, assault, and suicide","subtopic":"assault and suicide","stem":"Which statement best describes common reactions among suicide survivors (family/friends)?","options":["They typically feel no guilt or self-blame","They often feel angry toward the dead person, yet may turn the anger inward, and may question their own liability","They generally increase social activities to cope","Survivors are unaffected if the death was expected"],"correct":[1],"sata":false,"why":"Survivors often feel angry toward the dead person yet may turn the anger inward, question their own liability for the death, and may limit social activities because others are unable to talk about the suicide. ---","trap":null},{"topic":"sexual violence and rape","subtopic":"statistics and misconceptions","stem":"Which statement best reflects the chapter's framing of rape?","options":["Rape is fundamentally a crime of passion driven by sexual desire","Rape is a crime of violence, not passion; the underlying issues are hostility, power, and control","Rape is defined primarily by the use of a weapon","Rape requires evidence of physical injury to be classified as such"],"correct":[1],"sata":false,"why":"Rape is a crime of violence, not a crime of passion. The underlying issues are hostility, power, and control rather than sexual desire, and the defining issue is lack of consent of the victim.","trap":null},{"topic":"sexual violence and rape","subtopic":"statistics and misconceptions","stem":"Which statement correctly reflects the chapter's teaching on evidence of sexual violence?","options":["Absence of physical evidence means sexual violence did not occur","Absence of physical evidence does not mean sexual violence did not occur","Physical evidence is required for a valid disclosure","Only visible injuries indicate lack of consent"],"correct":[1],"sata":false,"why":"Per WHO 2015, cited in the chapter, the absence of physical evidence does not mean that sexual violence such as rape did not occur.","trap":null},{"topic":"sexual violence and rape","subtopic":"statistics and misconceptions","stem":"Which statements about campus sexual assault are accurate, per the chapter? Select all that apply.","options":["One in four college women will be a victim of sexual assault","About 60% of these assaults are perpetrated by an acquaintance","Fewer than 5% of incidents are brought to the attention of administrators or authorities","Graduate students are more likely to be victimized than undergraduates"],"correct":[0,1,2],"sata":true,"why":"One in four college women will be assaulted, 60% by an acquaintance, and fewer than 5% are reported to authorities. Female undergraduates are more likely to be victimized than graduate students — the reverse of option D.","trap":null},{"topic":"sexual violence and rape","subtopic":"statistics and misconceptions","stem":"How does heavy episodic drinking affect the chance of being raped, per the chapter?","options":["It has no measurable effect","It increases the chance eight-fold","It decreases the chance by increasing vigilance","It only affects male victims"],"correct":[1],"sata":false,"why":"Heavy episodic drinking increases the chance of being raped eight-fold.","trap":null},{"topic":"sexual violence and rape","subtopic":"statistics and misconceptions","stem":"Regarding circumstances of reported rapes, which statement is accurate?","options":["Rural areas are higher-risk than cities, and most rapes occur in the early morning","Cities are higher-risk than rural areas, and the most critical times are between 8 pm and 2 am, weekends, and summer","The majority of rapists are strangers to the victim","Time of day and season have no bearing on risk"],"correct":[1],"sata":false,"why":"Cities are higher-risk areas than rural areas, with the most critical times being 8 pm to 2 am, weekends, and summer. The majority of rapists are known to the victim, not strangers.","trap":null},{"topic":"sexual violence and rape","subtopic":"statistics and misconceptions","stem":"Which of the following are misconceptions about rape that the chapter explicitly corrects? Select all that apply.","options":["That women say \"no\" when they really mean \"yes\"","That victims are culpable because of how they dress or act","That people have the right to change their mind even after seeming initially agreeable","That pressure from intoxication-inducement is a violation of the law"],"correct":[0,1],"sata":true,"why":"The chapter identifies the \"no means yes\" myth and victim-blaming based on dress/behavior as myths to be corrected. Options C and D are stated as TRUE facts by the chapter, not misconceptions to correct.","trap":null},{"topic":"sexual violence and rape","subtopic":"dating violence and post-assault nursing care","stem":"Which four forms of behavior are included under both dating violence and intimate partner violence?","options":["Sexual violence, physical violence, psychological aggression, and stalking","Financial abuse, neglect, isolation, and intimidation","Physical violence, verbal abuse, financial control, and abandonment","Stalking, financial abuse, neglect, and coercion"],"correct":[0],"sata":false,"why":"Dating violence includes sexual violence, physical violence, psychological aggression, and stalking — occurring in person or electronically — and these same four forms also apply to intimate partner violence.","trap":null},{"topic":"sexual violence and rape","subtopic":"dating violence and post-assault nursing care","stem":"When interviewing a patient after a suspected rape, why should the nurse ask \"who hit you?\" rather than \"what happened to you?\" in the context of visible facial injury?","options":["\"What happened to you\" is more direct and should be preferred","\"What happened to you\" implies the nurse is neither knowledgeable nor comfortable with violence, potentially prompting a fabricated cause","Both phrasings produce identical disclosure rates","Neither phrasing affects disclosure"],"correct":[1],"sata":false,"why":"Asking \"what happened to you?\" implies the nurse is neither knowledgeable nor comfortable with violence, which may prompt the woman to fabricate a more acceptable cause of her injury. The direct \"who hit you?\" signals comfort and openness to disclosure.","trap":"This is the single most quotable and testable line in the intimate partner violence screening section — the specific wording matters, not just the general idea of \"ask about violence.\""},{"topic":"sexual violence and rape","subtopic":"dating violence and post-assault nursing care","stem":"When cutting clothing off a gunshot victim to provide care, what evidence-preservation principle should the nurse follow?","options":["Cut directly through the bullet hole for the fastest access","Avoid cutting through the bullet hole; cut to the side of it to preserve the point of origin for investigation","Evidence preservation is not a nursing responsibility","Discard all clothing immediately regardless of cut location"],"correct":[1],"sata":false,"why":"When cutting the shirt off a person shot in the chest, avoid cutting through the bullet hole — cut to the side of the hole to protect the point of origin of the bullet for later criminal investigation.","trap":null},{"topic":"sexual violence and rape","subtopic":"dating violence and post-assault nursing care","stem":"Why should a single-session debriefing be completed during the initial examination after a sexual assault?","options":["Because most victims request repeat sessions","Because many victims deny the event once the initial crisis has passed","Because insurance requires a single visit","Because follow-up sessions are more effective than initial debriefing"],"correct":[1],"sata":false,"why":"Because many victims deny the event once the initial crisis has passed, a single-session debriefing should be completed during the initial examination.","trap":null},{"topic":"sexual violence and rape","subtopic":"dating violence and post-assault nursing care","stem":"What are the CDC's five \"STOP SV\" strategies to prevent sexual violence? Select all that apply.","options":["Promoting social norms that protect against violence","Providing opportunities to empower girls and women","Creating protective environments","Increasing criminal penalties as the primary strategy"],"correct":[0,1,2],"sata":true,"why":"The five STOP SV strategies are promoting protective social norms, teaching skills to prevent sexual violence, providing opportunities to empower girls and women, creating protective environments, and supporting victims/survivors — increasing criminal penalties is not among the five. ---","trap":null},{"topic":"human trafficking","subtopic":"identifying and responding to trafficking","stem":"Which statement best describes why trafficking victims often go unidentified in health care settings?","options":["They rarely have any contact with health care providers","Most will contact a provider, often through the ED, but are seldom appropriately identified as trafficking victims","Health care providers are required to ignore trafficking indicators","Trafficking victims are always identified correctly on first contact"],"correct":[1],"sata":false,"why":"Most trafficked individuals will come into contact with a health care provider, often through the emergency department, at some point during captivity — yet they are seldom appropriately identified as victims of trafficking.","trap":null},{"topic":"human trafficking","subtopic":"identifying and responding to trafficking","stem":"Which are named red flags suggesting a patient may be a trafficking victim? Select all that apply.","options":["A companion who answers all questions for the patient","Inability to provide a home address","Unawareness of the city or state where services are being received","Arriving to the appointment alone and answering all questions independently"],"correct":[0,1,2],"sata":true,"why":"Red flags include a companion who won't let the patient answer, inability to provide an address, no identification documents, and being unaware of the city/state — arriving alone and answering independently would be the opposite of a red flag.","trap":null},{"topic":"human trafficking","subtopic":"identifying and responding to trafficking","stem":"What is the correct first step when a nurse suspects a patient may be a trafficking victim?","options":["Immediately contact law enforcement regardless of the patient's wishes","Interview the patient alone; explaining this is routine practice can decrease suspicion in the captor","Confront the accompanying person directly about the suspicion","Wait for the patient to volunteer information unprompted"],"correct":[1],"sata":false,"why":"The nurse should interview the patient alone, which facilitates disclosure. Explaining that interviewing patients alone is routine practice in the setting can decrease suspicion in the captor.","trap":null},{"topic":"human trafficking","subtopic":"identifying and responding to trafficking","stem":"If a suspected trafficking victim is an adult and NOT in immediate danger, what is the correct sequence for involving law enforcement?","options":["Contact law enforcement immediately without informing the patient","Notify the patient before engaging law enforcement, to improve trust and facilitate disclosure","Never involve law enforcement for adult victims","Wait for the patient to request law enforcement involvement before any other action"],"correct":[1],"sata":false,"why":"If not in immediate danger, notify the patient before engaging law enforcement on their behalf — involving the patient may improve trust and facilitate disclosure. If immediate danger is suspected, contact law enforcement directly.","trap":"The sequencing decision depends on immediacy of danger: immediate danger bypasses the notify-first step; no immediate danger requires notifying the patient first. For minors, a call to child protective services is necessary regardless."},{"topic":"human trafficking","subtopic":"identifying and responding to trafficking","stem":"What is the phone number and key feature of the National Human Trafficking Resource Center hotline?","options":["911; available only during business hours","1-888-373-7888; toll-free, available 24 hours/day, in 180 languages","A local number that varies by state","Available only in English and Spanish"],"correct":[1],"sata":false,"why":"The National Human Trafficking Resource Center hotline is 1-888-373-7888, toll-free, available 24 hours a day, in 180 languages.","trap":null},{"topic":"human trafficking","subtopic":"identifying and responding to trafficking","stem":"In 2018, which type of trafficking was reported most frequently to the National Human Trafficking Hotline?","options":["Labor trafficking","Sex trafficking","Sex and labor combined","Unspecified trafficking"],"correct":[1],"sata":false,"why":"In 2018 the hotline reported 41,088 contacts; sex trafficking was the top type reported (7,859), followed by labor (1,249), then combined sex and labor (637), with 1,202 unspecified. ---","trap":null},{"topic":"development of abusive patterns","subtopic":"risk factors and intergenerational transmission","stem":"What are the three characterizing factors in the development of abusive patterns, and which is most predictably present?","options":["Poverty, education level, and marital status; poverty is most predictable","Upbringing, living conditions, and increased stress; previous exposure to some form of violence is most predictably present","Age, gender, and occupation; occupation is most predictable","Substance use, mental illness, and unemployment; mental illness is most predictable"],"correct":[1],"sata":false,"why":"The three characterizing factors are upbringing, living conditions, and increased stress. Of these, the one most predictably present is previous exposure to some form of violence.","trap":null},{"topic":"development of abusive patterns","subtopic":"risk factors and intergenerational transmission","stem":"Which statement correctly describes the intergenerational mechanism of abuse?","options":["Only men who witnessed childhood abuse are more likely to abuse their own children","Both men and women who witnessed abuse as children were more likely to abuse their children","Witnessing childhood abuse has no bearing on adult behavior","Financial solvency has no relationship to child abuse incidence"],"correct":[1],"sata":false,"why":"Both men and women who witnessed abuse as children were more likely to abuse their own children, and childhood physical punishment teaches children to use violent conflict resolution as adults. Financial solvency and support tended to DECREASE the incidence of child abuse.","trap":null},{"topic":"development of abusive patterns","subtopic":"risk factors and intergenerational transmission","stem":"Which statement best reflects why frequent household moves warrant careful nursing assessment?","options":["Frequent moving is only a risk factor for abuse, never a sign of concealment","Frequent moving may be both a risk factor for abuse and a sign of a family avoiding detection","Frequent moving has no established relationship to family violence","Frequent moving is protective because it reduces community scrutiny"],"correct":[1],"sata":false,"why":"Because frequent moving may be both a risk factor for abuse and a sign of an abusive family trying to avoid detection, nurses should assess such families carefully for abuse.","trap":"A stem describing a family that has moved several times in a short period is cuing careful assessment, not reassurance that nothing is wrong."},{"topic":"development of abusive patterns","subtopic":"risk factors and intergenerational transmission","stem":"Which statements about cross-contamination between types of family violence are accurate? Select all that apply.","options":["Physical abuse of women may be accompanied by sexual abuse","When one child is abused, others in the family may also be abused","Severe wife abusers may commit other acts of violence, especially child abuse","Abuse of one family member guarantees the safety of other members"],"correct":[0,1,2],"sata":true,"why":"The chapter states no member of the family is guaranteed immunity from abuse and neglect — directly contradicting option D. Nurses who detect one form of abuse should suspect other forms may be present.","trap":null},{"topic":"development of abusive patterns","subtopic":"risk factors and intergenerational transmission","stem":"What does the chapter identify as the personality profile most associated with abusers? Select all that apply.","options":["Low tolerance for frustration and emotional instability","Verbally aggressive, hostile personality style","Emotional insecurity leading to dependence on a child or spouse to meet needs for feeling valued","High tolerance for frustration and emotionally stable temperament"],"correct":[0,1,2],"sata":true,"why":"Abusers tend to show hostile, verbally aggressive personality styles, low tolerance for frustration, emotional instability, and emotional insecurity that creates dependence on a child or spouse — the opposite of high frustration tolerance and emotional stability. ---","trap":null},{"topic":"child abuse and neglect","subtopic":"types, statistics, and indicators","stem":"The chapter's stated objective names four general types of child abuse. The body text adds a fifth. Which type is added in the body text but excluded from the four-type objective?","options":["Physical abuse","Emotional abuse","Trafficking","Neglect"],"correct":[2],"sata":false,"why":"The chapter objective states four types: neglect, physical, emotional, and sexual. The body text (p. 492) lists five, adding trafficking.","trap":"If a question asks for \"the four types,\" trafficking is the distractor. If a SATA item offers five options including trafficking, trafficking is likely intended as correct. Know both framings."},{"topic":"child abuse and neglect","subtopic":"types, statistics, and indicators","stem":"Which statements about child abuse statistics (2018) are accurate? Select all that apply.","options":["At least 1 in 7 children experienced abuse or neglect the previous year","Children in their first year of life have the highest rate of being victims","Children living in poverty are five times more likely to be abused and neglected","The majority of perpetrators are strangers to the victim"],"correct":[0,1,2],"sata":true,"why":"At least 1 in 7 children experienced abuse/neglect; infants have the highest victimization rate; poverty increases risk five-fold. The majority of perpetrators (77.5%) are a parent of the victim, not a stranger.","trap":null},{"topic":"child abuse and neglect","subtopic":"types, statistics, and indicators","stem":"In families where only one child is targeted for abuse, which factors are named as increasing the likelihood a particular child is singled out? Select all that apply.","options":["The child resembles a relative","The child is particularly bright, capable, or strong willed","The child tries to resist the violence","The child is the youngest and most passive"],"correct":[0,1,2],"sata":true,"why":"Named qualities that provoke a parent include resembling a relative, being handicapped, resisting the violence, or being bright, capable, or strong willed — not simply being the youngest and most passive.","trap":null},{"topic":"child abuse and neglect","subtopic":"types, statistics, and indicators","stem":"Which are among the eleven indicators of child abuse listed in the chapter? Select all that apply.","options":["Subdural hematomas","Recent or healed fractures","Unusual fear of the nurse or others","Consistently improved hygiene compared to siblings"],"correct":[0,1,2],"sata":true,"why":"Indicators include unexplained injury, burns and scarring, recent or healed fractures, subdural hematomas, trauma to the genitalia, whiplash from shaking, dehydration/malnourishment, inappropriate food/drugs, poor general care (not improved hygiene), unusual fear, and being called a \"bad\" child.","trap":null},{"topic":"child abuse and neglect","subtopic":"types, statistics, and indicators","stem":"What does the chapter say about bedwetting in the context of ongoing child abuse?","options":["Bedwetting has no relationship to abuse patterns","Bedwetting is often a trigger for further abuse, creating a particularly vicious cycle","Bedwetting always resolves once abuse is reported","Bedwetting is a reliable indicator that abuse is not occurring"],"correct":[1],"sata":false,"why":"Bedwetting is often a trigger for further abuse, which creates a particularly vicious cycle — one of the physical/behavioral stress symptoms named alongside hyperactivity, withdrawal, and other stress-related conditions like asthma, stuttering, enuresis, and encopresis.","trap":null},{"topic":"child abuse and neglect","subtopic":"neglect, sexual abuse, and incest","stem":"How does the chapter reconcile \"physical neglect is most often associated with extreme poverty\" with \"neglect is not directly related to poverty\"?","options":["The two statements are contradictory errors","Physical neglect specifically correlates with extreme poverty, but neglect as a broader category occurs across the socioeconomic spectrum","Only emotional neglect is unrelated to poverty; physical neglect never occurs outside poverty","Neglect is entirely unrelated to any socioeconomic factor"],"correct":[1],"sata":false,"why":"Physical neglect (failure to provide food, clothing, shelter, medical care) is most often associated with extreme poverty, but the chapter states neglect as a whole is NOT directly related to poverty and occurs across the socioeconomic spectrum of families — meaning emotional neglect and neglect broadly are not confined to poor families.","trap":"A stem implying that neglect only happens in poor families is wrong; the chapter explicitly separates physical neglect's poverty association from neglect's broader distribution."},{"topic":"child abuse and neglect","subtopic":"neglect, sexual abuse, and incest","stem":"Which statement best describes the typical pattern of father-daughter incest, per the chapter?","options":["The father typically relies on overt physical force","The daughter is usually about 9 years old at onset, often the oldest or only daughter, and the father relies on threats, bribes, or exploiting the child's need for affection rather than physical force","Incest is confined to specific socioeconomic or racial groups","Mothers never engage in child sexual abuse"],"correct":[1],"sata":false,"why":"The daughter is usually about 9 years old at onset and often the oldest or only daughter; the father or stepfather seldom uses physical force, relying instead on threats, bribes, intimidation, or exploiting the daughter's need for affection. Incest occurs across all races, religions, and socioeconomic classes, and mothers do engage in child sexual abuse as well.","trap":null},{"topic":"child abuse and neglect","subtopic":"neglect, sexual abuse, and incest","stem":"How does the chapter reframe an adolescent running away from a violent home?","options":["It is always a sign of delinquency requiring disciplinary action","It may be a healthy response to a violent family situation, not simply delinquency","Running away indicates the abuse allegations are likely false","It has no connection to family violence"],"correct":[1],"sata":false,"why":"Running away is usually considered a sign of delinquency; however, an adolescent who runs away may be using a healthy response to a violent family situation.","trap":"This reframe is explicitly flagged as a likely correct-answer stem — the \"obvious\" answer (delinquency) is the trap."},{"topic":"child abuse and neglect","subtopic":"neglect, sexual abuse, and incest","stem":"How does the chapter frame a \"replacement pregnancy\" after a child has been removed by the courts?","options":["As definitive evidence of continued poor judgment","As a normal grief response and an opportunity for intensive intervention","As grounds for automatic termination of parental rights","As unrelated to the child's removal"],"correct":[1],"sata":false,"why":"Abusive parents trying to replace a removed child is described as a normal response to the grief of losing a child, and the pregnancy can be perceived by the nurse as an opportunity for intensive intervention to prevent abuse of the expected child — rather than a sign of continued poor judgment or pathology. ---","trap":null},{"topic":"intimate partner violence","subtopic":"prediction, screening, and process of abuse","stem":"According to the chapter, which factor is most predictive of intimate partner abuse?","options":["A violent childhood history in the woman","The male partner's violent background combined with possessiveness, controlling behavior, and extreme jealousy","The couple's income level","The length of the relationship"],"correct":[1],"sata":false,"why":"Using evidence of a violent childhood to identify women at risk is less useful, because abuse cannot be predicted from characteristics of the individual woman. The violent background of an abusive male, combined with tendencies to be possessive, controlling, and extremely jealous, is most predictive of abuse.","trap":"Predicting IPV works on the male's characteristics, not the female's. Distractors will offer victim characteristics as the predictive factor — that is backwards from what the chapter states."},{"topic":"intimate partner violence","subtopic":"prediction, screening, and process of abuse","stem":"What does the chapter say about substance abuse and battering?","options":["Substance abuse directly causes intimate partner violence","Substance abuse is associated with battering, but cannot be said to cause the violence","There is no established association between substance abuse and battering","Substance abuse is only relevant to elder abuse, not IPV"],"correct":[1],"sata":false,"why":"Substance abuse is also associated with battering, although it cannot be said to cause the violence — association is not the same as causation.","trap":null},{"topic":"intimate partner violence","subtopic":"prediction, screening, and process of abuse","stem":"Where on the body are abuse-related injuries often carefully inflicted so they can be disguised by clothing? Select all that apply.","options":["Breasts and abdomen","Upper thighs and back","Face and hands","Feet"],"correct":[0,1],"sata":true,"why":"Attacks are often carefully inflicted on parts of the body that can easily be disguised by clothing — breasts, abdomen, upper thighs, and back. Bruises and lacerations of the face, head, and trunk are also common but are not the \"disguisable\" pattern described.","trap":null},{"topic":"intimate partner violence","subtopic":"prediction, screening, and process of abuse","stem":"A woman describes minimizing an incident of violence early in her relationship, with both partners blaming external stressors, followed by her partner's apology. According to the process of abuse described by Ford-Gilboe et al., what tends to happen over time?","options":["Abuse tends to de-escalate in frequency and severity as the relationship matures","Abuse tends to escalate in frequency and severity over time, and the man's remorse tends to lessen","The pattern remains static indefinitely once established","External blame decreases while personal accountability increases equally for both partners"],"correct":[1],"sata":false,"why":"Abuse tends to escalate in frequency and severity over time, and the man's remorse tends to lessen. Women often come to feel responsible for the relationship's success and may blame themselves.","trap":null},{"topic":"intimate partner violence","subtopic":"prediction, screening, and process of abuse","stem":"Why is \"leave immediately\" not automatically the safest advice for a woman in an abusive relationship?","options":["Leaving has no bearing on safety outcomes","Women who try to leave an abusive relationship are at significant risk for homicide","Leaving always resolves the danger immediately","The chapter recommends staying in all cases for safety"],"correct":[1],"sata":false,"why":"Women who try to leave an abusive relationship are at significant risk for homicide — as a woman tries to leave, the risk for homicide increases. This does not mean she should stay; it means leaving requires careful safety planning, an order of protection, and shelter arrangements rather than being treated as automatically safe.","trap":"Any answer option treating immediate departure as automatically the safest choice, without a safety plan, is the trap."},{"topic":"intimate partner violence","subtopic":"prediction, screening, and process of abuse","stem":"At which stage of an abusive relationship does the chapter say marital counseling may be useful, and what is true of all other stages?","options":["Marital counseling is useful at all stages equally","Marital counseling may be useful at the early stage but is generally contraindicated at all other stages due to safety risk","Marital counseling is never appropriate at any stage","Marital counseling is most useful only after the relationship has ended"],"correct":[1],"sata":false,"why":"Although marital counseling may be useful at the early stage, it is generally contraindicated at all other stages because of the risk to the woman's safety.","trap":null},{"topic":"intimate partner violence","subtopic":"prediction, screening, and process of abuse","stem":"What is the nurse's top priority when encountering a family with severe abuse present?","options":["Preserving the family unit at all costs","The safety of the woman and her children as the priority","Immediately pursuing criminal charges against the abuser","Marital counseling to resolve underlying conflict"],"correct":[1],"sata":false,"why":"A nurse encountering a family in which there is severe abuse needs to consider the safety of the woman and her children as the priority.","trap":null},{"topic":"intimate partner violence","subtopic":"prediction, screening, and process of abuse","stem":"How does the chapter describe a formerly battered woman who feels depressed and lonely after the relationship has ended?","options":["This indicates unresolved pathology requiring intensive intervention","This is a normal response for which support is needed","This suggests the woman wishes to return to the relationship","This is an unusual and concerning reaction"],"correct":[1],"sata":false,"why":"A formerly battered woman who is feeling depressed and lonely after the relationship has ended is exhibiting a normal response, including grief for the ended relationship, for which support is needed.","trap":null},{"topic":"intimate partner violence","subtopic":"violence during pregnancy and strangulation","stem":"What is the recommended frequency for assessing pregnant women for abuse?","options":["Once, at the first prenatal visit only","At each prenatal care visit, plus postpartum home visits assessing for both child and partner abuse","Only if visible injury is present","Only during the third trimester"],"correct":[1],"sata":false,"why":"All pregnant women should be assessed for abuse at each prenatal care visit, and postpartum home visits should include assessment for both child abuse and partner abuse.","trap":null},{"topic":"intimate partner violence","subtopic":"violence during pregnancy and strangulation","stem":"Which mechanism links a man's control of contraception to subsequent abuse risk?","options":["Contraceptive control has no relationship to abuse","A man's control of contraception, a form of abusive controlling behavior, may lead to unintended pregnancy and subsequent abuse","Contraceptive control only affects unmarried couples","This mechanism applies only to postpartum abuse, not prenatal"],"correct":[1],"sata":false,"why":"A man's control of contraception, a form of abusive controlling behavior, may lead to unintended pregnancy and subsequent abuse; his refusal to use a condom also places the woman at increased risk for STDs including HIV.","trap":null},{"topic":"intimate partner violence","subtopic":"violence during pregnancy and strangulation","stem":"Why might a strangulation victim be hesitant to report the assault, and why is this dangerous?","options":["Because strangulation always leaves immediate, visible bruising that is embarrassing to disclose","Because visible evidence may not appear until hours or days later, so victims fear they won't be believed, despite strangulation being a violent and deadly act","Because strangulation is not associated with any risk of death","Because strangulation is unrelated to intimate partner violence"],"correct":[1],"sata":false,"why":"Strangulation may not leave visible evidence until hours or days after the incident, so victims are often hesitant to report because they fear they will not be believed. It is described as \"a violent and deadly act\" and is a form of IPV that is often overlooked.","trap":null},{"topic":"intimate partner violence","subtopic":"violence during pregnancy and strangulation","stem":"Which physical signs should raise suspicion for nonfatal strangulation? Select all that apply.","options":["Subconjunctival hemorrhage","Bruising on the upper neck, chin, or face","Conjunctival petechiae","Isolated ankle swelling"],"correct":[0,1,2],"sata":true,"why":"Physical signs of nonfatal strangulation include linear abrasions, bruising on the upper neck/chin/face, subconjunctival hemorrhage, conjunctival petechiae, and neck swelling or tenderness — not ankle swelling, which is unrelated. ---","trap":null},{"topic":"elder abuse","subtopic":"definitions, types, and prevalence","stem":"According to the CDC, at what age does a person qualify as an \"older adult\" for the purposes of defining elder abuse?","options":["55 or older","60 or older","65 or older","70 or older"],"correct":[1],"sata":false,"why":"The CDC defines an older adult as a person age 60 or older for purposes of the elder abuse definition — an intentional act or failure to act that causes a risk of harm to an older adult.","trap":"This is easy to confuse with the more familiar age-65 threshold used elsewhere in health policy. For elder abuse specifically, the chapter uses 60."},{"topic":"elder abuse","subtopic":"definitions, types, and prevalence","stem":"Which prevalence statistics for elder abuse are accurate, per the chapter? Select all that apply.","options":["CDC: abuse affects about 1 in 10 elders who live at home","WHO (2020): about 1 in 6 people 60 or older experienced abuse in community settings in the past year","Rates are also high in nursing homes and long-term care facilities","Elder abuse is exclusively a community-setting phenomenon, absent in institutional care"],"correct":[0,1,2],"sata":true,"why":"CDC estimates 1 in 10 elders living at home are affected; WHO's 2020 estimate is 1 in 6 people 60+ in community settings in the past year; rates are also high in nursing homes and long-term care facilities — contradicting option D.","trap":null},{"topic":"elder abuse","subtopic":"definitions, types, and prevalence","stem":"Which of the following are among the CDC's six named types of elder abuse? Select all that apply.","options":["Abandonment — the caregiver leaves and no longer provides care","Financial — misuse of the elder's money, property, or assets","Emotional — behaviors that demean or affect self-esteem, including not letting the person see family","Medical — inappropriate prescribing by a physician"],"correct":[0,1,2],"sata":true,"why":"The six named types are physical, sexual, emotional, neglect, abandonment, and financial. \"Medical abuse\" as a standalone category is not among the six named types.","trap":null},{"topic":"elder abuse","subtopic":"definitions, types, and prevalence","stem":"What does the chapter identify as the most common form of psychological abuse of older adults?","options":["Physical confinement","Rejection or simply ignoring older adults, signaling they are worthless and useless","Financial exploitation","Excessive caregiving attention"],"correct":[1],"sata":false,"why":"The most common form of psychological abuse is rejection or simply ignoring older adults, indicating that they are worthless and useless to others.","trap":null},{"topic":"elder abuse","subtopic":"definitions, types, and prevalence","stem":"Which factors are named as precipitating elder abuse? Select all that apply.","options":["The elder may be a physical, emotional, or financial burden on the caregiver","The elder may have previously been the abuser","Caregiver depression related to caring for confused and frail elders","Abundant caregiver respite resources reducing family stress"],"correct":[0,1,2],"sata":true,"why":"Precipitating factors include the elder being a burden leading to caregiver frustration and resentment, the elder having previously been an abuser, and caregiver depression from around-the-clock caregiving demands — abundant respite resources would reduce risk, not precipitate abuse, making option D the opposite of a risk factor.","trap":null},{"topic":"elder abuse","subtopic":"definitions, types, and prevalence","stem":"Why does the chapter caution that determining whether an elder's injuries result from abuse can be difficult?","options":["Elder injuries are always clearly attributable to a single cause","It is often difficult to determine whether injuries result from abuse, falls, or other natural causes, given the fragility of elders' skin and vascular systems","Elder abuse never presents with physical injury","Only law enforcement can make this determination, never nursing assessment"],"correct":[1],"sata":false,"why":"It is often difficult to determine whether the injuries of elders result from abuse, falls, or other natural causes, because of the fragility of elders' skin and vascular systems; careful assessment through observation and discussion can help determine the cause.","trap":null},{"topic":"elder abuse","subtopic":"definitions, types, and prevalence","stem":"Which of the CDC's six recommended actions to prevent elder abuse are listed? Select all that apply.","options":["Listen to older adults and caregivers to understand challenges","Report abuse or suspected abuse to Adult Protective Services","Check in often on adults with few friends and family","Discourage caregivers from seeking outside support to maintain family privacy"],"correct":[0,1,2],"sata":true,"why":"The six recommended actions include listen, report, educate, learn the difference between abuse signs and normal aging, check in often, and provide overburdened caregivers with support — the opposite of discouraging outside support. ---","trap":null},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"Per the textbook's Levels of Prevention box for violence, which intervention represents primary prevention?","options":["Early screening for abuse","Strengthening the individual and family by teaching parenting skills","Referring to community organizations once abuse signs are evident","Case management coordination after abuse is confirmed"],"correct":[1],"sata":false,"why":"Primary prevention is strengthening the individual and family by teaching parenting skills. Secondary is early screening plus teaching stress management and recreation; tertiary is referral to community organizations once signs of abuse are evident.","trap":null},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"Per Box 27.3, which of the following prevention activities are tagged as secondary prevention? Select all that apply.","options":["Assessing for marital discord","Counseling for at-risk parents","Assisting with controlling anger","Teaching parenting techniques"],"correct":[0,1,2],"sata":true,"why":"Box 27.3 tags assessing during routine exams, assessing for marital discord, counseling at-risk parents, and assisting with anger control as secondary prevention. Teaching parenting techniques is tagged as primary prevention.","trap":null},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"According to the chapter, in what role do nurses primarily engage when providing tertiary prevention for families experiencing violence?","options":["Law enforcement liaison","Case manager, coordinating other agencies and activities","Marital counselor","Primary prevention educator"],"correct":[1],"sata":false,"why":"Nurses engage in tertiary prevention by acting as a case manager and coordinating the other agencies and activities involved.","trap":null},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"What are the five principles of giving care to families experiencing violence? Select all that apply.","options":["Intolerance for violence","Respect and caring for all family members","Safety as the first priority","Punitive judgment toward the abuser to reinforce accountability"],"correct":[0,1,2],"sata":true,"why":"The five principles are intolerance for violence, respect and caring for all family members, safety as the first priority, absolute honesty, and empowerment. Punitive judgment is explicitly rejected — the chapter states the behavior, not the person, should be condemned.","trap":"\"Intolerance for violence\" and \"condemning the behavior, not the person\" coexist without contradiction — a nurse can categorically oppose violence while still treating the abuser with respect as a person. An answer framing the nursing stance as punitive toward the abuser is wrong even though intolerance for violence is one of the five principles."},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"What does the chapter say about nurses' mandatory reporting obligations for child abuse?","options":["Reporting is required only when abuse is confirmed, not merely suspected","Nurses are mandatory reporters of child abuse, even when only suspected, in all states","Mandatory reporting applies only in states with specific nurse-reporting statutes","Nurses may choose whether to report based on family circumstances"],"correct":[1],"sata":false,"why":"Nurses are mandatory reporters of child abuse, even when only suspected, in all states. They are also mandatory reporters of elder abuse and abuse of physically/cognitively dependent adults, and of felony assaults of anyone in most states.","trap":null},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"What documented bias affects provider willingness to report suspected abuse?","options":["Providers report poor and affluent families at equal rates","Providers may be more willing to report abuse in a poor family than in a middle-class one","Providers are more willing to report abuse in affluent families","Reporting rates show no relationship to family socioeconomic status"],"correct":[1],"sata":false,"why":"Physicians and nurses are sometimes reluctant to report abuse, and they may be more willing to report abuse in a poor family than in a middle-class one, or think an older adult or child is better off at home.","trap":"A stem where a nurse hesitates to report because a family appears affluent or professional is testing recognition of this exact bias — report consistently regardless of social class."},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"How does the chapter frame referral to protective service agencies?","options":["As an automatic step toward removal of the victim","As a way to get help, rather than an automatic step toward removal or criminal justice action","As a purely punitive legal mechanism","As applicable only to confirmed cases of abuse"],"correct":[1],"sata":false,"why":"Referral to protective service agencies is a way to get help, rather than an automatic step toward removal of the victim or toward criminal justice action.","trap":null},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"What does the chapter recommend regarding family involvement when a nurse reports suspected abuse?","options":["Reporting should be done covertly, without informing the family","Families should be included in reporting, with absolute honesty about what will be reported and what the nurse is feeling","Family involvement should be avoided to protect the reporting nurse","Only the abuser should be informed, not other family members"],"correct":[1],"sata":false,"why":"Families should be included in any reporting so they can have input. Absolute honesty about what will be reported to officials, what the family can expect, what is being entered into records, and what the nurse is feeling is essential.","trap":null},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"The Nurse-Family Partnership (NFP) program delivers which service, and what outcome has it demonstrated?","options":["Group therapy for batterers; reduced recidivism","Intensive prenatal and postnatal home visits by RNs to low-income first-time mothers, ideally to the child's second birthday; reduced child maltreatment rates","Emergency shelter placement; reduced homelessness","School-based curricula for adolescents; reduced bullying"],"correct":[1],"sata":false,"why":"NFP provides intensive prenatal and postnatal home visits, ideally to the child's second birthday, delivered by registered nurses to low-income first-time mothers, and has been shown to reduce the rate of child maltreatment.","trap":null},{"topic":"nursing interventions and prevention","subtopic":"levels of prevention and legal responsibilities","stem":"What does the chapter teach about firearm safety as a primary prevention measure? Select all that apply.","options":["Handguns are far more likely to kill family members than intruders","If a gun is kept, it should be stored unloaded and locked, with ammunition stored separately","Firearm accidents are a leading cause of death for young children","Nursing assessments should avoid asking about guns in the home to respect privacy"],"correct":[0,1,2],"sata":true,"why":"The chapter teaches that handguns more often kill family members than intruders, firearm accidents are a leading cause of death for young children, and safe storage means unloaded, locked, with ammunition stored separately. Nursing assessments SHOULD include a question about guns in the home — the opposite of avoiding the topic.","trap":null}];
+const TITLE = "Chapter 27 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 27";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>
