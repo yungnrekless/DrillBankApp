@@ -5,9 +5,10 @@ backend service, no dependencies — a small node process serves a vanilla-JS
 page and reads/writes three JSON files on disk.
 
 ```
-node scripts/import.js seed/     # fact-bank files -> data/questions.json
+node scripts/import.js drills/   # drill files -> data/questions.json
 node server.js                   # http://localhost:4173
-node --test 'test/*.test.js'     # 20 tests, no deps
+node scripts/export.js ch25      # one shareable HTML file -> dist/ch25.html
+npm test                         # 31 tests, no deps
 ```
 
 Replace `seed/` with your own drill files and re-run the importer. See
@@ -72,13 +73,38 @@ first, with its struggling flag and next due date.
 Topics with no attempts show as `untested`, not 0% — those are different
 things and collapsing them would make an unstarted topic look like a crisis.
 
+## Export (sharing a chapter)
+
+`scripts/export.js` writes one self-contained HTML file — styles, script and
+questions all inlined. No server, no data files, no network requests, so it
+can be emailed or dropped in a shared folder and opened straight from disk.
+
+```
+node scripts/export.js --list                       # what's in the bank
+node scripts/export.js ch25                         # a chapter, by source file
+node scripts/export.js ch25 --title "Ch. 25 Drill"
+node scripts/export.js --topic poverty --topic homelessness --out dist/econ.html
+node scripts/export.js --all --out dist/everything.html
+```
+
+The exported page is a different program from the app on purpose: no
+scheduler, no attempt log, no dashboard, because someone opening it once
+wants a drill, not a study system. It keeps reveal-with-rationale, the trap
+callout, all-or-nothing SATA scoring, reshuffled answer order, and a
+weakest-first topic breakdown at the end with the same 70% red convention.
+
+Question ids and source filenames are stripped from the payload — recipients
+get the questions, not a map of your bank.
+
 ## Layout
 
 ```
 src/schema.js       shared types + validation
 src/scheduler.js    pure scheduling logic (used by node and the browser)
-src/importer.js     fact-bank parser + bank merge
+src/importer.js     drill-file parser + bank merge
+src/export.js       standalone HTML export renderer
 scripts/import.js   importer CLI
+scripts/export.js   export CLI
 server.js           static server + JSON API
 public/             the app (index.html, app.js, dashboard.js, api.js, styles.css)
 seed/               sample drill files — replace with your own
