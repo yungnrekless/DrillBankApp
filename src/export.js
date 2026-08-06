@@ -45,6 +45,65 @@ export function embedJson(value) {
 }
 
 /**
+ * Landing page listing every published chapter. Static HTML only — no script
+ * at all, so it renders identically in a phone browser, a preview pane, or
+ * anything else that opens it.
+ *
+ * @param {Array<{href:string,title:string,count:number,sata:number,topics:string[]}>} chapters
+ * @param {{title?: string, subtitle?: string}} meta
+ */
+export function renderIndex(chapters, meta = {}) {
+  const title = meta.title || 'Drill Bank';
+  const subtitle = meta.subtitle || 'Practice questions';
+
+  const cards = chapters.map((c) => `<a class="card" href="${escapeHtml(c.href)}">
+<div class="card-title">${escapeHtml(c.title)}</div>
+<div class="card-meta">${c.count} questions &middot; ${c.sata} select-all &middot; ${c.topics.length} topics</div>
+<div class="card-topics">${c.topics.map((t) => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
+</a>`).join('\n');
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${escapeHtml(title)}</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:${PALETTE.navy};--accent:${PALETTE.accent};--teal:${PALETTE.teal};--gold:${PALETTE.gold};--paper:${PALETTE.paper};--paper2:${PALETTE.paper2};--line:${PALETTE.line};--soft:${PALETTE.soft}}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:18px}
+h1{font-size:24px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.lede{font-size:14.5px;color:var(--soft);margin-bottom:20px;line-height:1.5}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1.5px solid var(--line);padding:15px 16px;margin-bottom:11px;transition:.12s}
+.card:hover{border-color:var(--navy);transform:translateX(2px)}
+.card-title{font-size:18px;font-weight:600;margin-bottom:5px}
+.card-meta{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--soft);margin-bottom:9px}
+.card-topics{display:flex;gap:5px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.foot{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--soft);line-height:1.55}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="sub">${escapeHtml(subtitle)}</div>
+<h1>${escapeHtml(title)}</h1>
+</div>
+<p class="lede">Tap a chapter to drill it. Answer order is reshuffled every run, select-all
+items are scored all or nothing, and each question shows its rationale and the trap to watch
+for as soon as you answer. Works on a phone; nothing to install and nothing to sign into.</p>
+${cards}
+<p class="foot">Student-made study aid. The questions are written from course reading and are
+not affiliated with or endorsed by any publisher. Check anything that looks off against your
+own text &mdash; and if you find an error, say so, so it can be fixed for everyone.</p>
+</body>
+</html>
+`;
+}
+
+/**
  * The document body before any script runs: the full question set as plain,
  * readable, printable HTML with the answers marked.
  *
@@ -113,6 +172,7 @@ export function renderExport(questions, meta = {}) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escapeHtml(title)}</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--navy:${PALETTE.navy};--accent:${PALETTE.accent};--teal:${PALETTE.teal};--gold:${PALETTE.gold};--paper:${PALETTE.paper};--paper2:${PALETTE.paper2};--line:${PALETTE.line};--soft:${PALETTE.soft}}

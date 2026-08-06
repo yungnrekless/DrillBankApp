@@ -105,15 +105,43 @@ recipient gets a readable, printable answer key instead, plus a line telling
 them to save the file and open it in a browser to drill it properly. A
 runtime failure restores the same view rather than wiping the page.
 
+## Publishing a link (GitHub Pages)
+
+`scripts/publish.js` builds `docs/` — a landing page plus one standalone page
+per chapter — which GitHub Pages serves as a URL you can just send someone.
+No download, no "open in browser" step, works on a phone.
+
+```
+npm run publish -- --title "NUR 4353 Drills"
+git add docs && git commit -m "Publish drills" && git push
+```
+
+One-time setup, in the repo on github.com:
+**Settings → Pages → Source: Deploy from a branch → Branch: `<this branch>` / `docs` → Save.**
+The site appears at `https://<user>.github.io/<repo>/` a minute or so later.
+
+`docs/` is committed on purpose — Pages serves the built files, so they have
+to be in the repo. Re-run `npm run publish` after importing new questions,
+and it rebuilds the folder from scratch so a renamed or deleted chapter can't
+leave a stale page live.
+
+Note that a Pages site is **public**. Anyone with the URL can read the
+questions, and search engines can index it. The landing page carries a line
+noting it is a student-made study aid not affiliated with any publisher. If
+that is not what you want, `scripts/export.js` gives the same drill as a file
+you hand to specific people instead.
+
 ## Layout
 
 ```
 src/schema.js       shared types + validation
 src/scheduler.js    pure scheduling logic (used by node and the browser)
 src/importer.js     drill-file parser + bank merge
-src/export.js       standalone HTML export renderer
+src/export.js       standalone HTML export + landing page renderers
 scripts/import.js   importer CLI
-scripts/export.js   export CLI
+scripts/export.js   export CLI (one file, for sending directly)
+scripts/publish.js  builds docs/ for GitHub Pages
+docs/               the published site — generated, committed for Pages
 server.js           static server + JSON API
 public/             the app (index.html, app.js, dashboard.js, api.js, styles.css)
 seed/               sample drill files — replace with your own

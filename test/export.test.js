@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { renderExport, embedJson, escapeHtml } from '../src/export.js';
+import { renderExport, renderIndex, embedJson, escapeHtml } from '../src/export.js';
 
 const bank = {
   q_0001: {
@@ -25,12 +25,39 @@ test('the export is a complete standalone document', () => {
   assert.match(html, /<\/html>\s*$/);
 });
 
+/**
+ * Every src/href in a document, as raw attribute values.
+ * A resource is off-host if it carries a scheme (http:, //cdn...) — inline
+ * `data:` URIs and relative paths are fetched from the file itself or from
+ * alongside it, so neither reaches the network.
+ */
+function externalRefs(html) {
+  const refs = [...html.matchAll(/\b(?:src|href)\s*=\s*"([^"]*)"/g)].map((m) => m[1]);
+  return refs.filter((v) => !v.startsWith('data:') && /^[a-z][a-z0-9+.-]*:|^\/\//i.test(v));
+}
+
 test('the export references nothing external', () => {
-  const html = renderExport(bank);
-  // No src/href attributes at all means no CDN, font, image or stylesheet
-  // fetch can happen — the file has to work offline from a file:// URL.
-  assert.equal(html.match(/\b(src|href)\s*=/g), null);
-  assert.equal(html.match(/https?:\/\//g), null);
+  // The file has to work offline from a file:// URL, so nothing may point at
+  // a CDN, font service, or remote image.
+  assert.deepEqual(externalRefs(renderExport(bank)), []);
+});
+
+test('the landing page references nothing external', () => {
+  const html = renderIndex([{ href: 'ch25.html', title: 'Chapter 25', count: 75, sata: 22, topics: ['poverty'] }]);
+  assert.deepEqual(externalRefs(html), []);
+  assert.ok(html.includes('href="ch25.html"'), 'chapter links are relative');
+});
+
+test('the landing page needs no script at all', () => {
+  const html = renderIndex([{ href: 'a.html', title: 'A', count: 1, sata: 0, topics: ['t'] }]);
+  assert.ok(!html.includes('<script'), 'the index must render in any viewer, blocked scripts included');
+});
+
+test('the landing page escapes chapter titles and topics', () => {
+  const html = renderIndex([{ href: 'x.html', title: '<b>x</b>', count: 1, sata: 0, topics: ['<i>t</i>'] }]);
+  assert.ok(!html.includes('<b>x</b>'));
+  assert.ok(html.includes('&lt;b&gt;x&lt;/b&gt;'));
+  assert.ok(html.includes('&lt;i&gt;t&lt;/i&gt;'));
 });
 
 test('every question and its rationale and trap are embedded', () => {

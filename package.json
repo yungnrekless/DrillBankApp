@@ -8,6 +8,7 @@
     "start": "node server.js",
     "import": "node scripts/import.js",
     "export": "node scripts/export.js",
+    "publish": "node scripts/publish.js",
     "test": "node --test test/*.test.js"
   },
   "engines": {
