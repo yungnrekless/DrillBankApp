@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 5 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 5</div><h1>Chapter 5 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">retrospective vs. prospective reimbursement (organizations)</span></div>
+<div class="stem">1. A home health agency is paid based on its cost per patient-day, with the rate determined only after services have already been delivered. Which reimbursement method is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Prospective payment system</li><li class="fopt right"><span class="mk">&#10003;</span>Retrospective reimbursement</li><li class="fopt"><span class="mk">C</span>Capitation</li><li class="fopt"><span class="mk">D</span>Preferred provider arrangement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Retrospective reimbursement is the traditional method of paying organizations: fees are set after services are delivered, based on cost or charges. It encourages cost shifting and shows little regard for cost.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The &quot;per patient-day&quot; detail sounds like a fixed rate, but what makes it retrospective is that the rate is not fixed until after the service is rendered.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">retrospective vs. prospective reimbursement (organizations)</span></div>
+<div class="stem">2. What is the central risk created by retrospective reimbursement of organizations?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Under-serving patients to stay within a fixed budget</li><li class="fopt right"><span class="mk">&#10003;</span>Cost shifting — charging one payer more to cover losses incurred elsewhere</li><li class="fopt"><span class="mk">C</span>Denying care to patients who cannot pay a capitated fee</li><li class="fopt"><span class="mk">D</span>Restricting referrals through a gatekeeper</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Because retrospective reimbursement pays organizations on cost or charges after the fact, it encourages inflating prices and cost shifting rather than cost control.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Under-serving to stay in budget is the risk of prospective payment, the opposite method — an easy inversion.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">retrospective vs. prospective reimbursement (organizations)</span></div>
+<div class="stem">3. A hospital is paid a fixed amount per diagnosis category, determined in advance, regardless of the hospital's actual cost of care. Which method is this, and what risk does it carry?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Retrospective reimbursement; risk of cost shifting</li><li class="fopt right"><span class="mk">&#10003;</span>Prospective payment system; risk of under-serving and compromised quality</li><li class="fopt"><span class="mk">C</span>Fee-for-service; risk of inflated billing</li><li class="fopt"><span class="mk">D</span>Capitation; risk of denied referrals</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Prospective payment systems set the reimbursement rate before care is delivered. Medicare's hospital PPS pays a fixed amount per diagnosis category (DRG) regardless of actual cost, which encourages staying within budget but risks under-serving patients and compromising quality.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">retrospective vs. prospective reimbursement (organizations)</span></div>
+<div class="stem">4. Which classification system is the basis of Medicare's prospective payment system for hospitals, and when was it established?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>RBRVS, established 1991</li><li class="fopt right"><span class="mk">&#10003;</span>DRGs, established 1983</li><li class="fopt"><span class="mk">C</span>CPT codes, established 1965</li><li class="fopt"><span class="mk">D</span>UCR schedules, established 1997</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Diagnosis-related groups (DRGs) classify hospital payment into set amounts per diagnosis category, established by the amended Social Security Act (PL 98-21) in 1983 — Medicare's prospective payment method for hospitals.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>RBRVS is a real Medicare payment reform, but it applies to physician reimbursement (1989/1991), not to the hospital PPS.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">paying practitioners (fee-for-service, preferred provider, capitation)</span></div>
+<div class="stem">5. Under fee-for-service payment, when is the rate for the service determined, and on what basis?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Before care is delivered, based on a negotiated discount</li><li class="fopt right"><span class="mk">&#10003;</span>After the practitioner delivers the service, based on usual, customary, and reasonable (UCR) charges the practitioner sets</li><li class="fopt"><span class="mk">C</span>Before care is delivered, based on a preset per-member fee</li><li class="fopt"><span class="mk">D</span>After care is delivered, based on a diagnosis-related group</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Fee-for-service is the traditional method of paying practitioners: the practitioner sets the cost, delivers the service, and then bills a third-party payer based on UCR charges. It is retrospective in nature.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">paying practitioners (fee-for-service, preferred provider, capitation)</span></div>
+<div class="stem">6. A managed care organization pays a primary care practitioner a fixed amount per enrolled member each month, regardless of how many services that member actually uses. Which payment method is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Fee-for-service</li><li class="fopt"><span class="mk">B</span>Preferred provider arrangement</li><li class="fopt right"><span class="mk">&#10003;</span>Capitation</li><li class="fopt"><span class="mk">D</span>Retrospective reimbursement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Capitation pays a practitioner a preset, negotiated fee per member (per member per month), agreed before services are delivered, regardless of the volume of care used. It is typically used by managed care organizations.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">paying practitioners (fee-for-service, preferred provider, capitation)</span></div>
+<div class="stem">7. In a preferred provider arrangement, when is the practitioner's reimbursement rate set relative to care delivery?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>After care is delivered, based on the practitioner's own charges</li><li class="fopt right"><span class="mk">&#10003;</span>Before care is delivered, negotiated by the third-party payer, with reimbursement capped per patient</li><li class="fopt"><span class="mk">C</span>Before care is delivered, but only as a per-member-per-month fee</li><li class="fopt"><span class="mk">D</span>There is no set rate; payment is fully at the payer's discretion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Preferred provider payment, like prospective payment, has the third-party payer negotiate the rate before care is delivered and cap reimbursement per patient.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">paying practitioners (fee-for-service, preferred provider, capitation)</span></div>
+<div class="stem">8. Which statements correctly pair a practitioner payment method with when its rate is set? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fee-for-service — rate set after the service, like retrospective reimbursement</li><li class="fopt right"><span class="mk">&#10003;</span>Preferred provider — rate set before the service, like prospective reimbursement</li><li class="fopt right"><span class="mk">&#10003;</span>Capitation — rate set before the service is delivered</li><li class="fopt"><span class="mk">D</span>Capitation — rate set after utilization is tallied for the month</li><li class="fopt"><span class="mk">E</span>Fee-for-service — rate negotiated in advance by the payer</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Fee-for-service parallels retrospective reimbursement (rate set after care). Preferred provider and capitation both parallel prospective reimbursement (rate set before care) — preferred provider as a negotiated, capped rate, and capitation as a preset per-member-per-month fee paid regardless of use.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The single most testable contrast in this chapter is the &quot;when is the rate set&quot; axis: after = fee-for-service/retrospective (incentive to do more); before = preferred provider/capitation/prospective (incentive to do less, stay in budget).</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">paying practitioners (fee-for-service, preferred provider, capitation)</span></div>
+<div class="stem">9. The resource-based relative value scale (RBRVS) was established by which legislation, and when did Medicare adopt it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The Balanced Budget Act of 1997; adopted 1998</li><li class="fopt right"><span class="mk">&#10003;</span>The Omnibus Reconciliation Act of 1989; adopted by Medicare in 1991</li><li class="fopt"><span class="mk">C</span>The Social Security Act of 1965; adopted 1966</li><li class="fopt"><span class="mk">D</span>The amended Social Security Act (PL 98-21); adopted 1983</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>RBRVS was established by the Omnibus Reconciliation Act of 1989 and adopted by Medicare in 1991; it reimburses physicians based on the service provided and the resources required.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>PL 98-21 and 1983 belong to DRGs, not RBRVS — the two prospective-payment reforms are easy to cross-assign.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">payment mechanisms</span><span class="chip t2">paying practitioners (fee-for-service, preferred provider, capitation)</span></div>
+<div class="stem">10. The Balanced Budget Act of 1997 changed reimbursement for nurse practitioners and clinical nurse specialists in what way?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It granted them full parity with physician rates under Medicare Part A</li><li class="fopt right"><span class="mk">&#10003;</span>It granted them third-party reimbursement under Medicare Part B at 85% of physician rates for the same service</li><li class="fopt"><span class="mk">C</span>It capitated all NP/CNS services under Medicaid</li><li class="fopt"><span class="mk">D</span>It excluded NPs and CNSs from Medicare reimbursement entirely</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Effective January 1, 1998, the Balanced Budget Act of 1997 granted NPs and CNSs third-party reimbursement for Medicare Part B services at 85% of physician rates for the same service.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Part B (medical/provider services), not Part A (hospital insurance), is where this reimbursement applies. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">Medicare vs. Medicaid</span></div>
+<div class="stem">11. A 68-year-old with no history of disability is asking who pays for her hospitalization. Which federal program covers her, and under what title of the Social Security Act?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Medicaid, Title XIX</li><li class="fopt right"><span class="mk">&#10003;</span>Medicare, Title XVIII</li><li class="fopt"><span class="mk">C</span>CHIP, Balanced Budget Act of 1997</li><li class="fopt"><span class="mk">D</span>Medicaid, Title XVIII</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Medicare (Title XVIII, Social Security Act of 1965) is federal insurance for people 65 and older, the permanently disabled, and those with ALS or end-stage renal disease (ESRD). Age alone, without a means test, qualifies her.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">Medicare vs. Medicaid</span></div>
+<div class="stem">12. A low-income family with dependent children needs coverage but no member is 65 or disabled. Which program applies, and what determines eligibility?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Medicare, based on age</li><li class="fopt right"><span class="mk">&#10003;</span>Medicaid, based on means testing (income and assets)</li><li class="fopt"><span class="mk">C</span>CHIP, based on Social Security Act Title XVIII</li><li class="fopt"><span class="mk">D</span>Medicare Part C, based on income</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Medicaid (Title XIX, Social Security Act of 1965) is joint federal/state social insurance for the poor, aged, blind, disabled, and families with dependent children, with eligibility determined by means testing.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The chapter's own trap: if the stem says &quot;65-year-old,&quot; think Medicare; if it says &quot;low-income family&quot; or &quot;needy,&quot; think Medicaid. Age/disability-based and means-tested are not interchangeable qualifying criteria.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">Medicare vs. Medicaid</span></div>
+<div class="stem">13. Which statements correctly describe Medicare? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is federal insurance administered by CMS</li><li class="fopt right"><span class="mk">&#10003;</span>Eligibility is based on age or disability, not income</li><li class="fopt"><span class="mk">C</span>It is a joint federal/state program requiring matching state funds</li><li class="fopt right"><span class="mk">&#10003;</span>Part A is financed through the Medicare Trust Fund and a dedicated payroll tax</li><li class="fopt right"><span class="mk">&#10003;</span>Part B is financed through beneficiary premiums and general revenue</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Medicare is a federal program (not joint federal/state) administered by CMS, based on age/disability rather than income. Part A draws on the Medicare Trust Fund and dedicated payroll tax; Part B draws on beneficiary premiums plus general revenue.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;Joint federal/state&quot; and &quot;matching funds&quot; describe Medicaid, not Medicare — swapping this one feature is the most common way this pair gets inverted.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">Medicare vs. Medicaid</span></div>
+<div class="stem">14. Which statements correctly describe Medicaid? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is administered jointly by the federal government and the states, with matching funds</li><li class="fopt right"><span class="mk">&#10003;</span>Eligibility is means-tested (income/assets), not based on age</li><li class="fopt"><span class="mk">C</span>It is classified as insurance rather than social insurance</li><li class="fopt right"><span class="mk">&#10003;</span>It pays for more than half of all long-term care spending in the US</li><li class="fopt right"><span class="mk">&#10003;</span>It is financed by federal and state general revenues</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Medicaid is a joint federal/state social insurance program financed by federal and state general revenues, with means-tested eligibility, and it pays for more than half of all long-term care spending.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Medicaid is classified as social insurance (assistance), not straight &quot;insurance&quot; — that classification belongs to Medicare.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">Medicare's four parts</span></div>
+<div class="stem">15. Which part of Medicare covers inpatient hospital stays, home health, hospice, and limited skilled nursing?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Part A</li><li class="fopt"><span class="mk">B</span>Part B</li><li class="fopt"><span class="mk">C</span>Part C</li><li class="fopt"><span class="mk">D</span>Part D</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Medicare Part A is hospital insurance, covering inpatient hospital care, home health, hospice, and limited skilled nursing.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">Medicare's four parts</span></div>
+<div class="stem">16. Which part of Medicare covers &quot;medically necessary&quot; outpatient provider services, diagnostics, and physiotherapy?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Part A</li><li class="fopt right"><span class="mk">&#10003;</span>Part B</li><li class="fopt"><span class="mk">C</span>Part C</li><li class="fopt"><span class="mk">D</span>Part D</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Medicare Part B is medical insurance, covering medically necessary provider services, outpatient care, home health, diagnostics, and physiotherapy.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">Medicare's four parts</span></div>
+<div class="stem">17. Match each Medicare part to what it covers. Select all correct pairings.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Part A — hospital insurance (inpatient, home health, hospice, limited skilled nursing)</li><li class="fopt right"><span class="mk">&#10003;</span>Part B — medical insurance (outpatient/provider services, diagnostics)</li><li class="fopt right"><span class="mk">&#10003;</span>Part C — Medicare Advantage plans, since 1999</li><li class="fopt right"><span class="mk">&#10003;</span>Part D — prescription drug coverage, added 2006</li><li class="fopt"><span class="mk">E</span>Part D — hospital insurance financed by payroll tax</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Part A is hospital insurance; Part B is medical insurance; Part C is Medicare Advantage (since 1999); Part D is prescription drug coverage (2006). Option E misassigns hospital insurance and payroll-tax financing, which belong to Part A.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">CHIP</span></div>
+<div class="stem">18. The Children's Health Insurance Program (CHIP) was created by which legislation, and whom does it cover?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The Social Security Act of 1965; children who qualify for Medicaid</li><li class="fopt right"><span class="mk">&#10003;</span>The Balanced Budget Act of 1997; children in low-income families who earn too much for Medicaid but cannot afford private insurance</li><li class="fopt"><span class="mk">C</span>The Affordable Care Act of 2010; all uninsured children regardless of income</li><li class="fopt"><span class="mk">D</span>The Omnibus Reconciliation Act of 1989; children of Medicare beneficiaries</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>CHIP was created by the Balanced Budget Act of 1997 to cover children in low-income families who earn too much to qualify for Medicaid but cannot afford private insurance.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">public insurance programs</span><span class="chip t2">CHIP</span></div>
+<div class="stem">19. A nursing student sees &quot;CHIP&quot; referenced in both a community health economics context and an earlier chapter on the community-as-client model. Which statement correctly distinguishes the two uses?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They refer to the same program under two different names</li><li class="fopt right"><span class="mk">&#10003;</span>In this chapter, CHIP is the Children's Health Insurance Program created by the Balanced Budget Act of 1997; elsewhere, CHIP refers to the Community Health Improvement Process, an unrelated planning framework</li><li class="fopt"><span class="mk">C</span>CHIP is always an abbreviation for the Community Health Improvement Process, and &quot;Children's Health Insurance Program&quot; is the outdated name</li><li class="fopt"><span class="mk">D</span>The Children's Health Insurance Program was renamed the Community Health Improvement Process under the ACA</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This chapter's CHIP is the Children's Health Insurance Program (Balanced Budget Act of 1997), covering children whose families earn too much for Medicaid but not enough to afford private insurance. This is a distinct term from the Community Health Improvement Process (Ch1), which is a planning framework, not an insurance program.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The identical acronym across chapters is a deliberate trap — do not assume shared meaning just because the letters match. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">managed care</span><span class="chip t2">HMO vs. PPO</span></div>
+<div class="stem">20. A managed care enrollee must select a primary care provider who authorizes referrals to specialists, and the practice is paid a preset amount per enrolled member. Which model is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Preferred provider organization (PPO)</li><li class="fopt right"><span class="mk">&#10003;</span>Health maintenance organization (HMO)</li><li class="fopt"><span class="mk">C</span>Fee-for-service indemnity plan</li><li class="fopt"><span class="mk">D</span>Prospective payment system</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>HMOs are prepaid plans in which enrollees use a defined network and typically need a primary care gatekeeper for referrals; they emphasize prevention and are often paid via capitation.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">managed care</span><span class="chip t2">HMO vs. PPO</span></div>
+<div class="stem">21. An enrollee can see any provider in a network of &quot;preferred providers&quot; who accept negotiated, discounted rates, and can go out-of-network at a higher cost, without needing a referral. Which model is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Health maintenance organization (HMO)</li><li class="fopt right"><span class="mk">&#10003;</span>Preferred provider organization (PPO)</li><li class="fopt"><span class="mk">C</span>Capitation-only plan</li><li class="fopt"><span class="mk">D</span>Diagnosis-related group plan</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A PPO is a network of preferred providers who accept negotiated discounted rates; enrollees may go out of network at higher cost, and there is no strict gatekeeper.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">managed care</span><span class="chip t2">HMO vs. PPO</span></div>
+<div class="stem">22. Which of the following correctly distinguishes HMOs from PPOs? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>HMOs typically require a primary care gatekeeper for referrals; PPOs do not</li><li class="fopt right"><span class="mk">&#10003;</span>HMOs are commonly paid via capitation; PPOs rely on negotiated discounted rates</li><li class="fopt right"><span class="mk">&#10003;</span>PPOs offer more provider choice and flexibility than HMOs, generally at higher cost</li><li class="fopt"><span class="mk">D</span>HMOs allow unrestricted out-of-network care at the same cost as in-network care</li><li class="fopt right"><span class="mk">&#10003;</span>Both are forms of managed care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>HMOs use a gatekeeper model with capitated payment and the tightest network; PPOs offer looser networks with negotiated discounts, more choice, and higher cost, but no strict gatekeeper. Both fall under managed care.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Unrestricted out-of-network access at no added cost describes neither model — even PPOs charge more for out-of-network care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">managed care</span><span class="chip t2">HMO vs. PPO</span></div>
+<div class="stem">23. Managed care is built on the concept of &quot;managed competition&quot; and negotiates with providers on behalf of which unit of enrollees?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Diagnosis-related groups</li><li class="fopt right"><span class="mk">&#10003;</span>Covered lives</li><li class="fopt"><span class="mk">C</span>Capitated households</li><li class="fopt"><span class="mk">D</span>Preferred beneficiaries</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Managed care integrates the financing and delivery of care and negotiates with hospitals and providers for care to its enrollees, referred to as &quot;covered lives,&quot; based on managed competition (introduced in the late 1980s–early 1990s). ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cost drivers</span><span class="chip t2">factors driving health care costs</span></div>
+<div class="stem">24. Which factors does the chapter name as drivers of rising health care costs? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Demographics, including the aging population</li><li class="fopt right"><span class="mk">&#10003;</span>Technology and the intensity of services provided per case</li><li class="fopt right"><span class="mk">&#10003;</span>Chronic illness</li><li class="fopt right"><span class="mk">&#10003;</span>Prescription drugs and inflation</li><li class="fopt"><span class="mk">E</span>Declining rates of health insurance coverage</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The named cost drivers are demographics (population growth and the aging population), technology and intensity, chronic illness, and prescription drugs/inflation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Declining coverage rates are a disparities/access issue, not one of the chapter's named cost drivers.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cost drivers</span><span class="chip t2">factors driving health care costs</span></div>
+<div class="stem">25. The chapter specifically calls out which demographic trend, tied to a surge in Medicare enrollment, as a cost driver?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Declining birth rates</li><li class="fopt right"><span class="mk">&#10003;</span>The aging population (baby boomers)</li><li class="fopt"><span class="mk">C</span>Rural-to-urban migration</li><li class="fopt"><span class="mk">D</span>Increasing life expectancy among the uninsured</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The blueprint calls out population growth and the aging population specifically — baby boomers aging into eligibility drive surging Medicare enrollment and cost. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">access and disparities</span><span class="chip t2">the uninsured and the working poor</span></div>
+<div class="stem">26. How did the number of uninsured Americans trend between 2013 and 2016, and to what was the change attributed?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It rose from about 28 million to about 44 million due to rising premiums</li><li class="fopt right"><span class="mk">&#10003;</span>It fell from about 44–48 million to about 27.6–28.1 million, following the ACA and Medicaid expansion</li><li class="fopt"><span class="mk">C</span>It remained flat at approximately 30 million throughout the period</li><li class="fopt"><span class="mk">D</span>It fell to near zero following the Balanced Budget Act of 1997</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The uninsured population fell from roughly 44–48 million in 2013 to roughly 27.6–28.1 million in 2016, after the ACA (PL 111-148, 2010) and Medicaid expansion.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">access and disparities</span><span class="chip t2">the uninsured and the working poor</span></div>
+<div class="stem">27. More than 80% of the uninsured belong to which group, and why do they remain uninsured?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Retired seniors who are not yet enrolled in Medicare</li><li class="fopt right"><span class="mk">&#10003;</span>Working families — the &quot;working poor&quot; — who earn too much for Medicaid but cannot afford private coverage</li><li class="fopt"><span class="mk">C</span>Undocumented immigrants ineligible for any federal program</li><li class="fopt"><span class="mk">D</span>College students who opted out of parental coverage</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>More than 80% of the uninsured were in working families (income below 400% of poverty), most with one or more full-time workers — the &quot;working poor,&quot; who earn too much to qualify for Medicaid but cannot afford private insurance.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the same earn-too-much-for-Medicaid gap that CHIP is designed to close for children — the adult working-poor population has no equivalent program named in this chapter.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"payment mechanisms","subtopic":"retrospective vs. prospective reimbursement (organizations)","stem":"A home health agency is paid based on its cost per patient-day, with the rate determined only after services have already been delivered. Which reimbursement method is this?","options":["Prospective payment system","Retrospective reimbursement","Capitation","Preferred provider arrangement"],"correct":[1],"sata":false,"why":"Retrospective reimbursement is the traditional method of paying organizations: fees are set after services are delivered, based on cost or charges. It encourages cost shifting and shows little regard for cost.","trap":"The \"per patient-day\" detail sounds like a fixed rate, but what makes it retrospective is that the rate is not fixed until after the service is rendered."},{"topic":"payment mechanisms","subtopic":"retrospective vs. prospective reimbursement (organizations)","stem":"What is the central risk created by retrospective reimbursement of organizations?","options":["Under-serving patients to stay within a fixed budget","Cost shifting — charging one payer more to cover losses incurred elsewhere","Denying care to patients who cannot pay a capitated fee","Restricting referrals through a gatekeeper"],"correct":[1],"sata":false,"why":"Because retrospective reimbursement pays organizations on cost or charges after the fact, it encourages inflating prices and cost shifting rather than cost control.","trap":"Under-serving to stay in budget is the risk of prospective payment, the opposite method — an easy inversion."},{"topic":"payment mechanisms","subtopic":"retrospective vs. prospective reimbursement (organizations)","stem":"A hospital is paid a fixed amount per diagnosis category, determined in advance, regardless of the hospital's actual cost of care. Which method is this, and what risk does it carry?","options":["Retrospective reimbursement; risk of cost shifting","Prospective payment system; risk of under-serving and compromised quality","Fee-for-service; risk of inflated billing","Capitation; risk of denied referrals"],"correct":[1],"sata":false,"why":"Prospective payment systems set the reimbursement rate before care is delivered. Medicare's hospital PPS pays a fixed amount per diagnosis category (DRG) regardless of actual cost, which encourages staying within budget but risks under-serving patients and compromising quality.","trap":null},{"topic":"payment mechanisms","subtopic":"retrospective vs. prospective reimbursement (organizations)","stem":"Which classification system is the basis of Medicare's prospective payment system for hospitals, and when was it established?","options":["RBRVS, established 1991","DRGs, established 1983","CPT codes, established 1965","UCR schedules, established 1997"],"correct":[1],"sata":false,"why":"Diagnosis-related groups (DRGs) classify hospital payment into set amounts per diagnosis category, established by the amended Social Security Act (PL 98-21) in 1983 — Medicare's prospective payment method for hospitals.","trap":"RBRVS is a real Medicare payment reform, but it applies to physician reimbursement (1989/1991), not to the hospital PPS."},{"topic":"payment mechanisms","subtopic":"paying practitioners (fee-for-service, preferred provider, capitation)","stem":"Under fee-for-service payment, when is the rate for the service determined, and on what basis?","options":["Before care is delivered, based on a negotiated discount","After the practitioner delivers the service, based on usual, customary, and reasonable (UCR) charges the practitioner sets","Before care is delivered, based on a preset per-member fee","After care is delivered, based on a diagnosis-related group"],"correct":[1],"sata":false,"why":"Fee-for-service is the traditional method of paying practitioners: the practitioner sets the cost, delivers the service, and then bills a third-party payer based on UCR charges. It is retrospective in nature.","trap":null},{"topic":"payment mechanisms","subtopic":"paying practitioners (fee-for-service, preferred provider, capitation)","stem":"A managed care organization pays a primary care practitioner a fixed amount per enrolled member each month, regardless of how many services that member actually uses. Which payment method is this?","options":["Fee-for-service","Preferred provider arrangement","Capitation","Retrospective reimbursement"],"correct":[2],"sata":false,"why":"Capitation pays a practitioner a preset, negotiated fee per member (per member per month), agreed before services are delivered, regardless of the volume of care used. It is typically used by managed care organizations.","trap":null},{"topic":"payment mechanisms","subtopic":"paying practitioners (fee-for-service, preferred provider, capitation)","stem":"In a preferred provider arrangement, when is the practitioner's reimbursement rate set relative to care delivery?","options":["After care is delivered, based on the practitioner's own charges","Before care is delivered, negotiated by the third-party payer, with reimbursement capped per patient","Before care is delivered, but only as a per-member-per-month fee","There is no set rate; payment is fully at the payer's discretion"],"correct":[1],"sata":false,"why":"Preferred provider payment, like prospective payment, has the third-party payer negotiate the rate before care is delivered and cap reimbursement per patient.","trap":null},{"topic":"payment mechanisms","subtopic":"paying practitioners (fee-for-service, preferred provider, capitation)","stem":"Which statements correctly pair a practitioner payment method with when its rate is set? Select all that apply.","options":["Fee-for-service — rate set after the service, like retrospective reimbursement","Preferred provider — rate set before the service, like prospective reimbursement","Capitation — rate set before the service is delivered","Capitation — rate set after utilization is tallied for the month","Fee-for-service — rate negotiated in advance by the payer"],"correct":[0,1,2],"sata":true,"why":"Fee-for-service parallels retrospective reimbursement (rate set after care). Preferred provider and capitation both parallel prospective reimbursement (rate set before care) — preferred provider as a negotiated, capped rate, and capitation as a preset per-member-per-month fee paid regardless of use.","trap":"The single most testable contrast in this chapter is the \"when is the rate set\" axis: after = fee-for-service/retrospective (incentive to do more); before = preferred provider/capitation/prospective (incentive to do less, stay in budget)."},{"topic":"payment mechanisms","subtopic":"paying practitioners (fee-for-service, preferred provider, capitation)","stem":"The resource-based relative value scale (RBRVS) was established by which legislation, and when did Medicare adopt it?","options":["The Balanced Budget Act of 1997; adopted 1998","The Omnibus Reconciliation Act of 1989; adopted by Medicare in 1991","The Social Security Act of 1965; adopted 1966","The amended Social Security Act (PL 98-21); adopted 1983"],"correct":[1],"sata":false,"why":"RBRVS was established by the Omnibus Reconciliation Act of 1989 and adopted by Medicare in 1991; it reimburses physicians based on the service provided and the resources required.","trap":"PL 98-21 and 1983 belong to DRGs, not RBRVS — the two prospective-payment reforms are easy to cross-assign."},{"topic":"payment mechanisms","subtopic":"paying practitioners (fee-for-service, preferred provider, capitation)","stem":"The Balanced Budget Act of 1997 changed reimbursement for nurse practitioners and clinical nurse specialists in what way?","options":["It granted them full parity with physician rates under Medicare Part A","It granted them third-party reimbursement under Medicare Part B at 85% of physician rates for the same service","It capitated all NP/CNS services under Medicaid","It excluded NPs and CNSs from Medicare reimbursement entirely"],"correct":[1],"sata":false,"why":"Effective January 1, 1998, the Balanced Budget Act of 1997 granted NPs and CNSs third-party reimbursement for Medicare Part B services at 85% of physician rates for the same service.","trap":"Part B (medical/provider services), not Part A (hospital insurance), is where this reimbursement applies. ---"},{"topic":"public insurance programs","subtopic":"Medicare vs. Medicaid","stem":"A 68-year-old with no history of disability is asking who pays for her hospitalization. Which federal program covers her, and under what title of the Social Security Act?","options":["Medicaid, Title XIX","Medicare, Title XVIII","CHIP, Balanced Budget Act of 1997","Medicaid, Title XVIII"],"correct":[1],"sata":false,"why":"Medicare (Title XVIII, Social Security Act of 1965) is federal insurance for people 65 and older, the permanently disabled, and those with ALS or end-stage renal disease (ESRD). Age alone, without a means test, qualifies her.","trap":null},{"topic":"public insurance programs","subtopic":"Medicare vs. Medicaid","stem":"A low-income family with dependent children needs coverage but no member is 65 or disabled. Which program applies, and what determines eligibility?","options":["Medicare, based on age","Medicaid, based on means testing (income and assets)","CHIP, based on Social Security Act Title XVIII","Medicare Part C, based on income"],"correct":[1],"sata":false,"why":"Medicaid (Title XIX, Social Security Act of 1965) is joint federal/state social insurance for the poor, aged, blind, disabled, and families with dependent children, with eligibility determined by means testing.","trap":"The chapter's own trap: if the stem says \"65-year-old,\" think Medicare; if it says \"low-income family\" or \"needy,\" think Medicaid. Age/disability-based and means-tested are not interchangeable qualifying criteria."},{"topic":"public insurance programs","subtopic":"Medicare vs. Medicaid","stem":"Which statements correctly describe Medicare? Select all that apply.","options":["It is federal insurance administered by CMS","Eligibility is based on age or disability, not income","It is a joint federal/state program requiring matching state funds","Part A is financed through the Medicare Trust Fund and a dedicated payroll tax","Part B is financed through beneficiary premiums and general revenue"],"correct":[0,1,3,4],"sata":true,"why":"Medicare is a federal program (not joint federal/state) administered by CMS, based on age/disability rather than income. Part A draws on the Medicare Trust Fund and dedicated payroll tax; Part B draws on beneficiary premiums plus general revenue.","trap":"\"Joint federal/state\" and \"matching funds\" describe Medicaid, not Medicare — swapping this one feature is the most common way this pair gets inverted."},{"topic":"public insurance programs","subtopic":"Medicare vs. Medicaid","stem":"Which statements correctly describe Medicaid? Select all that apply.","options":["It is administered jointly by the federal government and the states, with matching funds","Eligibility is means-tested (income/assets), not based on age","It is classified as insurance rather than social insurance","It pays for more than half of all long-term care spending in the US","It is financed by federal and state general revenues"],"correct":[0,1,3,4],"sata":true,"why":"Medicaid is a joint federal/state social insurance program financed by federal and state general revenues, with means-tested eligibility, and it pays for more than half of all long-term care spending.","trap":"Medicaid is classified as social insurance (assistance), not straight \"insurance\" — that classification belongs to Medicare."},{"topic":"public insurance programs","subtopic":"Medicare's four parts","stem":"Which part of Medicare covers inpatient hospital stays, home health, hospice, and limited skilled nursing?","options":["Part A","Part B","Part C","Part D"],"correct":[0],"sata":false,"why":"Medicare Part A is hospital insurance, covering inpatient hospital care, home health, hospice, and limited skilled nursing.","trap":null},{"topic":"public insurance programs","subtopic":"Medicare's four parts","stem":"Which part of Medicare covers \"medically necessary\" outpatient provider services, diagnostics, and physiotherapy?","options":["Part A","Part B","Part C","Part D"],"correct":[1],"sata":false,"why":"Medicare Part B is medical insurance, covering medically necessary provider services, outpatient care, home health, diagnostics, and physiotherapy.","trap":null},{"topic":"public insurance programs","subtopic":"Medicare's four parts","stem":"Match each Medicare part to what it covers. Select all correct pairings.","options":["Part A — hospital insurance (inpatient, home health, hospice, limited skilled nursing)","Part B — medical insurance (outpatient/provider services, diagnostics)","Part C — Medicare Advantage plans, since 1999","Part D — prescription drug coverage, added 2006","Part D — hospital insurance financed by payroll tax"],"correct":[0,1,2,3],"sata":true,"why":"Part A is hospital insurance; Part B is medical insurance; Part C is Medicare Advantage (since 1999); Part D is prescription drug coverage (2006). Option E misassigns hospital insurance and payroll-tax financing, which belong to Part A.","trap":null},{"topic":"public insurance programs","subtopic":"CHIP","stem":"The Children's Health Insurance Program (CHIP) was created by which legislation, and whom does it cover?","options":["The Social Security Act of 1965; children who qualify for Medicaid","The Balanced Budget Act of 1997; children in low-income families who earn too much for Medicaid but cannot afford private insurance","The Affordable Care Act of 2010; all uninsured children regardless of income","The Omnibus Reconciliation Act of 1989; children of Medicare beneficiaries"],"correct":[1],"sata":false,"why":"CHIP was created by the Balanced Budget Act of 1997 to cover children in low-income families who earn too much to qualify for Medicaid but cannot afford private insurance.","trap":null},{"topic":"public insurance programs","subtopic":"CHIP","stem":"A nursing student sees \"CHIP\" referenced in both a community health economics context and an earlier chapter on the community-as-client model. Which statement correctly distinguishes the two uses?","options":["They refer to the same program under two different names","In this chapter, CHIP is the Children's Health Insurance Program created by the Balanced Budget Act of 1997; elsewhere, CHIP refers to the Community Health Improvement Process, an unrelated planning framework","CHIP is always an abbreviation for the Community Health Improvement Process, and \"Children's Health Insurance Program\" is the outdated name","The Children's Health Insurance Program was renamed the Community Health Improvement Process under the ACA"],"correct":[1],"sata":false,"why":"This chapter's CHIP is the Children's Health Insurance Program (Balanced Budget Act of 1997), covering children whose families earn too much for Medicaid but not enough to afford private insurance. This is a distinct term from the Community Health Improvement Process (Ch1), which is a planning framework, not an insurance program.","trap":"The identical acronym across chapters is a deliberate trap — do not assume shared meaning just because the letters match. ---"},{"topic":"managed care","subtopic":"HMO vs. PPO","stem":"A managed care enrollee must select a primary care provider who authorizes referrals to specialists, and the practice is paid a preset amount per enrolled member. Which model is this?","options":["Preferred provider organization (PPO)","Health maintenance organization (HMO)","Fee-for-service indemnity plan","Prospective payment system"],"correct":[1],"sata":false,"why":"HMOs are prepaid plans in which enrollees use a defined network and typically need a primary care gatekeeper for referrals; they emphasize prevention and are often paid via capitation.","trap":null},{"topic":"managed care","subtopic":"HMO vs. PPO","stem":"An enrollee can see any provider in a network of \"preferred providers\" who accept negotiated, discounted rates, and can go out-of-network at a higher cost, without needing a referral. Which model is this?","options":["Health maintenance organization (HMO)","Preferred provider organization (PPO)","Capitation-only plan","Diagnosis-related group plan"],"correct":[1],"sata":false,"why":"A PPO is a network of preferred providers who accept negotiated discounted rates; enrollees may go out of network at higher cost, and there is no strict gatekeeper.","trap":null},{"topic":"managed care","subtopic":"HMO vs. PPO","stem":"Which of the following correctly distinguishes HMOs from PPOs? Select all that apply.","options":["HMOs typically require a primary care gatekeeper for referrals; PPOs do not","HMOs are commonly paid via capitation; PPOs rely on negotiated discounted rates","PPOs offer more provider choice and flexibility than HMOs, generally at higher cost","HMOs allow unrestricted out-of-network care at the same cost as in-network care","Both are forms of managed care"],"correct":[0,1,2,4],"sata":true,"why":"HMOs use a gatekeeper model with capitated payment and the tightest network; PPOs offer looser networks with negotiated discounts, more choice, and higher cost, but no strict gatekeeper. Both fall under managed care.","trap":"Unrestricted out-of-network access at no added cost describes neither model — even PPOs charge more for out-of-network care."},{"topic":"managed care","subtopic":"HMO vs. PPO","stem":"Managed care is built on the concept of \"managed competition\" and negotiates with providers on behalf of which unit of enrollees?","options":["Diagnosis-related groups","Covered lives","Capitated households","Preferred beneficiaries"],"correct":[1],"sata":false,"why":"Managed care integrates the financing and delivery of care and negotiates with hospitals and providers for care to its enrollees, referred to as \"covered lives,\" based on managed competition (introduced in the late 1980s–early 1990s). ---","trap":null},{"topic":"cost drivers","subtopic":"factors driving health care costs","stem":"Which factors does the chapter name as drivers of rising health care costs? Select all that apply.","options":["Demographics, including the aging population","Technology and the intensity of services provided per case","Chronic illness","Prescription drugs and inflation","Declining rates of health insurance coverage"],"correct":[0,1,2,3],"sata":true,"why":"The named cost drivers are demographics (population growth and the aging population), technology and intensity, chronic illness, and prescription drugs/inflation.","trap":"Declining coverage rates are a disparities/access issue, not one of the chapter's named cost drivers."},{"topic":"cost drivers","subtopic":"factors driving health care costs","stem":"The chapter specifically calls out which demographic trend, tied to a surge in Medicare enrollment, as a cost driver?","options":["Declining birth rates","The aging population (baby boomers)","Rural-to-urban migration","Increasing life expectancy among the uninsured"],"correct":[1],"sata":false,"why":"The blueprint calls out population growth and the aging population specifically — baby boomers aging into eligibility drive surging Medicare enrollment and cost. ---","trap":null},{"topic":"access and disparities","subtopic":"the uninsured and the working poor","stem":"How did the number of uninsured Americans trend between 2013 and 2016, and to what was the change attributed?","options":["It rose from about 28 million to about 44 million due to rising premiums","It fell from about 44–48 million to about 27.6–28.1 million, following the ACA and Medicaid expansion","It remained flat at approximately 30 million throughout the period","It fell to near zero following the Balanced Budget Act of 1997"],"correct":[1],"sata":false,"why":"The uninsured population fell from roughly 44–48 million in 2013 to roughly 27.6–28.1 million in 2016, after the ACA (PL 111-148, 2010) and Medicaid expansion.","trap":null},{"topic":"access and disparities","subtopic":"the uninsured and the working poor","stem":"More than 80% of the uninsured belong to which group, and why do they remain uninsured?","options":["Retired seniors who are not yet enrolled in Medicare","Working families — the \"working poor\" — who earn too much for Medicaid but cannot afford private coverage","Undocumented immigrants ineligible for any federal program","College students who opted out of parental coverage"],"correct":[1],"sata":false,"why":"More than 80% of the uninsured were in working families (income below 400% of poverty), most with one or more full-time workers — the \"working poor,\" who earn too much to qualify for Medicaid but cannot afford private insurance.","trap":"This is the same earn-too-much-for-Medicaid gap that CHIP is designed to close for children — the adult working-poor population has no equivalent program named in this chapter."}];
+const TITLE = "Chapter 5 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 5";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

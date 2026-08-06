@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 11 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 11</div><h1>Chapter 11 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">1. A nurse administers a live attenuated vaccine to a healthy toddler. Which type of immunity is this intervention producing?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Natural immunity</li><li class="fopt"><span class="mk">B</span>Passive immunization</li><li class="fopt right"><span class="mk">&#10003;</span>Active immunization</li><li class="fopt"><span class="mk">D</span>Herd immunity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Active immunization is the administration of an antigen (infectious agent or vaccine), characterized by an antibody produced by the individual host, as in vaccinating children. It is slower to develop but long lasting.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Calling a vaccine &quot;passive&quot; is the classic distractor — passive immunity is a transferred, ready-made antibody, not a host-generated one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">2. A patient is bitten by a stray dog and, along with the rabies vaccine series, receives human rabies immunoglobulin. What type of immunity does the immunoglobulin provide?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Active immunization</li><li class="fopt right"><span class="mk">&#10003;</span>Passive immunization</li><li class="fopt"><span class="mk">C</span>Natural immunity</li><li class="fopt"><span class="mk">D</span>Herd immunity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Passive immunization is the transfer of a specific antibody from an immunized individual or source (immunoglobulin/antiserum). It works almost immediately but is short lived, serving as a stopgap until active immunity develops.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the rabies postexposure prophylaxis scenario, which uses both passive (immunoglobulin, immediate) and active (vaccine, durable) immunity at once — do not assume only one type is present.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">3. Rabies postexposure prophylaxis after a bite from a possibly rabid animal typically includes human rabies immunoglobulin plus the rabies vaccine series. What does this combination illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Two forms of active immunization given together for redundancy</li><li class="fopt right"><span class="mk">&#10003;</span>Passive immunization (immediate) paired with active immunization (durable)</li><li class="fopt"><span class="mk">C</span>Natural immunity boosted by herd immunity</li><li class="fopt"><span class="mk">D</span>Acquired immunity substituting for active immunization</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the textbook example of passive plus active immunization used together: the immunoglobulin provides an immediate, transferred antibody while the vaccine series stimulates the host to build its own longer-lasting antibody response.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">4. Which statement correctly distinguishes active from passive immunization?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Active immunization is immediate but short lived; passive immunization is slow but durable</li><li class="fopt right"><span class="mk">&#10003;</span>Active immunization involves a host-produced antibody after antigen exposure and is slow but long lasting; passive immunization involves a transferred antibody and is immediate but short lived</li><li class="fopt"><span class="mk">C</span>Both produce antibody responses of similar speed and duration</li><li class="fopt"><span class="mk">D</span>Passive immunization always precedes active immunization in a vaccine schedule</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Active immunization means the host makes its own antibody after receiving an antigen (agent or vaccine); onset is slower but protection is long lasting. Passive immunization transfers a ready-made antibody; protection is almost immediate but short lived, often used as a stopgap.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option A reverses the two — this exact reversal is the single most likely EAQ distractor pattern for this topic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">5. An opossum rarely contracts rabies because of species-determined, innate resistance to the virus. Which type of immunity does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Acquired immunity</li><li class="fopt"><span class="mk">B</span>Active immunization</li><li class="fopt right"><span class="mk">&#10003;</span>Natural immunity</li><li class="fopt"><span class="mk">D</span>Herd immunity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Natural immunity is species-determined, innate resistance to an infectious agent — the opossum-and-rabies example given in the source.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Do not confuse natural immunity (innate, species-level, present from birth) with &quot;naturally acquired active immunity&quot; from having had a disease — that is acquired immunity, not natural immunity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">6. A woman who had measles as a child is now protected against future measles infection. What type of immunity does this represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Natural immunity</li><li class="fopt right"><span class="mk">&#10003;</span>Acquired immunity</li><li class="fopt"><span class="mk">C</span>Passive immunization</li><li class="fopt"><span class="mk">D</span>Herd immunity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Acquired immunity is resistance a host acquires as a result of previous natural exposure to an infectious agent (having measles once protects against future infection). It may be induced by either active or passive immunization.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">7. What is the basis of herd immunity, and what is it the rationale for?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An individual's own antibody response after natural infection; the rationale for isolation precautions</li><li class="fopt right"><span class="mk">&#10003;</span>A high proportion of individuals in a group being immune, which resists invasion and spread of an agent; the rationale for increasing immunization coverage</li><li class="fopt"><span class="mk">C</span>Passive transfer of maternal antibody across a whole community; the rationale for prenatal screening</li><li class="fopt"><span class="mk">D</span>Species-level innate resistance shared across a population; the rationale for vector control</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Herd immunity is the immunity of a group or community — resistance to invasion and spread of an infectious agent based on a high proportion of individuals being immune. It is the basis for programs that increase immunization coverage.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">8. How does &quot;resistance,&quot; as the chapter uses the term, relate to natural and acquired immunity?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Resistance is a synonym for acquired immunity only</li><li class="fopt right"><span class="mk">&#10003;</span>Resistance is the host's ability to withstand infection, made up of both natural and acquired immunity</li><li class="fopt"><span class="mk">C</span>Resistance is a property of the infectious agent, not the host</li><li class="fopt"><span class="mk">D</span>Resistance refers only to herd-level protection</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Resistance is the ability of the host to withstand infection and may involve natural or acquired immunity.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">immunity types</span></div>
+<div class="stem">9. Which statements about immunity types are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Active immunization produces an antibody made by the host and tends to be long lasting</li><li class="fopt right"><span class="mk">&#10003;</span>Passive immunization transfers a ready-made antibody and tends to be short lived</li><li class="fopt right"><span class="mk">&#10003;</span>Acquired immunity can be induced by either active or passive immunization</li><li class="fopt"><span class="mk">D</span>Natural immunity is disease-specific resistance built through past exposure</li><li class="fopt right"><span class="mk">&#10003;</span>Herd immunity depends on a high proportion of a population being immune</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Active immunization is host-produced and durable; passive immunization is transferred and short lived; acquired immunity may follow either active or passive immunization; herd immunity depends on high individual immunization coverage across a group.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Natural immunity is innate and species-determined, not built from past exposure to a specific disease — that description belongs to acquired immunity. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">agent, host, environment (epidemiologic triangle)</span></div>
+<div class="stem">10. A nurse is reviewing the six characteristics of an infectious agent from Box 11.1. Which characteristic refers to the ability to produce a severe pathologic reaction?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Infectivity</li><li class="fopt"><span class="mk">B</span>Pathogenicity</li><li class="fopt right"><span class="mk">&#10003;</span>Virulence</li><li class="fopt"><span class="mk">D</span>Toxicity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Virulence is the ability to produce a severe pathologic reaction, distinct from pathogenicity (the ability to produce any specific clinical reaction at all) and from toxicity (the ability to produce a poisonous reaction).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Pathogenicity and virulence are frequently confused. Pathogenicity asks whether disease results at all; virulence asks how severe that disease is.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">agent, host, environment (epidemiologic triangle)</span></div>
+<div class="stem">11. Which agent characteristic describes the ability to penetrate and spread throughout a tissue?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Antigenicity</li><li class="fopt right"><span class="mk">&#10003;</span>Invasiveness</li><li class="fopt"><span class="mk">C</span>Infectivity</li><li class="fopt"><span class="mk">D</span>Toxicity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Invasiveness is the ability of an infectious agent to penetrate and spread throughout a tissue.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">agent, host, environment (epidemiologic triangle)</span></div>
+<div class="stem">12. Which agent characteristic describes the ability to stimulate an immunologic response in the host?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Antigenicity</li><li class="fopt"><span class="mk">B</span>Pathogenicity</li><li class="fopt"><span class="mk">C</span>Infectivity</li><li class="fopt"><span class="mk">D</span>Virulence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Antigenicity is the ability of an infectious agent to stimulate an immunologic response.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">agent, host, environment (epidemiologic triangle)</span></div>
+<div class="stem">13. Which of the six characteristics of an infectious agent are named in Box 11.1? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Infectivity</li><li class="fopt right"><span class="mk">&#10003;</span>Pathogenicity</li><li class="fopt right"><span class="mk">&#10003;</span>Virulence</li><li class="fopt right"><span class="mk">&#10003;</span>Toxicity</li><li class="fopt right"><span class="mk">&#10003;</span>Invasiveness</li><li class="fopt right"><span class="mk">&#10003;</span>Antigenicity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The six characteristics are infectivity (ability to enter and multiply in the host), pathogenicity (ability to produce a specific clinical reaction), virulence (ability to produce a severe pathologic reaction), toxicity (ability to produce a poisonous reaction), invasiveness (ability to penetrate and spread through tissue), and antigenicity (ability to stimulate an immunologic response).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">agent, host, environment (epidemiologic triangle)</span></div>
+<div class="stem">14. Measles is described as extremely infectious. Which term is this describing?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Virulence — the severity of the resulting disease</li><li class="fopt right"><span class="mk">&#10003;</span>Infectiousness — the ease with which the agent is transmitted from an infected host to other hosts</li><li class="fopt"><span class="mk">C</span>Toxicity — the poisonous reaction it produces</li><li class="fopt"><span class="mk">D</span>Antigenicity — the strength of the immune response it stimulates</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Infectiousness is a measure of the potential ability of an infected host to transmit the infection to other hosts, reflecting the ease with which the agent is transmitted; measles is given as an example of an extremely infectious disease.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Infectiousness (a host-transmission property) is easy to mix up with infectivity (the agent's ability to enter and multiply in a host) — they sound alike but are defined differently in the chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">agent, host, environment (epidemiologic triangle)</span></div>
+<div class="stem">15. Which of the following are the four categories of infectious agents named in the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bacteria, fungi, parasites, viruses</li><li class="fopt"><span class="mk">B</span>Bacteria, viruses, prions, parasites</li><li class="fopt"><span class="mk">C</span>Bacteria, fungi, viruses, toxins</li><li class="fopt"><span class="mk">D</span>Viruses, bacteria, rickettsiae, parasites</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names four categories of infectious agents: bacteria, fungi, parasites, and viruses. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">infection, disease, and the disease timeline</span></div>
+<div class="stem">16. A patient is HIV-positive but has no signs or symptoms of illness. How should this be classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Infected and diseased</li><li class="fopt right"><span class="mk">&#10003;</span>Infected but not diseased</li><li class="fopt"><span class="mk">C</span>Diseased but not infected</li><li class="fopt"><span class="mk">D</span>Neither infected nor diseased</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Infection is the entry, development, and multiplication of the infectious agent in the host; disease is a possible outcome of infection, involving physiologic dysfunction or a pathologic reaction. An asymptomatic HIV-positive person is infected but not diseased; once clinical AIDS develops, the person is both infected and diseased.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Infection does not automatically equal disease — this exact HIV framing appears in the source and is a likely stem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">infection, disease, and the disease timeline</span></div>
+<div class="stem">17. Whether an exposure results in infection depends on which factors, according to the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The infective dose</li><li class="fopt right"><span class="mk">&#10003;</span>The infectivity of the agent</li><li class="fopt right"><span class="mk">&#10003;</span>The immunocompetence of the host</li><li class="fopt"><span class="mk">D</span>The season of the year</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Whether infection occurs depends on the infective dose, the infectivity of the agent, and the immunocompetence of the host.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">infection, disease, and the disease timeline</span></div>
+<div class="stem">18. Why does the chapter emphasize subclinical (inapparent) cases along the disease spectrum?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They are the most severe cases and drive mortality statistics</li><li class="fopt right"><span class="mk">&#10003;</span>They are a source of infection for others but often go undetected and untreated, making them a public health priority</li><li class="fopt"><span class="mk">C</span>They always progress to a carrier state</li><li class="fopt"><span class="mk">D</span>They are excluded from surveillance reporting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The disease spectrum runs from subclinical/inapparent through clinical disease to an outcome (recovery, death, or an in-between state such as a carrier state, complications, or disability). Subclinical cases matter most in public health because they can transmit infection while often remaining outside of care, making them a priority for early diagnosis and treatment.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">infection, disease, and the disease timeline</span></div>
+<div class="stem">19. A patient with hepatitis B is infectious for weeks before symptoms appear and remains infective through the acute phase and possibly for life as a chronic carrier. What does this illustrate about incubation and communicable periods?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They are synonymous and always overlap exactly</li><li class="fopt"><span class="mk">B</span>The incubation period always outlasts the communicable period</li><li class="fopt right"><span class="mk">&#10003;</span>They are not synonymous and can diverge, as HBV shows by being communicable well before and long after the incubation period ends</li><li class="fopt"><span class="mk">D</span>The communicable period only begins after the incubation period is complete</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The incubation period is the time from invasion by an infectious agent to first appearance of signs and symptoms; the communicable period is the interval during which the agent may be transferred to others. They are not synonymous. HBV-infected persons are infectious many weeks before symptoms and remain infective through the acute phase and possibly for life as chronic carriers.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Any option treating incubation period and communicable period as interchangeable is wrong — the chapter explicitly flags them as distinct concepts that can diverge.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">infection, disease, and the disease timeline</span></div>
+<div class="stem">20. A patient with influenza is communicable for approximately how long after clinical onset, according to the chapter's example?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>3 to 5 days</li><li class="fopt"><span class="mk">B</span>2 to 3 weeks</li><li class="fopt"><span class="mk">C</span>Several months</li><li class="fopt"><span class="mk">D</span>For life, as a chronic carrier</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Influenza is given as an example where the communicable period is roughly 3 to 5 days after clinical onset, contrasted with HBV, which is communicable for weeks before symptoms and potentially for life. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">modes of transmission</span></div>
+<div class="stem">21. A pregnant woman with untreated syphilis transmits the infection to her fetus transplacentally. What type of transmission is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Horizontal transmission via common vehicle</li><li class="fopt right"><span class="mk">&#10003;</span>Vertical transmission</li><li class="fopt"><span class="mk">C</span>Horizontal transmission via vector-borne route</li><li class="fopt"><span class="mk">D</span>Horizontal transmission via direct contact</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Vertical transmission is infection passed from parent to offspring via sperm, placenta, milk, or contact in the vaginal canal at birth; transplacental HIV and syphilis are the chapter's named examples.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Mislabeling transplacental spread as horizontal transmission is the source's flagged distractor — vertical transmission is specifically parent-to-offspring.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">modes of transmission</span></div>
+<div class="stem">22. Which four routes make up horizontal transmission, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Vertical, direct contact, airborne, vector-borne</li><li class="fopt right"><span class="mk">&#10003;</span>Direct or indirect contact, common vehicle, airborne, vector-borne</li><li class="fopt"><span class="mk">C</span>Common vehicle, droplet, fecal-oral, transplacental</li><li class="fopt"><span class="mk">D</span>Direct contact, indirect contact, fomite, congenital</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Horizontal transmission is person-to-person spread through one or more of four routes: direct or indirect contact, common vehicle, airborne, or vector-borne. Most STDs are transmitted by direct sexual contact.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">modes of transmission</span></div>
+<div class="stem">23. Hepatitis A is transmitted via contaminated food or water, and hepatitis B via contaminated blood. Which transmission route do both illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Vector-borne</li><li class="fopt"><span class="mk">B</span>Airborne</li><li class="fopt right"><span class="mk">&#10003;</span>Common vehicle</li><li class="fopt"><span class="mk">D</span>Vertical transmission</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Common vehicle transmission is the transportation of an infectious agent from an infected host to a susceptible host via food, water, milk, blood, serum, saliva, or plasma — illustrated by hepatitis A (food/water) and hepatitis B (blood).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">modes of transmission</span></div>
+<div class="stem">24. A mosquito transmits Zika virus by biting a susceptible host after feeding on an infected one. Which transmission route does this describe, and what distinguishes it as biologic rather than mechanical?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Vector-borne; biologic because the vector is necessary for the agent to develop before transmission can occur</li><li class="fopt"><span class="mk">B</span>Common vehicle; mechanical because the mosquito simply carries the virus on its body</li><li class="fopt"><span class="mk">C</span>Airborne; biologic because the virus travels on respiratory droplets</li><li class="fopt"><span class="mk">D</span>Direct contact; mechanical because no intermediate organism is involved</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Vectors are arthropods or invertebrates that transmit an infectious agent by biting or depositing infective material near the host. Biologic transmission means the vector is necessary for the agent to develop, as with mosquitoes and Zika or malaria, or fleas and plague; mechanical transmission means the vector merely carries the agent without it developing further. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">prevention, eradication, and elimination</span></div>
+<div class="stem">25. A community health department runs a campaign teaching families safe food-handling practices before any outbreak occurs. Which level of prevention does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Primary prevention</li><li class="fopt"><span class="mk">B</span>Secondary prevention</li><li class="fopt"><span class="mk">C</span>Tertiary prevention</li><li class="fopt"><span class="mk">D</span>Herd-level prevention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary prevention aims to prevent occurrence; the chapter's own example is educating about safe food-handling in the home. Other primary examples include immunization, &quot;no shots, no school&quot; laws, and sanitation.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">prevention, eradication, and elimination</span></div>
+<div class="stem">26. When a foodborne outbreak is suspected, the health department immediately evaluates the possible source. Which level of prevention does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary prevention</li><li class="fopt right"><span class="mk">&#10003;</span>Secondary prevention</li><li class="fopt"><span class="mk">C</span>Tertiary prevention</li><li class="fopt"><span class="mk">D</span>Eradication</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Secondary prevention aims to prevent spread; the chapter's example is immediately evaluating the possible source of any foodborne outbreak. Screening (TB, HIV, STDs) and contact investigation are also secondary prevention.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">prevention, eradication, and elimination</span></div>
+<div class="stem">27. A patient with a confirmed foodborne infection is treated promptly to prevent complications. Which level of prevention does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary prevention</li><li class="fopt"><span class="mk">B</span>Secondary prevention</li><li class="fopt right"><span class="mk">&#10003;</span>Tertiary prevention</li><li class="fopt"><span class="mk">D</span>Elimination</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Tertiary prevention aims to reduce complications and disability; the chapter's example is immediately treating any foodborne infection, alongside broader treatment and rehabilitation.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">prevention, eradication, and elimination</span></div>
+<div class="stem">28. Which of the following best distinguishes elimination from eradication of a disease?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Elimination removes a disease worldwide; eradication removes it from a large geographic area</li><li class="fopt right"><span class="mk">&#10003;</span>Elimination removes a disease from a large geographic area, such as a country or region; eradication removes it worldwide by ending all transmission</li><li class="fopt"><span class="mk">C</span>The two terms are interchangeable in public health usage</li><li class="fopt"><span class="mk">D</span>Elimination applies only to vaccine-preventable diseases; eradication applies to all infectious diseases</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Elimination means removing a disease from a large geographic area such as a country or region of the world. Eradication means removing it worldwide by ending all transmission through complete extermination of the agent.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Reversing the two definitions is the frequent trap the source explicitly flags.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">prevention, eradication, and elimination</span></div>
+<div class="stem">29. Which disease has been eradicated worldwide, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Polio</li><li class="fopt"><span class="mk">B</span>Measles</li><li class="fopt right"><span class="mk">&#10003;</span>Smallpox</li><li class="fopt"><span class="mk">D</span>Tuberculosis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Smallpox is the only disease that has been eradicated worldwide; the WHO declared eradication on May 8, 1980.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Any answer option describing another disease (such as polio or measles) as &quot;eradicated&quot; is wrong — those are, at most, eliminated from certain regions, not eradicated worldwide.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">prevention, eradication, and elimination</span></div>
+<div class="stem">30. Which are named as goals of the multisystem approach to communicable disease control? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Improve host resistance</li><li class="fopt right"><span class="mk">&#10003;</span>Improve the safety of the environment</li><li class="fopt right"><span class="mk">&#10003;</span>Improve public health systems</li><li class="fopt right"><span class="mk">&#10003;</span>Facilitate social and political change</li><li class="fopt"><span class="mk">E</span>Eliminate all infectious agents from the environment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The four goals are improving host resistance (hygiene, immunization, nutrition), improving environmental safety (sanitation, clean water and air, vector control), improving public health systems (access to care, surveillance, reporting), and facilitating social and political change (individual, group, and community action and legislation). ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">surveillance and reportable disease</span></div>
+<div class="stem">31. Which statement correctly describes the legal basis for reportable disease surveillance in the United States?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Reporting is mandated by federal law and is identical across all states</li><li class="fopt right"><span class="mk">&#10003;</span>Reporting is mandated by state law, and states voluntarily report selected diseases to the CDC through the NNDSS</li><li class="fopt"><span class="mk">C</span>Reporting is entirely voluntary at both the state and federal level</li><li class="fopt"><span class="mk">D</span>The CDC directly mandates which diseases each state must report</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Reporting of notifiable diseases is mandated by state law, not federal law, and varies slightly by state. States voluntarily report selected diseases to the CDC through the National Notifiable Diseases Surveillance System (NNDSS).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A stem implying federal law requires disease reporting is the distractor — reporting is state-mandated, and reporting up to the CDC is voluntary.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">surveillance and reportable disease</span></div>
+<div class="stem">32. Approximately how many National Notifiable Conditions were there in 2019?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>42</li><li class="fopt"><span class="mk">B</span>68</li><li class="fopt right"><span class="mk">&#10003;</span>127</li><li class="fopt"><span class="mk">D</span>210</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In 2019 there were 127 National Notifiable Conditions; the list is revised as diseases emerge or decline. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">bioterrorism agents</span></div>
+<div class="stem">33. What are the two CDC criteria that place an agent among the highest-concern bioterrorism agents?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>High mortality alone</li><li class="fopt"><span class="mk">B</span>Easy dissemination alone</li><li class="fopt right"><span class="mk">&#10003;</span>Potential for high mortality and the ability to be easily disseminated</li><li class="fopt"><span class="mk">D</span>Prior use in a documented bioterrorism attack</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The CDC's highest-concern bioterrorism agents are those with the potential for high mortality AND the ability to be easily disseminated, producing major public panic and social disruption.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option citing only one of the two criteria is incomplete — both must be present.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">bioterrorism agents</span></div>
+<div class="stem">34. Which organisms/agents are named among the CDC's highest-concern bioterrorism agents? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bacillus anthracis (anthrax)</li><li class="fopt right"><span class="mk">&#10003;</span>Yersinia pestis (plague)</li><li class="fopt right"><span class="mk">&#10003;</span>Variola major (smallpox)</li><li class="fopt right"><span class="mk">&#10003;</span>Clostridium botulinum (botulism)</li><li class="fopt right"><span class="mk">&#10003;</span>Francisella tularensis (tularemia)</li><li class="fopt right"><span class="mk">&#10003;</span>Selected hemorrhagic viruses (Filoviridae, Arenaviridae)</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The named highest-concern agents are anthrax (Bacillus anthracis), plague (Yersinia pestis), smallpox (Variola major), botulism (Clostridium botulinum), tularemia (Francisella tularensis), and selected hemorrhagic viruses (Filoviridae and Arenaviridae).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">bioterrorism agents</span></div>
+<div class="stem">35. Regarding smallpox, which statements are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It has been eradicated worldwide since 1979–1980</li><li class="fopt right"><span class="mk">&#10003;</span>The US stopped routine immunization against it in 1982</li><li class="fopt right"><span class="mk">&#10003;</span>Susceptibility is 100% among the unvaccinated</li><li class="fopt right"><span class="mk">&#10003;</span>The vaccinia vaccine can protect even after exposure</li><li class="fopt"><span class="mk">E</span>Case fatality is under 5%</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Smallpox was eradicated worldwide (last natural death in Somalia 1977, WHO declaration 1980); the US stopped routine immunization in 1982; susceptibility is 100% in the unvaccinated; estimated fatality is 20% to 40% or higher; and the vaccinia vaccine can protect even after exposure.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Case fatality is high (20% to 40% or higher), not under 5%. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">influenza, antigenic drift and shift</span></div>
+<div class="stem">36. Which influenza virus type is responsible for large epidemics and is the only type capable of antigenic shift?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Type A</li><li class="fopt"><span class="mk">B</span>Type B</li><li class="fopt"><span class="mk">C</span>Type C</li><li class="fopt"><span class="mk">D</span>Type D</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Influenza type A causes large epidemics and is the only type in which antigenic shift occurs. Type B tends to be more regional, type C is sporadic and mild, and type D infects cattle rather than people.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Attaching antigenic shift to type B or type C is the flagged trap — shift occurs only with type A.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">influenza, antigenic drift and shift</span></div>
+<div class="stem">37. How do antigenic drift and antigenic shift differ?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Drift is a major change producing new subtypes; shift is a minor yearly change</li><li class="fopt right"><span class="mk">&#10003;</span>Drift is a minor antigenic change causing yearly epidemics; shift is a major change producing new subtypes with pandemic potential, occurring only in type A</li><li class="fopt"><span class="mk">C</span>Drift and shift both occur equally across types A, B, and C</li><li class="fopt"><span class="mk">D</span>Drift causes pandemics; shift causes only regional outbreaks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Antigenic drift refers to minor antigenic changes that drive yearly epidemics and regional outbreaks. Antigenic shift refers to major changes producing new subtypes, which occur only with type A; shift plus drift together drive epidemics every few years and pandemics every 10 to 40 years, such as novel influenza A H1N1 in 2009.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Reversing &quot;minor/yearly&quot; and &quot;major/pandemic potential&quot; between drift and shift is the classic inversion distractor. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">vector-borne and zoonotic disease</span></div>
+<div class="stem">38. A patient develops symptomatic rabies several days after being bitten by a bat and not seeking care. What is the appropriate expectation regarding treatment at this point?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Aggressive antiviral treatment reliably cures symptomatic rabies</li><li class="fopt right"><span class="mk">&#10003;</span>There is no successful treatment once symptoms appear; the effective intervention window was postexposure prophylaxis before symptom onset</li><li class="fopt"><span class="mk">C</span>Supportive care alone reliably reverses symptomatic rabies within days</li><li class="fopt"><span class="mk">D</span>The rabies vaccine given now will still prevent progression</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Rabies has no successful treatment once symptoms appear. Postexposure prophylaxis — human rabies immunoglobulin plus the rabies vaccine — can prevent disease only if given promptly before symptom onset.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Any option offering &quot;treatment after symptom onset&quot; for rabies is wrong; the only effective window is before symptoms appear.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">vector-borne and zoonotic disease</span></div>
+<div class="stem">39. What distinguishes biologic transmission from mechanical transmission by a vector?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Biologic transmission requires no vector at all; mechanical transmission always requires a vector</li><li class="fopt right"><span class="mk">&#10003;</span>In biologic transmission the vector is necessary for the agent to develop, as with mosquitoes and malaria; in mechanical transmission the vector simply carries the agent</li><li class="fopt"><span class="mk">C</span>Biologic transmission only applies to fungi; mechanical transmission only applies to bacteria</li><li class="fopt"><span class="mk">D</span>The two terms are interchangeable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Biologic transmission means the vector is necessary for the infectious agent to develop, as with mosquitoes transmitting Zika and malaria, or fleas transmitting plague. Mechanical transmission means the vector simply carries the agent without it developing further.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">vector-borne and zoonotic disease</span></div>
+<div class="stem">40. Why can early Lyme disease (stage I) be harder to diagnose serologically than later stages?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Serologic tests are more accurate in stages II and III than in stage I</li><li class="fopt"><span class="mk">B</span>Serology is never useful for Lyme disease at any stage</li><li class="fopt"><span class="mk">C</span>Erythema migrans only appears in stage III</li><li class="fopt"><span class="mk">D</span>Stage I Lyme disease has no serologic markers whatsoever</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The distinctive erythema migrans skin lesion makes early diagnosis straightforward when present; without it, diagnosis is harder because serologic tests are more accurate in stages II and III than in stage I.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infectious disease</span><span class="chip t2">vector-borne and zoonotic disease</span></div>
+<div class="stem">41. What defines a zoonosis?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An infection that can only be transmitted from human to human</li><li class="fopt right"><span class="mk">&#10003;</span>An infection transmitted from a vertebrate animal to a human under natural conditions, where the agent does not need humans to maintain its life cycle</li><li class="fopt"><span class="mk">C</span>An infection transmitted exclusively by insect vectors</li><li class="fopt"><span class="mk">D</span>An infection that requires a common vehicle such as food or water</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A zoonosis is an infection transmitted from a vertebrate animal to a human under natural conditions, caused by viruses, bacteria, parasites, or fungi; the agents do not need humans to maintain their life cycles. ---</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"infectious disease","subtopic":"immunity types","stem":"A nurse administers a live attenuated vaccine to a healthy toddler. Which type of immunity is this intervention producing?","options":["Natural immunity","Passive immunization","Active immunization","Herd immunity"],"correct":[2],"sata":false,"why":"Active immunization is the administration of an antigen (infectious agent or vaccine), characterized by an antibody produced by the individual host, as in vaccinating children. It is slower to develop but long lasting.","trap":"Calling a vaccine \"passive\" is the classic distractor — passive immunity is a transferred, ready-made antibody, not a host-generated one."},{"topic":"infectious disease","subtopic":"immunity types","stem":"A patient is bitten by a stray dog and, along with the rabies vaccine series, receives human rabies immunoglobulin. What type of immunity does the immunoglobulin provide?","options":["Active immunization","Passive immunization","Natural immunity","Herd immunity"],"correct":[1],"sata":false,"why":"Passive immunization is the transfer of a specific antibody from an immunized individual or source (immunoglobulin/antiserum). It works almost immediately but is short lived, serving as a stopgap until active immunity develops.","trap":"This is the rabies postexposure prophylaxis scenario, which uses both passive (immunoglobulin, immediate) and active (vaccine, durable) immunity at once — do not assume only one type is present."},{"topic":"infectious disease","subtopic":"immunity types","stem":"Rabies postexposure prophylaxis after a bite from a possibly rabid animal typically includes human rabies immunoglobulin plus the rabies vaccine series. What does this combination illustrate?","options":["Two forms of active immunization given together for redundancy","Passive immunization (immediate) paired with active immunization (durable)","Natural immunity boosted by herd immunity","Acquired immunity substituting for active immunization"],"correct":[1],"sata":false,"why":"This is the textbook example of passive plus active immunization used together: the immunoglobulin provides an immediate, transferred antibody while the vaccine series stimulates the host to build its own longer-lasting antibody response.","trap":null},{"topic":"infectious disease","subtopic":"immunity types","stem":"Which statement correctly distinguishes active from passive immunization?","options":["Active immunization is immediate but short lived; passive immunization is slow but durable","Active immunization involves a host-produced antibody after antigen exposure and is slow but long lasting; passive immunization involves a transferred antibody and is immediate but short lived","Both produce antibody responses of similar speed and duration","Passive immunization always precedes active immunization in a vaccine schedule"],"correct":[1],"sata":false,"why":"Active immunization means the host makes its own antibody after receiving an antigen (agent or vaccine); onset is slower but protection is long lasting. Passive immunization transfers a ready-made antibody; protection is almost immediate but short lived, often used as a stopgap.","trap":"Option A reverses the two — this exact reversal is the single most likely EAQ distractor pattern for this topic."},{"topic":"infectious disease","subtopic":"immunity types","stem":"An opossum rarely contracts rabies because of species-determined, innate resistance to the virus. Which type of immunity does this describe?","options":["Acquired immunity","Active immunization","Natural immunity","Herd immunity"],"correct":[2],"sata":false,"why":"Natural immunity is species-determined, innate resistance to an infectious agent — the opossum-and-rabies example given in the source.","trap":"Do not confuse natural immunity (innate, species-level, present from birth) with \"naturally acquired active immunity\" from having had a disease — that is acquired immunity, not natural immunity."},{"topic":"infectious disease","subtopic":"immunity types","stem":"A woman who had measles as a child is now protected against future measles infection. What type of immunity does this represent?","options":["Natural immunity","Acquired immunity","Passive immunization","Herd immunity"],"correct":[1],"sata":false,"why":"Acquired immunity is resistance a host acquires as a result of previous natural exposure to an infectious agent (having measles once protects against future infection). It may be induced by either active or passive immunization.","trap":null},{"topic":"infectious disease","subtopic":"immunity types","stem":"What is the basis of herd immunity, and what is it the rationale for?","options":["An individual's own antibody response after natural infection; the rationale for isolation precautions","A high proportion of individuals in a group being immune, which resists invasion and spread of an agent; the rationale for increasing immunization coverage","Passive transfer of maternal antibody across a whole community; the rationale for prenatal screening","Species-level innate resistance shared across a population; the rationale for vector control"],"correct":[1],"sata":false,"why":"Herd immunity is the immunity of a group or community — resistance to invasion and spread of an infectious agent based on a high proportion of individuals being immune. It is the basis for programs that increase immunization coverage.","trap":null},{"topic":"infectious disease","subtopic":"immunity types","stem":"How does \"resistance,\" as the chapter uses the term, relate to natural and acquired immunity?","options":["Resistance is a synonym for acquired immunity only","Resistance is the host's ability to withstand infection, made up of both natural and acquired immunity","Resistance is a property of the infectious agent, not the host","Resistance refers only to herd-level protection"],"correct":[1],"sata":false,"why":"Resistance is the ability of the host to withstand infection and may involve natural or acquired immunity.","trap":null},{"topic":"infectious disease","subtopic":"immunity types","stem":"Which statements about immunity types are accurate? Select all that apply.","options":["Active immunization produces an antibody made by the host and tends to be long lasting","Passive immunization transfers a ready-made antibody and tends to be short lived","Acquired immunity can be induced by either active or passive immunization","Natural immunity is disease-specific resistance built through past exposure","Herd immunity depends on a high proportion of a population being immune"],"correct":[0,1,2,4],"sata":true,"why":"Active immunization is host-produced and durable; passive immunization is transferred and short lived; acquired immunity may follow either active or passive immunization; herd immunity depends on high individual immunization coverage across a group.","trap":"Natural immunity is innate and species-determined, not built from past exposure to a specific disease — that description belongs to acquired immunity. ---"},{"topic":"infectious disease","subtopic":"agent, host, environment (epidemiologic triangle)","stem":"A nurse is reviewing the six characteristics of an infectious agent from Box 11.1. Which characteristic refers to the ability to produce a severe pathologic reaction?","options":["Infectivity","Pathogenicity","Virulence","Toxicity"],"correct":[2],"sata":false,"why":"Virulence is the ability to produce a severe pathologic reaction, distinct from pathogenicity (the ability to produce any specific clinical reaction at all) and from toxicity (the ability to produce a poisonous reaction).","trap":"Pathogenicity and virulence are frequently confused. Pathogenicity asks whether disease results at all; virulence asks how severe that disease is."},{"topic":"infectious disease","subtopic":"agent, host, environment (epidemiologic triangle)","stem":"Which agent characteristic describes the ability to penetrate and spread throughout a tissue?","options":["Antigenicity","Invasiveness","Infectivity","Toxicity"],"correct":[1],"sata":false,"why":"Invasiveness is the ability of an infectious agent to penetrate and spread throughout a tissue.","trap":null},{"topic":"infectious disease","subtopic":"agent, host, environment (epidemiologic triangle)","stem":"Which agent characteristic describes the ability to stimulate an immunologic response in the host?","options":["Antigenicity","Pathogenicity","Infectivity","Virulence"],"correct":[0],"sata":false,"why":"Antigenicity is the ability of an infectious agent to stimulate an immunologic response.","trap":null},{"topic":"infectious disease","subtopic":"agent, host, environment (epidemiologic triangle)","stem":"Which of the six characteristics of an infectious agent are named in Box 11.1? Select all that apply.","options":["Infectivity","Pathogenicity","Virulence","Toxicity","Invasiveness","Antigenicity"],"correct":[0,1,2,3,4,5],"sata":true,"why":"The six characteristics are infectivity (ability to enter and multiply in the host), pathogenicity (ability to produce a specific clinical reaction), virulence (ability to produce a severe pathologic reaction), toxicity (ability to produce a poisonous reaction), invasiveness (ability to penetrate and spread through tissue), and antigenicity (ability to stimulate an immunologic response).","trap":null},{"topic":"infectious disease","subtopic":"agent, host, environment (epidemiologic triangle)","stem":"Measles is described as extremely infectious. Which term is this describing?","options":["Virulence — the severity of the resulting disease","Infectiousness — the ease with which the agent is transmitted from an infected host to other hosts","Toxicity — the poisonous reaction it produces","Antigenicity — the strength of the immune response it stimulates"],"correct":[1],"sata":false,"why":"Infectiousness is a measure of the potential ability of an infected host to transmit the infection to other hosts, reflecting the ease with which the agent is transmitted; measles is given as an example of an extremely infectious disease.","trap":"Infectiousness (a host-transmission property) is easy to mix up with infectivity (the agent's ability to enter and multiply in a host) — they sound alike but are defined differently in the chapter."},{"topic":"infectious disease","subtopic":"agent, host, environment (epidemiologic triangle)","stem":"Which of the following are the four categories of infectious agents named in the chapter?","options":["Bacteria, fungi, parasites, viruses","Bacteria, viruses, prions, parasites","Bacteria, fungi, viruses, toxins","Viruses, bacteria, rickettsiae, parasites"],"correct":[0],"sata":false,"why":"The chapter names four categories of infectious agents: bacteria, fungi, parasites, and viruses. ---","trap":null},{"topic":"infectious disease","subtopic":"infection, disease, and the disease timeline","stem":"A patient is HIV-positive but has no signs or symptoms of illness. How should this be classified?","options":["Infected and diseased","Infected but not diseased","Diseased but not infected","Neither infected nor diseased"],"correct":[1],"sata":false,"why":"Infection is the entry, development, and multiplication of the infectious agent in the host; disease is a possible outcome of infection, involving physiologic dysfunction or a pathologic reaction. An asymptomatic HIV-positive person is infected but not diseased; once clinical AIDS develops, the person is both infected and diseased.","trap":"Infection does not automatically equal disease — this exact HIV framing appears in the source and is a likely stem."},{"topic":"infectious disease","subtopic":"infection, disease, and the disease timeline","stem":"Whether an exposure results in infection depends on which factors, according to the chapter? Select all that apply.","options":["The infective dose","The infectivity of the agent","The immunocompetence of the host","The season of the year"],"correct":[0,1,2],"sata":true,"why":"Whether infection occurs depends on the infective dose, the infectivity of the agent, and the immunocompetence of the host.","trap":null},{"topic":"infectious disease","subtopic":"infection, disease, and the disease timeline","stem":"Why does the chapter emphasize subclinical (inapparent) cases along the disease spectrum?","options":["They are the most severe cases and drive mortality statistics","They are a source of infection for others but often go undetected and untreated, making them a public health priority","They always progress to a carrier state","They are excluded from surveillance reporting"],"correct":[1],"sata":false,"why":"The disease spectrum runs from subclinical/inapparent through clinical disease to an outcome (recovery, death, or an in-between state such as a carrier state, complications, or disability). Subclinical cases matter most in public health because they can transmit infection while often remaining outside of care, making them a priority for early diagnosis and treatment.","trap":null},{"topic":"infectious disease","subtopic":"infection, disease, and the disease timeline","stem":"A patient with hepatitis B is infectious for weeks before symptoms appear and remains infective through the acute phase and possibly for life as a chronic carrier. What does this illustrate about incubation and communicable periods?","options":["They are synonymous and always overlap exactly","The incubation period always outlasts the communicable period","They are not synonymous and can diverge, as HBV shows by being communicable well before and long after the incubation period ends","The communicable period only begins after the incubation period is complete"],"correct":[2],"sata":false,"why":"The incubation period is the time from invasion by an infectious agent to first appearance of signs and symptoms; the communicable period is the interval during which the agent may be transferred to others. They are not synonymous. HBV-infected persons are infectious many weeks before symptoms and remain infective through the acute phase and possibly for life as chronic carriers.","trap":"Any option treating incubation period and communicable period as interchangeable is wrong — the chapter explicitly flags them as distinct concepts that can diverge."},{"topic":"infectious disease","subtopic":"infection, disease, and the disease timeline","stem":"A patient with influenza is communicable for approximately how long after clinical onset, according to the chapter's example?","options":["3 to 5 days","2 to 3 weeks","Several months","For life, as a chronic carrier"],"correct":[0],"sata":false,"why":"Influenza is given as an example where the communicable period is roughly 3 to 5 days after clinical onset, contrasted with HBV, which is communicable for weeks before symptoms and potentially for life. ---","trap":null},{"topic":"infectious disease","subtopic":"modes of transmission","stem":"A pregnant woman with untreated syphilis transmits the infection to her fetus transplacentally. What type of transmission is this?","options":["Horizontal transmission via common vehicle","Vertical transmission","Horizontal transmission via vector-borne route","Horizontal transmission via direct contact"],"correct":[1],"sata":false,"why":"Vertical transmission is infection passed from parent to offspring via sperm, placenta, milk, or contact in the vaginal canal at birth; transplacental HIV and syphilis are the chapter's named examples.","trap":"Mislabeling transplacental spread as horizontal transmission is the source's flagged distractor — vertical transmission is specifically parent-to-offspring."},{"topic":"infectious disease","subtopic":"modes of transmission","stem":"Which four routes make up horizontal transmission, according to the chapter?","options":["Vertical, direct contact, airborne, vector-borne","Direct or indirect contact, common vehicle, airborne, vector-borne","Common vehicle, droplet, fecal-oral, transplacental","Direct contact, indirect contact, fomite, congenital"],"correct":[1],"sata":false,"why":"Horizontal transmission is person-to-person spread through one or more of four routes: direct or indirect contact, common vehicle, airborne, or vector-borne. Most STDs are transmitted by direct sexual contact.","trap":null},{"topic":"infectious disease","subtopic":"modes of transmission","stem":"Hepatitis A is transmitted via contaminated food or water, and hepatitis B via contaminated blood. Which transmission route do both illustrate?","options":["Vector-borne","Airborne","Common vehicle","Vertical transmission"],"correct":[2],"sata":false,"why":"Common vehicle transmission is the transportation of an infectious agent from an infected host to a susceptible host via food, water, milk, blood, serum, saliva, or plasma — illustrated by hepatitis A (food/water) and hepatitis B (blood).","trap":null},{"topic":"infectious disease","subtopic":"modes of transmission","stem":"A mosquito transmits Zika virus by biting a susceptible host after feeding on an infected one. Which transmission route does this describe, and what distinguishes it as biologic rather than mechanical?","options":["Vector-borne; biologic because the vector is necessary for the agent to develop before transmission can occur","Common vehicle; mechanical because the mosquito simply carries the virus on its body","Airborne; biologic because the virus travels on respiratory droplets","Direct contact; mechanical because no intermediate organism is involved"],"correct":[0],"sata":false,"why":"Vectors are arthropods or invertebrates that transmit an infectious agent by biting or depositing infective material near the host. Biologic transmission means the vector is necessary for the agent to develop, as with mosquitoes and Zika or malaria, or fleas and plague; mechanical transmission means the vector merely carries the agent without it developing further. ---","trap":null},{"topic":"infectious disease","subtopic":"prevention, eradication, and elimination","stem":"A community health department runs a campaign teaching families safe food-handling practices before any outbreak occurs. Which level of prevention does this illustrate?","options":["Primary prevention","Secondary prevention","Tertiary prevention","Herd-level prevention"],"correct":[0],"sata":false,"why":"Primary prevention aims to prevent occurrence; the chapter's own example is educating about safe food-handling in the home. Other primary examples include immunization, \"no shots, no school\" laws, and sanitation.","trap":null},{"topic":"infectious disease","subtopic":"prevention, eradication, and elimination","stem":"When a foodborne outbreak is suspected, the health department immediately evaluates the possible source. Which level of prevention does this illustrate?","options":["Primary prevention","Secondary prevention","Tertiary prevention","Eradication"],"correct":[1],"sata":false,"why":"Secondary prevention aims to prevent spread; the chapter's example is immediately evaluating the possible source of any foodborne outbreak. Screening (TB, HIV, STDs) and contact investigation are also secondary prevention.","trap":null},{"topic":"infectious disease","subtopic":"prevention, eradication, and elimination","stem":"A patient with a confirmed foodborne infection is treated promptly to prevent complications. Which level of prevention does this illustrate?","options":["Primary prevention","Secondary prevention","Tertiary prevention","Elimination"],"correct":[2],"sata":false,"why":"Tertiary prevention aims to reduce complications and disability; the chapter's example is immediately treating any foodborne infection, alongside broader treatment and rehabilitation.","trap":null},{"topic":"infectious disease","subtopic":"prevention, eradication, and elimination","stem":"Which of the following best distinguishes elimination from eradication of a disease?","options":["Elimination removes a disease worldwide; eradication removes it from a large geographic area","Elimination removes a disease from a large geographic area, such as a country or region; eradication removes it worldwide by ending all transmission","The two terms are interchangeable in public health usage","Elimination applies only to vaccine-preventable diseases; eradication applies to all infectious diseases"],"correct":[1],"sata":false,"why":"Elimination means removing a disease from a large geographic area such as a country or region of the world. Eradication means removing it worldwide by ending all transmission through complete extermination of the agent.","trap":"Reversing the two definitions is the frequent trap the source explicitly flags."},{"topic":"infectious disease","subtopic":"prevention, eradication, and elimination","stem":"Which disease has been eradicated worldwide, according to the chapter?","options":["Polio","Measles","Smallpox","Tuberculosis"],"correct":[2],"sata":false,"why":"Smallpox is the only disease that has been eradicated worldwide; the WHO declared eradication on May 8, 1980.","trap":"Any answer option describing another disease (such as polio or measles) as \"eradicated\" is wrong — those are, at most, eliminated from certain regions, not eradicated worldwide."},{"topic":"infectious disease","subtopic":"prevention, eradication, and elimination","stem":"Which are named as goals of the multisystem approach to communicable disease control? Select all that apply.","options":["Improve host resistance","Improve the safety of the environment","Improve public health systems","Facilitate social and political change","Eliminate all infectious agents from the environment"],"correct":[0,1,2,3],"sata":true,"why":"The four goals are improving host resistance (hygiene, immunization, nutrition), improving environmental safety (sanitation, clean water and air, vector control), improving public health systems (access to care, surveillance, reporting), and facilitating social and political change (individual, group, and community action and legislation). ---","trap":null},{"topic":"infectious disease","subtopic":"surveillance and reportable disease","stem":"Which statement correctly describes the legal basis for reportable disease surveillance in the United States?","options":["Reporting is mandated by federal law and is identical across all states","Reporting is mandated by state law, and states voluntarily report selected diseases to the CDC through the NNDSS","Reporting is entirely voluntary at both the state and federal level","The CDC directly mandates which diseases each state must report"],"correct":[1],"sata":false,"why":"Reporting of notifiable diseases is mandated by state law, not federal law, and varies slightly by state. States voluntarily report selected diseases to the CDC through the National Notifiable Diseases Surveillance System (NNDSS).","trap":"A stem implying federal law requires disease reporting is the distractor — reporting is state-mandated, and reporting up to the CDC is voluntary."},{"topic":"infectious disease","subtopic":"surveillance and reportable disease","stem":"Approximately how many National Notifiable Conditions were there in 2019?","options":["42","68","127","210"],"correct":[2],"sata":false,"why":"In 2019 there were 127 National Notifiable Conditions; the list is revised as diseases emerge or decline. ---","trap":null},{"topic":"infectious disease","subtopic":"bioterrorism agents","stem":"What are the two CDC criteria that place an agent among the highest-concern bioterrorism agents?","options":["High mortality alone","Easy dissemination alone","Potential for high mortality and the ability to be easily disseminated","Prior use in a documented bioterrorism attack"],"correct":[2],"sata":false,"why":"The CDC's highest-concern bioterrorism agents are those with the potential for high mortality AND the ability to be easily disseminated, producing major public panic and social disruption.","trap":"An option citing only one of the two criteria is incomplete — both must be present."},{"topic":"infectious disease","subtopic":"bioterrorism agents","stem":"Which organisms/agents are named among the CDC's highest-concern bioterrorism agents? Select all that apply.","options":["Bacillus anthracis (anthrax)","Yersinia pestis (plague)","Variola major (smallpox)","Clostridium botulinum (botulism)","Francisella tularensis (tularemia)","Selected hemorrhagic viruses (Filoviridae, Arenaviridae)"],"correct":[0,1,2,3,4,5],"sata":true,"why":"The named highest-concern agents are anthrax (Bacillus anthracis), plague (Yersinia pestis), smallpox (Variola major), botulism (Clostridium botulinum), tularemia (Francisella tularensis), and selected hemorrhagic viruses (Filoviridae and Arenaviridae).","trap":null},{"topic":"infectious disease","subtopic":"bioterrorism agents","stem":"Regarding smallpox, which statements are accurate? Select all that apply.","options":["It has been eradicated worldwide since 1979–1980","The US stopped routine immunization against it in 1982","Susceptibility is 100% among the unvaccinated","The vaccinia vaccine can protect even after exposure","Case fatality is under 5%"],"correct":[0,1,2,3],"sata":true,"why":"Smallpox was eradicated worldwide (last natural death in Somalia 1977, WHO declaration 1980); the US stopped routine immunization in 1982; susceptibility is 100% in the unvaccinated; estimated fatality is 20% to 40% or higher; and the vaccinia vaccine can protect even after exposure.","trap":"Case fatality is high (20% to 40% or higher), not under 5%. ---"},{"topic":"infectious disease","subtopic":"influenza, antigenic drift and shift","stem":"Which influenza virus type is responsible for large epidemics and is the only type capable of antigenic shift?","options":["Type A","Type B","Type C","Type D"],"correct":[0],"sata":false,"why":"Influenza type A causes large epidemics and is the only type in which antigenic shift occurs. Type B tends to be more regional, type C is sporadic and mild, and type D infects cattle rather than people.","trap":"Attaching antigenic shift to type B or type C is the flagged trap — shift occurs only with type A."},{"topic":"infectious disease","subtopic":"influenza, antigenic drift and shift","stem":"How do antigenic drift and antigenic shift differ?","options":["Drift is a major change producing new subtypes; shift is a minor yearly change","Drift is a minor antigenic change causing yearly epidemics; shift is a major change producing new subtypes with pandemic potential, occurring only in type A","Drift and shift both occur equally across types A, B, and C","Drift causes pandemics; shift causes only regional outbreaks"],"correct":[1],"sata":false,"why":"Antigenic drift refers to minor antigenic changes that drive yearly epidemics and regional outbreaks. Antigenic shift refers to major changes producing new subtypes, which occur only with type A; shift plus drift together drive epidemics every few years and pandemics every 10 to 40 years, such as novel influenza A H1N1 in 2009.","trap":"Reversing \"minor/yearly\" and \"major/pandemic potential\" between drift and shift is the classic inversion distractor. ---"},{"topic":"infectious disease","subtopic":"vector-borne and zoonotic disease","stem":"A patient develops symptomatic rabies several days after being bitten by a bat and not seeking care. What is the appropriate expectation regarding treatment at this point?","options":["Aggressive antiviral treatment reliably cures symptomatic rabies","There is no successful treatment once symptoms appear; the effective intervention window was postexposure prophylaxis before symptom onset","Supportive care alone reliably reverses symptomatic rabies within days","The rabies vaccine given now will still prevent progression"],"correct":[1],"sata":false,"why":"Rabies has no successful treatment once symptoms appear. Postexposure prophylaxis — human rabies immunoglobulin plus the rabies vaccine — can prevent disease only if given promptly before symptom onset.","trap":"Any option offering \"treatment after symptom onset\" for rabies is wrong; the only effective window is before symptoms appear."},{"topic":"infectious disease","subtopic":"vector-borne and zoonotic disease","stem":"What distinguishes biologic transmission from mechanical transmission by a vector?","options":["Biologic transmission requires no vector at all; mechanical transmission always requires a vector","In biologic transmission the vector is necessary for the agent to develop, as with mosquitoes and malaria; in mechanical transmission the vector simply carries the agent","Biologic transmission only applies to fungi; mechanical transmission only applies to bacteria","The two terms are interchangeable"],"correct":[1],"sata":false,"why":"Biologic transmission means the vector is necessary for the infectious agent to develop, as with mosquitoes transmitting Zika and malaria, or fleas transmitting plague. Mechanical transmission means the vector simply carries the agent without it developing further.","trap":null},{"topic":"infectious disease","subtopic":"vector-borne and zoonotic disease","stem":"Why can early Lyme disease (stage I) be harder to diagnose serologically than later stages?","options":["Serologic tests are more accurate in stages II and III than in stage I","Serology is never useful for Lyme disease at any stage","Erythema migrans only appears in stage III","Stage I Lyme disease has no serologic markers whatsoever"],"correct":[0],"sata":false,"why":"The distinctive erythema migrans skin lesion makes early diagnosis straightforward when present; without it, diagnosis is harder because serologic tests are more accurate in stages II and III than in stage I.","trap":null},{"topic":"infectious disease","subtopic":"vector-borne and zoonotic disease","stem":"What defines a zoonosis?","options":["An infection that can only be transmitted from human to human","An infection transmitted from a vertebrate animal to a human under natural conditions, where the agent does not need humans to maintain its life cycle","An infection transmitted exclusively by insect vectors","An infection that requires a common vehicle such as food or water"],"correct":[1],"sata":false,"why":"A zoonosis is an infection transmitted from a vertebrate animal to a human under natural conditions, caused by viruses, bacteria, parasites, or fungi; the agents do not need humans to maintain their life cycles. ---","trap":null}];
+const TITLE = "Chapter 11 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 11";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 31 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 31</div><h1>Chapter 31 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">school nursing foundations</span><span class="chip t2">definition and scope</span></div>
+<div class="stem">1. How does the ANA/NASN (2017) definition characterize school nursing?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A specialty practice focused on providing health care and illness prevention to school-age children, with the goal of facilitating their participation in educational opportunities</li><li class="fopt"><span class="mk">B</span>A generalist practice providing acute care to children during school hours only</li><li class="fopt"><span class="mk">C</span>A subspecialty of pediatric nursing limited to students with diagnosed disabilities</li><li class="fopt"><span class="mk">D</span>A community health role focused exclusively on immunization compliance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>School nursing is defined as a specialty practice focused on providing health care and illness prevention to school-age children, with the goal of facilitating their participation in educational opportunities (ANA &amp; NASN, 2017).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school nursing foundations</span><span class="chip t2">definition and scope</span></div>
+<div class="stem">2. School nursing is best described as which of the following?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Population focused, serving children, families, staff, and teachers in the school</li><li class="fopt"><span class="mk">B</span>Focused solely on individual students with chronic illness</li><li class="fopt"><span class="mk">C</span>Limited to students enrolled in special education programs</li><li class="fopt"><span class="mk">D</span>A service that ends once a child reaches adolescence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>School nursing is population focused: the population is all children, families, staff, and teachers in the school setting, not only individual students.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option limiting the role to direct student care misses the population-level framing the chapter emphasizes. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">sequence and content of the laws</span></div>
+<div class="stem">3. Which law first established the right of children with disabilities to a public education?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Section 504 of the Rehabilitation Act</li><li class="fopt right"><span class="mk">&#10003;</span>Education for All Handicapped Children Act (1975)</li><li class="fopt"><span class="mk">C</span>IDEA (1997)</li><li class="fopt"><span class="mk">D</span>Americans with Disabilities Act (1992)</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Education for All Handicapped Children Act (1975) established the right of children with disabilities to public education, the earliest law in the sequence.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">sequence and content of the laws</span></div>
+<div class="stem">4. A 1997 federal law (PL 105-17) required schools to allow more children with special needs to attend and to accommodate those needs through IEPs and IHPs. Which law is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>No Child Left Behind Act</li><li class="fopt"><span class="mk">B</span>IDEIA</li><li class="fopt right"><span class="mk">&#10003;</span>IDEA</li><li class="fopt"><span class="mk">D</span>Section 504 of the Rehabilitation Act</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>IDEA (PL 105-17, 1997) required schools to accommodate more children with special needs through individualized education plans (IEPs) and individualized health plans (IHPs).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">sequence and content of the laws</span></div>
+<div class="stem">5. In 2004, IDEA was renamed and its coverage was extended. What did the renamed law, IDEIA, extend coverage to?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Until the child turns 18</li><li class="fopt"><span class="mk">B</span>Until the child turns 21</li><li class="fopt right"><span class="mk">&#10003;</span>Until the child turns 22</li><li class="fopt"><span class="mk">D</span>Until the child completes a four-year degree</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Individuals with Disabilities Education Improvement Act (IDEIA), the 2004 renaming of IDEA, extended coverage until the child turns 22.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>18 and 21 are the plausible-sounding distractors; the chapter is explicit that IDEIA's extension goes to age 22.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">sequence and content of the laws</span></div>
+<div class="stem">6. Which 2001 law (PL 107-110) required a healthy environment in schools, and what later replaced it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>IDEA; replaced by IDEIA in 2004</li><li class="fopt right"><span class="mk">&#10003;</span>No Child Left Behind Act; replaced by the Every Student Succeeds Act (ESSA) in 2015</li><li class="fopt"><span class="mk">C</span>Section 504; replaced by the ADA in 1992</li><li class="fopt"><span class="mk">D</span>ESSA; replaced by No Child Left Behind in 2001</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>No Child Left Behind (PL 107-110, 2001) required a healthy environment in schools. It was revised and replaced by the Every Student Succeeds Act (ESSA, PL 114-95) in 2015.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The ESSA/NCLB order is easy to reverse — ESSA came after and replaced NCLB, not the other way around.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">sequence and content of the laws</span></div>
+<div class="stem">7. Which federal law prohibits disability discrimination and requires accommodations, distinct from IDEA?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Section 504 of the Rehabilitation Act</li><li class="fopt"><span class="mk">B</span>FERPA</li><li class="fopt"><span class="mk">C</span>HIPAA</li><li class="fopt"><span class="mk">D</span>Child Nutrition Act</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Section 504 of the Rehabilitation Act prohibits disability discrimination and requires accommodations.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">sequence and content of the laws</span></div>
+<div class="stem">8. Place the following in the correct chronological sequence: ADA, Education for All Handicapped Children Act, IDEA, IDEIA.</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Education for All Handicapped Children Act → ADA → IDEA → IDEIA</li><li class="fopt"><span class="mk">B</span>ADA → Education for All Handicapped Children Act → IDEIA → IDEA</li><li class="fopt"><span class="mk">C</span>IDEA → Education for All Handicapped Children Act → ADA → IDEIA</li><li class="fopt"><span class="mk">D</span>Education for All Handicapped Children Act → IDEA → ADA → IDEIA</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The sequence is Education for All Handicapped Children Act (1975) → ADA (1992) → IDEA (1997) → IDEIA (2004).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">sequence and content of the laws</span></div>
+<div class="stem">9. The increased presence of children with HIV/AIDS, chronic illness, or mental health problems in general education classrooms, and the corresponding demand on the school nurse, is attributed mainly to the effect of which legislation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The Child Nutrition Act and Healthy, Hunger-Free Kids Act</li><li class="fopt"><span class="mk">B</span>FERPA and HIPAA</li><li class="fopt right"><span class="mk">&#10003;</span>IDEA and the ADA</li><li class="fopt"><span class="mk">D</span>No Child Left Behind and ESSA</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>IDEA and the ADA meant more children with HIV/AIDS, chronic illness, or mental health problems are in classrooms, requiring more attention from the school nurse.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">IEP vs. IHP</span></div>
+<div class="stem">10. A child's plan specifying classroom accommodations, instructional modifications, and educational goals is which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An Individualized Health Plan (IHP)</li><li class="fopt right"><span class="mk">&#10003;</span>An Individualized Education Plan (IEP)</li><li class="fopt"><span class="mk">C</span>An emergency plan</li><li class="fopt"><span class="mk">D</span>A Section 504 accommodation log</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The IEP (Individualized Education Plan) is developed so a child's educational experience accommodates special needs.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Confusing the IEP with the IHP is the classic school-nursing trap — IEP is about education, not health care coordination.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">IEP vs. IHP</span></div>
+<div class="stem">11. A plan developed so that a child's health care needs are met in balance with the school experience is which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An Individualized Education Plan (IEP)</li><li class="fopt right"><span class="mk">&#10003;</span>An Individualized Health Plan (IHP)</li><li class="fopt"><span class="mk">C</span>A crisis team protocol</li><li class="fopt"><span class="mk">D</span>A 504 plan</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The IHP (Individualized Health Plan) is developed so a child's health care needs are met in balance with the school experience.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">IEP vs. IHP</span></div>
+<div class="stem">12. Which statement correctly distinguishes the IEP from the IHP?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The IEP addresses health care coordination; the IHP addresses classroom accommodations</li><li class="fopt right"><span class="mk">&#10003;</span>The IEP addresses educational accommodations; the IHP addresses health care needs</li><li class="fopt"><span class="mk">C</span>The IEP and IHP are two names for the same document</li><li class="fopt"><span class="mk">D</span>The IHP is required only for children over age 18</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>IEP = educational accommodations; IHP = health care needs met in balance with the school experience. IDEA requires both for children with special needs.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Swapping the two, or attributing health-care coordination to the IEP, is the distractor the fact bank flags as the classic trap.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">FERPA, HIPAA, and confidentiality</span></div>
+<div class="stem">13. In the school setting, a student's health record is protected primarily under which law?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>HIPAA</li><li class="fopt right"><span class="mk">&#10003;</span>FERPA</li><li class="fopt"><span class="mk">C</span>The ADA</li><li class="fopt"><span class="mk">D</span>IDEIA</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>FERPA protects the privacy of student education records, and in schools, student health records fall under FERPA's protection. HIPAA protects health information generally but is not the operative law for school health records.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>HIPAA is the plausible distractor because it is the health-information law students recognize, but FERPA is the one that governs records in schools.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal legislation</span><span class="chip t2">FERPA, HIPAA, and confidentiality</span></div>
+<div class="stem">14. A teacher, without written authorization, asks the school nurse to see a student's confidential health record to better understand the student's needs. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Share the record, since teachers are part of the educational team</li><li class="fopt"><span class="mk">B</span>Share only a summary, since teachers have a legitimate educational interest</li><li class="fopt right"><span class="mk">&#10003;</span>Decline to release the record; protected information cannot be released to anyone, including teachers or other health personnel, without authorization</li><li class="fopt"><span class="mk">D</span>Share the record only if the student's parent is unreachable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The school nurse must maintain confidentiality. Protected information cannot be released to anyone, including teachers or other health personnel, without authorization — this is the FERPA principle in practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;Teachers have a legitimate educational interest&quot; sounds reasonable but is not how the chapter frames the confidentiality rule; authorization is required regardless of who is asking. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school nurse roles</span><span class="chip t2">role identification</span></div>
+<div class="stem">15. A school nurse coordinates care for a child with complex medical needs and attends parent-teacher meetings to better know the family. Which role is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Consultant</li><li class="fopt right"><span class="mk">&#10003;</span>Case manager</li><li class="fopt"><span class="mk">C</span>Community outreach</li><li class="fopt"><span class="mk">D</span>Researcher</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The case manager role coordinates health care for children with complex needs, including attending parent-teacher meetings to know families.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school nurse roles</span><span class="chip t2">role identification</span></div>
+<div class="stem">16. A school nurse is asked by school administrators to provide health information to guide a policy decision. Which role is this nurse fulfilling?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Direct caregiver</li><li class="fopt"><span class="mk">B</span>Health educator</li><li class="fopt right"><span class="mk">&#10003;</span>Consultant</li><li class="fopt"><span class="mk">D</span>Case manager</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The consultant role is the school nurse providing health information to administrators, teachers, and parent-teacher groups.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school nurse roles</span><span class="chip t2">role identification</span></div>
+<div class="stem">17. Which of the following are recognized school nurse roles? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Direct caregiver</li><li class="fopt right"><span class="mk">&#10003;</span>Case manager</li><li class="fopt right"><span class="mk">&#10003;</span>Consultant</li><li class="fopt right"><span class="mk">&#10003;</span>Researcher</li><li class="fopt right"><span class="mk">&#10003;</span>Community outreach</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Recognized school nurse roles include direct caregiver, case manager, consultant, researcher, community outreach, health educator, and counselor. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">applying the three levels in schools</span></div>
+<div class="stem">18. Which level of prevention represents the largest responsibility for the school nurse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary prevention</li><li class="fopt right"><span class="mk">&#10003;</span>Secondary prevention</li><li class="fopt"><span class="mk">C</span>Tertiary prevention</li><li class="fopt"><span class="mk">D</span>Quaternary prevention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Secondary prevention — early intervention for children who need health care, including caring for ill or injured students and employees, screening and assessing children, and referral to appropriate health agencies — is the largest responsibility for the school nurse.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A stem asking which level occupies most of the school nurse's work is testing this fact specifically; primary (education/vaccination) and tertiary (managing existing conditions) are the distractors.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">applying the three levels in schools</span></div>
+<div class="stem">19. A school nurse conducts vision and hearing screenings and refers a student with a suspected hearing deficit to an audiologist. This is an example of which level of prevention?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary</li><li class="fopt right"><span class="mk">&#10003;</span>Secondary</li><li class="fopt"><span class="mk">C</span>Tertiary</li><li class="fopt"><span class="mk">D</span>Health promotion, not a level of prevention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Secondary prevention includes screening and assessing children and referring them to appropriate health agencies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Mislabeling a required school screening as primary prevention is a common trap — vaccination is primary prevention, but screening is secondary.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">applying the three levels in schools</span></div>
+<div class="stem">20. A school nurse teaches a classroom unit on substance abuse prevention and administers required immunizations. This is an example of which level of prevention?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Primary</li><li class="fopt"><span class="mk">B</span>Secondary</li><li class="fopt"><span class="mk">C</span>Tertiary</li><li class="fopt"><span class="mk">D</span>Secondary, because substance abuse is already a risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary prevention in schools includes educating children and adolescents about substance abuse, injury prevention, and disease prevention, and providing vaccinations.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">applying the three levels in schools</span></div>
+<div class="stem">21. A school nurse manages the daily care of a student with a seizure disorder and helps address the aftermath of bullying for another student. This is an example of which level of prevention?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary</li><li class="fopt"><span class="mk">B</span>Secondary</li><li class="fopt right"><span class="mk">&#10003;</span>Tertiary</li><li class="fopt"><span class="mk">D</span>Primary, because the goal is preventing further harm</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Tertiary prevention is nursing care for children with existing conditions to limit disability and support function; it also addresses bullying and mental health sequelae.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">immunization requirements</span></div>
+<div class="stem">22. What is true about immunization requirements for school enrollment across the United States?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>All states require immunizations before enrollment</li><li class="fopt"><span class="mk">B</span>Only a minority of states require immunizations before enrollment</li><li class="fopt"><span class="mk">C</span>Immunization requirements vary such that several states require none</li><li class="fopt"><span class="mk">D</span>Immunization is recommended but never legally required for enrollment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>All states have laws requiring immunizations before enrollment; this protects the whole community and lowers costs, reflecting herd-immunity logic.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option suggesting immunization is optional, or that some states require none, directly contradicts the chapter. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">frameworks</span><span class="chip t2">WSCC model</span></div>
+<div class="stem">23. The CDC's Whole School, Whole Community, Whole Child (WSCC) model is best described as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A federal law requiring individualized health plans</li><li class="fopt right"><span class="mk">&#10003;</span>A framework that school health programs are encouraged to follow</li><li class="fopt"><span class="mk">C</span>A billing structure for school-based health centers</li><li class="fopt"><span class="mk">D</span>A screening tool for identifying students needing an IEP</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Whole School, Whole Community, Whole Child (WSCC) model is the CDC framework that school health programs are encouraged to follow.</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"school nursing foundations","subtopic":"definition and scope","stem":"How does the ANA/NASN (2017) definition characterize school nursing?","options":["A specialty practice focused on providing health care and illness prevention to school-age children, with the goal of facilitating their participation in educational opportunities","A generalist practice providing acute care to children during school hours only","A subspecialty of pediatric nursing limited to students with diagnosed disabilities","A community health role focused exclusively on immunization compliance"],"correct":[0],"sata":false,"why":"School nursing is defined as a specialty practice focused on providing health care and illness prevention to school-age children, with the goal of facilitating their participation in educational opportunities (ANA & NASN, 2017).","trap":null},{"topic":"school nursing foundations","subtopic":"definition and scope","stem":"School nursing is best described as which of the following?","options":["Population focused, serving children, families, staff, and teachers in the school","Focused solely on individual students with chronic illness","Limited to students enrolled in special education programs","A service that ends once a child reaches adolescence"],"correct":[0],"sata":false,"why":"School nursing is population focused: the population is all children, families, staff, and teachers in the school setting, not only individual students.","trap":"An option limiting the role to direct student care misses the population-level framing the chapter emphasizes. ---"},{"topic":"federal legislation","subtopic":"sequence and content of the laws","stem":"Which law first established the right of children with disabilities to a public education?","options":["Section 504 of the Rehabilitation Act","Education for All Handicapped Children Act (1975)","IDEA (1997)","Americans with Disabilities Act (1992)"],"correct":[1],"sata":false,"why":"The Education for All Handicapped Children Act (1975) established the right of children with disabilities to public education, the earliest law in the sequence.","trap":null},{"topic":"federal legislation","subtopic":"sequence and content of the laws","stem":"A 1997 federal law (PL 105-17) required schools to allow more children with special needs to attend and to accommodate those needs through IEPs and IHPs. Which law is this?","options":["No Child Left Behind Act","IDEIA","IDEA","Section 504 of the Rehabilitation Act"],"correct":[2],"sata":false,"why":"IDEA (PL 105-17, 1997) required schools to accommodate more children with special needs through individualized education plans (IEPs) and individualized health plans (IHPs).","trap":null},{"topic":"federal legislation","subtopic":"sequence and content of the laws","stem":"In 2004, IDEA was renamed and its coverage was extended. What did the renamed law, IDEIA, extend coverage to?","options":["Until the child turns 18","Until the child turns 21","Until the child turns 22","Until the child completes a four-year degree"],"correct":[2],"sata":false,"why":"The Individuals with Disabilities Education Improvement Act (IDEIA), the 2004 renaming of IDEA, extended coverage until the child turns 22.","trap":"18 and 21 are the plausible-sounding distractors; the chapter is explicit that IDEIA's extension goes to age 22."},{"topic":"federal legislation","subtopic":"sequence and content of the laws","stem":"Which 2001 law (PL 107-110) required a healthy environment in schools, and what later replaced it?","options":["IDEA; replaced by IDEIA in 2004","No Child Left Behind Act; replaced by the Every Student Succeeds Act (ESSA) in 2015","Section 504; replaced by the ADA in 1992","ESSA; replaced by No Child Left Behind in 2001"],"correct":[1],"sata":false,"why":"No Child Left Behind (PL 107-110, 2001) required a healthy environment in schools. It was revised and replaced by the Every Student Succeeds Act (ESSA, PL 114-95) in 2015.","trap":"The ESSA/NCLB order is easy to reverse — ESSA came after and replaced NCLB, not the other way around."},{"topic":"federal legislation","subtopic":"sequence and content of the laws","stem":"Which federal law prohibits disability discrimination and requires accommodations, distinct from IDEA?","options":["Section 504 of the Rehabilitation Act","FERPA","HIPAA","Child Nutrition Act"],"correct":[0],"sata":false,"why":"Section 504 of the Rehabilitation Act prohibits disability discrimination and requires accommodations.","trap":null},{"topic":"federal legislation","subtopic":"sequence and content of the laws","stem":"Place the following in the correct chronological sequence: ADA, Education for All Handicapped Children Act, IDEA, IDEIA.","options":["Education for All Handicapped Children Act → ADA → IDEA → IDEIA","ADA → Education for All Handicapped Children Act → IDEIA → IDEA","IDEA → Education for All Handicapped Children Act → ADA → IDEIA","Education for All Handicapped Children Act → IDEA → ADA → IDEIA"],"correct":[0],"sata":false,"why":"The sequence is Education for All Handicapped Children Act (1975) → ADA (1992) → IDEA (1997) → IDEIA (2004).","trap":null},{"topic":"federal legislation","subtopic":"sequence and content of the laws","stem":"The increased presence of children with HIV/AIDS, chronic illness, or mental health problems in general education classrooms, and the corresponding demand on the school nurse, is attributed mainly to the effect of which legislation?","options":["The Child Nutrition Act and Healthy, Hunger-Free Kids Act","FERPA and HIPAA","IDEA and the ADA","No Child Left Behind and ESSA"],"correct":[2],"sata":false,"why":"IDEA and the ADA meant more children with HIV/AIDS, chronic illness, or mental health problems are in classrooms, requiring more attention from the school nurse.","trap":null},{"topic":"federal legislation","subtopic":"IEP vs. IHP","stem":"A child's plan specifying classroom accommodations, instructional modifications, and educational goals is which of the following?","options":["An Individualized Health Plan (IHP)","An Individualized Education Plan (IEP)","An emergency plan","A Section 504 accommodation log"],"correct":[1],"sata":false,"why":"The IEP (Individualized Education Plan) is developed so a child's educational experience accommodates special needs.","trap":"Confusing the IEP with the IHP is the classic school-nursing trap — IEP is about education, not health care coordination."},{"topic":"federal legislation","subtopic":"IEP vs. IHP","stem":"A plan developed so that a child's health care needs are met in balance with the school experience is which of the following?","options":["An Individualized Education Plan (IEP)","An Individualized Health Plan (IHP)","A crisis team protocol","A 504 plan"],"correct":[1],"sata":false,"why":"The IHP (Individualized Health Plan) is developed so a child's health care needs are met in balance with the school experience.","trap":null},{"topic":"federal legislation","subtopic":"IEP vs. IHP","stem":"Which statement correctly distinguishes the IEP from the IHP?","options":["The IEP addresses health care coordination; the IHP addresses classroom accommodations","The IEP addresses educational accommodations; the IHP addresses health care needs","The IEP and IHP are two names for the same document","The IHP is required only for children over age 18"],"correct":[1],"sata":false,"why":"IEP = educational accommodations; IHP = health care needs met in balance with the school experience. IDEA requires both for children with special needs.","trap":"Swapping the two, or attributing health-care coordination to the IEP, is the distractor the fact bank flags as the classic trap."},{"topic":"federal legislation","subtopic":"FERPA, HIPAA, and confidentiality","stem":"In the school setting, a student's health record is protected primarily under which law?","options":["HIPAA","FERPA","The ADA","IDEIA"],"correct":[1],"sata":false,"why":"FERPA protects the privacy of student education records, and in schools, student health records fall under FERPA's protection. HIPAA protects health information generally but is not the operative law for school health records.","trap":"HIPAA is the plausible distractor because it is the health-information law students recognize, but FERPA is the one that governs records in schools."},{"topic":"federal legislation","subtopic":"FERPA, HIPAA, and confidentiality","stem":"A teacher, without written authorization, asks the school nurse to see a student's confidential health record to better understand the student's needs. What should the nurse do?","options":["Share the record, since teachers are part of the educational team","Share only a summary, since teachers have a legitimate educational interest","Decline to release the record; protected information cannot be released to anyone, including teachers or other health personnel, without authorization","Share the record only if the student's parent is unreachable"],"correct":[2],"sata":false,"why":"The school nurse must maintain confidentiality. Protected information cannot be released to anyone, including teachers or other health personnel, without authorization — this is the FERPA principle in practice.","trap":"\"Teachers have a legitimate educational interest\" sounds reasonable but is not how the chapter frames the confidentiality rule; authorization is required regardless of who is asking. ---"},{"topic":"school nurse roles","subtopic":"role identification","stem":"A school nurse coordinates care for a child with complex medical needs and attends parent-teacher meetings to better know the family. Which role is this?","options":["Consultant","Case manager","Community outreach","Researcher"],"correct":[1],"sata":false,"why":"The case manager role coordinates health care for children with complex needs, including attending parent-teacher meetings to know families.","trap":null},{"topic":"school nurse roles","subtopic":"role identification","stem":"A school nurse is asked by school administrators to provide health information to guide a policy decision. Which role is this nurse fulfilling?","options":["Direct caregiver","Health educator","Consultant","Case manager"],"correct":[2],"sata":false,"why":"The consultant role is the school nurse providing health information to administrators, teachers, and parent-teacher groups.","trap":null},{"topic":"school nurse roles","subtopic":"role identification","stem":"Which of the following are recognized school nurse roles? Select all that apply.","options":["Direct caregiver","Case manager","Consultant","Researcher","Community outreach"],"correct":[0,1,2,3,4],"sata":true,"why":"Recognized school nurse roles include direct caregiver, case manager, consultant, researcher, community outreach, health educator, and counselor. ---","trap":null},{"topic":"levels of prevention","subtopic":"applying the three levels in schools","stem":"Which level of prevention represents the largest responsibility for the school nurse?","options":["Primary prevention","Secondary prevention","Tertiary prevention","Quaternary prevention"],"correct":[1],"sata":false,"why":"Secondary prevention — early intervention for children who need health care, including caring for ill or injured students and employees, screening and assessing children, and referral to appropriate health agencies — is the largest responsibility for the school nurse.","trap":"A stem asking which level occupies most of the school nurse's work is testing this fact specifically; primary (education/vaccination) and tertiary (managing existing conditions) are the distractors."},{"topic":"levels of prevention","subtopic":"applying the three levels in schools","stem":"A school nurse conducts vision and hearing screenings and refers a student with a suspected hearing deficit to an audiologist. This is an example of which level of prevention?","options":["Primary","Secondary","Tertiary","Health promotion, not a level of prevention"],"correct":[1],"sata":false,"why":"Secondary prevention includes screening and assessing children and referring them to appropriate health agencies.","trap":"Mislabeling a required school screening as primary prevention is a common trap — vaccination is primary prevention, but screening is secondary."},{"topic":"levels of prevention","subtopic":"applying the three levels in schools","stem":"A school nurse teaches a classroom unit on substance abuse prevention and administers required immunizations. This is an example of which level of prevention?","options":["Primary","Secondary","Tertiary","Secondary, because substance abuse is already a risk"],"correct":[0],"sata":false,"why":"Primary prevention in schools includes educating children and adolescents about substance abuse, injury prevention, and disease prevention, and providing vaccinations.","trap":null},{"topic":"levels of prevention","subtopic":"applying the three levels in schools","stem":"A school nurse manages the daily care of a student with a seizure disorder and helps address the aftermath of bullying for another student. This is an example of which level of prevention?","options":["Primary","Secondary","Tertiary","Primary, because the goal is preventing further harm"],"correct":[2],"sata":false,"why":"Tertiary prevention is nursing care for children with existing conditions to limit disability and support function; it also addresses bullying and mental health sequelae.","trap":null},{"topic":"levels of prevention","subtopic":"immunization requirements","stem":"What is true about immunization requirements for school enrollment across the United States?","options":["All states require immunizations before enrollment","Only a minority of states require immunizations before enrollment","Immunization requirements vary such that several states require none","Immunization is recommended but never legally required for enrollment"],"correct":[0],"sata":false,"why":"All states have laws requiring immunizations before enrollment; this protects the whole community and lowers costs, reflecting herd-immunity logic.","trap":"An option suggesting immunization is optional, or that some states require none, directly contradicts the chapter. ---"},{"topic":"frameworks","subtopic":"WSCC model","stem":"The CDC's Whole School, Whole Community, Whole Child (WSCC) model is best described as which of the following?","options":["A federal law requiring individualized health plans","A framework that school health programs are encouraged to follow","A billing structure for school-based health centers","A screening tool for identifying students needing an IEP"],"correct":[1],"sata":false,"why":"The Whole School, Whole Community, Whole Child (WSCC) model is the CDC framework that school health programs are encouraged to follow.","trap":null}];
+const TITLE = "Chapter 31 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 31";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

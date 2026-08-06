@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 17 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 17</div><h1>Chapter 17 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">disease surveillance</span><span class="chip t2">definitions and purpose</span></div>
+<div class="stem">1. Which four activities are named in the textbook's definition of disease surveillance?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Screening, diagnosis, treatment, and follow-up</li><li class="fopt right"><span class="mk">&#10003;</span>Collection, analysis, interpretation, and dissemination of specific health data</li><li class="fopt"><span class="mk">C</span>Notification, investigation, quarantine, and reporting</li><li class="fopt"><span class="mk">D</span>Detection, confirmation, control, and evaluation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Disease surveillance is defined as &quot;the ongoing systematic collection, analysis, interpretation, and dissemination of specific health data for use in public health.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Notification/investigation/quarantine/reporting describe outbreak response activities, not the definition of surveillance itself.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disease surveillance</span><span class="chip t2">definitions and purpose</span></div>
+<div class="stem">2. According to the CDC, disease surveillance serves as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An optional adjunct to clinical practice</li><li class="fopt right"><span class="mk">&#10003;</span>The foundation of public health practice</li><li class="fopt"><span class="mk">C</span>A function reserved for federal agencies only</li><li class="fopt"><span class="mk">D</span>A substitute for epidemiologic investigation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The CDC indicates that public health surveillance is the foundation of public health practice.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disease surveillance</span><span class="chip t2">process vs. outcome data</span></div>
+<div class="stem">3. A health department tracks the proportion of the eligible population vaccinated against influenza in a given year. What type of data is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Outcome data</li><li class="fopt right"><span class="mk">&#10003;</span>Process data</li><li class="fopt"><span class="mk">C</span>Sentinel data</li><li class="fopt"><span class="mk">D</span>Syndromic data</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Process data focus on what is done — services provided or protocols for care delivery. The proportion of the eligible population vaccinated is the textbook's own example of process data.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disease surveillance</span><span class="chip t2">process vs. outcome data</span></div>
+<div class="stem">4. A health department tracks the incidence rate of new influenza cases in that same population over the same year. What type of data is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Process data</li><li class="fopt right"><span class="mk">&#10003;</span>Outcome data</li><li class="fopt"><span class="mk">C</span>Registry data</li><li class="fopt"><span class="mk">D</span>Algorithmic data</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Outcome data focus on changes in health status; incidence rates of influenza are the textbook's own example of outcome data.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror image of the vaccination-proportion item. Process = what is done (an action/service); outcome = what happened to health status as a result. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">notifiable disease reporting</span><span class="chip t2">legal basis and national/state structure</span></div>
+<div class="stem">5. A nurse assumes that because a disease is on the CDC's nationally notifiable disease list, every state legally requires it to be reported. Is this assumption correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Yes, national notifiable status automatically creates a legal reporting mandate in every state</li><li class="fopt right"><span class="mk">&#10003;</span>No — reporting requirements are mandated by state law or regulation, and states differ in their lists, so not all nationally notifiable diseases are legally mandated for reporting in a given state</li><li class="fopt"><span class="mk">C</span>Yes, but only for diseases added to the list after 1997</li><li class="fopt"><span class="mk">D</span>No — only CDC WONDER-listed diseases carry any legal mandate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Requirements for reporting diseases are mandated by law or regulation at the state level. Each state and Washington, DC, differs in its list of reportable diseases, so not all nationally notifiable diseases are legally mandated for reporting in a given state.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The national list (NNDSS) is a CDC/CSTE reporting arrangement between states and the CDC, not itself a law compelling reporting within a state — that authority is state law.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">notifiable disease reporting</span><span class="chip t2">legal basis and national/state structure</span></div>
+<div class="stem">6. A nurse wants to know exactly which diseases are legally reportable in her own state. Where does the chapter direct her to look?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The CDC WONDER database</li><li class="fopt"><span class="mk">B</span>The Morbidity and Mortality Weekly Report</li><li class="fopt right"><span class="mk">&#10003;</span>Her state health department's website</li><li class="fopt"><span class="mk">D</span>The National Electronic Disease Surveillance System</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states, &quot;To determine which of the national notifiable diseases are reportable in your state, go to your state health department website.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">notifiable disease reporting</span><span class="chip t2">legal basis and national/state structure</span></div>
+<div class="stem">7. Weekly national notifiable disease data from the 50 states, US territories, New York City, and DC are published in which source?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>CDC WONDER</li><li class="fopt right"><span class="mk">&#10003;</span>The Morbidity and Mortality Weekly Report (MMWR)</li><li class="fopt"><span class="mk">C</span>The National Vital Statistics System</li><li class="fopt"><span class="mk">D</span>The National Program of Cancer Registries</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Data are published weekly in the MMWR; annual updated final reports are published in CDC WONDER.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>CDC WONDER holds the annual, finalized data — MMWR is the weekly publication. Swapping &quot;weekly&quot; and &quot;annual&quot; between the two is the standard distractor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">notifiable disease reporting</span><span class="chip t2">case definitions</span></div>
+<div class="stem">8. A case definition may be built from which types of criteria?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Clinical symptoms only</li><li class="fopt"><span class="mk">B</span>Laboratory values only</li><li class="fopt right"><span class="mk">&#10003;</span>Clinical symptoms, laboratory values, and epidemiologic criteria</li><li class="fopt"><span class="mk">D</span>Epidemiologic criteria only, per CDC/CSTE policy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Case definitions may include clinical symptoms, laboratory values, and epidemiologic criteria, such as exposure to a known or suspected case.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">notifiable disease reporting</span><span class="chip t2">case definitions</span></div>
+<div class="stem">9. What are the three classifications used to describe the strength of evidence for a case?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Confirmed, notifiable, and reportable</li><li class="fopt right"><span class="mk">&#10003;</span>Suspected, probable, and confirmed</li><li class="fopt"><span class="mk">C</span>Sporadic, endemic, and epidemic</li><li class="fopt"><span class="mk">D</span>Primary, secondary, and tertiary</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Cases are classified by strength of evidence as suspected, probable, or confirmed.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">notifiable disease reporting</span><span class="chip t2">case definitions</span></div>
+<div class="stem">10. A local health department identifies a possible case that does not yet meet the formal case definition for a reportable disease because lab confirmation is pending. What is the correct action?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Wait until the case definition is formally met before taking any public health action</li><li class="fopt right"><span class="mk">&#10003;</span>Take action to control the disease as soon as the problem is identified, even without enough information to meet the case definition</li><li class="fopt"><span class="mk">C</span>Refer the decision to the CDC before acting</li><li class="fopt"><span class="mk">D</span>Take no action unless the patient develops severe symptoms</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states plainly that action to control a disease should be taken as soon as a problem is identified, although there may not be enough information to meet the case definition. The case definition should not be used as the only criterion for taking public health action.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Waiting for laboratory confirmation before acting is the classic wrong answer — the case definition is a reporting/monitoring tool, not a gate on control action. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">surveillance systems</span><span class="chip t2">the four types</span></div>
+<div class="stem">11. A physician's office sends a case report to the local health department after diagnosing a reportable illness. Which type of surveillance system does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Active</li><li class="fopt right"><span class="mk">&#10003;</span>Passive</li><li class="fopt"><span class="mk">C</span>Sentinel</li><li class="fopt"><span class="mk">D</span>Special</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In a passive system, case reports are sent to local health departments by health care providers, or laboratory reports are sent to the local health department. Reports come in to the health department.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">surveillance systems</span><span class="chip t2">the four types</span></div>
+<div class="stem">12. Several schoolchildren become ill after eating lunch in the cafeteria. The health department nurse begins contacting local providers, names the suspected illness, and actively gathers data on existing cases to determine the scope of the problem. Which type of surveillance system does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Passive</li><li class="fopt right"><span class="mk">&#10003;</span>Active</li><li class="fopt"><span class="mk">C</span>Sentinel</li><li class="fopt"><span class="mk">D</span>Syndromic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the chapter's own example of an active surveillance system: the nurse, as a health department employee, begins a search for cases through contacts with local providers and agencies, names the disease, and gathers data to determine the magnitude of the problem.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A distractor may frame active surveillance as merely &quot;faster&quot; or &quot;automated&quot; reporting. Its defining feature is who initiates the search — the health department goes out looking, rather than waiting for reports to come in.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">surveillance systems</span><span class="chip t2">the four types</span></div>
+<div class="stem">13. Which statement correctly describes a sentinel surveillance system?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It only ever monitors a single named disease</li><li class="fopt right"><span class="mk">&#10003;</span>A disease or an event may be the sentinel, or a population may be the sentinel</li><li class="fopt"><span class="mk">C</span>It is always passive in direction of effort</li><li class="fopt"><span class="mk">D</span>It requires automated real-time data systems</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states explicitly that a disease or event may be the sentinel, or a population may be the sentinel; a sample of health care providers or agencies is asked to report the problem.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Distractors typically offer only the disease half of this definition and omit the population half.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">surveillance systems</span><span class="chip t2">the four types</span></div>
+<div class="stem">14. A special surveillance system, such as a syndromic surveillance system, is best described as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A system limited strictly to passive case reporting</li><li class="fopt right"><span class="mk">&#10003;</span>A system developed for collecting particular types of data, which may combine active, passive, and/or sentinel elements</li><li class="fopt"><span class="mk">C</span>A system used only during declared bioterrorism events</li><li class="fopt"><span class="mk">D</span>A system that reports exclusively to WHO</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Special surveillance systems are developed for collecting particular types of data and may be a combination of active, passive, and/or sentinel systems; syndromic surveillance systems are the given example.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">surveillance systems</span><span class="chip t2">the four types</span></div>
+<div class="stem">15. Although all surveillance systems are important, which two is the public health nurse most likely to use?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Sentinel and special</li><li class="fopt right"><span class="mk">&#10003;</span>Active and passive</li><li class="fopt"><span class="mk">C</span>Syndromic and sentinel</li><li class="fopt"><span class="mk">D</span>Special and active only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states, &quot;Although all of the systems are important, the public health nurse is most likely to use the active or passive systems.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">surveillance systems</span><span class="chip t2">the four types</span></div>
+<div class="stem">16. What is a stated weakness of a passive surveillance system?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It cannot be used for chronic disease</li><li class="fopt right"><span class="mk">&#10003;</span>A disease outbreak may already be occurring before all reports are received by the state health department</li><li class="fopt"><span class="mk">C</span>It requires more staff than an active system</li><li class="fopt"><span class="mk">D</span>It cannot generate weekly reports</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Because a passive system has limits, a disease outbreak may be occurring before all reports are received by the state health department. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">magnitude terms</span></div>
+<div class="stem">17. Which term describes the persistent, usual presence of a disease at a low to moderate number of cases, and provides the baseline against which increases are measured?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Sporadic</li><li class="fopt right"><span class="mk">&#10003;</span>Endemic</li><li class="fopt"><span class="mk">C</span>Hyperendemic</li><li class="fopt"><span class="mk">D</span>Epidemic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Endemic is a persistent (usual) presence with a low to moderate number of cases of the disease or event in a population, and provides the baseline.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">magnitude terms</span></div>
+<div class="stem">18. A disease is highly prevalent and commonly acquired early in life. Counterintuitively, its prevalence decreases as age increases. Which term describes this pattern?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hyperendemic</li><li class="fopt"><span class="mk">B</span>Sporadic</li><li class="fopt right"><span class="mk">&#10003;</span>Holoendemic</li><li class="fopt"><span class="mk">D</span>Epidemic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Holoendemic describes a highly prevalent problem commonly acquired early in life, in which prevalence decreases as age increases — the reverse of what most conditions do.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is stated as counterintuitive precisely because most health problems become more prevalent with age; holoendemic is the exception, not the rule.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">magnitude terms</span></div>
+<div class="stem">19. A population has a persistently high number of cholera cases well above the low-to-moderate baseline typical elsewhere. Which term applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Endemic</li><li class="fopt right"><span class="mk">&#10003;</span>Hyperendemic</li><li class="fopt"><span class="mk">C</span>Holoendemic</li><li class="fopt"><span class="mk">D</span>Pandemic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hyperendemic describes a persistently (usually) high number of cases; the chapter's example is the high cholera incidence rate among Asian and Pacific Islanders.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">magnitude terms</span></div>
+<div class="stem">20. Occasional cases of a disease occur at irregular intervals with no consistent pattern. Which term applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Endemic</li><li class="fopt"><span class="mk">B</span>Epidemic</li><li class="fopt right"><span class="mk">&#10003;</span>Sporadic</li><li class="fopt"><span class="mk">D</span>Mixed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sporadic describes an irregular pattern with occasional cases found at irregular intervals.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">magnitude terms</span></div>
+<div class="stem">21. The occurrence of a disease within an area clearly in excess of expected (endemic) levels for a given time period is often called which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The pandemic</li><li class="fopt right"><span class="mk">&#10003;</span>The outbreak</li><li class="fopt"><span class="mk">C</span>The sentinel event</li><li class="fopt"><span class="mk">D</span>The cluster</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An epidemic is the occurrence of a disease clearly in excess of expected (endemic) levels for a given time period; this is often called the outbreak. A pandemic is an epidemic spread over several countries or continents.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">outbreak patterns</span></div>
+<div class="stem">22. In an outbreak, all persons exposed become ill at the same time, during one incubation period. Which outbreak pattern does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Propagated</li><li class="fopt right"><span class="mk">&#10003;</span>Point source</li><li class="fopt"><span class="mk">C</span>Intermittent source</li><li class="fopt"><span class="mk">D</span>Mixed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A point source outbreak is one in which all persons exposed become ill at the same time, during one incubation period.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The discriminator to memorize is incubation periods, not severity or case count: point source = one incubation period, everyone at once; propagated = more than one incubation period, no common source.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">outbreak patterns</span></div>
+<div class="stem">23. An outbreak has no common source and spreads gradually from person to person over more than one incubation period, as with tuberculosis. Which outbreak pattern does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Point source</li><li class="fopt"><span class="mk">B</span>Common source</li><li class="fopt right"><span class="mk">&#10003;</span>Propagated</li><li class="fopt"><span class="mk">D</span>Intermittent or continuous source</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A propagated outbreak does not have a common source and spreads gradually from person to person over more than one incubation period; tuberculosis spreading from one person to another is the textbook example.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">outbreak patterns</span></div>
+<div class="stem">24. A group is exposed to a single common noxious influence, such as the release of a toxic gas into a subway or water system. Which outbreak pattern does this describe?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Common source</li><li class="fopt"><span class="mk">B</span>Mixed</li><li class="fopt"><span class="mk">C</span>Propagated</li><li class="fopt"><span class="mk">D</span>Sentinel</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A common source outbreak is one in which a group is exposed to a common noxious influence; the textbook example is the release of ricin into a subway system and into a US water system.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">outbreak patterns</span></div>
+<div class="stem">25. A restaurant chain's food poisoning cases appear over several days to weeks, traced to a shipment of contaminated green onions purchased at different times. Which outbreak pattern does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Point source</li><li class="fopt right"><span class="mk">&#10003;</span>Intermittent or continuous source</li><li class="fopt"><span class="mk">C</span>Propagated</li><li class="fopt"><span class="mk">D</span>Mixed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An intermittent or continuous source outbreak involves cases exposed over a period of days or weeks; the textbook example is food poisonings at a restaurant chain nationwide from contaminated green onions.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak and endemic vocabulary</span><span class="chip t2">outbreak patterns</span></div>
+<div class="stem">26. A person becomes ill after a common source exposure, then has person-to-person contact with others and spreads the disease further, as occurs with influenza. Which outbreak pattern does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Propagated</li><li class="fopt right"><span class="mk">&#10003;</span>Mixed</li><li class="fopt"><span class="mk">C</span>Point source</li><li class="fopt"><span class="mk">D</span>Common source</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A mixed outbreak occurs when a victim of a common source epidemic has person-to-person contact with others and spreads the disease, further propagating the health problem; influenza is the given example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Mixed starts as common source, then becomes person-to-person — it is not the same as a purely propagated outbreak, which never has a common source at all. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">agent classification</span><span class="chip t2">infectivity, pathogenicity, virulence</span></div>
+<div class="stem">27. Of all the people who become infected with an agent, the proportion who go on to develop clinical disease describes which concept?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Infectivity</li><li class="fopt right"><span class="mk">&#10003;</span>Pathogenicity</li><li class="fopt"><span class="mk">C</span>Virulence</li><li class="fopt"><span class="mk">D</span>Communicability</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pathogenicity is the proportion of infected people who develop the disease.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Swapping pathogenicity and virulence is the standard error — pathogenicity's denominator is &quot;infected,&quot; virulence's denominator is &quot;clinically ill.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">agent classification</span><span class="chip t2">infectivity, pathogenicity, virulence</span></div>
+<div class="stem">28. Of all the people with clinical disease, the proportion who become severely ill or die describes which concept?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Infectivity</li><li class="fopt"><span class="mk">B</span>Pathogenicity</li><li class="fopt right"><span class="mk">&#10003;</span>Virulence</li><li class="fopt"><span class="mk">D</span>Incidence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Virulence is the proportion of people with clinical disease who become severely ill or die.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">agent classification</span><span class="chip t2">infectivity, pathogenicity, virulence</span></div>
+<div class="stem">29. The capacity of an agent to enter a susceptible host and produce infection or disease describes which concept?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Infectivity</li><li class="fopt"><span class="mk">B</span>Pathogenicity</li><li class="fopt"><span class="mk">C</span>Virulence</li><li class="fopt"><span class="mk">D</span>Endemicity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Infectivity is the capacity of an agent to enter a susceptible host and produce infection or disease — the first step in the ladder of enter, become sick, become severely sick. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bioterrorism</span><span class="chip t2">epidemiologic clues</span></div>
+<div class="stem">30. Which finding is a named epidemiologic clue that may signal a covert bioterrorism attack?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Death or illness among animals that precedes or accompanies illness or death in humans</li><li class="fopt"><span class="mk">B</span>A gradual seasonal rise in a common respiratory illness</li><li class="fopt"><span class="mk">C</span>A steady, predictable incidence of a well-known endemic disease</li><li class="fopt"><span class="mk">D</span>Illness limited to a single household during a normal flu season</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Death or illness among animals preceding or accompanying human illness or death is a named epidemiologic clue for covert bioterrorism.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bioterrorism</span><span class="chip t2">epidemiologic clues</span></div>
+<div class="stem">31. An investigation finds no illness among people who were not exposed to a building's shared ventilation system, but illness among those in proximity to the system. What does this pattern suggest?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A propagated outbreak of a common respiratory virus</li><li class="fopt right"><span class="mk">&#10003;</span>A possible bioterrorism attack — this pattern is a named epidemiologic clue</li><li class="fopt"><span class="mk">C</span>A sentinel surveillance artifact with no clinical significance</li><li class="fopt"><span class="mk">D</span>A holoendemic disease pattern</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;No illness in people not exposed to common ventilation systems, but illness among those in proximity to the systems&quot; is a named epidemiologic clue that may signal a covert bioterrorism attack.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bioterrorism</span><span class="chip t2">epidemiologic clues</span></div>
+<div class="stem">32. Which of the following are named epidemiologic clues that may signal a covert bioterrorism attack? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Failure of a common disease to respond to usual therapy</li><li class="fopt right"><span class="mk">&#10003;</span>A single case of disease caused by an uncommon agent</li><li class="fopt right"><span class="mk">&#10003;</span>Simultaneous clusters of similar illness in noncontiguous areas</li><li class="fopt right"><span class="mk">&#10003;</span>An endemic disease with unexplained increase in incidence</li><li class="fopt"><span class="mk">E</span>A predictable seasonal rise matching prior years' patterns</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Named clues include failure of a common disease to respond to usual therapy, a single case caused by an uncommon agent, simultaneous clusters of similar illness in noncontiguous areas, and an endemic disease with an unexplained increase in incidence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A predictable pattern matching prior years is the opposite of a bioterrorism clue — the chapter notes that naturally occurring outbreaks tend to be predictable, while purposeful introduction of an agent tends to break that predictability. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak investigation</span><span class="chip t2">the six-step process and foodborne definition</span></div>
+<div class="stem">33. Which of the following is the FIRST of the CDC's six steps for conducting an outbreak investigation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Develop and evaluate a hypothesis</li><li class="fopt right"><span class="mk">&#10003;</span>Confirm the existence of an outbreak</li><li class="fopt"><span class="mk">C</span>Estimate the number of cases</li><li class="fopt"><span class="mk">D</span>Institute control measures and communicate findings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The six CDC steps, in order, are: confirm the existence of an outbreak; verify the diagnosis and/or define a case; estimate the number of cases; orient the data collected to person, place, and time; develop and evaluate a hypothesis; and institute control measures and communicate findings.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak investigation</span><span class="chip t2">the six-step process and foodborne definition</span></div>
+<div class="stem">34. Orienting collected outbreak data to person, place, and time occurs at which point in the CDC's six-step investigation process?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Before confirming the existence of an outbreak</li><li class="fopt right"><span class="mk">&#10003;</span>After estimating the number of cases and before developing a hypothesis</li><li class="fopt"><span class="mk">C</span>After instituting control measures</li><li class="fopt"><span class="mk">D</span>It is not part of the six-step process</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The six-step order is: confirm the outbreak; verify the diagnosis/define a case; estimate the number of cases; orient data to person, place, and time; develop and evaluate a hypothesis; institute control measures and communicate findings.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak investigation</span><span class="chip t2">the six-step process and foodborne definition</span></div>
+<div class="stem">35. According to the CDC, how many people must become ill from the same contaminated food or drink for the event to be defined as a foodborne disease outbreak?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>One or more</li><li class="fopt right"><span class="mk">&#10003;</span>Two or more</li><li class="fopt"><span class="mk">C</span>Five or more</li><li class="fopt"><span class="mk">D</span>Ten or more, per state notifiable disease thresholds</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The CDC defines a foodborne disease outbreak as occurring when two or more people get the same illness after ingesting the same contaminated food or drink.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outbreak investigation</span><span class="chip t2">the six-step process and foodborne definition</span></div>
+<div class="stem">36. A community health nurse is deciding whether an unusual cluster of gastrointestinal illness warrants investigation. According to the chapter, when should an event be investigated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Only after laboratory confirmation of the causative agent</li><li class="fopt right"><span class="mk">&#10003;</span>Any unusual increase in disease incidence or an unusual event in the community should be investigated</li><li class="fopt"><span class="mk">C</span>Only if the local health department receives five or more independent case reports</li><li class="fopt"><span class="mk">D</span>Only after the state epidemiologist authorizes the investigation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that any unusual increase in disease incidence (new cases) or an unusual event in the community should be investigated.</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"disease surveillance","subtopic":"definitions and purpose","stem":"Which four activities are named in the textbook's definition of disease surveillance?","options":["Screening, diagnosis, treatment, and follow-up","Collection, analysis, interpretation, and dissemination of specific health data","Notification, investigation, quarantine, and reporting","Detection, confirmation, control, and evaluation"],"correct":[1],"sata":false,"why":"Disease surveillance is defined as \"the ongoing systematic collection, analysis, interpretation, and dissemination of specific health data for use in public health.\"","trap":"Notification/investigation/quarantine/reporting describe outbreak response activities, not the definition of surveillance itself."},{"topic":"disease surveillance","subtopic":"definitions and purpose","stem":"According to the CDC, disease surveillance serves as which of the following?","options":["An optional adjunct to clinical practice","The foundation of public health practice","A function reserved for federal agencies only","A substitute for epidemiologic investigation"],"correct":[1],"sata":false,"why":"The CDC indicates that public health surveillance is the foundation of public health practice.","trap":null},{"topic":"disease surveillance","subtopic":"process vs. outcome data","stem":"A health department tracks the proportion of the eligible population vaccinated against influenza in a given year. What type of data is this?","options":["Outcome data","Process data","Sentinel data","Syndromic data"],"correct":[1],"sata":false,"why":"Process data focus on what is done — services provided or protocols for care delivery. The proportion of the eligible population vaccinated is the textbook's own example of process data.","trap":null},{"topic":"disease surveillance","subtopic":"process vs. outcome data","stem":"A health department tracks the incidence rate of new influenza cases in that same population over the same year. What type of data is this?","options":["Process data","Outcome data","Registry data","Algorithmic data"],"correct":[1],"sata":false,"why":"Outcome data focus on changes in health status; incidence rates of influenza are the textbook's own example of outcome data.","trap":"This is the mirror image of the vaccination-proportion item. Process = what is done (an action/service); outcome = what happened to health status as a result. ---"},{"topic":"notifiable disease reporting","subtopic":"legal basis and national/state structure","stem":"A nurse assumes that because a disease is on the CDC's nationally notifiable disease list, every state legally requires it to be reported. Is this assumption correct?","options":["Yes, national notifiable status automatically creates a legal reporting mandate in every state","No — reporting requirements are mandated by state law or regulation, and states differ in their lists, so not all nationally notifiable diseases are legally mandated for reporting in a given state","Yes, but only for diseases added to the list after 1997","No — only CDC WONDER-listed diseases carry any legal mandate"],"correct":[1],"sata":false,"why":"Requirements for reporting diseases are mandated by law or regulation at the state level. Each state and Washington, DC, differs in its list of reportable diseases, so not all nationally notifiable diseases are legally mandated for reporting in a given state.","trap":"The national list (NNDSS) is a CDC/CSTE reporting arrangement between states and the CDC, not itself a law compelling reporting within a state — that authority is state law."},{"topic":"notifiable disease reporting","subtopic":"legal basis and national/state structure","stem":"A nurse wants to know exactly which diseases are legally reportable in her own state. Where does the chapter direct her to look?","options":["The CDC WONDER database","The Morbidity and Mortality Weekly Report","Her state health department's website","The National Electronic Disease Surveillance System"],"correct":[2],"sata":false,"why":"The chapter states, \"To determine which of the national notifiable diseases are reportable in your state, go to your state health department website.\"","trap":null},{"topic":"notifiable disease reporting","subtopic":"legal basis and national/state structure","stem":"Weekly national notifiable disease data from the 50 states, US territories, New York City, and DC are published in which source?","options":["CDC WONDER","The Morbidity and Mortality Weekly Report (MMWR)","The National Vital Statistics System","The National Program of Cancer Registries"],"correct":[1],"sata":false,"why":"Data are published weekly in the MMWR; annual updated final reports are published in CDC WONDER.","trap":"CDC WONDER holds the annual, finalized data — MMWR is the weekly publication. Swapping \"weekly\" and \"annual\" between the two is the standard distractor."},{"topic":"notifiable disease reporting","subtopic":"case definitions","stem":"A case definition may be built from which types of criteria?","options":["Clinical symptoms only","Laboratory values only","Clinical symptoms, laboratory values, and epidemiologic criteria","Epidemiologic criteria only, per CDC/CSTE policy"],"correct":[2],"sata":false,"why":"Case definitions may include clinical symptoms, laboratory values, and epidemiologic criteria, such as exposure to a known or suspected case.","trap":null},{"topic":"notifiable disease reporting","subtopic":"case definitions","stem":"What are the three classifications used to describe the strength of evidence for a case?","options":["Confirmed, notifiable, and reportable","Suspected, probable, and confirmed","Sporadic, endemic, and epidemic","Primary, secondary, and tertiary"],"correct":[1],"sata":false,"why":"Cases are classified by strength of evidence as suspected, probable, or confirmed.","trap":null},{"topic":"notifiable disease reporting","subtopic":"case definitions","stem":"A local health department identifies a possible case that does not yet meet the formal case definition for a reportable disease because lab confirmation is pending. What is the correct action?","options":["Wait until the case definition is formally met before taking any public health action","Take action to control the disease as soon as the problem is identified, even without enough information to meet the case definition","Refer the decision to the CDC before acting","Take no action unless the patient develops severe symptoms"],"correct":[1],"sata":false,"why":"The chapter states plainly that action to control a disease should be taken as soon as a problem is identified, although there may not be enough information to meet the case definition. The case definition should not be used as the only criterion for taking public health action.","trap":"Waiting for laboratory confirmation before acting is the classic wrong answer — the case definition is a reporting/monitoring tool, not a gate on control action. ---"},{"topic":"surveillance systems","subtopic":"the four types","stem":"A physician's office sends a case report to the local health department after diagnosing a reportable illness. Which type of surveillance system does this describe?","options":["Active","Passive","Sentinel","Special"],"correct":[1],"sata":false,"why":"In a passive system, case reports are sent to local health departments by health care providers, or laboratory reports are sent to the local health department. Reports come in to the health department.","trap":null},{"topic":"surveillance systems","subtopic":"the four types","stem":"Several schoolchildren become ill after eating lunch in the cafeteria. The health department nurse begins contacting local providers, names the suspected illness, and actively gathers data on existing cases to determine the scope of the problem. Which type of surveillance system does this describe?","options":["Passive","Active","Sentinel","Syndromic"],"correct":[1],"sata":false,"why":"This is the chapter's own example of an active surveillance system: the nurse, as a health department employee, begins a search for cases through contacts with local providers and agencies, names the disease, and gathers data to determine the magnitude of the problem.","trap":"A distractor may frame active surveillance as merely \"faster\" or \"automated\" reporting. Its defining feature is who initiates the search — the health department goes out looking, rather than waiting for reports to come in."},{"topic":"surveillance systems","subtopic":"the four types","stem":"Which statement correctly describes a sentinel surveillance system?","options":["It only ever monitors a single named disease","A disease or an event may be the sentinel, or a population may be the sentinel","It is always passive in direction of effort","It requires automated real-time data systems"],"correct":[1],"sata":false,"why":"The chapter states explicitly that a disease or event may be the sentinel, or a population may be the sentinel; a sample of health care providers or agencies is asked to report the problem.","trap":"Distractors typically offer only the disease half of this definition and omit the population half."},{"topic":"surveillance systems","subtopic":"the four types","stem":"A special surveillance system, such as a syndromic surveillance system, is best described as which of the following?","options":["A system limited strictly to passive case reporting","A system developed for collecting particular types of data, which may combine active, passive, and/or sentinel elements","A system used only during declared bioterrorism events","A system that reports exclusively to WHO"],"correct":[1],"sata":false,"why":"Special surveillance systems are developed for collecting particular types of data and may be a combination of active, passive, and/or sentinel systems; syndromic surveillance systems are the given example.","trap":null},{"topic":"surveillance systems","subtopic":"the four types","stem":"Although all surveillance systems are important, which two is the public health nurse most likely to use?","options":["Sentinel and special","Active and passive","Syndromic and sentinel","Special and active only"],"correct":[1],"sata":false,"why":"The chapter states, \"Although all of the systems are important, the public health nurse is most likely to use the active or passive systems.\"","trap":null},{"topic":"surveillance systems","subtopic":"the four types","stem":"What is a stated weakness of a passive surveillance system?","options":["It cannot be used for chronic disease","A disease outbreak may already be occurring before all reports are received by the state health department","It requires more staff than an active system","It cannot generate weekly reports"],"correct":[1],"sata":false,"why":"Because a passive system has limits, a disease outbreak may be occurring before all reports are received by the state health department. ---","trap":null},{"topic":"outbreak and endemic vocabulary","subtopic":"magnitude terms","stem":"Which term describes the persistent, usual presence of a disease at a low to moderate number of cases, and provides the baseline against which increases are measured?","options":["Sporadic","Endemic","Hyperendemic","Epidemic"],"correct":[1],"sata":false,"why":"Endemic is a persistent (usual) presence with a low to moderate number of cases of the disease or event in a population, and provides the baseline.","trap":null},{"topic":"outbreak and endemic vocabulary","subtopic":"magnitude terms","stem":"A disease is highly prevalent and commonly acquired early in life. Counterintuitively, its prevalence decreases as age increases. Which term describes this pattern?","options":["Hyperendemic","Sporadic","Holoendemic","Epidemic"],"correct":[2],"sata":false,"why":"Holoendemic describes a highly prevalent problem commonly acquired early in life, in which prevalence decreases as age increases — the reverse of what most conditions do.","trap":"This is stated as counterintuitive precisely because most health problems become more prevalent with age; holoendemic is the exception, not the rule."},{"topic":"outbreak and endemic vocabulary","subtopic":"magnitude terms","stem":"A population has a persistently high number of cholera cases well above the low-to-moderate baseline typical elsewhere. Which term applies?","options":["Endemic","Hyperendemic","Holoendemic","Pandemic"],"correct":[1],"sata":false,"why":"Hyperendemic describes a persistently (usually) high number of cases; the chapter's example is the high cholera incidence rate among Asian and Pacific Islanders.","trap":null},{"topic":"outbreak and endemic vocabulary","subtopic":"magnitude terms","stem":"Occasional cases of a disease occur at irregular intervals with no consistent pattern. Which term applies?","options":["Endemic","Epidemic","Sporadic","Mixed"],"correct":[2],"sata":false,"why":"Sporadic describes an irregular pattern with occasional cases found at irregular intervals.","trap":null},{"topic":"outbreak and endemic vocabulary","subtopic":"magnitude terms","stem":"The occurrence of a disease within an area clearly in excess of expected (endemic) levels for a given time period is often called which of the following?","options":["The pandemic","The outbreak","The sentinel event","The cluster"],"correct":[1],"sata":false,"why":"An epidemic is the occurrence of a disease clearly in excess of expected (endemic) levels for a given time period; this is often called the outbreak. A pandemic is an epidemic spread over several countries or continents.","trap":null},{"topic":"outbreak and endemic vocabulary","subtopic":"outbreak patterns","stem":"In an outbreak, all persons exposed become ill at the same time, during one incubation period. Which outbreak pattern does this describe?","options":["Propagated","Point source","Intermittent source","Mixed"],"correct":[1],"sata":false,"why":"A point source outbreak is one in which all persons exposed become ill at the same time, during one incubation period.","trap":"The discriminator to memorize is incubation periods, not severity or case count: point source = one incubation period, everyone at once; propagated = more than one incubation period, no common source."},{"topic":"outbreak and endemic vocabulary","subtopic":"outbreak patterns","stem":"An outbreak has no common source and spreads gradually from person to person over more than one incubation period, as with tuberculosis. Which outbreak pattern does this describe?","options":["Point source","Common source","Propagated","Intermittent or continuous source"],"correct":[2],"sata":false,"why":"A propagated outbreak does not have a common source and spreads gradually from person to person over more than one incubation period; tuberculosis spreading from one person to another is the textbook example.","trap":null},{"topic":"outbreak and endemic vocabulary","subtopic":"outbreak patterns","stem":"A group is exposed to a single common noxious influence, such as the release of a toxic gas into a subway or water system. Which outbreak pattern does this describe?","options":["Common source","Mixed","Propagated","Sentinel"],"correct":[0],"sata":false,"why":"A common source outbreak is one in which a group is exposed to a common noxious influence; the textbook example is the release of ricin into a subway system and into a US water system.","trap":null},{"topic":"outbreak and endemic vocabulary","subtopic":"outbreak patterns","stem":"A restaurant chain's food poisoning cases appear over several days to weeks, traced to a shipment of contaminated green onions purchased at different times. Which outbreak pattern does this describe?","options":["Point source","Intermittent or continuous source","Propagated","Mixed"],"correct":[1],"sata":false,"why":"An intermittent or continuous source outbreak involves cases exposed over a period of days or weeks; the textbook example is food poisonings at a restaurant chain nationwide from contaminated green onions.","trap":null},{"topic":"outbreak and endemic vocabulary","subtopic":"outbreak patterns","stem":"A person becomes ill after a common source exposure, then has person-to-person contact with others and spreads the disease further, as occurs with influenza. Which outbreak pattern does this describe?","options":["Propagated","Mixed","Point source","Common source"],"correct":[1],"sata":false,"why":"A mixed outbreak occurs when a victim of a common source epidemic has person-to-person contact with others and spreads the disease, further propagating the health problem; influenza is the given example.","trap":"Mixed starts as common source, then becomes person-to-person — it is not the same as a purely propagated outbreak, which never has a common source at all. ---"},{"topic":"agent classification","subtopic":"infectivity, pathogenicity, virulence","stem":"Of all the people who become infected with an agent, the proportion who go on to develop clinical disease describes which concept?","options":["Infectivity","Pathogenicity","Virulence","Communicability"],"correct":[1],"sata":false,"why":"Pathogenicity is the proportion of infected people who develop the disease.","trap":"Swapping pathogenicity and virulence is the standard error — pathogenicity's denominator is \"infected,\" virulence's denominator is \"clinically ill.\""},{"topic":"agent classification","subtopic":"infectivity, pathogenicity, virulence","stem":"Of all the people with clinical disease, the proportion who become severely ill or die describes which concept?","options":["Infectivity","Pathogenicity","Virulence","Incidence"],"correct":[2],"sata":false,"why":"Virulence is the proportion of people with clinical disease who become severely ill or die.","trap":null},{"topic":"agent classification","subtopic":"infectivity, pathogenicity, virulence","stem":"The capacity of an agent to enter a susceptible host and produce infection or disease describes which concept?","options":["Infectivity","Pathogenicity","Virulence","Endemicity"],"correct":[0],"sata":false,"why":"Infectivity is the capacity of an agent to enter a susceptible host and produce infection or disease — the first step in the ladder of enter, become sick, become severely sick. ---","trap":null},{"topic":"bioterrorism","subtopic":"epidemiologic clues","stem":"Which finding is a named epidemiologic clue that may signal a covert bioterrorism attack?","options":["Death or illness among animals that precedes or accompanies illness or death in humans","A gradual seasonal rise in a common respiratory illness","A steady, predictable incidence of a well-known endemic disease","Illness limited to a single household during a normal flu season"],"correct":[0],"sata":false,"why":"Death or illness among animals preceding or accompanying human illness or death is a named epidemiologic clue for covert bioterrorism.","trap":null},{"topic":"bioterrorism","subtopic":"epidemiologic clues","stem":"An investigation finds no illness among people who were not exposed to a building's shared ventilation system, but illness among those in proximity to the system. What does this pattern suggest?","options":["A propagated outbreak of a common respiratory virus","A possible bioterrorism attack — this pattern is a named epidemiologic clue","A sentinel surveillance artifact with no clinical significance","A holoendemic disease pattern"],"correct":[1],"sata":false,"why":"\"No illness in people not exposed to common ventilation systems, but illness among those in proximity to the systems\" is a named epidemiologic clue that may signal a covert bioterrorism attack.","trap":null},{"topic":"bioterrorism","subtopic":"epidemiologic clues","stem":"Which of the following are named epidemiologic clues that may signal a covert bioterrorism attack? Select all that apply.","options":["Failure of a common disease to respond to usual therapy","A single case of disease caused by an uncommon agent","Simultaneous clusters of similar illness in noncontiguous areas","An endemic disease with unexplained increase in incidence","A predictable seasonal rise matching prior years' patterns"],"correct":[0,1,2,3],"sata":true,"why":"Named clues include failure of a common disease to respond to usual therapy, a single case caused by an uncommon agent, simultaneous clusters of similar illness in noncontiguous areas, and an endemic disease with an unexplained increase in incidence.","trap":"A predictable pattern matching prior years is the opposite of a bioterrorism clue — the chapter notes that naturally occurring outbreaks tend to be predictable, while purposeful introduction of an agent tends to break that predictability. ---"},{"topic":"outbreak investigation","subtopic":"the six-step process and foodborne definition","stem":"Which of the following is the FIRST of the CDC's six steps for conducting an outbreak investigation?","options":["Develop and evaluate a hypothesis","Confirm the existence of an outbreak","Estimate the number of cases","Institute control measures and communicate findings"],"correct":[1],"sata":false,"why":"The six CDC steps, in order, are: confirm the existence of an outbreak; verify the diagnosis and/or define a case; estimate the number of cases; orient the data collected to person, place, and time; develop and evaluate a hypothesis; and institute control measures and communicate findings.","trap":null},{"topic":"outbreak investigation","subtopic":"the six-step process and foodborne definition","stem":"Orienting collected outbreak data to person, place, and time occurs at which point in the CDC's six-step investigation process?","options":["Before confirming the existence of an outbreak","After estimating the number of cases and before developing a hypothesis","After instituting control measures","It is not part of the six-step process"],"correct":[1],"sata":false,"why":"The six-step order is: confirm the outbreak; verify the diagnosis/define a case; estimate the number of cases; orient data to person, place, and time; develop and evaluate a hypothesis; institute control measures and communicate findings.","trap":null},{"topic":"outbreak investigation","subtopic":"the six-step process and foodborne definition","stem":"According to the CDC, how many people must become ill from the same contaminated food or drink for the event to be defined as a foodborne disease outbreak?","options":["One or more","Two or more","Five or more","Ten or more, per state notifiable disease thresholds"],"correct":[1],"sata":false,"why":"The CDC defines a foodborne disease outbreak as occurring when two or more people get the same illness after ingesting the same contaminated food or drink.","trap":null},{"topic":"outbreak investigation","subtopic":"the six-step process and foodborne definition","stem":"A community health nurse is deciding whether an unusual cluster of gastrointestinal illness warrants investigation. According to the chapter, when should an event be investigated?","options":["Only after laboratory confirmation of the causative agent","Any unusual increase in disease incidence or an unusual event in the community should be investigated","Only if the local health department receives five or more independent case reports","Only after the state epidemiologist authorizes the investigation"],"correct":[1],"sata":false,"why":"The chapter states that any unusual increase in disease incidence (new cases) or an unusual event in the community should be investigated.","trap":null}];
+const TITLE = "Chapter 17 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 17";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

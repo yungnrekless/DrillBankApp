@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 10 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 10</div><h1>Chapter 10 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">incidence and prevalence</span><span class="chip t2">basic concepts — risk, proportion, rate</span></div>
+<div class="stem">1. Why do epidemiologists prefer rates and proportions over raw case counts when describing disease frequency?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rates and proportions are easier to calculate from surveillance data</li><li class="fopt right"><span class="mk">&#10003;</span>They account for the size of the population at risk, so 50 cases means something different in a population of 250 versus 250,000</li><li class="fopt"><span class="mk">C</span>Raw counts are not permitted in peer-reviewed publications</li><li class="fopt"><span class="mk">D</span>Proportions eliminate the need to track time</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Rates and proportions take the size of the population at risk into account. Fifty cases of influenza might be a serious epidemic in a population of 250 but a low rate in a population of 250,000. A count alone tells you nothing without the denominator and the time period.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incidence and prevalence</span><span class="chip t2">basic concepts — risk, proportion, rate</span></div>
+<div class="stem">2. What distinguishes a rate from a proportion?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A rate's denominator includes the numerator; a proportion's does not</li><li class="fopt"><span class="mk">B</span>A proportion's denominator depends on both population size and time; a rate's does not</li><li class="fopt right"><span class="mk">&#10003;</span>A rate's denominator is a function of both population size and time, unlike a proportion</li><li class="fopt"><span class="mk">D</span>There is no meaningful difference; the terms are interchangeable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A proportion is a ratio in which the denominator includes the numerator, ranging from 0 to 1. A rate is a ratio that is not a proportion, because its denominator depends on both population size and time.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The proportion definition (numerator inside the denominator) is often flipped with the rate definition (denominator = population size x time) — the two definitions get swapped in distractors.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incidence and prevalence</span><span class="chip t2">incidence vs. prevalence</span></div>
+<div class="stem">3. A community health department wants to know how many new cases of tuberculosis are occurring so it can evaluate a prevention program. Which measure should it use?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Prevalence proportion</li><li class="fopt right"><span class="mk">&#10003;</span>Incidence</li><li class="fopt"><span class="mk">C</span>Case fatality rate</li><li class="fopt"><span class="mk">D</span>Proportionate mortality ratio</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Incidence is the measure of choice for studying etiology and risk factors and for evaluating prevention programs, because it is affected only by the development of new disease, not by survival or duration.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incidence and prevalence</span><span class="chip t2">incidence vs. prevalence</span></div>
+<div class="stem">4. A health planner needs to estimate how much existing disease is in the community in order to size services. Which measure is most appropriate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Incidence rate</li><li class="fopt"><span class="mk">B</span>Incidence proportion</li><li class="fopt right"><span class="mk">&#10003;</span>Prevalence proportion</li><li class="fopt"><span class="mk">D</span>Attack rate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Prevalence measures existing disease in the population at a particular time and is best used for planning services, since it reflects the size of the population currently needing care.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incidence and prevalence</span><span class="chip t2">incidence vs. prevalence</span></div>
+<div class="stem">5. According to the formula relating incidence and prevalence, when prevalence is small (P &lt; 0.1), which expression is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>I = P x D</li><li class="fopt right"><span class="mk">&#10003;</span>P = I x D</li><li class="fopt"><span class="mk">C</span>D = P x I</li><li class="fopt"><span class="mk">D</span>P = I / D</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>When prevalence is small, P = I x D — prevalence equals the incidence rate multiplied by the average duration of disease.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incidence and prevalence</span><span class="chip t2">incidence vs. prevalence</span></div>
+<div class="stem">6. Breast cancer and lung cancer in women have similar incidence, but breast cancer has substantially higher prevalence. What explains this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Breast cancer is diagnosed earlier, inflating incidence</li><li class="fopt"><span class="mk">B</span>Lung cancer has a much longer average duration of illness</li><li class="fopt right"><span class="mk">&#10003;</span>Breast cancer has a much longer average duration because of higher survival, so more existing cases accumulate at any given time</li><li class="fopt"><span class="mk">D</span>Prevalence is unrelated to survival duration</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>With five-year survival around 85% for breast cancer versus roughly 15% for lung cancer in women, breast cancer patients live with the disease far longer. Since prevalence = incidence x duration, the longer duration produces a higher prevalence even at similar incidence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A stem that attributes the prevalence difference to incidence rather than duration is testing whether you remember that duration (survival/recovery), not new-case risk, is what separates the two cancers here. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mortality rates</span><span class="chip t2">denominators (Table 10.2)</span></div>
+<div class="stem">7. What is the denominator of the crude mortality rate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Total deaths in the period</li><li class="fopt right"><span class="mk">&#10003;</span>Midyear total population</li><li class="fopt"><span class="mk">C</span>Number of persons diagnosed with the disease</li><li class="fopt"><span class="mk">D</span>Live births in the same year</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The crude mortality rate uses deaths from any cause in the period as the numerator and the midyear total population as the denominator.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mortality rates</span><span class="chip t2">denominators (Table 10.2)</span></div>
+<div class="stem">8. What distinguishes the case fatality rate (CFR) from the cause-specific mortality rate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They are identical measures with different names</li><li class="fopt right"><span class="mk">&#10003;</span>The CFR's denominator is the number of persons diagnosed with the disease; the cause-specific rate's denominator is the total population at risk</li><li class="fopt"><span class="mk">C</span>The CFR's denominator is total deaths, while the cause-specific rate's denominator is the diagnosed population</li><li class="fopt"><span class="mk">D</span>The CFR is calculated per 100,000 and the cause-specific rate is calculated per 1,000</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>CFR = deaths from a specific disease / number of persons diagnosed with that disease. Cause-specific mortality rate = deaths from a specific cause / total population at risk. The denominators are what separate them.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mortality rates</span><span class="chip t2">denominators (Table 10.2)</span></div>
+<div class="stem">9. Why is the proportionate mortality ratio (PMR) NOT considered a true rate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Its numerator counts only deaths under age 65</li><li class="fopt right"><span class="mk">&#10003;</span>Its denominator is total deaths in the period, not the population at risk, so it does not estimate the risk of death</li><li class="fopt"><span class="mk">C</span>It can only be calculated retrospectively</li><li class="fopt"><span class="mk">D</span>It excludes infectious disease deaths</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>PMR's denominator is total deaths, not the population at risk. Because of this, it does not estimate risk and its size can shift purely because deaths from other causes rise or fall, even when the cause of interest stays constant.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the classic &quot;not a rate&quot; trap. Any answer option calling the PMR a risk estimate or a true rate is the intended distractor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mortality rates</span><span class="chip t2">denominators (Table 10.2)</span></div>
+<div class="stem">10. A researcher computes a CFR of 86% for a disease. What is the survival rate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>86%</li><li class="fopt right"><span class="mk">&#10003;</span>14%</li><li class="fopt"><span class="mk">C</span>Cannot be determined without additional data</li><li class="fopt"><span class="mk">D</span>100%</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Survival rate = 1 minus CFR. An 86% CFR yields a 14% survival rate.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The fact bank notes the textbook itself is internally inconsistent (one place uses 87%/13%, another 86%/14%). Don't memorize a specific number as &quot;the&quot; figure for any disease — just apply the rule survival = 1 - CFR to whatever CFR the stem gives you.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mortality rates</span><span class="chip t2">denominators (Table 10.2)</span></div>
+<div class="stem">11. What are the correct numerator and denominator for the infant mortality rate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Infant deaths under 28 days / live births in the same year</li><li class="fopt right"><span class="mk">&#10003;</span>Infant deaths before 1 year of age / live births in the same year</li><li class="fopt"><span class="mk">C</span>Infant deaths before 1 year of age / total midyear population</li><li class="fopt"><span class="mk">D</span>Infant deaths 28 days to 1 year / total births including stillbirths</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Infant mortality rate = infant deaths before 1 year of age / live births in the same year.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mortality rates</span><span class="chip t2">denominators (Table 10.2)</span></div>
+<div class="stem">12. Why is comparing crude mortality rates across two populations potentially misleading?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Crude rates cannot be expressed per 100,000</li><li class="fopt right"><span class="mk">&#10003;</span>Crude rates are affected by the population's age distribution, since older populations have higher mortality; this is corrected by age adjustment</li><li class="fopt"><span class="mk">C</span>Crude rates only apply to infectious diseases</li><li class="fopt"><span class="mk">D</span>Crude rates require CFR data that is often unavailable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The crude mortality rate is affected by the population's age distribution — an older population will show more deaths regardless of underlying health. Rate/age adjustment corrects for this by adjusting to a standard population so comparisons are fair. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causal models</span><span class="chip t2">triangle, web, ecological model</span></div>
+<div class="stem">13. The epidemiologic triangle consists of which three elements?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Person, place, time</li><li class="fopt right"><span class="mk">&#10003;</span>Agent, host, environment</li><li class="fopt"><span class="mk">C</span>Sensitivity, specificity, prevalence</li><li class="fopt"><span class="mk">D</span>Primary, secondary, tertiary prevention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The epidemiologic triangle is the agent-host-environment model: disease results from complex relationships among causal agents, susceptible persons, and environmental factors, and a change in any one element changes risk.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causal models</span><span class="chip t2">triangle, web, ecological model</span></div>
+<div class="stem">14. A nurse is investigating a single-source outbreak of a specific bacterial pathogen. Which causal model best fits this scenario, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The web of causality, because bacterial disease is always multifactorial</li><li class="fopt right"><span class="mk">&#10003;</span>The epidemiologic triangle, because it fits a simple single-agent infectious model</li><li class="fopt"><span class="mk">C</span>The ecological model, because it addresses policy-level determinants</li><li class="fopt"><span class="mk">D</span>None of these models apply to infectious disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The epidemiologic triangle (agent-host-environment) fits a simple single-agent infectious disease model. The web of causality is the better fit for multifactorial chronic disease where many variables interact.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causal models</span><span class="chip t2">triangle, web, ecological model</span></div>
+<div class="stem">15. A nurse is studying the multiple interacting contributors to type 2 diabetes (diet, genetics, socioeconomic status, access to care, activity level). Which model best fits this situation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The epidemiologic triangle, because diabetes has a single identifiable agent</li><li class="fopt right"><span class="mk">&#10003;</span>The web of causality, which recognizes complex interrelationships among many factors increasing or decreasing risk</li><li class="fopt"><span class="mk">C</span>Point epidemic analysis</li><li class="fopt"><span class="mk">D</span>The case-control design</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The web of causality recognizes the complex interrelationships of many factors interacting, sometimes subtly, to raise or lower disease risk — a better fit than the triangle when many variables interact, as in multifactorial chronic disease.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causal models</span><span class="chip t2">triangle, web, ecological model</span></div>
+<div class="stem">16. How does the ecological model extend beyond the epidemiologic triangle and web of causality?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It applies only to infectious disease outbreaks</li><li class="fopt right"><span class="mk">&#10003;</span>It treats multiple determinants of health as interrelated and synergistic across biologic, behavioral, social, and environmental levels, including policy, culture, and economics, with a life-span perspective</li><li class="fopt"><span class="mk">C</span>It replaces the need for agent, host, and environment entirely</li><li class="fopt"><span class="mk">D</span>It is used only for calculating incidence rates</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The ecological model (IOM, 2002) treats the multiple determinants of health as interrelated and acting synergistically or antagonistically rather than as discrete factors, spanning biologic, mental, behavioral, social, and environmental levels including policy, culture, and economics — captured by the phrase &quot;healthy people in healthy communities.&quot; ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the cardiovascular example</span></div>
+<div class="stem">17. A patient has no discernible pathological process but is susceptible to disease. An intervention aimed at this patient to promote health and prevent disease onset is an example of which level of prevention?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Primary</li><li class="fopt"><span class="mk">B</span>Secondary</li><li class="fopt"><span class="mk">C</span>Tertiary</li><li class="fopt"><span class="mk">D</span>Quaternary</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary prevention promotes health and prevents the occurrence of disease, injury, or disability in people who are susceptible but have no discernible pathological process (prepathogenesis). Examples include immunizations, seat-belt teaching, folic acid at preconception, and water fluoridation.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the cardiovascular example</span></div>
+<div class="stem">18. Screening is described as the core intervention of which level of prevention?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary</li><li class="fopt right"><span class="mk">&#10003;</span>Secondary</li><li class="fopt"><span class="mk">C</span>Tertiary</li><li class="fopt"><span class="mk">D</span>Screening is not classified under any level</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Secondary prevention is designed to increase the probability that a person with disease will have it diagnosed early enough that treatment is likely to result in a cure, and screening is at the core of secondary prevention.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the cardiovascular example</span></div>
+<div class="stem">19. A nurse provides cardiac rehabilitation, medication management, and coordinates surgery for a patient recovering from a myocardial infarction. This is an example of which level of prevention?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary</li><li class="fopt"><span class="mk">B</span>Secondary</li><li class="fopt right"><span class="mk">&#10003;</span>Tertiary</li><li class="fopt"><span class="mk">D</span>Screening</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In the chapter's cardiovascular disease example, tertiary prevention is cardiac rehabilitation, medication, and surgery — interventions aimed at limiting disability and enhancing rehabilitation.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the cardiovascular example</span></div>
+<div class="stem">20. In the chapter's cardiovascular disease example, discussing a low-fat diet and regular physical exercise with a patient represents which level of prevention, and implementing blood pressure and cholesterol screening with a treadmill stress test represents which level?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both are primary prevention</li><li class="fopt right"><span class="mk">&#10003;</span>Diet/exercise discussion is primary; BP/cholesterol screening and stress testing is secondary</li><li class="fopt"><span class="mk">C</span>Diet/exercise discussion is secondary; screening is primary</li><li class="fopt"><span class="mk">D</span>Both are tertiary prevention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The cardiovascular disease example splits the levels cleanly: primary is discussing low-fat diet and exercise; secondary is blood pressure/cholesterol screening and treadmill stress testing; tertiary is cardiac rehabilitation, medication, and surgery. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">sensitivity and specificity</span></div>
+<div class="stem">21. A screening test correctly identifies 92% of people who truly have the disease as positive. What is this property called?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Specificity</li><li class="fopt right"><span class="mk">&#10003;</span>Sensitivity</li><li class="fopt"><span class="mk">C</span>Positive predictive value</li><li class="fopt"><span class="mk">D</span>Reliability</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sensitivity is the proportion of persons with the disease whom the test correctly identifies as positive (true positives).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">sensitivity and specificity</span></div>
+<div class="stem">22. A test correctly identifies people who do NOT have the disease as negative. What is this property called, and it corresponds to which type of result?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Sensitivity; true positives</li><li class="fopt right"><span class="mk">&#10003;</span>Specificity; true negatives</li><li class="fopt"><span class="mk">C</span>Sensitivity; true negatives</li><li class="fopt"><span class="mk">D</span>Predictive value; false negatives</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Specificity is the proportion of persons without the disease whom the test correctly identifies as negative (true negatives).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Swapping sensitivity and specificity, or pairing sensitivity with true negatives, is the most common inversion tested on this pair.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">sensitivity and specificity</span></div>
+<div class="stem">23. A nurse is choosing a screening test for a disease where missing a case would be dangerous because early treatment substantially improves outcomes. Which test characteristic should be prioritized?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>High specificity, to minimize false positives</li><li class="fopt right"><span class="mk">&#10003;</span>High sensitivity, to minimize false negatives and catch as many true cases as possible</li><li class="fopt"><span class="mk">C</span>High positive predictive value regardless of sensitivity</li><li class="fopt"><span class="mk">D</span>High reliability regardless of validity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>High sensitivity should be prioritized when early treatment matters and missing a case is dangerous, because a sensitive test minimizes false negatives.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">sensitivity and specificity</span></div>
+<div class="stem">24. For a screening program where rescreening is impractical and it is important to reduce false-positive results, which test characteristic should be prioritized?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Sensitivity</li><li class="fopt right"><span class="mk">&#10003;</span>Specificity</li><li class="fopt"><span class="mk">C</span>Negative predictive value only</li><li class="fopt"><span class="mk">D</span>Attack rate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Specificity should be prioritized when rescreening is impractical and reducing false positives is important.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">predictive values</span></div>
+<div class="stem">25. What does positive predictive value (PPV) tell you?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The proportion of people with a negative test who are actually disease-free</li><li class="fopt right"><span class="mk">&#10003;</span>The proportion of people with a positive test who actually have the disease</li><li class="fopt"><span class="mk">C</span>The proportion of people with the disease who test positive</li><li class="fopt"><span class="mk">D</span>The proportion of the population that is disease-free</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>PPV is the proportion of persons with a positive test who actually have the disease.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">predictive values</span></div>
+<div class="stem">26. What does negative predictive value (NPV) tell you, and what does it depend on besides sensitivity and specificity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The proportion of persons with a negative test who are actually disease-free; predictive values also depend on disease prevalence</li><li class="fopt"><span class="mk">B</span>The proportion of persons with a positive test who have the disease; predictive values are independent of prevalence</li><li class="fopt"><span class="mk">C</span>The same thing as specificity</li><li class="fopt"><span class="mk">D</span>The same thing as the case fatality rate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>NPV is the proportion of persons with a negative test who are actually disease-free. Predictive values depend on sensitivity and specificity and also on the prevalence of disease in the population being tested.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">series vs. parallel testing</span></div>
+<div class="stem">27. In series (sequential) testing, a person is classified as positive only if all tests are positive. What is the effect on sensitivity and specificity?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increases sensitivity, decreases specificity</li><li class="fopt right"><span class="mk">&#10003;</span>Increases specificity, decreases sensitivity, producing fewer false positives</li><li class="fopt"><span class="mk">C</span>Increases both sensitivity and specificity equally</li><li class="fopt"><span class="mk">D</span>Has no effect on either measure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Series testing requires all tests to be positive to call the result positive, which enhances specificity and reduces false positives, at the cost of lower sensitivity.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">series vs. parallel testing</span></div>
+<div class="stem">28. In parallel (simultaneous) testing, a person is classified as positive if any one test is positive. What is the effect, and what is the classic example?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increases specificity; example is confirmatory Western blot alone</li><li class="fopt right"><span class="mk">&#10003;</span>Increases sensitivity and reduces false negatives, at the cost of lower specificity; example is a blood bank considering a sample positive on either ELISA or Western blot</li><li class="fopt"><span class="mk">C</span>Has no effect on sensitivity or specificity</li><li class="fopt"><span class="mk">D</span>Increases both sensitivity and specificity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Parallel testing calls a result positive if any test is positive, which enhances sensitivity (fewer false negatives) but lowers specificity. The blood bank example treats a sample as positive if it is positive on either ELISA or Western blot.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">series vs. parallel testing</span></div>
+<div class="stem">29. In a series testing protocol for HIV using ELISA followed by Western blot, which test should be performed first, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The more specific test first, to rule out disease quickly</li><li class="fopt right"><span class="mk">&#10003;</span>The more sensitive test first, to catch all possible cases, followed by a more specific test to eliminate false positives</li><li class="fopt"><span class="mk">C</span>It does not matter which test is performed first</li><li class="fopt"><span class="mk">D</span>Both tests must be run simultaneously, not sequentially</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In series testing, the sequence matters: a very sensitive test is used first to catch all cases, and then a very specific test is applied to eliminate false positives. A person is called positive only if both are positive.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Reversing the order (specific test first) is the classic distractor. The sensitive test always goes first in a series protocol.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening, validity, and reliability</span><span class="chip t2">validity and reliability</span></div>
+<div class="stem">30. A blood pressure cuff consistently reads 10 mm Hg higher than the true value on every patient. How should this be characterized?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Reliable and valid</li><li class="fopt"><span class="mk">B</span>Unreliable and invalid</li><li class="fopt right"><span class="mk">&#10003;</span>Reliable but not valid — consistent, but wrong</li><li class="fopt"><span class="mk">D</span>Valid but not reliable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Reliability is the consistency or repeatability of a measure; validity is whether the measure is truly measuring what it claims to measure. A cuff that reads consistently 10 mm Hg high is reliable (consistent) but not valid (inaccurate) — a measure can be consistent without being valid. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study designs</span><span class="chip t2">which design for which purpose</span></div>
+<div class="stem">31. A researcher wants to study a rare disease efficiently by comparing exposure histories of people who have the disease against those who do not. Which design is most appropriate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Prospective cohort study</li><li class="fopt right"><span class="mk">&#10003;</span>Case-control study</li><li class="fopt"><span class="mk">C</span>Cross-sectional study</li><li class="fopt"><span class="mk">D</span>Ecological study</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Case-control studies enroll subjects based on outcome status (cases vs. controls) and are the best design for rare diseases because they do not require following a large population forward to accumulate enough new cases.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study designs</span><span class="chip t2">which design for which purpose</span></div>
+<div class="stem">32. Which measure of association is produced by a case-control study, and why can it not directly calculate incidence or prevalence?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Relative risk; because subjects are chosen by exposure status</li><li class="fopt right"><span class="mk">&#10003;</span>Odds ratio; because subjects are chosen by outcome (disease) status, not by exposure or by sampling the whole population</li><li class="fopt"><span class="mk">C</span>Attack rate; because it follows an outbreak population</li><li class="fopt"><span class="mk">D</span>Case fatality rate; because it tracks disease progression</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In a case-control study, subjects are enrolled because they are known to have the outcome (cases) or not (controls), so neither incidence nor prevalence can be calculated directly. The design uses the odds ratio instead.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study designs</span><span class="chip t2">which design for which purpose</span></div>
+<div class="stem">33. Which study design provides the best estimate of incidence and the clearest temporal sequence between exposure and outcome?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Cross-sectional study</li><li class="fopt"><span class="mk">B</span>Case-control study</li><li class="fopt right"><span class="mk">&#10003;</span>Prospective cohort study</li><li class="fopt"><span class="mk">D</span>Ecological study</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A prospective cohort study follows a group sharing a characteristic of interest forward over time to observe new outcomes developing, giving the best estimate of incidence and risk and the clearest temporal sequence — though it is expensive, slow, and poorly suited to rare diseases.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study designs</span><span class="chip t2">which design for which purpose</span></div>
+<div class="stem">34. A cohort study finds that smokers develop lung cancer at a rate of 20 per 1,000 person-years, compared to 2 per 1,000 person-years among nonsmokers. What measure of association does this represent, and how is it calculated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Odds ratio; ratio of odds of exposure between cases and controls</li><li class="fopt right"><span class="mk">&#10003;</span>Relative risk; the ratio of cumulative incidence rates in the exposed versus unexposed groups</li><li class="fopt"><span class="mk">C</span>Proportionate mortality ratio; deaths from lung cancer divided by total deaths</li><li class="fopt"><span class="mk">D</span>Case fatality rate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A cohort study allows calculation of incidence, and relative risk (risk ratio) is the ratio of cumulative incidence rates in exposed versus unexposed groups. Only a cohort design, which follows people forward, can directly estimate incidence and therefore relative risk.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study designs</span><span class="chip t2">which design for which purpose</span></div>
+<div class="stem">35. A researcher collects exposure and outcome data simultaneously in a single population survey. Which study design is this, what measure does it yield, and what is its major limitation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Cohort study; yields incidence; limited by attrition</li><li class="fopt right"><span class="mk">&#10003;</span>Cross-sectional study; yields prevalence, not incidence; temporal sequence between exposure and outcome is unclear</li><li class="fopt"><span class="mk">C</span>Case-control study; yields the odds ratio; limited by recall bias only</li><li class="fopt"><span class="mk">D</span>Ecological study; yields incidence; limited by the ecological fallacy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A cross-sectional study collects exposure and outcome data simultaneously (&quot;correlational&quot;). It gives prevalence, not incidence, allows no calculation of risk, and the temporal sequence between exposure and outcome is unclear.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study designs</span><span class="chip t2">which design for which purpose</span></div>
+<div class="stem">36. A study uses group-level (aggregate) data, such as comparing national dietary fat consumption to national breast cancer rates, without individual-level data. Which design is this, and what is its key weakness?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Cohort study; weakness is attrition</li><li class="fopt"><span class="mk">B</span>Case-control study; weakness is recall bias</li><li class="fopt right"><span class="mk">&#10003;</span>Ecological study; weakness is the ecological fallacy, where group-level associations may not hold true for individuals</li><li class="fopt"><span class="mk">D</span>Cross-sectional study; weakness is selective-survival bias</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An ecological study uses group-level (aggregate) data and serves as a bridge between descriptive and analytic epidemiology; it is quick, easy, and inexpensive as a first study, but risks the ecological fallacy — associations seen at the group level may not hold true for individuals.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study designs</span><span class="chip t2">which design for which purpose</span></div>
+<div class="stem">37. In interpreting a relative risk (RR) or odds ratio (OR), what does a value less than 1 indicate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increased risk associated with exposure</li><li class="fopt"><span class="mk">B</span>No association between exposure and outcome</li><li class="fopt right"><span class="mk">&#10003;</span>A protective association between exposure and outcome</li><li class="fopt"><span class="mk">D</span>The study design was flawed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>RR or OR = 1 indicates no association, &gt; 1 indicates increased risk, and &lt; 1 indicates a protective association. The physical-activity/CHD example in the fact bank gives an RR of 0.4, which is protective. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">endemic, outbreak, epidemic, pandemic</span><span class="chip t2">the escalation ladder</span></div>
+<div class="stem">38. What is the defining feature of an endemic condition?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It occurs at a steady, expected rate in the population, such as malaria in parts of Africa</li><li class="fopt"><span class="mk">B</span>It always requires a case count exceeding a fixed numeric threshold</li><li class="fopt"><span class="mk">C</span>It has spread globally</li><li class="fopt"><span class="mk">D</span>It refers only to conditions with no vaccine available</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Endemic describes a health condition occurring at a steady, expected rate among the population, with malaria in parts of Africa given as the example.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">endemic, outbreak, epidemic, pandemic</span><span class="chip t2">the escalation ladder</span></div>
+<div class="stem">39. What distinguishes an outbreak from an epidemic?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An outbreak occurs in excess of the endemic level; an epidemic exceeds the endemic level AND spreads over a larger geographic area</li><li class="fopt"><span class="mk">B</span>An outbreak spreads globally; an epidemic is confined to one region</li><li class="fopt"><span class="mk">C</span>There is no meaningful distinction between the two terms</li><li class="fopt"><span class="mk">D</span>An outbreak requires laboratory confirmation; an epidemic does not</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An outbreak is a condition occurring in excess of the endemic level (example: 2015 measles among unvaccinated theme-park visitors). An epidemic exceeds the endemic level and also spreads over a larger geographic area (example: 2014-2016 Ebola in West Africa).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">endemic, outbreak, epidemic, pandemic</span><span class="chip t2">the escalation ladder</span></div>
+<div class="stem">40. Is there a fixed numeric threshold of case counts that defines an epidemic?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Yes, an epidemic requires at least 100 cases in a population</li><li class="fopt"><span class="mk">B</span>Yes, an epidemic requires the incidence rate to double the endemic rate</li><li class="fopt right"><span class="mk">&#10003;</span>No — there is no specific threshold; it is relative to the usual (endemic) level, so a single case of an eradicated disease like smallpox would count as an epidemic</li><li class="fopt"><span class="mk">D</span>Yes, but only for infectious, not chronic, disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>No specific threshold of incidence defines an epidemic — it is relative to the usual endemic level. Because smallpox has been eradicated, even a single case would constitute an epidemic.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Any answer option implying a fixed case count or percentage defines an epidemic is incorrect by the book's own explicit statement.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">endemic, outbreak, epidemic, pandemic</span><span class="chip t2">the escalation ladder</span></div>
+<div class="stem">41. What is a pandemic, and which of the following is given as an example?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A localized outbreak with high mortality; example is Ebola in West Africa</li><li class="fopt right"><span class="mk">&#10003;</span>An epidemic that spreads globally; examples include COVID-19, the 1918 Spanish influenza, and 2003 SARS</li><li class="fopt"><span class="mk">C</span>Any disease with a case fatality rate above 50%</li><li class="fopt"><span class="mk">D</span>A condition that occurs at a steady, expected rate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A pandemic is an epidemic that spreads globally. Examples given include COVID-19, the 1918 Spanish influenza (which infected more than one-third of the world), and 2003 SARS. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causality</span><span class="chip t2">bias, confounding, and the seven guidelines</span></div>
+<div class="stem">42. A study finds an association between alcohol use and low birth weight, but the association disappears after controlling for smoking. What best explains this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Selection bias</li><li class="fopt right"><span class="mk">&#10003;</span>Confounding — smoking is related to both the exposure (alcohol) and the outcome (low birth weight), and accounts for the apparent association</li><li class="fopt"><span class="mk">C</span>Misclassification bias</li><li class="fopt"><span class="mk">D</span>The ecological fallacy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Confounding is bias resulting from the relationship between the outcome and study factor and some third factor not accounted for. The classic example given is smoking confounding an alcohol/low-birth-weight association.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causality</span><span class="chip t2">bias, confounding, and the seven guidelines</span></div>
+<div class="stem">43. Which three general categories of bias can produce a statistical association that is not truly causal?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Selection bias, misclassification/information bias, and confounding</li><li class="fopt"><span class="mk">B</span>Recall bias, publication bias, and the ecological fallacy</li><li class="fopt"><span class="mk">C</span>Sensitivity, specificity, and predictive value</li><li class="fopt"><span class="mk">D</span>Sampling bias, response bias, and attrition bias</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A statistical association can arise from chance, bias, or confounding. The three general categories of bias named are selection bias (how subjects enter the study), misclassification/information bias (how data are collected or classified), and confounding (a third factor tied to both exposure and outcome).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causality</span><span class="chip t2">bias, confounding, and the seven guidelines</span></div>
+<div class="stem">44. According to Box 10.3's seven guidelines for causal inference, why is a statistical association alone considered insufficient to establish causation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because association is unnecessary for causation</li><li class="fopt right"><span class="mk">&#10003;</span>Because association is necessary but not sufficient — it must be evaluated against additional guidelines such as strength, consistency, biologic plausibility, temporal sequence, dose-response, specificity, and experimental evidence</li><li class="fopt"><span class="mk">C</span>Because only randomized trials can ever demonstrate an association</li><li class="fopt"><span class="mk">D</span>Because associations are always due to confounding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A statistical association is necessary but not adequate proof of causation. Causal inference is evaluated against the seven guidelines in Box 10.3: strength of association, consistency of findings, biologic plausibility, correct temporal sequence, dose-response relationship, specificity of the association, and experimental evidence.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causality</span><span class="chip t2">bias, confounding, and the seven guidelines</span></div>
+<div class="stem">45. Which of the seven guidelines for causal inference is described as the strongest form of epidemiologic evidence, though often infeasible or unethical to obtain?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Biologic plausibility</li><li class="fopt"><span class="mk">B</span>Specificity of the association</li><li class="fopt right"><span class="mk">&#10003;</span>Experimental evidence</li><li class="fopt"><span class="mk">D</span>Consistency of findings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Experimental evidence is named as the strongest epidemiologic evidence among the seven guidelines, but it is often infeasible or unethical to obtain, for example when it would require deliberately exposing people to a suspected harmful agent.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causality</span><span class="chip t2">bias, confounding, and the seven guidelines</span></div>
+<div class="stem">46. A risk factor must precede the disease outcome in time for a causal relationship to be considered valid. Which of the seven guidelines does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Dose-response relationship</li><li class="fopt right"><span class="mk">&#10003;</span>Correct temporal sequence</li><li class="fopt"><span class="mk">C</span>Specificity of the association</li><li class="fopt"><span class="mk">D</span>Strength of association</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Correct temporal sequence requires that the risk factor precede the outcome — one of the seven guidelines for causal inference in Box 10.3.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">causality</span><span class="chip t2">bias, confounding, and the seven guidelines</span></div>
+<div class="stem">47. A study shows that as exposure to a chemical increases, the risk of a given cancer also increases proportionally. Which causal inference guideline does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Specificity of the association</li><li class="fopt right"><span class="mk">&#10003;</span>Dose-response relationship — a graded exposure-risk relationship that supports causation</li><li class="fopt"><span class="mk">C</span>Consistency of findings</li><li class="fopt"><span class="mk">D</span>Biologic plausibility</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A dose-response relationship — more exposure leading to more risk — is one of the seven causal inference guidelines and supports causation.</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"incidence and prevalence","subtopic":"basic concepts — risk, proportion, rate","stem":"Why do epidemiologists prefer rates and proportions over raw case counts when describing disease frequency?","options":["Rates and proportions are easier to calculate from surveillance data","They account for the size of the population at risk, so 50 cases means something different in a population of 250 versus 250,000","Raw counts are not permitted in peer-reviewed publications","Proportions eliminate the need to track time"],"correct":[1],"sata":false,"why":"Rates and proportions take the size of the population at risk into account. Fifty cases of influenza might be a serious epidemic in a population of 250 but a low rate in a population of 250,000. A count alone tells you nothing without the denominator and the time period.","trap":null},{"topic":"incidence and prevalence","subtopic":"basic concepts — risk, proportion, rate","stem":"What distinguishes a rate from a proportion?","options":["A rate's denominator includes the numerator; a proportion's does not","A proportion's denominator depends on both population size and time; a rate's does not","A rate's denominator is a function of both population size and time, unlike a proportion","There is no meaningful difference; the terms are interchangeable"],"correct":[2],"sata":false,"why":"A proportion is a ratio in which the denominator includes the numerator, ranging from 0 to 1. A rate is a ratio that is not a proportion, because its denominator depends on both population size and time.","trap":"The proportion definition (numerator inside the denominator) is often flipped with the rate definition (denominator = population size x time) — the two definitions get swapped in distractors."},{"topic":"incidence and prevalence","subtopic":"incidence vs. prevalence","stem":"A community health department wants to know how many new cases of tuberculosis are occurring so it can evaluate a prevention program. Which measure should it use?","options":["Prevalence proportion","Incidence","Case fatality rate","Proportionate mortality ratio"],"correct":[1],"sata":false,"why":"Incidence is the measure of choice for studying etiology and risk factors and for evaluating prevention programs, because it is affected only by the development of new disease, not by survival or duration.","trap":null},{"topic":"incidence and prevalence","subtopic":"incidence vs. prevalence","stem":"A health planner needs to estimate how much existing disease is in the community in order to size services. Which measure is most appropriate?","options":["Incidence rate","Incidence proportion","Prevalence proportion","Attack rate"],"correct":[2],"sata":false,"why":"Prevalence measures existing disease in the population at a particular time and is best used for planning services, since it reflects the size of the population currently needing care.","trap":null},{"topic":"incidence and prevalence","subtopic":"incidence vs. prevalence","stem":"According to the formula relating incidence and prevalence, when prevalence is small (P \u003c 0.1), which expression is correct?","options":["I = P x D","P = I x D","D = P x I","P = I / D"],"correct":[1],"sata":false,"why":"When prevalence is small, P = I x D — prevalence equals the incidence rate multiplied by the average duration of disease.","trap":null},{"topic":"incidence and prevalence","subtopic":"incidence vs. prevalence","stem":"Breast cancer and lung cancer in women have similar incidence, but breast cancer has substantially higher prevalence. What explains this?","options":["Breast cancer is diagnosed earlier, inflating incidence","Lung cancer has a much longer average duration of illness","Breast cancer has a much longer average duration because of higher survival, so more existing cases accumulate at any given time","Prevalence is unrelated to survival duration"],"correct":[2],"sata":false,"why":"With five-year survival around 85% for breast cancer versus roughly 15% for lung cancer in women, breast cancer patients live with the disease far longer. Since prevalence = incidence x duration, the longer duration produces a higher prevalence even at similar incidence.","trap":"A stem that attributes the prevalence difference to incidence rather than duration is testing whether you remember that duration (survival/recovery), not new-case risk, is what separates the two cancers here. ---"},{"topic":"mortality rates","subtopic":"denominators (Table 10.2)","stem":"What is the denominator of the crude mortality rate?","options":["Total deaths in the period","Midyear total population","Number of persons diagnosed with the disease","Live births in the same year"],"correct":[1],"sata":false,"why":"The crude mortality rate uses deaths from any cause in the period as the numerator and the midyear total population as the denominator.","trap":null},{"topic":"mortality rates","subtopic":"denominators (Table 10.2)","stem":"What distinguishes the case fatality rate (CFR) from the cause-specific mortality rate?","options":["They are identical measures with different names","The CFR's denominator is the number of persons diagnosed with the disease; the cause-specific rate's denominator is the total population at risk","The CFR's denominator is total deaths, while the cause-specific rate's denominator is the diagnosed population","The CFR is calculated per 100,000 and the cause-specific rate is calculated per 1,000"],"correct":[1],"sata":false,"why":"CFR = deaths from a specific disease / number of persons diagnosed with that disease. Cause-specific mortality rate = deaths from a specific cause / total population at risk. The denominators are what separate them.","trap":null},{"topic":"mortality rates","subtopic":"denominators (Table 10.2)","stem":"Why is the proportionate mortality ratio (PMR) NOT considered a true rate?","options":["Its numerator counts only deaths under age 65","Its denominator is total deaths in the period, not the population at risk, so it does not estimate the risk of death","It can only be calculated retrospectively","It excludes infectious disease deaths"],"correct":[1],"sata":false,"why":"PMR's denominator is total deaths, not the population at risk. Because of this, it does not estimate risk and its size can shift purely because deaths from other causes rise or fall, even when the cause of interest stays constant.","trap":"This is the classic \"not a rate\" trap. Any answer option calling the PMR a risk estimate or a true rate is the intended distractor."},{"topic":"mortality rates","subtopic":"denominators (Table 10.2)","stem":"A researcher computes a CFR of 86% for a disease. What is the survival rate?","options":["86%","14%","Cannot be determined without additional data","100%"],"correct":[1],"sata":false,"why":"Survival rate = 1 minus CFR. An 86% CFR yields a 14% survival rate.","trap":"The fact bank notes the textbook itself is internally inconsistent (one place uses 87%/13%, another 86%/14%). Don't memorize a specific number as \"the\" figure for any disease — just apply the rule survival = 1 - CFR to whatever CFR the stem gives you."},{"topic":"mortality rates","subtopic":"denominators (Table 10.2)","stem":"What are the correct numerator and denominator for the infant mortality rate?","options":["Infant deaths under 28 days / live births in the same year","Infant deaths before 1 year of age / live births in the same year","Infant deaths before 1 year of age / total midyear population","Infant deaths 28 days to 1 year / total births including stillbirths"],"correct":[1],"sata":false,"why":"Infant mortality rate = infant deaths before 1 year of age / live births in the same year.","trap":null},{"topic":"mortality rates","subtopic":"denominators (Table 10.2)","stem":"Why is comparing crude mortality rates across two populations potentially misleading?","options":["Crude rates cannot be expressed per 100,000","Crude rates are affected by the population's age distribution, since older populations have higher mortality; this is corrected by age adjustment","Crude rates only apply to infectious diseases","Crude rates require CFR data that is often unavailable"],"correct":[1],"sata":false,"why":"The crude mortality rate is affected by the population's age distribution — an older population will show more deaths regardless of underlying health. Rate/age adjustment corrects for this by adjusting to a standard population so comparisons are fair. ---","trap":null},{"topic":"causal models","subtopic":"triangle, web, ecological model","stem":"The epidemiologic triangle consists of which three elements?","options":["Person, place, time","Agent, host, environment","Sensitivity, specificity, prevalence","Primary, secondary, tertiary prevention"],"correct":[1],"sata":false,"why":"The epidemiologic triangle is the agent-host-environment model: disease results from complex relationships among causal agents, susceptible persons, and environmental factors, and a change in any one element changes risk.","trap":null},{"topic":"causal models","subtopic":"triangle, web, ecological model","stem":"A nurse is investigating a single-source outbreak of a specific bacterial pathogen. Which causal model best fits this scenario, and why?","options":["The web of causality, because bacterial disease is always multifactorial","The epidemiologic triangle, because it fits a simple single-agent infectious model","The ecological model, because it addresses policy-level determinants","None of these models apply to infectious disease"],"correct":[1],"sata":false,"why":"The epidemiologic triangle (agent-host-environment) fits a simple single-agent infectious disease model. The web of causality is the better fit for multifactorial chronic disease where many variables interact.","trap":null},{"topic":"causal models","subtopic":"triangle, web, ecological model","stem":"A nurse is studying the multiple interacting contributors to type 2 diabetes (diet, genetics, socioeconomic status, access to care, activity level). Which model best fits this situation?","options":["The epidemiologic triangle, because diabetes has a single identifiable agent","The web of causality, which recognizes complex interrelationships among many factors increasing or decreasing risk","Point epidemic analysis","The case-control design"],"correct":[1],"sata":false,"why":"The web of causality recognizes the complex interrelationships of many factors interacting, sometimes subtly, to raise or lower disease risk — a better fit than the triangle when many variables interact, as in multifactorial chronic disease.","trap":null},{"topic":"causal models","subtopic":"triangle, web, ecological model","stem":"How does the ecological model extend beyond the epidemiologic triangle and web of causality?","options":["It applies only to infectious disease outbreaks","It treats multiple determinants of health as interrelated and synergistic across biologic, behavioral, social, and environmental levels, including policy, culture, and economics, with a life-span perspective","It replaces the need for agent, host, and environment entirely","It is used only for calculating incidence rates"],"correct":[1],"sata":false,"why":"The ecological model (IOM, 2002) treats the multiple determinants of health as interrelated and acting synergistically or antagonistically rather than as discrete factors, spanning biologic, mental, behavioral, social, and environmental levels including policy, culture, and economics — captured by the phrase \"healthy people in healthy communities.\" ---","trap":null},{"topic":"levels of prevention","subtopic":"definitions and the cardiovascular example","stem":"A patient has no discernible pathological process but is susceptible to disease. An intervention aimed at this patient to promote health and prevent disease onset is an example of which level of prevention?","options":["Primary","Secondary","Tertiary","Quaternary"],"correct":[0],"sata":false,"why":"Primary prevention promotes health and prevents the occurrence of disease, injury, or disability in people who are susceptible but have no discernible pathological process (prepathogenesis). Examples include immunizations, seat-belt teaching, folic acid at preconception, and water fluoridation.","trap":null},{"topic":"levels of prevention","subtopic":"definitions and the cardiovascular example","stem":"Screening is described as the core intervention of which level of prevention?","options":["Primary","Secondary","Tertiary","Screening is not classified under any level"],"correct":[1],"sata":false,"why":"Secondary prevention is designed to increase the probability that a person with disease will have it diagnosed early enough that treatment is likely to result in a cure, and screening is at the core of secondary prevention.","trap":null},{"topic":"levels of prevention","subtopic":"definitions and the cardiovascular example","stem":"A nurse provides cardiac rehabilitation, medication management, and coordinates surgery for a patient recovering from a myocardial infarction. This is an example of which level of prevention?","options":["Primary","Secondary","Tertiary","Screening"],"correct":[2],"sata":false,"why":"In the chapter's cardiovascular disease example, tertiary prevention is cardiac rehabilitation, medication, and surgery — interventions aimed at limiting disability and enhancing rehabilitation.","trap":null},{"topic":"levels of prevention","subtopic":"definitions and the cardiovascular example","stem":"In the chapter's cardiovascular disease example, discussing a low-fat diet and regular physical exercise with a patient represents which level of prevention, and implementing blood pressure and cholesterol screening with a treadmill stress test represents which level?","options":["Both are primary prevention","Diet/exercise discussion is primary; BP/cholesterol screening and stress testing is secondary","Diet/exercise discussion is secondary; screening is primary","Both are tertiary prevention"],"correct":[1],"sata":false,"why":"The cardiovascular disease example splits the levels cleanly: primary is discussing low-fat diet and exercise; secondary is blood pressure/cholesterol screening and treadmill stress testing; tertiary is cardiac rehabilitation, medication, and surgery. ---","trap":null},{"topic":"screening, validity, and reliability","subtopic":"sensitivity and specificity","stem":"A screening test correctly identifies 92% of people who truly have the disease as positive. What is this property called?","options":["Specificity","Sensitivity","Positive predictive value","Reliability"],"correct":[1],"sata":false,"why":"Sensitivity is the proportion of persons with the disease whom the test correctly identifies as positive (true positives).","trap":null},{"topic":"screening, validity, and reliability","subtopic":"sensitivity and specificity","stem":"A test correctly identifies people who do NOT have the disease as negative. What is this property called, and it corresponds to which type of result?","options":["Sensitivity; true positives","Specificity; true negatives","Sensitivity; true negatives","Predictive value; false negatives"],"correct":[1],"sata":false,"why":"Specificity is the proportion of persons without the disease whom the test correctly identifies as negative (true negatives).","trap":"Swapping sensitivity and specificity, or pairing sensitivity with true negatives, is the most common inversion tested on this pair."},{"topic":"screening, validity, and reliability","subtopic":"sensitivity and specificity","stem":"A nurse is choosing a screening test for a disease where missing a case would be dangerous because early treatment substantially improves outcomes. Which test characteristic should be prioritized?","options":["High specificity, to minimize false positives","High sensitivity, to minimize false negatives and catch as many true cases as possible","High positive predictive value regardless of sensitivity","High reliability regardless of validity"],"correct":[1],"sata":false,"why":"High sensitivity should be prioritized when early treatment matters and missing a case is dangerous, because a sensitive test minimizes false negatives.","trap":null},{"topic":"screening, validity, and reliability","subtopic":"sensitivity and specificity","stem":"For a screening program where rescreening is impractical and it is important to reduce false-positive results, which test characteristic should be prioritized?","options":["Sensitivity","Specificity","Negative predictive value only","Attack rate"],"correct":[1],"sata":false,"why":"Specificity should be prioritized when rescreening is impractical and reducing false positives is important.","trap":null},{"topic":"screening, validity, and reliability","subtopic":"predictive values","stem":"What does positive predictive value (PPV) tell you?","options":["The proportion of people with a negative test who are actually disease-free","The proportion of people with a positive test who actually have the disease","The proportion of people with the disease who test positive","The proportion of the population that is disease-free"],"correct":[1],"sata":false,"why":"PPV is the proportion of persons with a positive test who actually have the disease.","trap":null},{"topic":"screening, validity, and reliability","subtopic":"predictive values","stem":"What does negative predictive value (NPV) tell you, and what does it depend on besides sensitivity and specificity?","options":["The proportion of persons with a negative test who are actually disease-free; predictive values also depend on disease prevalence","The proportion of persons with a positive test who have the disease; predictive values are independent of prevalence","The same thing as specificity","The same thing as the case fatality rate"],"correct":[0],"sata":false,"why":"NPV is the proportion of persons with a negative test who are actually disease-free. Predictive values depend on sensitivity and specificity and also on the prevalence of disease in the population being tested.","trap":null},{"topic":"screening, validity, and reliability","subtopic":"series vs. parallel testing","stem":"In series (sequential) testing, a person is classified as positive only if all tests are positive. What is the effect on sensitivity and specificity?","options":["Increases sensitivity, decreases specificity","Increases specificity, decreases sensitivity, producing fewer false positives","Increases both sensitivity and specificity equally","Has no effect on either measure"],"correct":[1],"sata":false,"why":"Series testing requires all tests to be positive to call the result positive, which enhances specificity and reduces false positives, at the cost of lower sensitivity.","trap":null},{"topic":"screening, validity, and reliability","subtopic":"series vs. parallel testing","stem":"In parallel (simultaneous) testing, a person is classified as positive if any one test is positive. What is the effect, and what is the classic example?","options":["Increases specificity; example is confirmatory Western blot alone","Increases sensitivity and reduces false negatives, at the cost of lower specificity; example is a blood bank considering a sample positive on either ELISA or Western blot","Has no effect on sensitivity or specificity","Increases both sensitivity and specificity"],"correct":[1],"sata":false,"why":"Parallel testing calls a result positive if any test is positive, which enhances sensitivity (fewer false negatives) but lowers specificity. The blood bank example treats a sample as positive if it is positive on either ELISA or Western blot.","trap":null},{"topic":"screening, validity, and reliability","subtopic":"series vs. parallel testing","stem":"In a series testing protocol for HIV using ELISA followed by Western blot, which test should be performed first, and why?","options":["The more specific test first, to rule out disease quickly","The more sensitive test first, to catch all possible cases, followed by a more specific test to eliminate false positives","It does not matter which test is performed first","Both tests must be run simultaneously, not sequentially"],"correct":[1],"sata":false,"why":"In series testing, the sequence matters: a very sensitive test is used first to catch all cases, and then a very specific test is applied to eliminate false positives. A person is called positive only if both are positive.","trap":"Reversing the order (specific test first) is the classic distractor. The sensitive test always goes first in a series protocol."},{"topic":"screening, validity, and reliability","subtopic":"validity and reliability","stem":"A blood pressure cuff consistently reads 10 mm Hg higher than the true value on every patient. How should this be characterized?","options":["Reliable and valid","Unreliable and invalid","Reliable but not valid — consistent, but wrong","Valid but not reliable"],"correct":[2],"sata":false,"why":"Reliability is the consistency or repeatability of a measure; validity is whether the measure is truly measuring what it claims to measure. A cuff that reads consistently 10 mm Hg high is reliable (consistent) but not valid (inaccurate) — a measure can be consistent without being valid. ---","trap":null},{"topic":"study designs","subtopic":"which design for which purpose","stem":"A researcher wants to study a rare disease efficiently by comparing exposure histories of people who have the disease against those who do not. Which design is most appropriate?","options":["Prospective cohort study","Case-control study","Cross-sectional study","Ecological study"],"correct":[1],"sata":false,"why":"Case-control studies enroll subjects based on outcome status (cases vs. controls) and are the best design for rare diseases because they do not require following a large population forward to accumulate enough new cases.","trap":null},{"topic":"study designs","subtopic":"which design for which purpose","stem":"Which measure of association is produced by a case-control study, and why can it not directly calculate incidence or prevalence?","options":["Relative risk; because subjects are chosen by exposure status","Odds ratio; because subjects are chosen by outcome (disease) status, not by exposure or by sampling the whole population","Attack rate; because it follows an outbreak population","Case fatality rate; because it tracks disease progression"],"correct":[1],"sata":false,"why":"In a case-control study, subjects are enrolled because they are known to have the outcome (cases) or not (controls), so neither incidence nor prevalence can be calculated directly. The design uses the odds ratio instead.","trap":null},{"topic":"study designs","subtopic":"which design for which purpose","stem":"Which study design provides the best estimate of incidence and the clearest temporal sequence between exposure and outcome?","options":["Cross-sectional study","Case-control study","Prospective cohort study","Ecological study"],"correct":[2],"sata":false,"why":"A prospective cohort study follows a group sharing a characteristic of interest forward over time to observe new outcomes developing, giving the best estimate of incidence and risk and the clearest temporal sequence — though it is expensive, slow, and poorly suited to rare diseases.","trap":null},{"topic":"study designs","subtopic":"which design for which purpose","stem":"A cohort study finds that smokers develop lung cancer at a rate of 20 per 1,000 person-years, compared to 2 per 1,000 person-years among nonsmokers. What measure of association does this represent, and how is it calculated?","options":["Odds ratio; ratio of odds of exposure between cases and controls","Relative risk; the ratio of cumulative incidence rates in the exposed versus unexposed groups","Proportionate mortality ratio; deaths from lung cancer divided by total deaths","Case fatality rate"],"correct":[1],"sata":false,"why":"A cohort study allows calculation of incidence, and relative risk (risk ratio) is the ratio of cumulative incidence rates in exposed versus unexposed groups. Only a cohort design, which follows people forward, can directly estimate incidence and therefore relative risk.","trap":null},{"topic":"study designs","subtopic":"which design for which purpose","stem":"A researcher collects exposure and outcome data simultaneously in a single population survey. Which study design is this, what measure does it yield, and what is its major limitation?","options":["Cohort study; yields incidence; limited by attrition","Cross-sectional study; yields prevalence, not incidence; temporal sequence between exposure and outcome is unclear","Case-control study; yields the odds ratio; limited by recall bias only","Ecological study; yields incidence; limited by the ecological fallacy"],"correct":[1],"sata":false,"why":"A cross-sectional study collects exposure and outcome data simultaneously (\"correlational\"). It gives prevalence, not incidence, allows no calculation of risk, and the temporal sequence between exposure and outcome is unclear.","trap":null},{"topic":"study designs","subtopic":"which design for which purpose","stem":"A study uses group-level (aggregate) data, such as comparing national dietary fat consumption to national breast cancer rates, without individual-level data. Which design is this, and what is its key weakness?","options":["Cohort study; weakness is attrition","Case-control study; weakness is recall bias","Ecological study; weakness is the ecological fallacy, where group-level associations may not hold true for individuals","Cross-sectional study; weakness is selective-survival bias"],"correct":[2],"sata":false,"why":"An ecological study uses group-level (aggregate) data and serves as a bridge between descriptive and analytic epidemiology; it is quick, easy, and inexpensive as a first study, but risks the ecological fallacy — associations seen at the group level may not hold true for individuals.","trap":null},{"topic":"study designs","subtopic":"which design for which purpose","stem":"In interpreting a relative risk (RR) or odds ratio (OR), what does a value less than 1 indicate?","options":["Increased risk associated with exposure","No association between exposure and outcome","A protective association between exposure and outcome","The study design was flawed"],"correct":[2],"sata":false,"why":"RR or OR = 1 indicates no association, > 1 indicates increased risk, and \u003c 1 indicates a protective association. The physical-activity/CHD example in the fact bank gives an RR of 0.4, which is protective. ---","trap":null},{"topic":"endemic, outbreak, epidemic, pandemic","subtopic":"the escalation ladder","stem":"What is the defining feature of an endemic condition?","options":["It occurs at a steady, expected rate in the population, such as malaria in parts of Africa","It always requires a case count exceeding a fixed numeric threshold","It has spread globally","It refers only to conditions with no vaccine available"],"correct":[0],"sata":false,"why":"Endemic describes a health condition occurring at a steady, expected rate among the population, with malaria in parts of Africa given as the example.","trap":null},{"topic":"endemic, outbreak, epidemic, pandemic","subtopic":"the escalation ladder","stem":"What distinguishes an outbreak from an epidemic?","options":["An outbreak occurs in excess of the endemic level; an epidemic exceeds the endemic level AND spreads over a larger geographic area","An outbreak spreads globally; an epidemic is confined to one region","There is no meaningful distinction between the two terms","An outbreak requires laboratory confirmation; an epidemic does not"],"correct":[0],"sata":false,"why":"An outbreak is a condition occurring in excess of the endemic level (example: 2015 measles among unvaccinated theme-park visitors). An epidemic exceeds the endemic level and also spreads over a larger geographic area (example: 2014-2016 Ebola in West Africa).","trap":null},{"topic":"endemic, outbreak, epidemic, pandemic","subtopic":"the escalation ladder","stem":"Is there a fixed numeric threshold of case counts that defines an epidemic?","options":["Yes, an epidemic requires at least 100 cases in a population","Yes, an epidemic requires the incidence rate to double the endemic rate","No — there is no specific threshold; it is relative to the usual (endemic) level, so a single case of an eradicated disease like smallpox would count as an epidemic","Yes, but only for infectious, not chronic, disease"],"correct":[2],"sata":false,"why":"No specific threshold of incidence defines an epidemic — it is relative to the usual endemic level. Because smallpox has been eradicated, even a single case would constitute an epidemic.","trap":"Any answer option implying a fixed case count or percentage defines an epidemic is incorrect by the book's own explicit statement."},{"topic":"endemic, outbreak, epidemic, pandemic","subtopic":"the escalation ladder","stem":"What is a pandemic, and which of the following is given as an example?","options":["A localized outbreak with high mortality; example is Ebola in West Africa","An epidemic that spreads globally; examples include COVID-19, the 1918 Spanish influenza, and 2003 SARS","Any disease with a case fatality rate above 50%","A condition that occurs at a steady, expected rate"],"correct":[1],"sata":false,"why":"A pandemic is an epidemic that spreads globally. Examples given include COVID-19, the 1918 Spanish influenza (which infected more than one-third of the world), and 2003 SARS. ---","trap":null},{"topic":"causality","subtopic":"bias, confounding, and the seven guidelines","stem":"A study finds an association between alcohol use and low birth weight, but the association disappears after controlling for smoking. What best explains this?","options":["Selection bias","Confounding — smoking is related to both the exposure (alcohol) and the outcome (low birth weight), and accounts for the apparent association","Misclassification bias","The ecological fallacy"],"correct":[1],"sata":false,"why":"Confounding is bias resulting from the relationship between the outcome and study factor and some third factor not accounted for. The classic example given is smoking confounding an alcohol/low-birth-weight association.","trap":null},{"topic":"causality","subtopic":"bias, confounding, and the seven guidelines","stem":"Which three general categories of bias can produce a statistical association that is not truly causal?","options":["Selection bias, misclassification/information bias, and confounding","Recall bias, publication bias, and the ecological fallacy","Sensitivity, specificity, and predictive value","Sampling bias, response bias, and attrition bias"],"correct":[0],"sata":false,"why":"A statistical association can arise from chance, bias, or confounding. The three general categories of bias named are selection bias (how subjects enter the study), misclassification/information bias (how data are collected or classified), and confounding (a third factor tied to both exposure and outcome).","trap":null},{"topic":"causality","subtopic":"bias, confounding, and the seven guidelines","stem":"According to Box 10.3's seven guidelines for causal inference, why is a statistical association alone considered insufficient to establish causation?","options":["Because association is unnecessary for causation","Because association is necessary but not sufficient — it must be evaluated against additional guidelines such as strength, consistency, biologic plausibility, temporal sequence, dose-response, specificity, and experimental evidence","Because only randomized trials can ever demonstrate an association","Because associations are always due to confounding"],"correct":[1],"sata":false,"why":"A statistical association is necessary but not adequate proof of causation. Causal inference is evaluated against the seven guidelines in Box 10.3: strength of association, consistency of findings, biologic plausibility, correct temporal sequence, dose-response relationship, specificity of the association, and experimental evidence.","trap":null},{"topic":"causality","subtopic":"bias, confounding, and the seven guidelines","stem":"Which of the seven guidelines for causal inference is described as the strongest form of epidemiologic evidence, though often infeasible or unethical to obtain?","options":["Biologic plausibility","Specificity of the association","Experimental evidence","Consistency of findings"],"correct":[2],"sata":false,"why":"Experimental evidence is named as the strongest epidemiologic evidence among the seven guidelines, but it is often infeasible or unethical to obtain, for example when it would require deliberately exposing people to a suspected harmful agent.","trap":null},{"topic":"causality","subtopic":"bias, confounding, and the seven guidelines","stem":"A risk factor must precede the disease outcome in time for a causal relationship to be considered valid. Which of the seven guidelines does this describe?","options":["Dose-response relationship","Correct temporal sequence","Specificity of the association","Strength of association"],"correct":[1],"sata":false,"why":"Correct temporal sequence requires that the risk factor precede the outcome — one of the seven guidelines for causal inference in Box 10.3.","trap":null},{"topic":"causality","subtopic":"bias, confounding, and the seven guidelines","stem":"A study shows that as exposure to a chemical increases, the risk of a given cancer also increases proportionally. Which causal inference guideline does this illustrate?","options":["Specificity of the association","Dose-response relationship — a graded exposure-risk relationship that supports causation","Consistency of findings","Biologic plausibility"],"correct":[1],"sata":false,"why":"A dose-response relationship — more exposure leading to more risk — is one of the seven causal inference guidelines and supports causation.","trap":null}];
+const TITLE = "Chapter 10 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 10";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

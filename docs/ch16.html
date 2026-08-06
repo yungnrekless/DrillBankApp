@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 16 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 16</div><h1>Chapter 16 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster classification</span><span class="chip t2">natural vs. human-made disasters (Box 16.1)</span></div>
+<div class="stem">1. According to Box 16.1, which of the following are classified as NATURAL disasters? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Communicable disease epidemics</li><li class="fopt right"><span class="mk">&#10003;</span>Lightning-induced forest fires</li><li class="fopt"><span class="mk">C</span>Critical infrastructure failures</li><li class="fopt"><span class="mk">D</span>Cyberattacks</li><li class="fopt right"><span class="mk">&#10003;</span>Tsunamis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 16.1 lists communicable disease epidemics, lightning-induced forest fires, and tsunamis as natural disasters. Critical infrastructure failures and cyberattacks are human-made.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Communicable disease epidemics and lightning-induced forest fires are the chapter's two named &quot;easy inversions&quot; — both feel human-caused but are classified as natural.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster classification</span><span class="chip t2">natural vs. human-made disasters (Box 16.1)</span></div>
+<div class="stem">2. According to Box 16.1, which of the following are classified as HUMAN-MADE disasters? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fires (generally)</li><li class="fopt right"><span class="mk">&#10003;</span>Critical infrastructure failures</li><li class="fopt"><span class="mk">C</span>Lightning-induced forest fires</li><li class="fopt right"><span class="mk">&#10003;</span>Civil unrest (riots)</li><li class="fopt"><span class="mk">E</span>Communicable disease epidemics</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 16.1 classifies fires generally, critical infrastructure failures, and civil unrest as human-made. Lightning-induced forest fires and communicable disease epidemics are natural.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror image of the natural-disasters item. Fires and critical infrastructure failures are the pair most often miscategorized as natural because they sound like accidents rather than deliberate acts.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster classification</span><span class="chip t2">natural vs. human-made disasters (Box 16.1)</span></div>
+<div class="stem">3. A wildfire ignited by a lightning strike during a dry-season thunderstorm is best classified as which type of disaster under Box 16.1?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Human-made, because fire is inherently a human-made hazard</li><li class="fopt right"><span class="mk">&#10003;</span>Natural, because the ignition source was a natural weather event</li><li class="fopt"><span class="mk">C</span>A complex humanitarian emergency</li><li class="fopt"><span class="mk">D</span>It cannot be classified without knowing property damage</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 16.1 specifically lists lightning-induced forest fires as a natural disaster, distinguishing them from fires generally, which are classified as human-made.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster classification</span><span class="chip t2">natural vs. human-made disasters (Box 16.1)</span></div>
+<div class="stem">4. What was the &quot;incident triad&quot; in the March 11, 2011, disaster in northeastern Japan?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Earthquake, tsunami, and a nuclear reactor crisis</li><li class="fopt"><span class="mk">B</span>Earthquake, hurricane, and civil unrest</li><li class="fopt"><span class="mk">C</span>Tsunami, flooding, and a chemical plant explosion</li><li class="fopt"><span class="mk">D</span>Earthquake, tsunami, and a pandemic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The 9.0 magnitude earthquake and the tsunami that followed were the two natural components; the human-made component that completed the incident triad was the Fukushima nuclear reactor crisis, later found to result from a mix of human-made factors.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster classification</span><span class="chip t2">natural vs. human-made disasters (Box 16.1)</span></div>
+<div class="stem">5. Which statement best reflects the chapter's key framing sentence about natural and human-made factors in disasters?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Natural events and human-made factors are unrelated causes of separate disasters</li><li class="fopt right"><span class="mk">&#10003;</span>Natural events often trigger disasters, and predictable, preventable human-made factors can increase the disaster's effects</li><li class="fopt"><span class="mk">C</span>Human-made factors are the primary trigger for most disasters classified as natural</li><li class="fopt"><span class="mk">D</span>Natural disasters cannot be worsened by human action once they begin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states, &quot;Although natural events such as earthquakes or hurricanes often trigger disasters, predictable and preventable human-made factors can increase the effects of the disaster.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster classification</span><span class="chip t2">natural vs. human-made disasters (Box 16.1)</span></div>
+<div class="stem">6. Per the chapter's definition, what distinguishes an incident that a community absorbs on its own from one that qualifies as a disaster?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The number of fatalities</li><li class="fopt"><span class="mk">B</span>Whether the incident was natural or human-made</li><li class="fopt right"><span class="mk">&#10003;</span>Whether the incident requires external assistance</li><li class="fopt"><span class="mk">D</span>Whether local media cover the event</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A disaster is defined as any natural or human-made incident causing disruption, destruction, or devastation that requires external assistance. An event a community can absorb with its own resources is not a disaster by this definition.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Severity alone does not define a disaster in this chapter — the discriminator is the need for outside help.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster classification</span><span class="chip t2">natural vs. human-made disasters (Box 16.1)</span></div>
+<div class="stem">7. Which statement accurately reflects the chapter's discussion of the trend in worldwide disasters and their toll?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both the number of disasters and the number of lives lost have increased</li><li class="fopt right"><span class="mk">&#10003;</span>The number of disasters has grown, but the number of lives lost has decreased</li><li class="fopt"><span class="mk">C</span>The number of disasters has decreased, while lives lost has increased</li><li class="fopt"><span class="mk">D</span>Both the number of disasters and lives lost have declined</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Although the number of disasters worldwide continues to grow, the number of lives lost has decreased,&quot; likely due to better disaster forecasting and early warning systems.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option stating that both figures are rising together is the classic wrong pairing here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster classification</span><span class="chip t2">natural vs. human-made disasters (Box 16.1)</span></div>
+<div class="stem">8. How does the chapter reconcile the statement that disaster costs are higher in developed countries with the statement that developing countries bear a disproportionate burden?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The two statements are contradictory, and only one can be correct</li><li class="fopt right"><span class="mk">&#10003;</span>Dollar costs are higher in developed countries due to labor, materials, and infrastructure costs, while developing countries suffer disproportionate burden due to poverty and limited resources</li><li class="fopt"><span class="mk">C</span>Developed countries have higher costs and higher burden equally</li><li class="fopt"><span class="mk">D</span>Developing countries have higher costs due to less resilient infrastructure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Costs are higher in more developed countries because of the costs of labor, materials, and complex infrastructure. Developing countries experience a disproportionate burden because they are poor and have limited resources to rebound. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster management cycle</span><span class="chip t2">the four-stage cycle</span></div>
+<div class="stem">9. How many stages does this textbook's disaster management cycle include, and what are they?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Five stages: prevention, mitigation, preparedness, response, and recovery</li><li class="fopt right"><span class="mk">&#10003;</span>Four stages: prevention (including mitigation and protection), preparedness, response, and recovery</li><li class="fopt"><span class="mk">C</span>Three stages: preparedness, response, and recovery</li><li class="fopt"><span class="mk">D</span>Four stages: mitigation, protection, response, and reconstruction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Disaster management includes four stages: prevention (including mitigation and protection), preparedness, response, and recovery.&quot; Mitigation and prevention are used interchangeably in this chapter rather than treated as separate phases.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>If an answer option lists five phases with mitigation and prevention as separate stages, it is wrong by this textbook, even though other sources make that distinction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster management cycle</span><span class="chip t2">the four-stage cycle</span></div>
+<div class="stem">10. In this chapter's disaster management cycle, mitigation is best understood as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A distinct fifth phase that occurs between prevention and preparedness</li><li class="fopt right"><span class="mk">&#10003;</span>The same phase as prevention — reducing risks to people and property before a disaster occurs</li><li class="fopt"><span class="mk">C</span>A phase that occurs only after response has concluded</li><li class="fopt"><span class="mk">D</span>A synonym for recovery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mitigation is &quot;an emergency management term for reducing risks to people and property from natural hazards before they occur&quot; and is used interchangeably with prevention in this chapter.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">disaster management cycle</span><span class="chip t2">the four-stage cycle</span></div>
+<div class="stem">11. Which nursing skills does the chapter identify as applying across all four phases of the disaster management cycle? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Assessment and priority setting</li><li class="fopt right"><span class="mk">&#10003;</span>Collaboration and health education</li><li class="fopt right"><span class="mk">&#10003;</span>Disease screening and mass clinic expertise</li><li class="fopt"><span class="mk">D</span>Prescriptive authority for controlled substances</li><li class="fopt right"><span class="mk">&#10003;</span>Triage and rapid needs assessment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nursing skills that apply across all four phases include assessment, priority setting, collaboration, health education, disease screening, mass clinic expertise, and additionally providing psychological first aid, triage, and rapid needs assessment. Prescriptive authority is not named. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal disaster framework</span><span class="chip t2">FEMA's role and the escalation ladder</span></div>
+<div class="stem">12. Which statement best describes FEMA's role as named in the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>FEMA directly manages all local emergency response operations during a disaster</li><li class="fopt right"><span class="mk">&#10003;</span>FEMA coordinates comprehensive, all-hazard planning at the national level, providing a menu of exercises and plan templates for communities</li><li class="fopt"><span class="mk">C</span>FEMA's role is limited to disbursing recovery funds after a presidential disaster declaration</li><li class="fopt"><span class="mk">D</span>FEMA sets state-level mutual aid agreements</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The Federal Emergency Management Agency (FEMA) coordinates comprehensive, all-hazard planning at the national level, assuring a menu of exercises and plan templates to address plausible incidents in any given community.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal disaster framework</span><span class="chip t2">FEMA's role and the escalation ladder</span></div>
+<div class="stem">13. Place the disaster response escalation ladder in the correct order, from where response first begins to the point at which the National Response Framework may take effect.</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>State → county/city → local → federal</li><li class="fopt right"><span class="mk">&#10003;</span>Local → county/city → state → federal</li><li class="fopt"><span class="mk">C</span>Federal → state → county/city → local</li><li class="fopt"><span class="mk">D</span>County/city → local → federal → state</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The first level of response occurs at the local level (fire, law enforcement, public health, emergency services). If needs exceed local resources, the county or city emergency management agency coordinates through an emergency operations center. When state resources are overwhelmed, governors may request federal assistance under a presidential declaration, and if the event is an incident of national significance, the NRF may take effect.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">federal disaster framework</span><span class="chip t2">FEMA's role and the escalation ladder</span></div>
+<div class="stem">14. A hurricane has overwhelmed a coastal county's emergency operations center, and the state's own resources and capabilities are now also overwhelmed. What is the next appropriate step in the escalation ladder?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The county directly contacts FEMA to activate the National Response Framework</li><li class="fopt right"><span class="mk">&#10003;</span>The governor may request federal assistance under a presidential disaster or emergency declaration</li><li class="fopt"><span class="mk">C</span>Local fire and law enforcement resume primary responsibility</li><li class="fopt"><span class="mk">D</span>The American Red Cross assumes command of the response</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>When state resources and capabilities are overwhelmed, governors may request federal assistance under a presidential disaster or emergency declaration. Only after that, if the event is an incident of national significance, does the NRF take effect.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Counties do not skip the state level to contact FEMA directly — escalation proceeds local to county/city to state to federal. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">triage</span><span class="chip t2">the three priority levels</span></div>
+<div class="stem">15. What is the definition of triage as used in this chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Treating patients in the order in which they arrive</li><li class="fopt right"><span class="mk">&#10003;</span>The process of separating casualties and allocating treatment on the basis of an individual's potential for survival</li><li class="fopt"><span class="mk">C</span>Allocating treatment based strictly on injury severity</li><li class="fopt"><span class="mk">D</span>Assigning care based on insurance or ability to pay</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Triage is &quot;the process of separating casualties and allocating treatment on the basis of an individual's potential for survival.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">triage</span><span class="chip t2">the three priority levels</span></div>
+<div class="stem">16. Under disaster triage, which criteria must BOTH be met for a victim to receive the highest priority?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A life-threatening injury alone, regardless of prognosis</li><li class="fopt right"><span class="mk">&#10003;</span>A life-threatening injury and a high probability of survival once stabilized</li><li class="fopt"><span class="mk">C</span>Any injury requiring more than 60 minutes of care</li><li class="fopt"><span class="mk">D</span>Being the first casualty found at the scene</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Highest priority requires both a life-threatening injury and a high probability of survival once stabilized. This survival clause is what distinguishes disaster triage from ED triage.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The classic distractor is a patient with the most severe, catastrophic injuries but a low probability of survival — under this rule, that patient is not highest priority.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">triage</span><span class="chip t2">the three priority levels</span></div>
+<div class="stem">17. A disaster nurse triaging a mass-casualty scene finds a patient with a survivable but severe leg fracture and no systemic complications, and a patient with catastrophic head trauma who is unlikely to survive even with immediate intervention. How should these two patients be triaged?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The head trauma patient is highest priority because the injury is most severe</li><li class="fopt"><span class="mk">B</span>The head trauma patient is highest priority because triage always favors the sickest patient</li><li class="fopt right"><span class="mk">&#10003;</span>The head trauma patient is not highest priority, because a high probability of survival once stabilized is also required; the leg fracture patient is triaged according to whether the injury is systemic or local</li><li class="fopt"><span class="mk">D</span>Both patients receive equal priority because both have identifiable injuries</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Highest priority requires both a life-threatening injury and a high probability of survival once stabilized. A patient with catastrophic, non-survivable injuries is not highest priority under this rule.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">triage</span><span class="chip t2">the three priority levels</span></div>
+<div class="stem">18. A victim has injuries with systemic complications that are not yet life-threatening. Approximately how long can this victim's treatment wait under disaster triage?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Immediate treatment is required</li><li class="fopt right"><span class="mk">&#10003;</span>45 to 60 minutes</li><li class="fopt"><span class="mk">C</span>Several hours</li><li class="fopt"><span class="mk">D</span>Treatment can be deferred indefinitely</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The second priority level — systemic complications that are not yet life-threatening — could wait 45 to 60 minutes.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">triage</span><span class="chip t2">the three priority levels</span></div>
+<div class="stem">19. Which victims are assigned to the last triage priority, and how long can they typically wait?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Victims with life-threatening injuries and low survival probability; wait several hours</li><li class="fopt right"><span class="mk">&#10003;</span>Victims with local injuries without immediate complications; can wait several hours</li><li class="fopt"><span class="mk">C</span>Victims with no visible injuries; wait indefinitely</li><li class="fopt"><span class="mk">D</span>Victims with systemic complications; wait 45 to 60 minutes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The last priority level is victims with local injuries without immediate complications, who can wait several hours.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">triage</span><span class="chip t2">the three priority levels</span></div>
+<div class="stem">20. What principle underlies the establishment of priorities in disaster triage, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Treating the most severely injured patient first, regardless of resources</li><li class="fopt right"><span class="mk">&#10003;</span>Establishing priorities that benefit the largest aggregate of affected individuals with the most correctable problems</li><li class="fopt"><span class="mk">C</span>Treating patients strictly in order of arrival</li><li class="fopt"><span class="mk">D</span>Prioritizing patients most likely to require prolonged hospitalization</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Establishing a priority of needs that benefit the largest aggregate of affected individuals with the most correctable problems is consistent with the basic tenets of triage.&quot; ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the four community stress phases</span></div>
+<div class="stem">21. Which two community stress phases are associated with the RESPONSE phase of the disaster management cycle?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Disillusionment and reconstruction</li><li class="fopt right"><span class="mk">&#10003;</span>Heroic and honeymoon</li><li class="fopt"><span class="mk">C</span>Heroic and disillusionment</li><li class="fopt"><span class="mk">D</span>Honeymoon and reconstruction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The heroic and honeymoon phases are associated with response, while disillusionment and reconstruction are associated with recovery.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The chapter discusses all four phases together within the Response section &quot;for purposes of continuity,&quot; which makes it easy to mistakenly assign all four to response.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the four community stress phases</span></div>
+<div class="stem">22. Which two community stress phases are associated with the RECOVERY phase of the disaster management cycle?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Heroic and honeymoon</li><li class="fopt right"><span class="mk">&#10003;</span>Disillusionment and reconstruction</li><li class="fopt"><span class="mk">C</span>Honeymoon and disillusionment</li><li class="fopt"><span class="mk">D</span>Heroic and reconstruction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Disillusionment and reconstruction are associated with recovery; heroic and honeymoon are associated with response.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the four community stress phases</span></div>
+<div class="stem">23. First responders at a disaster scene work for hours on end without rest, refuse breaks, and fight needed sleep. Which community stress phase does this describe, and what is the associated danger?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Honeymoon phase; the danger is survivor complacency</li><li class="fopt right"><span class="mk">&#10003;</span>Heroic phase; exhausted, overworked responders present a danger to themselves and the community served</li><li class="fopt"><span class="mk">C</span>Disillusionment phase; the danger is despair among survivors</li><li class="fopt"><span class="mk">D</span>Reconstruction phase; the danger is prolonged unemployment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The heroic phase involves an overwhelming need to help others survive; responders work without thought of their own needs and refuse rest breaks. Exhausted, overworked responders present a danger to themselves and the community served, and those with oversight may need to order helpers to take breaks.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the four community stress phases</span></div>
+<div class="stem">24. Survivors gather to repeatedly share their disaster stories, expressing thankfulness that their lives and the lives of loved ones were spared. Which community stress phase is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Heroic</li><li class="fopt right"><span class="mk">&#10003;</span>Honeymoon</li><li class="fopt"><span class="mk">C</span>Disillusionment</li><li class="fopt"><span class="mk">D</span>Reconstruction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In the honeymoon phase, survivors may be rejoicing that their lives and the lives of loved ones have been spared. They gather to share experiences, and repeated telling creates bonds among survivors.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the four community stress phases</span></div>
+<div class="stem">25. Weeks after a disaster, a community begins to realize that additional help is not immediately forthcoming, and residents express despair as they recognize a return to the previous normal is unlikely. Which phase is this, and which broader disaster cycle stage does it belong to?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Heroic phase; response</li><li class="fopt"><span class="mk">B</span>Honeymoon phase; response</li><li class="fopt right"><span class="mk">&#10003;</span>Disillusionment phase; recovery</li><li class="fopt"><span class="mk">D</span>Reconstruction phase; recovery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The disillusionment phase occurs as people begin to notice that additional help may not be forthcoming, producing despair and exhaustion, and a recognition that returning to the previous normal is unlikely. It is associated with recovery.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the four community stress phases</span></div>
+<div class="stem">26. Which community stress phase is described as the longest, with the goal of returning to a new state of normalcy?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Heroic</li><li class="fopt"><span class="mk">B</span>Honeymoon</li><li class="fopt"><span class="mk">C</span>Disillusionment</li><li class="fopt right"><span class="mk">&#10003;</span>Reconstruction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Reconstruction is the longest phase, during which homes, schools, churches, and other community elements are rebuilt and reestablished, with the goal of returning to a new state of normalcy. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">rapid needs assessment</span></div>
+<div class="stem">27. Which of the following are among the six elements of a rapid needs assessment? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Determining the magnitude of the incident</li><li class="fopt right"><span class="mk">&#10003;</span>Defining the specific health needs of the affected population</li><li class="fopt right"><span class="mk">&#10003;</span>Establishing priorities and objectives for action</li><li class="fopt right"><span class="mk">&#10003;</span>Identifying existing and potential public health problems</li><li class="fopt"><span class="mk">E</span>Filing insurance claims on behalf of affected residents</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The six elements are determining the magnitude of the incident; defining the specific health needs of the affected population; establishing priorities and objectives for action; identifying existing and potential public health problems; evaluating the capacity of the local response including resources and logistics; and determining the external resource needs for priority actions. Filing insurance claims is not one of them.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">rapid needs assessment</span></div>
+<div class="stem">28. A rapid needs assessment includes evaluating the capacity of the local response, including resources and logistics, and determining what other element?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The external resource needs for priority actions</li><li class="fopt"><span class="mk">B</span>The long-term psychological impact on responders</li><li class="fopt"><span class="mk">C</span>The projected cost of rebuilding infrastructure</li><li class="fopt"><span class="mk">D</span>The media narrative surrounding the disaster</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The sixth element of the rapid needs assessment is determining the external resource needs for priority actions.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">rapid needs assessment</span></div>
+<div class="stem">29. For a sudden-impact disaster such as a tornado or earthquake, what should the rapid needs assessment focus on?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Mortality rates, nutritional status, immunization status, and environmental health</li><li class="fopt right"><span class="mk">&#10003;</span>Ongoing hazards, injuries and deaths, shelter requirements, and clean water</li><li class="fopt"><span class="mk">C</span>Long-term economic recovery projections</li><li class="fopt"><span class="mk">D</span>School attendance and educational disruption</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sudden-impact disasters like tornadoes and earthquakes require assessment focused on ongoing hazards, injuries and deaths, shelter requirements, and clean water. Gradual-onset disasters like famines instead focus on mortality rates, nutritional status, immunization status, and environmental health.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The assessment focus for sudden-impact and gradual-onset disasters is easy to swap — sudden-impact is about immediate hazards and shelter, gradual-onset is about nutrition and immunization trends over time. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preparedness</span><span class="chip t2">personal and family disaster preparedness</span></div>
+<div class="stem">30. What are the three steps of &quot;Be Red Cross Ready&quot; as presented in the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Get a kit, make a plan, be informed</li><li class="fopt"><span class="mk">B</span>Get insured, make a plan, contact authorities</li><li class="fopt"><span class="mk">C</span>Get a kit, evacuate early, notify neighbors</li><li class="fopt"><span class="mk">D</span>Make a plan, stockpile supplies, register with FEMA</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three Red Cross Ready steps are: get a kit, make a plan, and be informed.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preparedness</span><span class="chip t2">personal and family disaster preparedness</span></div>
+<div class="stem">31. When making a family disaster plan, how many meeting places should a family choose, and what is required of the emergency contact person?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>One meeting place inside the home; the contact person should be a trusted neighbor</li><li class="fopt right"><span class="mk">&#10003;</span>Two meeting places — one right outside the home and one outside the neighborhood; the contact person should be out of the area</li><li class="fopt"><span class="mk">C</span>Three meeting places spread across the community; the contact person should be a local relative</li><li class="fopt"><span class="mk">D</span>One meeting place outside the neighborhood; no contact person is needed if cell phones are charged</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Families should choose two meeting places — one right outside the home for a sudden emergency such as a fire, and another outside the neighborhood in case they cannot return home or must evacuate. The contact person should be out of the area, because it may be easier to call long distance or text if local phone lines are overloaded.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;A trusted neighbor&quot; is a plausible-sounding but incorrect substitute for an out-of-area contact — the rationale is specifically that local lines may be overloaded while long-distance lines still work.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preparedness</span><span class="chip t2">personal and family disaster preparedness</span></div>
+<div class="stem">32. According to the chapter's maintenance schedule for family preparedness, how often should stored water and stored food be replaced?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Water every 6 months, food every 3 months</li><li class="fopt right"><span class="mk">&#10003;</span>Water every 3 months, food every 6 months</li><li class="fopt"><span class="mk">C</span>Both every 3 months</li><li class="fopt"><span class="mk">D</span>Both every 12 months</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Stored water should be replaced every 3 months and stored food every 6 months.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The two intervals are easy to swap since they use the same two numbers in opposite order.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preparedness</span><span class="chip t2">personal and family disaster preparedness</span></div>
+<div class="stem">33. How often should a family plan to review its disaster plan, according to the chapter's maintenance schedule?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Every 3 months</li><li class="fopt right"><span class="mk">&#10003;</span>Every 6 months</li><li class="fopt"><span class="mk">C</span>Every 12 months</li><li class="fopt"><span class="mk">D</span>Only after an actual disaster occurs</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The plan should be reviewed every 6 months, alongside replacing stored water every 3 months, stored food every 6 months, testing smoke detectors monthly, and practicing evacuation twice a year.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Five different intervals appear in this one box (water, food, plan review, smoke detectors, evacuation drills) — they are easy to shuffle, so learn each one individually rather than assuming a single cadence applies to all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preparedness</span><span class="chip t2">personal and family disaster preparedness</span></div>
+<div class="stem">34. How often does the chapter recommend testing smoke detectors, and how often should evacuation be practiced?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Smoke detectors monthly; evacuation twice a year</li><li class="fopt"><span class="mk">B</span>Smoke detectors every 6 months; evacuation monthly</li><li class="fopt"><span class="mk">C</span>Smoke detectors annually; evacuation every 3 months</li><li class="fopt"><span class="mk">D</span>Smoke detectors monthly; evacuation annually</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Smoke detectors should be tested monthly, with batteries changed at least once a year. Evacuation should be practiced twice a year, driving the planned route and plotting alternative routes in case main roads are impassable. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the first goal of response and biological incidents</span></div>
+<div class="stem">35. What is the FIRST goal of any disaster response, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Triaging and treating casualties as quickly as possible</li><li class="fopt right"><span class="mk">&#10003;</span>Reestablishing sanitary barriers as quickly as possible</li><li class="fopt"><span class="mk">C</span>Restoring electrical power to the affected area</li><li class="fopt"><span class="mk">D</span>Establishing a public information officer for media relations</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The first goal of any disaster response is to reestablish sanitary barriers as quickly as possible,&quot; addressing basic needs of water, food, waste removal, vector control, shelter, and safety.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Because triage dominates the surrounding text on response, it is easy to assume treating casualties is the first goal — the chapter states sanitation comes first.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the first goal of response and biological incidents</span></div>
+<div class="stem">36. In a biological incident where an agent has been released without warning, who does the chapter identify as effectively &quot;first on the scene,&quot; and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Fire and EMS personnel, because they arrive within minutes of any incident</li><li class="fopt"><span class="mk">B</span>Law enforcement, because they secure the area before health responders enter</li><li class="fopt right"><span class="mk">&#10003;</span>Health care professionals, because symptoms may not appear for days or weeks after exposure, by which time victims have already sought a health evaluation</li><li class="fopt"><span class="mk">D</span>Public health surveillance systems, because they detect agents in real time</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An unannounced biological release may go unnoticed, and victims may have left the area of exposure long before the act is recognized. The first signs may not be apparent for days or weeks, until victims become ill and seek a health evaluation — in this case, health care professionals are considered the &quot;first on the scene.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This inverts the usual assumption that fire or EMS are always first on scene; for biological incidents specifically, delayed symptom onset shifts that role to health care professionals encountering ill patients later.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the first goal of response and biological incidents</span></div>
+<div class="stem">37. Why are biological agents considered uniquely dangerous compared to many other disaster threats?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They require large quantities to affect a population</li><li class="fopt right"><span class="mk">&#10003;</span>Only a small amount is needed to affect thousands of people, and some agents are easy to conceal, transport, and disseminate</li><li class="fopt"><span class="mk">C</span>They are always immediately obvious upon release</li><li class="fopt"><span class="mk">D</span>They primarily affect infrastructure rather than people</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Only a small amount of a biological agent is needed to affect thousands of people, and some agents are easy to conceal, transport, and disseminate.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">response</span><span class="chip t2">the first goal of response and biological incidents</span></div>
+<div class="stem">38. Why can the results of a biological release be hard to recognize, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Biological agent symptoms often mimic influenza or other viral syndromes</li><li class="fopt"><span class="mk">B</span>Biological agents rarely cause any symptoms</li><li class="fopt"><span class="mk">C</span>Laboratory testing for biological agents is not available in the United States</li><li class="fopt"><span class="mk">D</span>Biological releases are always announced in advance by the perpetrators</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Results of a biological release are hard to recognize because many biological agent symptoms mimic influenza or other viral syndromes.&quot;</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"disaster classification","subtopic":"natural vs. human-made disasters (Box 16.1)","stem":"According to Box 16.1, which of the following are classified as NATURAL disasters? Select all that apply.","options":["Communicable disease epidemics","Lightning-induced forest fires","Critical infrastructure failures","Cyberattacks","Tsunamis"],"correct":[0,1,4],"sata":true,"why":"Box 16.1 lists communicable disease epidemics, lightning-induced forest fires, and tsunamis as natural disasters. Critical infrastructure failures and cyberattacks are human-made.","trap":"Communicable disease epidemics and lightning-induced forest fires are the chapter's two named \"easy inversions\" — both feel human-caused but are classified as natural."},{"topic":"disaster classification","subtopic":"natural vs. human-made disasters (Box 16.1)","stem":"According to Box 16.1, which of the following are classified as HUMAN-MADE disasters? Select all that apply.","options":["Fires (generally)","Critical infrastructure failures","Lightning-induced forest fires","Civil unrest (riots)","Communicable disease epidemics"],"correct":[0,1,3],"sata":true,"why":"Box 16.1 classifies fires generally, critical infrastructure failures, and civil unrest as human-made. Lightning-induced forest fires and communicable disease epidemics are natural.","trap":"This is the mirror image of the natural-disasters item. Fires and critical infrastructure failures are the pair most often miscategorized as natural because they sound like accidents rather than deliberate acts."},{"topic":"disaster classification","subtopic":"natural vs. human-made disasters (Box 16.1)","stem":"A wildfire ignited by a lightning strike during a dry-season thunderstorm is best classified as which type of disaster under Box 16.1?","options":["Human-made, because fire is inherently a human-made hazard","Natural, because the ignition source was a natural weather event","A complex humanitarian emergency","It cannot be classified without knowing property damage"],"correct":[1],"sata":false,"why":"Box 16.1 specifically lists lightning-induced forest fires as a natural disaster, distinguishing them from fires generally, which are classified as human-made.","trap":null},{"topic":"disaster classification","subtopic":"natural vs. human-made disasters (Box 16.1)","stem":"What was the \"incident triad\" in the March 11, 2011, disaster in northeastern Japan?","options":["Earthquake, tsunami, and a nuclear reactor crisis","Earthquake, hurricane, and civil unrest","Tsunami, flooding, and a chemical plant explosion","Earthquake, tsunami, and a pandemic"],"correct":[0],"sata":false,"why":"The 9.0 magnitude earthquake and the tsunami that followed were the two natural components; the human-made component that completed the incident triad was the Fukushima nuclear reactor crisis, later found to result from a mix of human-made factors.","trap":null},{"topic":"disaster classification","subtopic":"natural vs. human-made disasters (Box 16.1)","stem":"Which statement best reflects the chapter's key framing sentence about natural and human-made factors in disasters?","options":["Natural events and human-made factors are unrelated causes of separate disasters","Natural events often trigger disasters, and predictable, preventable human-made factors can increase the disaster's effects","Human-made factors are the primary trigger for most disasters classified as natural","Natural disasters cannot be worsened by human action once they begin"],"correct":[1],"sata":false,"why":"The chapter states, \"Although natural events such as earthquakes or hurricanes often trigger disasters, predictable and preventable human-made factors can increase the effects of the disaster.\"","trap":null},{"topic":"disaster classification","subtopic":"natural vs. human-made disasters (Box 16.1)","stem":"Per the chapter's definition, what distinguishes an incident that a community absorbs on its own from one that qualifies as a disaster?","options":["The number of fatalities","Whether the incident was natural or human-made","Whether the incident requires external assistance","Whether local media cover the event"],"correct":[2],"sata":false,"why":"A disaster is defined as any natural or human-made incident causing disruption, destruction, or devastation that requires external assistance. An event a community can absorb with its own resources is not a disaster by this definition.","trap":"Severity alone does not define a disaster in this chapter — the discriminator is the need for outside help."},{"topic":"disaster classification","subtopic":"natural vs. human-made disasters (Box 16.1)","stem":"Which statement accurately reflects the chapter's discussion of the trend in worldwide disasters and their toll?","options":["Both the number of disasters and the number of lives lost have increased","The number of disasters has grown, but the number of lives lost has decreased","The number of disasters has decreased, while lives lost has increased","Both the number of disasters and lives lost have declined"],"correct":[1],"sata":false,"why":"\"Although the number of disasters worldwide continues to grow, the number of lives lost has decreased,\" likely due to better disaster forecasting and early warning systems.","trap":"An option stating that both figures are rising together is the classic wrong pairing here."},{"topic":"disaster classification","subtopic":"natural vs. human-made disasters (Box 16.1)","stem":"How does the chapter reconcile the statement that disaster costs are higher in developed countries with the statement that developing countries bear a disproportionate burden?","options":["The two statements are contradictory, and only one can be correct","Dollar costs are higher in developed countries due to labor, materials, and infrastructure costs, while developing countries suffer disproportionate burden due to poverty and limited resources","Developed countries have higher costs and higher burden equally","Developing countries have higher costs due to less resilient infrastructure"],"correct":[1],"sata":false,"why":"Costs are higher in more developed countries because of the costs of labor, materials, and complex infrastructure. Developing countries experience a disproportionate burden because they are poor and have limited resources to rebound. ---","trap":null},{"topic":"disaster management cycle","subtopic":"the four-stage cycle","stem":"How many stages does this textbook's disaster management cycle include, and what are they?","options":["Five stages: prevention, mitigation, preparedness, response, and recovery","Four stages: prevention (including mitigation and protection), preparedness, response, and recovery","Three stages: preparedness, response, and recovery","Four stages: mitigation, protection, response, and reconstruction"],"correct":[1],"sata":false,"why":"\"Disaster management includes four stages: prevention (including mitigation and protection), preparedness, response, and recovery.\" Mitigation and prevention are used interchangeably in this chapter rather than treated as separate phases.","trap":"If an answer option lists five phases with mitigation and prevention as separate stages, it is wrong by this textbook, even though other sources make that distinction."},{"topic":"disaster management cycle","subtopic":"the four-stage cycle","stem":"In this chapter's disaster management cycle, mitigation is best understood as which of the following?","options":["A distinct fifth phase that occurs between prevention and preparedness","The same phase as prevention — reducing risks to people and property before a disaster occurs","A phase that occurs only after response has concluded","A synonym for recovery"],"correct":[1],"sata":false,"why":"Mitigation is \"an emergency management term for reducing risks to people and property from natural hazards before they occur\" and is used interchangeably with prevention in this chapter.","trap":null},{"topic":"disaster management cycle","subtopic":"the four-stage cycle","stem":"Which nursing skills does the chapter identify as applying across all four phases of the disaster management cycle? Select all that apply.","options":["Assessment and priority setting","Collaboration and health education","Disease screening and mass clinic expertise","Prescriptive authority for controlled substances","Triage and rapid needs assessment"],"correct":[0,1,2,4],"sata":true,"why":"Nursing skills that apply across all four phases include assessment, priority setting, collaboration, health education, disease screening, mass clinic expertise, and additionally providing psychological first aid, triage, and rapid needs assessment. Prescriptive authority is not named. ---","trap":null},{"topic":"federal disaster framework","subtopic":"FEMA's role and the escalation ladder","stem":"Which statement best describes FEMA's role as named in the chapter?","options":["FEMA directly manages all local emergency response operations during a disaster","FEMA coordinates comprehensive, all-hazard planning at the national level, providing a menu of exercises and plan templates for communities","FEMA's role is limited to disbursing recovery funds after a presidential disaster declaration","FEMA sets state-level mutual aid agreements"],"correct":[1],"sata":false,"why":"\"The Federal Emergency Management Agency (FEMA) coordinates comprehensive, all-hazard planning at the national level, assuring a menu of exercises and plan templates to address plausible incidents in any given community.\"","trap":null},{"topic":"federal disaster framework","subtopic":"FEMA's role and the escalation ladder","stem":"Place the disaster response escalation ladder in the correct order, from where response first begins to the point at which the National Response Framework may take effect.","options":["State → county/city → local → federal","Local → county/city → state → federal","Federal → state → county/city → local","County/city → local → federal → state"],"correct":[1],"sata":false,"why":"The first level of response occurs at the local level (fire, law enforcement, public health, emergency services). If needs exceed local resources, the county or city emergency management agency coordinates through an emergency operations center. When state resources are overwhelmed, governors may request federal assistance under a presidential declaration, and if the event is an incident of national significance, the NRF may take effect.","trap":null},{"topic":"federal disaster framework","subtopic":"FEMA's role and the escalation ladder","stem":"A hurricane has overwhelmed a coastal county's emergency operations center, and the state's own resources and capabilities are now also overwhelmed. What is the next appropriate step in the escalation ladder?","options":["The county directly contacts FEMA to activate the National Response Framework","The governor may request federal assistance under a presidential disaster or emergency declaration","Local fire and law enforcement resume primary responsibility","The American Red Cross assumes command of the response"],"correct":[1],"sata":false,"why":"When state resources and capabilities are overwhelmed, governors may request federal assistance under a presidential disaster or emergency declaration. Only after that, if the event is an incident of national significance, does the NRF take effect.","trap":"Counties do not skip the state level to contact FEMA directly — escalation proceeds local to county/city to state to federal. ---"},{"topic":"triage","subtopic":"the three priority levels","stem":"What is the definition of triage as used in this chapter?","options":["Treating patients in the order in which they arrive","The process of separating casualties and allocating treatment on the basis of an individual's potential for survival","Allocating treatment based strictly on injury severity","Assigning care based on insurance or ability to pay"],"correct":[1],"sata":false,"why":"Triage is \"the process of separating casualties and allocating treatment on the basis of an individual's potential for survival.\"","trap":null},{"topic":"triage","subtopic":"the three priority levels","stem":"Under disaster triage, which criteria must BOTH be met for a victim to receive the highest priority?","options":["A life-threatening injury alone, regardless of prognosis","A life-threatening injury and a high probability of survival once stabilized","Any injury requiring more than 60 minutes of care","Being the first casualty found at the scene"],"correct":[1],"sata":false,"why":"Highest priority requires both a life-threatening injury and a high probability of survival once stabilized. This survival clause is what distinguishes disaster triage from ED triage.","trap":"The classic distractor is a patient with the most severe, catastrophic injuries but a low probability of survival — under this rule, that patient is not highest priority."},{"topic":"triage","subtopic":"the three priority levels","stem":"A disaster nurse triaging a mass-casualty scene finds a patient with a survivable but severe leg fracture and no systemic complications, and a patient with catastrophic head trauma who is unlikely to survive even with immediate intervention. How should these two patients be triaged?","options":["The head trauma patient is highest priority because the injury is most severe","The head trauma patient is highest priority because triage always favors the sickest patient","The head trauma patient is not highest priority, because a high probability of survival once stabilized is also required; the leg fracture patient is triaged according to whether the injury is systemic or local","Both patients receive equal priority because both have identifiable injuries"],"correct":[2],"sata":false,"why":"Highest priority requires both a life-threatening injury and a high probability of survival once stabilized. A patient with catastrophic, non-survivable injuries is not highest priority under this rule.","trap":null},{"topic":"triage","subtopic":"the three priority levels","stem":"A victim has injuries with systemic complications that are not yet life-threatening. Approximately how long can this victim's treatment wait under disaster triage?","options":["Immediate treatment is required","45 to 60 minutes","Several hours","Treatment can be deferred indefinitely"],"correct":[1],"sata":false,"why":"The second priority level — systemic complications that are not yet life-threatening — could wait 45 to 60 minutes.","trap":null},{"topic":"triage","subtopic":"the three priority levels","stem":"Which victims are assigned to the last triage priority, and how long can they typically wait?","options":["Victims with life-threatening injuries and low survival probability; wait several hours","Victims with local injuries without immediate complications; can wait several hours","Victims with no visible injuries; wait indefinitely","Victims with systemic complications; wait 45 to 60 minutes"],"correct":[1],"sata":false,"why":"The last priority level is victims with local injuries without immediate complications, who can wait several hours.","trap":null},{"topic":"triage","subtopic":"the three priority levels","stem":"What principle underlies the establishment of priorities in disaster triage, according to the chapter?","options":["Treating the most severely injured patient first, regardless of resources","Establishing priorities that benefit the largest aggregate of affected individuals with the most correctable problems","Treating patients strictly in order of arrival","Prioritizing patients most likely to require prolonged hospitalization"],"correct":[1],"sata":false,"why":"\"Establishing a priority of needs that benefit the largest aggregate of affected individuals with the most correctable problems is consistent with the basic tenets of triage.\" ---","trap":null},{"topic":"response","subtopic":"the four community stress phases","stem":"Which two community stress phases are associated with the RESPONSE phase of the disaster management cycle?","options":["Disillusionment and reconstruction","Heroic and honeymoon","Heroic and disillusionment","Honeymoon and reconstruction"],"correct":[1],"sata":false,"why":"The heroic and honeymoon phases are associated with response, while disillusionment and reconstruction are associated with recovery.","trap":"The chapter discusses all four phases together within the Response section \"for purposes of continuity,\" which makes it easy to mistakenly assign all four to response."},{"topic":"response","subtopic":"the four community stress phases","stem":"Which two community stress phases are associated with the RECOVERY phase of the disaster management cycle?","options":["Heroic and honeymoon","Disillusionment and reconstruction","Honeymoon and disillusionment","Heroic and reconstruction"],"correct":[1],"sata":false,"why":"Disillusionment and reconstruction are associated with recovery; heroic and honeymoon are associated with response.","trap":null},{"topic":"response","subtopic":"the four community stress phases","stem":"First responders at a disaster scene work for hours on end without rest, refuse breaks, and fight needed sleep. Which community stress phase does this describe, and what is the associated danger?","options":["Honeymoon phase; the danger is survivor complacency","Heroic phase; exhausted, overworked responders present a danger to themselves and the community served","Disillusionment phase; the danger is despair among survivors","Reconstruction phase; the danger is prolonged unemployment"],"correct":[1],"sata":false,"why":"The heroic phase involves an overwhelming need to help others survive; responders work without thought of their own needs and refuse rest breaks. Exhausted, overworked responders present a danger to themselves and the community served, and those with oversight may need to order helpers to take breaks.","trap":null},{"topic":"response","subtopic":"the four community stress phases","stem":"Survivors gather to repeatedly share their disaster stories, expressing thankfulness that their lives and the lives of loved ones were spared. Which community stress phase is this?","options":["Heroic","Honeymoon","Disillusionment","Reconstruction"],"correct":[1],"sata":false,"why":"In the honeymoon phase, survivors may be rejoicing that their lives and the lives of loved ones have been spared. They gather to share experiences, and repeated telling creates bonds among survivors.","trap":null},{"topic":"response","subtopic":"the four community stress phases","stem":"Weeks after a disaster, a community begins to realize that additional help is not immediately forthcoming, and residents express despair as they recognize a return to the previous normal is unlikely. Which phase is this, and which broader disaster cycle stage does it belong to?","options":["Heroic phase; response","Honeymoon phase; response","Disillusionment phase; recovery","Reconstruction phase; recovery"],"correct":[2],"sata":false,"why":"The disillusionment phase occurs as people begin to notice that additional help may not be forthcoming, producing despair and exhaustion, and a recognition that returning to the previous normal is unlikely. It is associated with recovery.","trap":null},{"topic":"response","subtopic":"the four community stress phases","stem":"Which community stress phase is described as the longest, with the goal of returning to a new state of normalcy?","options":["Heroic","Honeymoon","Disillusionment","Reconstruction"],"correct":[3],"sata":false,"why":"Reconstruction is the longest phase, during which homes, schools, churches, and other community elements are rebuilt and reestablished, with the goal of returning to a new state of normalcy. ---","trap":null},{"topic":"response","subtopic":"rapid needs assessment","stem":"Which of the following are among the six elements of a rapid needs assessment? Select all that apply.","options":["Determining the magnitude of the incident","Defining the specific health needs of the affected population","Establishing priorities and objectives for action","Identifying existing and potential public health problems","Filing insurance claims on behalf of affected residents"],"correct":[0,1,2,3],"sata":true,"why":"The six elements are determining the magnitude of the incident; defining the specific health needs of the affected population; establishing priorities and objectives for action; identifying existing and potential public health problems; evaluating the capacity of the local response including resources and logistics; and determining the external resource needs for priority actions. Filing insurance claims is not one of them.","trap":null},{"topic":"response","subtopic":"rapid needs assessment","stem":"A rapid needs assessment includes evaluating the capacity of the local response, including resources and logistics, and determining what other element?","options":["The external resource needs for priority actions","The long-term psychological impact on responders","The projected cost of rebuilding infrastructure","The media narrative surrounding the disaster"],"correct":[0],"sata":false,"why":"The sixth element of the rapid needs assessment is determining the external resource needs for priority actions.","trap":null},{"topic":"response","subtopic":"rapid needs assessment","stem":"For a sudden-impact disaster such as a tornado or earthquake, what should the rapid needs assessment focus on?","options":["Mortality rates, nutritional status, immunization status, and environmental health","Ongoing hazards, injuries and deaths, shelter requirements, and clean water","Long-term economic recovery projections","School attendance and educational disruption"],"correct":[1],"sata":false,"why":"Sudden-impact disasters like tornadoes and earthquakes require assessment focused on ongoing hazards, injuries and deaths, shelter requirements, and clean water. Gradual-onset disasters like famines instead focus on mortality rates, nutritional status, immunization status, and environmental health.","trap":"The assessment focus for sudden-impact and gradual-onset disasters is easy to swap — sudden-impact is about immediate hazards and shelter, gradual-onset is about nutrition and immunization trends over time. ---"},{"topic":"preparedness","subtopic":"personal and family disaster preparedness","stem":"What are the three steps of \"Be Red Cross Ready\" as presented in the chapter?","options":["Get a kit, make a plan, be informed","Get insured, make a plan, contact authorities","Get a kit, evacuate early, notify neighbors","Make a plan, stockpile supplies, register with FEMA"],"correct":[0],"sata":false,"why":"The three Red Cross Ready steps are: get a kit, make a plan, and be informed.","trap":null},{"topic":"preparedness","subtopic":"personal and family disaster preparedness","stem":"When making a family disaster plan, how many meeting places should a family choose, and what is required of the emergency contact person?","options":["One meeting place inside the home; the contact person should be a trusted neighbor","Two meeting places — one right outside the home and one outside the neighborhood; the contact person should be out of the area","Three meeting places spread across the community; the contact person should be a local relative","One meeting place outside the neighborhood; no contact person is needed if cell phones are charged"],"correct":[1],"sata":false,"why":"Families should choose two meeting places — one right outside the home for a sudden emergency such as a fire, and another outside the neighborhood in case they cannot return home or must evacuate. The contact person should be out of the area, because it may be easier to call long distance or text if local phone lines are overloaded.","trap":"\"A trusted neighbor\" is a plausible-sounding but incorrect substitute for an out-of-area contact — the rationale is specifically that local lines may be overloaded while long-distance lines still work."},{"topic":"preparedness","subtopic":"personal and family disaster preparedness","stem":"According to the chapter's maintenance schedule for family preparedness, how often should stored water and stored food be replaced?","options":["Water every 6 months, food every 3 months","Water every 3 months, food every 6 months","Both every 3 months","Both every 12 months"],"correct":[1],"sata":false,"why":"Stored water should be replaced every 3 months and stored food every 6 months.","trap":"The two intervals are easy to swap since they use the same two numbers in opposite order."},{"topic":"preparedness","subtopic":"personal and family disaster preparedness","stem":"How often should a family plan to review its disaster plan, according to the chapter's maintenance schedule?","options":["Every 3 months","Every 6 months","Every 12 months","Only after an actual disaster occurs"],"correct":[1],"sata":false,"why":"The plan should be reviewed every 6 months, alongside replacing stored water every 3 months, stored food every 6 months, testing smoke detectors monthly, and practicing evacuation twice a year.","trap":"Five different intervals appear in this one box (water, food, plan review, smoke detectors, evacuation drills) — they are easy to shuffle, so learn each one individually rather than assuming a single cadence applies to all."},{"topic":"preparedness","subtopic":"personal and family disaster preparedness","stem":"How often does the chapter recommend testing smoke detectors, and how often should evacuation be practiced?","options":["Smoke detectors monthly; evacuation twice a year","Smoke detectors every 6 months; evacuation monthly","Smoke detectors annually; evacuation every 3 months","Smoke detectors monthly; evacuation annually"],"correct":[0],"sata":false,"why":"Smoke detectors should be tested monthly, with batteries changed at least once a year. Evacuation should be practiced twice a year, driving the planned route and plotting alternative routes in case main roads are impassable. ---","trap":null},{"topic":"response","subtopic":"the first goal of response and biological incidents","stem":"What is the FIRST goal of any disaster response, according to the chapter?","options":["Triaging and treating casualties as quickly as possible","Reestablishing sanitary barriers as quickly as possible","Restoring electrical power to the affected area","Establishing a public information officer for media relations"],"correct":[1],"sata":false,"why":"\"The first goal of any disaster response is to reestablish sanitary barriers as quickly as possible,\" addressing basic needs of water, food, waste removal, vector control, shelter, and safety.","trap":"Because triage dominates the surrounding text on response, it is easy to assume treating casualties is the first goal — the chapter states sanitation comes first."},{"topic":"response","subtopic":"the first goal of response and biological incidents","stem":"In a biological incident where an agent has been released without warning, who does the chapter identify as effectively \"first on the scene,\" and why?","options":["Fire and EMS personnel, because they arrive within minutes of any incident","Law enforcement, because they secure the area before health responders enter","Health care professionals, because symptoms may not appear for days or weeks after exposure, by which time victims have already sought a health evaluation","Public health surveillance systems, because they detect agents in real time"],"correct":[2],"sata":false,"why":"An unannounced biological release may go unnoticed, and victims may have left the area of exposure long before the act is recognized. The first signs may not be apparent for days or weeks, until victims become ill and seek a health evaluation — in this case, health care professionals are considered the \"first on the scene.\"","trap":"This inverts the usual assumption that fire or EMS are always first on scene; for biological incidents specifically, delayed symptom onset shifts that role to health care professionals encountering ill patients later."},{"topic":"response","subtopic":"the first goal of response and biological incidents","stem":"Why are biological agents considered uniquely dangerous compared to many other disaster threats?","options":["They require large quantities to affect a population","Only a small amount is needed to affect thousands of people, and some agents are easy to conceal, transport, and disseminate","They are always immediately obvious upon release","They primarily affect infrastructure rather than people"],"correct":[1],"sata":false,"why":"Only a small amount of a biological agent is needed to affect thousands of people, and some agents are easy to conceal, transport, and disseminate.","trap":null},{"topic":"response","subtopic":"the first goal of response and biological incidents","stem":"Why can the results of a biological release be hard to recognize, according to the chapter?","options":["Biological agent symptoms often mimic influenza or other viral syndromes","Biological agents rarely cause any symptoms","Laboratory testing for biological agents is not available in the United States","Biological releases are always announced in advance by the perpetrators"],"correct":[0],"sata":false,"why":"\"Results of a biological release are hard to recognize because many biological agent symptoms mimic influenza or other viral syndromes.\"","trap":null}];
+const TITLE = "Chapter 16 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 16";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

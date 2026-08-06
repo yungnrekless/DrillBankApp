@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 21 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 21</div><h1>Chapter 21 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">risk, appraisal, and reduction</span></div>
+<div class="stem">1. How does the chapter define &quot;risk&quot;?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A factor guaranteeing an unhealthy outcome</li><li class="fopt right"><span class="mk">&#10003;</span>A factor predisposing or increasing the likelihood of ill health</li><li class="fopt"><span class="mk">C</span>Any behavior a family considers unsafe</li><li class="fopt"><span class="mk">D</span>The presence of a diagnosed illness in the family</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Risk is defined as &quot;a factor predisposing or increasing the likelihood of ill health.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">risk, appraisal, and reduction</span></div>
+<div class="stem">2. What is health risk appraisal?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Assigning a diagnosis based on presenting symptoms</li><li class="fopt right"><span class="mk">&#10003;</span>The process of assessing for the presence of specific factors associated with an increased likelihood of an illness or unhealthy event</li><li class="fopt"><span class="mk">C</span>A one-time screening required before Medicaid eligibility</li><li class="fopt"><span class="mk">D</span>The process of ranking families by socioeconomic status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Health risk appraisal is the process of assessing for the presence of specific factors in each risk category identified as associated with an increased likelihood of an illness (such as cancer) or an unhealthy event (such as an automobile accident).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The appraisal method produces an individual score, but that score is examined as a whole within the family — it also appraises risks likely to be experienced by other family members.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">risk, appraisal, and reduction</span></div>
+<div class="stem">3. Health risk reduction is based on which assumption?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Eliminating all risk factors is required before any benefit occurs</li><li class="fopt right"><span class="mk">&#10003;</span>Decreasing the number or magnitude of risks will decrease the probability of an undesired event occurring</li><li class="fopt"><span class="mk">C</span>Behavioral risks cannot be modified through family intervention</li><li class="fopt"><span class="mk">D</span>Risk reduction is only effective at the individual level, not the family level</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Health risk reduction is based on the assumption that decreasing the number or the magnitude of risks will decrease the probability of an undesired event occurring.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">risk, appraisal, and reduction</span></div>
+<div class="stem">4. Health risks are classified into which three general categories (USDHHS, 2010)? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Inherited biological risks, including age-related risks</li><li class="fopt right"><span class="mk">&#10003;</span>Environmental risks (social, economic, physical)</li><li class="fopt right"><span class="mk">&#10003;</span>Behavioral risks</li><li class="fopt"><span class="mk">D</span>Genetic risks distinct from biological risks</li><li class="fopt"><span class="mk">E</span>Institutional risks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three general categories are inherited biological risks (including age-related risks), environmental risks (composed of social, economic, and physical environments), and behavioral risks (personal health habits).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The chapter does not name a separate &quot;genetic&quot; or &quot;institutional&quot; category — genetics falls under biological risk.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">risk, appraisal, and reduction</span></div>
+<div class="stem">5. A family has a history of cardiovascular disease. Several members also smoke, and the family lives in a community that is unsupportive of exercise and low-fat diets. How does the chapter characterize the combined effect of these risks?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The risks are independent and do not interact</li><li class="fopt right"><span class="mk">&#10003;</span>The combined effect of accumulated risks is often greater than the sum of the individual effects</li><li class="fopt"><span class="mk">C</span>Only the biological risk is clinically significant</li><li class="fopt"><span class="mk">D</span>Behavioral risks cancel out biological risks over time</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the chapter's worked cardiovascular example of the synergy principle: &quot;Although single risk factors can influence outcomes, the combined effect of accumulated risks is often greater than the sum of the individual effects.&quot; Smoking is more likely if other family members also smoke, and diet/exercise are shaped by family and societal norms.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Treating accumulated risks as merely additive understates the chapter's point — the effect is synergistic, not simply summed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">life events and transitions</span></div>
+<div class="stem">6. A family experiences the anticipated birth of a grandchild. According to the chapter, how does this differ from an unexpected event such as sudden job loss?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>There is no meaningful difference — both are equally stressful</li><li class="fopt right"><span class="mk">&#10003;</span>The normative event allows anticipatory preparation, which can increase coping and decrease stress and negative outcomes; the non-normative event allows little or no time to prepare</li><li class="fopt"><span class="mk">C</span>Normative events are always more stressful because they involve more people</li><li class="fopt"><span class="mk">D</span>Non-normative events are always positive</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Normative (anticipated) events let families identify needed resources, make plans, learn new skills, and prepare — anticipatory preparation increases coping ability and decreases stress. Non-normative (unexpected) events leave little or no time to prepare and can result in increased stress, crisis, or dysfunction.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">life events and transitions</span></div>
+<div class="stem">7. Which of the following are examples of normative life events named in the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Birth or adoption of a child</li><li class="fopt right"><span class="mk">&#10003;</span>Death of a grandparent</li><li class="fopt right"><span class="mk">&#10003;</span>A child moving out to go to school or take a job</li><li class="fopt"><span class="mk">D</span>An unexpected major illness</li><li class="fopt right"><span class="mk">&#10003;</span>The marriage of a child</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Normative events are usually related to the addition or loss of a family member: birth or adoption of a child, death of a grandparent, a child moving out to school or a job, or the marriage of a child.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An unexpected major illness is named as a negative non-normative event, not a normative one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">life events and transitions</span></div>
+<div class="stem">8. A family member receives a major job promotion that brings more responsibility, stress, and travel. How should this be classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A normative event, because promotions are expected career milestones</li><li class="fopt right"><span class="mk">&#10003;</span>A non-normative event that is positive but still disruptive</li><li class="fopt"><span class="mk">C</span>A family crisis by definition</li><li class="fopt"><span class="mk">D</span>A behavioral risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Non-normative events can be positive but disruptive — the chapter names a job promotion and inheriting a substantial sum of money as examples that can change family dynamics even though they are positive.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>It is tempting to assume any positive event must be low-risk. The chapter's point is the opposite: non-normative positive events still disrupt family functioning.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">risk-tolerance principles (Murdaugh)</span></div>
+<div class="stem">9. Which statements reflect Murdaugh's principles of risk tolerance? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Voluntarily assumed risks, such as overeating, are tolerated better than those imposed by others</li><li class="fopt right"><span class="mk">&#10003;</span>Risks about which scientists debate and are uncertain are more feared than risks about which scientists agree</li><li class="fopt right"><span class="mk">&#10003;</span>Risks of natural origin are often considered less threatening than those created by humans</li><li class="fopt"><span class="mk">D</span>Imposed risks are tolerated better than voluntarily assumed risks</li><li class="fopt"><span class="mk">E</span>Risks with scientific consensus are more feared than those with scientific disagreement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Murdaugh's three principles: voluntary risks are tolerated better than imposed ones; scientifically uncertain risks are more feared than risks with agreement; natural risks are considered less threatening than human-made risks.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>D and E each invert one of the three principles — all three principles run counter to naive intuition, which is exactly why they are testable in both directions.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family health risk concepts</span><span class="chip t2">risk-tolerance principles (Murdaugh)</span></div>
+<div class="stem">10. A patient objects strongly to living near a newly built chemical plant but shows little concern about her own long-standing overeating habit. Which principle explains this pattern?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Voluntarily assumed risks are tolerated better than those imposed by others</li><li class="fopt"><span class="mk">B</span>Natural risks are feared more than human-made risks</li><li class="fopt"><span class="mk">C</span>Scientific agreement increases fear of a risk</li><li class="fopt"><span class="mk">D</span>Behavioral risks are always perceived as more dangerous than environmental risks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This illustrates Murdaugh's principle that voluntarily assumed risks (overeating) are tolerated better than risks imposed by others (a plant she did not choose). ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family assessment tools</span><span class="chip t2">genogram and ecomap</span></div>
+<div class="stem">11. What does a genogram show, and what does it reveal?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The family's interactions with outside groups and organizations</li><li class="fopt right"><span class="mk">&#10003;</span>A drawing of the family unit across several generations, using circles, squares, and connecting lines, allowing patterns such as recurring illness to be quickly assessed</li><li class="fopt"><span class="mk">C</span>A numeric score of the family's total accumulated health risk</li><li class="fopt"><span class="mk">D</span>A record of the family's insurance and financial eligibility status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A genogram is a drawing that shows the family unit of immediate interest across several generations using circles, squares, and connecting lines. Patterns can be quickly assessed and guide the interviewer toward areas needing further exploration — the Graham family genogram revealed repeated hypertension, type 2 diabetes, cancer, and hypercholesterolemia.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option A describes the ecomap, not the genogram — the genogram looks inward across generations, the ecomap looks outward to the community.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family assessment tools</span><span class="chip t2">genogram and ecomap</span></div>
+<div class="stem">12. In genogram conventions, which pairings are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Square = male</li><li class="fopt right"><span class="mk">&#10003;</span>Circle = female</li><li class="fopt right"><span class="mk">&#10003;</span>X through a square or circle = a death</li><li class="fopt"><span class="mk">D</span>Solid vertical line = marriage</li><li class="fopt right"><span class="mk">&#10003;</span>Broken horizontal line = divorce or separation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Square = male, circle = female, an X through either shape = a death, a solid horizontal line = marriage, a solid vertical line = offspring/children, and a broken horizontal line = divorce or separation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Marriage is shown with a solid HORIZONTAL line, not vertical — the vertical line represents offspring. This is the easiest genogram pairing to invert.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family assessment tools</span><span class="chip t2">genogram and ecomap</span></div>
+<div class="stem">13. Completing an accurate genogram requires what, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A single interview with the head of household only</li><li class="fopt right"><span class="mk">&#10003;</span>Interviews with as many family members as possible, and developing a family chronology spanning three generations</li><li class="fopt"><span class="mk">C</span>Access to each family member's electronic health record</li><li class="fopt"><span class="mk">D</span>A genetic testing panel for each family member</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Completing a genogram requires interviews with as many family members as possible. It is important to develop a family chronology, a timeline of family events over three generations, to extend the genogram.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family assessment tools</span><span class="chip t2">genogram and ecomap</span></div>
+<div class="stem">14. What does an ecomap represent, and what do its conventions show? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A circle in the middle of the page represents the family</li><li class="fopt right"><span class="mk">&#10003;</span>Other circles represent other groups and organizations</li><li class="fopt right"><span class="mk">&#10003;</span>Lines between circles represent the flow of energy</li><li class="fopt right"><span class="mk">&#10003;</span>An arrowhead shows the direction of energy flow into or out of the family</li><li class="fopt"><span class="mk">E</span>The darkness of a line shows the family's socioeconomic status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An ecomap represents the family's interactions with other groups and organizations using circles and lines. The family is the circle in the middle; other circles are groups/organizations; lines show the flow of energy; an arrowhead shows the direction of flow (into or out of the family); and the darkness of the line shows the intensity of the energy — not socioeconomic status.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Darkness indicates intensity of energy, not income or status — a plausible-sounding but fabricated pairing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">family assessment tools</span><span class="chip t2">genogram and ecomap</span></div>
+<div class="stem">15. A nurse wants to assess a family's relationships with relatives, neighbors, church, school, work, and clubs, and whether energy flows positively or negatively between the family and these groups. Which tool should the nurse use, and why not the alternative?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A genogram, because it captures multi-generational patterns</li><li class="fopt right"><span class="mk">&#10003;</span>An ecomap, because it depicts the family's interactions with outside groups and organizations rather than internal generational/biological patterns</li><li class="fopt"><span class="mk">C</span>Either tool works identically for this purpose</li><li class="fopt"><span class="mk">D</span>A behavioral health risk survey</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The ecomap depicts the family's interactions with other groups and organizations and the flow of energy, positive or negative. The genogram instead documents biological/generational patterns (illnesses, births, deaths, marriages) within the family itself.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Both tools use circles, which is exactly why they are confused — the genogram looks inward across time; the ecomap looks outward across the community. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">purpose and fundamental skills</span></div>
+<div class="stem">16. What does a home visit offer that a clinic visit does not? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A more accurate assessment of family structure and behavior in the home environment</li><li class="fopt right"><span class="mk">&#10003;</span>Opportunities to identify barriers and supports for reaching family health goals</li><li class="fopt right"><span class="mk">&#10003;</span>The ability to modify interventions directly to match the family's resources</li><li class="fopt"><span class="mk">D</span>A guarantee of lower total cost of care than clinic-based services</li><li class="fopt right"><span class="mk">&#10003;</span>Contribution to the family's sense of control and active participation in its own health needs</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Home visits give a more accurate assessment of family structure, environment, and behavior; identify barriers and supports; let the nurse modify interventions to match resources; and contribute to the family's sense of control and active participation. Cost is actually the major disadvantage, not a guaranteed savings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The chapter is explicit that it is not always the least costly service that is the most effective — cost and effectiveness are separate considerations.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">purpose and fundamental skills</span></div>
+<div class="stem">17. What are the five fundamental skills for effective home visits? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Observing</li><li class="fopt right"><span class="mk">&#10003;</span>Listening</li><li class="fopt right"><span class="mk">&#10003;</span>Questioning</li><li class="fopt right"><span class="mk">&#10003;</span>Probing</li><li class="fopt right"><span class="mk">&#10003;</span>Prompting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The five fundamental skills are observing, listening, questioning, probing, and prompting. Building a trusting relationship with the family is the cornerstone of successful home visits.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">the five phases of a home visit</span></div>
+<div class="stem">18. During the initiation phase of a home visit, the nurse should focus on which activities?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Introducing self, interacting socially to establish rapport, and implementing the nursing process</li><li class="fopt right"><span class="mk">&#10003;</span>Clarifying the source of referral, clarifying the purpose of the visit, and sharing that reason and purpose with the family</li><li class="fopt"><span class="mk">C</span>Reviewing the visit with the family and planning for future visits</li><li class="fopt"><span class="mk">D</span>Recording the visit and planning for the next visit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The initiation phase involves clarifying the source of referral, clarifying the purpose for the home visit, and sharing information on the reason and purpose with the family.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option A describes the in-home phase; option C describes termination; option D describes the postvisit phase — all five phases have distinct, non-interchangeable activities.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">the five phases of a home visit</span></div>
+<div class="stem">19. Which activities belong to the previsit phase?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Introducing self and professional identity, then implementing the nursing process</li><li class="fopt right"><span class="mk">&#10003;</span>Initiating contact, establishing a shared perception of purpose, determining the family's willingness, scheduling the visit, and reviewing the referral/record</li><li class="fopt"><span class="mk">C</span>Recording the visit</li><li class="fopt"><span class="mk">D</span>Reviewing what has been accomplished and planning future visits</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The previsit phase includes initiating contact with the family, establishing a shared perception of purpose, determining the family's willingness for a home visit, scheduling the visit, and reviewing the referral and/or family record.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">the five phases of a home visit</span></div>
+<div class="stem">20. During the in-home phase, what is the purpose of the brief social period that occurs early in the visit?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It allows the nurse to assess the family's home for safety hazards</li><li class="fopt right"><span class="mk">&#10003;</span>It allows the patient to assess the nurse and establish rapport</li><li class="fopt"><span class="mk">C</span>It is used to complete required documentation before the visit continues</li><li class="fopt"><span class="mk">D</span>It replaces the need for formal introductions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Next, a brief social period allows the patient to assess the nurse and establish rapport.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>It is the patient assessing the nurse during this period, not the reverse — an easy detail to invert.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">the five phases of a home visit</span></div>
+<div class="stem">21. What is the major focus of the termination phase of a home visit?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Introducing self and professional identity</li><li class="fopt right"><span class="mk">&#10003;</span>Reviewing with the family what has occurred and what has been accomplished, which provides a basis for planning further visits</li><li class="fopt"><span class="mk">C</span>Recording the interaction for legal purposes</li><li class="fopt"><span class="mk">D</span>Scheduling the next telephone contact</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The termination phase's major focus is reviewing with the family what has occurred and what has been accomplished, which provides a basis for planning further home visits. Ideally, termination of the visit — and ultimately of service — begins at the first contact with the establishment of a goal or purpose.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">the five phases of a home visit</span></div>
+<div class="stem">22. When is the nurse's responsibility for a home visit actually complete?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As soon as the nurse leaves the patient's home</li><li class="fopt"><span class="mk">B</span>Once the family verbally confirms satisfaction with the visit</li><li class="fopt right"><span class="mk">&#10003;</span>Only once the interaction has been recorded</li><li class="fopt"><span class="mk">D</span>After the next scheduled visit occurs</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Even though the nurse has concluded the home visit and left the patient's home, responsibility for the visit is not complete until the interaction has been recorded.&quot; This is the postvisit phase.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">initiation phase specifics — numbers and procedure</span></div>
+<div class="stem">23. What is the maximum recommended length for the first telephone contact with a family before a home visit?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>5 minutes</li><li class="fopt right"><span class="mk">&#10003;</span>15 minutes</li><li class="fopt"><span class="mk">C</span>30 minutes</li><li class="fopt"><span class="mk">D</span>60 minutes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A first telephone contact should be a maximum of 15 min.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is easy to confuse with the 30–60 minute figure, which describes the usual length of the home visit itself, not the initial phone call.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">initiation phase specifics — numbers and procedure</span></div>
+<div class="stem">24. What is the usual length of an established home visit?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>10–15 minutes</li><li class="fopt"><span class="mk">B</span>15–30 minutes</li><li class="fopt right"><span class="mk">&#10003;</span>30–60 minutes</li><li class="fopt"><span class="mk">D</span>60–90 minutes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Although the length of the visit may vary, approximately 30–60 min is usual.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">initiation phase specifics — numbers and procedure</span></div>
+<div class="stem">25. During the initiation phase, if a referral was received for the visit, what should the nurse specifically try to learn?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The family's insurance carrier</li><li class="fopt right"><span class="mk">&#10003;</span>Whether the family is aware of the referral</li><li class="fopt"><span class="mk">C</span>Whether the family has previously refused services</li><li class="fopt"><span class="mk">D</span>The referring provider's specialty</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;If a referral was received, it is important and useful to learn if the family is aware of the referral.&quot;</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">initiation phase specifics — numbers and procedure</span></div>
+<div class="stem">26. A family does not have a telephone. How should the nurse proceed to arrange the initial contact?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The visit cannot be arranged without a phone and should be canceled</li><li class="fopt right"><span class="mk">&#10003;</span>A note can be dropped off at the home or sent by mail, informing the family of when and why the visit will occur and how to contact the nurse</li><li class="fopt"><span class="mk">C</span>The nurse should simply arrive unannounced</li><li class="fopt"><span class="mk">D</span>The visit must be rescheduled through the family's primary care provider</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If the family does not have a telephone, a note can be dropped off at the family home or sent by mail informing them of when and why the visit will occur and providing a way to contact the nurse.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">when a family refuses a visit, and personal safety</span></div>
+<div class="stem">27. A family declines a scheduled home visit. What is the nurse's best initial response?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Interpret the refusal as a personal rejection and document noncompliance</li><li class="fopt right"><span class="mk">&#10003;</span>Do not take it personally; explore the reasons for the refusal, since there may be a misunderstanding about its purpose or a lack of information about services and payment</li><li class="fopt"><span class="mk">C</span>Immediately close the case since services were declined</li><li class="fopt"><span class="mk">D</span>Report the family to social services for refusing care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Be aware that the family may refuse a home visit. Do not immediately interpret this as a personal rejection.&quot; The nurse should explore the reasons — there may be a misunderstanding about the visit's reason or a lack of information about services, including payment.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">when a family refuses a visit, and personal safety</span></div>
+<div class="stem">28. A family with a member recently diagnosed with active tuberculosis refuses a follow-up home visit. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Respect the refusal permanently and close the referral</li><li class="fopt"><span class="mk">B</span>Leave open the possibility of future contact only, with no further action required</li><li class="fopt right"><span class="mk">&#10003;</span>Persist in requesting the visit, because the nurse may be legally mandated to follow up on certain communicable and infectious diseases</li><li class="fopt"><span class="mk">D</span>Refer the case to law enforcement immediately</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In some instances, the nurse will be mandated to persist in requesting a home visit because of legal obligations, such as follow-up of certain communicable and infectious diseases.&quot; TB follow-up is the chapter's own example of a required visit.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Ordinarily the nurse leaves the door open for future contact rather than pressing the issue — the exception is legally mandated communicable-disease follow-up, which this scenario is.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">when a family refuses a visit, and personal safety</span></div>
+<div class="stem">29. According to the chapter's guidance on personal safety, what should the nurse do if a reasonable question exists about the safety of making a visit?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Make the visit but request an escort</li><li class="fopt"><span class="mk">B</span>Make the visit only during daylight hours</li><li class="fopt right"><span class="mk">&#10003;</span>The nurse should not make the visit</li><li class="fopt"><span class="mk">D</span>Proceed as planned since home visits are generally safe</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;If a reasonable question exists about the safety of making a visit, the nurse should not make the visit.&quot; Home visits are generally safe, but the possibility of violence exists, so the nurse must use caution and good judgment.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Precautions like escorts, pairs, uniforms, and sign-out logs are used for known high-risk situations — but they do not override the flat rule that a genuine safety question means the visit is not made.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">voluntary versus required visits</span></div>
+<div class="stem">30. A new mother requests that the nurse come to her home to assist with effective breastfeeding. How would this visit typically be characterized?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Required, nurse-controlled, and formal/investigatory</li><li class="fopt right"><span class="mk">&#10003;</span>Voluntary, with easier entry for the nurse, patient-controlled interaction, and a more informal tone</li><li class="fopt"><span class="mk">C</span>Required, because breastfeeding support involves a health teaching mandate</li><li class="fopt"><span class="mk">D</span>Neither voluntary nor required — home visits are always neutral in tone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Voluntary visits (requested by the patient) allow easier entry for the nurse, are patient-controlled, have a more informal tone, and typically involve mutual discussion of future visit frequency. The breastfeeding-assistance request is the chapter's own example.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">home visits</span><span class="chip t2">voluntary versus required visits</span></div>
+<div class="stem">31. A family member has been diagnosed with tuberculosis, and the nurse must verify the patient is taking medication regularly. How would this visit typically be characterized?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Voluntary, patient-controlled, and informal</li><li class="fopt right"><span class="mk">&#10003;</span>Required, with more difficult entry, nurse-controlled interaction, a more formal/investigatory tone, and possibly distorted nurse–patient communication</li><li class="fopt"><span class="mk">C</span>Voluntary, because the patient's health is at stake</li><li class="fopt"><span class="mk">D</span>Required, but otherwise identical in tone and control to a voluntary visit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Required visits (often legally mandated) involve more difficult entry, nurse-controlled interaction, a more formal and investigatory tone with distorted communication, and there may be no mutual discussion of future visit frequency. TB medication verification is the chapter's own example, alongside COVID-19 quarantine follow-up.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Assuming all home visits share the same tone ignores the chapter's explicit contrast — required visits are structurally different from voluntary ones, not just more serious versions of the same thing. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contracting with families</span><span class="chip t2">premise, contract types, and process</span></div>
+<div class="stem">32. What is the stated premise of contracting with families?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Contracting shifts all responsibility to the nurse to ensure compliance</li><li class="fopt right"><span class="mk">&#10003;</span>Family control — when the family has legitimate control, its ability to make healthful choices is increased</li><li class="fopt"><span class="mk">C</span>Contracting is a legally binding document required for all home visits</li><li class="fopt"><span class="mk">D</span>Contracting eliminates the need for ongoing nursing assessment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The premise of contracting is family control. It is assumed that when the family has legitimate control, its ability to make healthful choices is increased.&quot; Contracting involves a shift in responsibility and control toward a shared effort by patient and professional.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contracting with families</span><span class="chip t2">premise, contract types, and process</span></div>
+<div class="stem">33. Which statement correctly distinguishes a contingency contract from a noncontingency contract?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A contingency contract states a specific reward after completion of the patient's portion; a noncontingency contract does not specify rewards, relying on the implied reward of reaching the goals</li><li class="fopt"><span class="mk">B</span>A contingency contract is always written; a noncontingency contract is always verbal</li><li class="fopt"><span class="mk">C</span>A noncontingency contract offers a larger reward than a contingency contract</li><li class="fopt"><span class="mk">D</span>Contingency and noncontingency contracts are interchangeable terms for the same agreement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A contingency contract states a specific reward for the patient after completion of the patient's portion of the contract. A noncontingency contract does not specify rewards — the implied rewards are the positive consequences of reaching the goals specified in the contract.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contracting with families</span><span class="chip t2">premise, contract types, and process</span></div>
+<div class="stem">34. For family health risk reduction, who should be involved in the contract?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Only the family member with the identified health problem</li><li class="fopt"><span class="mk">B</span>The head of household only, since that person can make decisions for the family</li><li class="fopt right"><span class="mk">&#10003;</span>All responsible and appropriate members of the family, because the goal requires a total family system effort and change</li><li class="fopt"><span class="mk">D</span>Only the nurse and the primary care provider, with the family notified afterward</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;For family health risk reduction, it is essential that the contract be made with all responsible and appropriate members of the family. Involving only one individual is not sufficient if the goal is family health risk reduction, which requires a total family system effort and change.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>If meeting with the entire family at once is not possible, each family member can still review the contract, give input, and sign it — the requirement is inclusion, not necessarily a single joint meeting.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contracting with families</span><span class="chip t2">premise, contract types, and process</span></div>
+<div class="stem">35. What are the three phases of contracting, and what do they have in common?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Assessment, diagnosis, and evaluation — each led by the nurse</li><li class="fopt right"><span class="mk">&#10003;</span>Beginning, working, and termination — every activity in each phase is described as mutual</li><li class="fopt"><span class="mk">C</span>Initiation, previsit, and postvisit — mirroring the home visit phases exactly</li><li class="fopt"><span class="mk">D</span>Planning, implementing, and billing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three phases of contracting are beginning (mutual data collection, goal-setting, plan development), working (mutual division of responsibilities, time limits, implementation, evaluation/renegotiation), and termination (mutual termination of the contract). Every activity in the table begins with &quot;mutual&quot; — that is the point.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contracting with families</span><span class="chip t2">premise, contract types, and process</span></div>
+<div class="stem">36. Which patient groups may not choose to contract, according to the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Persons with minimal cognitive skills</li><li class="fopt right"><span class="mk">&#10003;</span>Those involved in an emergency situation</li><li class="fopt right"><span class="mk">&#10003;</span>Persons unwilling to be more active in their own care</li><li class="fopt right"><span class="mk">&#10003;</span>Those who do not see control or authority for health concerns as being within their domain</li><li class="fopt"><span class="mk">E</span>Persons with a documented chronic illness</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The four named groups are persons with minimal cognitive skills, those in an emergency situation, persons unwilling to be more active in their own care, and those who do not see control or authority for health concerns as within their domain. Some of these patients may learn to contract; others never will.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A chronic illness diagnosis alone is not one of the four named barriers to contracting.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contracting with families</span><span class="chip t2">premise, contract types, and process</span></div>
+<div class="stem">37. Before assuming that contracting will be an effective approach with a family, what should the nurse determine first?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The family's insurance coverage</li><li class="fopt right"><span class="mk">&#10003;</span>The family's value system, since contracting may not be consistent with cultures that look to health care providers for more direct guidance</li><li class="fopt"><span class="mk">C</span>Whether the family has previously accepted a home visit</li><li class="fopt"><span class="mk">D</span>The number of adults living in the household</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;This approach... may not be consistent with other cultures that look to health care providers for more direct guidance; therefore, it is important to determine the family's value system before assuming that contracting will work.&quot;</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"family health risk concepts","subtopic":"risk, appraisal, and reduction","stem":"How does the chapter define \"risk\"?","options":["A factor guaranteeing an unhealthy outcome","A factor predisposing or increasing the likelihood of ill health","Any behavior a family considers unsafe","The presence of a diagnosed illness in the family"],"correct":[1],"sata":false,"why":"Risk is defined as \"a factor predisposing or increasing the likelihood of ill health.\"","trap":null},{"topic":"family health risk concepts","subtopic":"risk, appraisal, and reduction","stem":"What is health risk appraisal?","options":["Assigning a diagnosis based on presenting symptoms","The process of assessing for the presence of specific factors associated with an increased likelihood of an illness or unhealthy event","A one-time screening required before Medicaid eligibility","The process of ranking families by socioeconomic status"],"correct":[1],"sata":false,"why":"Health risk appraisal is the process of assessing for the presence of specific factors in each risk category identified as associated with an increased likelihood of an illness (such as cancer) or an unhealthy event (such as an automobile accident).","trap":"The appraisal method produces an individual score, but that score is examined as a whole within the family — it also appraises risks likely to be experienced by other family members."},{"topic":"family health risk concepts","subtopic":"risk, appraisal, and reduction","stem":"Health risk reduction is based on which assumption?","options":["Eliminating all risk factors is required before any benefit occurs","Decreasing the number or magnitude of risks will decrease the probability of an undesired event occurring","Behavioral risks cannot be modified through family intervention","Risk reduction is only effective at the individual level, not the family level"],"correct":[1],"sata":false,"why":"Health risk reduction is based on the assumption that decreasing the number or the magnitude of risks will decrease the probability of an undesired event occurring.","trap":null},{"topic":"family health risk concepts","subtopic":"risk, appraisal, and reduction","stem":"Health risks are classified into which three general categories (USDHHS, 2010)? Select all that apply.","options":["Inherited biological risks, including age-related risks","Environmental risks (social, economic, physical)","Behavioral risks","Genetic risks distinct from biological risks","Institutional risks"],"correct":[0,1,2],"sata":true,"why":"The three general categories are inherited biological risks (including age-related risks), environmental risks (composed of social, economic, and physical environments), and behavioral risks (personal health habits).","trap":"The chapter does not name a separate \"genetic\" or \"institutional\" category — genetics falls under biological risk."},{"topic":"family health risk concepts","subtopic":"risk, appraisal, and reduction","stem":"A family has a history of cardiovascular disease. Several members also smoke, and the family lives in a community that is unsupportive of exercise and low-fat diets. How does the chapter characterize the combined effect of these risks?","options":["The risks are independent and do not interact","The combined effect of accumulated risks is often greater than the sum of the individual effects","Only the biological risk is clinically significant","Behavioral risks cancel out biological risks over time"],"correct":[1],"sata":false,"why":"This is the chapter's worked cardiovascular example of the synergy principle: \"Although single risk factors can influence outcomes, the combined effect of accumulated risks is often greater than the sum of the individual effects.\" Smoking is more likely if other family members also smoke, and diet/exercise are shaped by family and societal norms.","trap":"Treating accumulated risks as merely additive understates the chapter's point — the effect is synergistic, not simply summed."},{"topic":"family health risk concepts","subtopic":"life events and transitions","stem":"A family experiences the anticipated birth of a grandchild. According to the chapter, how does this differ from an unexpected event such as sudden job loss?","options":["There is no meaningful difference — both are equally stressful","The normative event allows anticipatory preparation, which can increase coping and decrease stress and negative outcomes; the non-normative event allows little or no time to prepare","Normative events are always more stressful because they involve more people","Non-normative events are always positive"],"correct":[1],"sata":false,"why":"Normative (anticipated) events let families identify needed resources, make plans, learn new skills, and prepare — anticipatory preparation increases coping ability and decreases stress. Non-normative (unexpected) events leave little or no time to prepare and can result in increased stress, crisis, or dysfunction.","trap":null},{"topic":"family health risk concepts","subtopic":"life events and transitions","stem":"Which of the following are examples of normative life events named in the chapter? Select all that apply.","options":["Birth or adoption of a child","Death of a grandparent","A child moving out to go to school or take a job","An unexpected major illness","The marriage of a child"],"correct":[0,1,2,4],"sata":true,"why":"Normative events are usually related to the addition or loss of a family member: birth or adoption of a child, death of a grandparent, a child moving out to school or a job, or the marriage of a child.","trap":"An unexpected major illness is named as a negative non-normative event, not a normative one."},{"topic":"family health risk concepts","subtopic":"life events and transitions","stem":"A family member receives a major job promotion that brings more responsibility, stress, and travel. How should this be classified?","options":["A normative event, because promotions are expected career milestones","A non-normative event that is positive but still disruptive","A family crisis by definition","A behavioral risk"],"correct":[1],"sata":false,"why":"Non-normative events can be positive but disruptive — the chapter names a job promotion and inheriting a substantial sum of money as examples that can change family dynamics even though they are positive.","trap":"It is tempting to assume any positive event must be low-risk. The chapter's point is the opposite: non-normative positive events still disrupt family functioning."},{"topic":"family health risk concepts","subtopic":"risk-tolerance principles (Murdaugh)","stem":"Which statements reflect Murdaugh's principles of risk tolerance? Select all that apply.","options":["Voluntarily assumed risks, such as overeating, are tolerated better than those imposed by others","Risks about which scientists debate and are uncertain are more feared than risks about which scientists agree","Risks of natural origin are often considered less threatening than those created by humans","Imposed risks are tolerated better than voluntarily assumed risks","Risks with scientific consensus are more feared than those with scientific disagreement"],"correct":[0,1,2],"sata":true,"why":"Murdaugh's three principles: voluntary risks are tolerated better than imposed ones; scientifically uncertain risks are more feared than risks with agreement; natural risks are considered less threatening than human-made risks.","trap":"D and E each invert one of the three principles — all three principles run counter to naive intuition, which is exactly why they are testable in both directions."},{"topic":"family health risk concepts","subtopic":"risk-tolerance principles (Murdaugh)","stem":"A patient objects strongly to living near a newly built chemical plant but shows little concern about her own long-standing overeating habit. Which principle explains this pattern?","options":["Voluntarily assumed risks are tolerated better than those imposed by others","Natural risks are feared more than human-made risks","Scientific agreement increases fear of a risk","Behavioral risks are always perceived as more dangerous than environmental risks"],"correct":[0],"sata":false,"why":"This illustrates Murdaugh's principle that voluntarily assumed risks (overeating) are tolerated better than risks imposed by others (a plant she did not choose). ---","trap":null},{"topic":"family assessment tools","subtopic":"genogram and ecomap","stem":"What does a genogram show, and what does it reveal?","options":["The family's interactions with outside groups and organizations","A drawing of the family unit across several generations, using circles, squares, and connecting lines, allowing patterns such as recurring illness to be quickly assessed","A numeric score of the family's total accumulated health risk","A record of the family's insurance and financial eligibility status"],"correct":[1],"sata":false,"why":"A genogram is a drawing that shows the family unit of immediate interest across several generations using circles, squares, and connecting lines. Patterns can be quickly assessed and guide the interviewer toward areas needing further exploration — the Graham family genogram revealed repeated hypertension, type 2 diabetes, cancer, and hypercholesterolemia.","trap":"Option A describes the ecomap, not the genogram — the genogram looks inward across generations, the ecomap looks outward to the community."},{"topic":"family assessment tools","subtopic":"genogram and ecomap","stem":"In genogram conventions, which pairings are correct? Select all that apply.","options":["Square = male","Circle = female","X through a square or circle = a death","Solid vertical line = marriage","Broken horizontal line = divorce or separation"],"correct":[0,1,2,4],"sata":true,"why":"Square = male, circle = female, an X through either shape = a death, a solid horizontal line = marriage, a solid vertical line = offspring/children, and a broken horizontal line = divorce or separation.","trap":"Marriage is shown with a solid HORIZONTAL line, not vertical — the vertical line represents offspring. This is the easiest genogram pairing to invert."},{"topic":"family assessment tools","subtopic":"genogram and ecomap","stem":"Completing an accurate genogram requires what, according to the chapter?","options":["A single interview with the head of household only","Interviews with as many family members as possible, and developing a family chronology spanning three generations","Access to each family member's electronic health record","A genetic testing panel for each family member"],"correct":[1],"sata":false,"why":"\"Completing a genogram requires interviews with as many family members as possible. It is important to develop a family chronology, a timeline of family events over three generations, to extend the genogram.\"","trap":null},{"topic":"family assessment tools","subtopic":"genogram and ecomap","stem":"What does an ecomap represent, and what do its conventions show? Select all that apply.","options":["A circle in the middle of the page represents the family","Other circles represent other groups and organizations","Lines between circles represent the flow of energy","An arrowhead shows the direction of energy flow into or out of the family","The darkness of a line shows the family's socioeconomic status"],"correct":[0,1,2,3],"sata":true,"why":"An ecomap represents the family's interactions with other groups and organizations using circles and lines. The family is the circle in the middle; other circles are groups/organizations; lines show the flow of energy; an arrowhead shows the direction of flow (into or out of the family); and the darkness of the line shows the intensity of the energy — not socioeconomic status.","trap":"Darkness indicates intensity of energy, not income or status — a plausible-sounding but fabricated pairing."},{"topic":"family assessment tools","subtopic":"genogram and ecomap","stem":"A nurse wants to assess a family's relationships with relatives, neighbors, church, school, work, and clubs, and whether energy flows positively or negatively between the family and these groups. Which tool should the nurse use, and why not the alternative?","options":["A genogram, because it captures multi-generational patterns","An ecomap, because it depicts the family's interactions with outside groups and organizations rather than internal generational/biological patterns","Either tool works identically for this purpose","A behavioral health risk survey"],"correct":[1],"sata":false,"why":"The ecomap depicts the family's interactions with other groups and organizations and the flow of energy, positive or negative. The genogram instead documents biological/generational patterns (illnesses, births, deaths, marriages) within the family itself.","trap":"Both tools use circles, which is exactly why they are confused — the genogram looks inward across time; the ecomap looks outward across the community. ---"},{"topic":"home visits","subtopic":"purpose and fundamental skills","stem":"What does a home visit offer that a clinic visit does not? Select all that apply.","options":["A more accurate assessment of family structure and behavior in the home environment","Opportunities to identify barriers and supports for reaching family health goals","The ability to modify interventions directly to match the family's resources","A guarantee of lower total cost of care than clinic-based services","Contribution to the family's sense of control and active participation in its own health needs"],"correct":[0,1,2,4],"sata":true,"why":"Home visits give a more accurate assessment of family structure, environment, and behavior; identify barriers and supports; let the nurse modify interventions to match resources; and contribute to the family's sense of control and active participation. Cost is actually the major disadvantage, not a guaranteed savings.","trap":"The chapter is explicit that it is not always the least costly service that is the most effective — cost and effectiveness are separate considerations."},{"topic":"home visits","subtopic":"purpose and fundamental skills","stem":"What are the five fundamental skills for effective home visits? Select all that apply.","options":["Observing","Listening","Questioning","Probing","Prompting"],"correct":[0,1,2,3,4],"sata":true,"why":"The five fundamental skills are observing, listening, questioning, probing, and prompting. Building a trusting relationship with the family is the cornerstone of successful home visits.","trap":null},{"topic":"home visits","subtopic":"the five phases of a home visit","stem":"During the initiation phase of a home visit, the nurse should focus on which activities?","options":["Introducing self, interacting socially to establish rapport, and implementing the nursing process","Clarifying the source of referral, clarifying the purpose of the visit, and sharing that reason and purpose with the family","Reviewing the visit with the family and planning for future visits","Recording the visit and planning for the next visit"],"correct":[1],"sata":false,"why":"The initiation phase involves clarifying the source of referral, clarifying the purpose for the home visit, and sharing information on the reason and purpose with the family.","trap":"Option A describes the in-home phase; option C describes termination; option D describes the postvisit phase — all five phases have distinct, non-interchangeable activities."},{"topic":"home visits","subtopic":"the five phases of a home visit","stem":"Which activities belong to the previsit phase?","options":["Introducing self and professional identity, then implementing the nursing process","Initiating contact, establishing a shared perception of purpose, determining the family's willingness, scheduling the visit, and reviewing the referral/record","Recording the visit","Reviewing what has been accomplished and planning future visits"],"correct":[1],"sata":false,"why":"The previsit phase includes initiating contact with the family, establishing a shared perception of purpose, determining the family's willingness for a home visit, scheduling the visit, and reviewing the referral and/or family record.","trap":null},{"topic":"home visits","subtopic":"the five phases of a home visit","stem":"During the in-home phase, what is the purpose of the brief social period that occurs early in the visit?","options":["It allows the nurse to assess the family's home for safety hazards","It allows the patient to assess the nurse and establish rapport","It is used to complete required documentation before the visit continues","It replaces the need for formal introductions"],"correct":[1],"sata":false,"why":"\"Next, a brief social period allows the patient to assess the nurse and establish rapport.\"","trap":"It is the patient assessing the nurse during this period, not the reverse — an easy detail to invert."},{"topic":"home visits","subtopic":"the five phases of a home visit","stem":"What is the major focus of the termination phase of a home visit?","options":["Introducing self and professional identity","Reviewing with the family what has occurred and what has been accomplished, which provides a basis for planning further visits","Recording the interaction for legal purposes","Scheduling the next telephone contact"],"correct":[1],"sata":false,"why":"The termination phase's major focus is reviewing with the family what has occurred and what has been accomplished, which provides a basis for planning further home visits. Ideally, termination of the visit — and ultimately of service — begins at the first contact with the establishment of a goal or purpose.","trap":null},{"topic":"home visits","subtopic":"the five phases of a home visit","stem":"When is the nurse's responsibility for a home visit actually complete?","options":["As soon as the nurse leaves the patient's home","Once the family verbally confirms satisfaction with the visit","Only once the interaction has been recorded","After the next scheduled visit occurs"],"correct":[2],"sata":false,"why":"\"Even though the nurse has concluded the home visit and left the patient's home, responsibility for the visit is not complete until the interaction has been recorded.\" This is the postvisit phase.","trap":null},{"topic":"home visits","subtopic":"initiation phase specifics — numbers and procedure","stem":"What is the maximum recommended length for the first telephone contact with a family before a home visit?","options":["5 minutes","15 minutes","30 minutes","60 minutes"],"correct":[1],"sata":false,"why":"\"A first telephone contact should be a maximum of 15 min.\"","trap":"This is easy to confuse with the 30–60 minute figure, which describes the usual length of the home visit itself, not the initial phone call."},{"topic":"home visits","subtopic":"initiation phase specifics — numbers and procedure","stem":"What is the usual length of an established home visit?","options":["10–15 minutes","15–30 minutes","30–60 minutes","60–90 minutes"],"correct":[2],"sata":false,"why":"\"Although the length of the visit may vary, approximately 30–60 min is usual.\"","trap":null},{"topic":"home visits","subtopic":"initiation phase specifics — numbers and procedure","stem":"During the initiation phase, if a referral was received for the visit, what should the nurse specifically try to learn?","options":["The family's insurance carrier","Whether the family is aware of the referral","Whether the family has previously refused services","The referring provider's specialty"],"correct":[1],"sata":false,"why":"\"If a referral was received, it is important and useful to learn if the family is aware of the referral.\"","trap":null},{"topic":"home visits","subtopic":"initiation phase specifics — numbers and procedure","stem":"A family does not have a telephone. How should the nurse proceed to arrange the initial contact?","options":["The visit cannot be arranged without a phone and should be canceled","A note can be dropped off at the home or sent by mail, informing the family of when and why the visit will occur and how to contact the nurse","The nurse should simply arrive unannounced","The visit must be rescheduled through the family's primary care provider"],"correct":[1],"sata":false,"why":"If the family does not have a telephone, a note can be dropped off at the family home or sent by mail informing them of when and why the visit will occur and providing a way to contact the nurse.","trap":null},{"topic":"home visits","subtopic":"when a family refuses a visit, and personal safety","stem":"A family declines a scheduled home visit. What is the nurse's best initial response?","options":["Interpret the refusal as a personal rejection and document noncompliance","Do not take it personally; explore the reasons for the refusal, since there may be a misunderstanding about its purpose or a lack of information about services and payment","Immediately close the case since services were declined","Report the family to social services for refusing care"],"correct":[1],"sata":false,"why":"\"Be aware that the family may refuse a home visit. Do not immediately interpret this as a personal rejection.\" The nurse should explore the reasons — there may be a misunderstanding about the visit's reason or a lack of information about services, including payment.","trap":null},{"topic":"home visits","subtopic":"when a family refuses a visit, and personal safety","stem":"A family with a member recently diagnosed with active tuberculosis refuses a follow-up home visit. What should the nurse do?","options":["Respect the refusal permanently and close the referral","Leave open the possibility of future contact only, with no further action required","Persist in requesting the visit, because the nurse may be legally mandated to follow up on certain communicable and infectious diseases","Refer the case to law enforcement immediately"],"correct":[2],"sata":false,"why":"\"In some instances, the nurse will be mandated to persist in requesting a home visit because of legal obligations, such as follow-up of certain communicable and infectious diseases.\" TB follow-up is the chapter's own example of a required visit.","trap":"Ordinarily the nurse leaves the door open for future contact rather than pressing the issue — the exception is legally mandated communicable-disease follow-up, which this scenario is."},{"topic":"home visits","subtopic":"when a family refuses a visit, and personal safety","stem":"According to the chapter's guidance on personal safety, what should the nurse do if a reasonable question exists about the safety of making a visit?","options":["Make the visit but request an escort","Make the visit only during daylight hours","The nurse should not make the visit","Proceed as planned since home visits are generally safe"],"correct":[2],"sata":false,"why":"\"If a reasonable question exists about the safety of making a visit, the nurse should not make the visit.\" Home visits are generally safe, but the possibility of violence exists, so the nurse must use caution and good judgment.","trap":"Precautions like escorts, pairs, uniforms, and sign-out logs are used for known high-risk situations — but they do not override the flat rule that a genuine safety question means the visit is not made."},{"topic":"home visits","subtopic":"voluntary versus required visits","stem":"A new mother requests that the nurse come to her home to assist with effective breastfeeding. How would this visit typically be characterized?","options":["Required, nurse-controlled, and formal/investigatory","Voluntary, with easier entry for the nurse, patient-controlled interaction, and a more informal tone","Required, because breastfeeding support involves a health teaching mandate","Neither voluntary nor required — home visits are always neutral in tone"],"correct":[1],"sata":false,"why":"Voluntary visits (requested by the patient) allow easier entry for the nurse, are patient-controlled, have a more informal tone, and typically involve mutual discussion of future visit frequency. The breastfeeding-assistance request is the chapter's own example.","trap":null},{"topic":"home visits","subtopic":"voluntary versus required visits","stem":"A family member has been diagnosed with tuberculosis, and the nurse must verify the patient is taking medication regularly. How would this visit typically be characterized?","options":["Voluntary, patient-controlled, and informal","Required, with more difficult entry, nurse-controlled interaction, a more formal/investigatory tone, and possibly distorted nurse–patient communication","Voluntary, because the patient's health is at stake","Required, but otherwise identical in tone and control to a voluntary visit"],"correct":[1],"sata":false,"why":"Required visits (often legally mandated) involve more difficult entry, nurse-controlled interaction, a more formal and investigatory tone with distorted communication, and there may be no mutual discussion of future visit frequency. TB medication verification is the chapter's own example, alongside COVID-19 quarantine follow-up.","trap":"Assuming all home visits share the same tone ignores the chapter's explicit contrast — required visits are structurally different from voluntary ones, not just more serious versions of the same thing. ---"},{"topic":"contracting with families","subtopic":"premise, contract types, and process","stem":"What is the stated premise of contracting with families?","options":["Contracting shifts all responsibility to the nurse to ensure compliance","Family control — when the family has legitimate control, its ability to make healthful choices is increased","Contracting is a legally binding document required for all home visits","Contracting eliminates the need for ongoing nursing assessment"],"correct":[1],"sata":false,"why":"\"The premise of contracting is family control. It is assumed that when the family has legitimate control, its ability to make healthful choices is increased.\" Contracting involves a shift in responsibility and control toward a shared effort by patient and professional.","trap":null},{"topic":"contracting with families","subtopic":"premise, contract types, and process","stem":"Which statement correctly distinguishes a contingency contract from a noncontingency contract?","options":["A contingency contract states a specific reward after completion of the patient's portion; a noncontingency contract does not specify rewards, relying on the implied reward of reaching the goals","A contingency contract is always written; a noncontingency contract is always verbal","A noncontingency contract offers a larger reward than a contingency contract","Contingency and noncontingency contracts are interchangeable terms for the same agreement"],"correct":[0],"sata":false,"why":"A contingency contract states a specific reward for the patient after completion of the patient's portion of the contract. A noncontingency contract does not specify rewards — the implied rewards are the positive consequences of reaching the goals specified in the contract.","trap":null},{"topic":"contracting with families","subtopic":"premise, contract types, and process","stem":"For family health risk reduction, who should be involved in the contract?","options":["Only the family member with the identified health problem","The head of household only, since that person can make decisions for the family","All responsible and appropriate members of the family, because the goal requires a total family system effort and change","Only the nurse and the primary care provider, with the family notified afterward"],"correct":[2],"sata":false,"why":"\"For family health risk reduction, it is essential that the contract be made with all responsible and appropriate members of the family. Involving only one individual is not sufficient if the goal is family health risk reduction, which requires a total family system effort and change.\"","trap":"If meeting with the entire family at once is not possible, each family member can still review the contract, give input, and sign it — the requirement is inclusion, not necessarily a single joint meeting."},{"topic":"contracting with families","subtopic":"premise, contract types, and process","stem":"What are the three phases of contracting, and what do they have in common?","options":["Assessment, diagnosis, and evaluation — each led by the nurse","Beginning, working, and termination — every activity in each phase is described as mutual","Initiation, previsit, and postvisit — mirroring the home visit phases exactly","Planning, implementing, and billing"],"correct":[1],"sata":false,"why":"The three phases of contracting are beginning (mutual data collection, goal-setting, plan development), working (mutual division of responsibilities, time limits, implementation, evaluation/renegotiation), and termination (mutual termination of the contract). Every activity in the table begins with \"mutual\" — that is the point.","trap":null},{"topic":"contracting with families","subtopic":"premise, contract types, and process","stem":"Which patient groups may not choose to contract, according to the chapter? Select all that apply.","options":["Persons with minimal cognitive skills","Those involved in an emergency situation","Persons unwilling to be more active in their own care","Those who do not see control or authority for health concerns as being within their domain","Persons with a documented chronic illness"],"correct":[0,1,2,3],"sata":true,"why":"The four named groups are persons with minimal cognitive skills, those in an emergency situation, persons unwilling to be more active in their own care, and those who do not see control or authority for health concerns as within their domain. Some of these patients may learn to contract; others never will.","trap":"A chronic illness diagnosis alone is not one of the four named barriers to contracting."},{"topic":"contracting with families","subtopic":"premise, contract types, and process","stem":"Before assuming that contracting will be an effective approach with a family, what should the nurse determine first?","options":["The family's insurance coverage","The family's value system, since contracting may not be consistent with cultures that look to health care providers for more direct guidance","Whether the family has previously accepted a home visit","The number of adults living in the household"],"correct":[1],"sata":false,"why":"\"This approach... may not be consistent with other cultures that look to health care providers for more direct guidance; therefore, it is important to determine the family's value system before assuming that contracting will work.\"","trap":null}];
+const TITLE = "Chapter 21 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 21";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

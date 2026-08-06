@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 4 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 4</div><h1>Chapter 4 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three branches of government</span></div>
+<div class="stem">1. A state health department issues regulations implementing a new infection-control statute. Which branch of government is exercising its health-policy role here?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Legislative</li><li class="fopt right"><span class="mk">&#10003;</span>Executive</li><li class="fopt"><span class="mk">C</span>Judicial</li><li class="fopt"><span class="mk">D</span>Administrative-judicial hybrid</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The executive branch — the president/governor/mayor and administrative and regulatory departments and agencies such as USDHHS — suggests, administers, and regulates policy.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>EAQ-style questions pin each distractor to a different branch. Administers/enforces/regulates always maps to executive, even when the underlying statute came from the legislature.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three branches of government</span></div>
+<div class="stem">2. Congress debates, amends, and ultimately passes a bill expanding a maternal health program. Which branch's health-policy role does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Executive</li><li class="fopt right"><span class="mk">&#10003;</span>Legislative</li><li class="fopt"><span class="mk">C</span>Judicial</li><li class="fopt"><span class="mk">D</span>Regulatory</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The legislative branch (Congress at the federal level) identifies problems and proposes, debates, passes, and modifies laws.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three branches of government</span></div>
+<div class="stem">3. The Supreme Court rules on whether a state's reproductive health access law is constitutional. Which branch's role is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Executive</li><li class="fopt"><span class="mk">B</span>Legislative</li><li class="fopt right"><span class="mk">&#10003;</span>Judicial</li><li class="fopt"><span class="mk">D</span>Executive, because the ruling affects how the law is enforced</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The judicial branch — federal, state, and local courts guided by the Supreme Court — interprets laws and their meaning, including questions like states' rights and reproductive health access.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three branches of government</span></div>
+<div class="stem">4. A state's nurse practice act was passed by the legislature, but the Board of Nursing licenses RNs and revokes licenses for violations. Which branch does the Board of Nursing belong to?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Legislative, because it was created by a legislative statute</li><li class="fopt right"><span class="mk">&#10003;</span>Executive, because it is an administrative/regulatory agency</li><li class="fopt"><span class="mk">C</span>Judicial, because it adjudicates license revocations</li><li class="fopt"><span class="mk">D</span>A fourth, quasi-legislative branch unique to health professions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A Board of Nursing is part of the executive branch — an administrative/regulatory agency — even though it is created by a legislative statute (the nurse practice act).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the chapter's single most testable trap. Test-writers rely on students assuming &quot;created by the legislature&quot; means &quot;part of the legislative branch.&quot; Creation and operation are different branches here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three branches of government</span></div>
+<div class="stem">5. Congress's authority to legislate on health care rests mainly on which constitutional provision?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The Tenth Amendment</li><li class="fopt right"><span class="mk">&#10003;</span>Article I, Section 8</li><li class="fopt"><span class="mk">C</span>The Fourteenth Amendment's Equal Protection Clause</li><li class="fopt"><span class="mk">D</span>The Commerce Clause of Article III</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Congress's health-care authority rests mainly on Article I, Section 8 — providing for the general welfare, regulating interstate commerce, raising funds for the military, and the spending power.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three branches of government</span></div>
+<div class="stem">6. In Stewart Machine Co. v. Davis (1937), the Supreme Court upheld federal authority to provide unemployment and old-age benefits on what basis?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The police power of the states</li><li class="fopt right"><span class="mk">&#10003;</span>Promoting the general welfare</li><li class="fopt"><span class="mk">C</span>The right to privacy</li><li class="fopt"><span class="mk">D</span>Preemption of state insurance law</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Stewart Machine Co. v. Davis (1937) upheld federal authority for unemployment/old-age benefits as promoting the general welfare, a landmark case under Article I, Section 8 authority.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three types of law</span></div>
+<div class="stem">7. A state orders mandatory isolation of a patient with active, contagious tuberculosis. What is the legal basis for this order?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Judicial law, based on precedent</li><li class="fopt"><span class="mk">B</span>Legislative/statute law</li><li class="fopt right"><span class="mk">&#10003;</span>Constitutional law, through the state's police power</li><li class="fopt"><span class="mk">D</span>Common law duty to warn</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The legal basis for quarantine/isolation is constitutional law, specifically the state's police power — the state's authority to protect the health, safety, and welfare of its citizens, even overriding individual rights when the public is genuinely threatened, provided the action is necessary and reasonable.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three types of law</span></div>
+<div class="stem">8. Which statement correctly defines police power?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A state's authority, requiring a compelling interest, to act to protect the health, safety, and welfare of its citizens</li><li class="fopt"><span class="mk">B</span>A federal agency's authority to enforce criminal law</li><li class="fopt"><span class="mk">C</span>A hospital's authority to set internal infection-control policy</li><li class="fopt"><span class="mk">D</span>A court's authority to compel testimony in a public health case</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Police power is the state's power to act to protect the health, safety, and welfare of its citizens. It must be used fairly and requires a compelling interest, especially when it infringes on individual rights.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three types of law</span></div>
+<div class="stem">9. A state's nurse practice act is an example of which type of law?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Constitutional law</li><li class="fopt right"><span class="mk">&#10003;</span>Legislation/statute law</li><li class="fopt"><span class="mk">C</span>Judicial/common law</li><li class="fopt"><span class="mk">D</span>Regulatory law</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Legislation/statute law comes from the legislative branch and is coded into statutes; a nurse practice act is statute law.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three types of law</span></div>
+<div class="stem">10. Common law is built primarily on which principle?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Precedent — judges are bound by prior decisions unless distinguished</li><li class="fopt"><span class="mk">B</span>Codified statutes passed by a legislature</li><li class="fopt"><span class="mk">C</span>Constitutional guidance applied case by case</li><li class="fopt"><span class="mk">D</span>Administrative rule-making</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Common law rests on precedent — judges are bound by prior court decisions unless the current case can be distinguished from them. The opinions of courts are called case law.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">three types of law</span></div>
+<div class="stem">11. When a genuine threat to the public's health exists, how does the law weigh individual rights against community rights, according to the police-power principle?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Individual rights always take precedence over community rights</li><li class="fopt right"><span class="mk">&#10003;</span>The community's rights outweigh the individual's rights, provided the action is necessary and reasonable</li><li class="fopt"><span class="mk">C</span>Individual and community rights are weighed equally in every case</li><li class="fopt"><span class="mk">D</span>Community rights outweigh individual rights only if a court has pre-approved the action</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>When there is a genuine threat to the public's health, the community's rights outweigh the individual's rights, provided the action taken is necessary and done reasonably. This is the basis for quarantine/isolation and connects to communicable disease reporting.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">nurse practice acts and scope of practice</span></div>
+<div class="stem">12. Which functions does every state's nurse practice act accomplish, at minimum? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Defines the practice of professional nursing</li><li class="fopt right"><span class="mk">&#10003;</span>Identifies the scope of nursing practice</li><li class="fopt right"><span class="mk">&#10003;</span>Sets educational qualifications and other requirements for licensure</li><li class="fopt right"><span class="mk">&#10003;</span>Determines the legal titles nurses may use</li><li class="fopt"><span class="mk">E</span>Sets mandatory minimum nurse-to-patient staffing ratios</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Every nurse practice act accomplishes at least four functions: defining the practice of professional nursing, identifying the scope of nursing practice, setting educational qualifications and other requirements for licensure, and determining the legal titles nurses may use.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Staffing ratios are not one of the four statutory functions named in the chapter; do not add facts beyond what the nurse practice act is stated to accomplish.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">nurse practice acts and scope of practice</span></div>
+<div class="stem">13. Defining scope of practice forces clarification of which categories of nursing function?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Emergency, routine, and elective functions</li><li class="fopt right"><span class="mk">&#10003;</span>Independent, interdependent, and dependent functions</li><li class="fopt"><span class="mk">C</span>Acute, chronic, and preventive functions</li><li class="fopt"><span class="mk">D</span>Licensed, certified, and delegated functions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Defining scope of practice forces clarification of independent, interdependent, and dependent nursing functions. This is especially important for community nurses, who traditionally practice with high autonomy.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">nurse practice acts and scope of practice</span></div>
+<div class="stem">14. A nurse licensed in State A is practicing temporarily in State B. Whose laws govern that nurse's practice?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>State A's, because that is where the license was issued</li><li class="fopt right"><span class="mk">&#10003;</span>State B's, because practitioners are subject to the laws of the state in which they practice</li><li class="fopt"><span class="mk">C</span>Federal law preempts both states' nurse practice acts</li><li class="fopt"><span class="mk">D</span>Whichever state's laws are more protective of the patient</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Practitioners are subject to the laws of the state in which they practice, and nurses can practice only with a license.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">Boards of Nursing</span></div>
+<div class="stem">15. Which responsibilities belong to a state Board of Nursing? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Licensing and examination of RNs and LPNs</li><li class="fopt right"><span class="mk">&#10003;</span>Licensing and/or certification of advanced practice nurses</li><li class="fopt right"><span class="mk">&#10003;</span>Approval of schools of nursing in the state</li><li class="fopt right"><span class="mk">&#10003;</span>Revocation, suspension, or denial of licenses</li><li class="fopt"><span class="mk">E</span>Passing the nurse practice act that creates the Board</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Boards of Nursing generally license and examine RNs and LPNs, license/certify advanced practice nurses, approve schools of nursing, revoke/suspend/deny licenses, and write regulations about nursing practice and education.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The Board does not pass the nurse practice act — the legislature does. The Board operationalizes and enforces the act the legislature already passed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">Boards of Nursing</span></div>
+<div class="stem">16. A state Board of Nursing is made up of which members?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Physicians and hospital administrators</li><li class="fopt right"><span class="mk">&#10003;</span>Nurses and consumers</li><li class="fopt"><span class="mk">C</span>State legislators and attorneys</li><li class="fopt"><span class="mk">D</span>Judges and nursing school deans</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Every state has a Board of Nursing, created by the state's nurse practice act, made up of nurses and consumers.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">Boards of Nursing</span></div>
+<div class="stem">17. In branch terms, what is the correct division of labor between the legislature and the Board of Nursing regarding the nurse practice act?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The legislature writes the regulations; the Board passes the act</li><li class="fopt right"><span class="mk">&#10003;</span>The legislature passes the act; the Board writes the regulations and enforces it</li><li class="fopt"><span class="mk">C</span>The Board passes the act; the legislature enforces it</li><li class="fopt"><span class="mk">D</span>Both the legislature and the Board jointly write and enforce the act</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The legislature passes the nurse practice act; the Board of Nursing (an executive/administrative body) operationalizes, implements, and enforces that statutory law by writing explicit regulations.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">professional negligence and malpractice</span></div>
+<div class="stem">18. Which four elements must a patient prove, all together, to recover damages for professional negligence (malpractice)? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Duty</li><li class="fopt right"><span class="mk">&#10003;</span>Breach</li><li class="fopt right"><span class="mk">&#10003;</span>Causation</li><li class="fopt right"><span class="mk">&#10003;</span>Damages</li><li class="fopt"><span class="mk">E</span>Intent to harm</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>To recover damages the patient must prove all four elements: duty (the nurse owed a duty to the patient), breach (the nurse failed to act as a reasonable, prudent nurse would), causation (that failure led to the injury), and damages (the injury supports a monetary claim). Missing any one element defeats the claim.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Malpractice is negligence, not an intentional tort — intent to harm is not one of the four required elements.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">professional negligence and malpractice</span></div>
+<div class="stem">19. A nurse fails to reassess a patient's pain per protocol (a clear deviation from the reasonable, prudent nurse standard), but the patient's outcome was identical to what it would have been with proper reassessment, and the patient suffered no injury or financial loss. Can the patient successfully sue for malpractice?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Yes, because duty and breach are both clearly established</li><li class="fopt right"><span class="mk">&#10003;</span>No, because causation and damages are missing even though duty and breach are present</li><li class="fopt"><span class="mk">C</span>Yes, automatically, once any breach of the standard of care is shown</li><li class="fopt"><span class="mk">D</span>No, because there was no duty owed in this scenario</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>All four elements — duty, breach, causation, and damages — must be present. Here duty and breach are established, but there is no injury (damages) and nothing the breach can be shown to have caused (causation), so the claim fails.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A clear breach feels like enough on its own, but breach without resulting, compensable harm defeats the claim — this is the scenario version of &quot;missing any one of the four D's.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">professional negligence and malpractice</span></div>
+<div class="stem">20. What is the memory hook the fact bank offers for the four elements of malpractice?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The four C's: Care, Competence, Conduct, Consequence</li><li class="fopt right"><span class="mk">&#10003;</span>The four D's: Duty, Dereliction, Direct cause, Damages</li><li class="fopt"><span class="mk">C</span>The four P's: Patient, Provider, Procedure, Proof</li><li class="fopt"><span class="mk">D</span>The four S's: Standard, Scope, Severity, Settlement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The memory hook is the four D's — Duty, Dereliction (breach), Direct cause (causation), and Damages.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">professional negligence and malpractice</span></div>
+<div class="stem">21. A hospital-employed nurse commits a negligent act while working within the scope of her employment. Under respondeat superior, who may be held responsible?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Only the nurse individually</li><li class="fopt"><span class="mk">B</span>Only the employer, since the nurse was following employer direction</li><li class="fopt right"><span class="mk">&#10003;</span>The employer, along with the individual nurse</li><li class="fopt"><span class="mk">D</span>Neither party, since the employer did not act directly</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Under respondeat superior, when a nurse is employed and acting within the scope of employment, the employer is responsible for the nurse's negligent actions along with the individual nurse, because the employer directed the function and is usually better able to pay.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">professional negligence and malpractice</span></div>
+<div class="stem">22. According to the fact bank, how common are reported negligence cases involving population-centered (community/public health) nurses?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They are the most common category of nursing malpractice claim</li><li class="fopt right"><span class="mk">&#10003;</span>They are rare</li><li class="fopt"><span class="mk">C</span>They occur at the same rate as acute-care nursing claims</li><li class="fopt"><span class="mk">D</span>They have risen sharply in the last decade</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Reported negligence cases involving population-centered nurses are rare.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">nursing advocacy and the policy process</span></div>
+<div class="stem">23. A nurse testifies before a state legislative committee to support a bill funding school-based health clinics. This is an example of which type of policy action?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Regulatory action</li><li class="fopt right"><span class="mk">&#10003;</span>Legislative action</li><li class="fopt"><span class="mk">C</span>Judicial action</li><li class="fopt"><span class="mk">D</span>Administrative action</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nurses influence policy through legislative action — communicating with policymakers, testifying, and lobbying.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">nursing advocacy and the policy process</span></div>
+<div class="stem">24. After a health-related bill is signed into law, a nurse participates in the agency rule-making process to shape how it will be implemented. This is an example of which type of policy action?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Legislative action</li><li class="fopt right"><span class="mk">&#10003;</span>Regulatory action</li><li class="fopt"><span class="mk">C</span>Judicial action</li><li class="fopt"><span class="mk">D</span>Constitutional action</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nurses also influence policy through regulatory action — participating in the rule-making process after a law has passed.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government and law</span><span class="chip t2">nursing advocacy and the policy process</span></div>
+<div class="stem">25. What is presented as the leading example of national health-policy guidance in the chapter's discussion of nursing advocacy?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The Affordable Care Act</li><li class="fopt right"><span class="mk">&#10003;</span>Healthy People 2030</li><li class="fopt"><span class="mk">C</span>The Nurse Practice Act Model Language</li><li class="fopt"><span class="mk">D</span>The USDHHS Strategic Plan</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Healthy People 2030 is presented as the leading example of national health-policy guidance, within the chapter's framing of the nurse as an agent of change and advocate for population health.</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"government and law","subtopic":"three branches of government","stem":"A state health department issues regulations implementing a new infection-control statute. Which branch of government is exercising its health-policy role here?","options":["Legislative","Executive","Judicial","Administrative-judicial hybrid"],"correct":[1],"sata":false,"why":"The executive branch — the president/governor/mayor and administrative and regulatory departments and agencies such as USDHHS — suggests, administers, and regulates policy.","trap":"EAQ-style questions pin each distractor to a different branch. Administers/enforces/regulates always maps to executive, even when the underlying statute came from the legislature."},{"topic":"government and law","subtopic":"three branches of government","stem":"Congress debates, amends, and ultimately passes a bill expanding a maternal health program. Which branch's health-policy role does this describe?","options":["Executive","Legislative","Judicial","Regulatory"],"correct":[1],"sata":false,"why":"The legislative branch (Congress at the federal level) identifies problems and proposes, debates, passes, and modifies laws.","trap":null},{"topic":"government and law","subtopic":"three branches of government","stem":"The Supreme Court rules on whether a state's reproductive health access law is constitutional. Which branch's role is this?","options":["Executive","Legislative","Judicial","Executive, because the ruling affects how the law is enforced"],"correct":[2],"sata":false,"why":"The judicial branch — federal, state, and local courts guided by the Supreme Court — interprets laws and their meaning, including questions like states' rights and reproductive health access.","trap":null},{"topic":"government and law","subtopic":"three branches of government","stem":"A state's nurse practice act was passed by the legislature, but the Board of Nursing licenses RNs and revokes licenses for violations. Which branch does the Board of Nursing belong to?","options":["Legislative, because it was created by a legislative statute","Executive, because it is an administrative/regulatory agency","Judicial, because it adjudicates license revocations","A fourth, quasi-legislative branch unique to health professions"],"correct":[1],"sata":false,"why":"A Board of Nursing is part of the executive branch — an administrative/regulatory agency — even though it is created by a legislative statute (the nurse practice act).","trap":"This is the chapter's single most testable trap. Test-writers rely on students assuming \"created by the legislature\" means \"part of the legislative branch.\" Creation and operation are different branches here."},{"topic":"government and law","subtopic":"three branches of government","stem":"Congress's authority to legislate on health care rests mainly on which constitutional provision?","options":["The Tenth Amendment","Article I, Section 8","The Fourteenth Amendment's Equal Protection Clause","The Commerce Clause of Article III"],"correct":[1],"sata":false,"why":"Congress's health-care authority rests mainly on Article I, Section 8 — providing for the general welfare, regulating interstate commerce, raising funds for the military, and the spending power.","trap":null},{"topic":"government and law","subtopic":"three branches of government","stem":"In Stewart Machine Co. v. Davis (1937), the Supreme Court upheld federal authority to provide unemployment and old-age benefits on what basis?","options":["The police power of the states","Promoting the general welfare","The right to privacy","Preemption of state insurance law"],"correct":[1],"sata":false,"why":"Stewart Machine Co. v. Davis (1937) upheld federal authority for unemployment/old-age benefits as promoting the general welfare, a landmark case under Article I, Section 8 authority.","trap":null},{"topic":"government and law","subtopic":"three types of law","stem":"A state orders mandatory isolation of a patient with active, contagious tuberculosis. What is the legal basis for this order?","options":["Judicial law, based on precedent","Legislative/statute law","Constitutional law, through the state's police power","Common law duty to warn"],"correct":[2],"sata":false,"why":"The legal basis for quarantine/isolation is constitutional law, specifically the state's police power — the state's authority to protect the health, safety, and welfare of its citizens, even overriding individual rights when the public is genuinely threatened, provided the action is necessary and reasonable.","trap":null},{"topic":"government and law","subtopic":"three types of law","stem":"Which statement correctly defines police power?","options":["A state's authority, requiring a compelling interest, to act to protect the health, safety, and welfare of its citizens","A federal agency's authority to enforce criminal law","A hospital's authority to set internal infection-control policy","A court's authority to compel testimony in a public health case"],"correct":[0],"sata":false,"why":"Police power is the state's power to act to protect the health, safety, and welfare of its citizens. It must be used fairly and requires a compelling interest, especially when it infringes on individual rights.","trap":null},{"topic":"government and law","subtopic":"three types of law","stem":"A state's nurse practice act is an example of which type of law?","options":["Constitutional law","Legislation/statute law","Judicial/common law","Regulatory law"],"correct":[1],"sata":false,"why":"Legislation/statute law comes from the legislative branch and is coded into statutes; a nurse practice act is statute law.","trap":null},{"topic":"government and law","subtopic":"three types of law","stem":"Common law is built primarily on which principle?","options":["Precedent — judges are bound by prior decisions unless distinguished","Codified statutes passed by a legislature","Constitutional guidance applied case by case","Administrative rule-making"],"correct":[0],"sata":false,"why":"Common law rests on precedent — judges are bound by prior court decisions unless the current case can be distinguished from them. The opinions of courts are called case law.","trap":null},{"topic":"government and law","subtopic":"three types of law","stem":"When a genuine threat to the public's health exists, how does the law weigh individual rights against community rights, according to the police-power principle?","options":["Individual rights always take precedence over community rights","The community's rights outweigh the individual's rights, provided the action is necessary and reasonable","Individual and community rights are weighed equally in every case","Community rights outweigh individual rights only if a court has pre-approved the action"],"correct":[1],"sata":false,"why":"When there is a genuine threat to the public's health, the community's rights outweigh the individual's rights, provided the action taken is necessary and done reasonably. This is the basis for quarantine/isolation and connects to communicable disease reporting.","trap":null},{"topic":"government and law","subtopic":"nurse practice acts and scope of practice","stem":"Which functions does every state's nurse practice act accomplish, at minimum? Select all that apply.","options":["Defines the practice of professional nursing","Identifies the scope of nursing practice","Sets educational qualifications and other requirements for licensure","Determines the legal titles nurses may use","Sets mandatory minimum nurse-to-patient staffing ratios"],"correct":[0,1,2,3],"sata":true,"why":"Every nurse practice act accomplishes at least four functions: defining the practice of professional nursing, identifying the scope of nursing practice, setting educational qualifications and other requirements for licensure, and determining the legal titles nurses may use.","trap":"Staffing ratios are not one of the four statutory functions named in the chapter; do not add facts beyond what the nurse practice act is stated to accomplish."},{"topic":"government and law","subtopic":"nurse practice acts and scope of practice","stem":"Defining scope of practice forces clarification of which categories of nursing function?","options":["Emergency, routine, and elective functions","Independent, interdependent, and dependent functions","Acute, chronic, and preventive functions","Licensed, certified, and delegated functions"],"correct":[1],"sata":false,"why":"Defining scope of practice forces clarification of independent, interdependent, and dependent nursing functions. This is especially important for community nurses, who traditionally practice with high autonomy.","trap":null},{"topic":"government and law","subtopic":"nurse practice acts and scope of practice","stem":"A nurse licensed in State A is practicing temporarily in State B. Whose laws govern that nurse's practice?","options":["State A's, because that is where the license was issued","State B's, because practitioners are subject to the laws of the state in which they practice","Federal law preempts both states' nurse practice acts","Whichever state's laws are more protective of the patient"],"correct":[1],"sata":false,"why":"Practitioners are subject to the laws of the state in which they practice, and nurses can practice only with a license.","trap":null},{"topic":"government and law","subtopic":"Boards of Nursing","stem":"Which responsibilities belong to a state Board of Nursing? Select all that apply.","options":["Licensing and examination of RNs and LPNs","Licensing and/or certification of advanced practice nurses","Approval of schools of nursing in the state","Revocation, suspension, or denial of licenses","Passing the nurse practice act that creates the Board"],"correct":[0,1,2,3],"sata":true,"why":"Boards of Nursing generally license and examine RNs and LPNs, license/certify advanced practice nurses, approve schools of nursing, revoke/suspend/deny licenses, and write regulations about nursing practice and education.","trap":"The Board does not pass the nurse practice act — the legislature does. The Board operationalizes and enforces the act the legislature already passed."},{"topic":"government and law","subtopic":"Boards of Nursing","stem":"A state Board of Nursing is made up of which members?","options":["Physicians and hospital administrators","Nurses and consumers","State legislators and attorneys","Judges and nursing school deans"],"correct":[1],"sata":false,"why":"Every state has a Board of Nursing, created by the state's nurse practice act, made up of nurses and consumers.","trap":null},{"topic":"government and law","subtopic":"Boards of Nursing","stem":"In branch terms, what is the correct division of labor between the legislature and the Board of Nursing regarding the nurse practice act?","options":["The legislature writes the regulations; the Board passes the act","The legislature passes the act; the Board writes the regulations and enforces it","The Board passes the act; the legislature enforces it","Both the legislature and the Board jointly write and enforce the act"],"correct":[1],"sata":false,"why":"The legislature passes the nurse practice act; the Board of Nursing (an executive/administrative body) operationalizes, implements, and enforces that statutory law by writing explicit regulations.","trap":null},{"topic":"government and law","subtopic":"professional negligence and malpractice","stem":"Which four elements must a patient prove, all together, to recover damages for professional negligence (malpractice)? Select all that apply.","options":["Duty","Breach","Causation","Damages","Intent to harm"],"correct":[0,1,2,3],"sata":true,"why":"To recover damages the patient must prove all four elements: duty (the nurse owed a duty to the patient), breach (the nurse failed to act as a reasonable, prudent nurse would), causation (that failure led to the injury), and damages (the injury supports a monetary claim). Missing any one element defeats the claim.","trap":"Malpractice is negligence, not an intentional tort — intent to harm is not one of the four required elements."},{"topic":"government and law","subtopic":"professional negligence and malpractice","stem":"A nurse fails to reassess a patient's pain per protocol (a clear deviation from the reasonable, prudent nurse standard), but the patient's outcome was identical to what it would have been with proper reassessment, and the patient suffered no injury or financial loss. Can the patient successfully sue for malpractice?","options":["Yes, because duty and breach are both clearly established","No, because causation and damages are missing even though duty and breach are present","Yes, automatically, once any breach of the standard of care is shown","No, because there was no duty owed in this scenario"],"correct":[1],"sata":false,"why":"All four elements — duty, breach, causation, and damages — must be present. Here duty and breach are established, but there is no injury (damages) and nothing the breach can be shown to have caused (causation), so the claim fails.","trap":"A clear breach feels like enough on its own, but breach without resulting, compensable harm defeats the claim — this is the scenario version of \"missing any one of the four D's.\""},{"topic":"government and law","subtopic":"professional negligence and malpractice","stem":"What is the memory hook the fact bank offers for the four elements of malpractice?","options":["The four C's: Care, Competence, Conduct, Consequence","The four D's: Duty, Dereliction, Direct cause, Damages","The four P's: Patient, Provider, Procedure, Proof","The four S's: Standard, Scope, Severity, Settlement"],"correct":[1],"sata":false,"why":"The memory hook is the four D's — Duty, Dereliction (breach), Direct cause (causation), and Damages.","trap":null},{"topic":"government and law","subtopic":"professional negligence and malpractice","stem":"A hospital-employed nurse commits a negligent act while working within the scope of her employment. Under respondeat superior, who may be held responsible?","options":["Only the nurse individually","Only the employer, since the nurse was following employer direction","The employer, along with the individual nurse","Neither party, since the employer did not act directly"],"correct":[2],"sata":false,"why":"Under respondeat superior, when a nurse is employed and acting within the scope of employment, the employer is responsible for the nurse's negligent actions along with the individual nurse, because the employer directed the function and is usually better able to pay.","trap":null},{"topic":"government and law","subtopic":"professional negligence and malpractice","stem":"According to the fact bank, how common are reported negligence cases involving population-centered (community/public health) nurses?","options":["They are the most common category of nursing malpractice claim","They are rare","They occur at the same rate as acute-care nursing claims","They have risen sharply in the last decade"],"correct":[1],"sata":false,"why":"Reported negligence cases involving population-centered nurses are rare.","trap":null},{"topic":"government and law","subtopic":"nursing advocacy and the policy process","stem":"A nurse testifies before a state legislative committee to support a bill funding school-based health clinics. This is an example of which type of policy action?","options":["Regulatory action","Legislative action","Judicial action","Administrative action"],"correct":[1],"sata":false,"why":"Nurses influence policy through legislative action — communicating with policymakers, testifying, and lobbying.","trap":null},{"topic":"government and law","subtopic":"nursing advocacy and the policy process","stem":"After a health-related bill is signed into law, a nurse participates in the agency rule-making process to shape how it will be implemented. This is an example of which type of policy action?","options":["Legislative action","Regulatory action","Judicial action","Constitutional action"],"correct":[1],"sata":false,"why":"Nurses also influence policy through regulatory action — participating in the rule-making process after a law has passed.","trap":null},{"topic":"government and law","subtopic":"nursing advocacy and the policy process","stem":"What is presented as the leading example of national health-policy guidance in the chapter's discussion of nursing advocacy?","options":["The Affordable Care Act","Healthy People 2030","The Nurse Practice Act Model Language","The USDHHS Strategic Plan"],"correct":[1],"sata":false,"why":"Healthy People 2030 is presented as the leading example of national health-policy guidance, within the chapter's framing of the nurse as an agent of change and advocate for population health.","trap":null}];
+const TITLE = "Chapter 4 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 4";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

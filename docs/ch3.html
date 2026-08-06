@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 3 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 3</div><h1>Chapter 3 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">primary care vs. primary health care</span></div>
+<div class="stem">1. A nurse is asked to distinguish &quot;primary care&quot; from &quot;primary health care&quot; for a class of new students. Which statement correctly captures the difference?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary care is population-focused; primary health care is individual-focused</li><li class="fopt right"><span class="mk">&#10003;</span>Primary care is an individual's first point of contact with the health system; primary health care is essential care made universally accessible to a community with its full participation</li><li class="fopt"><span class="mk">C</span>The two terms are interchangeable synonyms for the same delivery model</li><li class="fopt"><span class="mk">D</span>Primary care refers to hospital-based care; primary health care refers to outpatient care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary care is the individual's first point of contact with the health system, provided by physicians, NPs, CNSs, PAs, and CNMs. Primary health care (PHC) is essential health care made universally accessible to individuals and families in the community, with their full participation, at an affordable cost — a population/community-level model.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The two terms are one word apart and are the most commonly swapped pair on this blueprint line. If the stem says &quot;individual&quot; or &quot;first contact,&quot; it is primary care; if it says &quot;community,&quot; &quot;universal access,&quot; or &quot;participation,&quot; it is primary health care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">primary care vs. primary health care</span></div>
+<div class="stem">2. Which model of care traces its origin to the Declaration of Alma-Ata (1978)?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary care</li><li class="fopt right"><span class="mk">&#10003;</span>Primary health care</li><li class="fopt"><span class="mk">C</span>Managed care</li><li class="fopt"><span class="mk">D</span>Public health surveillance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary health care emerged from the 1978 WHO Declaration of Alma-Ata, which stated that health is a human right and introduced the PHC model along with the role of community health workers and traditional healers.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Primary care is a clinical delivery model with no Alma-Ata origin. Any stem naming Alma-Ata is pointing to primary health care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">primary care vs. primary health care</span></div>
+<div class="stem">3. A community health nurse works with local residents to design and deliver essential health services that are affordable and universally accessible, with the community's full participation in identifying its own priorities. This best exemplifies which concept?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary care</li><li class="fopt right"><span class="mk">&#10003;</span>Primary health care</li><li class="fopt"><span class="mk">C</span>Managed care</li><li class="fopt"><span class="mk">D</span>Public health assurance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This scenario describes primary health care: essential care made universally accessible to individuals and families in the community, with their full participation, at an affordable cost — the Alma-Ata model.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;Community participation&quot; and &quot;universal access&quot; are the scenario's tell. A first-contact clinic visit would be primary care instead.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">primary care vs. primary health care</span></div>
+<div class="stem">4. Which statements describe primary health care (PHC) as opposed to primary care? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Population/community focus</li><li class="fopt right"><span class="mk">&#10003;</span>Traces to the Declaration of Alma-Ata, 1978</li><li class="fopt right"><span class="mk">&#10003;</span>Emphasizes prevention and equity</li><li class="fopt"><span class="mk">D</span>Delivered by physicians, NPs, CNSs, PAs, and CNMs as an individual's first contact</li><li class="fopt right"><span class="mk">&#10003;</span>Built on full community participation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>PHC is population/community-focused, emerged from Alma-Ata, emphasizes prevention and equity, and is built on full community participation. Being an individual's first point of contact, delivered by physicians, NPs, CNSs, PAs, and CNMs, describes primary care instead.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option D is a true statement about primary care, not PHC — it belongs in the individual-focused column of the confusable pair.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">primary care vs. primary health care</span></div>
+<div class="stem">5. Which professionals are described as delivering primary care as an individual's first point of contact with the health system? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Physicians</li><li class="fopt right"><span class="mk">&#10003;</span>Nurse practitioners</li><li class="fopt right"><span class="mk">&#10003;</span>Clinical nurse specialists</li><li class="fopt right"><span class="mk">&#10003;</span>Physician assistants</li><li class="fopt right"><span class="mk">&#10003;</span>Certified nurse-midwives</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary care — first-contact, individual clinical care — is provided by physicians, NPs, CNSs, PAs, and CNMs. Advanced practice nurses (NPs, CNSs, CNMs) are described as vital members of primary care teams.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Do not confuse this list of individual-care providers with the population-level participation (community members, community health workers, traditional healers) built into the primary health care model. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">the three system problems — cost, access, quality</span></div>
+<div class="stem">6. US health care spending as a percentage of GDP is best described how, relative to other industrialized nations?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Comparable to the average of other industrialized nations</li><li class="fopt right"><span class="mk">&#10003;</span>About 19.7% of GDP, the highest share among industrialized nations</li><li class="fopt"><span class="mk">C</span>Lower than most industrialized nations because of managed care controls</li><li class="fopt"><span class="mk">D</span>Roughly 10% of GDP, similar to most developed countries</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>US health spending reached 19.7% of GDP, the highest share among industrialized nations, despite not leading on health outcomes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The US spends the most but does not have the best outcomes — a question that implies high spending equals high quality is testing this exact mismatch.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">the three system problems — cost, access, quality</span></div>
+<div class="stem">7. US health care spending was approximately how much in 2009, and how much is it projected to reach by 2026?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>$1.2 trillion in 2009, projected to reach $2.5 trillion by 2026</li><li class="fopt right"><span class="mk">&#10003;</span>$2.5 trillion in 2009, projected to reach $5.7 trillion by 2026</li><li class="fopt"><span class="mk">C</span>$5.7 trillion in 2009, projected to reach $8 trillion by 2026</li><li class="fopt"><span class="mk">D</span>$2.5 trillion in 2009, projected to remain flat through 2026</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>US health spending reached $2.5 trillion in 2009 and is projected to reach $5.7 trillion by 2026, about 19.7% of GDP.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">the three system problems — cost, access, quality</span></div>
+<div class="stem">8. Within US health care spending, which statement correctly ranks the shares of expenditure?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The largest share goes to acute care, with physician services next; public health receives the smallest share</li><li class="fopt"><span class="mk">B</span>The largest share goes to public health, with acute care next</li><li class="fopt"><span class="mk">C</span>Physician services receive the largest share, followed by prescription drugs</li><li class="fopt"><span class="mk">D</span>Acute care and public health receive roughly equal shares</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The largest share of expenditures goes to acute care, with physician services next; public health receives the smallest share. Other cost drivers include prescription drugs, technology, chronic/degenerative disease care, and the aging baby-boomer population swelling Medicare enrollment.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Public health is consistently the smallest slice of the pie — a distractor that puts public health spending on par with or above acute care inverts this.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">the three system problems — cost, access, quality</span></div>
+<div class="stem">9. The US access problem is often described as a &quot;two-class system.&quot; Which group is specifically identified as falling into the gap between the two classes?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Medicare beneficiaries</li><li class="fopt right"><span class="mk">&#10003;</span>The working poor, who earn too much for public funds but cannot afford private insurance</li><li class="fopt"><span class="mk">C</span>Undocumented immigrants only</li><li class="fopt"><span class="mk">D</span>Retirees on fixed incomes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The US is described as a two-class system — private and public. Those with insurance or ability to pay get superior care, while the working poor (who earn too much for public funds but can't afford insurance) and undocumented immigrants get lower-quality care.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Undocumented immigrants are also named as falling into the lower-quality-care group, but the working poor are the group defined specifically by being caught between the two classes on the basis of income.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">the three system problems — cost, access, quality</span></div>
+<div class="stem">10. How did the number of uninsured Americans change between 2012 and 2016?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It rose from 27.6 million to 48 million</li><li class="fopt right"><span class="mk">&#10003;</span>It fell from 48 million (pre-ACA) to 27.6 million</li><li class="fopt"><span class="mk">C</span>It remained essentially unchanged at approximately 40 million</li><li class="fopt"><span class="mk">D</span>It fell to zero following full ACA implementation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Uninsured Americans fell from 48 million in 2012 (pre-ACA) to 27.6 million in 2016. The uninsured receive less preventive care, are diagnosed at more advanced stages, and receive less treatment.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">the three system problems — cost, access, quality</span></div>
+<div class="stem">11. Which statements about federally funded community health centers are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>There are more than 1,300 nationwide</li><li class="fopt right"><span class="mk">&#10003;</span>They serve medically underserved areas, both rural and urban</li><li class="fopt right"><span class="mk">&#10003;</span>They serve people of all ages, races, and ethnicities regardless of insurance status</li><li class="fopt right"><span class="mk">&#10003;</span>Staffing includes NPs, RNs, PAs, physicians, social workers, and dentists</li><li class="fopt"><span class="mk">E</span>They serve only patients who already carry private insurance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>More than 1,300 federally funded community health centers serve medically underserved areas (rural or urban), all ages/races/ethnicities, insured or not, using NPs, RNs, PAs, physicians, social workers, and dentists.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The centers exist specifically to serve people regardless of insurance status, including the uninsured — an option restricting them to already-insured patients inverts their purpose. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">federal, state, and local organization</span></div>
+<div class="stem">12. Which federal department is described as the agency most involved with US citizens' health and welfare, administering 100+ programs through 10 regional offices?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Department of Homeland Security (DHS)</li><li class="fopt right"><span class="mk">&#10003;</span>US Department of Health and Human Services (USDHHS)</li><li class="fopt"><span class="mk">C</span>Centers for Medicare &amp; Medicaid Services (CMS)</li><li class="fopt"><span class="mk">D</span>US Public Health Service (USPHS)</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>USDHHS is the federal agency most involved with citizens' health and welfare. It administers 100+ programs, maintains 10 regional offices, and contains the office of the secretary plus 11 agencies.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">federal, state, and local organization</span></div>
+<div class="stem">13. The US Public Health Service (USPHS), a major component of HHS, comprises eight agencies. Which of the following are among them? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>CDC</li><li class="fopt right"><span class="mk">&#10003;</span>FDA</li><li class="fopt right"><span class="mk">&#10003;</span>NIH</li><li class="fopt right"><span class="mk">&#10003;</span>SAMHSA</li><li class="fopt"><span class="mk">E</span>CMS</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The USPHS comprises eight agencies, including CDC, FDA, HRSA, AHRQ, ATSDR, IHS, NIH, and SAMHSA.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>CMS is a separate HHS component that administers Medicare and Medicaid — it is not one of the eight USPHS agencies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">federal, state, and local organization</span></div>
+<div class="stem">14. Which federal agency administers Medicare and Medicaid?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>US Public Health Service (USPHS)</li><li class="fopt right"><span class="mk">&#10003;</span>Centers for Medicare &amp; Medicaid Services (CMS)</li><li class="fopt"><span class="mk">C</span>Department of Homeland Security (DHS)</li><li class="fopt"><span class="mk">D</span>Health Resources and Services Administration (HRSA)</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Centers for Medicare &amp; Medicaid Services (CMS) administers Medicare and Medicaid. (The details of what Medicare and Medicaid cover are Chapter 5 content — this chapter covers only which agency runs them.)</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">federal, state, and local organization</span></div>
+<div class="stem">15. The Department of Homeland Security (DHS), created in 2003, runs which community-level emergency preparedness program?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>CERT (Community Emergency Response Team)</li><li class="fopt"><span class="mk">B</span>HRSA Emergency Response Corps</li><li class="fopt"><span class="mk">C</span>National Disaster Medical System</li><li class="fopt"><span class="mk">D</span>Strategic National Stockpile</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>DHS, created in 2003, runs the CERT (Community Emergency Response Team) program, with goals of awareness, prevention, protection, response, and recovery.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">US health care system</span><span class="chip t2">federal, state, and local organization</span></div>
+<div class="stem">16. At the state level, which statement correctly describes the state health department's role and authority?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>States administer Medicare and Medicaid directly, independent of CMS</li><li class="fopt right"><span class="mk">&#10003;</span>State health departments handle licensing, health statistics, and communicable disease control, and hold police power to protect public health</li><li class="fopt"><span class="mk">C</span>State health departments deliver most direct clinical services, bypassing local health departments</li><li class="fopt"><span class="mk">D</span>States are the level at which USPHS agencies are organized</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>State health departments handle licensing, health statistics, communicable disease control, and coordinate local health; states hold police power to protect public health. The local health department is where services actually reach the community, with functions varying widely by locality.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Direct service delivery to the community is a local, not state, function — states coordinate and regulate, localities deliver. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">global health</span><span class="chip t2">WHO, Alma-Ata, and international goals</span></div>
+<div class="stem">17. What did the 1978 Declaration of Alma-Ata state?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Health is a commodity to be purchased through market competition</li><li class="fopt right"><span class="mk">&#10003;</span>Health is a human right and should be the primary goal of every government</li><li class="fopt"><span class="mk">C</span>Primary care should replace primary health care as the dominant global model</li><li class="fopt"><span class="mk">D</span>Nations should adopt a single unified system of managed care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Declaration of Alma-Ata (1978), issued by WHO, stated that health is a human right and should be the primary goal of every government, and introduced primary health care along with the role of community health workers and traditional healers.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">global health</span><span class="chip t2">WHO, Alma-Ata, and international goals</span></div>
+<div class="stem">18. How do the Millennium Development Goals (MDGs) and Sustainable Development Goals (SDGs) compare?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The MDGs (17 goals, 2000–2015) were succeeded by the SDGs (8 goals, 2015–), with SDG 3 focused on health</li><li class="fopt right"><span class="mk">&#10003;</span>The MDGs (8 goals, 2000–2015) were succeeded by the SDGs (17 goals, 2015–); SDG 3 is Good Health and Well-Being</li><li class="fopt"><span class="mk">C</span>The MDGs and SDGs ran concurrently, each covering different UN member states</li><li class="fopt"><span class="mk">D</span>The SDGs (8 goals) preceded the MDGs (17 goals)</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Millennium Development Goals were 8 UN goals spanning 2000–2015. The Sustainable Development Goals succeeded them with 17 goals from 2015 onward; SDG 3 is Good Health and Well-Being.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The goal counts are easy to swap — 8 belongs to the MDGs, 17 to the SDGs, and the SDGs came after, not before.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">global health</span><span class="chip t2">WHO, Alma-Ata, and international goals</span></div>
+<div class="stem">19. Which organization leads the &quot;Leadership for Change&quot; program, positioning nursing to take a leadership role in achieving health for all?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>WHO</li><li class="fopt right"><span class="mk">&#10003;</span>ICN (International Council of Nurses)</li><li class="fopt"><span class="mk">C</span>USDHHS</li><li class="fopt"><span class="mk">D</span>USPHS</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The International Council of Nurses (ICN) leads the Leadership for Change program, through which nursing takes a leadership role in achieving health for all.</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"US health care system","subtopic":"primary care vs. primary health care","stem":"A nurse is asked to distinguish \"primary care\" from \"primary health care\" for a class of new students. Which statement correctly captures the difference?","options":["Primary care is population-focused; primary health care is individual-focused","Primary care is an individual's first point of contact with the health system; primary health care is essential care made universally accessible to a community with its full participation","The two terms are interchangeable synonyms for the same delivery model","Primary care refers to hospital-based care; primary health care refers to outpatient care"],"correct":[1],"sata":false,"why":"Primary care is the individual's first point of contact with the health system, provided by physicians, NPs, CNSs, PAs, and CNMs. Primary health care (PHC) is essential health care made universally accessible to individuals and families in the community, with their full participation, at an affordable cost — a population/community-level model.","trap":"The two terms are one word apart and are the most commonly swapped pair on this blueprint line. If the stem says \"individual\" or \"first contact,\" it is primary care; if it says \"community,\" \"universal access,\" or \"participation,\" it is primary health care."},{"topic":"US health care system","subtopic":"primary care vs. primary health care","stem":"Which model of care traces its origin to the Declaration of Alma-Ata (1978)?","options":["Primary care","Primary health care","Managed care","Public health surveillance"],"correct":[1],"sata":false,"why":"Primary health care emerged from the 1978 WHO Declaration of Alma-Ata, which stated that health is a human right and introduced the PHC model along with the role of community health workers and traditional healers.","trap":"Primary care is a clinical delivery model with no Alma-Ata origin. Any stem naming Alma-Ata is pointing to primary health care."},{"topic":"US health care system","subtopic":"primary care vs. primary health care","stem":"A community health nurse works with local residents to design and deliver essential health services that are affordable and universally accessible, with the community's full participation in identifying its own priorities. This best exemplifies which concept?","options":["Primary care","Primary health care","Managed care","Public health assurance"],"correct":[1],"sata":false,"why":"This scenario describes primary health care: essential care made universally accessible to individuals and families in the community, with their full participation, at an affordable cost — the Alma-Ata model.","trap":"\"Community participation\" and \"universal access\" are the scenario's tell. A first-contact clinic visit would be primary care instead."},{"topic":"US health care system","subtopic":"primary care vs. primary health care","stem":"Which statements describe primary health care (PHC) as opposed to primary care? Select all that apply.","options":["Population/community focus","Traces to the Declaration of Alma-Ata, 1978","Emphasizes prevention and equity","Delivered by physicians, NPs, CNSs, PAs, and CNMs as an individual's first contact","Built on full community participation"],"correct":[0,1,2,4],"sata":true,"why":"PHC is population/community-focused, emerged from Alma-Ata, emphasizes prevention and equity, and is built on full community participation. Being an individual's first point of contact, delivered by physicians, NPs, CNSs, PAs, and CNMs, describes primary care instead.","trap":"Option D is a true statement about primary care, not PHC — it belongs in the individual-focused column of the confusable pair."},{"topic":"US health care system","subtopic":"primary care vs. primary health care","stem":"Which professionals are described as delivering primary care as an individual's first point of contact with the health system? Select all that apply.","options":["Physicians","Nurse practitioners","Clinical nurse specialists","Physician assistants","Certified nurse-midwives"],"correct":[0,1,2,3,4],"sata":true,"why":"Primary care — first-contact, individual clinical care — is provided by physicians, NPs, CNSs, PAs, and CNMs. Advanced practice nurses (NPs, CNSs, CNMs) are described as vital members of primary care teams.","trap":"Do not confuse this list of individual-care providers with the population-level participation (community members, community health workers, traditional healers) built into the primary health care model. ---"},{"topic":"US health care system","subtopic":"the three system problems — cost, access, quality","stem":"US health care spending as a percentage of GDP is best described how, relative to other industrialized nations?","options":["Comparable to the average of other industrialized nations","About 19.7% of GDP, the highest share among industrialized nations","Lower than most industrialized nations because of managed care controls","Roughly 10% of GDP, similar to most developed countries"],"correct":[1],"sata":false,"why":"US health spending reached 19.7% of GDP, the highest share among industrialized nations, despite not leading on health outcomes.","trap":"The US spends the most but does not have the best outcomes — a question that implies high spending equals high quality is testing this exact mismatch."},{"topic":"US health care system","subtopic":"the three system problems — cost, access, quality","stem":"US health care spending was approximately how much in 2009, and how much is it projected to reach by 2026?","options":["$1.2 trillion in 2009, projected to reach $2.5 trillion by 2026","$2.5 trillion in 2009, projected to reach $5.7 trillion by 2026","$5.7 trillion in 2009, projected to reach $8 trillion by 2026","$2.5 trillion in 2009, projected to remain flat through 2026"],"correct":[1],"sata":false,"why":"US health spending reached $2.5 trillion in 2009 and is projected to reach $5.7 trillion by 2026, about 19.7% of GDP.","trap":null},{"topic":"US health care system","subtopic":"the three system problems — cost, access, quality","stem":"Within US health care spending, which statement correctly ranks the shares of expenditure?","options":["The largest share goes to acute care, with physician services next; public health receives the smallest share","The largest share goes to public health, with acute care next","Physician services receive the largest share, followed by prescription drugs","Acute care and public health receive roughly equal shares"],"correct":[0],"sata":false,"why":"The largest share of expenditures goes to acute care, with physician services next; public health receives the smallest share. Other cost drivers include prescription drugs, technology, chronic/degenerative disease care, and the aging baby-boomer population swelling Medicare enrollment.","trap":"Public health is consistently the smallest slice of the pie — a distractor that puts public health spending on par with or above acute care inverts this."},{"topic":"US health care system","subtopic":"the three system problems — cost, access, quality","stem":"The US access problem is often described as a \"two-class system.\" Which group is specifically identified as falling into the gap between the two classes?","options":["Medicare beneficiaries","The working poor, who earn too much for public funds but cannot afford private insurance","Undocumented immigrants only","Retirees on fixed incomes"],"correct":[1],"sata":false,"why":"The US is described as a two-class system — private and public. Those with insurance or ability to pay get superior care, while the working poor (who earn too much for public funds but can't afford insurance) and undocumented immigrants get lower-quality care.","trap":"Undocumented immigrants are also named as falling into the lower-quality-care group, but the working poor are the group defined specifically by being caught between the two classes on the basis of income."},{"topic":"US health care system","subtopic":"the three system problems — cost, access, quality","stem":"How did the number of uninsured Americans change between 2012 and 2016?","options":["It rose from 27.6 million to 48 million","It fell from 48 million (pre-ACA) to 27.6 million","It remained essentially unchanged at approximately 40 million","It fell to zero following full ACA implementation"],"correct":[1],"sata":false,"why":"Uninsured Americans fell from 48 million in 2012 (pre-ACA) to 27.6 million in 2016. The uninsured receive less preventive care, are diagnosed at more advanced stages, and receive less treatment.","trap":null},{"topic":"US health care system","subtopic":"the three system problems — cost, access, quality","stem":"Which statements about federally funded community health centers are accurate? Select all that apply.","options":["There are more than 1,300 nationwide","They serve medically underserved areas, both rural and urban","They serve people of all ages, races, and ethnicities regardless of insurance status","Staffing includes NPs, RNs, PAs, physicians, social workers, and dentists","They serve only patients who already carry private insurance"],"correct":[0,1,2,3],"sata":true,"why":"More than 1,300 federally funded community health centers serve medically underserved areas (rural or urban), all ages/races/ethnicities, insured or not, using NPs, RNs, PAs, physicians, social workers, and dentists.","trap":"The centers exist specifically to serve people regardless of insurance status, including the uninsured — an option restricting them to already-insured patients inverts their purpose. ---"},{"topic":"US health care system","subtopic":"federal, state, and local organization","stem":"Which federal department is described as the agency most involved with US citizens' health and welfare, administering 100+ programs through 10 regional offices?","options":["Department of Homeland Security (DHS)","US Department of Health and Human Services (USDHHS)","Centers for Medicare & Medicaid Services (CMS)","US Public Health Service (USPHS)"],"correct":[1],"sata":false,"why":"USDHHS is the federal agency most involved with citizens' health and welfare. It administers 100+ programs, maintains 10 regional offices, and contains the office of the secretary plus 11 agencies.","trap":null},{"topic":"US health care system","subtopic":"federal, state, and local organization","stem":"The US Public Health Service (USPHS), a major component of HHS, comprises eight agencies. Which of the following are among them? Select all that apply.","options":["CDC","FDA","NIH","SAMHSA","CMS"],"correct":[0,1,2,3],"sata":true,"why":"The USPHS comprises eight agencies, including CDC, FDA, HRSA, AHRQ, ATSDR, IHS, NIH, and SAMHSA.","trap":"CMS is a separate HHS component that administers Medicare and Medicaid — it is not one of the eight USPHS agencies."},{"topic":"US health care system","subtopic":"federal, state, and local organization","stem":"Which federal agency administers Medicare and Medicaid?","options":["US Public Health Service (USPHS)","Centers for Medicare & Medicaid Services (CMS)","Department of Homeland Security (DHS)","Health Resources and Services Administration (HRSA)"],"correct":[1],"sata":false,"why":"The Centers for Medicare & Medicaid Services (CMS) administers Medicare and Medicaid. (The details of what Medicare and Medicaid cover are Chapter 5 content — this chapter covers only which agency runs them.)","trap":null},{"topic":"US health care system","subtopic":"federal, state, and local organization","stem":"The Department of Homeland Security (DHS), created in 2003, runs which community-level emergency preparedness program?","options":["CERT (Community Emergency Response Team)","HRSA Emergency Response Corps","National Disaster Medical System","Strategic National Stockpile"],"correct":[0],"sata":false,"why":"DHS, created in 2003, runs the CERT (Community Emergency Response Team) program, with goals of awareness, prevention, protection, response, and recovery.","trap":null},{"topic":"US health care system","subtopic":"federal, state, and local organization","stem":"At the state level, which statement correctly describes the state health department's role and authority?","options":["States administer Medicare and Medicaid directly, independent of CMS","State health departments handle licensing, health statistics, and communicable disease control, and hold police power to protect public health","State health departments deliver most direct clinical services, bypassing local health departments","States are the level at which USPHS agencies are organized"],"correct":[1],"sata":false,"why":"State health departments handle licensing, health statistics, communicable disease control, and coordinate local health; states hold police power to protect public health. The local health department is where services actually reach the community, with functions varying widely by locality.","trap":"Direct service delivery to the community is a local, not state, function — states coordinate and regulate, localities deliver. ---"},{"topic":"global health","subtopic":"WHO, Alma-Ata, and international goals","stem":"What did the 1978 Declaration of Alma-Ata state?","options":["Health is a commodity to be purchased through market competition","Health is a human right and should be the primary goal of every government","Primary care should replace primary health care as the dominant global model","Nations should adopt a single unified system of managed care"],"correct":[1],"sata":false,"why":"The Declaration of Alma-Ata (1978), issued by WHO, stated that health is a human right and should be the primary goal of every government, and introduced primary health care along with the role of community health workers and traditional healers.","trap":null},{"topic":"global health","subtopic":"WHO, Alma-Ata, and international goals","stem":"How do the Millennium Development Goals (MDGs) and Sustainable Development Goals (SDGs) compare?","options":["The MDGs (17 goals, 2000–2015) were succeeded by the SDGs (8 goals, 2015–), with SDG 3 focused on health","The MDGs (8 goals, 2000–2015) were succeeded by the SDGs (17 goals, 2015–); SDG 3 is Good Health and Well-Being","The MDGs and SDGs ran concurrently, each covering different UN member states","The SDGs (8 goals) preceded the MDGs (17 goals)"],"correct":[1],"sata":false,"why":"The Millennium Development Goals were 8 UN goals spanning 2000–2015. The Sustainable Development Goals succeeded them with 17 goals from 2015 onward; SDG 3 is Good Health and Well-Being.","trap":"The goal counts are easy to swap — 8 belongs to the MDGs, 17 to the SDGs, and the SDGs came after, not before."},{"topic":"global health","subtopic":"WHO, Alma-Ata, and international goals","stem":"Which organization leads the \"Leadership for Change\" program, positioning nursing to take a leadership role in achieving health for all?","options":["WHO","ICN (International Council of Nurses)","USDHHS","USPHS"],"correct":[1],"sata":false,"why":"The International Council of Nurses (ICN) leads the Leadership for Change program, through which nursing takes a leadership role in achieving health for all.","trap":null}];
+const TITLE = "Chapter 3 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 3";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

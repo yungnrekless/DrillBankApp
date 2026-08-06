@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 13 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 13</div><h1>Chapter 13 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">windshield survey</span></div>
+<div class="stem">1. A public health nurse drives slowly through an assigned neighborhood, noting housing conditions, businesses, open space, and signs of decay or vitality before planning a fuller assessment. What is this method called?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Windshield survey</li><li class="fopt"><span class="mk">B</span>Key informant interview</li><li class="fopt"><span class="mk">C</span>Focus group</li><li class="fopt"><span class="mk">D</span>Photovoice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A windshield survey is a method of simple observation that gives a quick overview of a community — described as the &quot;community equivalent of a head-to-toe assessment&quot; — done by driving or walking through.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The stem is the classic test cue: a nurse driving or walking through to get a general first impression of housing and conditions. It is observational and preliminary, not a substitute for a fuller assessment if interventions are planned.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">windshield survey</span></div>
+<div class="stem">2. What is the recommended way to conduct a windshield survey?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>By a single nurse working alone to avoid bias</li><li class="fopt right"><span class="mk">&#10003;</span>With more than one person, since one can drive/watch the road while another observes and takes notes</li><li class="fopt"><span class="mk">C</span>Only after secondary data has been fully analyzed</li><li class="fopt"><span class="mk">D</span>Only during a community-sponsored event such as a fair or festival</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A windshield survey is best conducted with more than one person — one drives or watches the road while another observes and takes notes, and the shared experience adds insight. A second tour may be needed to fill in blanks.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option D describes participant observation, not a windshield survey.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">windshield survey</span></div>
+<div class="stem">3. Which statements about the windshield survey are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is a form of simple observation</li><li class="fopt right"><span class="mk">&#10003;</span>It is called the &quot;community equivalent of a head-to-toe assessment&quot;</li><li class="fopt"><span class="mk">C</span>It is a secondary data method because it summarizes existing records</li><li class="fopt right"><span class="mk">&#10003;</span>It may require a second tour to fill in blanks</li><li class="fopt right"><span class="mk">&#10003;</span>It provides context for a community's health status, strengths, risks, and vulnerabilities</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The windshield survey is a method of simple observation, nicknamed the &quot;community equivalent of a head-to-toe assessment,&quot; may need a second tour to fill in blanks, and gives context for health status, strengths, risks, and vulnerabilities.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>It is a primary data method — the nurse collects it firsthand — not a secondary one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">key informants</span></div>
+<div class="stem">4. A community health nursing student is told that county health department nurses and church leaders are often good sources of insight into local concerns, even though they may hold no formal title. What term describes these sources?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Gatekeepers</li><li class="fopt"><span class="mk">B</span>Stakeholders</li><li class="fopt right"><span class="mk">&#10003;</span>Key informants</li><li class="fopt"><span class="mk">D</span>Community diagnosticians</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Key informants are community members who provide insight into local issues, strengths, and concerns, and often hold an informal role rather than a formal title. County health department nurses and church leaders are the examples given.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">key informants</span></div>
+<div class="stem">5. A nurse assumes that a true key informant must be an elected official or an agency head. Why is this reasoning flawed?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Key informants must have clinical training</li><li class="fopt right"><span class="mk">&#10003;</span>Key informants are chosen for their knowledge of and connection to the community, not their official rank</li><li class="fopt"><span class="mk">C</span>Key informants are always appointed by the health department</li><li class="fopt"><span class="mk">D</span>Key informants must be lifelong residents of the community</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A key informant is chosen for knowledge of and connection to the community, not official rank; the classic distractor is assuming a formal title is required, but it doesn't have to be.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">key informants</span></div>
+<div class="stem">6. In addition to sharing their own knowledge of the community, what else can key informants do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Certify the community assessment for accuracy</li><li class="fopt right"><span class="mk">&#10003;</span>Identify other key informants</li><li class="fopt"><span class="mk">C</span>Independently authorize a community diagnosis</li><li class="fopt"><span class="mk">D</span>Replace the need for a windshield survey</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Key informants know many community members and can identify other key informants — a snowball referral process.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">primary vs. secondary data</span></div>
+<div class="stem">7. Which of the following are primary data collection methods for a community assessment? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Windshield survey</li><li class="fopt right"><span class="mk">&#10003;</span>Key informant interviews</li><li class="fopt right"><span class="mk">&#10003;</span>Focus groups</li><li class="fopt"><span class="mk">D</span>Census data</li><li class="fopt right"><span class="mk">&#10003;</span>Photovoice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary data is collected directly by the assessment team — windshield survey, key informant interviews, focus groups, participant observation, and photovoice are all primary methods. Census data is secondary.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Census data is a common distractor planted among primary-method lists; it is pre-existing numeric data from a recognized agency, which makes it secondary.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">primary vs. secondary data</span></div>
+<div class="stem">8. A student mistakenly labels the windshield survey as a secondary data source because it produces a written summary the team can file and reuse later. What is the error?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>There is no error; reused documents are always secondary data</li><li class="fopt right"><span class="mk">&#10003;</span>The windshield survey is primary data because the nurse collects it firsthand through direct observation</li><li class="fopt"><span class="mk">C</span>The windshield survey is neither primary nor secondary</li><li class="fopt"><span class="mk">D</span>The windshield survey only becomes primary data if photographs are taken</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary data is defined by who collects it and how — directly, by the nurse or assessment team — not by whether the output gets filed for later use. The windshield survey is a primary data method because it involves the nurse observing firsthand.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">primary vs. secondary data</span></div>
+<div class="stem">9. Which of the following are examples of secondary data used in community assessment? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>US Census</li><li class="fopt right"><span class="mk">&#10003;</span>Vital statistics</li><li class="fopt right"><span class="mk">&#10003;</span>BRFSS (Behavioral Risk Factor Surveillance System)</li><li class="fopt"><span class="mk">D</span>Focus groups</li><li class="fopt right"><span class="mk">&#10003;</span>CDC WONDER</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Secondary data is pre-existing numeric data from a recognized agency — the Census, vital statistics, morbidity/mortality reports, BRFSS, and CDC WONDER are all secondary sources.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Focus groups involve direct interaction with community members and are a primary data method, not secondary.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">primary vs. secondary data</span></div>
+<div class="stem">10. A comprehensive community assessment is best built using which combination of data?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary data alone, since it reflects firsthand community knowledge</li><li class="fopt"><span class="mk">B</span>Secondary data alone, since it is already validated by recognized agencies</li><li class="fopt right"><span class="mk">&#10003;</span>Both primary and secondary data</li><li class="fopt"><span class="mk">D</span>Neither; community diagnosis relies only on clinical judgment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A comprehensive community assessment uses both primary and secondary data — firsthand methods like windshield surveys and key informant interviews, and existing numeric sources like census and vital statistics.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">community as client and partner</span></div>
+<div class="stem">11. A PHN designs an assessment in which the community's collective health and common good are the direct recipient of nursing care. This reflects which model?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Community as partner</li><li class="fopt right"><span class="mk">&#10003;</span>Community as client</li><li class="fopt"><span class="mk">C</span>Community diagnosis</li><li class="fopt"><span class="mk">D</span>Participant observation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Community as client frames the community itself as the unit and recipient of nursing care, with a focus on the collective or common good.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">community as client and partner</span></div>
+<div class="stem">12. How does the &quot;community as partner&quot; model differ from &quot;community as client&quot;?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It removes the community from the assessment process entirely</li><li class="fopt right"><span class="mk">&#10003;</span>It emphasizes the community's active collaboration in its own assessment and care, rather than being only the recipient of care</li><li class="fopt"><span class="mk">C</span>It applies only to secondary data collection</li><li class="fopt"><span class="mk">D</span>It replaces the nursing process with an epidemiologic model</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Community as partner is a model in which the community actively collaborates in its own assessment and care, contrasted with community as client, where the community is framed as the recipient of care.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">community diagnosis and framework</span></div>
+<div class="stem">13. A community diagnosis, the nursing diagnosis written for a community rather than an individual, may be formatted using which of the following? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>NANDA</li><li class="fopt right"><span class="mk">&#10003;</span>The Omaha system</li><li class="fopt"><span class="mk">C</span>The Federal Poverty Guidelines</li><li class="fopt"><span class="mk">D</span>BRFSS categories</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Community diagnosis may use the NANDA taxonomy or the Omaha system.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">community diagnosis and framework</span></div>
+<div class="stem">14. Which three factors define a community according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Income, education, and access to care</li><li class="fopt right"><span class="mk">&#10003;</span>People, place, and function</li><li class="fopt"><span class="mk">C</span>Stakeholders, gatekeepers, and key informants</li><li class="fopt"><span class="mk">D</span>Assessment, diagnosis, and evaluation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A community is defined by people (residents), place (geographic or shared space), and function (the community's aims and activities).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">community diagnosis and framework</span></div>
+<div class="stem">15. A focus group works best under which condition?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>When the topic is highly sensitive, encouraging catharsis</li><li class="fopt right"><span class="mk">&#10003;</span>When the topic is not sensitive and participants feel comfortable speaking openly</li><li class="fopt"><span class="mk">C</span>When participants are unfamiliar with one another</li><li class="fopt"><span class="mk">D</span>When the group is used only to verify secondary data</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Focus groups use open-ended questioning of a small group and work best when the topic is not sensitive and participants feel comfortable speaking.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community assessment</span><span class="chip t2">community diagnosis and framework</span></div>
+<div class="stem">16. A nurse notes that a certain resident controls who can enter and use a community center, effectively controlling access to that part of the community. This person is best described as a:</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Key informant</li><li class="fopt"><span class="mk">B</span>Stakeholder</li><li class="fopt right"><span class="mk">&#10003;</span>Gatekeeper</li><li class="fopt"><span class="mk">D</span>Community diagnostician</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Gatekeepers are people who control access to the community or its members — distinct from stakeholders, who are anyone with a personal or occupational interest in the community's life, and key informants, who are chosen for their insight and connections.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Key informant and gatekeeper both describe influential community members, but only the gatekeeper controls access; a key informant is valued for knowledge and connection, not control.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"community assessment","subtopic":"windshield survey","stem":"A public health nurse drives slowly through an assigned neighborhood, noting housing conditions, businesses, open space, and signs of decay or vitality before planning a fuller assessment. What is this method called?","options":["Windshield survey","Key informant interview","Focus group","Photovoice"],"correct":[0],"sata":false,"why":"A windshield survey is a method of simple observation that gives a quick overview of a community — described as the \"community equivalent of a head-to-toe assessment\" — done by driving or walking through.","trap":"The stem is the classic test cue: a nurse driving or walking through to get a general first impression of housing and conditions. It is observational and preliminary, not a substitute for a fuller assessment if interventions are planned."},{"topic":"community assessment","subtopic":"windshield survey","stem":"What is the recommended way to conduct a windshield survey?","options":["By a single nurse working alone to avoid bias","With more than one person, since one can drive/watch the road while another observes and takes notes","Only after secondary data has been fully analyzed","Only during a community-sponsored event such as a fair or festival"],"correct":[1],"sata":false,"why":"A windshield survey is best conducted with more than one person — one drives or watches the road while another observes and takes notes, and the shared experience adds insight. A second tour may be needed to fill in blanks.","trap":"Option D describes participant observation, not a windshield survey."},{"topic":"community assessment","subtopic":"windshield survey","stem":"Which statements about the windshield survey are accurate? Select all that apply.","options":["It is a form of simple observation","It is called the \"community equivalent of a head-to-toe assessment\"","It is a secondary data method because it summarizes existing records","It may require a second tour to fill in blanks","It provides context for a community's health status, strengths, risks, and vulnerabilities"],"correct":[0,1,3,4],"sata":true,"why":"The windshield survey is a method of simple observation, nicknamed the \"community equivalent of a head-to-toe assessment,\" may need a second tour to fill in blanks, and gives context for health status, strengths, risks, and vulnerabilities.","trap":"It is a primary data method — the nurse collects it firsthand — not a secondary one."},{"topic":"community assessment","subtopic":"key informants","stem":"A community health nursing student is told that county health department nurses and church leaders are often good sources of insight into local concerns, even though they may hold no formal title. What term describes these sources?","options":["Gatekeepers","Stakeholders","Key informants","Community diagnosticians"],"correct":[2],"sata":false,"why":"Key informants are community members who provide insight into local issues, strengths, and concerns, and often hold an informal role rather than a formal title. County health department nurses and church leaders are the examples given.","trap":null},{"topic":"community assessment","subtopic":"key informants","stem":"A nurse assumes that a true key informant must be an elected official or an agency head. Why is this reasoning flawed?","options":["Key informants must have clinical training","Key informants are chosen for their knowledge of and connection to the community, not their official rank","Key informants are always appointed by the health department","Key informants must be lifelong residents of the community"],"correct":[1],"sata":false,"why":"A key informant is chosen for knowledge of and connection to the community, not official rank; the classic distractor is assuming a formal title is required, but it doesn't have to be.","trap":null},{"topic":"community assessment","subtopic":"key informants","stem":"In addition to sharing their own knowledge of the community, what else can key informants do?","options":["Certify the community assessment for accuracy","Identify other key informants","Independently authorize a community diagnosis","Replace the need for a windshield survey"],"correct":[1],"sata":false,"why":"Key informants know many community members and can identify other key informants — a snowball referral process.","trap":null},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"Which of the following are primary data collection methods for a community assessment? Select all that apply.","options":["Windshield survey","Key informant interviews","Focus groups","Census data","Photovoice"],"correct":[0,1,2,4],"sata":true,"why":"Primary data is collected directly by the assessment team — windshield survey, key informant interviews, focus groups, participant observation, and photovoice are all primary methods. Census data is secondary.","trap":"Census data is a common distractor planted among primary-method lists; it is pre-existing numeric data from a recognized agency, which makes it secondary."},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"A student mistakenly labels the windshield survey as a secondary data source because it produces a written summary the team can file and reuse later. What is the error?","options":["There is no error; reused documents are always secondary data","The windshield survey is primary data because the nurse collects it firsthand through direct observation","The windshield survey is neither primary nor secondary","The windshield survey only becomes primary data if photographs are taken"],"correct":[1],"sata":false,"why":"Primary data is defined by who collects it and how — directly, by the nurse or assessment team — not by whether the output gets filed for later use. The windshield survey is a primary data method because it involves the nurse observing firsthand.","trap":null},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"Which of the following are examples of secondary data used in community assessment? Select all that apply.","options":["US Census","Vital statistics","BRFSS (Behavioral Risk Factor Surveillance System)","Focus groups","CDC WONDER"],"correct":[0,1,2,4],"sata":true,"why":"Secondary data is pre-existing numeric data from a recognized agency — the Census, vital statistics, morbidity/mortality reports, BRFSS, and CDC WONDER are all secondary sources.","trap":"Focus groups involve direct interaction with community members and are a primary data method, not secondary."},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"A comprehensive community assessment is best built using which combination of data?","options":["Primary data alone, since it reflects firsthand community knowledge","Secondary data alone, since it is already validated by recognized agencies","Both primary and secondary data","Neither; community diagnosis relies only on clinical judgment"],"correct":[2],"sata":false,"why":"A comprehensive community assessment uses both primary and secondary data — firsthand methods like windshield surveys and key informant interviews, and existing numeric sources like census and vital statistics.","trap":null},{"topic":"community assessment","subtopic":"community as client and partner","stem":"A PHN designs an assessment in which the community's collective health and common good are the direct recipient of nursing care. This reflects which model?","options":["Community as partner","Community as client","Community diagnosis","Participant observation"],"correct":[1],"sata":false,"why":"Community as client frames the community itself as the unit and recipient of nursing care, with a focus on the collective or common good.","trap":null},{"topic":"community assessment","subtopic":"community as client and partner","stem":"How does the \"community as partner\" model differ from \"community as client\"?","options":["It removes the community from the assessment process entirely","It emphasizes the community's active collaboration in its own assessment and care, rather than being only the recipient of care","It applies only to secondary data collection","It replaces the nursing process with an epidemiologic model"],"correct":[1],"sata":false,"why":"Community as partner is a model in which the community actively collaborates in its own assessment and care, contrasted with community as client, where the community is framed as the recipient of care.","trap":null},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A community diagnosis, the nursing diagnosis written for a community rather than an individual, may be formatted using which of the following? Select all that apply.","options":["NANDA","The Omaha system","The Federal Poverty Guidelines","BRFSS categories"],"correct":[0,1],"sata":true,"why":"Community diagnosis may use the NANDA taxonomy or the Omaha system.","trap":null},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"Which three factors define a community according to the chapter?","options":["Income, education, and access to care","People, place, and function","Stakeholders, gatekeepers, and key informants","Assessment, diagnosis, and evaluation"],"correct":[1],"sata":false,"why":"A community is defined by people (residents), place (geographic or shared space), and function (the community's aims and activities).","trap":null},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A focus group works best under which condition?","options":["When the topic is highly sensitive, encouraging catharsis","When the topic is not sensitive and participants feel comfortable speaking openly","When participants are unfamiliar with one another","When the group is used only to verify secondary data"],"correct":[1],"sata":false,"why":"Focus groups use open-ended questioning of a small group and work best when the topic is not sensitive and participants feel comfortable speaking.","trap":null},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A nurse notes that a certain resident controls who can enter and use a community center, effectively controlling access to that part of the community. This person is best described as a:","options":["Key informant","Stakeholder","Gatekeeper","Community diagnostician"],"correct":[2],"sata":false,"why":"Gatekeepers are people who control access to the community or its members — distinct from stakeholders, who are anyone with a personal or occupational interest in the community's life, and key informants, who are chosen for their insight and connections.","trap":"Key informant and gatekeeper both describe influential community members, but only the gatekeeper controls access; a key informant is valued for knowledge and connection, not control."}];
+const TITLE = "Chapter 13 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 13";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

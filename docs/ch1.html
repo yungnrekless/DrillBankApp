@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 1 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 1</div><h1>Chapter 1 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">definitions and mission</span></div>
+<div class="stem">1. According to the IOM (1988), how is public health defined?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The branch of medicine concerned with preventing disease in individual patients</li><li class="fopt right"><span class="mk">&#10003;</span>What we, as a society, do collectively to assure the conditions in which people can be healthy</li><li class="fopt"><span class="mk">C</span>The organized delivery of primary care to underserved populations</li><li class="fopt"><span class="mk">D</span>A government program that provides health insurance to low-income populations</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The IOM's 1988 definition is &quot;what we, as a society, do collectively to assure the conditions in which people can be healthy.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option A describes clinical medicine's focus on the individual, which is precisely what public health is not — the unit of concern is the collective, not the single patient.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">definitions and mission</span></div>
+<div class="stem">2. How does the chapter define public health nursing?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Nursing practice delivered in outpatient clinics and community health centers</li><li class="fopt right"><span class="mk">&#10003;</span>Population-focused, community-oriented practice that combines nursing and public health, with the population as the unit of care</li><li class="fopt"><span class="mk">C</span>A nursing specialty limited to immunization and communicable disease control</li><li class="fopt"><span class="mk">D</span>Nursing care delivered to individuals and families in home settings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Public health nursing is population-focused, community-oriented practice that combines nursing and public health; the unit of care is the population.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option D describes community-based nursing, the setting-specific practice that is deliberately contrasted with population-focused public health nursing later in the chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">definitions and mission</span></div>
+<div class="stem">3. How is population health defined in the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The average health status of individuals within a single clinical practice</li><li class="fopt right"><span class="mk">&#10003;</span>A set of analytical strategies and approaches, first used in public health, to describe, analyze, and mobilize efforts to improve health in community-based populations</li><li class="fopt"><span class="mk">C</span>The proportion of a population enrolled in a government insurance program</li><li class="fopt"><span class="mk">D</span>A synonym for the ten essential public health services</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Population health is a set of analytical strategies and approaches, first used in public health, to describe, analyze, and mobilize efforts to improve health in community-based populations, now also applied to clinical populations.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">the three core functions</span></div>
+<div class="stem">4. The IOM (1988) identifies which three functions as the core functions of public health? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Assessment</li><li class="fopt right"><span class="mk">&#10003;</span>Policy development</li><li class="fopt right"><span class="mk">&#10003;</span>Assurance</li><li class="fopt"><span class="mk">D</span>Direct reimbursement of hospital care</li><li class="fopt"><span class="mk">E</span>Accreditation of nursing schools</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three core public health functions are assessment, policy development, and assurance. They apply at all levels of government and are the single most testable triad in the chapter.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">the three core functions</span></div>
+<div class="stem">5. A health department systematically collects data on a community's health status and makes that information available to the public. This activity corresponds to which core function?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Assessment</li><li class="fopt"><span class="mk">B</span>Policy development</li><li class="fopt"><span class="mk">C</span>Assurance</li><li class="fopt"><span class="mk">D</span>Evaluation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Assessment is systematically collecting data on the population, monitoring the population's health status, and making information about the community's health available.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;Evaluation&quot; is one of the ten essential services, not one of the three core functions — the question is asking about the core function level, and data collection/monitoring maps to assessment.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">the three core functions</span></div>
+<div class="stem">6. A local health official ensures that a competent public health and personal health care workforce is available, and arranges personal health services for people who would otherwise go without them. Which core function is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Assessment</li><li class="fopt"><span class="mk">B</span>Policy development</li><li class="fopt right"><span class="mk">&#10003;</span>Assurance</li><li class="fopt"><span class="mk">D</span>Mobilization</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Assurance means ensuring essential community-oriented health services are available — which may include providing personal health services to those who would otherwise not receive them — and ensuring a competent public health and personal health care workforce.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;Mobilization&quot; names essential service 4 (mobilize community partnerships), not a core function; the three core functions are only assessment, policy development, and assurance.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">the three core functions</span></div>
+<div class="stem">7. Providing leadership in developing policies that support population health, and using the scientific knowledge base to make policy decisions, describes which core function?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Assessment</li><li class="fopt right"><span class="mk">&#10003;</span>Policy development</li><li class="fopt"><span class="mk">C</span>Assurance</li><li class="fopt"><span class="mk">D</span>Enforcement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Policy development is providing leadership in developing policies that support the health of the population, including using the scientific knowledge base in policy decisions.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">the ten essential public health services</span></div>
+<div class="stem">8. Which of the ten essential public health services map onto the core function of assessment? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Monitor health status to identify community health problems</li><li class="fopt right"><span class="mk">&#10003;</span>Diagnose and investigate health problems and health hazards</li><li class="fopt right"><span class="mk">&#10003;</span>Research for new insights and innovative solutions to health problems</li><li class="fopt"><span class="mk">D</span>Mobilize community partnerships to identify and solve health problems</li><li class="fopt"><span class="mk">E</span>Enforce laws and regulations that protect health and ensure safety</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Assessment maps to essential services 1 (monitor), 2 (diagnose and investigate), and 10 (research). Mobilizing partnerships (service 4) maps to policy development, and enforcing laws (service 6) maps to assurance.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Services 4 and 6 sound like they could belong to assessment because they involve identifying and solving problems, but the chapter's mapping places them under policy development and assurance respectively.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">the ten essential public health services</span></div>
+<div class="stem">9. Which of the ten essential public health services map onto the core function of assurance? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Enforce laws and regulations that protect health and ensure safety</li><li class="fopt right"><span class="mk">&#10003;</span>Link people to needed personal health services and assure care that is otherwise unavailable</li><li class="fopt right"><span class="mk">&#10003;</span>Assure a competent public health and personal health care workforce</li><li class="fopt right"><span class="mk">&#10003;</span>Evaluate effectiveness, accessibility, and quality of health services</li><li class="fopt"><span class="mk">E</span>Inform, educate, and empower people about health issues</li><li class="fopt"><span class="mk">F</span>Develop policies and plans that support individual and community health efforts</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Assurance maps to essential services 6 (enforce laws), 7 (link people to services), 8 (assure workforce), and 9 (evaluate). Informing/educating (service 3) and developing policies (service 5) map to policy development instead.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">core functions and essential services</span><span class="chip t2">the ten essential public health services</span></div>
+<div class="stem">10. Which are named among the Ten Great Public Health Achievements of the 20th Century (CDC, 1999)? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Immunizations</li><li class="fopt right"><span class="mk">&#10003;</span>Motor-vehicle safety</li><li class="fopt right"><span class="mk">&#10003;</span>Drinking-water fluoridation</li><li class="fopt"><span class="mk">D</span>Eradication of tobacco use</li><li class="fopt right"><span class="mk">&#10003;</span>Declines in death from heart disease and stroke</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The ten achievements include immunizations, motor-vehicle safety, workplace safety, control of infectious diseases, safer/healthier foods, healthier mothers and babies, family planning, drinking-water fluoridation, tobacco recognized as a health hazard, and declines in death from heart disease and stroke.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The chapter credits tobacco being recognized as a health hazard, not the eradication of tobacco use — tobacco use was never eliminated, only its risk was formally acknowledged. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the book's PHN examples</span></div>
+<div class="stem">11. A PHN develops a health-education program for school-age children about the effects of smoking. This is the book's example of which level of prevention, and what effect does that level have?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Primary prevention; reduces incidence</li><li class="fopt"><span class="mk">B</span>Secondary prevention; reduces prevalence</li><li class="fopt"><span class="mk">C</span>Tertiary prevention; reduces disability</li><li class="fopt"><span class="mk">D</span>Primary prevention; reduces chronicity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary prevention includes general and specific measures to promote health and prevent the development of disease, reducing incidence. The book's example is exactly this school smoking-education program.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the book's PHN examples</span></div>
+<div class="stem">12. A PHN develops toxin screenings for migrant workers exposed to pesticides and refers those who screen positive for treatment. Which level of prevention is this, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary prevention, because it targets a population before disease develops</li><li class="fopt right"><span class="mk">&#10003;</span>Secondary prevention, because it involves early detection and treatment</li><li class="fopt"><span class="mk">C</span>Tertiary prevention, because it addresses an occupational hazard</li><li class="fopt"><span class="mk">D</span>Primary prevention, because screening prevents pesticide exposure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Secondary prevention stops the progress of disease through early detection and treatment, reducing prevalence and chronicity. The migrant-worker toxin-screening example is the book's illustration of secondary prevention.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Screening happening across a whole population (migrant workers) makes this feel primary or population-level &quot;prevention,&quot; but the level is set by what the nurse is doing — early detection — not by the setting. Screening is the classic secondary cue even at the population level.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the book's PHN examples</span></div>
+<div class="stem">13. A PHN mobilizes a community coalition to develop a Health Maintenance and Promotion Center in a neighborhood with high chronic illness. Which level of prevention does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary prevention</li><li class="fopt"><span class="mk">B</span>Secondary prevention</li><li class="fopt right"><span class="mk">&#10003;</span>Tertiary prevention</li><li class="fopt"><span class="mk">D</span>Cannot be classified without knowing individual patient status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Tertiary prevention stops deterioration, relapse, disability, or dependency through anticipatory nursing and medical care (rehabilitation). The book's example is the PHN mobilizing a coalition to build a Health Maintenance and Promotion Center in a neighborhood with high chronic illness.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the book's PHN examples</span></div>
+<div class="stem">14. Which statement correctly matches a level of prevention to the outcome it is meant to reduce?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary prevention reduces prevalence and chronicity</li><li class="fopt"><span class="mk">B</span>Secondary prevention reduces incidence</li><li class="fopt right"><span class="mk">&#10003;</span>Primary prevention reduces incidence; secondary prevention reduces prevalence and chronicity</li><li class="fopt"><span class="mk">D</span>Tertiary prevention reduces incidence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Primary prevention promotes health and prevents disease development, reducing incidence. Secondary prevention stops disease progress through early detection and treatment, reducing prevalence and chronicity.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Swapping &quot;incidence&quot; and &quot;prevalence/chronicity&quot; between primary and secondary is the easiest way this pairing gets inverted on an exam.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the book's PHN examples</span></div>
+<div class="stem">15. A nursing student states, &quot;Because the migrant-worker toxin-screening example takes place across an entire population, it must be primary prevention.&quot; What is the flaw in this reasoning?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>There is no flaw; population-level interventions are always primary prevention</li><li class="fopt right"><span class="mk">&#10003;</span>The level of prevention is determined by what the nurse is doing (early detection and treatment), not by whether the intervention occurs at the population level</li><li class="fopt"><span class="mk">C</span>Toxin screening is actually tertiary prevention because it involves referral for treatment</li><li class="fopt"><span class="mk">D</span>The example is secondary only because pesticide exposure is not a disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The fact bank explicitly warns that the migrant-worker screening example is secondary even though it happens in a population — the level is set by what the nurse is doing (early detection), not the setting.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the chapter's own flagged trap. Screening at the population level is still secondary prevention; only education, immunization, or promotion delivered before disease onset counts as primary.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of prevention</span><span class="chip t2">definitions and the book's PHN examples</span></div>
+<div class="stem">16. A PHN's activities are described as anticipatory nursing and medical care aimed at stopping deterioration, relapse, disability, or dependency, including rehabilitation. Which level of prevention is being described?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary prevention</li><li class="fopt"><span class="mk">B</span>Secondary prevention</li><li class="fopt right"><span class="mk">&#10003;</span>Tertiary prevention</li><li class="fopt"><span class="mk">D</span>Quaternary prevention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Tertiary prevention is defined as stopping deterioration, relapse, disability, or dependency through anticipatory nursing and medical care (rehabilitation).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;Quaternary prevention&quot; is not one of the three levels named in this chapter; the chapter uses only primary, secondary, and tertiary. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">population health and community</span><span class="chip t2">population, aggregate, and subpopulation</span></div>
+<div class="stem">17. How is a population defined in the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A group of individuals enrolled in the same health insurance plan</li><li class="fopt right"><span class="mk">&#10003;</span>A collection of individuals who share one or more personal or environmental characteristics</li><li class="fopt"><span class="mk">C</span>The total number of patients served by a single public health department</li><li class="fopt"><span class="mk">D</span>A subgroup identified by a single risk factor for disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A population is a collection of individuals who share one or more personal or environmental characteristics.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">population health and community</span><span class="chip t2">population, aggregate, and subpopulation</span></div>
+<div class="stem">18. How does the chapter define an aggregate, and how does it relate to subpopulations?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An aggregate is a subgroup or subpopulation that has some common characteristic; a whole community is made up of multiple, often overlapping subpopulations</li><li class="fopt"><span class="mk">B</span>An aggregate is the sum total of all subpopulations in a community with no overlap between them</li><li class="fopt"><span class="mk">C</span>An aggregate is a synonym for the entire population of a nation</li><li class="fopt"><span class="mk">D</span>An aggregate refers only to individuals receiving direct clinical care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An aggregate is a subgroup or subpopulation with some common characteristic, and subpopulations are groups within a population; a whole community is made up of multiple, often overlapping subpopulations.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Presenting subpopulations as non-overlapping is the reversal to watch for — the chapter's own example is adolescents at risk for unplanned pregnancy overlapping with females 15–24.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">population health and community</span><span class="chip t2">population, aggregate, and subpopulation</span></div>
+<div class="stem">19. What does population-focused practice mean as the chapter uses the term?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Practice concerned with the health of whole populations and subpopulations rather than individual patients</li><li class="fopt"><span class="mk">B</span>Practice delivered exclusively in community settings rather than hospitals</li><li class="fopt"><span class="mk">C</span>Practice that prioritizes the individual patient's preferences within a population context</li><li class="fopt"><span class="mk">D</span>Practice limited to primary prevention activities</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Population-focused practice is concerned with the health of whole populations and subpopulations rather than individual patients.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">population health and community</span><span class="chip t2">population health gains and social determinants</span></div>
+<div class="stem">20. Between 1900 and 2017, average US life span rose from approximately what figure to what figure, and to what is this increase primarily attributed?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>47 to 78.6 years, driven mainly by advances in medical care</li><li class="fopt right"><span class="mk">&#10003;</span>47 to 78.6 years, driven mainly by public health efforts such as sanitation, safe water, and food safety</li><li class="fopt"><span class="mk">C</span>60 to 78.6 years, driven mainly by childhood immunization alone</li><li class="fopt"><span class="mk">D</span>47 to 65 years, driven mainly by improved surgical techniques</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Average US life span rose from 47 (1900) to 78.6 (2017), roughly a 60% increase, driven by public health efforts — sanitation, clean water, safer workplaces, food/drug safety, childhood immunization, and better nutrition/hygiene/housing — not medical care.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Attributing the gain to medical care is the reversal the chapter is explicit about: historically the largest gains in population health came from public health efforts, not medical care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">population health and community</span><span class="chip t2">population health gains and social determinants</span></div>
+<div class="stem">21. According to the IOM's &quot;shorter lives, poorer health&quot; report, the US health disadvantage was attributed to which factors? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Inadequate health care</li><li class="fopt right"><span class="mk">&#10003;</span>Unhealthy behaviors</li><li class="fopt right"><span class="mk">&#10003;</span>Adverse economic and social conditions</li><li class="fopt right"><span class="mk">&#10003;</span>Environmental factors</li><li class="fopt"><span class="mk">E</span>A shortage of primary care physicians</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The IOM report attributed the US health disadvantage to inadequate health care, unhealthy behaviors, adverse economic and social conditions, environmental factors, and public policies/social values.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A physician shortage is a plausible-sounding health-policy concern but is not one of the factors this report names; the named factors are broader social determinants, not workforce supply. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community-oriented vs. community-based nursing</span><span class="chip t2">the confusable pair</span></div>
+<div class="stem">22. Which statement correctly describes the unit of focus and goal of community-oriented nursing practice?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Individuals and families where they live, work, and attend school; acute and chronic care</li><li class="fopt right"><span class="mk">&#10003;</span>The community/population; preventing disease and disability and creating conditions for health via community diagnosis, surveillance, and monitoring</li><li class="fopt"><span class="mk">C</span>Individual patients enrolled in a managed care plan; comprehensive coordinated services</li><li class="fopt"><span class="mk">D</span>The community/population; providing acute and chronic care in community settings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Community-oriented nursing practice focuses on the community/population, with the goal of preventing disease/disability, promoting and protecting health, and creating conditions for health through community diagnosis, surveillance, and monitoring.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option D mixes the correct unit of focus (community/population) with the wrong goal (acute/chronic care), which belongs to community-based practice — the two columns of the book's table must not be crossed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community-oriented vs. community-based nursing</span><span class="chip t2">the confusable pair</span></div>
+<div class="stem">23. A student nurse says, &quot;Community-based and community-oriented nursing both mean the same thing — nursing that happens somewhere in the community.&quot; How should this be corrected?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The terms are in fact interchangeable and the distinction is not meaningful</li><li class="fopt right"><span class="mk">&#10003;</span>&quot;Based&quot; refers to a setting where individual/family care happens; &quot;oriented&quot; refers to the whole population as the unit of care</li><li class="fopt"><span class="mk">C</span>&quot;Oriented&quot; refers to a setting where individual/family care happens; &quot;based&quot; refers to the whole population as the unit of care</li><li class="fopt"><span class="mk">D</span>&quot;Based&quot; refers to acute care only, while &quot;oriented&quot; refers to chronic care only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's tested distinction is that &quot;based&quot; is about where — a setting in the community where individual/family care happens — while &quot;oriented&quot; is about whom — the population as the unit of care.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option C is the exact inversion of the correct mapping and is the version most likely to appear as a tempting distractor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">community-oriented vs. community-based nursing</span><span class="chip t2">the confusable pair</span></div>
+<div class="stem">24. Which features describe community-based nursing practice, as distinct from community-oriented practice? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Setting-specific practice for patients and families where they live, work, and attend school</li><li class="fopt right"><span class="mk">&#10003;</span>Emphasis on acute and chronic care and on comprehensive, coordinated, continuous services</li><li class="fopt"><span class="mk">C</span>The unit of care is the whole community or population</li><li class="fopt right"><span class="mk">&#10003;</span>Delivered by generalists or specialists such as maternal/infant, pediatric, adult, or psych/mental health nurses</li><li class="fopt"><span class="mk">E</span>Goal is community diagnosis, surveillance, and monitoring</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Community-based nursing is setting-specific practice for patients and families where they live, work, and attend school, emphasizing acute and chronic care and comprehensive, coordinated, continuous services, delivered by generalist or specialist nurses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Options C and E describe community-oriented practice (population as unit of care; community diagnosis/surveillance/monitoring as the goal) and belong to the other column of the table. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eight principles of public health nursing</span><span class="chip t2">the tested principles</span></div>
+<div class="stem">25. According to the eight principles of public health nursing, what is the unit of care?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The individual patient</li><li class="fopt"><span class="mk">B</span>The family as a unit</li><li class="fopt right"><span class="mk">&#10003;</span>The population</li><li class="fopt"><span class="mk">D</span>The aggregate at highest clinical risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The first principle states that the unit of care is the population, not the individual.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eight principles of public health nursing</span><span class="chip t2">the tested principles</span></div>
+<div class="stem">26. The eight principles describe the PHN's primary obligation using which framing?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>To maximize revenue for the health department</li><li class="fopt right"><span class="mk">&#10003;</span>To achieve the greatest good for the greatest number</li><li class="fopt"><span class="mk">C</span>To prioritize the sickest individuals first</li><li class="fopt"><span class="mk">D</span>To defer entirely to physician-directed care plans</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The primary obligation, per the eight principles, is to achieve the greatest good for the greatest number — a utilitarian framing.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eight principles of public health nursing</span><span class="chip t2">the tested principles</span></div>
+<div class="stem">27. A nursing instructor asks, &quot;What is the priority intervention for a public health nurse planning activities for a community?&quot; Absent a scenario describing an existing disease, what does the chapter say the default answer should be?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Tertiary prevention, because it addresses the most severe cases</li><li class="fopt"><span class="mk">B</span>Secondary prevention, because early detection has the highest yield</li><li class="fopt right"><span class="mk">&#10003;</span>Primary prevention, because selecting activities should prioritize it</li><li class="fopt"><span class="mk">D</span>Whichever level the community requests through its representatives</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>One of the eight principles states that primary prevention is the priority in selecting activities. The chapter notes that if a stem asks for the priority intervention, the answer defaults to primary prevention unless the scenario clearly describes an existing disease.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Secondary prevention (early detection) sounds efficient and evidence-driven, but the eight principles explicitly rank primary prevention as the priority absent a scenario indicating disease is already present.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eight principles of public health nursing</span><span class="chip t2">the tested principles</span></div>
+<div class="stem">28. Which of the following are among the eight principles of public health nursing? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The primary obligation is to achieve the greatest good for the greatest number</li><li class="fopt right"><span class="mk">&#10003;</span>PHNs work with the population as an equal partner</li><li class="fopt right"><span class="mk">&#10003;</span>There is an obligation to actively reach out to all who might benefit</li><li class="fopt right"><span class="mk">&#10003;</span>Collaboration with a variety of professions, organizations, and entities</li><li class="fopt"><span class="mk">E</span>Services should be limited to those who actively seek out the health department</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The eight principles include the greatest-good obligation, working with the population as an equal partner, an obligation to actively reach out to all who might benefit, and collaboration with a variety of professions, organizations, and entities.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Limiting services to those who seek them out directly contradicts principle 6 — the obligation to actively reach out to all who might benefit, not wait for people to come forward.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"core functions and essential services","subtopic":"definitions and mission","stem":"According to the IOM (1988), how is public health defined?","options":["The branch of medicine concerned with preventing disease in individual patients","What we, as a society, do collectively to assure the conditions in which people can be healthy","The organized delivery of primary care to underserved populations","A government program that provides health insurance to low-income populations"],"correct":[1],"sata":false,"why":"The IOM's 1988 definition is \"what we, as a society, do collectively to assure the conditions in which people can be healthy.\"","trap":"Option A describes clinical medicine's focus on the individual, which is precisely what public health is not — the unit of concern is the collective, not the single patient."},{"topic":"core functions and essential services","subtopic":"definitions and mission","stem":"How does the chapter define public health nursing?","options":["Nursing practice delivered in outpatient clinics and community health centers","Population-focused, community-oriented practice that combines nursing and public health, with the population as the unit of care","A nursing specialty limited to immunization and communicable disease control","Nursing care delivered to individuals and families in home settings"],"correct":[1],"sata":false,"why":"Public health nursing is population-focused, community-oriented practice that combines nursing and public health; the unit of care is the population.","trap":"Option D describes community-based nursing, the setting-specific practice that is deliberately contrasted with population-focused public health nursing later in the chapter."},{"topic":"core functions and essential services","subtopic":"definitions and mission","stem":"How is population health defined in the chapter?","options":["The average health status of individuals within a single clinical practice","A set of analytical strategies and approaches, first used in public health, to describe, analyze, and mobilize efforts to improve health in community-based populations","The proportion of a population enrolled in a government insurance program","A synonym for the ten essential public health services"],"correct":[1],"sata":false,"why":"Population health is a set of analytical strategies and approaches, first used in public health, to describe, analyze, and mobilize efforts to improve health in community-based populations, now also applied to clinical populations.","trap":null},{"topic":"core functions and essential services","subtopic":"the three core functions","stem":"The IOM (1988) identifies which three functions as the core functions of public health? Select all that apply.","options":["Assessment","Policy development","Assurance","Direct reimbursement of hospital care","Accreditation of nursing schools"],"correct":[0,1,2],"sata":true,"why":"The three core public health functions are assessment, policy development, and assurance. They apply at all levels of government and are the single most testable triad in the chapter.","trap":null},{"topic":"core functions and essential services","subtopic":"the three core functions","stem":"A health department systematically collects data on a community's health status and makes that information available to the public. This activity corresponds to which core function?","options":["Assessment","Policy development","Assurance","Evaluation"],"correct":[0],"sata":false,"why":"Assessment is systematically collecting data on the population, monitoring the population's health status, and making information about the community's health available.","trap":"\"Evaluation\" is one of the ten essential services, not one of the three core functions — the question is asking about the core function level, and data collection/monitoring maps to assessment."},{"topic":"core functions and essential services","subtopic":"the three core functions","stem":"A local health official ensures that a competent public health and personal health care workforce is available, and arranges personal health services for people who would otherwise go without them. Which core function is this?","options":["Assessment","Policy development","Assurance","Mobilization"],"correct":[2],"sata":false,"why":"Assurance means ensuring essential community-oriented health services are available — which may include providing personal health services to those who would otherwise not receive them — and ensuring a competent public health and personal health care workforce.","trap":"\"Mobilization\" names essential service 4 (mobilize community partnerships), not a core function; the three core functions are only assessment, policy development, and assurance."},{"topic":"core functions and essential services","subtopic":"the three core functions","stem":"Providing leadership in developing policies that support population health, and using the scientific knowledge base to make policy decisions, describes which core function?","options":["Assessment","Policy development","Assurance","Enforcement"],"correct":[1],"sata":false,"why":"Policy development is providing leadership in developing policies that support the health of the population, including using the scientific knowledge base in policy decisions.","trap":null},{"topic":"core functions and essential services","subtopic":"the ten essential public health services","stem":"Which of the ten essential public health services map onto the core function of assessment? Select all that apply.","options":["Monitor health status to identify community health problems","Diagnose and investigate health problems and health hazards","Research for new insights and innovative solutions to health problems","Mobilize community partnerships to identify and solve health problems","Enforce laws and regulations that protect health and ensure safety"],"correct":[0,1,2],"sata":true,"why":"Assessment maps to essential services 1 (monitor), 2 (diagnose and investigate), and 10 (research). Mobilizing partnerships (service 4) maps to policy development, and enforcing laws (service 6) maps to assurance.","trap":"Services 4 and 6 sound like they could belong to assessment because they involve identifying and solving problems, but the chapter's mapping places them under policy development and assurance respectively."},{"topic":"core functions and essential services","subtopic":"the ten essential public health services","stem":"Which of the ten essential public health services map onto the core function of assurance? Select all that apply.","options":["Enforce laws and regulations that protect health and ensure safety","Link people to needed personal health services and assure care that is otherwise unavailable","Assure a competent public health and personal health care workforce","Evaluate effectiveness, accessibility, and quality of health services","Inform, educate, and empower people about health issues","Develop policies and plans that support individual and community health efforts"],"correct":[0,1,2,3],"sata":true,"why":"Assurance maps to essential services 6 (enforce laws), 7 (link people to services), 8 (assure workforce), and 9 (evaluate). Informing/educating (service 3) and developing policies (service 5) map to policy development instead.","trap":null},{"topic":"core functions and essential services","subtopic":"the ten essential public health services","stem":"Which are named among the Ten Great Public Health Achievements of the 20th Century (CDC, 1999)? Select all that apply.","options":["Immunizations","Motor-vehicle safety","Drinking-water fluoridation","Eradication of tobacco use","Declines in death from heart disease and stroke"],"correct":[0,1,2,4],"sata":true,"why":"The ten achievements include immunizations, motor-vehicle safety, workplace safety, control of infectious diseases, safer/healthier foods, healthier mothers and babies, family planning, drinking-water fluoridation, tobacco recognized as a health hazard, and declines in death from heart disease and stroke.","trap":"The chapter credits tobacco being recognized as a health hazard, not the eradication of tobacco use — tobacco use was never eliminated, only its risk was formally acknowledged. ---"},{"topic":"levels of prevention","subtopic":"definitions and the book's PHN examples","stem":"A PHN develops a health-education program for school-age children about the effects of smoking. This is the book's example of which level of prevention, and what effect does that level have?","options":["Primary prevention; reduces incidence","Secondary prevention; reduces prevalence","Tertiary prevention; reduces disability","Primary prevention; reduces chronicity"],"correct":[0],"sata":false,"why":"Primary prevention includes general and specific measures to promote health and prevent the development of disease, reducing incidence. The book's example is exactly this school smoking-education program.","trap":null},{"topic":"levels of prevention","subtopic":"definitions and the book's PHN examples","stem":"A PHN develops toxin screenings for migrant workers exposed to pesticides and refers those who screen positive for treatment. Which level of prevention is this, and why?","options":["Primary prevention, because it targets a population before disease develops","Secondary prevention, because it involves early detection and treatment","Tertiary prevention, because it addresses an occupational hazard","Primary prevention, because screening prevents pesticide exposure"],"correct":[1],"sata":false,"why":"Secondary prevention stops the progress of disease through early detection and treatment, reducing prevalence and chronicity. The migrant-worker toxin-screening example is the book's illustration of secondary prevention.","trap":"Screening happening across a whole population (migrant workers) makes this feel primary or population-level \"prevention,\" but the level is set by what the nurse is doing — early detection — not by the setting. Screening is the classic secondary cue even at the population level."},{"topic":"levels of prevention","subtopic":"definitions and the book's PHN examples","stem":"A PHN mobilizes a community coalition to develop a Health Maintenance and Promotion Center in a neighborhood with high chronic illness. Which level of prevention does this illustrate?","options":["Primary prevention","Secondary prevention","Tertiary prevention","Cannot be classified without knowing individual patient status"],"correct":[2],"sata":false,"why":"Tertiary prevention stops deterioration, relapse, disability, or dependency through anticipatory nursing and medical care (rehabilitation). The book's example is the PHN mobilizing a coalition to build a Health Maintenance and Promotion Center in a neighborhood with high chronic illness.","trap":null},{"topic":"levels of prevention","subtopic":"definitions and the book's PHN examples","stem":"Which statement correctly matches a level of prevention to the outcome it is meant to reduce?","options":["Primary prevention reduces prevalence and chronicity","Secondary prevention reduces incidence","Primary prevention reduces incidence; secondary prevention reduces prevalence and chronicity","Tertiary prevention reduces incidence"],"correct":[2],"sata":false,"why":"Primary prevention promotes health and prevents disease development, reducing incidence. Secondary prevention stops disease progress through early detection and treatment, reducing prevalence and chronicity.","trap":"Swapping \"incidence\" and \"prevalence/chronicity\" between primary and secondary is the easiest way this pairing gets inverted on an exam."},{"topic":"levels of prevention","subtopic":"definitions and the book's PHN examples","stem":"A nursing student states, \"Because the migrant-worker toxin-screening example takes place across an entire population, it must be primary prevention.\" What is the flaw in this reasoning?","options":["There is no flaw; population-level interventions are always primary prevention","The level of prevention is determined by what the nurse is doing (early detection and treatment), not by whether the intervention occurs at the population level","Toxin screening is actually tertiary prevention because it involves referral for treatment","The example is secondary only because pesticide exposure is not a disease"],"correct":[1],"sata":false,"why":"The fact bank explicitly warns that the migrant-worker screening example is secondary even though it happens in a population — the level is set by what the nurse is doing (early detection), not the setting.","trap":"This is the chapter's own flagged trap. Screening at the population level is still secondary prevention; only education, immunization, or promotion delivered before disease onset counts as primary."},{"topic":"levels of prevention","subtopic":"definitions and the book's PHN examples","stem":"A PHN's activities are described as anticipatory nursing and medical care aimed at stopping deterioration, relapse, disability, or dependency, including rehabilitation. Which level of prevention is being described?","options":["Primary prevention","Secondary prevention","Tertiary prevention","Quaternary prevention"],"correct":[2],"sata":false,"why":"Tertiary prevention is defined as stopping deterioration, relapse, disability, or dependency through anticipatory nursing and medical care (rehabilitation).","trap":"\"Quaternary prevention\" is not one of the three levels named in this chapter; the chapter uses only primary, secondary, and tertiary. ---"},{"topic":"population health and community","subtopic":"population, aggregate, and subpopulation","stem":"How is a population defined in the chapter?","options":["A group of individuals enrolled in the same health insurance plan","A collection of individuals who share one or more personal or environmental characteristics","The total number of patients served by a single public health department","A subgroup identified by a single risk factor for disease"],"correct":[1],"sata":false,"why":"A population is a collection of individuals who share one or more personal or environmental characteristics.","trap":null},{"topic":"population health and community","subtopic":"population, aggregate, and subpopulation","stem":"How does the chapter define an aggregate, and how does it relate to subpopulations?","options":["An aggregate is a subgroup or subpopulation that has some common characteristic; a whole community is made up of multiple, often overlapping subpopulations","An aggregate is the sum total of all subpopulations in a community with no overlap between them","An aggregate is a synonym for the entire population of a nation","An aggregate refers only to individuals receiving direct clinical care"],"correct":[0],"sata":false,"why":"An aggregate is a subgroup or subpopulation with some common characteristic, and subpopulations are groups within a population; a whole community is made up of multiple, often overlapping subpopulations.","trap":"Presenting subpopulations as non-overlapping is the reversal to watch for — the chapter's own example is adolescents at risk for unplanned pregnancy overlapping with females 15–24."},{"topic":"population health and community","subtopic":"population, aggregate, and subpopulation","stem":"What does population-focused practice mean as the chapter uses the term?","options":["Practice concerned with the health of whole populations and subpopulations rather than individual patients","Practice delivered exclusively in community settings rather than hospitals","Practice that prioritizes the individual patient's preferences within a population context","Practice limited to primary prevention activities"],"correct":[0],"sata":false,"why":"Population-focused practice is concerned with the health of whole populations and subpopulations rather than individual patients.","trap":null},{"topic":"population health and community","subtopic":"population health gains and social determinants","stem":"Between 1900 and 2017, average US life span rose from approximately what figure to what figure, and to what is this increase primarily attributed?","options":["47 to 78.6 years, driven mainly by advances in medical care","47 to 78.6 years, driven mainly by public health efforts such as sanitation, safe water, and food safety","60 to 78.6 years, driven mainly by childhood immunization alone","47 to 65 years, driven mainly by improved surgical techniques"],"correct":[1],"sata":false,"why":"Average US life span rose from 47 (1900) to 78.6 (2017), roughly a 60% increase, driven by public health efforts — sanitation, clean water, safer workplaces, food/drug safety, childhood immunization, and better nutrition/hygiene/housing — not medical care.","trap":"Attributing the gain to medical care is the reversal the chapter is explicit about: historically the largest gains in population health came from public health efforts, not medical care."},{"topic":"population health and community","subtopic":"population health gains and social determinants","stem":"According to the IOM's \"shorter lives, poorer health\" report, the US health disadvantage was attributed to which factors? Select all that apply.","options":["Inadequate health care","Unhealthy behaviors","Adverse economic and social conditions","Environmental factors","A shortage of primary care physicians"],"correct":[0,1,2,3],"sata":true,"why":"The IOM report attributed the US health disadvantage to inadequate health care, unhealthy behaviors, adverse economic and social conditions, environmental factors, and public policies/social values.","trap":"A physician shortage is a plausible-sounding health-policy concern but is not one of the factors this report names; the named factors are broader social determinants, not workforce supply. ---"},{"topic":"community-oriented vs. community-based nursing","subtopic":"the confusable pair","stem":"Which statement correctly describes the unit of focus and goal of community-oriented nursing practice?","options":["Individuals and families where they live, work, and attend school; acute and chronic care","The community/population; preventing disease and disability and creating conditions for health via community diagnosis, surveillance, and monitoring","Individual patients enrolled in a managed care plan; comprehensive coordinated services","The community/population; providing acute and chronic care in community settings"],"correct":[1],"sata":false,"why":"Community-oriented nursing practice focuses on the community/population, with the goal of preventing disease/disability, promoting and protecting health, and creating conditions for health through community diagnosis, surveillance, and monitoring.","trap":"Option D mixes the correct unit of focus (community/population) with the wrong goal (acute/chronic care), which belongs to community-based practice — the two columns of the book's table must not be crossed."},{"topic":"community-oriented vs. community-based nursing","subtopic":"the confusable pair","stem":"A student nurse says, \"Community-based and community-oriented nursing both mean the same thing — nursing that happens somewhere in the community.\" How should this be corrected?","options":["The terms are in fact interchangeable and the distinction is not meaningful","\"Based\" refers to a setting where individual/family care happens; \"oriented\" refers to the whole population as the unit of care","\"Oriented\" refers to a setting where individual/family care happens; \"based\" refers to the whole population as the unit of care","\"Based\" refers to acute care only, while \"oriented\" refers to chronic care only"],"correct":[1],"sata":false,"why":"The chapter's tested distinction is that \"based\" is about where — a setting in the community where individual/family care happens — while \"oriented\" is about whom — the population as the unit of care.","trap":"Option C is the exact inversion of the correct mapping and is the version most likely to appear as a tempting distractor."},{"topic":"community-oriented vs. community-based nursing","subtopic":"the confusable pair","stem":"Which features describe community-based nursing practice, as distinct from community-oriented practice? Select all that apply.","options":["Setting-specific practice for patients and families where they live, work, and attend school","Emphasis on acute and chronic care and on comprehensive, coordinated, continuous services","The unit of care is the whole community or population","Delivered by generalists or specialists such as maternal/infant, pediatric, adult, or psych/mental health nurses","Goal is community diagnosis, surveillance, and monitoring"],"correct":[0,1,3],"sata":true,"why":"Community-based nursing is setting-specific practice for patients and families where they live, work, and attend school, emphasizing acute and chronic care and comprehensive, coordinated, continuous services, delivered by generalist or specialist nurses.","trap":"Options C and E describe community-oriented practice (population as unit of care; community diagnosis/surveillance/monitoring as the goal) and belong to the other column of the table. ---"},{"topic":"eight principles of public health nursing","subtopic":"the tested principles","stem":"According to the eight principles of public health nursing, what is the unit of care?","options":["The individual patient","The family as a unit","The population","The aggregate at highest clinical risk"],"correct":[2],"sata":false,"why":"The first principle states that the unit of care is the population, not the individual.","trap":null},{"topic":"eight principles of public health nursing","subtopic":"the tested principles","stem":"The eight principles describe the PHN's primary obligation using which framing?","options":["To maximize revenue for the health department","To achieve the greatest good for the greatest number","To prioritize the sickest individuals first","To defer entirely to physician-directed care plans"],"correct":[1],"sata":false,"why":"The primary obligation, per the eight principles, is to achieve the greatest good for the greatest number — a utilitarian framing.","trap":null},{"topic":"eight principles of public health nursing","subtopic":"the tested principles","stem":"A nursing instructor asks, \"What is the priority intervention for a public health nurse planning activities for a community?\" Absent a scenario describing an existing disease, what does the chapter say the default answer should be?","options":["Tertiary prevention, because it addresses the most severe cases","Secondary prevention, because early detection has the highest yield","Primary prevention, because selecting activities should prioritize it","Whichever level the community requests through its representatives"],"correct":[2],"sata":false,"why":"One of the eight principles states that primary prevention is the priority in selecting activities. The chapter notes that if a stem asks for the priority intervention, the answer defaults to primary prevention unless the scenario clearly describes an existing disease.","trap":"Secondary prevention (early detection) sounds efficient and evidence-driven, but the eight principles explicitly rank primary prevention as the priority absent a scenario indicating disease is already present."},{"topic":"eight principles of public health nursing","subtopic":"the tested principles","stem":"Which of the following are among the eight principles of public health nursing? Select all that apply.","options":["The primary obligation is to achieve the greatest good for the greatest number","PHNs work with the population as an equal partner","There is an obligation to actively reach out to all who might benefit","Collaboration with a variety of professions, organizations, and entities","Services should be limited to those who actively seek out the health department"],"correct":[0,1,2,3],"sata":true,"why":"The eight principles include the greatest-good obligation, working with the population as an equal partner, an obligation to actively reach out to all who might benefit, and collaboration with a variety of professions, organizations, and entities.","trap":"Limiting services to those who seek them out directly contradicts principle 6 — the obligation to actively reach out to all who might benefit, not wait for people to come forward."}];
+const TITLE = "Chapter 1 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 1";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

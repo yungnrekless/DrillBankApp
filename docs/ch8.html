@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 8 — NUR 4353 Drills</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 8</div><h1>Chapter 8 — NUR 4353 Drills</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">exposure pathway</span><span class="chip t2">the five-element chain</span></div>
+<div class="stem">1. For an environmental exposure to result in harm, which five elements must all be in place and connected?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Agent, host, environment, dose, and route</li><li class="fopt right"><span class="mk">&#10003;</span>Source, environmental medium, receptor population, route of exposure, and dose</li><li class="fopt"><span class="mk">C</span>Toxicology, epidemiology, risk assessment, risk communication, and monitoring</li><li class="fopt"><span class="mk">D</span>Point source, nonpoint source, medium, host, and standard</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The five-element exposure pathway is a source of harm, an environmental medium for transport, a receptor population, a route of exposure, and an adequate dose. All five must be present and connected for harm to occur.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option A recycles the epidemiological triangle (agent, host, environment) plus two extra terms — a plausible-sounding but different list from the exposure pathway.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exposure pathway</span><span class="chip t2">the five-element chain</span></div>
+<div class="stem">2. A community health nurse wants to interrupt an ongoing environmental exposure. According to the chapter, what is required?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>All five links in the exposure pathway must be addressed simultaneously</li><li class="fopt right"><span class="mk">&#10003;</span>Breaking any single link in the chain interrupts the harm</li><li class="fopt"><span class="mk">C</span>Only the source and the dose need to be addressed; the other three are administrative</li><li class="fopt"><span class="mk">D</span>The receptor population must be relocated before any other action is effective</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Breaking any one of the five links — removing the source, blocking the medium, protecting the receptor, cutting off the route, or reducing the dose — interrupts the harm. This is the conceptual basis for nursing intervention.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option implying all five links must be addressed at once misses the point of the chain concept.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exposure pathway</span><span class="chip t2">the five-element chain</span></div>
+<div class="stem">3. Which of the following are recognized environmental media for transporting a hazard along the exposure pathway? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Air</li><li class="fopt right"><span class="mk">&#10003;</span>Surface water or groundwater</li><li class="fopt right"><span class="mk">&#10003;</span>Soil</li><li class="fopt"><span class="mk">D</span>Genetic material</li><li class="fopt"><span class="mk">E</span>Electromagnetic fields</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names air, water (surface or groundwater), and soil as the environmental media through which a source of harm is transported to a receptor population.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exposure pathway</span><span class="chip t2">routes of exposure</span></div>
+<div class="stem">4. According to the chapter, humans can be exposed to an environmental hazard through which routes?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Inhalation, ingestion, and dermal absorption</li><li class="fopt"><span class="mk">B</span>Inhalation, ingestion, dermal absorption, and genetic transmission</li><li class="fopt"><span class="mk">C</span>Ingestion and inhalation only</li><li class="fopt"><span class="mk">D</span>Inhalation, injection, and ingestion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three routes of exposure for humans are inhalation, ingestion, and skin (dermal) absorption. This is the single most likely fact to be tested from the exposure pathway section.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Any fourth &quot;route&quot; — such as genetic transmission or injection — is a distractor; the chapter names only three.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exposure pathway</span><span class="chip t2">routes of exposure</span></div>
+<div class="stem">5. A nurse is teaching a community group about how chemical exposures reach the body. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>There are four recognized routes of exposure: inhalation, ingestion, dermal absorption, and inhalation of dust specifically</li><li class="fopt right"><span class="mk">&#10003;</span>There are three recognized routes of exposure: inhalation, ingestion, and dermal absorption</li><li class="fopt"><span class="mk">C</span>Dermal absorption is not considered a true route of exposure because skin is a protective barrier</li><li class="fopt"><span class="mk">D</span>Ingestion is the only route relevant to children</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Only three routes of exposure are recognized: inhalation, ingestion, and dermal absorption. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">physiologic mechanisms</span></div>
+<div class="stem">6. Which physiologic factors does the chapter cite for children's heightened vulnerability to environmental exposures? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Breathing more rapidly than adults, increasing proportionate exposure to air pollutants</li><li class="fopt right"><span class="mk">&#10003;</span>A lower breathing zone due to shorter stature, closer to floors and ground-level contaminants</li><li class="fopt right"><span class="mk">&#10003;</span>An immature blood-brain barrier</li><li class="fopt right"><span class="mk">&#10003;</span>Kidneys that filter less effectively, increasing the dose retained</li><li class="fopt"><span class="mk">E</span>A stronger innate immune response than adults</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Children breathe more rapidly, have a lower breathing zone from shorter stature, an immature blood-brain barrier, and kidneys that filter less effectively — all increasing exposure or retained dose relative to adults.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The chapter does not describe children as having a stronger immune response; their vulnerability comes from immature protective mechanisms, not enhanced ones.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">physiologic mechanisms</span></div>
+<div class="stem">7. A nurse explains why toddlers are at greater risk for lead dust ingestion than older children. What behavior is responsible?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increased outdoor play time</li><li class="fopt right"><span class="mk">&#10003;</span>Mouthing behavior — putting objects and hands in their mouths</li><li class="fopt"><span class="mk">C</span>Higher caloric intake per kilogram of body weight</li><li class="fopt"><span class="mk">D</span>Frequent hand-washing that redistributes dust</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mouthing behavior — putting things in the mouth — increases ingestion, notably of lead dust.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">physiologic mechanisms</span></div>
+<div class="stem">8. Why are fetal periods described as &quot;windows of heightened sensitivity&quot; in the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because the placenta filters out all but the largest particles</li><li class="fopt right"><span class="mk">&#10003;</span>Because during specific periods of fetal development, even extraordinarily small exposures can permanently alter normal development</li><li class="fopt"><span class="mk">C</span>Because maternal blood pressure changes reduce nutrient transfer during those periods</li><li class="fopt"><span class="mk">D</span>Because fetal kidneys are more efficient than a child's kidneys at filtering toxins</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>During fetal development there are periods of heightened sensitivity when even extraordinarily small exposures can permanently alter normal development.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option attributing children's or fetal risk solely to behavior (&quot;carelessness&quot;) ignores that vulnerability here is physiologic, not behavioral.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">physiologic mechanisms</span></div>
+<div class="stem">9. At approximately what age do children's lungs reach full function, according to the chapter, though they continue changing afterward?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Age 2</li><li class="fopt right"><span class="mk">&#10003;</span>Age 6</li><li class="fopt"><span class="mk">C</span>Age 12</li><li class="fopt"><span class="mk">D</span>Age 18</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Lungs reach full function around age 6 and continue changing through adolescence.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">lead as the worked example</span></div>
+<div class="stem">10. A nurse is assessing a home built in 1965 with old, well-maintained, fully intact lead-based paint on the walls. What is the most accurate statement about the risk?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Intact lead paint is a serious hazard regardless of condition and must be removed immediately</li><li class="fopt right"><span class="mk">&#10003;</span>Intact lead poses no risk; the danger arises when it flakes or turns to dust</li><li class="fopt"><span class="mk">C</span>There is no risk because the home predates 1978</li><li class="fopt"><span class="mk">D</span>The risk is limited to drinking water in homes of this age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Intact lead poses no risk; the risk comes when it flakes or turns to dust on surfaces or soil. Homes built before 1978 (when lead was banned in household paint) are the flag for risk, particularly when the paint is disturbed, as during renovation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A scenario describing well-maintained, non-deteriorated lead paint is a lower-risk scenario, not an automatic hazard — disturbance or deterioration is what creates the danger.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">lead as the worked example</span></div>
+<div class="stem">11. Lead-based paint in residential housing is most likely to be found in homes built in what time frame?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>After 2000</li><li class="fopt right"><span class="mk">&#10003;</span>Before 1978</li><li class="fopt"><span class="mk">C</span>Between 1980 and 1990</li><li class="fopt"><span class="mk">D</span>Only in homes built before 1950</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Lead was banned in household paint in 1978, so homes built before that year are most likely to contain lead-based paint.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">lead as the worked example</span></div>
+<div class="stem">12. According to the EPA, as cited in the chapter, what proportion of lead poisoning is preventable?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>25%</li><li class="fopt"><span class="mk">B</span>50%</li><li class="fopt"><span class="mk">C</span>75%</li><li class="fopt right"><span class="mk">&#10003;</span>100%</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The EPA states that lead poisoning is 100% preventable.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">lead as the worked example</span></div>
+<div class="stem">13. A child is found to have fetal-origin effects consistent with lead exposure. Which outcomes are named in the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Premature birth</li><li class="fopt right"><span class="mk">&#10003;</span>Low birth weight</li><li class="fopt right"><span class="mk">&#10003;</span>Brain and nerve damage</li><li class="fopt"><span class="mk">D</span>Congenital heart defects</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Fetal effects of lead exposure named in the chapter are premature birth, low birth weight, and brain and nerve damage. Congenital heart defects are not listed among the chapter's lead effects.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">lead screening and the nurse's role</span></div>
+<div class="stem">14. A community health nurse wants to address lead exposure risk at the population level rather than case by case. What is the nurse's best first action, per the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Order a blood-lead test for every patient seen in clinic that week</li><li class="fopt right"><span class="mk">&#10003;</span>Set up a blood-lead screening program through the local health department</li><li class="fopt"><span class="mk">C</span>Refer all patients to a tertiary care center for lead testing</li><li class="fopt"><span class="mk">D</span>Wait for the state department of environmental protection to initiate screening</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names setting up a blood-lead screening program through the local health department as a specific nursing action, alongside educating local providers to systematically test children and working with local landlords to improve housing stock.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A stem asking for the nurse's best action on a community lead risk wants the population-level screening/education answer, not a single-patient clinic order.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">lead screening and the nurse's role</span></div>
+<div class="stem">15. Which actions does the chapter specifically name as part of the nurse's role in addressing lead exposure? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Set up a blood-lead screening program through the local health department</li><li class="fopt right"><span class="mk">&#10003;</span>Educate local health providers to systematically test children for lead poisoning</li><li class="fopt right"><span class="mk">&#10003;</span>Work with local landlords to improve the condition of their housing stock</li><li class="fopt"><span class="mk">D</span>Personally perform lead paint abatement in homes</li><li class="fopt"><span class="mk">E</span>Prescribe chelation therapy without physician oversight</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three nursing actions the chapter names are setting up a screening program through the health department, educating providers to test children systematically, and working with landlords on housing conditions. Abatement and chelation are outside the nurse's named scope here.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">lead screening and the nurse's role</span></div>
+<div class="stem">16. Which professionals may be part of the multidisciplinary lead team described in the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A housing inspector or sanitarian</li><li class="fopt right"><span class="mk">&#10003;</span>Clinical specialists</li><li class="fopt right"><span class="mk">&#10003;</span>Laboratory workers who assess lead levels in blood, paint, house dust, and drinking water</li><li class="fopt right"><span class="mk">&#10003;</span>Lead-based paint remediation specialists</li><li class="fopt"><span class="mk">E</span>A criminal justice liaison</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The multidisciplinary lead team may include a housing inspector or sanitarian, clinical specialists, laboratory workers (assessing blood, paint, house dust, and water), and lead-based paint remediation specialists, potentially involving the local health department, state department of environmental protection, housing department, and a tertiary care center.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">lead screening and the nurse's role</span></div>
+<div class="stem">17. Which five factors does the chapter credit for reducing lead levels in the United States? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Elimination of lead in paint</li><li class="fopt right"><span class="mk">&#10003;</span>Reduction of lead in gasoline</li><li class="fopt right"><span class="mk">&#10003;</span>Reduction of lead solder in food/drink cans and household plumbing</li><li class="fopt right"><span class="mk">&#10003;</span>Lead screening laws</li><li class="fopt"><span class="mk">E</span>Universal municipal water fluoridation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The five named factors are elimination of lead in paint, reduction of lead in gasoline, reduction of lead solder in cans and plumbing components, lead screening laws, and lead paint abatement programs in communities. Water fluoridation is unrelated to lead reduction.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>There are five factors named in total; a list showing only four is missing &quot;lead paint abatement programs in communities.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">levels of prevention for lead exposure</span></div>
+<div class="stem">18. A public health campaign promotes using only non-lead-based paint in new construction. What level of prevention does this represent?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Primary</li><li class="fopt"><span class="mk">B</span>Secondary</li><li class="fopt"><span class="mk">C</span>Tertiary</li><li class="fopt"><span class="mk">D</span>Quaternary</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Levels of Prevention box for lead exposure lists using only non-lead-based paint as primary prevention.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">levels of prevention for lead exposure</span></div>
+<div class="stem">19. A home inspection finds lead paint on a windowsill, and the paint is removed and replaced with non-lead paint. What level of prevention does this represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary</li><li class="fopt right"><span class="mk">&#10003;</span>Secondary</li><li class="fopt"><span class="mk">C</span>Tertiary</li><li class="fopt"><span class="mk">D</span>This cannot be classified as a level of prevention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If lead is found in paint, removing it and replacing it with non-lead paint is the chapter's secondary prevention example.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">children's vulnerability</span><span class="chip t2">levels of prevention for lead exposure</span></div>
+<div class="stem">20. A child with early symptoms of lead exposure receives interventions aimed at reducing blood lead levels. What level of prevention does this represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary</li><li class="fopt"><span class="mk">B</span>Secondary</li><li class="fopt right"><span class="mk">&#10003;</span>Tertiary</li><li class="fopt"><span class="mk">D</span>Screening</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Taking steps to reduce blood lead levels at the first sign of symptoms is the chapter's tertiary prevention example for lead exposure.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Screening for lead (detecting existing but asymptomatic exposure) is secondary prevention; responding to symptoms already present is tertiary. ---</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">assessment tools</span><span class="chip t2">windshield survey and I PREPARE</span></div>
+<div class="stem">21. What role does the windshield survey play in environmental health assessment?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is a definitive, complete exposure assessment</li><li class="fopt right"><span class="mk">&#10003;</span>It is a helpful first step to understanding potential environmental health risks in a community</li><li class="fopt"><span class="mk">C</span>It replaces the need for an exposure history</li><li class="fopt"><span class="mk">D</span>It is used only for indoor air quality assessment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The windshield survey is a helpful first step to understanding potential environmental health risks in a community, used to determine whether an exposure is in the air, water, soil, or food.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Treating the windshield survey as a complete or definitive assessment is the distractor; it is only a first step.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">assessment tools</span><span class="chip t2">windshield survey and I PREPARE</span></div>
+<div class="stem">22. Which letters and meanings correctly complete the I PREPARE exposure-history mnemonic?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>I-Investigate potential exposures, P-Present work, R-Residence, E-Environmental concerns, P-Past work, A-Activities, R-Referrals and resources, E-Educate</li><li class="fopt"><span class="mk">B</span>I-Identify hazards, P-Prevent exposure, R-Report findings, E-Evaluate risk, P-Provide referrals, A-Assess symptoms, R-Recommend treatment, E-Educate</li><li class="fopt"><span class="mk">C</span>I-Investigate potential exposures, P-Prior illnesses, R-Residence, E-Employment, P-Past medications, A-Allergies, R-Referrals, E-Evaluate</li><li class="fopt"><span class="mk">D</span>I-Inspect the home, P-Present symptoms, R-Review history, E-Exposure route, P-Physical exam, A-Assessment, R-Recheck, E-Educate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>I PREPARE stands for Investigate potential exposures, Present work, Residence, Environmental concerns, Past work, Activities, Referrals and resources, and Educate.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">assessment tools</span><span class="chip t2">windshield survey and I PREPARE</span></div>
+<div class="stem">23. A nurse is taking an environmental exposure history and asks the patient about hobbies and activities that might involve chemical exposure. Which letter of I PREPARE does this represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>I — Investigate potential exposures</li><li class="fopt"><span class="mk">B</span>E — Environmental concerns</li><li class="fopt right"><span class="mk">&#10003;</span>A — Activities</li><li class="fopt"><span class="mk">D</span>E — Educate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A&quot; in I PREPARE stands for Activities. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">air and water quality</span><span class="chip t2">point vs. nonpoint sources</span></div>
+<div class="stem">24. A factory smokestack releasing emissions from a single identifiable location is an example of what kind of pollution source?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A point source</li><li class="fopt"><span class="mk">B</span>A nonpoint source</li><li class="fopt"><span class="mk">C</span>A fugitive source</li><li class="fopt"><span class="mk">D</span>A secondary source</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Point sources are identifiable sites of pollution, such as smokestacks, traceable to a specific origin.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">air and water quality</span><span class="chip t2">point vs. nonpoint sources</span></div>
+<div class="stem">25. Vehicle emissions from cars, trucks, and buses are best classified as what kind of pollution source?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A point source, because each vehicle has an identifiable tailpipe</li><li class="fopt right"><span class="mk">&#10003;</span>A nonpoint source, because they are diffuse and harder to trace to a single origin</li><li class="fopt"><span class="mk">C</span>Neither a point nor a nonpoint source, since motor vehicles are unregulated</li><li class="fopt"><span class="mk">D</span>A point source, because vehicles are registered with the state</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nonpoint sources are diffuse pollution sources such as vehicles, harder to trace to a single origin. Motor vehicles are the greatest single source of air pollution.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Calling vehicle emissions a &quot;point source&quot; is the chapter's named trap — each vehicle may be identifiable, but as a pollution source category, vehicles are diffuse and nonpoint.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">air and water quality</span><span class="chip t2">point vs. nonpoint sources</span></div>
+<div class="stem">26. Which statement about air pollution regulation is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The Clean Air Act regulates only point sources</li><li class="fopt"><span class="mk">B</span>The Clean Air Act regulates only nonpoint sources</li><li class="fopt right"><span class="mk">&#10003;</span>The Clean Air Act regulates air pollution from both point and nonpoint sources</li><li class="fopt"><span class="mk">D</span>Point and nonpoint sources fall under separate, unrelated federal statutes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Clean Air Act regulates air pollution from both point sources (such as smokestacks) and nonpoint sources (such as vehicles).</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">air and water quality</span><span class="chip t2">point vs. nonpoint sources</span></div>
+<div class="stem">27. What is the consumer confidence report (CCR)?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A survey of consumer satisfaction with municipal water utilities</li><li class="fopt right"><span class="mk">&#10003;</span>The annual drinking-water quality report, part of the public's right to know</li><li class="fopt"><span class="mk">C</span>A quarterly air quality index report</li><li class="fopt"><span class="mk">D</span>A federal registry of permitted polluters</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The consumer confidence report is the annual water-quality report, part of the public's right to know about drinking water. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government regulation</span><span class="chip t2">the regulatory chain</span></div>
+<div class="stem">28. Place the government's regulatory steps for controlling pollution in the correct order.</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Standards, permitting, monitoring, compliance, enforcement</li><li class="fopt right"><span class="mk">&#10003;</span>Permitting, standards, compliance, enforcement, monitoring</li><li class="fopt"><span class="mk">C</span>Compliance, enforcement, permitting, standards, monitoring</li><li class="fopt"><span class="mk">D</span>Monitoring, permitting, standards, enforcement, compliance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The regulatory chain runs permitting, then standards, then compliance, then enforcement, then monitoring.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government regulation</span><span class="chip t2">the regulatory chain</span></div>
+<div class="stem">29. Which definition correctly matches &quot;compliance&quot; as used in the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The government actions that follow to control pollution once requirements are not met</li><li class="fopt right"><span class="mk">&#10003;</span>The processes for ensuring that permit and standard requirements are met</li><li class="fopt"><span class="mk">C</span>A legally binding document required for stormwater, construction, or operation activities</li><li class="fopt"><span class="mk">D</span>Ongoing measurement confirming that standards continue to be met</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Compliance is defined as the processes for ensuring that permit and standard requirements are met.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option A describes enforcement, the step that follows compliance. Swapping the definitions of compliance and enforcement is the chapter's named trap.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government regulation</span><span class="chip t2">the regulatory chain</span></div>
+<div class="stem">30. Which definition correctly matches &quot;enforcement&quot; as used in the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The processes for ensuring that permit and standard requirements are met</li><li class="fopt right"><span class="mk">&#10003;</span>The government actions, paired with compliance, that are the next steps for controlling pollution</li><li class="fopt"><span class="mk">C</span>A permitted level of emissions or a maximum contaminant level allowed</li><li class="fopt"><span class="mk">D</span>A legally binding document such as a stormwater or construction permit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Enforcement refers to the government actions, paired with compliance, that are the next steps for controlling pollution — the development and enforcement of standards and regulations that limit pollution.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Option A is the definition of compliance, not enforcement — the same swap risk as the companion question.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government regulation</span><span class="chip t2">the regulatory chain</span></div>
+<div class="stem">31. An environmental standard may be expressed in which of the following ways? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A permitted level of emissions</li><li class="fopt right"><span class="mk">&#10003;</span>A maximum contaminant level allowed</li><li class="fopt right"><span class="mk">&#10003;</span>An action level for cleanup</li><li class="fopt right"><span class="mk">&#10003;</span>A risk-based standard</li><li class="fopt"><span class="mk">E</span>A blood-lead screening threshold specific to landlords</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Environmental standards may be expressed as a permitted emission level, a maximum contaminant level, an action level for cleanup, or a risk-based standard.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">government regulation</span><span class="chip t2">the regulatory chain</span></div>
+<div class="stem">32. A permit, as defined in the chapter, is best described as what?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An informal agreement between industry and a regulatory agency</li><li class="fopt right"><span class="mk">&#10003;</span>A legally binding document; multiple permits (e.g., stormwater, construction, operation) may be required</li><li class="fopt"><span class="mk">C</span>A voluntary certification with no legal weight</li><li class="fopt"><span class="mk">D</span>A one-time approval that never requires renewal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A permit is a legally binding document, and a range of permits may be required, such as stormwater control, construction, or operation permits. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">persistent toxins and bioaccumulation</span><span class="chip t2">PBTs, POPs, and methylmercury</span></div>
+<div class="stem">33. What defines persistent bioaccumulative toxins (PBTs) and persistent organic pollutants (POPs)?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They break down rapidly once released into air, water, or soil</li><li class="fopt right"><span class="mk">&#10003;</span>They do not break down in air, water, or soil, or in plant, animal, and human bodies</li><li class="fopt"><span class="mk">C</span>They are only found in industrial wastewater</li><li class="fopt"><span class="mk">D</span>They dissipate before reaching the food chain</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>PBTs and POPs are chemicals that do not break down in air, water, or soil, or in the plant, animal, and human bodies to which they may be passed.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option describing PBTs/POPs as &quot;rapidly degrading&quot; is wrong — persistence, not degradation, is the defining feature.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">persistent toxins and bioaccumulation</span><span class="chip t2">PBTs, POPs, and methylmercury</span></div>
+<div class="stem">34. What happens to the body burden of methylmercury as it moves up the food chain, according to the chapter's worked example?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It decreases at higher trophic levels because larger fish metabolize it more efficiently</li><li class="fopt right"><span class="mk">&#10003;</span>It increases significantly as larger fish eat smaller fish</li><li class="fopt"><span class="mk">C</span>It remains constant regardless of trophic level</li><li class="fopt"><span class="mk">D</span>It is diluted as fish populations grow</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Methylmercury is bioaccumulated in fish, and as larger fish eat smaller fish, the body burden increases significantly up the food chain.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Any option stating that concentration decreases at higher trophic levels inverts the actual bioaccumulation pattern.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">persistent toxins and bioaccumulation</span><span class="chip t2">PBTs, POPs, and methylmercury</span></div>
+<div class="stem">35. Why does mercury persist indefinitely in waterways and oceans, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because it is manufactured continuously and never removed from production</li><li class="fopt right"><span class="mk">&#10003;</span>Because, like lead, it is an element</li><li class="fopt"><span class="mk">C</span>Because it dissolves fully and becomes biologically inert</li><li class="fopt"><span class="mk">D</span>Because ocean currents prevent its breakdown</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mercury, like lead, is an element and therefore persists indefinitely in waterways and oceans. ---</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">environmental justice</span><span class="chip t2">disparities</span></div>
+<div class="stem">36. How does the chapter define environmental justice (environmental equity)?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The principle that all populations are exposed to environmental hazards equally</li><li class="fopt right"><span class="mk">&#10003;</span>The framework addressing the fact that certain environmental health risks disproportionately affect poor people and people of color</li><li class="fopt"><span class="mk">C</span>A legal requirement that all industrial permits be reviewed by a community board</li><li class="fopt"><span class="mk">D</span>A federal program that relocates residents away from hazardous waste sites</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Environmental justice, also called environmental equity, addresses the fact that certain environmental health risks disproportionately affect poor people and people of color. It is grounded in the Environmental Justice Act (1993) and Executive Order 12898 (1994).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Framing environmental justice as &quot;everyone is exposed equally&quot; directly contradicts the chapter's point about disproportionate burden.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">environmental justice</span><span class="chip t2">disparities</span></div>
+<div class="stem">37. Which statement reflects the chapter's description of environmental health disparities?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A poor person of color is more likely to live near a hazardous waste site or incinerator and to have children exposed to lead</li><li class="fopt"><span class="mk">B</span>Environmental hazards are distributed randomly across income and racial groups</li><li class="fopt"><span class="mk">C</span>Wealthier communities bear a greater share of hazardous waste site proximity</li><li class="fopt"><span class="mk">D</span>Environmental health disparities are declining and are no longer a significant concern</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that a poor person of color is more likely to live near a hazardous waste site or incinerator and to have children exposed to lead, reflecting disproportionate burden on poor people and people of color.</p>
+</div>
+</article></div>
+<script>
+const Q = [{"topic":"exposure pathway","subtopic":"the five-element chain","stem":"For an environmental exposure to result in harm, which five elements must all be in place and connected?","options":["Agent, host, environment, dose, and route","Source, environmental medium, receptor population, route of exposure, and dose","Toxicology, epidemiology, risk assessment, risk communication, and monitoring","Point source, nonpoint source, medium, host, and standard"],"correct":[1],"sata":false,"why":"The five-element exposure pathway is a source of harm, an environmental medium for transport, a receptor population, a route of exposure, and an adequate dose. All five must be present and connected for harm to occur.","trap":"Option A recycles the epidemiological triangle (agent, host, environment) plus two extra terms — a plausible-sounding but different list from the exposure pathway."},{"topic":"exposure pathway","subtopic":"the five-element chain","stem":"A community health nurse wants to interrupt an ongoing environmental exposure. According to the chapter, what is required?","options":["All five links in the exposure pathway must be addressed simultaneously","Breaking any single link in the chain interrupts the harm","Only the source and the dose need to be addressed; the other three are administrative","The receptor population must be relocated before any other action is effective"],"correct":[1],"sata":false,"why":"Breaking any one of the five links — removing the source, blocking the medium, protecting the receptor, cutting off the route, or reducing the dose — interrupts the harm. This is the conceptual basis for nursing intervention.","trap":"An option implying all five links must be addressed at once misses the point of the chain concept."},{"topic":"exposure pathway","subtopic":"the five-element chain","stem":"Which of the following are recognized environmental media for transporting a hazard along the exposure pathway? Select all that apply.","options":["Air","Surface water or groundwater","Soil","Genetic material","Electromagnetic fields"],"correct":[0,1,2],"sata":true,"why":"The chapter names air, water (surface or groundwater), and soil as the environmental media through which a source of harm is transported to a receptor population.","trap":null},{"topic":"exposure pathway","subtopic":"routes of exposure","stem":"According to the chapter, humans can be exposed to an environmental hazard through which routes?","options":["Inhalation, ingestion, and dermal absorption","Inhalation, ingestion, dermal absorption, and genetic transmission","Ingestion and inhalation only","Inhalation, injection, and ingestion"],"correct":[0],"sata":false,"why":"The three routes of exposure for humans are inhalation, ingestion, and skin (dermal) absorption. This is the single most likely fact to be tested from the exposure pathway section.","trap":"Any fourth \"route\" — such as genetic transmission or injection — is a distractor; the chapter names only three."},{"topic":"exposure pathway","subtopic":"routes of exposure","stem":"A nurse is teaching a community group about how chemical exposures reach the body. Which statement is accurate?","options":["There are four recognized routes of exposure: inhalation, ingestion, dermal absorption, and inhalation of dust specifically","There are three recognized routes of exposure: inhalation, ingestion, and dermal absorption","Dermal absorption is not considered a true route of exposure because skin is a protective barrier","Ingestion is the only route relevant to children"],"correct":[1],"sata":false,"why":"Only three routes of exposure are recognized: inhalation, ingestion, and dermal absorption. ---","trap":null},{"topic":"children's vulnerability","subtopic":"physiologic mechanisms","stem":"Which physiologic factors does the chapter cite for children's heightened vulnerability to environmental exposures? Select all that apply.","options":["Breathing more rapidly than adults, increasing proportionate exposure to air pollutants","A lower breathing zone due to shorter stature, closer to floors and ground-level contaminants","An immature blood-brain barrier","Kidneys that filter less effectively, increasing the dose retained","A stronger innate immune response than adults"],"correct":[0,1,2,3],"sata":true,"why":"Children breathe more rapidly, have a lower breathing zone from shorter stature, an immature blood-brain barrier, and kidneys that filter less effectively — all increasing exposure or retained dose relative to adults.","trap":"The chapter does not describe children as having a stronger immune response; their vulnerability comes from immature protective mechanisms, not enhanced ones."},{"topic":"children's vulnerability","subtopic":"physiologic mechanisms","stem":"A nurse explains why toddlers are at greater risk for lead dust ingestion than older children. What behavior is responsible?","options":["Increased outdoor play time","Mouthing behavior — putting objects and hands in their mouths","Higher caloric intake per kilogram of body weight","Frequent hand-washing that redistributes dust"],"correct":[1],"sata":false,"why":"Mouthing behavior — putting things in the mouth — increases ingestion, notably of lead dust.","trap":null},{"topic":"children's vulnerability","subtopic":"physiologic mechanisms","stem":"Why are fetal periods described as \"windows of heightened sensitivity\" in the chapter?","options":["Because the placenta filters out all but the largest particles","Because during specific periods of fetal development, even extraordinarily small exposures can permanently alter normal development","Because maternal blood pressure changes reduce nutrient transfer during those periods","Because fetal kidneys are more efficient than a child's kidneys at filtering toxins"],"correct":[1],"sata":false,"why":"During fetal development there are periods of heightened sensitivity when even extraordinarily small exposures can permanently alter normal development.","trap":"An option attributing children's or fetal risk solely to behavior (\"carelessness\") ignores that vulnerability here is physiologic, not behavioral."},{"topic":"children's vulnerability","subtopic":"physiologic mechanisms","stem":"At approximately what age do children's lungs reach full function, according to the chapter, though they continue changing afterward?","options":["Age 2","Age 6","Age 12","Age 18"],"correct":[1],"sata":false,"why":"Lungs reach full function around age 6 and continue changing through adolescence.","trap":null},{"topic":"children's vulnerability","subtopic":"lead as the worked example","stem":"A nurse is assessing a home built in 1965 with old, well-maintained, fully intact lead-based paint on the walls. What is the most accurate statement about the risk?","options":["Intact lead paint is a serious hazard regardless of condition and must be removed immediately","Intact lead poses no risk; the danger arises when it flakes or turns to dust","There is no risk because the home predates 1978","The risk is limited to drinking water in homes of this age"],"correct":[1],"sata":false,"why":"Intact lead poses no risk; the risk comes when it flakes or turns to dust on surfaces or soil. Homes built before 1978 (when lead was banned in household paint) are the flag for risk, particularly when the paint is disturbed, as during renovation.","trap":"A scenario describing well-maintained, non-deteriorated lead paint is a lower-risk scenario, not an automatic hazard — disturbance or deterioration is what creates the danger."},{"topic":"children's vulnerability","subtopic":"lead as the worked example","stem":"Lead-based paint in residential housing is most likely to be found in homes built in what time frame?","options":["After 2000","Before 1978","Between 1980 and 1990","Only in homes built before 1950"],"correct":[1],"sata":false,"why":"Lead was banned in household paint in 1978, so homes built before that year are most likely to contain lead-based paint.","trap":null},{"topic":"children's vulnerability","subtopic":"lead as the worked example","stem":"According to the EPA, as cited in the chapter, what proportion of lead poisoning is preventable?","options":["25%","50%","75%","100%"],"correct":[3],"sata":false,"why":"The EPA states that lead poisoning is 100% preventable.","trap":null},{"topic":"children's vulnerability","subtopic":"lead as the worked example","stem":"A child is found to have fetal-origin effects consistent with lead exposure. Which outcomes are named in the chapter? Select all that apply.","options":["Premature birth","Low birth weight","Brain and nerve damage","Congenital heart defects"],"correct":[0,1,2],"sata":true,"why":"Fetal effects of lead exposure named in the chapter are premature birth, low birth weight, and brain and nerve damage. Congenital heart defects are not listed among the chapter's lead effects.","trap":null},{"topic":"children's vulnerability","subtopic":"lead screening and the nurse's role","stem":"A community health nurse wants to address lead exposure risk at the population level rather than case by case. What is the nurse's best first action, per the chapter?","options":["Order a blood-lead test for every patient seen in clinic that week","Set up a blood-lead screening program through the local health department","Refer all patients to a tertiary care center for lead testing","Wait for the state department of environmental protection to initiate screening"],"correct":[1],"sata":false,"why":"The chapter names setting up a blood-lead screening program through the local health department as a specific nursing action, alongside educating local providers to systematically test children and working with local landlords to improve housing stock.","trap":"A stem asking for the nurse's best action on a community lead risk wants the population-level screening/education answer, not a single-patient clinic order."},{"topic":"children's vulnerability","subtopic":"lead screening and the nurse's role","stem":"Which actions does the chapter specifically name as part of the nurse's role in addressing lead exposure? Select all that apply.","options":["Set up a blood-lead screening program through the local health department","Educate local health providers to systematically test children for lead poisoning","Work with local landlords to improve the condition of their housing stock","Personally perform lead paint abatement in homes","Prescribe chelation therapy without physician oversight"],"correct":[0,1,2],"sata":true,"why":"The three nursing actions the chapter names are setting up a screening program through the health department, educating providers to test children systematically, and working with landlords on housing conditions. Abatement and chelation are outside the nurse's named scope here.","trap":null},{"topic":"children's vulnerability","subtopic":"lead screening and the nurse's role","stem":"Which professionals may be part of the multidisciplinary lead team described in the chapter? Select all that apply.","options":["A housing inspector or sanitarian","Clinical specialists","Laboratory workers who assess lead levels in blood, paint, house dust, and drinking water","Lead-based paint remediation specialists","A criminal justice liaison"],"correct":[0,1,2,3],"sata":true,"why":"The multidisciplinary lead team may include a housing inspector or sanitarian, clinical specialists, laboratory workers (assessing blood, paint, house dust, and water), and lead-based paint remediation specialists, potentially involving the local health department, state department of environmental protection, housing department, and a tertiary care center.","trap":null},{"topic":"children's vulnerability","subtopic":"lead screening and the nurse's role","stem":"Which five factors does the chapter credit for reducing lead levels in the United States? Select all that apply.","options":["Elimination of lead in paint","Reduction of lead in gasoline","Reduction of lead solder in food/drink cans and household plumbing","Lead screening laws","Universal municipal water fluoridation"],"correct":[0,1,2,3],"sata":true,"why":"The five named factors are elimination of lead in paint, reduction of lead in gasoline, reduction of lead solder in cans and plumbing components, lead screening laws, and lead paint abatement programs in communities. Water fluoridation is unrelated to lead reduction.","trap":"There are five factors named in total; a list showing only four is missing \"lead paint abatement programs in communities.\""},{"topic":"children's vulnerability","subtopic":"levels of prevention for lead exposure","stem":"A public health campaign promotes using only non-lead-based paint in new construction. What level of prevention does this represent?","options":["Primary","Secondary","Tertiary","Quaternary"],"correct":[0],"sata":false,"why":"The Levels of Prevention box for lead exposure lists using only non-lead-based paint as primary prevention.","trap":null},{"topic":"children's vulnerability","subtopic":"levels of prevention for lead exposure","stem":"A home inspection finds lead paint on a windowsill, and the paint is removed and replaced with non-lead paint. What level of prevention does this represent?","options":["Primary","Secondary","Tertiary","This cannot be classified as a level of prevention"],"correct":[1],"sata":false,"why":"If lead is found in paint, removing it and replacing it with non-lead paint is the chapter's secondary prevention example.","trap":null},{"topic":"children's vulnerability","subtopic":"levels of prevention for lead exposure","stem":"A child with early symptoms of lead exposure receives interventions aimed at reducing blood lead levels. What level of prevention does this represent?","options":["Primary","Secondary","Tertiary","Screening"],"correct":[2],"sata":false,"why":"Taking steps to reduce blood lead levels at the first sign of symptoms is the chapter's tertiary prevention example for lead exposure.","trap":"Screening for lead (detecting existing but asymptomatic exposure) is secondary prevention; responding to symptoms already present is tertiary. ---"},{"topic":"assessment tools","subtopic":"windshield survey and I PREPARE","stem":"What role does the windshield survey play in environmental health assessment?","options":["It is a definitive, complete exposure assessment","It is a helpful first step to understanding potential environmental health risks in a community","It replaces the need for an exposure history","It is used only for indoor air quality assessment"],"correct":[1],"sata":false,"why":"The windshield survey is a helpful first step to understanding potential environmental health risks in a community, used to determine whether an exposure is in the air, water, soil, or food.","trap":"Treating the windshield survey as a complete or definitive assessment is the distractor; it is only a first step."},{"topic":"assessment tools","subtopic":"windshield survey and I PREPARE","stem":"Which letters and meanings correctly complete the I PREPARE exposure-history mnemonic?","options":["I-Investigate potential exposures, P-Present work, R-Residence, E-Environmental concerns, P-Past work, A-Activities, R-Referrals and resources, E-Educate","I-Identify hazards, P-Prevent exposure, R-Report findings, E-Evaluate risk, P-Provide referrals, A-Assess symptoms, R-Recommend treatment, E-Educate","I-Investigate potential exposures, P-Prior illnesses, R-Residence, E-Employment, P-Past medications, A-Allergies, R-Referrals, E-Evaluate","I-Inspect the home, P-Present symptoms, R-Review history, E-Exposure route, P-Physical exam, A-Assessment, R-Recheck, E-Educate"],"correct":[0],"sata":false,"why":"I PREPARE stands for Investigate potential exposures, Present work, Residence, Environmental concerns, Past work, Activities, Referrals and resources, and Educate.","trap":null},{"topic":"assessment tools","subtopic":"windshield survey and I PREPARE","stem":"A nurse is taking an environmental exposure history and asks the patient about hobbies and activities that might involve chemical exposure. Which letter of I PREPARE does this represent?","options":["I — Investigate potential exposures","E — Environmental concerns","A — Activities","E — Educate"],"correct":[2],"sata":false,"why":"\"A\" in I PREPARE stands for Activities. ---","trap":null},{"topic":"air and water quality","subtopic":"point vs. nonpoint sources","stem":"A factory smokestack releasing emissions from a single identifiable location is an example of what kind of pollution source?","options":["A point source","A nonpoint source","A fugitive source","A secondary source"],"correct":[0],"sata":false,"why":"Point sources are identifiable sites of pollution, such as smokestacks, traceable to a specific origin.","trap":null},{"topic":"air and water quality","subtopic":"point vs. nonpoint sources","stem":"Vehicle emissions from cars, trucks, and buses are best classified as what kind of pollution source?","options":["A point source, because each vehicle has an identifiable tailpipe","A nonpoint source, because they are diffuse and harder to trace to a single origin","Neither a point nor a nonpoint source, since motor vehicles are unregulated","A point source, because vehicles are registered with the state"],"correct":[1],"sata":false,"why":"Nonpoint sources are diffuse pollution sources such as vehicles, harder to trace to a single origin. Motor vehicles are the greatest single source of air pollution.","trap":"Calling vehicle emissions a \"point source\" is the chapter's named trap — each vehicle may be identifiable, but as a pollution source category, vehicles are diffuse and nonpoint."},{"topic":"air and water quality","subtopic":"point vs. nonpoint sources","stem":"Which statement about air pollution regulation is accurate?","options":["The Clean Air Act regulates only point sources","The Clean Air Act regulates only nonpoint sources","The Clean Air Act regulates air pollution from both point and nonpoint sources","Point and nonpoint sources fall under separate, unrelated federal statutes"],"correct":[2],"sata":false,"why":"The Clean Air Act regulates air pollution from both point sources (such as smokestacks) and nonpoint sources (such as vehicles).","trap":null},{"topic":"air and water quality","subtopic":"point vs. nonpoint sources","stem":"What is the consumer confidence report (CCR)?","options":["A survey of consumer satisfaction with municipal water utilities","The annual drinking-water quality report, part of the public's right to know","A quarterly air quality index report","A federal registry of permitted polluters"],"correct":[1],"sata":false,"why":"The consumer confidence report is the annual water-quality report, part of the public's right to know about drinking water. ---","trap":null},{"topic":"government regulation","subtopic":"the regulatory chain","stem":"Place the government's regulatory steps for controlling pollution in the correct order.","options":["Standards, permitting, monitoring, compliance, enforcement","Permitting, standards, compliance, enforcement, monitoring","Compliance, enforcement, permitting, standards, monitoring","Monitoring, permitting, standards, enforcement, compliance"],"correct":[1],"sata":false,"why":"The regulatory chain runs permitting, then standards, then compliance, then enforcement, then monitoring.","trap":null},{"topic":"government regulation","subtopic":"the regulatory chain","stem":"Which definition correctly matches \"compliance\" as used in the chapter?","options":["The government actions that follow to control pollution once requirements are not met","The processes for ensuring that permit and standard requirements are met","A legally binding document required for stormwater, construction, or operation activities","Ongoing measurement confirming that standards continue to be met"],"correct":[1],"sata":false,"why":"Compliance is defined as the processes for ensuring that permit and standard requirements are met.","trap":"Option A describes enforcement, the step that follows compliance. Swapping the definitions of compliance and enforcement is the chapter's named trap."},{"topic":"government regulation","subtopic":"the regulatory chain","stem":"Which definition correctly matches \"enforcement\" as used in the chapter?","options":["The processes for ensuring that permit and standard requirements are met","The government actions, paired with compliance, that are the next steps for controlling pollution","A permitted level of emissions or a maximum contaminant level allowed","A legally binding document such as a stormwater or construction permit"],"correct":[1],"sata":false,"why":"Enforcement refers to the government actions, paired with compliance, that are the next steps for controlling pollution — the development and enforcement of standards and regulations that limit pollution.","trap":"Option A is the definition of compliance, not enforcement — the same swap risk as the companion question."},{"topic":"government regulation","subtopic":"the regulatory chain","stem":"An environmental standard may be expressed in which of the following ways? Select all that apply.","options":["A permitted level of emissions","A maximum contaminant level allowed","An action level for cleanup","A risk-based standard","A blood-lead screening threshold specific to landlords"],"correct":[0,1,2,3],"sata":true,"why":"Environmental standards may be expressed as a permitted emission level, a maximum contaminant level, an action level for cleanup, or a risk-based standard.","trap":null},{"topic":"government regulation","subtopic":"the regulatory chain","stem":"A permit, as defined in the chapter, is best described as what?","options":["An informal agreement between industry and a regulatory agency","A legally binding document; multiple permits (e.g., stormwater, construction, operation) may be required","A voluntary certification with no legal weight","A one-time approval that never requires renewal"],"correct":[1],"sata":false,"why":"A permit is a legally binding document, and a range of permits may be required, such as stormwater control, construction, or operation permits. ---","trap":null},{"topic":"persistent toxins and bioaccumulation","subtopic":"PBTs, POPs, and methylmercury","stem":"What defines persistent bioaccumulative toxins (PBTs) and persistent organic pollutants (POPs)?","options":["They break down rapidly once released into air, water, or soil","They do not break down in air, water, or soil, or in plant, animal, and human bodies","They are only found in industrial wastewater","They dissipate before reaching the food chain"],"correct":[1],"sata":false,"why":"PBTs and POPs are chemicals that do not break down in air, water, or soil, or in the plant, animal, and human bodies to which they may be passed.","trap":"An option describing PBTs/POPs as \"rapidly degrading\" is wrong — persistence, not degradation, is the defining feature."},{"topic":"persistent toxins and bioaccumulation","subtopic":"PBTs, POPs, and methylmercury","stem":"What happens to the body burden of methylmercury as it moves up the food chain, according to the chapter's worked example?","options":["It decreases at higher trophic levels because larger fish metabolize it more efficiently","It increases significantly as larger fish eat smaller fish","It remains constant regardless of trophic level","It is diluted as fish populations grow"],"correct":[1],"sata":false,"why":"Methylmercury is bioaccumulated in fish, and as larger fish eat smaller fish, the body burden increases significantly up the food chain.","trap":"Any option stating that concentration decreases at higher trophic levels inverts the actual bioaccumulation pattern."},{"topic":"persistent toxins and bioaccumulation","subtopic":"PBTs, POPs, and methylmercury","stem":"Why does mercury persist indefinitely in waterways and oceans, according to the chapter?","options":["Because it is manufactured continuously and never removed from production","Because, like lead, it is an element","Because it dissolves fully and becomes biologically inert","Because ocean currents prevent its breakdown"],"correct":[1],"sata":false,"why":"Mercury, like lead, is an element and therefore persists indefinitely in waterways and oceans. ---","trap":null},{"topic":"environmental justice","subtopic":"disparities","stem":"How does the chapter define environmental justice (environmental equity)?","options":["The principle that all populations are exposed to environmental hazards equally","The framework addressing the fact that certain environmental health risks disproportionately affect poor people and people of color","A legal requirement that all industrial permits be reviewed by a community board","A federal program that relocates residents away from hazardous waste sites"],"correct":[1],"sata":false,"why":"Environmental justice, also called environmental equity, addresses the fact that certain environmental health risks disproportionately affect poor people and people of color. It is grounded in the Environmental Justice Act (1993) and Executive Order 12898 (1994).","trap":"Framing environmental justice as \"everyone is exposed equally\" directly contradicts the chapter's point about disproportionate burden."},{"topic":"environmental justice","subtopic":"disparities","stem":"Which statement reflects the chapter's description of environmental health disparities?","options":["A poor person of color is more likely to live near a hazardous waste site or incinerator and to have children exposed to lead","Environmental hazards are distributed randomly across income and racial groups","Wealthier communities bear a greater share of hazardous waste site proximity","Environmental health disparities are declining and are no longer a significant concern"],"correct":[0],"sata":false,"why":"The chapter states that a poor person of color is more likely to live near a hazardous waste site or incinerator and to have children exposed to lead, reflecting disproportionate burden on poor people and people of color.","trap":null}];
+const TITLE = "Chapter 8 — NUR 4353 Drills";
+const SUBTITLE = "Chapter 8";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>
