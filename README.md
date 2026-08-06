@@ -111,6 +111,11 @@ runtime failure restores the same view rather than wiping the page.
 per chapter — which GitHub Pages serves as a URL you can just send someone.
 No download, no "open in browser" step, works on a phone.
 
+The landing page is a **session builder**: check any set of chapters, pick a
+question count (25/50/75/100), and drill a shuffled mix pulled only from those
+chapters. Where scripts are blocked it falls back to a plain list of links to
+the per-chapter pages, so it is never blank and every chapter stays reachable.
+
 ```
 npm run publish -- --title "NUR 4353 Drills"
 git add docs && git commit -m "Publish drills" && git push

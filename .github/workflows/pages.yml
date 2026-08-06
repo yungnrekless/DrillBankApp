@@ -26,11 +26,14 @@ permissions:
   pages: write
   id-token: write
 
-# Let a running deploy finish rather than cancelling it — a half-finished
-# Pages deploy is worse than a slightly stale one.
+# Supersede any in-flight run so a newer commit always wins. A Pages deploy is
+# atomic (deploy-pages swaps the whole site at once), so there is no
+# half-finished state to protect — and cancel-in-progress:false previously let
+# a run stuck in "waiting" hold the concurrency slot and block every later
+# deploy indefinitely.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:

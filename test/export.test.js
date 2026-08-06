@@ -48,9 +48,29 @@ test('the landing page references nothing external', () => {
   assert.ok(html.includes('href="ch25.html"'), 'chapter links are relative');
 });
 
-test('the landing page needs no script at all', () => {
-  const html = renderIndex([{ href: 'a.html', title: 'A', count: 1, sata: 0, topics: ['t'] }]);
-  assert.ok(!html.includes('<script'), 'the index must render in any viewer, blocked scripts included');
+test('the landing page renders a no-JS fallback chapter list before any script', () => {
+  // The page is now an interactive session builder, but a viewer that blocks
+  // scripts must still see (and be able to open) every chapter. The fallback
+  // links live in #app before the <script>, so they render without JS.
+  const html = renderIndex([
+    { href: 'a.html', title: 'Chapter A', count: 3, sata: 1, topics: ['t'], items: [] },
+    { href: 'b.html', title: 'Chapter B', count: 5, sata: 0, topics: ['u'], items: [] },
+  ]);
+  const beforeScript = html.slice(0, html.indexOf('<script>'));
+  assert.ok(beforeScript.includes('href="a.html"'), 'first chapter link is in the pre-script fallback');
+  assert.ok(beforeScript.includes('href="b.html"'), 'second chapter link is in the pre-script fallback');
+  assert.ok(beforeScript.includes('Chapter A'), 'fallback shows the chapter title');
+});
+
+test('the landing page embeds each chapter\'s drill items for combined sessions', () => {
+  const items = [{ topic: 'poverty', subtopic: 's', stem: 'Q?', options: ['a', 'b'], correct: [0], sata: false, why: 'r', trap: null }];
+  const html = renderIndex([{ href: 'ch25.html', title: 'Chapter 25', count: 1, sata: 0, topics: ['poverty'], items }]);
+  const payload = JSON.parse(html.match(/const CHAPTERS = (\[.*?\]);\n/s)[1].replace(/\\u003c/g, '<'));
+  assert.equal(payload.length, 1);
+  assert.equal(payload[0].items.length, 1);
+  assert.equal(payload[0].items[0].stem, 'Q?');
+  assert.ok(html.includes('id="count"'), 'the question-count dropdown is present');
+  assert.ok(html.includes('id="start"'), 'the start button is present');
 });
 
 test('the landing page escapes chapter titles and topics', () => {

@@ -61,8 +61,30 @@ function main() {
   fs.rmSync(DOCS, { recursive: true, force: true });
   fs.mkdirSync(DOCS, { recursive: true });
 
+  // The drill payload each question contributes, stripped of bank-internal
+  // fields (source, id) exactly as renderExport does. Built once here so the
+  // per-chapter pages and the combined-session index embed the same shape.
+  const toDrillItem = (q) => ({
+    topic: q.topic,
+    subtopic: q.subtopic,
+    stem: q.stem,
+    options: q.options,
+    correct: q.correct,
+    sata: q.type === 'sata',
+    why: q.rationale,
+    trap: q.trap || null,
+  });
+
+  // Order chapters by chapter number, not lexically, so the index lists
+  // Ch2 before Ch10 rather than after it.
+  const chapterNo = (src) => {
+    const m = src.match(/(\d+)/);
+    return m ? Number(m[1]) : Infinity;
+  };
+  const ordered = [...sources].sort((a, b) => chapterNo(a) - chapterNo(b) || a.localeCompare(b));
+
   const chapters = [];
-  for (const source of sources) {
+  for (const source of ordered) {
     const items = bySource[source];
     const name = prettyName(source);
     const slug = slugify(source);
@@ -75,7 +97,14 @@ function main() {
       note: 'Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.',
     });
     fs.writeFileSync(path.join(DOCS, `${slug}.html`), html);
-    chapters.push({ href: `${slug}.html`, title: name, count: items.length, sata, topics });
+    chapters.push({
+      href: `${slug}.html`,
+      title: name,
+      count: items.length,
+      sata,
+      topics,
+      items: items.map(toDrillItem),
+    });
     console.log(`  ${slug}.html  —  ${items.length} questions (${sata} SATA)`);
   }
 
