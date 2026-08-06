@@ -1,0 +1,152 @@
+{
+  "q_0001": {
+    "topic": "economics",
+    "subtopic": "payment mechanisms",
+    "stem": "Under a capitated payment arrangement, which party carries the primary financial risk for utilization above the expected level?",
+    "options": [
+      "The individual patient",
+      "The provider organization",
+      "The commercial payer",
+      "The state insurance regulator"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Capitation pays a fixed per-member-per-month amount regardless of services delivered, so any utilization above what that payment assumes is absorbed by the provider organization.",
+    "type": "single",
+    "trap": "(C) is the reflex answer because payers do carry utilization risk under fee-for-service. Capitation is defined by the transfer of that risk downstream.",
+    "source": "sample_economics.md"
+  },
+  "q_0002": {
+    "topic": "economics",
+    "subtopic": "payment mechanisms",
+    "stem": "Which of the following are characteristics of a fee-for-service payment model? Select all that apply.",
+    "options": [
+      "Payment is tied to the volume of services delivered",
+      "Providers bear insurance risk for the covered population",
+      "It creates a financial incentive toward higher utilization",
+      "Revenue is decoupled from the number of encounters",
+      "It is billed per discrete service or procedure"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "rationale": "Fee-for-service pays per discrete service, so revenue rises with volume and the incentive runs toward more utilization. Insurance risk stays with the payer, and revenue is explicitly coupled to encounter count.",
+    "type": "sata",
+    "trap": "(B) and (D) describe capitation, not fee-for-service. Mixing the two is the most common error on this item type.",
+    "source": "sample_economics.md"
+  },
+  "q_0003": {
+    "topic": "economics",
+    "subtopic": "payment mechanisms",
+    "stem": "A health system moves from fee-for-service to a shared-savings contract. Holding quality constant, which behavior does the new contract most directly reward?",
+    "options": [
+      "Increasing the number of billable encounters",
+      "Reducing avoidable spending below a benchmark",
+      "Shifting care to higher-acuity settings",
+      "Expanding the specialist referral network"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Shared savings pays a portion of the difference between actual spending and a benchmark, so the reward is attached to coming in under that benchmark without degrading quality.",
+    "type": "single",
+    "trap": "(A) is what the *old* contract rewarded. Questions like this test whether you tracked the direction of the incentive change, not the definition itself.",
+    "source": "sample_economics.md"
+  },
+  "q_0004": {
+    "topic": "economics",
+    "subtopic": "cost concepts",
+    "stem": "A clinic has already spent $40,000 on an EHR module that has not been deployed. When deciding whether to continue implementation, that $40,000 is best described as which of the following?",
+    "options": [
+      "A marginal cost",
+      "An opportunity cost",
+      "A sunk cost",
+      "A fixed cost"
+    ],
+    "correct": [
+      2
+    ],
+    "rationale": "The money is already spent and cannot be recovered by any future decision, which is exactly what makes a cost sunk. Rational forward-looking decisions should exclude it.",
+    "type": "single",
+    "trap": "(D) is tempting because the expense does not vary with volume. Fixed vs. variable describes how a cost behaves; sunk vs. recoverable describes whether a decision can still change it.",
+    "source": "sample_economics.md"
+  },
+  "q_0005": {
+    "topic": "economics",
+    "subtopic": "cost concepts",
+    "stem": "Which of the following correctly describes opportunity cost? Select all that apply.",
+    "options": [
+      "It is the value of the next-best alternative forgone",
+      "It appears as a line item on the income statement",
+      "It applies even when no cash changes hands",
+      "It is always equal to the accounting cost of the choice"
+    ],
+    "correct": [
+      0,
+      2
+    ],
+    "rationale": "Opportunity cost is the value of the best alternative given up, and it exists whenever a scarce resource is committed, cash or not. It is an economic concept, so it does not appear in the accounting records and rarely equals accounting cost.",
+    "type": "sata",
+    "trap": "(D) is the classic distractor: accounting cost and economic cost coincide only when there is no meaningful forgone alternative.",
+    "source": "sample_economics.md"
+  },
+  "q_0006": {
+    "topic": "pharmacology",
+    "subtopic": "anticoagulants",
+    "stem": "A patient on warfarin has an INR of 6.2 with no active bleeding. Which intervention is the most appropriate initial step?",
+    "options": [
+      "Administer protamine sulfate",
+      "Hold warfarin and recheck the INR",
+      "Give fresh frozen plasma immediately",
+      "Increase the warfarin dose to stabilize the level"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "With a supratherapeutic INR and no bleeding, holding the drug and rechecking is the standard first move; the INR falls as the existing dose clears.",
+    "type": "single",
+    "trap": "(A) reverses heparin, not warfarin. Reversal agent pairings are the highest-yield thing to have automatic here.",
+    "source": "sample_pharmacology.md"
+  },
+  "q_0007": {
+    "topic": "pharmacology",
+    "subtopic": "anticoagulants",
+    "stem": "Which laboratory value is used to monitor unfractionated heparin therapy?",
+    "options": [
+      "INR",
+      "aPTT",
+      "Platelet count alone",
+      "Fibrinogen"
+    ],
+    "correct": [
+      1
+    ],
+    "rationale": "Unfractionated heparin is monitored with the aPTT (or anti-Xa), while warfarin is monitored with the INR.",
+    "type": "single",
+    "trap": "(A) is the reflex answer if you pattern-match \"anticoagulant\" to \"INR\" without separating the two drug classes.",
+    "source": "sample_pharmacology.md"
+  },
+  "q_0008": {
+    "topic": "pharmacology",
+    "subtopic": "adverse effects",
+    "stem": "Which findings would raise concern for heparin-induced thrombocytopenia? Select all that apply.",
+    "options": [
+      "Platelet count falling more than 50% from baseline",
+      "Onset typically 5 to 10 days after heparin exposure",
+      "New thrombosis despite anticoagulation",
+      "Immediate improvement after increasing the heparin dose"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "rationale": "HIT is an immune-mediated reaction marked by a substantial platelet drop, a characteristic 5-to-10-day onset window, and paradoxical thrombosis.",
+    "type": "sata",
+    "trap": "(D) inverts the pathophysiology — continuing or escalating heparin makes HIT worse, which is why the management step is to stop it.",
+    "source": "sample_pharmacology.md"
+  }
+}

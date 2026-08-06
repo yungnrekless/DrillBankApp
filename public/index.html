@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drill Bank</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='4' fill='%236ea8ff'/></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Drill Bank</h1>
+  <nav class="tabs">
+    <button class="tab is-active" data-view="drill">Drill</button>
+    <button class="tab" data-view="dashboard">Dashboard</button>
+  </nav>
+  <div class="score" id="score" hidden>
+    <span id="score-value">0 / 0</span>
+    <span class="score-pct" id="score-pct"></span>
+  </div>
+</header>
+
+<main>
+  <!-- ── Drill view ─────────────────────────────────────────────── -->
+  <section id="view-drill" class="view">
+    <div id="session-setup" class="panel">
+      <h2>Today's session</h2>
+      <p class="muted" id="setup-summary">Loading bank…</p>
+      <div id="weak-callout" class="callout callout-red" hidden></div>
+      <label class="field">
+        <span>Questions this session</span>
+        <input type="number" id="session-length" min="1" max="100" value="20">
+      </label>
+      <label class="field field-inline">
+        <input type="checkbox" id="shuffle-options" checked>
+        <span>Reshuffle answer order</span>
+      </label>
+      <button class="primary" id="start-session">Start drilling</button>
+    </div>
+
+    <div id="question-card" class="panel" hidden>
+      <div class="qmeta">
+        <span class="chip" id="q-topic"></span>
+        <span class="chip chip-muted" id="q-subtopic"></span>
+        <span class="chip chip-type" id="q-type"></span>
+        <span class="qcount" id="q-count"></span>
+      </div>
+      <p class="stem" id="q-stem"></p>
+      <form id="q-options" class="options"></form>
+      <div id="reveal" class="reveal" hidden>
+        <p class="verdict" id="verdict"></p>
+        <div class="keyline">
+          <h3>Correct answer</h3>
+          <p id="q-key"></p>
+        </div>
+        <div class="rationale">
+          <h3>Rationale</h3>
+          <p id="q-rationale"></p>
+        </div>
+        <div class="trap" id="trap-block" hidden>
+          <h3>Trap</h3>
+          <p id="q-trap"></p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="primary" id="submit-answer">Submit</button>
+        <button class="ghost" id="next-question" hidden>Next →</button>
+      </div>
+    </div>
+
+    <div id="session-summary" class="panel" hidden>
+      <h2>Session complete</h2>
+      <p class="big" id="summary-score"></p>
+      <div id="summary-topics"></div>
+      <button class="primary" id="restart-session">Back to setup</button>
+    </div>
+  </section>
+
+  <!-- ── Dashboard view ─────────────────────────────────────────── -->
+  <section id="view-dashboard" class="view" hidden>
+    <div class="panel">
+      <h2>Topic accuracy</h2>
+      <p class="muted">Rolling accuracy over recent attempts. Anything under 70% is red.
+        Click a topic to see which questions are dragging it down.</p>
+      <div id="topic-list" class="topic-list"></div>
+    </div>
+    <div class="panel" id="drilldown-panel" hidden>
+      <h2 id="drilldown-title"></h2>
+      <div id="drilldown-body"></div>
+    </div>
+  </section>
+</main>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>

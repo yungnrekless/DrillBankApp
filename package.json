@@ -1,0 +1,15 @@
+{
+  "name": "drill-bank",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Spaced-repetition drill engine with a weak-area tracker. No dependencies.",
+  "scripts": {
+    "start": "node server.js",
+    "import": "node scripts/import.js",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
