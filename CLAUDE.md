@@ -47,6 +47,6 @@ chapters' drills on purpose).
 - `embedJson` escapes `<`→`<` and U+2028/U+2029 so payloads can't break out of the `<script>` block. `qid` and source filenames are stripped from shipped payloads.
 
 ## Working conventions
-- Branch: `claude/drill-engine-weak-area-73veus`. Commit + push there; don't open a PR unless asked.
+- Branch: `main` (the default). Commit + push there; don't open a PR unless asked.
 - `git push -u origin <branch>`; retry on network errors with backoff.
 - Run `npm test` before pushing; keep the export-safety tests green.
