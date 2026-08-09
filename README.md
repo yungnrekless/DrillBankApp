@@ -174,12 +174,13 @@ A full publish rebuilds `docs/` from nothing, so a course removed from
 that folder and rebuilds the picker from what is on disk, so the other courses
 stay linked.
 
-One-time setup, in the repo on github.com:
-**Settings → Pages → Source: Deploy from a branch → Branch: `<this branch>` / `docs` → Save.**
-The site appears at `https://<user>.github.io/<repo>/` a minute or so later.
+Deployment runs through `.github/workflows/pages.yml`, **not** the
+deploy-from-a-branch setting — that backend stalled on this repo. Pushing to
+`main` is what triggers it; check the Actions run reached `success` afterwards.
+The live site is https://yungnrekless.github.io/DrillBankApp/.
 
-`docs/` is committed on purpose — Pages serves the built files, so they have
-to be in the repo. Re-run `npm run publish` after importing new questions,
+`docs/` is committed on purpose — the workflow uploads the built files, so they
+have to be in the repo. Re-run `npm run publish` after importing new questions,
 and it rebuilds the folder from scratch so a renamed or deleted chapter can't
 leave a stale page live.
 

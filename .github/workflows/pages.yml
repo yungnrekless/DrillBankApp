@@ -15,7 +15,7 @@ name: Deploy drills to Pages
 on:
   push:
     branches:
-      - claude/drill-engine-weak-area-73veus
+      - main
     paths:
       - 'docs/**'
       - '.github/workflows/pages.yml'

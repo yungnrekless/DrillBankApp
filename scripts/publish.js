@@ -177,7 +177,9 @@ function main() {
 
   const total = cards.reduce((n, c) => n + c.count, 0);
   console.log(`\nBuilt docs/ — course picker plus ${cards.length} course(s), ${total} questions total.`);
-  console.log('Commit and push, then enable Pages: Settings → Pages → Deploy from a branch → docs/');
+  // Pages deploys from .github/workflows/pages.yml, not the deploy-from-a-branch
+  // backend, which stalled on this repo. Pushing is what triggers it.
+  console.log('Commit and push to main — .github/workflows/pages.yml deploys docs/ from there.');
 }
 
 main();
