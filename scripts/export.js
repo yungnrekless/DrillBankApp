@@ -3,13 +3,14 @@
  * Export a chapter (or any slice of the bank) as one self-contained HTML file
  * you can send to someone. No server, no data files, no network.
  *
- *   node scripts/export.js --list
- *   node scripts/export.js ch25
- *   node scripts/export.js ch25 --title "NUR 4353 — Chapter 25 Drill"
- *   node scripts/export.js --topic poverty --topic homelessness --out dist/econ.html
- *   node scripts/export.js --all --out dist/everything.html
+ *   node scripts/export.js --course nur4353 --list
+ *   node scripts/export.js --course nur4353 ch25
+ *   node scripts/export.js --course nur4353 ch25 --title "NUR 4353 — Chapter 25 Drill"
+ *   node scripts/export.js --course nur4353 --topic poverty --out dist/econ.html
+ *   node scripts/export.js --course nur4353 --all --out dist/everything.html
  *
  * Selection:
+ *   --course SLUG  which class to export from; omittable if there is only one
  *   <positional>   match questions whose source file contains this string
  *   --topic NAME   include a topic (repeatable); matched case-insensitively
  *   --all          the whole bank
@@ -17,18 +18,16 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { renderExport } from '../src/export.js';
-
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const BANK = path.join(ROOT, 'data', 'questions.json');
+import { ROOT, coursePaths, displayName, resolveCourseOrExit } from '../src/courses.js';
 
 function parseArgs(argv) {
-  const out = { topics: [], match: null, all: false, list: false, title: null, subtitle: null, note: null, outFile: null };
+  const out = { course: null, topics: [], match: null, all: false, list: false, title: null, subtitle: null, note: null, outFile: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--all') out.all = true;
     else if (a === '--list') out.list = true;
+    else if (a === '--course') out.course = argv[++i];
     else if (a === '--topic') out.topics.push(argv[++i]);
     else if (a === '--title') out.title = argv[++i];
     else if (a === '--subtitle') out.subtitle = argv[++i];
@@ -40,12 +39,12 @@ function parseArgs(argv) {
   return out;
 }
 
-function loadBank() {
-  if (!fs.existsSync(BANK)) {
-    console.error('data/questions.json not found — run: node scripts/import.js drills/');
+function loadBank(bankFile, slug) {
+  if (!fs.existsSync(bankFile)) {
+    console.error(`${path.relative(ROOT, bankFile)} not found — run: node scripts/import.js --course ${slug}`);
     process.exit(1);
   }
-  return JSON.parse(fs.readFileSync(BANK, 'utf8'));
+  return JSON.parse(fs.readFileSync(bankFile, 'utf8'));
 }
 
 function listSources(bank) {
@@ -66,12 +65,16 @@ function listSources(bank) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const bank = loadBank();
+  const slug = resolveCourseOrExit(args.course);
+  const bank = loadBank(coursePaths(slug).questions, slug);
 
-  if (args.list) return listSources(bank);
+  if (args.list) {
+    console.log(`Course: ${displayName(slug)}  (${slug})\n`);
+    return listSources(bank);
+  }
 
   if (!args.all && !args.match && !args.topics.length) {
-    console.error('usage: node scripts/export.js <source-substring> | --topic NAME | --all  [--out FILE]');
+    console.error('usage: node scripts/export.js [--course SLUG] <source-substring> | --topic NAME | --all  [--out FILE]');
     console.error('       node scripts/export.js --list   to see what is in the bank');
     process.exit(1);
   }
@@ -92,8 +95,10 @@ function main() {
 
   const topics = [...new Set(Object.values(selected).map((q) => q.topic))];
   const stem = args.match || (args.topics.length ? args.topics.join('-') : 'drill');
-  const slug = stem.replace(/\.[^.]+$/, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
-  const outFile = path.resolve(ROOT, args.outFile || path.join('dist', `${slug}.html`));
+  const fileSlug = stem.replace(/\.[^.]+$/, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+  // dist/ is namespaced by course so exporting ch5 from two classes does not
+  // have one silently overwrite the other.
+  const outFile = path.resolve(ROOT, args.outFile || path.join('dist', slug, `${fileSlug}.html`));
 
   const html = renderExport(selected, {
     title: args.title || `Drill — ${stem.replace(/\.[^.]+$/, '')}`,

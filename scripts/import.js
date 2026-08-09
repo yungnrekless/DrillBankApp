@@ -2,9 +2,14 @@
 /**
  * CLI importer.
  *
- *   node scripts/import.js seed/                  # every .md/.txt/.json in a dir
- *   node scripts/import.js seed/economics.md ...  # specific files
- *   node scripts/import.js seed/ --dry-run        # parse and report, write nothing
+ *   node scripts/import.js --course nur4353            # that course's drills/
+ *   node scripts/import.js --course nur4353 seed/      # every .md/.txt/.json in a dir
+ *   node scripts/import.js --course nur4353 a.md b.md  # specific files
+ *   node scripts/import.js --course nur4353 --dry-run  # parse and report, write nothing
+ *
+ * --course takes a slug or any unambiguous prefix of one, and may be omitted
+ * when there is only one course. With no files named, it imports that course's
+ * own drills/ directory, which is the usual case.
  *
  * Idempotent: re-running against already-imported content adds nothing and
  * leaves existing qids (and therefore attempt history) alone.
@@ -12,12 +17,10 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { parseMarkdown, parseJson, mergeIntoBank } from '../src/importer.js';
 import { validateBank } from '../src/schema.js';
+import { ROOT, coursePaths, displayName, resolveCourseOrExit } from '../src/courses.js';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const BANK = path.join(ROOT, 'data', 'questions.json');
 const EXTS = new Set(['.md', '.markdown', '.txt', '.json']);
 
 function collect(target) {
@@ -32,14 +35,25 @@ function collect(target) {
 function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes('--dry-run');
-  const targets = args.filter((a) => !a.startsWith('--'));
 
-  if (!targets.length) {
-    console.error('usage: node scripts/import.js <file-or-dir> [...] [--dry-run]');
+  const courseIdx = args.indexOf('--course');
+  const slug = resolveCourseOrExit(courseIdx > -1 ? args[courseIdx + 1] : null);
+  const paths = coursePaths(slug);
+  const BANK = paths.questions;
+
+  // Drop --course and its value along with the other flags.
+  const targets = args.filter((a, i) => !a.startsWith('--') && i !== courseIdx + 1);
+
+  // No files named — import the course's own drills/, the everyday case.
+  const roots = targets.length ? targets : [paths.drills];
+  if (!targets.length && !fs.existsSync(paths.drills)) {
+    console.error(`${path.relative(ROOT, paths.drills)}/ does not exist — name the files to import.`);
     process.exit(1);
   }
 
-  const files = targets.flatMap(collect);
+  console.log(`Course: ${displayName(slug)}  (${slug})`);
+
+  const files = roots.flatMap(collect);
   if (!files.length) {
     console.error('No importable files found (.md, .markdown, .txt, .json).');
     process.exit(1);

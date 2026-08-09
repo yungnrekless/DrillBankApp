@@ -1,4 +1,11 @@
-/** Thin wrapper over the server's JSON endpoints. */
+/**
+ * Thin wrapper over the server's JSON endpoints.
+ *
+ * Every data endpoint is scoped to a course, so the caller passes the slug in.
+ * Nothing here remembers which course is selected — that lives in app.js, and
+ * keeping it out of the transport is what makes switching courses a matter of
+ * calling these again with a different slug.
+ */
 
 async function req(url, opts) {
   const res = await fetch(url, opts);
@@ -16,9 +23,10 @@ const json = (method, body) => ({
 });
 
 export const api = {
-  questions: () => req('/api/questions'),
-  attempts: () => req('/api/attempts'),
-  schedule: () => req('/api/schedule'),
-  logAttempts: (attempts) => req('/api/attempts', json('POST', attempts)),
-  saveSchedule: (state) => req('/api/schedule', json('PUT', state)),
+  courses: () => req('/api/courses'),
+  questions: (course) => req(`/api/${course}/questions`),
+  attempts: (course) => req(`/api/${course}/attempts`),
+  schedule: (course) => req(`/api/${course}/schedule`),
+  logAttempts: (course, attempts) => req(`/api/${course}/attempts`, json('POST', attempts)),
+  saveSchedule: (course, state) => req(`/api/${course}/schedule`, json('PUT', state)),
 };

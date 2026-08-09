@@ -15,7 +15,11 @@ import { renderDashboard } from '/dashboard.js';
 
 const $ = (id) => document.getElementById(id);
 
+const COURSE_KEY = 'drillbank.course';
+
 const state = {
+  course: null,        // slug of the class being drilled
+  courses: [],         // [{slug, name, questions}]
   questions: {},
   attempts: [],
   schedule: {},
@@ -30,10 +34,76 @@ const state = {
 
 /* ── boot ─────────────────────────────────────────────────────────── */
 
+/**
+ * Which course to open. The URL wins so a link can point at a specific class;
+ * otherwise the last one used, and failing that the first course there is.
+ */
+function initialCourse(courses) {
+  const slugs = courses.map((c) => c.slug);
+  const fromUrl = new URLSearchParams(location.search).get('course');
+  if (fromUrl && slugs.includes(fromUrl)) return fromUrl;
+  const remembered = localStorage.getItem(COURSE_KEY);
+  if (remembered && slugs.includes(remembered)) return remembered;
+  return slugs[0] || null;
+}
+
 async function boot() {
   try {
+    state.courses = await api.courses();
+  } catch (err) {
+    $('setup-summary').textContent = `Could not load courses: ${err.message}`;
+    return;
+  }
+
+  if (!state.courses.length) {
+    $('setup-summary').textContent =
+      'No courses found. Add courses/<slug>/drills/ and run: node scripts/import.js --course <slug>';
+    $('start-session').disabled = true;
+    return;
+  }
+
+  const select = $('course-select');
+  select.replaceChildren(...state.courses.map((c) => {
+    const opt = document.createElement('option');
+    opt.value = c.slug;
+    opt.textContent = c.name;
+    return opt;
+  }));
+  // A single course needs no picker — showing a one-item dropdown just adds
+  // a control that cannot do anything.
+  select.hidden = state.courses.length < 2;
+  select.addEventListener('change', () => loadCourse(select.value));
+
+  await loadCourse(initialCourse(state.courses));
+}
+
+/** Point the whole app at one course: fetch its data, drop any live session. */
+async function loadCourse(slug) {
+  if (!slug) return;
+  state.course = slug;
+  $('course-select').value = slug;
+  localStorage.setItem(COURSE_KEY, slug);
+
+  // Keep the URL shareable and the back/forward buttons honest.
+  const url = new URL(location.href);
+  url.searchParams.set('course', slug);
+  history.replaceState(null, '', url);
+
+  // Switching mid-session abandons it. Attempts already answered are on disk
+  // under the old course, so nothing is lost — but the queue is not portable.
+  state.queue = [];
+  state.results = [];
+  state.current = null;
+  $('question-card').hidden = true;
+  $('session-summary').hidden = true;
+  $('session-setup').hidden = false;
+  $('score').hidden = true;
+
+  $('setup-summary').textContent = 'Loading bank…';
+  $('start-session').disabled = true;
+  try {
     const [questions, attempts, schedule] = await Promise.all([
-      api.questions(), api.attempts(), api.schedule(),
+      api.questions(slug), api.attempts(slug), api.schedule(slug),
     ]);
     state.questions = questions;
     state.attempts = attempts;
@@ -43,16 +113,19 @@ async function boot() {
     return;
   }
   renderSetup();
+  if (!$('view-dashboard').hidden) renderDashboard(state);
 }
 
 function renderSetup() {
   const total = Object.keys(state.questions).length;
   if (!total) {
     $('setup-summary').textContent =
-      'No questions in the bank yet. Run: node scripts/import.js seed/';
+      `No questions in this course's bank yet. Run: node scripts/import.js --course ${state.course}`;
+    $('weak-callout').hidden = true;
     $('start-session').disabled = true;
     return;
   }
+  $('start-session').disabled = false;
   const due = buildQueue(state.questions, state.schedule, state.attempts, { limit: 9999 }).length;
   const topics = new Set(Object.values(state.questions).map((q) => q.topic)).size;
   $('setup-summary').textContent =
@@ -176,8 +249,11 @@ async function submitAnswer() {
   state.schedule[qid] = grade(state.schedule[qid], correct, todayISO());
   updateScore();
 
+  // Pinned to the course the question came from: a mid-flight switch must not
+  // land this attempt in another class's log.
+  const course = state.course;
   try {
-    await Promise.all([api.logAttempts(attempt), api.saveSchedule(state.schedule)]);
+    await Promise.all([api.logAttempts(course, attempt), api.saveSchedule(course, state.schedule)]);
   } catch (err) {
     $('verdict').textContent += `  (warning: not saved — ${err.message})`;
   }

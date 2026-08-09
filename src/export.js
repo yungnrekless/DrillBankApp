@@ -45,6 +45,62 @@ export function embedJson(value) {
 }
 
 /**
+ * Top-level course picker for a multi-course site: one card per class, each
+ * linking into that course's own landing page.
+ *
+ * Unlike the chapter index this page is static HTML with no script at all —
+ * it is three links and a heading, and there is nothing a session builder
+ * could add. That also means it renders identically in preview panes and mail
+ * clients that block inline scripts.
+ *
+ * @param {Array<{href,name,chapters,count,sata,topics}>} courses
+ * @param {{title?: string, subtitle?: string}} meta
+ */
+export function renderCourseIndex(courses, meta = {}) {
+  const title = meta.title || 'Drill Bank';
+  const subtitle = meta.subtitle || `${courses.length} course${courses.length === 1 ? '' : 's'}`;
+
+  const cards = courses.map((c) => `<a class="card" href="${escapeHtml(c.href)}">
+<div class="card-title">${escapeHtml(c.name)}</div>
+<div class="card-meta">${c.chapters} chapter${c.chapters === 1 ? '' : 's'} &middot; ${c.count} questions &middot; ${c.sata} select-all &middot; ${c.topics} topics</div>
+</a>`).join('\n');
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${escapeHtml(title)}</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:${PALETTE.navy};--accent:${PALETTE.accent};--teal:${PALETTE.teal};--paper:${PALETTE.paper};--line:${PALETTE.line};--soft:${PALETTE.soft}}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:16px}
+h1{font-size:23px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.lede{font-size:14.5px;color:var(--soft);margin-bottom:18px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1.5px solid var(--line);padding:15px 16px;margin-bottom:11px;transition:.12s}
+.card:hover{border-color:var(--navy);transform:translateX(2px)}
+.card-title{font-size:18px;font-weight:600;margin-bottom:5px}
+.card-meta{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--soft)}
+.empty{font-size:14.5px;color:var(--soft);font-style:italic}
+.foot{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--soft);line-height:1.55}
+</style>
+</head>
+<body>
+<div class="top"><div class="sub">${escapeHtml(subtitle)}</div><h1>${escapeHtml(title)}</h1></div>
+<p class="lede">Pick a course. Each one opens its own chapter list and session builder.</p>
+${cards || '<p class="empty">No courses published yet.</p>'}
+<p class="foot">Student-made study aid. The questions are written from course reading and are
+not affiliated with or endorsed by any publisher. Check anything that looks off against your
+own text &mdash; and if you find an error, say so, so it can be fixed for everyone.</p>
+</body>
+</html>
+`;
+}
+
+/**
  * Landing page. When JavaScript runs it is a session builder: pick any set of
  * chapters with checkboxes, choose how many questions (25/50/75/100), and drill
  * a shuffled mix drawn from just those chapters. When JavaScript is blocked

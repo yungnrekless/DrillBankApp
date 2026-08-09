@@ -54,5 +54,5 @@ question, by design: questions are immutable once imported.
 Check what a file will produce before writing anything:
 
 ```
-node scripts/import.js path/to/file.md --dry-run
+node scripts/import.js --course <slug> path/to/file.md --dry-run
 ```
