@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 13 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 13</div><h1>Chapter 13 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">evidence-based practice foundations</span><span class="chip t2">definition and benefits</span></div>
+<div class="stem">1. A nurse manager states that the unit's new fall-prevention protocol is evidence-based because it was drawn entirely from the most recent meta-analysis of randomized controlled trials. Which response best reflects the chapter's definition of evidence-based practice?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Evidence-based practice requires that only findings from meta-analyses of randomized controlled trials be used</li><li class="fopt"><span class="mk">B</span>Evidence-based practice requires that expert clinical opinion take precedence over published research findings</li><li class="fopt right"><span class="mk">&#10003;</span>Evidence-based practice requires integrating the best research evidence with clinical expertise, patient circumstances, and patient values</li><li class="fopt"><span class="mk">D</span>Evidence-based practice requires that each unit generate its own research before changing a protocol</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>EBP is defined as a complex phenomenon that requires integration of the best research evidence with clinical expertise, patient circumstances, and patient values in the delivery of quality, safe, cost-effective care.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) sounds rigorous and does name the strongest evidence source, but research evidence is only one of the four elements. A protocol built from evidence alone, with no attention to clinical expertise, patient circumstances, or patient values, is not EBP.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">evidence-based practice foundations</span><span class="chip t2">definition and benefits</span></div>
+<div class="stem">2. A chief nursing officer is building the case for investing in an evidence-based practice program. Which statements about the benefits and institutional drivers of EBP are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The greatest benefits of EBP are improved outcomes for patients, providers, and healthcare agencies</li><li class="fopt"><span class="mk">B</span>Magnet status is approved through the Agency for Healthcare Research and Quality</li><li class="fopt right"><span class="mk">&#10003;</span>EBP improves nurses' satisfaction and facilitates achievement of accreditation requirements</li><li class="fopt right"><span class="mk">&#10003;</span>The Joint Commission revised its accreditation criteria to emphasize patient care outcomes achieved through EBP</li><li class="fopt right"><span class="mk">&#10003;</span>Agencies seeking or maintaining Magnet status must document research-related outcomes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The greatest benefits of EBP are improved outcomes for patients, providers, and healthcare agencies; leaders recognize that EBP promotes quality outcomes, improves nurses' satisfaction, and facilitates achievement of accreditation requirements. Magnet status is approved through the American Nurses Credentialing Center.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>AHRQ is real in this chapter and is easy to reach for, but its role here is funding the evidence-based practice centers, not conferring Magnet status. Magnet runs through the ANCC.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">evidence-based practice foundations</span><span class="chip t2">challenges to implementing EBP</span></div>
+<div class="stem">3. A staff nurse objects that evidence-based guidelines cannot account for the patient in front of her. Which statement identifies the challenge she is naming along with the chapter's recommended response?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Nursing has few systematic reviews compared with medicine and psychology, so the response is to require randomized controlled trials before any guideline is adopted</li><li class="fopt right"><span class="mk">&#10003;</span>Research evidence is generated from population data and applied to individual patients, so poor outcomes under a guideline should be reported and, if possible, published as a case study</li><li class="fopt"><span class="mk">C</span>Guidelines should be applied uniformly to all patients regardless of circumstances or values, so individual variation is not a concern</li><li class="fopt"><span class="mk">D</span>Research evidence is generated from individual case studies and applied to populations, so poor outcomes should be managed by discontinuing the guideline on the unit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Evidence is generated based on population data and then applied in practice to individual patients, who respond in unique ways or have unique circumstances and values. Patients with poor outcomes under a guideline should be reported and, if possible, published as a case study, and the NIH supports translational research to improve use of evidence across patient populations and settings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex answer for anyone who reads evidence-based as protocol-driven, but uniform application regardless of patient circumstances contradicts both this challenge and the definition of EBP. (A) names a genuine challenge from the chapter and attaches the wrong response to it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">strength of research evidence</span><span class="chip t2">ranking sources of evidence</span></div>
+<div class="stem">4. A committee is grading the evidence it has gathered on a wound-care intervention. Which source provides the strongest evidence?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A single randomized controlled trial with a large sample</li><li class="fopt"><span class="mk">B</span>A meta-synthesis of qualitative studies of patients' wound-care experiences</li><li class="fopt"><span class="mk">C</span>A mixed-methods systematic review of intervention and descriptive studies</li><li class="fopt right"><span class="mk">&#10003;</span>A systematic review that includes a meta-analysis of randomized controlled trials</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The strongest evidence comes from systematic reviews that include meta-analyses of randomized controlled trials.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is tempting because the RCT is the strongest individual design, so students pick the design rather than the synthesis. A synthesis of RCTs outranks any single trial.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">strength of research evidence</span><span class="chip t2">ranking sources of evidence</span></div>
+<div class="stem">5. Which statements about sources of evidence for changing practice are consistent with the chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The strongest evidence comes from systematic reviews that include meta-analyses of randomized controlled trials</li><li class="fopt right"><span class="mk">&#10003;</span>Meta-syntheses provide important evidence for changing practice</li><li class="fopt"><span class="mk">C</span>Only meta-analyses of randomized controlled trials may be used to develop research-based protocols</li><li class="fopt right"><span class="mk">&#10003;</span>Mixed-methods systematic reviews provide important evidence for changing practice</li><li class="fopt right"><span class="mk">&#10003;</span>Individual studies also provide important evidence for changing practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names systematic reviews containing meta-analyses of RCTs as the strongest evidence but explicitly states that meta-syntheses, mixed-methods systematic reviews, and individual studies also provide important evidence for changing practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overstates the text. Ranking meta-analysis highest is not the same as excluding everything else, and the chapter goes further: research evidence can be combined with other sources of knowledge such as theories, scientific principles, expert opinion, and case reports to build research-based protocols. Expert opinion is weakest on its own but legitimate as a supplement.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">PICO clinical questions</span><span class="chip t2">PICO elements</span></div>
+<div class="stem">6. In the chapter's PICO question on IM injection technique, the statement &quot;IM injection given with 5 to 10 seconds of aspiration in all sites, regardless of age and volume&quot; occupies which position?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>P, the population</li><li class="fopt"><span class="mk">B</span>I, the intervention</li><li class="fopt right"><span class="mk">&#10003;</span>C, the comparison intervention</li><li class="fopt"><span class="mk">D</span>O, the outcome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The comparison intervention is the practice being measured against, which here is aspirating 5 to 10 seconds in all sites regardless of age and volume. The intervention is IM injection given without aspiration in the right site based on volume of medication and age.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Aspirating feels like the thing being done, so students slot it into I. In this question the comparison is the older outgoing practice and the intervention is the newer no-aspiration technique. The outcome is IM injection of vaccine without complications.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">PICO clinical questions</span><span class="chip t2">IM injection aspiration guideline</span></div>
+<div class="stem">7. A nurse is administering a vaccine into an adult patient's deltoid. Based on the current evidence in the chapter, what should the nurse do about aspiration?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Aspirate for 5 to 10 seconds before injecting</li><li class="fopt right"><span class="mk">&#10003;</span>Do not aspirate, because aspiration is recommended only for the dorsogluteal site</li><li class="fopt"><span class="mk">C</span>Aspirate for 5 to 10 seconds only if the volume exceeds 2 mL</li><li class="fopt"><span class="mk">D</span>Do not aspirate, because aspiration is no longer recommended at any injection site</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Current evidence supports no aspiration in the deltoid, ventrogluteal, and vastus lateralis sites, and aspiration only in the dorsogluteal site because of the close proximity of the gluteal artery.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) overcorrects. The dorsogluteal exception survives, though researchers recommend that the dorsogluteal site not be used if possible. (A) is the older guideline that this chapter uses as its example of practice lagging behind evidence.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">PICO clinical questions</span><span class="chip t2">IM injection aspiration guideline</span></div>
+<div class="stem">8. Which statements about IM injection site selection are consistent with the chapter's clinical practice guideline? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The vastus lateralis is the preferred site for infants</li><li class="fopt right"><span class="mk">&#10003;</span>The ventrogluteal or deltoid site is appropriate for adults</li><li class="fopt"><span class="mk">C</span>The dorsogluteal site is preferred for adults because it tolerates large volumes</li><li class="fopt"><span class="mk">D</span>Aspiration for 5 to 10 seconds is required in the vastus lateralis in infants</li><li class="fopt right"><span class="mk">&#10003;</span>Large volumes of 2 to 5 mL should be given in the ventrogluteal site in adults</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Infants receive injections in the vastus lateralis; toddlers and children in the vastus lateralis or deltoid; adults in the ventrogluteal or deltoid. Large volumes of 2 to 5 mL go in the ventrogluteal site for adults, and small volumes of 2 mL or less go in the deltoid for toddlers, children, and adults.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the specific practice error the chapter documents nurses still making. Nurses over-used the dorsogluteal site despite evidence favoring the ventrogluteal. (D) applies the outdated aspiration rule to a site where current evidence says not to aspirate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">PICO clinical questions</span><span class="chip t2">IM injection aspiration guideline</span></div>
+<div class="stem">9. A study by Thomas and colleagues reported what finding about aspiration practice, and what point does the chapter use it to make?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>90% of nurses were still aspirating after IM injections 74% of the time, showing that the guideline itself was flawed</li><li class="fopt"><span class="mk">B</span>74% of nurses had adopted the no-aspiration guideline within one year, showing that dissemination in nursing is efficient</li><li class="fopt"><span class="mk">C</span>74% of nurses reported complications from IM injections, showing the need for a new comparison intervention</li><li class="fopt right"><span class="mk">&#10003;</span>74% of nurses were still aspirating after IM injections 90% of the time, showing that evidence existing is not the same as evidence being used</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>74% of nurses were still aspirating after IM injections 90% of the time, and researchers therefore recommended additional education in nursing programs and continuing education. This is the chapter's central point about the gap between available evidence and used evidence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts the two percentages. 74% is the proportion of nurses; 90% is how often those nurses aspirated.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">Stetler model of research utilization</span><span class="chip t2">the five phases</span></div>
+<div class="stem">10. A nurse using the Stetler Model critically appraises the retrieved reports and finds only three small, methodologically weak studies. According to the model, what happens next?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The nurse proceeds to comparative evaluation and weighs feasibility despite the weak evidence</li><li class="fopt"><span class="mk">B</span>The nurse combines the weak studies into a meta-analysis to strengthen them</li><li class="fopt right"><span class="mk">&#10003;</span>The findings are considered inadequate for use in practice and the process stops</li><li class="fopt"><span class="mk">D</span>The nurse proceeds to translation and applies the findings on a trial basis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In Phase II, Validation, the reports are critically appraised for scientific soundness. If the studies are limited in number, weak, or both, the findings are considered inadequate for use in practice and the process stops.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reflects the reflex that a model is a checklist you always run to the end. Stetler builds in a stop. (B) borrows a true statement from Phase II, that a systematic review, meta-analysis, or meta-synthesis greatly strengthens the evidence, and misapplies it as a way around a failed appraisal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">Stetler model of research utilization</span><span class="chip t2">the five phases</span></div>
+<div class="stem">11. After reading a synthesis on delirium, a nurse changes no order and no procedure, but now understands why her older postoperative patients become confused and analyzes her unit's practice dynamics differently. Under the Stetler Model, this is which kind of application?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cognitive</li><li class="fopt"><span class="mk">B</span>Instrumental</li><li class="fopt"><span class="mk">C</span>Symbolic</li><li class="fopt"><span class="mk">D</span>Comparative</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Phase IV, Translation/Application, describes cognitive, instrumental, and symbolic application. Cognitive application means the research base is a means of modifying a way of thinking or one's appreciation of an issue, such as improving understanding of a situation or allowing analysis of practice dynamics.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is not a kind of application at all. Comparative evaluation is the name of Phase III, and reusing that word as an application type is the easiest way to be pulled off the three real options.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">Stetler model of research utilization</span><span class="chip t2">comparative evaluation and decision making</span></div>
+<div class="stem">12. Which items are the four parts of Phase III, Comparative Evaluation/Decision Making, in the Stetler Model? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Substantiation of the evidence</li><li class="fopt"><span class="mk">B</span>Pilot testing of the research-based protocol</li><li class="fopt right"><span class="mk">&#10003;</span>Fit of the evidence with the healthcare setting</li><li class="fopt right"><span class="mk">&#10003;</span>Feasibility of using the findings</li><li class="fopt right"><span class="mk">&#10003;</span>Concerns with current practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Phase III has four parts: substantiation of the evidence, fit of the evidence with the healthcare setting, feasibility of using the findings, and concerns with current practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) belongs to the Iowa Model, where research-based protocols are pilot-tested before adoption. Importing an Iowa step into a Stetler phase is the most common error on this content.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">Stetler model of research utilization</span><span class="chip t2">comparative evaluation and decision making</span></div>
+<div class="stem">13. A nurse assessing feasibility under the Stetler Model is applying the model's three Rs. What are they?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Relevance, reliability, and rigor</li><li class="fopt"><span class="mk">B</span>Research, review, and revision</li><li class="fopt"><span class="mk">C</span>Results, reporting, and replication</li><li class="fopt right"><span class="mk">&#10003;</span>Risks, resources, and readiness</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Feasibility is assessed as potential risks, resources needed, and readiness of those involved.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The three Rs are the feasibility test only, which is one of the four parts of Phase III. They are not a summary of the whole model.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">Stetler model of research utilization</span><span class="chip t2">comparative evaluation and decision making</span></div>
+<div class="stem">14. An evidence-based practice team finds sound evidence supporting a change, but the change is complex and would involve pharmacy, respiratory therapy, and nursing, and coordinating it will take considerable time. Which Phase III decision fits this situation?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>To consider using the research evidence</li><li class="fopt"><span class="mk">B</span>To use the research evidence</li><li class="fopt"><span class="mk">C</span>Not to use the research evidence</li><li class="fopt"><span class="mk">D</span>To return to Phase II for revalidation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Phase III allows three decisions: to use the evidence, to consider using it, or not to use it. To consider using it applies when a change is complex and involves multiple disciplines, so more time is needed to coordinate.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Students who remember only a use or do-not-use binary force this item into (B) or (C). Not to use is reserved for evidence that is not strong, or for risks or costs of change that are too high in comparison with the benefits.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">Iowa model of evidence-based practice</span><span class="chip t2">triggering issues and opportunities</span></div>
+<div class="stem">15. A hospital's risk-management reports show a cluster of medication errors on night shift, and the unit council decides to search the literature. In the Iowa Model, this beginning is best described as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A knowledge-focused opportunity</li><li class="fopt right"><span class="mk">&#10003;</span>A problem-focused trigger</li><li class="fopt"><span class="mk">C</span>Stetler Phase I preparation</li><li class="fopt"><span class="mk">D</span>An expanded philosophy of care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Problem-focused triggers are clinical problems and data from risk management, process improvement, benchmarking, and financial reports.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the near-neighbor across models. An individual nurse deciding whether to apply findings is Stetler; a trigger arising from agency risk-management data is Iowa.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">Iowa model of evidence-based practice</span><span class="chip t2">triggering issues and opportunities</span></div>
+<div class="stem">16. Which of the following would the Iowa Model classify as knowledge-focused opportunities? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>New research findings published on an intervention the unit uses</li><li class="fopt right"><span class="mk">&#10003;</span>A change in national agency standards and guidelines</li><li class="fopt"><span class="mk">C</span>Benchmarking data showing the unit's catheter-associated infection rate is above its peers</li><li class="fopt right"><span class="mk">&#10003;</span>An updated professional model of care, which is a Magnet recognition requirement</li><li class="fopt right"><span class="mk">&#10003;</span>A question raised by the institutional standards' committee</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Knowledge-focused opportunities include new research findings, changes in national agency or organizational standards and guidelines, an expanded philosophy of care, an updated professional model of care (a Magnet recognition requirement), and questions from the institutional standards' committee.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is benchmarking data, which the chapter lists as a problem-focused trigger alongside risk management, process improvement, and financial reports. Sorting a given example into the right kind of trigger is the whole point of this distinction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">Iowa model of evidence-based practice</span><span class="chip t2">from pilot testing to adoption</span></div>
+<div class="stem">17. An Iowa Model team has confirmed that its topic is an agency priority and has developed a research-based protocol for oral care in ventilated patients. What comes next, before the protocol is adopted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Implement the protocol agency-wide and monitor outcomes through quality improvement</li><li class="fopt"><span class="mk">B</span>Submit the protocol to the institutional standards' committee for symbolic approval</li><li class="fopt"><span class="mk">C</span>Conduct additional studies, because a protocol cannot be built from existing evidence</li><li class="fopt right"><span class="mk">&#10003;</span>Pilot-test the protocol and evaluate its impact on patient care, personnel, and the agency</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Research-based protocols, algorithms, guidelines, and policies are pilot-tested and then evaluated for impact on patient care, personnel, and the agency. If outcomes are favorable, the change is adopted, integrated, and sustained, with key outcomes monitored through quality improvement.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) skips the pilot. Agency-wide rollout and QI monitoring are what follow a favorable pilot, not what replace it. (C) applies only when the evidence found is inadequate, which is not the case here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">choosing between the EBP models</span><span class="chip t2">Stetler versus Iowa</span></div>
+<div class="stem">18. Which statement correctly distinguishes the Stetler Model from the Iowa Model?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stetler is a user-initiated, conscious critical-thinking process organized in five phases, while Iowa is an agency-level model that begins with triggering issues or opportunities</li><li class="fopt"><span class="mk">B</span>Stetler is an agency-level model organized around triggers, while Iowa is an individual nurse's critical-thinking process</li><li class="fopt"><span class="mk">C</span>Stetler applies only at the institutional level, while Iowa applies only to individual practitioners</li><li class="fopt"><span class="mk">D</span>Both models require pilot testing before any decision about using the evidence is made</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The intent of the Stetler Model is to make using research evidence in practice a conscious, critical thinking process that is initiated by the user, organized in five phases. The Iowa Model promotes the implementation of EBP by nurses in clinical agencies and begins with triggering issues or opportunities.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) half-remembers a real detail and inverts it. Stetler evidence can be used at the institutional level, producing policies, algorithms, procedures, protocols, and formal programs, or at the individual level by RNs, educators, and policy makers. It is not restricted to institutions.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"evidence-based practice foundations","subtopic":"definition and benefits","stem":"A nurse manager states that the unit's new fall-prevention protocol is evidence-based because it was drawn entirely from the most recent meta-analysis of randomized controlled trials. Which response best reflects the chapter's definition of evidence-based practice?","options":["Evidence-based practice requires that only findings from meta-analyses of randomized controlled trials be used","Evidence-based practice requires that expert clinical opinion take precedence over published research findings","Evidence-based practice requires integrating the best research evidence with clinical expertise, patient circumstances, and patient values","Evidence-based practice requires that each unit generate its own research before changing a protocol"],"correct":[2],"sata":false,"why":"EBP is defined as a complex phenomenon that requires integration of the best research evidence with clinical expertise, patient circumstances, and patient values in the delivery of quality, safe, cost-effective care.","trap":"(A) sounds rigorous and does name the strongest evidence source, but research evidence is only one of the four elements. A protocol built from evidence alone, with no attention to clinical expertise, patient circumstances, or patient values, is not EBP."},{"topic":"evidence-based practice foundations","subtopic":"definition and benefits","stem":"A chief nursing officer is building the case for investing in an evidence-based practice program. Which statements about the benefits and institutional drivers of EBP are accurate? Select all that apply.","options":["The greatest benefits of EBP are improved outcomes for patients, providers, and healthcare agencies","Magnet status is approved through the Agency for Healthcare Research and Quality","EBP improves nurses' satisfaction and facilitates achievement of accreditation requirements","The Joint Commission revised its accreditation criteria to emphasize patient care outcomes achieved through EBP","Agencies seeking or maintaining Magnet status must document research-related outcomes"],"correct":[0,2,3,4],"sata":true,"why":"The greatest benefits of EBP are improved outcomes for patients, providers, and healthcare agencies; leaders recognize that EBP promotes quality outcomes, improves nurses' satisfaction, and facilitates achievement of accreditation requirements. Magnet status is approved through the American Nurses Credentialing Center.","trap":"AHRQ is real in this chapter and is easy to reach for, but its role here is funding the evidence-based practice centers, not conferring Magnet status. Magnet runs through the ANCC."},{"topic":"evidence-based practice foundations","subtopic":"challenges to implementing EBP","stem":"A staff nurse objects that evidence-based guidelines cannot account for the patient in front of her. Which statement identifies the challenge she is naming along with the chapter's recommended response?","options":["Nursing has few systematic reviews compared with medicine and psychology, so the response is to require randomized controlled trials before any guideline is adopted","Research evidence is generated from population data and applied to individual patients, so poor outcomes under a guideline should be reported and, if possible, published as a case study","Guidelines should be applied uniformly to all patients regardless of circumstances or values, so individual variation is not a concern","Research evidence is generated from individual case studies and applied to populations, so poor outcomes should be managed by discontinuing the guideline on the unit"],"correct":[1],"sata":false,"why":"Evidence is generated based on population data and then applied in practice to individual patients, who respond in unique ways or have unique circumstances and values. Patients with poor outcomes under a guideline should be reported and, if possible, published as a case study, and the NIH supports translational research to improve use of evidence across patient populations and settings.","trap":"(C) is the reflex answer for anyone who reads evidence-based as protocol-driven, but uniform application regardless of patient circumstances contradicts both this challenge and the definition of EBP. (A) names a genuine challenge from the chapter and attaches the wrong response to it."},{"topic":"strength of research evidence","subtopic":"ranking sources of evidence","stem":"A committee is grading the evidence it has gathered on a wound-care intervention. Which source provides the strongest evidence?","options":["A single randomized controlled trial with a large sample","A meta-synthesis of qualitative studies of patients' wound-care experiences","A mixed-methods systematic review of intervention and descriptive studies","A systematic review that includes a meta-analysis of randomized controlled trials"],"correct":[3],"sata":false,"why":"The strongest evidence comes from systematic reviews that include meta-analyses of randomized controlled trials.","trap":"(A) is tempting because the RCT is the strongest individual design, so students pick the design rather than the synthesis. A synthesis of RCTs outranks any single trial."},{"topic":"strength of research evidence","subtopic":"ranking sources of evidence","stem":"Which statements about sources of evidence for changing practice are consistent with the chapter? Select all that apply.","options":["The strongest evidence comes from systematic reviews that include meta-analyses of randomized controlled trials","Meta-syntheses provide important evidence for changing practice","Only meta-analyses of randomized controlled trials may be used to develop research-based protocols","Mixed-methods systematic reviews provide important evidence for changing practice","Individual studies also provide important evidence for changing practice"],"correct":[0,1,3,4],"sata":true,"why":"The chapter names systematic reviews containing meta-analyses of RCTs as the strongest evidence but explicitly states that meta-syntheses, mixed-methods systematic reviews, and individual studies also provide important evidence for changing practice.","trap":"(C) overstates the text. Ranking meta-analysis highest is not the same as excluding everything else, and the chapter goes further: research evidence can be combined with other sources of knowledge such as theories, scientific principles, expert opinion, and case reports to build research-based protocols. Expert opinion is weakest on its own but legitimate as a supplement."},{"topic":"PICO clinical questions","subtopic":"PICO elements","stem":"In the chapter's PICO question on IM injection technique, the statement \"IM injection given with 5 to 10 seconds of aspiration in all sites, regardless of age and volume\" occupies which position?","options":["P, the population","I, the intervention","C, the comparison intervention","O, the outcome"],"correct":[2],"sata":false,"why":"The comparison intervention is the practice being measured against, which here is aspirating 5 to 10 seconds in all sites regardless of age and volume. The intervention is IM injection given without aspiration in the right site based on volume of medication and age.","trap":"Aspirating feels like the thing being done, so students slot it into I. In this question the comparison is the older outgoing practice and the intervention is the newer no-aspiration technique. The outcome is IM injection of vaccine without complications."},{"topic":"PICO clinical questions","subtopic":"IM injection aspiration guideline","stem":"A nurse is administering a vaccine into an adult patient's deltoid. Based on the current evidence in the chapter, what should the nurse do about aspiration?","options":["Aspirate for 5 to 10 seconds before injecting","Do not aspirate, because aspiration is recommended only for the dorsogluteal site","Aspirate for 5 to 10 seconds only if the volume exceeds 2 mL","Do not aspirate, because aspiration is no longer recommended at any injection site"],"correct":[1],"sata":false,"why":"Current evidence supports no aspiration in the deltoid, ventrogluteal, and vastus lateralis sites, and aspiration only in the dorsogluteal site because of the close proximity of the gluteal artery.","trap":"(D) overcorrects. The dorsogluteal exception survives, though researchers recommend that the dorsogluteal site not be used if possible. (A) is the older guideline that this chapter uses as its example of practice lagging behind evidence."},{"topic":"PICO clinical questions","subtopic":"IM injection aspiration guideline","stem":"Which statements about IM injection site selection are consistent with the chapter's clinical practice guideline? Select all that apply.","options":["The vastus lateralis is the preferred site for infants","The ventrogluteal or deltoid site is appropriate for adults","The dorsogluteal site is preferred for adults because it tolerates large volumes","Aspiration for 5 to 10 seconds is required in the vastus lateralis in infants","Large volumes of 2 to 5 mL should be given in the ventrogluteal site in adults"],"correct":[0,1,4],"sata":true,"why":"Infants receive injections in the vastus lateralis; toddlers and children in the vastus lateralis or deltoid; adults in the ventrogluteal or deltoid. Large volumes of 2 to 5 mL go in the ventrogluteal site for adults, and small volumes of 2 mL or less go in the deltoid for toddlers, children, and adults.","trap":"(C) is the specific practice error the chapter documents nurses still making. Nurses over-used the dorsogluteal site despite evidence favoring the ventrogluteal. (D) applies the outdated aspiration rule to a site where current evidence says not to aspirate."},{"topic":"PICO clinical questions","subtopic":"IM injection aspiration guideline","stem":"A study by Thomas and colleagues reported what finding about aspiration practice, and what point does the chapter use it to make?","options":["90% of nurses were still aspirating after IM injections 74% of the time, showing that the guideline itself was flawed","74% of nurses had adopted the no-aspiration guideline within one year, showing that dissemination in nursing is efficient","74% of nurses reported complications from IM injections, showing the need for a new comparison intervention","74% of nurses were still aspirating after IM injections 90% of the time, showing that evidence existing is not the same as evidence being used"],"correct":[3],"sata":false,"why":"74% of nurses were still aspirating after IM injections 90% of the time, and researchers therefore recommended additional education in nursing programs and continuing education. This is the chapter's central point about the gap between available evidence and used evidence.","trap":"(A) inverts the two percentages. 74% is the proportion of nurses; 90% is how often those nurses aspirated."},{"topic":"Stetler model of research utilization","subtopic":"the five phases","stem":"A nurse using the Stetler Model critically appraises the retrieved reports and finds only three small, methodologically weak studies. According to the model, what happens next?","options":["The nurse proceeds to comparative evaluation and weighs feasibility despite the weak evidence","The nurse combines the weak studies into a meta-analysis to strengthen them","The findings are considered inadequate for use in practice and the process stops","The nurse proceeds to translation and applies the findings on a trial basis"],"correct":[2],"sata":false,"why":"In Phase II, Validation, the reports are critically appraised for scientific soundness. If the studies are limited in number, weak, or both, the findings are considered inadequate for use in practice and the process stops.","trap":"(A) reflects the reflex that a model is a checklist you always run to the end. Stetler builds in a stop. (B) borrows a true statement from Phase II, that a systematic review, meta-analysis, or meta-synthesis greatly strengthens the evidence, and misapplies it as a way around a failed appraisal."},{"topic":"Stetler model of research utilization","subtopic":"the five phases","stem":"After reading a synthesis on delirium, a nurse changes no order and no procedure, but now understands why her older postoperative patients become confused and analyzes her unit's practice dynamics differently. Under the Stetler Model, this is which kind of application?","options":["Cognitive","Instrumental","Symbolic","Comparative"],"correct":[0],"sata":false,"why":"Phase IV, Translation/Application, describes cognitive, instrumental, and symbolic application. Cognitive application means the research base is a means of modifying a way of thinking or one's appreciation of an issue, such as improving understanding of a situation or allowing analysis of practice dynamics.","trap":"(D) is not a kind of application at all. Comparative evaluation is the name of Phase III, and reusing that word as an application type is the easiest way to be pulled off the three real options."},{"topic":"Stetler model of research utilization","subtopic":"comparative evaluation and decision making","stem":"Which items are the four parts of Phase III, Comparative Evaluation/Decision Making, in the Stetler Model? Select all that apply.","options":["Substantiation of the evidence","Pilot testing of the research-based protocol","Fit of the evidence with the healthcare setting","Feasibility of using the findings","Concerns with current practice"],"correct":[0,2,3,4],"sata":true,"why":"Phase III has four parts: substantiation of the evidence, fit of the evidence with the healthcare setting, feasibility of using the findings, and concerns with current practice.","trap":"(B) belongs to the Iowa Model, where research-based protocols are pilot-tested before adoption. Importing an Iowa step into a Stetler phase is the most common error on this content."},{"topic":"Stetler model of research utilization","subtopic":"comparative evaluation and decision making","stem":"A nurse assessing feasibility under the Stetler Model is applying the model's three Rs. What are they?","options":["Relevance, reliability, and rigor","Research, review, and revision","Results, reporting, and replication","Risks, resources, and readiness"],"correct":[3],"sata":false,"why":"Feasibility is assessed as potential risks, resources needed, and readiness of those involved.","trap":"The three Rs are the feasibility test only, which is one of the four parts of Phase III. They are not a summary of the whole model."},{"topic":"Stetler model of research utilization","subtopic":"comparative evaluation and decision making","stem":"An evidence-based practice team finds sound evidence supporting a change, but the change is complex and would involve pharmacy, respiratory therapy, and nursing, and coordinating it will take considerable time. Which Phase III decision fits this situation?","options":["To consider using the research evidence","To use the research evidence","Not to use the research evidence","To return to Phase II for revalidation"],"correct":[0],"sata":false,"why":"Phase III allows three decisions: to use the evidence, to consider using it, or not to use it. To consider using it applies when a change is complex and involves multiple disciplines, so more time is needed to coordinate.","trap":"Students who remember only a use or do-not-use binary force this item into (B) or (C). Not to use is reserved for evidence that is not strong, or for risks or costs of change that are too high in comparison with the benefits."},{"topic":"Iowa model of evidence-based practice","subtopic":"triggering issues and opportunities","stem":"A hospital's risk-management reports show a cluster of medication errors on night shift, and the unit council decides to search the literature. In the Iowa Model, this beginning is best described as which of the following?","options":["A knowledge-focused opportunity","A problem-focused trigger","Stetler Phase I preparation","An expanded philosophy of care"],"correct":[1],"sata":false,"why":"Problem-focused triggers are clinical problems and data from risk management, process improvement, benchmarking, and financial reports.","trap":"(C) is the near-neighbor across models. An individual nurse deciding whether to apply findings is Stetler; a trigger arising from agency risk-management data is Iowa."},{"topic":"Iowa model of evidence-based practice","subtopic":"triggering issues and opportunities","stem":"Which of the following would the Iowa Model classify as knowledge-focused opportunities? Select all that apply.","options":["New research findings published on an intervention the unit uses","A change in national agency standards and guidelines","Benchmarking data showing the unit's catheter-associated infection rate is above its peers","An updated professional model of care, which is a Magnet recognition requirement","A question raised by the institutional standards' committee"],"correct":[0,1,3,4],"sata":true,"why":"Knowledge-focused opportunities include new research findings, changes in national agency or organizational standards and guidelines, an expanded philosophy of care, an updated professional model of care (a Magnet recognition requirement), and questions from the institutional standards' committee.","trap":"(C) is benchmarking data, which the chapter lists as a problem-focused trigger alongside risk management, process improvement, and financial reports. Sorting a given example into the right kind of trigger is the whole point of this distinction."},{"topic":"Iowa model of evidence-based practice","subtopic":"from pilot testing to adoption","stem":"An Iowa Model team has confirmed that its topic is an agency priority and has developed a research-based protocol for oral care in ventilated patients. What comes next, before the protocol is adopted?","options":["Implement the protocol agency-wide and monitor outcomes through quality improvement","Submit the protocol to the institutional standards' committee for symbolic approval","Conduct additional studies, because a protocol cannot be built from existing evidence","Pilot-test the protocol and evaluate its impact on patient care, personnel, and the agency"],"correct":[3],"sata":false,"why":"Research-based protocols, algorithms, guidelines, and policies are pilot-tested and then evaluated for impact on patient care, personnel, and the agency. If outcomes are favorable, the change is adopted, integrated, and sustained, with key outcomes monitored through quality improvement.","trap":"(A) skips the pilot. Agency-wide rollout and QI monitoring are what follow a favorable pilot, not what replace it. (C) applies only when the evidence found is inadequate, which is not the case here."},{"topic":"choosing between the EBP models","subtopic":"Stetler versus Iowa","stem":"Which statement correctly distinguishes the Stetler Model from the Iowa Model?","options":["Stetler is a user-initiated, conscious critical-thinking process organized in five phases, while Iowa is an agency-level model that begins with triggering issues or opportunities","Stetler is an agency-level model organized around triggers, while Iowa is an individual nurse's critical-thinking process","Stetler applies only at the institutional level, while Iowa applies only to individual practitioners","Both models require pilot testing before any decision about using the evidence is made"],"correct":[0],"sata":false,"why":"The intent of the Stetler Model is to make using research evidence in practice a conscious, critical thinking process that is initiated by the user, organized in five phases. The Iowa Model promotes the implementation of EBP by nurses in clinical agencies and begins with triggering issues or opportunities.","trap":"(C) half-remembers a real detail and inverts it. Stetler evidence can be used at the institutional level, producing policies, algorithms, procedures, protocols, and formal programs, or at the individual level by RNs, educators, and policy makers. It is not restricted to institutions."}];
+const TITLE = "Chapter 13 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 13";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

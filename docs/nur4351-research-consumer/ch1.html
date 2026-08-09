@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 1 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 1</div><h1>Chapter 1 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">research and evidence-based practice</span><span class="chip t2">defining research and nursing research</span></div>
+<div class="stem">1. A nurse says that research is worthwhile only when it produces knowledge no one has had before. Which statement best corrects this using the text's definition of research?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Research is any careful observation of practice that is recorded and shared with colleagues</li><li class="fopt"><span class="mk">B</span>Research is limited to generating new knowledge through controlled experimentation</li><li class="fopt right"><span class="mk">&#10003;</span>Research validates and refines existing knowledge and also develops new knowledge</li><li class="fopt"><span class="mk">D</span>Research is the appropriation of knowledge from other disciplines to guide nursing practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Research is a diligent systematic inquiry or study that validates and refines existing knowledge and develops new knowledge. The definition includes both functions, and diligent systematic study indicates planning, organization, and persistence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex because new knowledge is the memorable half of the definition; an option offering only that half is incomplete. (D) is the definition of borrowing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research and evidence-based practice</span><span class="chip t2">defining research and nursing research</span></div>
+<div class="stem">2. Which phrase in the text's definition of nursing research is what distinguishes it from the general definition of research?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It generates knowledge that directly and indirectly influences nursing practice</li><li class="fopt"><span class="mk">B</span>It is conducted only by nurses prepared at the doctoral level</li><li class="fopt"><span class="mk">C</span>It uses numerical data to obtain information about the world</li><li class="fopt"><span class="mk">D</span>It validates existing knowledge but does not generate new knowledge</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nursing research is a scientific process that validates and refines existing knowledge and generates new knowledge that directly and indirectly influences nursing practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The word indirectly is the part that gets dropped. Studies of nursing education or administration are still nursing research even though they do not change bedside care immediately. (C) is the definition of quantitative research.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research and evidence-based practice</span><span class="chip t2">components of evidence-based practice</span></div>
+<div class="stem">3. A unit adopts a new pressure-injury protocol based entirely on one high-quality meta-analysis, without consulting the staff nurses who deliver the care or asking patients about their preferences. Why does this fall short of the text's definition of evidence-based practice?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A meta-analysis is not considered best research evidence</li><li class="fopt"><span class="mk">B</span>Evidence-based practice requires that the synthesis be a systematic review rather than a meta-analysis</li><li class="fopt"><span class="mk">C</span>Evidence-based practice requires that an expert consensus panel approve the evidence first</li><li class="fopt right"><span class="mk">&#10003;</span>Evidence-based practice is the integration of best research evidence with clinical expertise and the patient's circumstances and values</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>EBP evolves from the integration of the best research evidence with clinical expertise and the patient's circumstances and values to produce quality health outcomes. Applying research findings is only one of the three parts.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the single most testable idea in the chapter. Any option that calls applying research findings EBP by itself, or that names only two of the three parts, is the distractor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research and evidence-based practice</span><span class="chip t2">components of evidence-based practice</span></div>
+<div class="stem">4. According to the text and the QSEN evidence-based practice competency, which elements are integrated to produce evidence-based practice? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The best current research evidence</li><li class="fopt right"><span class="mk">&#10003;</span>The nurse's clinical expertise</li><li class="fopt right"><span class="mk">&#10003;</span>The patient's or family's preferences, values, and circumstances</li><li class="fopt"><span class="mk">D</span>The institution's cost-containment targets</li><li class="fopt"><span class="mk">E</span>The consensus opinion of the nursing leadership team</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The QSEN competency is integrating the best current evidence with clinical expertise and patient and family preferences and values for delivery of optimal health care, which is the same three-part integration the text uses to define EBP.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is tempting because leadership sets protocol, but the opinion of experts and authorities is the weakest level of evidence in Fig. 1.3, not a component of EBP.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research and evidence-based practice</span><span class="chip t2">components of evidence-based practice</span></div>
+<div class="stem">5. The text defines best research evidence as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The findings of the single most rigorous study available on a clinical problem</li><li class="fopt right"><span class="mk">&#10003;</span>The empirical knowledge generated from the synthesis of quality health studies to address a clinical problem</li><li class="fopt"><span class="mk">C</span>The recommendations issued by a panel of experts after they review the literature</li><li class="fopt"><span class="mk">D</span>The accumulated clinical judgment of the experienced nurses on a unit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Best research evidence is the empirical knowledge generated from the synthesis of quality health studies to address a clinical problem.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex, but best research evidence is a synthesis product, not one study however strong. (C) describes evidence-based guidelines, which are built from best research evidence rather than being it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ways of acquiring knowledge</span><span class="chip t2">tradition, borrowing, and trial and error</span></div>
+<div class="stem">6. A new graduate asks why the unit changes IV tubing on a set schedule and is told, &quot;It is in the policy manual; that is how this unit has always done it.&quot; Which way of acquiring knowledge does this represent, and what limitation does the text attach to it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Authority; the authority may be influencing behavior without a basis in research evidence</li><li class="fopt right"><span class="mk">&#10003;</span>Tradition; it can narrow and limit the knowledge sought for practice</li><li class="fopt"><span class="mk">C</span>Borrowing; knowledge taken from another discipline may not fit nursing's focus</li><li class="fopt"><span class="mk">D</span>Role modeling; imitating an expert transmits behavior without explanation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Traditions are truths or beliefs based on customs and trends, carried in policy manuals and transferred from the past. The text says traditions can narrow and limit the knowledge sought for practice and often go unquestioned because they are supported by those with power and authority.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is close because the text mentions power and authority in the same breath. Authority as a way of knowing requires a specific person with expertise and power influencing opinion and behavior; here the source is the custom itself.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ways of acquiring knowledge</span><span class="chip t2">tradition, borrowing, and trial and error</span></div>
+<div class="stem">7. The text names a specific weakness of trial and error as a source of knowledge for practice. Which is it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It cannot be used in situations of uncertainty</li><li class="fopt"><span class="mk">B</span>It produces knowledge that cannot be expressed numerically</li><li class="fopt"><span class="mk">C</span>It requires a person with expertise and power to interpret the result</li><li class="fopt right"><span class="mk">&#10003;</span>The knowledge gained is often not shared, so ineffective interventions continue to be used</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Trial and error is an approach with unknown outcomes used when other sources of knowledge are unavailable; the chapter's stated problem is that the knowledge gained is frequently not shared, so ineffective interventions persist.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The reflex is to call trial and error simply unscientific. The text actually accepts it as legitimate under uncertainty and faults it for nondissemination.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ways of acquiring knowledge</span><span class="chip t2">intuition and personal experience</span></div>
+<div class="stem">8. An expert nurse tells a colleague she &quot;just knew&quot; a patient was deteriorating before any vital sign changed. How does the text characterize this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Trial and error, because the outcome of acting on the feeling was unknown</li><li class="fopt"><span class="mk">B</span>Intuition, which is a lack of knowing and therefore must be set aside in favor of objective data</li><li class="fopt right"><span class="mk">&#10003;</span>Intuition, which is not a lack of knowing but is instead a result of deep knowledge</li><li class="fopt"><span class="mk">D</span>Borrowing, because the insight originates in psychology rather than nursing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Intuition is an insight into or understanding of a situation as a whole that a person usually cannot explain logically, often described as a gut feeling or hunch. The text is explicit that intuition is not the lack of knowing but a result of deep knowledge.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the chapter's own sentence and is the option a student picks when trying to sound scientific. Benner's work is the citation behind the correct reading.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ways of acquiring knowledge</span><span class="chip t2">intuition and personal experience</span></div>
+<div class="stem">9. A nurse consistently views the patient as a whole and as a member of a family and community, and adjusts the plan of care to each patient's response. Which of Benner's five levels of experience does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Advanced beginner</li><li class="fopt"><span class="mk">B</span>Competent</li><li class="fopt right"><span class="mk">&#10003;</span>Proficient</li><li class="fopt"><span class="mk">D</span>Expert</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The proficient nurse views the patient as a whole and as a member of a family and community and adjusts care to each patient's response. Benner's five levels came from a phenomenological qualitative study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex for any description of skilled holistic practice. Expert is defined by grasping a situation intuitively with accuracy and speed; competent is defined by conscious, deliberate, organized planning toward long-range goals.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ways of acquiring knowledge</span><span class="chip t2">the eight sources of knowledge</span></div>
+<div class="stem">10. Which of the following does the text list among the ways nursing has historically acquired knowledge? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Traditions</li><li class="fopt right"><span class="mk">&#10003;</span>Borrowing</li><li class="fopt right"><span class="mk">&#10003;</span>Role modeling</li><li class="fopt"><span class="mk">D</span>Meta-analysis</li><li class="fopt right"><span class="mk">&#10003;</span>Intuition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The eight ways named are traditions, authority, borrowing, trial and error, personal experience, role modeling, intuition, and reasoning.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is a synthesis strategy used to produce best research evidence, not a historical way of knowing. The historical ways are the ones research evidence is meant to improve on.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ways of acquiring knowledge</span><span class="chip t2">inductive and deductive reasoning</span></div>
+<div class="stem">11. A doctoral student reviews the findings of 14 individual studies of early ambulation after surgery and combines them into a general statement about best practice. Which type of reasoning is this, and in which direction does it move?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Inductive reasoning, from the specific to the general</li><li class="fopt"><span class="mk">B</span>Deductive reasoning, from the general to the specific</li><li class="fopt"><span class="mk">C</span>Inductive reasoning, from the general to the specific</li><li class="fopt"><span class="mk">D</span>Deductive reasoning, from the specific to the general</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Inductive reasoning moves from the specific to the general, combining particular instances into a larger whole. Synthesizing multiple studies into a best practice is the logic behind building an evidence-based practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) attach the right label to the wrong direction, which is how this pair is usually missed. Fix the cue: synthesis of many studies is inductive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ways of acquiring knowledge</span><span class="chip t2">inductive and deductive reasoning</span></div>
+<div class="stem">12. A nurse begins from the premises that all humans experience loss and that all adolescents are humans, and concludes that all adolescents experience loss. Which type of reasoning is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Inductive reasoning</li><li class="fopt right"><span class="mk">&#10003;</span>Deductive reasoning</li><li class="fopt"><span class="mk">C</span>Intuition</li><li class="fopt"><span class="mk">D</span>Trial and error</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Deductive reasoning moves from the general to the specific, or from a general premise to a particular situation or conclusion. This is the chapter's own worked example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror image of the synthesis item. The chapter's inductive example runs the other way: a headache is stressful and a terminal illness is stressful, therefore all altered levels of health are stressful.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research methods</span><span class="chip t2">types of qualitative research</span></div>
+<div class="stem">13. A researcher wants to describe the lived experience of parents who have lost a child. Which type of qualitative research fits this purpose?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Ethnographic research</li><li class="fopt"><span class="mk">B</span>Grounded theory research</li><li class="fopt"><span class="mk">C</span>Exploratory-descriptive qualitative research</li><li class="fopt right"><span class="mk">&#10003;</span>Phenomenological research</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Phenomenological research is an inductive holistic approach used to describe an experience as it is lived by individuals; the chapter's own example is the lived experience of losing a child.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research methods</span><span class="chip t2">types of qualitative research</span></div>
+<div class="stem">14. A researcher interviews nurses in order to formulate, test, and refine a theory explaining how they manage interruptions during medication administration. Which type of qualitative research is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Phenomenological research</li><li class="fopt"><span class="mk">B</span>Ethnographic research</li><li class="fopt right"><span class="mk">&#10003;</span>Grounded theory research</li><li class="fopt"><span class="mk">D</span>Exploratory-descriptive qualitative research</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Grounded theory research is an inductive technique used to formulate, test, and refine a theory about a particular phenomenon.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the near-neighbor when a study takes place inside a work setting, but ethnographic research was developed by anthropology to investigate cultures through in-depth study of members of the culture. The target has to be the culture itself.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research methods</span><span class="chip t2">types of quantitative research</span></div>
+<div class="stem">15. Box 1.1 classifies the research methods used in nursing. Which of the following does it list as types of quantitative research? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Descriptive</li><li class="fopt right"><span class="mk">&#10003;</span>Correlational</li><li class="fopt right"><span class="mk">&#10003;</span>Quasi-experimental</li><li class="fopt right"><span class="mk">&#10003;</span>Experimental</li><li class="fopt"><span class="mk">E</span>Exploratory-descriptive</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 1.1 names four types of quantitative research: descriptive, correlational, quasi-experimental, and experimental.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is one of the four qualitative types. Descriptive and exploratory-descriptive qualitative are near-identical names sitting on opposite sides of Box 1.1.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research methods</span><span class="chip t2">comparing quantitative and qualitative research</span></div>
+<div class="stem">16. In Table 1.3, which characteristics are attributed to qualitative research? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Philosophic origin is naturalistic, interpretive, and humanistic</li><li class="fopt right"><span class="mk">&#10003;</span>Basis of knowing is meaning, discovery, and understanding</li><li class="fopt right"><span class="mk">&#10003;</span>Theoretical focus is developing theory</li><li class="fopt"><span class="mk">D</span>Analysis is statistical analysis</li><li class="fopt right"><span class="mk">&#10003;</span>Researcher involvement is shared interpretation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 1.3 gives qualitative research a naturalistic, interpretive, humanistic origin, a basis of knowing in meaning and discovery, a theoretical focus on developing theory, shared interpretation by the researcher, words as data, and text-based analysis.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) belongs to quantitative research. The theory direction is the other half of this trap: qualitative develops theory, quantitative tests it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research methods</span><span class="chip t2">comparing quantitative and qualitative research</span></div>
+<div class="stem">17. A study is grounded in logical positivism, measures its variables with scales and physiological instruments, and sets out to test an existing theory. Which method is this, and what is its basis of knowing?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Quantitative research; cause and effect relationships</li><li class="fopt"><span class="mk">B</span>Qualitative research; meaning, discovery, and understanding</li><li class="fopt"><span class="mk">C</span>Outcomes research; the results of care and changes in health status</li><li class="fopt"><span class="mk">D</span>Mixed methods research; complex health problems</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 1.3 assigns quantitative research a logical positivist origin, an objective researcher stance, numbers as data, statistical analysis, and a basis of knowing in cause and effect relationships. Quantitative research is a formal, objective, systematic process using numerical data.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the qualitative item. Swapping logical positivism with naturalistic origins, or tests theory with develops theory, is the Table 1.3 reversal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research methods</span><span class="chip t2">mixed methods research</span></div>
+<div class="stem">18. A researcher studying a complex symptom problem collects numerical symptom scores and unstructured interview data from the same participants within a single study. Which method is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Outcomes research</li><li class="fopt"><span class="mk">B</span>Meta-analysis</li><li class="fopt"><span class="mk">C</span>Mixed-methods systematic review</li><li class="fopt right"><span class="mk">&#10003;</span>Mixed methods research</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mixed methods research is an approach to inquiry that combines quantitative and qualitative research methods in a single study, and the text ties it to expanding understanding of complex health problems.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) has almost the same name and is the distractor to beat. A mixed-methods systematic review synthesizes studies that already exist; mixed methods research combines the two approaches inside one primary study.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcomes research</span><span class="chip t2">nursing-sensitive outcomes</span></div>
+<div class="stem">19. Which statement matches the text's definition of a nursing-sensitive outcome?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A laboratory value that changes measurably after a nursing intervention</li><li class="fopt right"><span class="mk">&#10003;</span>An individual, family, or community state, behavior, or perception that is measured along a continuum in response to nursing interventions</li><li class="fopt"><span class="mk">C</span>The financial result of care that can be attributed to nurse staffing levels</li><li class="fopt"><span class="mk">D</span>A patient satisfaction score collected after discharge</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A nursing-sensitive outcome is an individual, family, or community state, behavior, or perception measured along a continuum in response to nursing interventions. The Nursing Outcomes Classification standardizes this terminology across specialties and settings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is one of the four areas outcomes research investigates, not the definition of a nursing-sensitive outcome. Measured along a continuum is the phrase that identifies the key.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcomes research</span><span class="chip t2">areas of outcomes investigation</span></div>
+<div class="stem">20. The text names the areas requiring investigation in outcomes research. Which of the following are among them? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Patient responses to nursing and medical interventions</li><li class="fopt right"><span class="mk">&#10003;</span>Functional maintenance or improvement of physical, mental, and social functioning</li><li class="fopt right"><span class="mk">&#10003;</span>Financial outcomes achieved with the provision of healthcare services</li><li class="fopt right"><span class="mk">&#10003;</span>Patient satisfaction with health outcomes, care received, and providers</li><li class="fopt"><span class="mk">E</span>Nurse job satisfaction and intent to remain in the profession</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Outcomes research examines the results of care and the changes in health status for the patient and family, and the four areas named are patient responses, functional maintenance or improvement, financial outcomes, and patient satisfaction.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is plausible because outcomes data are used in staffing arguments, but all four areas the chapter names are patient- or system-facing, not workforce measures.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research synthesis strategies</span><span class="chip t2">systematic review and meta-analysis</span></div>
+<div class="stem">21. A team combines the results of previous quantitative studies of an intervention into a single statistical analysis in order to estimate its effectiveness. Which synthesis strategy is this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Meta-analysis</li><li class="fopt"><span class="mk">B</span>Systematic review</li><li class="fopt"><span class="mk">C</span>Meta-synthesis</li><li class="fopt"><span class="mk">D</span>Mixed-methods systematic review</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A meta-analysis pools the results from previous quantitative studies into a single statistical analysis, and is strongest when pooling quasi-experimental and experimental studies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex because the two words are used loosely as synonyms. A systematic review is the structured, comprehensive process of identifying, locating, appraising, and synthesizing evidence for one healthcare question; many systematic reviews contain a meta-analysis, but the terms are not interchangeable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research synthesis strategies</span><span class="chip t2">meta-synthesis and qualitative evidence</span></div>
+<div class="stem">22. A student proposes conducting a meta-analysis of ten phenomenological studies of living with chronic pain. Why will this not work, and which strategy fits instead?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The studies are too few in number to pool; a systematic review is the correct strategy</li><li class="fopt"><span class="mk">B</span>Qualitative studies cannot be appraised for quality; a mixed-methods systematic review is the correct strategy</li><li class="fopt right"><span class="mk">&#10003;</span>Qualitative studies do not produce statistical findings and cannot be pooled; a meta-synthesis is the correct strategy</li><li class="fopt"><span class="mk">D</span>Qualitative studies rank below expert opinion on the evidence pyramid; an expert consensus panel is the correct strategy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Because qualitative studies do not produce statistical findings, they cannot be included in a meta-analysis; meta-synthesis is the systematic compilation and integration of qualitative study results, and it focuses on interpretation rather than on combining results.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the pyramid. Expert opinion is the base, below descriptive and qualitative studies, not above them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of research evidence</span><span class="chip t2">the evidence pyramid</span></div>
+<div class="stem">23. Which statements about the levels of research evidence in Fig. 1.3 are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Systematic reviews and meta-analyses of high-quality quasi-experimental and experimental studies sit at the top of the pyramid</li><li class="fopt right"><span class="mk">&#10003;</span>Among individual studies, experimental studies such as randomized controlled trials provide the strongest research evidence</li><li class="fopt right"><span class="mk">&#10003;</span>Descriptive and qualitative studies provide initial knowledge and a basis for further study</li><li class="fopt right"><span class="mk">&#10003;</span>Replication of studies with similar methodology increases the strength of the evidence</li><li class="fopt"><span class="mk">E</span>The opinions of expert committees and authorities occupy the level just below systematic reviews</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The levels form a continuum with the strongest evidence at the top: syntheses of quasi-experimental and experimental studies, then meta-analyses of correlational, quasi-experimental, experimental, and outcomes studies, then mixed-methods systematic reviews and meta-syntheses, then individual correlational and cohort studies, then descriptive and qualitative studies, with expert opinion at the base.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) places expert opinion near the top. It is the weakest evidence at the base of the pyramid, which is the same idea as authority being a historical way of knowing that research evidence is meant to supersede.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of research evidence</span><span class="chip t2">evidence not ready for practice</span></div>
+<div class="stem">24. A nurse proposes changing a unit protocol on the basis of one predictive correlational study. Using the levels of research evidence, what is the appropriate response?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Proceed, because correlational studies examine relationships and therefore establish intervention effectiveness</li><li class="fopt"><span class="mk">B</span>Proceed, because a single study conducted in a comparable setting counts as a synthesis</li><li class="fopt"><span class="mk">C</span>Decline, because correlational studies rank below the opinions of expert committees on the pyramid</li><li class="fopt right"><span class="mk">&#10003;</span>Decline, because correlational, predictive correlational, and cohort studies provide direction for future research but are not ready for use in practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter places individual correlational, predictive correlational, and cohort studies at the level that provides direction for future research but is not ready for use in practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the pyramid, since expert opinion is the weakest level and sits below correlational studies. (A) confuses examining relationships with determining effectiveness, which is the job of quasi-experimental and experimental studies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the nurse's research role by education</span><span class="chip t2">BSN expectations</span></div>
+<div class="stem">25. A BSN-prepared staff nurse asks what her research role is. Which activities does Table 1.4 place at the BSN level? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reading and critically appraising studies</li><li class="fopt right"><span class="mk">&#10003;</span>Using best research evidence in practice with guidance</li><li class="fopt right"><span class="mk">&#10003;</span>Assisting with problem identification and data collection</li><li class="fopt"><span class="mk">D</span>Serving as primary investigator and obtaining research funding</li><li class="fopt"><span class="mk">E</span>Leading the development of evidence-based guidelines for the institution</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The BSN nurse reads and critically appraises studies, uses best research evidence in practice with guidance, assists with problem identification and data collection, and adheres to IRB guidelines.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the PhD role and (E) is the DNP role. The chapter's line that all nurses have a role in research invites overreach; the role expands with education rather than being identical at every level.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the nurse's research role by education</span><span class="chip t2">doctoral preparation</span></div>
+<div class="stem">26. A nursing student is comparing doctoral options. Which statement correctly distinguishes the two degrees as the text describes them?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The DNP is practice-focused and translates scientific knowledge for use in practice, while the PhD is research-focused and generates nursing knowledge</li><li class="fopt"><span class="mk">B</span>The DNP is research-focused and generates nursing knowledge, while the PhD is practice-focused and translates it for use</li><li class="fopt"><span class="mk">C</span>Both degrees are research-focused, but only the PhD is permitted to conduct clinical studies</li><li class="fopt"><span class="mk">D</span>Both degrees are practice-focused, but only the DNP obtains research funding and coordinates research teams</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The DNP is practice-focused, representing the highest level of clinical expertise and translating scientific knowledge for use in practice; the PhD is research-focused, generating nursing knowledge as nurse scientists.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the straight swap and is the likeliest item off this table. Anchor it by the other duties: PhD nurses obtain funding and coordinate research teams of BSN, MSN, and DNP nurses, while DNP nurses develop and revise protocols, policies, and guidelines.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"research and evidence-based practice","subtopic":"defining research and nursing research","stem":"A nurse says that research is worthwhile only when it produces knowledge no one has had before. Which statement best corrects this using the text's definition of research?","options":["Research is any careful observation of practice that is recorded and shared with colleagues","Research is limited to generating new knowledge through controlled experimentation","Research validates and refines existing knowledge and also develops new knowledge","Research is the appropriation of knowledge from other disciplines to guide nursing practice"],"correct":[2],"sata":false,"why":"Research is a diligent systematic inquiry or study that validates and refines existing knowledge and develops new knowledge. The definition includes both functions, and diligent systematic study indicates planning, organization, and persistence.","trap":"(B) is the reflex because new knowledge is the memorable half of the definition; an option offering only that half is incomplete. (D) is the definition of borrowing."},{"topic":"research and evidence-based practice","subtopic":"defining research and nursing research","stem":"Which phrase in the text's definition of nursing research is what distinguishes it from the general definition of research?","options":["It generates knowledge that directly and indirectly influences nursing practice","It is conducted only by nurses prepared at the doctoral level","It uses numerical data to obtain information about the world","It validates existing knowledge but does not generate new knowledge"],"correct":[0],"sata":false,"why":"Nursing research is a scientific process that validates and refines existing knowledge and generates new knowledge that directly and indirectly influences nursing practice.","trap":"The word indirectly is the part that gets dropped. Studies of nursing education or administration are still nursing research even though they do not change bedside care immediately. (C) is the definition of quantitative research."},{"topic":"research and evidence-based practice","subtopic":"components of evidence-based practice","stem":"A unit adopts a new pressure-injury protocol based entirely on one high-quality meta-analysis, without consulting the staff nurses who deliver the care or asking patients about their preferences. Why does this fall short of the text's definition of evidence-based practice?","options":["A meta-analysis is not considered best research evidence","Evidence-based practice requires that the synthesis be a systematic review rather than a meta-analysis","Evidence-based practice requires that an expert consensus panel approve the evidence first","Evidence-based practice is the integration of best research evidence with clinical expertise and the patient's circumstances and values"],"correct":[3],"sata":false,"why":"EBP evolves from the integration of the best research evidence with clinical expertise and the patient's circumstances and values to produce quality health outcomes. Applying research findings is only one of the three parts.","trap":"This is the single most testable idea in the chapter. Any option that calls applying research findings EBP by itself, or that names only two of the three parts, is the distractor."},{"topic":"research and evidence-based practice","subtopic":"components of evidence-based practice","stem":"According to the text and the QSEN evidence-based practice competency, which elements are integrated to produce evidence-based practice? Select all that apply.","options":["The best current research evidence","The nurse's clinical expertise","The patient's or family's preferences, values, and circumstances","The institution's cost-containment targets","The consensus opinion of the nursing leadership team"],"correct":[0,1,2],"sata":true,"why":"The QSEN competency is integrating the best current evidence with clinical expertise and patient and family preferences and values for delivery of optimal health care, which is the same three-part integration the text uses to define EBP.","trap":"(E) is tempting because leadership sets protocol, but the opinion of experts and authorities is the weakest level of evidence in Fig. 1.3, not a component of EBP."},{"topic":"research and evidence-based practice","subtopic":"components of evidence-based practice","stem":"The text defines best research evidence as which of the following?","options":["The findings of the single most rigorous study available on a clinical problem","The empirical knowledge generated from the synthesis of quality health studies to address a clinical problem","The recommendations issued by a panel of experts after they review the literature","The accumulated clinical judgment of the experienced nurses on a unit"],"correct":[1],"sata":false,"why":"Best research evidence is the empirical knowledge generated from the synthesis of quality health studies to address a clinical problem.","trap":"(A) is the reflex, but best research evidence is a synthesis product, not one study however strong. (C) describes evidence-based guidelines, which are built from best research evidence rather than being it."},{"topic":"ways of acquiring knowledge","subtopic":"tradition, borrowing, and trial and error","stem":"A new graduate asks why the unit changes IV tubing on a set schedule and is told, \"It is in the policy manual; that is how this unit has always done it.\" Which way of acquiring knowledge does this represent, and what limitation does the text attach to it?","options":["Authority; the authority may be influencing behavior without a basis in research evidence","Tradition; it can narrow and limit the knowledge sought for practice","Borrowing; knowledge taken from another discipline may not fit nursing's focus","Role modeling; imitating an expert transmits behavior without explanation"],"correct":[1],"sata":false,"why":"Traditions are truths or beliefs based on customs and trends, carried in policy manuals and transferred from the past. The text says traditions can narrow and limit the knowledge sought for practice and often go unquestioned because they are supported by those with power and authority.","trap":"(A) is close because the text mentions power and authority in the same breath. Authority as a way of knowing requires a specific person with expertise and power influencing opinion and behavior; here the source is the custom itself."},{"topic":"ways of acquiring knowledge","subtopic":"tradition, borrowing, and trial and error","stem":"The text names a specific weakness of trial and error as a source of knowledge for practice. Which is it?","options":["It cannot be used in situations of uncertainty","It produces knowledge that cannot be expressed numerically","It requires a person with expertise and power to interpret the result","The knowledge gained is often not shared, so ineffective interventions continue to be used"],"correct":[3],"sata":false,"why":"Trial and error is an approach with unknown outcomes used when other sources of knowledge are unavailable; the chapter's stated problem is that the knowledge gained is frequently not shared, so ineffective interventions persist.","trap":"The reflex is to call trial and error simply unscientific. The text actually accepts it as legitimate under uncertainty and faults it for nondissemination."},{"topic":"ways of acquiring knowledge","subtopic":"intuition and personal experience","stem":"An expert nurse tells a colleague she \"just knew\" a patient was deteriorating before any vital sign changed. How does the text characterize this?","options":["Trial and error, because the outcome of acting on the feeling was unknown","Intuition, which is a lack of knowing and therefore must be set aside in favor of objective data","Intuition, which is not a lack of knowing but is instead a result of deep knowledge","Borrowing, because the insight originates in psychology rather than nursing"],"correct":[2],"sata":false,"why":"Intuition is an insight into or understanding of a situation as a whole that a person usually cannot explain logically, often described as a gut feeling or hunch. The text is explicit that intuition is not the lack of knowing but a result of deep knowledge.","trap":"(B) inverts the chapter's own sentence and is the option a student picks when trying to sound scientific. Benner's work is the citation behind the correct reading."},{"topic":"ways of acquiring knowledge","subtopic":"intuition and personal experience","stem":"A nurse consistently views the patient as a whole and as a member of a family and community, and adjusts the plan of care to each patient's response. Which of Benner's five levels of experience does this describe?","options":["Advanced beginner","Competent","Proficient","Expert"],"correct":[2],"sata":false,"why":"The proficient nurse views the patient as a whole and as a member of a family and community and adjusts care to each patient's response. Benner's five levels came from a phenomenological qualitative study.","trap":"(D) is the reflex for any description of skilled holistic practice. Expert is defined by grasping a situation intuitively with accuracy and speed; competent is defined by conscious, deliberate, organized planning toward long-range goals."},{"topic":"ways of acquiring knowledge","subtopic":"the eight sources of knowledge","stem":"Which of the following does the text list among the ways nursing has historically acquired knowledge? Select all that apply.","options":["Traditions","Borrowing","Role modeling","Meta-analysis","Intuition"],"correct":[0,1,2,4],"sata":true,"why":"The eight ways named are traditions, authority, borrowing, trial and error, personal experience, role modeling, intuition, and reasoning.","trap":"(D) is a synthesis strategy used to produce best research evidence, not a historical way of knowing. The historical ways are the ones research evidence is meant to improve on."},{"topic":"ways of acquiring knowledge","subtopic":"inductive and deductive reasoning","stem":"A doctoral student reviews the findings of 14 individual studies of early ambulation after surgery and combines them into a general statement about best practice. Which type of reasoning is this, and in which direction does it move?","options":["Inductive reasoning, from the specific to the general","Deductive reasoning, from the general to the specific","Inductive reasoning, from the general to the specific","Deductive reasoning, from the specific to the general"],"correct":[0],"sata":false,"why":"Inductive reasoning moves from the specific to the general, combining particular instances into a larger whole. Synthesizing multiple studies into a best practice is the logic behind building an evidence-based practice.","trap":"(C) and (D) attach the right label to the wrong direction, which is how this pair is usually missed. Fix the cue: synthesis of many studies is inductive."},{"topic":"ways of acquiring knowledge","subtopic":"inductive and deductive reasoning","stem":"A nurse begins from the premises that all humans experience loss and that all adolescents are humans, and concludes that all adolescents experience loss. Which type of reasoning is this?","options":["Inductive reasoning","Deductive reasoning","Intuition","Trial and error"],"correct":[1],"sata":false,"why":"Deductive reasoning moves from the general to the specific, or from a general premise to a particular situation or conclusion. This is the chapter's own worked example.","trap":"This is the mirror image of the synthesis item. The chapter's inductive example runs the other way: a headache is stressful and a terminal illness is stressful, therefore all altered levels of health are stressful."},{"topic":"research methods","subtopic":"types of qualitative research","stem":"A researcher wants to describe the lived experience of parents who have lost a child. Which type of qualitative research fits this purpose?","options":["Ethnographic research","Grounded theory research","Exploratory-descriptive qualitative research","Phenomenological research"],"correct":[3],"sata":false,"why":"Phenomenological research is an inductive holistic approach used to describe an experience as it is lived by individuals; the chapter's own example is the lived experience of losing a child.","trap":null},{"topic":"research methods","subtopic":"types of qualitative research","stem":"A researcher interviews nurses in order to formulate, test, and refine a theory explaining how they manage interruptions during medication administration. Which type of qualitative research is this?","options":["Phenomenological research","Ethnographic research","Grounded theory research","Exploratory-descriptive qualitative research"],"correct":[2],"sata":false,"why":"Grounded theory research is an inductive technique used to formulate, test, and refine a theory about a particular phenomenon.","trap":"(B) is the near-neighbor when a study takes place inside a work setting, but ethnographic research was developed by anthropology to investigate cultures through in-depth study of members of the culture. The target has to be the culture itself."},{"topic":"research methods","subtopic":"types of quantitative research","stem":"Box 1.1 classifies the research methods used in nursing. Which of the following does it list as types of quantitative research? Select all that apply.","options":["Descriptive","Correlational","Quasi-experimental","Experimental","Exploratory-descriptive"],"correct":[0,1,2,3],"sata":true,"why":"Box 1.1 names four types of quantitative research: descriptive, correlational, quasi-experimental, and experimental.","trap":"(E) is one of the four qualitative types. Descriptive and exploratory-descriptive qualitative are near-identical names sitting on opposite sides of Box 1.1."},{"topic":"research methods","subtopic":"comparing quantitative and qualitative research","stem":"In Table 1.3, which characteristics are attributed to qualitative research? Select all that apply.","options":["Philosophic origin is naturalistic, interpretive, and humanistic","Basis of knowing is meaning, discovery, and understanding","Theoretical focus is developing theory","Analysis is statistical analysis","Researcher involvement is shared interpretation"],"correct":[0,1,2,4],"sata":true,"why":"Table 1.3 gives qualitative research a naturalistic, interpretive, humanistic origin, a basis of knowing in meaning and discovery, a theoretical focus on developing theory, shared interpretation by the researcher, words as data, and text-based analysis.","trap":"(D) belongs to quantitative research. The theory direction is the other half of this trap: qualitative develops theory, quantitative tests it."},{"topic":"research methods","subtopic":"comparing quantitative and qualitative research","stem":"A study is grounded in logical positivism, measures its variables with scales and physiological instruments, and sets out to test an existing theory. Which method is this, and what is its basis of knowing?","options":["Quantitative research; cause and effect relationships","Qualitative research; meaning, discovery, and understanding","Outcomes research; the results of care and changes in health status","Mixed methods research; complex health problems"],"correct":[0],"sata":false,"why":"Table 1.3 assigns quantitative research a logical positivist origin, an objective researcher stance, numbers as data, statistical analysis, and a basis of knowing in cause and effect relationships. Quantitative research is a formal, objective, systematic process using numerical data.","trap":"This is the mirror of the qualitative item. Swapping logical positivism with naturalistic origins, or tests theory with develops theory, is the Table 1.3 reversal."},{"topic":"research methods","subtopic":"mixed methods research","stem":"A researcher studying a complex symptom problem collects numerical symptom scores and unstructured interview data from the same participants within a single study. Which method is this?","options":["Outcomes research","Meta-analysis","Mixed-methods systematic review","Mixed methods research"],"correct":[3],"sata":false,"why":"Mixed methods research is an approach to inquiry that combines quantitative and qualitative research methods in a single study, and the text ties it to expanding understanding of complex health problems.","trap":"(C) has almost the same name and is the distractor to beat. A mixed-methods systematic review synthesizes studies that already exist; mixed methods research combines the two approaches inside one primary study."},{"topic":"outcomes research","subtopic":"nursing-sensitive outcomes","stem":"Which statement matches the text's definition of a nursing-sensitive outcome?","options":["A laboratory value that changes measurably after a nursing intervention","An individual, family, or community state, behavior, or perception that is measured along a continuum in response to nursing interventions","The financial result of care that can be attributed to nurse staffing levels","A patient satisfaction score collected after discharge"],"correct":[1],"sata":false,"why":"A nursing-sensitive outcome is an individual, family, or community state, behavior, or perception measured along a continuum in response to nursing interventions. The Nursing Outcomes Classification standardizes this terminology across specialties and settings.","trap":"(D) is one of the four areas outcomes research investigates, not the definition of a nursing-sensitive outcome. Measured along a continuum is the phrase that identifies the key."},{"topic":"outcomes research","subtopic":"areas of outcomes investigation","stem":"The text names the areas requiring investigation in outcomes research. Which of the following are among them? Select all that apply.","options":["Patient responses to nursing and medical interventions","Functional maintenance or improvement of physical, mental, and social functioning","Financial outcomes achieved with the provision of healthcare services","Patient satisfaction with health outcomes, care received, and providers","Nurse job satisfaction and intent to remain in the profession"],"correct":[0,1,2,3],"sata":true,"why":"Outcomes research examines the results of care and the changes in health status for the patient and family, and the four areas named are patient responses, functional maintenance or improvement, financial outcomes, and patient satisfaction.","trap":"(E) is plausible because outcomes data are used in staffing arguments, but all four areas the chapter names are patient- or system-facing, not workforce measures."},{"topic":"research synthesis strategies","subtopic":"systematic review and meta-analysis","stem":"A team combines the results of previous quantitative studies of an intervention into a single statistical analysis in order to estimate its effectiveness. Which synthesis strategy is this?","options":["Meta-analysis","Systematic review","Meta-synthesis","Mixed-methods systematic review"],"correct":[0],"sata":false,"why":"A meta-analysis pools the results from previous quantitative studies into a single statistical analysis, and is strongest when pooling quasi-experimental and experimental studies.","trap":"(B) is the reflex because the two words are used loosely as synonyms. A systematic review is the structured, comprehensive process of identifying, locating, appraising, and synthesizing evidence for one healthcare question; many systematic reviews contain a meta-analysis, but the terms are not interchangeable."},{"topic":"research synthesis strategies","subtopic":"meta-synthesis and qualitative evidence","stem":"A student proposes conducting a meta-analysis of ten phenomenological studies of living with chronic pain. Why will this not work, and which strategy fits instead?","options":["The studies are too few in number to pool; a systematic review is the correct strategy","Qualitative studies cannot be appraised for quality; a mixed-methods systematic review is the correct strategy","Qualitative studies do not produce statistical findings and cannot be pooled; a meta-synthesis is the correct strategy","Qualitative studies rank below expert opinion on the evidence pyramid; an expert consensus panel is the correct strategy"],"correct":[2],"sata":false,"why":"Because qualitative studies do not produce statistical findings, they cannot be included in a meta-analysis; meta-synthesis is the systematic compilation and integration of qualitative study results, and it focuses on interpretation rather than on combining results.","trap":"(D) inverts the pyramid. Expert opinion is the base, below descriptive and qualitative studies, not above them."},{"topic":"levels of research evidence","subtopic":"the evidence pyramid","stem":"Which statements about the levels of research evidence in Fig. 1.3 are accurate? Select all that apply.","options":["Systematic reviews and meta-analyses of high-quality quasi-experimental and experimental studies sit at the top of the pyramid","Among individual studies, experimental studies such as randomized controlled trials provide the strongest research evidence","Descriptive and qualitative studies provide initial knowledge and a basis for further study","Replication of studies with similar methodology increases the strength of the evidence","The opinions of expert committees and authorities occupy the level just below systematic reviews"],"correct":[0,1,2,3],"sata":true,"why":"The levels form a continuum with the strongest evidence at the top: syntheses of quasi-experimental and experimental studies, then meta-analyses of correlational, quasi-experimental, experimental, and outcomes studies, then mixed-methods systematic reviews and meta-syntheses, then individual correlational and cohort studies, then descriptive and qualitative studies, with expert opinion at the base.","trap":"(E) places expert opinion near the top. It is the weakest evidence at the base of the pyramid, which is the same idea as authority being a historical way of knowing that research evidence is meant to supersede."},{"topic":"levels of research evidence","subtopic":"evidence not ready for practice","stem":"A nurse proposes changing a unit protocol on the basis of one predictive correlational study. Using the levels of research evidence, what is the appropriate response?","options":["Proceed, because correlational studies examine relationships and therefore establish intervention effectiveness","Proceed, because a single study conducted in a comparable setting counts as a synthesis","Decline, because correlational studies rank below the opinions of expert committees on the pyramid","Decline, because correlational, predictive correlational, and cohort studies provide direction for future research but are not ready for use in practice"],"correct":[3],"sata":false,"why":"The chapter places individual correlational, predictive correlational, and cohort studies at the level that provides direction for future research but is not ready for use in practice.","trap":"(C) inverts the pyramid, since expert opinion is the weakest level and sits below correlational studies. (A) confuses examining relationships with determining effectiveness, which is the job of quasi-experimental and experimental studies."},{"topic":"the nurse's research role by education","subtopic":"BSN expectations","stem":"A BSN-prepared staff nurse asks what her research role is. Which activities does Table 1.4 place at the BSN level? Select all that apply.","options":["Reading and critically appraising studies","Using best research evidence in practice with guidance","Assisting with problem identification and data collection","Serving as primary investigator and obtaining research funding","Leading the development of evidence-based guidelines for the institution"],"correct":[0,1,2],"sata":true,"why":"The BSN nurse reads and critically appraises studies, uses best research evidence in practice with guidance, assists with problem identification and data collection, and adheres to IRB guidelines.","trap":"(D) is the PhD role and (E) is the DNP role. The chapter's line that all nurses have a role in research invites overreach; the role expands with education rather than being identical at every level."},{"topic":"the nurse's research role by education","subtopic":"doctoral preparation","stem":"A nursing student is comparing doctoral options. Which statement correctly distinguishes the two degrees as the text describes them?","options":["The DNP is practice-focused and translates scientific knowledge for use in practice, while the PhD is research-focused and generates nursing knowledge","The DNP is research-focused and generates nursing knowledge, while the PhD is practice-focused and translates it for use","Both degrees are research-focused, but only the PhD is permitted to conduct clinical studies","Both degrees are practice-focused, but only the DNP obtains research funding and coordinates research teams"],"correct":[0],"sata":false,"why":"The DNP is practice-focused, representing the highest level of clinical expertise and translating scientific knowledge for use in practice; the PhD is research-focused, generating nursing knowledge as nurse scientists.","trap":"(B) is the straight swap and is the likeliest item off this table. Anchor it by the other duties: PhD nurses obtain funding and coordinate research teams of BSN, MSN, and DNP nurses, while DNP nurses develop and revise protocols, policies, and guidelines."}];
+const TITLE = "Chapter 1 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 1";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

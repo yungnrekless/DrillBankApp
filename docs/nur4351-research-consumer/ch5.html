@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 5 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 5</div><h1>Chapter 5 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">research problem and purpose</span><span class="chip t2">problem versus purpose</span></div>
+<div class="stem">1. A study's introduction reads: &quot;Little is known about how medical-surgical nurses recognize early sepsis in hospitalized older adults.&quot; The next paragraph reads: &quot;The purpose of this study is to describe how medical-surgical nurses recognize early sepsis in adults older than 65.&quot; What does the first sentence represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The research purpose</li><li class="fopt right"><span class="mk">&#10003;</span>The research problem</li><li class="fopt"><span class="mk">C</span>The research objective</li><li class="fopt"><span class="mk">D</span>The research topic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The research problem is an area of concern in which there is a gap in the knowledge needed for nursing practice; the purpose is a clear concise statement of the specific goal or focus of a study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because both sentences sit in the same introduction. The sentence naming what is not yet known is always the problem; the sentence naming what this particular study will do is the purpose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research problem and purpose</span><span class="chip t2">problem versus purpose</span></div>
+<div class="stem">2. Which statement correctly describes how a study's problem and purpose relate to each other?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The purpose identifies the gap in knowledge, and the problem narrows that gap to this study's goal</li><li class="fopt"><span class="mk">B</span>The problem and the purpose are two names for the same statement</li><li class="fopt right"><span class="mk">&#10003;</span>The problem is the gap in knowledge, and it provides the basis for developing the purpose</li><li class="fopt"><span class="mk">D</span>The purpose is written first, and the problem is derived from it</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The problem is the area of concern in which there is a gap in knowledge, and the chapter states that the problem provides the basis for developing the research purpose.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the exact inversion of the pair and is the single most common error on this content. Direction of travel is problem to purpose, never the reverse.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research problem and purpose</span><span class="chip t2">judging a problem worth studying</span></div>
+<div class="stem">3. Which considerations does the chapter list under the feasibility of a study problem? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Researcher expertise</li><li class="fopt"><span class="mk">B</span>Application to nursing practice</li><li class="fopt right"><span class="mk">&#10003;</span>Money commitment</li><li class="fopt right"><span class="mk">&#10003;</span>Ethical considerations</li><li class="fopt"><span class="mk">E</span>Addressing nursing research priorities</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Feasibility is judged on researcher expertise, money commitment, and ethical considerations.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (E) are real criteria from this chapter, but they answer whether the problem is worth studying, not whether this researcher can actually carry it out. Application to practice, expanding previous research, and addressing nursing research priorities belong to the first question.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research objectives and questions</span><span class="chip t2">declarative versus interrogative</span></div>
+<div class="stem">4. A study report includes the statement: &quot;This study describes the coping strategies used by family caregivers of persons with dementia.&quot; Which element is this, and what identifies it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A research question, because it names variables</li><li class="fopt right"><span class="mk">&#10003;</span>A research objective, because it is a declarative statement expressed in the present tense</li><li class="fopt"><span class="mk">C</span>A hypothesis, because it names a population</li><li class="fopt"><span class="mk">D</span>The research problem, because it identifies what is not yet known</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A research objective, sometimes called an aim, is a clear, concise, declarative statement expressed in the present tense that identifies the goals of the study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is tempting because the statement names both variables and a population, but a hypothesis must predict an expected relationship between variables. Nothing here predicts anything.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research objectives and questions</span><span class="chip t2">declarative versus interrogative</span></div>
+<div class="stem">5. The same report includes the statement: &quot;What coping strategies do family caregivers of persons with dementia use?&quot; Which element is this, and what identifies it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A research objective, because objectives are interrogative</li><li class="fopt"><span class="mk">B</span>The research purpose, because it identifies the study's goal</li><li class="fopt"><span class="mk">C</span>A nondirectional hypothesis, because no direction is predicted</li><li class="fopt right"><span class="mk">&#10003;</span>A research question, because it is an interrogative statement worded in the present tense</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A research question is a clear, concise, interrogative statement worded in the present tense that includes one or more variables and is expressed to guide the implementation of studies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) swaps the grammatical forms, which is the whole point of this pair. Objective and question are separated by declarative versus interrogative, not by tense — both are present tense.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research objectives and questions</span><span class="chip t2">quantitative and qualitative aims</span></div>
+<div class="stem">6. Which statements about research objectives are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Objectives are sometimes called aims</li><li class="fopt"><span class="mk">B</span>Qualitative objectives are narrower in focus and more concrete than quantitative objectives</li><li class="fopt right"><span class="mk">&#10003;</span>Objectives are expressed in the present tense</li><li class="fopt right"><span class="mk">&#10003;</span>Objectives may be written to determine differences between two or more existing groups</li><li class="fopt right"><span class="mk">&#10003;</span>Quantitative objectives usually focus on one or two variables</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Objectives, sometimes called aims, are declarative present-tense statements that usually focus on one or two variables and may identify relationships or determine differences between existing groups such as females and males.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the qualitative contrast. Qualitative objectives are commonly broader in focus and include concepts that are more complex and abstract, not narrower and more concrete.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis types</span><span class="chip t2">associative versus causal</span></div>
+<div class="stem">7. A researcher states: &quot;Hours playing video games is related to body mass index in school-age children.&quot; How is this hypothesis classified?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Simple, associative, nondirectional</li><li class="fopt"><span class="mk">B</span>Simple, causal, directional</li><li class="fopt"><span class="mk">C</span>Complex, associative, nondirectional</li><li class="fopt"><span class="mk">D</span>Simple, associative, directional</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Two variables makes it simple; &quot;is related to&quot; proposes that the variables occur together without claiming that one causes the other; and no positive or negative nature is predicted.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is chosen by students who read any stated relationship as a direction. Direction requires words such as positive, negative, less, more, increase, decrease, greater, higher, or lower — none appears here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis types</span><span class="chip t2">associative versus causal</span></div>
+<div class="stem">8. A researcher states: &quot;Participants who perform brisk walking exercise combined with music exhibit higher sleep quality scores than participants who perform brisk walking alone.&quot; How is this hypothesis classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Associative, simple, nondirectional</li><li class="fopt right"><span class="mk">&#10003;</span>Causal, complex, directional</li><li class="fopt"><span class="mk">C</span>Causal, simple, nondirectional</li><li class="fopt"><span class="mk">D</span>Associative, complex, nondirectional</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter classifies this hypothesis as causal, complex because it involves three variables, and directional in the positive sense because it predicts higher sleep quality scores.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) can be eliminated before you count anything. The chapter states that the independent variable increases or decreases each dependent variable, so all causal hypotheses are directional and &quot;causal, nondirectional&quot; is an impossible combination.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis types</span><span class="chip t2">associative versus causal</span></div>
+<div class="stem">9. Which statements about classifying hypotheses are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>All causal hypotheses are directional</li><li class="fopt right"><span class="mk">&#10003;</span>A hypothesis stating relationships among three or more variables is complex</li><li class="fopt"><span class="mk">C</span>A nondirectional hypothesis predicts a negative relationship</li><li class="fopt right"><span class="mk">&#10003;</span>A complex hypothesis can be associative rather than causal</li><li class="fopt right"><span class="mk">&#10003;</span>Words such as greater, less, increase, and decrease signal a directional hypothesis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Every hypothesis is classified simultaneously on relationship type, number of variables, direction, and form; simple means two variables and complex means three or more, and all causal hypotheses are directional.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) confuses nondirectional with negative. A nondirectional hypothesis states only that a relationship exists and does not predict its nature at all; predicting a negative relationship is directional.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis types</span><span class="chip t2">directional versus nondirectional</span></div>
+<div class="stem">10. A researcher states: &quot;Parents will be more likely to misperceive the weight status of younger children.&quot; Which classification does the chapter assign?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Simple, associative, nondirectional</li><li class="fopt"><span class="mk">B</span>Complex, causal, directional</li><li class="fopt right"><span class="mk">&#10003;</span>Simple, associative, directional</li><li class="fopt"><span class="mk">D</span>Simple, causal, directional</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Two variables makes it simple, no cause and effect is proposed, and &quot;more likely&quot; paired with &quot;younger&quot; specifies the nature of the relationship; the chapter classifies it as directional and negative.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A directional hypothesis does not have to predict a positive relationship. Direction means the nature is specified, and this one is directional precisely because it predicts a negative relationship.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis types</span><span class="chip t2">research versus statistical null hypothesis</span></div>
+<div class="stem">11. A published report states only a directional research hypothesis and then reports a t-test comparing group means. Which hypothesis was actually tested, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The directional research hypothesis, because it is the one the researcher stated</li><li class="fopt"><span class="mk">B</span>Neither one; the t-test tests the level of significance rather than a hypothesis</li><li class="fopt"><span class="mk">C</span>The research hypothesis, because null hypotheses apply only to associative relationships</li><li class="fopt right"><span class="mk">&#10003;</span>The statistical null hypothesis, which is implied because it is the converse of the research hypothesis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Even if the null hypothesis is not stated, it is implied because it is the converse of the research hypothesis, and it is the statistical hypothesis that is tested to determine whether the independent variable produced a significant effect.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex because the printed hypothesis is the only one visible. What is printed and what is tested are different things in every quantitative report.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis types</span><span class="chip t2">research versus statistical null hypothesis</span></div>
+<div class="stem">12. A hypothesis proposes that perceived social support and medication adherence occur together in adults with heart failure, with no claim that either causes the other. Which analysis matches this hypothesis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Correlational analyses examining the existence, type, and strength of the relationship</li><li class="fopt"><span class="mk">B</span>A t-test comparing experimental and comparison group means</li><li class="fopt"><span class="mk">C</span>An ANOVA comparing three treatment group means</li><li class="fopt"><span class="mk">D</span>A comparison of pretest and posttest means under an intervention protocol</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Associative hypotheses are tested with correlational analyses that examine the existence, type, and strength of the relationship, while causal hypotheses are tested with analyses of differences between means such as t-test or ANOVA.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are the causal-hypothesis tools. Match the analysis to the relationship the hypothesis claims, not to how sophisticated the study looks.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis quality and testability</span><span class="chip t2">elements of a testable hypothesis</span></div>
+<div class="stem">13. Which elements should a clearly stated hypothesis include? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The population to be studied</li><li class="fopt"><span class="mk">B</span>The instrument that will measure the dependent variable</li><li class="fopt right"><span class="mk">&#10003;</span>The independent variables to be manipulated or measured</li><li class="fopt right"><span class="mk">&#10003;</span>The proposed outcomes or dependent variables to be measured</li><li class="fopt"><span class="mk">E</span>The level of significance that will be used</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A clearly stated hypothesis includes the independent variables to be manipulated or measured, the proposed outcomes or dependent variables to be measured, and the population to be studied.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (E) look like rigor and are actually flaws. Naming an instrument limits the hypothesis to one study's measurement method, and determination of the level of significance is only a statistical technique applied to sample data.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis quality and testability</span><span class="chip t2">elements of a testable hypothesis</span></div>
+<div class="stem">14. A reviewer must flag one of these hypotheses as improperly written. Which one, and why?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>&quot;Postoperative anxiety, measured by the State-Trait Anxiety Inventory, is lower in patients who receive guided imagery&quot; — it names the measurement method</li><li class="fopt"><span class="mk">B</span>&quot;Patients who receive guided imagery report lower postoperative anxiety than patients who receive standard care&quot; — it predicts a direction</li><li class="fopt"><span class="mk">C</span>&quot;Perceived stress is related to sleep quality in graduate nursing students&quot; — it does not claim causation</li><li class="fopt"><span class="mk">D</span>&quot;Nurses with higher workloads report more missed nursing care&quot; — it uses the comparative word higher</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Methodological phrases such as &quot;measured by,&quot; &quot;in a random sample of,&quot; and &quot;using ANOVA&quot; are inappropriate in a hypothesis because they limit it to one study's measurement methods, sample, or analysis techniques.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) are correctly written directional hypotheses and (C) is a correctly written associative hypothesis. Predicting a direction and declining to claim causation are strengths, not defects.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis quality and testability</span><span class="chip t2">elements of a testable hypothesis</span></div>
+<div class="stem">15. A reviewer is judging whether a hypothesis is testable. Which feature is required?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It states whether the difference between the groups will be statistically significant</li><li class="fopt"><span class="mk">B</span>It names the sample and the analysis technique so the prediction can be checked</li><li class="fopt right"><span class="mk">&#10003;</span>It predicts a relationship among variables that the data can support or not support</li><li class="fopt"><span class="mk">D</span>It is written in null form so that it can be rejected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A testable hypothesis clearly predicts relationships among variables, contains variables that are measurable or able to be manipulated, and predicts a relationship that can be supported or not supported by the data.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (B) name the two things a hypothesis must not contain. (D) is unnecessary because the null hypothesis is implied as the converse of the research hypothesis whether or not it is written out.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypothesis quality and testability</span><span class="chip t2">which studies require hypotheses</span></div>
+<div class="stem">16. A researcher is designing a quasi-experimental study testing whether a nurse-led education protocol reduces 30-day readmissions compared with usual care. What does the chapter say about hypotheses for a study like this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hypotheses are optional; research questions are preferred for intervention studies</li><li class="fopt right"><span class="mk">&#10003;</span>Quasi-experimental and experimental studies should include hypotheses to predict the study outcomes</li><li class="fopt"><span class="mk">C</span>Hypotheses are required only when the sample has been randomly selected</li><li class="fopt"><span class="mk">D</span>Hypotheses are appropriate only for descriptive and correlational studies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Quasi-experimental and experimental studies should include hypotheses to predict the study outcomes, and predictive correlational studies that measure independent variables to predict a dependent variable often include hypotheses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the rule. Descriptive and correlational studies typically use objectives or questions, and hypotheses go on to shape the design, sampling method, data collection and analysis, and interpretation of findings.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study variables</span><span class="chip t2">independent and dependent variables</span></div>
+<div class="stem">17. A researcher assigns patients to either a nurse-led sleep hygiene protocol or usual care and measures sleep quality at 4 weeks. Which labeling is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Sleep quality is the independent variable and the protocol is the dependent variable</li><li class="fopt"><span class="mk">B</span>Both are research variables because both are measured</li><li class="fopt"><span class="mk">C</span>The protocol is an extraneous variable and sleep quality is the dependent variable</li><li class="fopt right"><span class="mk">&#10003;</span>The protocol is the independent variable and sleep quality is the dependent variable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The independent variable is the intervention or treatment manipulated or varied by the researcher to create an effect on the dependent variable, and the dependent variable is the outcome the researcher wants to predict or explain.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the classic inversion. The independent variable — also called the intervention, treatment, or experimental variable — is what the researcher does, not what is measured as a result.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study variables</span><span class="chip t2">independent and dependent variables</span></div>
+<div class="stem">18. In a predictive correlational study, self-efficacy, social support, and health literacy are measured to predict medication adherence. Nothing is manipulated. What are the first three variables called?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Research variables, because none of them is manipulated</li><li class="fopt"><span class="mk">B</span>Extraneous variables, because they are not controlled</li><li class="fopt right"><span class="mk">&#10003;</span>Independent variables, even though none of them is manipulated</li><li class="fopt"><span class="mk">D</span>Dependent variables, because all three are measured</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states explicitly that in predictive correlational studies, the variables measured to predict a single dependent variable are called independent variables.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because nothing is being manipulated. This chapter is clear that &quot;independent variable&quot; does not always mean &quot;manipulated intervention,&quot; so any option asserting that an independent variable must be manipulated is too absolute for this content.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study variables</span><span class="chip t2">research and extraneous variables</span></div>
+<div class="stem">19. A nurse conducts a descriptive study measuring fatigue, appetite, and mood in patients receiving chemotherapy. No intervention is provided and no cause-and-effect relationship is examined. What are these three variables called?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Research variables</li><li class="fopt"><span class="mk">B</span>Independent variables</li><li class="fopt"><span class="mk">C</span>Dependent variables</li><li class="fopt"><span class="mk">D</span>Extraneous variables</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Research variables are the qualities, properties, or characteristics measured in a study as they exist in a natural setting without a treatment, and they appear in descriptive and correlational studies where no independent variables are manipulated.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is tempting because the three variables are outcomes being measured. Calling them dependent variables implies their changes are presumed to be caused by an independent variable, and there is no independent variable here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">study variables</span><span class="chip t2">research and extraneous variables</span></div>
+<div class="stem">20. Which statements about extraneous variables are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They exist in all studies</li><li class="fopt right"><span class="mk">&#10003;</span>They are classified as recognized or unrecognized</li><li class="fopt right"><span class="mk">&#10003;</span>They are classified as controlled or uncontrolled</li><li class="fopt"><span class="mk">D</span>They are absent from descriptive and correlational studies</li><li class="fopt right"><span class="mk">&#10003;</span>They are a primary concern in intervention studies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Extraneous variables exist in all studies and can affect the measurement of study variables and the relationships among them; they are classified as recognized or unrecognized and as controlled or uncontrolled, and they are a primary concern in intervention studies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) confuses &quot;primary concern in intervention studies&quot; with &quot;only present in intervention studies.&quot; Some extraneous variables are not recognized until a study is in progress or completed, and researchers control them through specific designs, intervention protocols, and sample criteria, with environmental control an extremely important part of experimental studies.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"research problem and purpose","subtopic":"problem versus purpose","stem":"A study's introduction reads: \"Little is known about how medical-surgical nurses recognize early sepsis in hospitalized older adults.\" The next paragraph reads: \"The purpose of this study is to describe how medical-surgical nurses recognize early sepsis in adults older than 65.\" What does the first sentence represent?","options":["The research purpose","The research problem","The research objective","The research topic"],"correct":[1],"sata":false,"why":"The research problem is an area of concern in which there is a gap in the knowledge needed for nursing practice; the purpose is a clear concise statement of the specific goal or focus of a study.","trap":"(A) is the reflex answer because both sentences sit in the same introduction. The sentence naming what is not yet known is always the problem; the sentence naming what this particular study will do is the purpose."},{"topic":"research problem and purpose","subtopic":"problem versus purpose","stem":"Which statement correctly describes how a study's problem and purpose relate to each other?","options":["The purpose identifies the gap in knowledge, and the problem narrows that gap to this study's goal","The problem and the purpose are two names for the same statement","The problem is the gap in knowledge, and it provides the basis for developing the purpose","The purpose is written first, and the problem is derived from it"],"correct":[2],"sata":false,"why":"The problem is the area of concern in which there is a gap in knowledge, and the chapter states that the problem provides the basis for developing the research purpose.","trap":"(A) is the exact inversion of the pair and is the single most common error on this content. Direction of travel is problem to purpose, never the reverse."},{"topic":"research problem and purpose","subtopic":"judging a problem worth studying","stem":"Which considerations does the chapter list under the feasibility of a study problem? Select all that apply.","options":["Researcher expertise","Application to nursing practice","Money commitment","Ethical considerations","Addressing nursing research priorities"],"correct":[0,2,3],"sata":true,"why":"Feasibility is judged on researcher expertise, money commitment, and ethical considerations.","trap":"(B) and (E) are real criteria from this chapter, but they answer whether the problem is worth studying, not whether this researcher can actually carry it out. Application to practice, expanding previous research, and addressing nursing research priorities belong to the first question."},{"topic":"research objectives and questions","subtopic":"declarative versus interrogative","stem":"A study report includes the statement: \"This study describes the coping strategies used by family caregivers of persons with dementia.\" Which element is this, and what identifies it?","options":["A research question, because it names variables","A research objective, because it is a declarative statement expressed in the present tense","A hypothesis, because it names a population","The research problem, because it identifies what is not yet known"],"correct":[1],"sata":false,"why":"A research objective, sometimes called an aim, is a clear, concise, declarative statement expressed in the present tense that identifies the goals of the study.","trap":"(C) is tempting because the statement names both variables and a population, but a hypothesis must predict an expected relationship between variables. Nothing here predicts anything."},{"topic":"research objectives and questions","subtopic":"declarative versus interrogative","stem":"The same report includes the statement: \"What coping strategies do family caregivers of persons with dementia use?\" Which element is this, and what identifies it?","options":["A research objective, because objectives are interrogative","The research purpose, because it identifies the study's goal","A nondirectional hypothesis, because no direction is predicted","A research question, because it is an interrogative statement worded in the present tense"],"correct":[3],"sata":false,"why":"A research question is a clear, concise, interrogative statement worded in the present tense that includes one or more variables and is expressed to guide the implementation of studies.","trap":"(A) swaps the grammatical forms, which is the whole point of this pair. Objective and question are separated by declarative versus interrogative, not by tense — both are present tense."},{"topic":"research objectives and questions","subtopic":"quantitative and qualitative aims","stem":"Which statements about research objectives are accurate? Select all that apply.","options":["Objectives are sometimes called aims","Qualitative objectives are narrower in focus and more concrete than quantitative objectives","Objectives are expressed in the present tense","Objectives may be written to determine differences between two or more existing groups","Quantitative objectives usually focus on one or two variables"],"correct":[0,2,3,4],"sata":true,"why":"Objectives, sometimes called aims, are declarative present-tense statements that usually focus on one or two variables and may identify relationships or determine differences between existing groups such as females and males.","trap":"(B) inverts the qualitative contrast. Qualitative objectives are commonly broader in focus and include concepts that are more complex and abstract, not narrower and more concrete."},{"topic":"hypothesis types","subtopic":"associative versus causal","stem":"A researcher states: \"Hours playing video games is related to body mass index in school-age children.\" How is this hypothesis classified?","options":["Simple, associative, nondirectional","Simple, causal, directional","Complex, associative, nondirectional","Simple, associative, directional"],"correct":[0],"sata":false,"why":"Two variables makes it simple; \"is related to\" proposes that the variables occur together without claiming that one causes the other; and no positive or negative nature is predicted.","trap":"(D) is chosen by students who read any stated relationship as a direction. Direction requires words such as positive, negative, less, more, increase, decrease, greater, higher, or lower — none appears here."},{"topic":"hypothesis types","subtopic":"associative versus causal","stem":"A researcher states: \"Participants who perform brisk walking exercise combined with music exhibit higher sleep quality scores than participants who perform brisk walking alone.\" How is this hypothesis classified?","options":["Associative, simple, nondirectional","Causal, complex, directional","Causal, simple, nondirectional","Associative, complex, nondirectional"],"correct":[1],"sata":false,"why":"The chapter classifies this hypothesis as causal, complex because it involves three variables, and directional in the positive sense because it predicts higher sleep quality scores.","trap":"(C) can be eliminated before you count anything. The chapter states that the independent variable increases or decreases each dependent variable, so all causal hypotheses are directional and \"causal, nondirectional\" is an impossible combination."},{"topic":"hypothesis types","subtopic":"associative versus causal","stem":"Which statements about classifying hypotheses are accurate? Select all that apply.","options":["All causal hypotheses are directional","A hypothesis stating relationships among three or more variables is complex","A nondirectional hypothesis predicts a negative relationship","A complex hypothesis can be associative rather than causal","Words such as greater, less, increase, and decrease signal a directional hypothesis"],"correct":[0,1,3,4],"sata":true,"why":"Every hypothesis is classified simultaneously on relationship type, number of variables, direction, and form; simple means two variables and complex means three or more, and all causal hypotheses are directional.","trap":"(C) confuses nondirectional with negative. A nondirectional hypothesis states only that a relationship exists and does not predict its nature at all; predicting a negative relationship is directional."},{"topic":"hypothesis types","subtopic":"directional versus nondirectional","stem":"A researcher states: \"Parents will be more likely to misperceive the weight status of younger children.\" Which classification does the chapter assign?","options":["Simple, associative, nondirectional","Complex, causal, directional","Simple, associative, directional","Simple, causal, directional"],"correct":[2],"sata":false,"why":"Two variables makes it simple, no cause and effect is proposed, and \"more likely\" paired with \"younger\" specifies the nature of the relationship; the chapter classifies it as directional and negative.","trap":"A directional hypothesis does not have to predict a positive relationship. Direction means the nature is specified, and this one is directional precisely because it predicts a negative relationship."},{"topic":"hypothesis types","subtopic":"research versus statistical null hypothesis","stem":"A published report states only a directional research hypothesis and then reports a t-test comparing group means. Which hypothesis was actually tested, and why?","options":["The directional research hypothesis, because it is the one the researcher stated","Neither one; the t-test tests the level of significance rather than a hypothesis","The research hypothesis, because null hypotheses apply only to associative relationships","The statistical null hypothesis, which is implied because it is the converse of the research hypothesis"],"correct":[3],"sata":false,"why":"Even if the null hypothesis is not stated, it is implied because it is the converse of the research hypothesis, and it is the statistical hypothesis that is tested to determine whether the independent variable produced a significant effect.","trap":"(A) is the reflex because the printed hypothesis is the only one visible. What is printed and what is tested are different things in every quantitative report."},{"topic":"hypothesis types","subtopic":"research versus statistical null hypothesis","stem":"A hypothesis proposes that perceived social support and medication adherence occur together in adults with heart failure, with no claim that either causes the other. Which analysis matches this hypothesis?","options":["Correlational analyses examining the existence, type, and strength of the relationship","A t-test comparing experimental and comparison group means","An ANOVA comparing three treatment group means","A comparison of pretest and posttest means under an intervention protocol"],"correct":[0],"sata":false,"why":"Associative hypotheses are tested with correlational analyses that examine the existence, type, and strength of the relationship, while causal hypotheses are tested with analyses of differences between means such as t-test or ANOVA.","trap":"(B) and (C) are the causal-hypothesis tools. Match the analysis to the relationship the hypothesis claims, not to how sophisticated the study looks."},{"topic":"hypothesis quality and testability","subtopic":"elements of a testable hypothesis","stem":"Which elements should a clearly stated hypothesis include? Select all that apply.","options":["The population to be studied","The instrument that will measure the dependent variable","The independent variables to be manipulated or measured","The proposed outcomes or dependent variables to be measured","The level of significance that will be used"],"correct":[0,2,3],"sata":true,"why":"A clearly stated hypothesis includes the independent variables to be manipulated or measured, the proposed outcomes or dependent variables to be measured, and the population to be studied.","trap":"(B) and (E) look like rigor and are actually flaws. Naming an instrument limits the hypothesis to one study's measurement method, and determination of the level of significance is only a statistical technique applied to sample data."},{"topic":"hypothesis quality and testability","subtopic":"elements of a testable hypothesis","stem":"A reviewer must flag one of these hypotheses as improperly written. Which one, and why?","options":["\"Postoperative anxiety, measured by the State-Trait Anxiety Inventory, is lower in patients who receive guided imagery\" — it names the measurement method","\"Patients who receive guided imagery report lower postoperative anxiety than patients who receive standard care\" — it predicts a direction","\"Perceived stress is related to sleep quality in graduate nursing students\" — it does not claim causation","\"Nurses with higher workloads report more missed nursing care\" — it uses the comparative word higher"],"correct":[0],"sata":false,"why":"Methodological phrases such as \"measured by,\" \"in a random sample of,\" and \"using ANOVA\" are inappropriate in a hypothesis because they limit it to one study's measurement methods, sample, or analysis techniques.","trap":"(B) and (D) are correctly written directional hypotheses and (C) is a correctly written associative hypothesis. Predicting a direction and declining to claim causation are strengths, not defects."},{"topic":"hypothesis quality and testability","subtopic":"elements of a testable hypothesis","stem":"A reviewer is judging whether a hypothesis is testable. Which feature is required?","options":["It states whether the difference between the groups will be statistically significant","It names the sample and the analysis technique so the prediction can be checked","It predicts a relationship among variables that the data can support or not support","It is written in null form so that it can be rejected"],"correct":[2],"sata":false,"why":"A testable hypothesis clearly predicts relationships among variables, contains variables that are measurable or able to be manipulated, and predicts a relationship that can be supported or not supported by the data.","trap":"(A) and (B) name the two things a hypothesis must not contain. (D) is unnecessary because the null hypothesis is implied as the converse of the research hypothesis whether or not it is written out."},{"topic":"hypothesis quality and testability","subtopic":"which studies require hypotheses","stem":"A researcher is designing a quasi-experimental study testing whether a nurse-led education protocol reduces 30-day readmissions compared with usual care. What does the chapter say about hypotheses for a study like this?","options":["Hypotheses are optional; research questions are preferred for intervention studies","Quasi-experimental and experimental studies should include hypotheses to predict the study outcomes","Hypotheses are required only when the sample has been randomly selected","Hypotheses are appropriate only for descriptive and correlational studies"],"correct":[1],"sata":false,"why":"Quasi-experimental and experimental studies should include hypotheses to predict the study outcomes, and predictive correlational studies that measure independent variables to predict a dependent variable often include hypotheses.","trap":"(D) inverts the rule. Descriptive and correlational studies typically use objectives or questions, and hypotheses go on to shape the design, sampling method, data collection and analysis, and interpretation of findings."},{"topic":"study variables","subtopic":"independent and dependent variables","stem":"A researcher assigns patients to either a nurse-led sleep hygiene protocol or usual care and measures sleep quality at 4 weeks. Which labeling is correct?","options":["Sleep quality is the independent variable and the protocol is the dependent variable","Both are research variables because both are measured","The protocol is an extraneous variable and sleep quality is the dependent variable","The protocol is the independent variable and sleep quality is the dependent variable"],"correct":[3],"sata":false,"why":"The independent variable is the intervention or treatment manipulated or varied by the researcher to create an effect on the dependent variable, and the dependent variable is the outcome the researcher wants to predict or explain.","trap":"(A) is the classic inversion. The independent variable — also called the intervention, treatment, or experimental variable — is what the researcher does, not what is measured as a result."},{"topic":"study variables","subtopic":"independent and dependent variables","stem":"In a predictive correlational study, self-efficacy, social support, and health literacy are measured to predict medication adherence. Nothing is manipulated. What are the first three variables called?","options":["Research variables, because none of them is manipulated","Extraneous variables, because they are not controlled","Independent variables, even though none of them is manipulated","Dependent variables, because all three are measured"],"correct":[2],"sata":false,"why":"The chapter states explicitly that in predictive correlational studies, the variables measured to predict a single dependent variable are called independent variables.","trap":"(A) is the reflex answer because nothing is being manipulated. This chapter is clear that \"independent variable\" does not always mean \"manipulated intervention,\" so any option asserting that an independent variable must be manipulated is too absolute for this content."},{"topic":"study variables","subtopic":"research and extraneous variables","stem":"A nurse conducts a descriptive study measuring fatigue, appetite, and mood in patients receiving chemotherapy. No intervention is provided and no cause-and-effect relationship is examined. What are these three variables called?","options":["Research variables","Independent variables","Dependent variables","Extraneous variables"],"correct":[0],"sata":false,"why":"Research variables are the qualities, properties, or characteristics measured in a study as they exist in a natural setting without a treatment, and they appear in descriptive and correlational studies where no independent variables are manipulated.","trap":"(C) is tempting because the three variables are outcomes being measured. Calling them dependent variables implies their changes are presumed to be caused by an independent variable, and there is no independent variable here."},{"topic":"study variables","subtopic":"research and extraneous variables","stem":"Which statements about extraneous variables are accurate? Select all that apply.","options":["They exist in all studies","They are classified as recognized or unrecognized","They are classified as controlled or uncontrolled","They are absent from descriptive and correlational studies","They are a primary concern in intervention studies"],"correct":[0,1,2,4],"sata":true,"why":"Extraneous variables exist in all studies and can affect the measurement of study variables and the relationships among them; they are classified as recognized or unrecognized and as controlled or uncontrolled, and they are a primary concern in intervention studies.","trap":"(D) confuses \"primary concern in intervention studies\" with \"only present in intervention studies.\" Some extraneous variables are not recognized until a study is in progress or completed, and researchers control them through specific designs, intervention protocols, and sample criteria, with environmental control an extremely important part of experimental studies."}];
+const TITLE = "Chapter 5 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 5";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

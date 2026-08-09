@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 14 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 14</div><h1>Chapter 14 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods philosophy</span><span class="chip t2">pragmatism as the middle ground</span></div>
+<div class="stem">1. A research team states that it will use whatever combination of methods best answers the clinic's question rather than committing in advance to an objective or a subjective worldview. Which philosophical position does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Postpositivism</li><li class="fopt"><span class="mk">B</span>Constructivism</li><li class="fopt"><span class="mk">C</span>Positivism</li><li class="fopt right"><span class="mk">&#10003;</span>Pragmatism</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pragmatism focuses on solving problems by whatever methods fit the problem or question; researchers have exchanged the dichotomy of positivism and constructivism for the middle ground of pragmatism.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Postpositivism is the objective view of quantitative researchers and constructivism the subjective view of qualitative researchers. Mixed methods is explicitly neither.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods philosophy</span><span class="chip t2">pragmatism as the middle ground</span></div>
+<div class="stem">2. A clinic manager concerned about missed follow-up appointments works with a researcher who runs focus groups and administers an exit survey. Which statement best explains the choice of design?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The goal was to obtain the information they needed to improve the attendance rate, which is consistent with a pragmatic approach</li><li class="fopt"><span class="mk">B</span>Focus groups are required before any survey instrument may be administered</li><li class="fopt"><span class="mk">C</span>Qualitative data are considered more trustworthy than survey data in clinic settings</li><li class="fopt"><span class="mk">D</span>A mixed methods design was needed to satisfy the constructivist requirements of the study</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pragmatists want to obtain the information they believe they need to resolve an issue, and the chapter names improving the attendance rate as the goal that made mixed methods the fitting choice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) misassigns the philosophy. Constructivism is the subjective view of qualitative researchers, and a mixed methods study is neither constructivist nor postpositivistic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods philosophy</span><span class="chip t2">why methods are combined</span></div>
+<div class="stem">3. Which statements describe why researchers combine quantitative and qualitative methods in one study? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The strengths of one method can compensate for the possible limitations of the other</li><li class="fopt right"><span class="mk">&#10003;</span>The strengths of each method interact in a complementary way</li><li class="fopt right"><span class="mk">&#10003;</span>Methods are chosen to fit the problem or question rather than a fixed worldview</li><li class="fopt"><span class="mk">D</span>Mixing methods removes the need for the study to take any philosophical position</li><li class="fopt"><span class="mk">E</span>Mixing methods converts subjective qualitative findings into objective facts</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter frames the rationale two ways — one method's strengths compensate for the other's possible limitations, or, stated positively, the strengths of each method interact in a complementary way — under the pragmatic principle of fitting methods to the question.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is wrong because pragmatism is itself the position taken. (E) confuses data conversion, an integration technique, with a change in the nature of the findings.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">exploratory versus explanatory sequential</span></div>
+<div class="stem">4. A team knows little about how adolescents with cystic fibrosis judge the quality of their healthcare services. They interview 25 adolescents and young adults, content-analyze the transcripts, convert the determinants they identify into questionnaire items, and survey 113 respondents. Which design is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Convergent concurrent</li><li class="fopt right"><span class="mk">&#10003;</span>Exploratory sequential</li><li class="fopt"><span class="mk">C</span>Explanatory sequential</li><li class="fopt"><span class="mk">D</span>Parallel</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An exploratory sequential strategy begins with the collection and analysis of qualitative data, followed by the collection of quantitative data, and is often selected for underresearched topics so the first phase can inform the quantitative phase.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Explanatory sequential is the reflex answer for anyone who treats explore and explain as interchangeable. Exploratory means the qualitative phase comes first.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">exploratory versus explanatory sequential</span></div>
+<div class="stem">5. Researchers evaluating an intensive outpatient PTSD program measure symptom change in 30 women and 18 men with a mean age of 43.48 years, then interview participants about which parts of the treatment they found helpful. Which design is this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Explanatory sequential</li><li class="fopt"><span class="mk">B</span>Exploratory sequential</li><li class="fopt"><span class="mk">C</span>Convergent concurrent</li><li class="fopt"><span class="mk">D</span>Parallel</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In an explanatory sequential strategy the researcher collects and analyzes quantitative data and then collects and analyzes qualitative data to explain the quantitative findings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the cystic fibrosis item. Anchor on the word explain — the numbers already exist and the qualitative arm explains them, so quantitative came first.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">exploratory versus explanatory sequential</span></div>
+<div class="stem">6. The qualitative arm of the explanatory sequential PTSD study used grounded theory coding. What was the stated reason?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The researchers lacked resources for a comparison or control group</li><li class="fopt right"><span class="mk">&#10003;</span>The goal of the qualitative arm was to generate a tentative theory</li><li class="fopt"><span class="mk">C</span>Grounded theory is required whenever quantitative data are collected first</li><li class="fopt"><span class="mk">D</span>Grounded theory produces countable codes suitable for conversion to quantitative data</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The qualitative arm used grounded theory coding because the goal was to generate a tentative theory.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is true of that study — the missing control group is why qualitative data were added to supplement the quantitative estimates of treatment effects — but it does not explain the choice of grounded theory coding in particular.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">convergent concurrent design</span></div>
+<div class="stem">7. In the PICU family-stress study, parents were interviewed and completed quantitative stress measures during a single interaction, and the transcripts were not analyzed before the quantitative phase. Why is the design classified as concurrent rather than sequential?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because the qualitative component was emphasized over the quantitative</li><li class="fopt"><span class="mk">B</span>Because only nine parents from eight families were enrolled</li><li class="fopt right"><span class="mk">&#10003;</span>Because the sequence of analysis, not the sequence of contact, determines the design</li><li class="fopt"><span class="mk">D</span>Because both components addressed the same research question</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The interviews came first chronologically, but the transcripts were not analyzed before the quantitative phase and both types of data were collected during one interaction, which is what makes the design concurrent.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is a true statement about that study — the qualitative arm was emphasized and the quantitative findings were used to enrich the description — but emphasis is not what classifies the design.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">convergent concurrent design</span></div>
+<div class="stem">8. A researcher collects survey scores and interview narratives from a single sample during the same period and combines them only after each has been analyzed separately. Which statement about this study is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is an explanatory sequential design, because the survey was analyzed first</li><li class="fopt"><span class="mk">B</span>It is an exploratory sequential design, because the interviews informed the survey</li><li class="fopt"><span class="mk">C</span>It is a convergent concurrent design, and integration must occur during data collection</li><li class="fopt right"><span class="mk">&#10003;</span>It is a convergent concurrent design, and integration occurs during the interpretation phase</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A convergent concurrent design uses a single sample, or two samples from the same population, and integration happens after the data are analyzed, during the interpretation phase.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the near miss. Concurrent refers to when the data are collected, not to when the two arms are brought together.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">convergent concurrent design</span></div>
+<div class="stem">9. In a convergent concurrent study, the qualitative and quantitative arms yield the same findings. What is this called, and what does it mean?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Cross-validation, which means the two samples came from the same population</li><li class="fopt right"><span class="mk">&#10003;</span>Convergence, which strengthens the evidence</li><li class="fopt"><span class="mk">C</span>Corroboration, which indicates the study should be repeated sequentially</li><li class="fopt"><span class="mk">D</span>Congruence, which confirms that the sample was representative</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>When the findings from the qualitative and quantitative methods yield the same findings, that is convergence, and it strengthens the evidence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Confirm, cross-validate, and corroborate are the stated purposes for selecting the design; convergence is the name for the result when the two arms agree.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">convergent concurrent design</span></div>
+<div class="stem">10. A convergent concurrent study's quantitative and qualitative findings do not agree. How does the chapter say researchers should treat this result?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As a failure of the design that requires the study to be repeated</li><li class="fopt"><span class="mk">B</span>As evidence that the qualitative arm introduced bias</li><li class="fopt right"><span class="mk">&#10003;</span>As an opportunity to provide a broader description of the problem</li><li class="fopt"><span class="mk">D</span>As grounds for reporting only the quantitative findings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Different findings are not a failure; researchers may be able to use them to provide a broader description of the problem.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Divergence is not invalidation. Any option calling non-matching results invalid contradicts the chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">recognizing the three designs</span></div>
+<div class="stem">11. Which statements about the three mixed methods designs are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A convergent concurrent design is selected to confirm, cross-validate, or corroborate findings</li><li class="fopt right"><span class="mk">&#10003;</span>The convergent concurrent design is also called a parallel design</li><li class="fopt right"><span class="mk">&#10003;</span>An exploratory sequential design is often selected for underresearched topics</li><li class="fopt right"><span class="mk">&#10003;</span>In an explanatory sequential design, qualitative data are collected to explain the quantitative findings</li><li class="fopt"><span class="mk">E</span>In an exploratory sequential design, the quantitative phase is completed before the qualitative phase is designed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Convergent concurrent, also called parallel, runs both arms at once to cross-validate; exploratory sequential runs qualitative first for underresearched topics; explanatory sequential runs quantitative first and uses qualitative data to explain the results.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) inverts the exploratory sequential design. It describes explanatory sequential, where phase one is quantitative.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods designs</span><span class="chip t2">recognizing the three designs</span></div>
+<div class="stem">12. Which statements describe the cystic fibrosis study used to illustrate the exploratory sequential design? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Interviews were conducted with 25 adolescents and young adults with cystic fibrosis</li><li class="fopt right"><span class="mk">&#10003;</span>Four determinants of quality identified by content analysis were transformed into questionnaire items</li><li class="fopt"><span class="mk">C</span>The final questionnaire contained 113 items</li><li class="fopt right"><span class="mk">&#10003;</span>A panel of 10 experts rated the items for clarity and relevance</li><li class="fopt right"><span class="mk">&#10003;</span>The reported content validity was 0.91</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Content analysis of interviews with 25 participants produced four determinants of quality, each becoming an individual questionnaire item; a panel of 10 experts rated clarity and relevance for a content validity of 0.91.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) swaps the instrument length with the sample size. The questionnaire had 24 items and went to 113 participants.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods challenges</span><span class="chip t2">integrating the data</span></div>
+<div class="stem">13. A mixed methods team plans to decide how to combine its quantitative and qualitative findings after both data sets have been collected and analyzed. What does the chapter say about that plan?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is appropriate, because integration cannot be planned before the data are seen</li><li class="fopt"><span class="mk">B</span>It is appropriate only in convergent concurrent designs</li><li class="fopt"><span class="mk">C</span>Integration should be handled by the qualitative arm, which interprets meaning</li><li class="fopt right"><span class="mk">&#10003;</span>Integration is the critical phase and should be given significant thought during development of the study, ideally in the proposal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The capacity of mixed methods designs to answer the research questions depends on effective methods for integrating the data, so integration is the critical phase and should be planned during study development.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>In a convergent design integration does occur after both arms are analyzed, which makes (A) and (B) feel right. Performing integration late is not the same as planning it late.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods challenges</span><span class="chip t2">integrating the data</span></div>
+<div class="stem">14. Which of the following are strategies the chapter names for integrating data in a mixed methods study? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Building the second phase on the findings of the first</li><li class="fopt"><span class="mk">B</span>Discarding the arm whose findings are weaker</li><li class="fopt right"><span class="mk">&#10003;</span>Expanding the view of a phenomenon</li><li class="fopt right"><span class="mk">&#10003;</span>Counting qualitative codes and converting them to quantitative data</li><li class="fopt right"><span class="mk">&#10003;</span>Strengthening support by interpreting the findings together</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three named integration strategies are building the second phase on the first, expanding the view of a phenomenon, and strengthening support by interpreting the findings together; some researchers also convert data, counting qualitative codes or converting quantitative data into conceptual ideas or themes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) contradicts the chapter's handling of divergent findings, which are used to broaden the description rather than to disqualify an arm.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mixed methods challenges</span><span class="chip t2">time, funding, and team resources</span></div>
+<div class="stem">15. Two teams report that their mixed methods studies cost more than a single-method study would have. One ran both arms at the same time; the other ran the qualitative phase first. Which explanation of their different burdens is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The concurrent team needed more elapsed time; the sequential team needed additional personnel</li><li class="fopt"><span class="mk">B</span>Both teams needed additional personnel, and neither needed more time than a single-method study</li><li class="fopt right"><span class="mk">&#10003;</span>The concurrent team needed additional personnel to conduct both arms at the same time; the sequential team needed more elapsed time because phase one had to be completed and analyzed first</li><li class="fopt"><span class="mk">D</span>Neither design requires more resources than a single-method study once the proposal is funded</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Because of the complexity of concurrent designs, additional personnel are needed to conduct all aspects of both arms at the same time, whereas in sequential designs phase one must be completed and analyzed before phase two can be developed or revised.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the straight inversion of the two burdens. Mixed methods studies also require a time commitment that may exceed single-method studies — one team collected data for 4 years — and additional time often translates into a need for greater financial support.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcomes research foundations</span><span class="chip t2">what outcomes research is</span></div>
+<div class="stem">16. A hospital system asks a researcher to determine how patients' health status changed as a result of the nursing care they received. Which methodology is being described?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Outcomes research, a rigorous scientific method focused on the end results of patient care</li><li class="fopt"><span class="mk">B</span>An explanatory sequential mixed methods study</li><li class="fopt"><span class="mk">C</span>A quality improvement audit of individual nurses' documentation</li><li class="fopt"><span class="mk">D</span>Comparative effectiveness research comparing two nursing interventions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Outcomes research is a rigorous scientific method focused on the end results of patient care; in nursing it focuses on how a patient's health status changes as a result of the nursing care received or the nursing services delivered.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex for anyone who equates outcomes with chart review. Outcomes research does not examine care at the individual nurse level. Comparative effectiveness research is a real term here, but it names AHRQ's current initiative rather than this study.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcomes research foundations</span><span class="chip t2">what outcomes research is</span></div>
+<div class="stem">17. A researcher studies end results for patients with chronic conditions for whom cure is not always possible. According to AHRQ, which end results are relevant?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Cure rate, remission duration, and relapse rate</li><li class="fopt"><span class="mk">B</span>Structure, process, and outcome</li><li class="fopt right"><span class="mk">&#10003;</span>Quality of life, functioning, symptom management, and mortality</li><li class="fopt"><span class="mk">D</span>Cost per case, length of stay, and readmission rate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>AHRQ frames end results as effects people experience and care about, such as a change in their ability to function; for individuals with chronic conditions these include quality of life, functioning, symptom management, and mortality.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names economic measures. Economic efficiency is what draws policy makers and insurers to outcomes research, but it is not AHRQ's list of end results.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcomes research foundations</span><span class="chip t2">level of analysis and complexity</span></div>
+<div class="stem">18. Which study description matches the level of analysis used in outcomes research?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Evaluating one nurse's effect on her six assigned patients</li><li class="fopt right"><span class="mk">&#10003;</span>Evaluating all of the nursing care provided to patients in a particular ICU</li><li class="fopt"><span class="mk">C</span>Evaluating one patient's physiological response to a single intervention</li><li class="fopt"><span class="mk">D</span>Evaluating the documentation accuracy of one unit's charge nurse</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Outcomes studies do not examine patient care at the individual nurse or individual patient level; they might instead examine all the nursing care provided to patients in a particular ICU.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>One of the chapter's own open questions is how to distinguish care provided by nurses from care provided by other professionals — a problem that only exists because the unit of analysis is the aggregate, not the individual.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcomes research foundations</span><span class="chip t2">level of analysis and complexity</span></div>
+<div class="stem">19. Which statements describe how outcomes research differs from the other methodologies in this text? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Studies are more complex in design, population, settings, and data analyses</li><li class="fopt"><span class="mk">B</span>Care is examined at the level of the individual nurse and the individual patient</li><li class="fopt right"><span class="mk">&#10003;</span>Research teams often include disciplines such as economics and public health</li><li class="fopt right"><span class="mk">&#10003;</span>Researchers use a unique theoretical framework</li><li class="fopt right"><span class="mk">&#10003;</span>Much of the momentum comes from policy makers, insurers, and the public</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Outcomes studies are more complex in design, population, settings, and data analyses, draw on a mix of disciplines including economics and public health, use a unique theoretical framework, and are driven by policy makers, insurers, and the public who base payment on economic efficiency.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the level of analysis, which is the aggregate rather than the individual.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donabedian's quality framework</span><span class="chip t2">sorting structure, process, and outcome</span></div>
+<div class="stem">20. A researcher catalogs the nursing units, hospitals, and home health agencies where patients received care, along with each organization's leadership and decision-making processes. Within Donabedian's framework, which focus of evaluation is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Process</li><li class="fopt right"><span class="mk">&#10003;</span>Structure</li><li class="fopt"><span class="mk">C</span>Outcome</li><li class="fopt"><span class="mk">D</span>Quality</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Structure covers the elements of organization and administration, as well as provider and patient characteristics, that guide the processes of care; nursing units, hospitals, and home health agencies are the chapter's examples.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the overriding construct of Donabedian's theory, not one of its three foci. The three foci are structure, process, and outcome.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donabedian's quality framework</span><span class="chip t2">sorting structure, process, and outcome</span></div>
+<div class="stem">21. A study documents the practice style nurses use for wound care and whether the unit's standard of care was followed. Which focus of evaluation does this represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Structure</li><li class="fopt"><span class="mk">B</span>Outcome</li><li class="fopt right"><span class="mk">&#10003;</span>Process</li><li class="fopt"><span class="mk">D</span>Nursing-sensitive outcome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Process is how care is provided, such as practice style or standard of care.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the structure item. Sort by whether the element describes the setting and its organization (structure) or how care is actually delivered (process).</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donabedian's quality framework</span><span class="chip t2">the theory and its limits</span></div>
+<div class="stem">22. A student claims that most published outcomes studies examine structure, process, and outcome together. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Correct, because Donabedian's theory is the dominating framework for outcomes research</li><li class="fopt"><span class="mk">B</span>Correct, because NDNQI participation requires all three</li><li class="fopt"><span class="mk">C</span>Incorrect, because the theory calls for structure and outcome only</li><li class="fopt right"><span class="mk">&#10003;</span>Incorrect, because researchers have had little success including all three simultaneously</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A complete quality outcomes study requires simultaneous inclusion of all three and examination of the relationships among them, but researchers have had little success accomplishing this theoretical goal; the funding and cooperation required have not yet been realized.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex, and its premise is true — the theory does dominate outcomes research — which is exactly why students assume complete studies are the norm.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donabedian's quality framework</span><span class="chip t2">the theory and its limits</span></div>
+<div class="stem">23. The chapter relies on the World Health Organization's definition of quality of care. Why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because Donabedian's definition applies only to the structure of care</li><li class="fopt"><span class="mk">B</span>Because the NQF adopted the WHO definition as its national standard</li><li class="fopt"><span class="mk">C</span>Because quality is not a central construct in Donabedian's theory</li><li class="fopt right"><span class="mk">&#10003;</span>Because Donabedian never defined the concept himself, although quality is the overriding construct of his theory</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Although quality is the overriding construct of Donabedian's theory, he never actually defined the concept, so the WHO definition is used — the extent to which healthcare services improve desired health outcomes and are consistent with current professional knowledge.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the point. Quality is precisely the overriding construct, which is what makes the missing definition worth noticing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donabedian's quality framework</span><span class="chip t2">the theory and its limits</span></div>
+<div class="stem">24. Donabedian's cube depicts which of the following? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The cost of care delivered</li><li class="fopt right"><span class="mk">&#10003;</span>Health</li><li class="fopt right"><span class="mk">&#10003;</span>The subjects of care</li><li class="fopt right"><span class="mk">&#10003;</span>The providers of care</li><li class="fopt right"><span class="mk">&#10003;</span>Physical, psychological, and social function</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The cube has three dimensions — health, the subjects of care, and the providers of care — and incorporates three aspects of health: physical function, psychological function, and social function.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Economic efficiency is what draws payers to outcomes research, but cost is not one of the cube's dimensions.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donabedian's quality framework</span><span class="chip t2">structural and nursing services variables</span></div>
+<div class="stem">25. A hospital cites its Magnet designation and its nurses' autonomy in clinical practice as reasons its patients do well. How does the chapter classify these two features?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Structural variables, because they are elements of organization that guide the processes of care</li><li class="fopt"><span class="mk">B</span>Process variables, because they describe how nurses deliver care</li><li class="fopt"><span class="mk">C</span>Nursing-sensitive patient outcomes, because they are influenced by nursing decisions</li><li class="fopt"><span class="mk">D</span>Nursing interventions, because they reflect the care delivered by nurses</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The organization of nursing care and nursing leadership affect nursing practice and in turn patient outcomes; autonomy in clinical nursing practice is a structural variable recognized as critically important, and Magnet designation is an identified autonomy-enabling structure, verifiable through the ANCC.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a real category from this chapter — nursing interventions are things like a falls risk assessment or a pressure ulcer risk assessment — but autonomy sounds like something nurses do, which is why students file it under process.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donabedian's quality framework</span><span class="chip t2">structural and nursing services variables</span></div>
+<div class="stem">26. A researcher studying nursing services variables would examine which of the following? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Staffing levels and skill mix</li><li class="fopt right"><span class="mk">&#10003;</span>Assignment patterns such as primary nursing, functional assignments, and team nursing</li><li class="fopt"><span class="mk">C</span>Patients' quality of life six months after discharge</li><li class="fopt right"><span class="mk">&#10003;</span>Shift patterns and the ratio of full-time to part-time nurses</li><li class="fopt right"><span class="mk">&#10003;</span>Cohesion and communication among nursing staff and between nurses and physicians</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nursing services is a general concept referring to the organization and administration of nursing activities, and the variables studied include skill mix and personnel configuration, staffing levels, assignment patterns, shift patterns, education and experience levels, full-time to part-time ratios, leadership, cohesion and communication, and clinical care maps.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is a distal outcome, not a nursing services variable. Nursing services describes the arrangement of care, not the end result of it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing-sensitive outcomes</span><span class="chip t2">attribution and definition</span></div>
+<div class="stem">27. A nurse manager states that her unit's lower fall rate proves that nursing care caused the improvement. Which statement about nursing-sensitive patient outcomes corrects her?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The outcome is influenced by nursing care decisions and actions, but it may be associated with nursing rather than caused by it</li><li class="fopt"><span class="mk">B</span>The outcome is caused by nursing care by definition, so her claim is accurate</li><li class="fopt"><span class="mk">C</span>The outcome is distal, so it cannot be linked to nursing at all</li><li class="fopt"><span class="mk">D</span>The outcome is a structural variable, so it reflects staffing rather than care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nursing-sensitive patient outcomes are considered sensitive because they are influenced by nursing care decisions and actions; an outcome may not be caused by nursing but is associated with nursing.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The definition deliberately hedges — influenced by and associated with, never caused by. An option asserting nursing causation overstates what the term supports.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing-sensitive outcomes</span><span class="chip t2">attribution and definition</span></div>
+<div class="stem">28. In the chapter's definition of nursing-sensitive outcomes, the term nursing may refer to which of the following? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The individual nurse</li><li class="fopt right"><span class="mk">&#10003;</span>Nurses as a working group</li><li class="fopt right"><span class="mk">&#10003;</span>The approach to nursing practice</li><li class="fopt"><span class="mk">D</span>The physician-directed plan of care</li><li class="fopt right"><span class="mk">&#10003;</span>The nursing unit or institution that determines numbers of nurses, salaries, and educational level</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nursing in this definition may mean the individual nurse, nurses as a working group, the approach to nursing practice, or the nursing unit or institution that determines numbers of nurses, salaries, and educational level.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The breadth of the term is the point. Reading it as only the individual nurse contradicts the aggregate level at which outcomes research operates.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing-sensitive outcomes</span><span class="chip t2">proximal versus distal outcomes</span></div>
+<div class="stem">29. An outcomes study measures patients' signs and symptoms of disease at the completion of a nursing intervention. How is this outcome classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Distal, because it is measured at the end of the intervention</li><li class="fopt right"><span class="mk">&#10003;</span>Proximal, because it is close to the delivery of care</li><li class="fopt"><span class="mk">C</span>Adverse, because symptoms indicate injury from care</li><li class="fopt"><span class="mk">D</span>Structural, because symptom control depends on staffing levels</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A proximal outcome is close to the delivery of care, and signs and symptoms of disease are the chapter's example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats timing of measurement as the criterion. Proximity refers to closeness to the care delivered, not to the calendar.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing-sensitive outcomes</span><span class="chip t2">proximal versus distal outcomes</span></div>
+<div class="stem">30. An outcomes study measures patients' quality of life one year after discharge. Which statement about this outcome is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is proximal, because quality of life is a nursing-sensitive measure</li><li class="fopt"><span class="mk">B</span>It is proximal, because it was measured on patients who received nursing care</li><li class="fopt"><span class="mk">C</span>It is distal, and it is easier to attribute to nursing than symptom measures are</li><li class="fopt right"><span class="mk">&#10003;</span>It is distal, and it is more influenced by external nontreatment factors</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A distal outcome is removed from proximity to the care or service received and is more influenced by external nontreatment or nonintervention factors; quality of life is the chapter's example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts attribution. Being more influenced by external factors is exactly what makes distal outcomes harder, not easier, to attribute to nursing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing-sensitive outcomes</span><span class="chip t2">proximal versus distal outcomes</span></div>
+<div class="stem">31. A nurse researcher wants a published classification that identifies nurse-sensitive outcomes as proximal or distal. Which resource should she use?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The Nursing Outcomes Classification</li><li class="fopt"><span class="mk">B</span>The National Database of Nursing Quality Indicators</li><li class="fopt"><span class="mk">C</span>The National Guideline Clearinghouse</li><li class="fopt"><span class="mk">D</span>The National Quality Forum measure portfolio</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Nursing Outcomes Classification identifies proximal and distal nurse-sensitive outcomes for research and practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>NDNQI houses data on nursing-sensitive quality indicators and the National Guideline Clearinghouse summarizes evidence-based clinical practice guidelines. Neither sorts outcomes by proximity to care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcome measurement and evaluation</span><span class="chip t2">adverse outcomes and standards of care</span></div>
+<div class="stem">32. During an admission for pneumonia, a patient develops a central line infection that prolongs the hospital stay. Under the chapter's definition, how is this best classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A distal outcome, because it developed after admission</li><li class="fopt"><span class="mk">B</span>A process measure, because it reflects how care was provided</li><li class="fopt right"><span class="mk">&#10003;</span>An adverse outcome, because it results from medical management or a complication rather than the underlying disease</li><li class="fopt"><span class="mk">D</span>A structural variable, because infection rates depend on staffing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An adverse outcome is a consequence of injury caused by medical management or complication rather than by the underlying disease itself, and generally includes prolonged health care, resulting disability, or death.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Deterioration caused by the pneumonia itself would not qualify. The injury has to come from the management or a complication, not from disease progression.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcome measurement and evaluation</span><span class="chip t2">adverse outcomes and standards of care</span></div>
+<div class="stem">33. A researcher evaluating the process of care needs the term for the norm against which quality of care is judged. Which term applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Practice pattern</li><li class="fopt"><span class="mk">B</span>Practice style</li><li class="fopt"><span class="mk">C</span>Functional status</li><li class="fopt right"><span class="mk">&#10003;</span>Standard of care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A standard of care is a norm on which quality of care is judged.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Practice pattern is described as a concept closely related to practice style, and both describe how care is actually delivered rather than the norm used to judge it. Functional status is a multidimensional construct measured as an outcome.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcome measurement and evaluation</span><span class="chip t2">evaluating structure and measuring change</span></div>
+<div class="stem">34. A researcher beginning to evaluate the structure of care identifies and describes its elements. Which elements does the chapter name? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Patients' symptom management after discharge</li><li class="fopt right"><span class="mk">&#10003;</span>Leadership</li><li class="fopt right"><span class="mk">&#10003;</span>Organizational hierarchy</li><li class="fopt right"><span class="mk">&#10003;</span>Decision-making processes and the distribution of power</li><li class="fopt right"><span class="mk">&#10003;</span>Financial management</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Evaluating structure begins by identifying and describing the elements of the structure using administration and management theories; the elements named are leadership, organizational hierarchy, decision-making processes, distribution of power, and financial management.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is an end result and belongs to the outcome focus, not the structure focus.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">outcome measurement and evaluation</span><span class="chip t2">evaluating structure and measuring change</span></div>
+<div class="stem">35. Choosing an instrument for an outcomes study, a researcher asks whether it will register improvement after the intervention. Which measurement property is she evaluating?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Sensitivity to change</li><li class="fopt"><span class="mk">B</span>Content validity</li><li class="fopt"><span class="mk">C</span>Convergence</li><li class="fopt"><span class="mk">D</span>Functional status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sensitivity to change is an important measurement property in outcomes research because researchers are often interested in evaluating how outcomes change in response to healthcare interventions.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Content validity is what the expert panel established for the cystic fibrosis questionnaire at 0.91; it addresses whether items represent the concept, not whether the instrument detects change over time.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">national quality initiatives</span><span class="chip t2">matching organization to role</span></div>
+<div class="stem">36. A quality committee needs to consult the national standard-setting organization for healthcare performance measures. Which organization is it, and when was it founded?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>AHRQ, part of DHHS</li><li class="fopt right"><span class="mk">&#10003;</span>The National Quality Forum, founded in 1999</li><li class="fopt"><span class="mk">C</span>PCORI, funded through the Recovery Act of 2009</li><li class="fopt"><span class="mk">D</span>NDNQI, whose database was funded in 1998</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The National Quality Forum, founded in 1999, is the national standard-setting organization for healthcare performance measures, with a portfolio of performance measures, serious reportable events, and preferred practices.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>About one-third of the NQF's measures are patient outcomes such as mortality, readmissions, health functioning, depression, and experience of care. Note also that the NQF holds that quality is as much about influencing positive outcomes as about avoiding negative ones, even though most measures in use focus on failure to meet expected standards.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">national quality initiatives</span><span class="chip t2">matching organization to role</span></div>
+<div class="stem">37. Which organization was created to produce evidence-based information from research guided by patients, caregivers, and the broader healthcare community, and how was it funded?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>AHRQ, whose number one funding priority is supporting the implementation of PCOR</li><li class="fopt"><span class="mk">B</span>The National Quality Forum, the national standard-setting body for performance measures</li><li class="fopt right"><span class="mk">&#10003;</span>PCORI, funded through the Recovery Act of 2009, with $473 million designated for patient-centered outcomes research</li><li class="fopt"><span class="mk">D</span>NDNQI, launched by an ANA plan in 1994</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>PCORI was funded via the Recovery Act of 2009, which designated $473 million for patient-centered outcomes research, and it helps people make informed healthcare decisions through research guided by patients, caregivers, and the broader healthcare community.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is tempting because AHRQ's number one funding priority really is improving healthcare quality by supporting the implementation of PCOR, and its current initiative is comparative effectiveness research. AHRQ funds the work; PCORI is the body created to produce it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">national quality initiatives</span><span class="chip t2">nursing-sensitive performance measures</span></div>
+<div class="stem">38. Which measures were among the nursing-sensitive measures submitted by the ANA under NDNQI? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Nursing staff skill mix</li><li class="fopt"><span class="mk">B</span>Hospital 30-day mortality rate</li><li class="fopt right"><span class="mk">&#10003;</span>Central line-associated bloodstream infection rate</li><li class="fopt right"><span class="mk">&#10003;</span>Ventilator-associated pneumonia rate</li><li class="fopt right"><span class="mk">&#10003;</span>RN practice environment scale</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The ANA's list — the first nationally standardized performance measures of nursing-sensitive outcomes in acute care hospitals — includes nursing staff skill mix, nursing care hours per patient day, catheter-associated urinary tract infection rate, central line-associated bloodstream infection rate, fall and injury rates, hospital- and unit-acquired pressure ulcer rates, nurse turnover rate, the RN practice environment scale, and ventilator-associated pneumonia rate.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) belongs to the NQF's outcome measures, not the ANA's nursing-sensitive set. Note the lineage: the ANA worked with the American Academy of Nursing Expert Panel on Quality Health Care, used Donabedian's theory as the project framework, and first called the indicators the ANA Nursing Care Report Card, which could facilitate benchmarking across hospitals.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"mixed methods philosophy","subtopic":"pragmatism as the middle ground","stem":"A research team states that it will use whatever combination of methods best answers the clinic's question rather than committing in advance to an objective or a subjective worldview. Which philosophical position does this describe?","options":["Postpositivism","Constructivism","Positivism","Pragmatism"],"correct":[3],"sata":false,"why":"Pragmatism focuses on solving problems by whatever methods fit the problem or question; researchers have exchanged the dichotomy of positivism and constructivism for the middle ground of pragmatism.","trap":"Postpositivism is the objective view of quantitative researchers and constructivism the subjective view of qualitative researchers. Mixed methods is explicitly neither."},{"topic":"mixed methods philosophy","subtopic":"pragmatism as the middle ground","stem":"A clinic manager concerned about missed follow-up appointments works with a researcher who runs focus groups and administers an exit survey. Which statement best explains the choice of design?","options":["The goal was to obtain the information they needed to improve the attendance rate, which is consistent with a pragmatic approach","Focus groups are required before any survey instrument may be administered","Qualitative data are considered more trustworthy than survey data in clinic settings","A mixed methods design was needed to satisfy the constructivist requirements of the study"],"correct":[0],"sata":false,"why":"Pragmatists want to obtain the information they believe they need to resolve an issue, and the chapter names improving the attendance rate as the goal that made mixed methods the fitting choice.","trap":"(D) misassigns the philosophy. Constructivism is the subjective view of qualitative researchers, and a mixed methods study is neither constructivist nor postpositivistic."},{"topic":"mixed methods philosophy","subtopic":"why methods are combined","stem":"Which statements describe why researchers combine quantitative and qualitative methods in one study? Select all that apply.","options":["The strengths of one method can compensate for the possible limitations of the other","The strengths of each method interact in a complementary way","Methods are chosen to fit the problem or question rather than a fixed worldview","Mixing methods removes the need for the study to take any philosophical position","Mixing methods converts subjective qualitative findings into objective facts"],"correct":[0,1,2],"sata":true,"why":"The chapter frames the rationale two ways — one method's strengths compensate for the other's possible limitations, or, stated positively, the strengths of each method interact in a complementary way — under the pragmatic principle of fitting methods to the question.","trap":"(D) is wrong because pragmatism is itself the position taken. (E) confuses data conversion, an integration technique, with a change in the nature of the findings."},{"topic":"mixed methods designs","subtopic":"exploratory versus explanatory sequential","stem":"A team knows little about how adolescents with cystic fibrosis judge the quality of their healthcare services. They interview 25 adolescents and young adults, content-analyze the transcripts, convert the determinants they identify into questionnaire items, and survey 113 respondents. Which design is this?","options":["Convergent concurrent","Exploratory sequential","Explanatory sequential","Parallel"],"correct":[1],"sata":false,"why":"An exploratory sequential strategy begins with the collection and analysis of qualitative data, followed by the collection of quantitative data, and is often selected for underresearched topics so the first phase can inform the quantitative phase.","trap":"Explanatory sequential is the reflex answer for anyone who treats explore and explain as interchangeable. Exploratory means the qualitative phase comes first."},{"topic":"mixed methods designs","subtopic":"exploratory versus explanatory sequential","stem":"Researchers evaluating an intensive outpatient PTSD program measure symptom change in 30 women and 18 men with a mean age of 43.48 years, then interview participants about which parts of the treatment they found helpful. Which design is this?","options":["Explanatory sequential","Exploratory sequential","Convergent concurrent","Parallel"],"correct":[0],"sata":false,"why":"In an explanatory sequential strategy the researcher collects and analyzes quantitative data and then collects and analyzes qualitative data to explain the quantitative findings.","trap":"This is the mirror of the cystic fibrosis item. Anchor on the word explain — the numbers already exist and the qualitative arm explains them, so quantitative came first."},{"topic":"mixed methods designs","subtopic":"exploratory versus explanatory sequential","stem":"The qualitative arm of the explanatory sequential PTSD study used grounded theory coding. What was the stated reason?","options":["The researchers lacked resources for a comparison or control group","The goal of the qualitative arm was to generate a tentative theory","Grounded theory is required whenever quantitative data are collected first","Grounded theory produces countable codes suitable for conversion to quantitative data"],"correct":[1],"sata":false,"why":"The qualitative arm used grounded theory coding because the goal was to generate a tentative theory.","trap":"(A) is true of that study — the missing control group is why qualitative data were added to supplement the quantitative estimates of treatment effects — but it does not explain the choice of grounded theory coding in particular."},{"topic":"mixed methods designs","subtopic":"convergent concurrent design","stem":"In the PICU family-stress study, parents were interviewed and completed quantitative stress measures during a single interaction, and the transcripts were not analyzed before the quantitative phase. Why is the design classified as concurrent rather than sequential?","options":["Because the qualitative component was emphasized over the quantitative","Because only nine parents from eight families were enrolled","Because the sequence of analysis, not the sequence of contact, determines the design","Because both components addressed the same research question"],"correct":[2],"sata":false,"why":"The interviews came first chronologically, but the transcripts were not analyzed before the quantitative phase and both types of data were collected during one interaction, which is what makes the design concurrent.","trap":"(A) is a true statement about that study — the qualitative arm was emphasized and the quantitative findings were used to enrich the description — but emphasis is not what classifies the design."},{"topic":"mixed methods designs","subtopic":"convergent concurrent design","stem":"A researcher collects survey scores and interview narratives from a single sample during the same period and combines them only after each has been analyzed separately. Which statement about this study is accurate?","options":["It is an explanatory sequential design, because the survey was analyzed first","It is an exploratory sequential design, because the interviews informed the survey","It is a convergent concurrent design, and integration must occur during data collection","It is a convergent concurrent design, and integration occurs during the interpretation phase"],"correct":[3],"sata":false,"why":"A convergent concurrent design uses a single sample, or two samples from the same population, and integration happens after the data are analyzed, during the interpretation phase.","trap":"(C) is the near miss. Concurrent refers to when the data are collected, not to when the two arms are brought together."},{"topic":"mixed methods designs","subtopic":"convergent concurrent design","stem":"In a convergent concurrent study, the qualitative and quantitative arms yield the same findings. What is this called, and what does it mean?","options":["Cross-validation, which means the two samples came from the same population","Convergence, which strengthens the evidence","Corroboration, which indicates the study should be repeated sequentially","Congruence, which confirms that the sample was representative"],"correct":[1],"sata":false,"why":"When the findings from the qualitative and quantitative methods yield the same findings, that is convergence, and it strengthens the evidence.","trap":"Confirm, cross-validate, and corroborate are the stated purposes for selecting the design; convergence is the name for the result when the two arms agree."},{"topic":"mixed methods designs","subtopic":"convergent concurrent design","stem":"A convergent concurrent study's quantitative and qualitative findings do not agree. How does the chapter say researchers should treat this result?","options":["As a failure of the design that requires the study to be repeated","As evidence that the qualitative arm introduced bias","As an opportunity to provide a broader description of the problem","As grounds for reporting only the quantitative findings"],"correct":[2],"sata":false,"why":"Different findings are not a failure; researchers may be able to use them to provide a broader description of the problem.","trap":"Divergence is not invalidation. Any option calling non-matching results invalid contradicts the chapter."},{"topic":"mixed methods designs","subtopic":"recognizing the three designs","stem":"Which statements about the three mixed methods designs are accurate? Select all that apply.","options":["A convergent concurrent design is selected to confirm, cross-validate, or corroborate findings","The convergent concurrent design is also called a parallel design","An exploratory sequential design is often selected for underresearched topics","In an explanatory sequential design, qualitative data are collected to explain the quantitative findings","In an exploratory sequential design, the quantitative phase is completed before the qualitative phase is designed"],"correct":[0,1,2,3],"sata":true,"why":"Convergent concurrent, also called parallel, runs both arms at once to cross-validate; exploratory sequential runs qualitative first for underresearched topics; explanatory sequential runs quantitative first and uses qualitative data to explain the results.","trap":"(E) inverts the exploratory sequential design. It describes explanatory sequential, where phase one is quantitative."},{"topic":"mixed methods designs","subtopic":"recognizing the three designs","stem":"Which statements describe the cystic fibrosis study used to illustrate the exploratory sequential design? Select all that apply.","options":["Interviews were conducted with 25 adolescents and young adults with cystic fibrosis","Four determinants of quality identified by content analysis were transformed into questionnaire items","The final questionnaire contained 113 items","A panel of 10 experts rated the items for clarity and relevance","The reported content validity was 0.91"],"correct":[0,1,3,4],"sata":true,"why":"Content analysis of interviews with 25 participants produced four determinants of quality, each becoming an individual questionnaire item; a panel of 10 experts rated clarity and relevance for a content validity of 0.91.","trap":"(C) swaps the instrument length with the sample size. The questionnaire had 24 items and went to 113 participants."},{"topic":"mixed methods challenges","subtopic":"integrating the data","stem":"A mixed methods team plans to decide how to combine its quantitative and qualitative findings after both data sets have been collected and analyzed. What does the chapter say about that plan?","options":["It is appropriate, because integration cannot be planned before the data are seen","It is appropriate only in convergent concurrent designs","Integration should be handled by the qualitative arm, which interprets meaning","Integration is the critical phase and should be given significant thought during development of the study, ideally in the proposal"],"correct":[3],"sata":false,"why":"The capacity of mixed methods designs to answer the research questions depends on effective methods for integrating the data, so integration is the critical phase and should be planned during study development.","trap":"In a convergent design integration does occur after both arms are analyzed, which makes (A) and (B) feel right. Performing integration late is not the same as planning it late."},{"topic":"mixed methods challenges","subtopic":"integrating the data","stem":"Which of the following are strategies the chapter names for integrating data in a mixed methods study? Select all that apply.","options":["Building the second phase on the findings of the first","Discarding the arm whose findings are weaker","Expanding the view of a phenomenon","Counting qualitative codes and converting them to quantitative data","Strengthening support by interpreting the findings together"],"correct":[0,2,3,4],"sata":true,"why":"The three named integration strategies are building the second phase on the first, expanding the view of a phenomenon, and strengthening support by interpreting the findings together; some researchers also convert data, counting qualitative codes or converting quantitative data into conceptual ideas or themes.","trap":"(B) contradicts the chapter's handling of divergent findings, which are used to broaden the description rather than to disqualify an arm."},{"topic":"mixed methods challenges","subtopic":"time, funding, and team resources","stem":"Two teams report that their mixed methods studies cost more than a single-method study would have. One ran both arms at the same time; the other ran the qualitative phase first. Which explanation of their different burdens is accurate?","options":["The concurrent team needed more elapsed time; the sequential team needed additional personnel","Both teams needed additional personnel, and neither needed more time than a single-method study","The concurrent team needed additional personnel to conduct both arms at the same time; the sequential team needed more elapsed time because phase one had to be completed and analyzed first","Neither design requires more resources than a single-method study once the proposal is funded"],"correct":[2],"sata":false,"why":"Because of the complexity of concurrent designs, additional personnel are needed to conduct all aspects of both arms at the same time, whereas in sequential designs phase one must be completed and analyzed before phase two can be developed or revised.","trap":"(A) is the straight inversion of the two burdens. Mixed methods studies also require a time commitment that may exceed single-method studies — one team collected data for 4 years — and additional time often translates into a need for greater financial support."},{"topic":"outcomes research foundations","subtopic":"what outcomes research is","stem":"A hospital system asks a researcher to determine how patients' health status changed as a result of the nursing care they received. Which methodology is being described?","options":["Outcomes research, a rigorous scientific method focused on the end results of patient care","An explanatory sequential mixed methods study","A quality improvement audit of individual nurses' documentation","Comparative effectiveness research comparing two nursing interventions"],"correct":[0],"sata":false,"why":"Outcomes research is a rigorous scientific method focused on the end results of patient care; in nursing it focuses on how a patient's health status changes as a result of the nursing care received or the nursing services delivered.","trap":"(C) is the reflex for anyone who equates outcomes with chart review. Outcomes research does not examine care at the individual nurse level. Comparative effectiveness research is a real term here, but it names AHRQ's current initiative rather than this study."},{"topic":"outcomes research foundations","subtopic":"what outcomes research is","stem":"A researcher studies end results for patients with chronic conditions for whom cure is not always possible. According to AHRQ, which end results are relevant?","options":["Cure rate, remission duration, and relapse rate","Structure, process, and outcome","Quality of life, functioning, symptom management, and mortality","Cost per case, length of stay, and readmission rate"],"correct":[2],"sata":false,"why":"AHRQ frames end results as effects people experience and care about, such as a change in their ability to function; for individuals with chronic conditions these include quality of life, functioning, symptom management, and mortality.","trap":"(D) names economic measures. Economic efficiency is what draws policy makers and insurers to outcomes research, but it is not AHRQ's list of end results."},{"topic":"outcomes research foundations","subtopic":"level of analysis and complexity","stem":"Which study description matches the level of analysis used in outcomes research?","options":["Evaluating one nurse's effect on her six assigned patients","Evaluating all of the nursing care provided to patients in a particular ICU","Evaluating one patient's physiological response to a single intervention","Evaluating the documentation accuracy of one unit's charge nurse"],"correct":[1],"sata":false,"why":"Outcomes studies do not examine patient care at the individual nurse or individual patient level; they might instead examine all the nursing care provided to patients in a particular ICU.","trap":"One of the chapter's own open questions is how to distinguish care provided by nurses from care provided by other professionals — a problem that only exists because the unit of analysis is the aggregate, not the individual."},{"topic":"outcomes research foundations","subtopic":"level of analysis and complexity","stem":"Which statements describe how outcomes research differs from the other methodologies in this text? Select all that apply.","options":["Studies are more complex in design, population, settings, and data analyses","Care is examined at the level of the individual nurse and the individual patient","Research teams often include disciplines such as economics and public health","Researchers use a unique theoretical framework","Much of the momentum comes from policy makers, insurers, and the public"],"correct":[0,2,3,4],"sata":true,"why":"Outcomes studies are more complex in design, population, settings, and data analyses, draw on a mix of disciplines including economics and public health, use a unique theoretical framework, and are driven by policy makers, insurers, and the public who base payment on economic efficiency.","trap":"(B) inverts the level of analysis, which is the aggregate rather than the individual."},{"topic":"donabedian's quality framework","subtopic":"sorting structure, process, and outcome","stem":"A researcher catalogs the nursing units, hospitals, and home health agencies where patients received care, along with each organization's leadership and decision-making processes. Within Donabedian's framework, which focus of evaluation is this?","options":["Process","Structure","Outcome","Quality"],"correct":[1],"sata":false,"why":"Structure covers the elements of organization and administration, as well as provider and patient characteristics, that guide the processes of care; nursing units, hospitals, and home health agencies are the chapter's examples.","trap":"(D) is the overriding construct of Donabedian's theory, not one of its three foci. The three foci are structure, process, and outcome."},{"topic":"donabedian's quality framework","subtopic":"sorting structure, process, and outcome","stem":"A study documents the practice style nurses use for wound care and whether the unit's standard of care was followed. Which focus of evaluation does this represent?","options":["Structure","Outcome","Process","Nursing-sensitive outcome"],"correct":[2],"sata":false,"why":"Process is how care is provided, such as practice style or standard of care.","trap":"This is the mirror of the structure item. Sort by whether the element describes the setting and its organization (structure) or how care is actually delivered (process)."},{"topic":"donabedian's quality framework","subtopic":"the theory and its limits","stem":"A student claims that most published outcomes studies examine structure, process, and outcome together. Which response is accurate?","options":["Correct, because Donabedian's theory is the dominating framework for outcomes research","Correct, because NDNQI participation requires all three","Incorrect, because the theory calls for structure and outcome only","Incorrect, because researchers have had little success including all three simultaneously"],"correct":[3],"sata":false,"why":"A complete quality outcomes study requires simultaneous inclusion of all three and examination of the relationships among them, but researchers have had little success accomplishing this theoretical goal; the funding and cooperation required have not yet been realized.","trap":"(A) is the reflex, and its premise is true — the theory does dominate outcomes research — which is exactly why students assume complete studies are the norm."},{"topic":"donabedian's quality framework","subtopic":"the theory and its limits","stem":"The chapter relies on the World Health Organization's definition of quality of care. Why?","options":["Because Donabedian's definition applies only to the structure of care","Because the NQF adopted the WHO definition as its national standard","Because quality is not a central construct in Donabedian's theory","Because Donabedian never defined the concept himself, although quality is the overriding construct of his theory"],"correct":[3],"sata":false,"why":"Although quality is the overriding construct of Donabedian's theory, he never actually defined the concept, so the WHO definition is used — the extent to which healthcare services improve desired health outcomes and are consistent with current professional knowledge.","trap":"(C) inverts the point. Quality is precisely the overriding construct, which is what makes the missing definition worth noticing."},{"topic":"donabedian's quality framework","subtopic":"the theory and its limits","stem":"Donabedian's cube depicts which of the following? Select all that apply.","options":["The cost of care delivered","Health","The subjects of care","The providers of care","Physical, psychological, and social function"],"correct":[1,2,3,4],"sata":true,"why":"The cube has three dimensions — health, the subjects of care, and the providers of care — and incorporates three aspects of health: physical function, psychological function, and social function.","trap":"Economic efficiency is what draws payers to outcomes research, but cost is not one of the cube's dimensions."},{"topic":"donabedian's quality framework","subtopic":"structural and nursing services variables","stem":"A hospital cites its Magnet designation and its nurses' autonomy in clinical practice as reasons its patients do well. How does the chapter classify these two features?","options":["Structural variables, because they are elements of organization that guide the processes of care","Process variables, because they describe how nurses deliver care","Nursing-sensitive patient outcomes, because they are influenced by nursing decisions","Nursing interventions, because they reflect the care delivered by nurses"],"correct":[0],"sata":false,"why":"The organization of nursing care and nursing leadership affect nursing practice and in turn patient outcomes; autonomy in clinical nursing practice is a structural variable recognized as critically important, and Magnet designation is an identified autonomy-enabling structure, verifiable through the ANCC.","trap":"(D) names a real category from this chapter — nursing interventions are things like a falls risk assessment or a pressure ulcer risk assessment — but autonomy sounds like something nurses do, which is why students file it under process."},{"topic":"donabedian's quality framework","subtopic":"structural and nursing services variables","stem":"A researcher studying nursing services variables would examine which of the following? Select all that apply.","options":["Staffing levels and skill mix","Assignment patterns such as primary nursing, functional assignments, and team nursing","Patients' quality of life six months after discharge","Shift patterns and the ratio of full-time to part-time nurses","Cohesion and communication among nursing staff and between nurses and physicians"],"correct":[0,1,3,4],"sata":true,"why":"Nursing services is a general concept referring to the organization and administration of nursing activities, and the variables studied include skill mix and personnel configuration, staffing levels, assignment patterns, shift patterns, education and experience levels, full-time to part-time ratios, leadership, cohesion and communication, and clinical care maps.","trap":"(C) is a distal outcome, not a nursing services variable. Nursing services describes the arrangement of care, not the end result of it."},{"topic":"nursing-sensitive outcomes","subtopic":"attribution and definition","stem":"A nurse manager states that her unit's lower fall rate proves that nursing care caused the improvement. Which statement about nursing-sensitive patient outcomes corrects her?","options":["The outcome is influenced by nursing care decisions and actions, but it may be associated with nursing rather than caused by it","The outcome is caused by nursing care by definition, so her claim is accurate","The outcome is distal, so it cannot be linked to nursing at all","The outcome is a structural variable, so it reflects staffing rather than care"],"correct":[0],"sata":false,"why":"Nursing-sensitive patient outcomes are considered sensitive because they are influenced by nursing care decisions and actions; an outcome may not be caused by nursing but is associated with nursing.","trap":"The definition deliberately hedges — influenced by and associated with, never caused by. An option asserting nursing causation overstates what the term supports."},{"topic":"nursing-sensitive outcomes","subtopic":"attribution and definition","stem":"In the chapter's definition of nursing-sensitive outcomes, the term nursing may refer to which of the following? Select all that apply.","options":["The individual nurse","Nurses as a working group","The approach to nursing practice","The physician-directed plan of care","The nursing unit or institution that determines numbers of nurses, salaries, and educational level"],"correct":[0,1,2,4],"sata":true,"why":"Nursing in this definition may mean the individual nurse, nurses as a working group, the approach to nursing practice, or the nursing unit or institution that determines numbers of nurses, salaries, and educational level.","trap":"The breadth of the term is the point. Reading it as only the individual nurse contradicts the aggregate level at which outcomes research operates."},{"topic":"nursing-sensitive outcomes","subtopic":"proximal versus distal outcomes","stem":"An outcomes study measures patients' signs and symptoms of disease at the completion of a nursing intervention. How is this outcome classified?","options":["Distal, because it is measured at the end of the intervention","Proximal, because it is close to the delivery of care","Adverse, because symptoms indicate injury from care","Structural, because symptom control depends on staffing levels"],"correct":[1],"sata":false,"why":"A proximal outcome is close to the delivery of care, and signs and symptoms of disease are the chapter's example.","trap":"(A) treats timing of measurement as the criterion. Proximity refers to closeness to the care delivered, not to the calendar."},{"topic":"nursing-sensitive outcomes","subtopic":"proximal versus distal outcomes","stem":"An outcomes study measures patients' quality of life one year after discharge. Which statement about this outcome is accurate?","options":["It is proximal, because quality of life is a nursing-sensitive measure","It is proximal, because it was measured on patients who received nursing care","It is distal, and it is easier to attribute to nursing than symptom measures are","It is distal, and it is more influenced by external nontreatment factors"],"correct":[3],"sata":false,"why":"A distal outcome is removed from proximity to the care or service received and is more influenced by external nontreatment or nonintervention factors; quality of life is the chapter's example.","trap":"(C) inverts attribution. Being more influenced by external factors is exactly what makes distal outcomes harder, not easier, to attribute to nursing."},{"topic":"nursing-sensitive outcomes","subtopic":"proximal versus distal outcomes","stem":"A nurse researcher wants a published classification that identifies nurse-sensitive outcomes as proximal or distal. Which resource should she use?","options":["The Nursing Outcomes Classification","The National Database of Nursing Quality Indicators","The National Guideline Clearinghouse","The National Quality Forum measure portfolio"],"correct":[0],"sata":false,"why":"The Nursing Outcomes Classification identifies proximal and distal nurse-sensitive outcomes for research and practice.","trap":"NDNQI houses data on nursing-sensitive quality indicators and the National Guideline Clearinghouse summarizes evidence-based clinical practice guidelines. Neither sorts outcomes by proximity to care."},{"topic":"outcome measurement and evaluation","subtopic":"adverse outcomes and standards of care","stem":"During an admission for pneumonia, a patient develops a central line infection that prolongs the hospital stay. Under the chapter's definition, how is this best classified?","options":["A distal outcome, because it developed after admission","A process measure, because it reflects how care was provided","An adverse outcome, because it results from medical management or a complication rather than the underlying disease","A structural variable, because infection rates depend on staffing"],"correct":[2],"sata":false,"why":"An adverse outcome is a consequence of injury caused by medical management or complication rather than by the underlying disease itself, and generally includes prolonged health care, resulting disability, or death.","trap":"Deterioration caused by the pneumonia itself would not qualify. The injury has to come from the management or a complication, not from disease progression."},{"topic":"outcome measurement and evaluation","subtopic":"adverse outcomes and standards of care","stem":"A researcher evaluating the process of care needs the term for the norm against which quality of care is judged. Which term applies?","options":["Practice pattern","Practice style","Functional status","Standard of care"],"correct":[3],"sata":false,"why":"A standard of care is a norm on which quality of care is judged.","trap":"Practice pattern is described as a concept closely related to practice style, and both describe how care is actually delivered rather than the norm used to judge it. Functional status is a multidimensional construct measured as an outcome."},{"topic":"outcome measurement and evaluation","subtopic":"evaluating structure and measuring change","stem":"A researcher beginning to evaluate the structure of care identifies and describes its elements. Which elements does the chapter name? Select all that apply.","options":["Patients' symptom management after discharge","Leadership","Organizational hierarchy","Decision-making processes and the distribution of power","Financial management"],"correct":[1,2,3,4],"sata":true,"why":"Evaluating structure begins by identifying and describing the elements of the structure using administration and management theories; the elements named are leadership, organizational hierarchy, decision-making processes, distribution of power, and financial management.","trap":"(A) is an end result and belongs to the outcome focus, not the structure focus."},{"topic":"outcome measurement and evaluation","subtopic":"evaluating structure and measuring change","stem":"Choosing an instrument for an outcomes study, a researcher asks whether it will register improvement after the intervention. Which measurement property is she evaluating?","options":["Sensitivity to change","Content validity","Convergence","Functional status"],"correct":[0],"sata":false,"why":"Sensitivity to change is an important measurement property in outcomes research because researchers are often interested in evaluating how outcomes change in response to healthcare interventions.","trap":"Content validity is what the expert panel established for the cystic fibrosis questionnaire at 0.91; it addresses whether items represent the concept, not whether the instrument detects change over time."},{"topic":"national quality initiatives","subtopic":"matching organization to role","stem":"A quality committee needs to consult the national standard-setting organization for healthcare performance measures. Which organization is it, and when was it founded?","options":["AHRQ, part of DHHS","The National Quality Forum, founded in 1999","PCORI, funded through the Recovery Act of 2009","NDNQI, whose database was funded in 1998"],"correct":[1],"sata":false,"why":"The National Quality Forum, founded in 1999, is the national standard-setting organization for healthcare performance measures, with a portfolio of performance measures, serious reportable events, and preferred practices.","trap":"About one-third of the NQF's measures are patient outcomes such as mortality, readmissions, health functioning, depression, and experience of care. Note also that the NQF holds that quality is as much about influencing positive outcomes as about avoiding negative ones, even though most measures in use focus on failure to meet expected standards."},{"topic":"national quality initiatives","subtopic":"matching organization to role","stem":"Which organization was created to produce evidence-based information from research guided by patients, caregivers, and the broader healthcare community, and how was it funded?","options":["AHRQ, whose number one funding priority is supporting the implementation of PCOR","The National Quality Forum, the national standard-setting body for performance measures","PCORI, funded through the Recovery Act of 2009, with $473 million designated for patient-centered outcomes research","NDNQI, launched by an ANA plan in 1994"],"correct":[2],"sata":false,"why":"PCORI was funded via the Recovery Act of 2009, which designated $473 million for patient-centered outcomes research, and it helps people make informed healthcare decisions through research guided by patients, caregivers, and the broader healthcare community.","trap":"(A) is tempting because AHRQ's number one funding priority really is improving healthcare quality by supporting the implementation of PCOR, and its current initiative is comparative effectiveness research. AHRQ funds the work; PCORI is the body created to produce it."},{"topic":"national quality initiatives","subtopic":"nursing-sensitive performance measures","stem":"Which measures were among the nursing-sensitive measures submitted by the ANA under NDNQI? Select all that apply.","options":["Nursing staff skill mix","Hospital 30-day mortality rate","Central line-associated bloodstream infection rate","Ventilator-associated pneumonia rate","RN practice environment scale"],"correct":[0,2,3,4],"sata":true,"why":"The ANA's list — the first nationally standardized performance measures of nursing-sensitive outcomes in acute care hospitals — includes nursing staff skill mix, nursing care hours per patient day, catheter-associated urinary tract infection rate, central line-associated bloodstream infection rate, fall and injury rates, hospital- and unit-acquired pressure ulcer rates, nurse turnover rate, the RN practice environment scale, and ventilator-associated pneumonia rate.","trap":"(B) belongs to the NQF's outcome measures, not the ANA's nursing-sensitive set. Note the lineage: the ANA worked with the American Academy of Nursing Expert Panel on Quality Health Care, used Donabedian's theory as the project framework, and first called the indicators the ANA Nursing Care Report Card, which could facilitate benchmarking across hospitals."}];
+const TITLE = "Chapter 14 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 14";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

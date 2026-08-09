@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 8 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 8</div><h1>Chapter 8 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">research design fundamentals</span><span class="chip t2">concepts underlying design</span></div>
+<div class="stem">1. A reviewer reads this purpose statement: &quot;to determine the effect of a nurse-led sleep hygiene protocol on the incidence of ICU delirium.&quot; Using the chapter's appraisal question, how should the reviewer classify what this study is doing?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Describing variables as they exist</li><li class="fopt"><span class="mk">B</span>Examining relationships among variables</li><li class="fopt right"><span class="mk">&#10003;</span>Examining causality</li><li class="fopt"><span class="mk">D</span>Testing a proposed model of relationships</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In critical appraisal, determine whether the study's purpose is to examine causality, examine relationships, or describe variables; the purpose statement and the framework's propositions usually reveal which. Determining the effect of an intervention on an outcome is causality.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex whenever two variables share a sentence. A relationship purpose asks whether variables vary together; a causal purpose asks whether one produces the other.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research design fundamentals</span><span class="chip t2">concepts underlying design</span></div>
+<div class="stem">2. Which statement reflects this chapter's position on causality in nursing phenomena?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A well-developed theory identifies every element involved in causing a particular outcome</li><li class="fopt"><span class="mk">B</span>A multicausal perspective includes fewer variables so the true cause can be isolated</li><li class="fopt"><span class="mk">C</span>Absolute causality is the standard that quantitative designs are built to achieve</li><li class="fopt right"><span class="mk">&#10003;</span>Very few phenomena in nursing can be clearly linked to a single cause and a single effect</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that very few phenomena in nursing can be clearly linked to a single cause and a single effect, and that studies taking a multicausal perspective include more variables.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the text, since multicausality adds variables rather than stripping them out. (C) ignores probability, which addresses relative rather than absolute causality: a cause probably will result in a specific effect.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research design fundamentals</span><span class="chip t2">concepts underlying design</span></div>
+<div class="stem">3. Beyond calling a research design a blueprint, the chapter's fuller definition specifies that the design does what?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Establishes the conceptual definitions of the study variables</li><li class="fopt right"><span class="mk">&#10003;</span>Maximizes control over factors that could interfere with the validity of the findings</li><li class="fopt"><span class="mk">C</span>Guarantees that the findings can be generalized to the target population</li><li class="fopt"><span class="mk">D</span>Determines which statistical tests will reach significance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A research design is a blueprint for conducting a quantitative study that maximizes control over factors that could interfere with the validity of the findings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overstates. Generalization is external validity, and it is usually narrower for a single study than for multiple replications using different samples and settings.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research design fundamentals</span><span class="chip t2">bias</span></div>
+<div class="stem">4. Which statements about bias reflect what this chapter says? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bias is a slant or deviation from the true or expected</li><li class="fopt"><span class="mk">B</span>A study that used random assignment can be appraised as free of bias</li><li class="fopt right"><span class="mk">&#10003;</span>The composition of the sample and the groups that are formed are potential sources of bias</li><li class="fopt right"><span class="mk">&#10003;</span>Not all biases can be identified from the published study report</li><li class="fopt right"><span class="mk">&#10003;</span>The environment and the data collection process are potential sources of bias</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Bias is a slant or deviation from the true or expected that distorts findings from what they would have been without it. Named sources include researcher attitudes or motivations, the environment, selection of participants, sample composition, the groups formed, measurement methods, the data collection process, and statistical analyses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the overreach the chapter warns against directly. The article may not provide sufficient detail about methods to detect possible biases, so no appraisal can declare a study bias-free.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quantitative design types</span><span class="chip t2">descriptive and correlational designs</span></div>
+<div class="stem">5. A researcher measures fall rates on three medical-surgical units over one quarter and reports how the units differ. No intervention is delivered and no relationships are tested. Which design is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Simple descriptive</li><li class="fopt right"><span class="mk">&#10003;</span>Comparative descriptive</li><li class="fopt"><span class="mk">C</span>Descriptive correlational</li><li class="fopt"><span class="mk">D</span>Predictive correlational</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A comparative descriptive design describes and compares variables across groups; a simple descriptive design only describes variables as they exist.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is chosen because nothing was manipulated, but the absence of an intervention is not what separates these two. The comparison across the three units is what moves it from simple to comparative descriptive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quantitative design types</span><span class="chip t2">descriptive and correlational designs</span></div>
+<div class="stem">6. A researcher measures resilience and burnout scores in staff nurses at one time point and reports how strongly the two are related. There is no attempt to forecast one score from the other. Which design is this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Descriptive correlational</li><li class="fopt"><span class="mk">B</span>Predictive correlational</li><li class="fopt"><span class="mk">C</span>Model testing</li><li class="fopt"><span class="mk">D</span>Comparative descriptive</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A descriptive correlational design describes relationships among variables, whereas a predictive correlational design measures independent variables in order to predict a dependent variable.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex whenever a correlation coefficient appears. Prediction requires that independent variables be measured to predict a dependent variable, not merely that a relationship be described.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quantitative design types</span><span class="chip t2">descriptive and correlational designs</span></div>
+<div class="stem">7. Which statements about the chapter's design families are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A predictive correlational design measures independent variables to predict a dependent variable</li><li class="fopt right"><span class="mk">&#10003;</span>A model testing design tests a proposed model of relationships</li><li class="fopt"><span class="mk">C</span>A descriptive correlational design tests the effect of an intervention</li><li class="fopt right"><span class="mk">&#10003;</span>A simple descriptive design describes variables as they exist</li><li class="fopt right"><span class="mk">&#10003;</span>A comparative descriptive design describes and compares variables across groups</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's families are simple descriptive, comparative descriptive, descriptive correlational, predictive correlational, model testing, and quasi-experimental or experimental designs, which test the effect of an intervention.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) hands the intervention-testing job to a correlational design. Only quasi-experimental and experimental designs test the effect of an intervention, because only they involve manipulation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quantitative design types</span><span class="chip t2">designs examining causality</span></div>
+<div class="stem">8. Postoperative patients are assigned to receive either guided imagery or usual care, and pain scores are compared. Which element distinguishes this family of designs from descriptive and correlational designs?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Prospective data collection</li><li class="fopt"><span class="mk">B</span>Use of more than one measurement method</li><li class="fopt"><span class="mk">C</span>A large sample size</li><li class="fopt right"><span class="mk">&#10003;</span>Manipulation of the independent variable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Manipulation is a form of control generally used in quasi-experimental and experimental studies, which are the designs that test the effect of an intervention.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is true of many experiments but does not define them. Descriptive and correlational studies can also collect data looking forward, so time orientation never settles the design family.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quantitative design types</span><span class="chip t2">designs examining causality</span></div>
+<div class="stem">9. Which statements about designs that examine causality are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Descriptive and correlational designs also test the effect of an intervention</li><li class="fopt right"><span class="mk">&#10003;</span>Manipulation is a form of control generally used in quasi-experimental and experimental studies</li><li class="fopt right"><span class="mk">&#10003;</span>A randomized controlled trial is a type of experimental design often considered one of the strongest designs to examine cause and effect</li><li class="fopt right"><span class="mk">&#10003;</span>Internal validity is a concern in all studies but is a major focus in studies examining causality</li><li class="fopt right"><span class="mk">&#10003;</span>Random assignment decreases the selection threat</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Manipulation is generally used in quasi-experimental and experimental studies; the RCT is an experimental design often considered one of the strongest for examining cause and effect; internal validity is a concern in all studies but a major focus in causal studies; and random assignment decreases the selection threat.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) looks too generous to be keyed, which is why students drop it. Any option restricting internal validity to experimental designs is too narrow, and so is any answer key that leaves this statement out.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quantitative design types</span><span class="chip t2">time orientation</span></div>
+<div class="stem">10. One researcher enrolls patients at the time of catheter insertion and follows them forward for 30 days to record infections. A second researcher pulls last year's charts to identify who developed an infection after insertion. These two approaches are, respectively:</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Prospective and retrospective</li><li class="fopt"><span class="mk">B</span>Retrospective and prospective</li><li class="fopt"><span class="mk">C</span>Experimental and quasi-experimental</li><li class="fopt"><span class="mk">D</span>Descriptive and correlational</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Prospective means looking forward; retrospective means looking backward, usually in relation to time.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The data source does not decide this. A chart review can serve either direction, so what settles it is whether the look runs forward from enrollment or backward from the outcome.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">construct validity</span><span class="chip t2">mono-operation bias</span></div>
+<div class="stem">11. A researcher studying postoperative pain uses a 0-to-10 numeric rating scale as the only measure of pain. Which threat to construct validity does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Inadequate definition of the construct</li><li class="fopt"><span class="mk">B</span>Unreliable measurement method</li><li class="fopt right"><span class="mk">&#10003;</span>Mono-operation bias</li><li class="fopt"><span class="mk">D</span>Experimenter expectancy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mono-operation bias occurs when only one method of measurement is used to assess a construct, so fewer dimensions of the construct are measured; construct validity greatly improves with more than one instrument.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) belongs to statistical conclusion validity and concerns whether a measure gives the same result each time. A single measure can be perfectly reliable and still produce mono-operation bias, because the problem is the count of methods, not their consistency.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">construct validity</span><span class="chip t2">mono-operation bias</span></div>
+<div class="stem">12. Following the chapter's own pain example, which measures would strengthen construct validity when pain is the dependent variable? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A pain rating scale</li><li class="fopt right"><span class="mk">&#10003;</span>Verbal reports from the patient</li><li class="fopt right"><span class="mk">&#10003;</span>Physical responses such as increased pulse, blood pressure, and respirations</li><li class="fopt right"><span class="mk">&#10003;</span>Observed behaviors such as crying, grimacing, guarding, and pulling away</li><li class="fopt"><span class="mk">E</span>The number of persons approached who declined to participate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's mono-operation example names a pain rating scale, verbal reports, physical responses including increased pulse, blood pressure, and respirations, and observed behaviors including crying, grimacing, guarding, and pulling away.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the refusal rate. It must be reported, but it belongs to external validity as part of the interaction of selection and intervention, not to measuring the construct.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">construct validity</span><span class="chip t2">experimenter expectancy</span></div>
+<div class="stem">13. The principal investigator of a new mobility protocol believes strongly in the protocol and personally collects all outcome data. Which threat is this, and what is the chapter's fix?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An internal validity threat (selection); randomly assign participants to groups</li><li class="fopt"><span class="mk">B</span>A statistical conclusion validity threat (low power); increase the sample size</li><li class="fopt"><span class="mk">C</span>An external validity threat (interaction of setting and intervention); add more study sites</li><li class="fopt right"><span class="mk">&#10003;</span>A construct validity threat (experimenter expectancy); blind the data collectors to group assignment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Experimenter expectancy, the Rosenthal effect, means the expectancies of the researcher can bias the data. Using nonbiased data collectors or those blinded to group assignment increases construct design validity, and some researchers choose not to be involved in data collection at all.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the common misfile. This text classifies the Rosenthal effect as a construct validity threat, even though it sounds like a rival explanation for the finding and therefore feels like internal validity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">internal validity</span><span class="chip t2">selection and attrition</span></div>
+<div class="stem">14. Day-shift nurses receive a new handoff protocol and night-shift nurses serve as the comparison group, because randomizing individual nurses was not feasible. Which internal validity threat is most prominent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>History</li><li class="fopt"><span class="mk">B</span>Maturation</li><li class="fopt right"><span class="mk">&#10003;</span>Selection</li><li class="fopt"><span class="mk">D</span>Mono-operation bias</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Selection is the process whereby participants are chosen to take part and how they are grouped within a study. It is more likely to occur in studies in which randomization is not possible, and random assignment decreases the threat.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) requires an unrelated event occurring during the study. Here the problem exists before the first data point, in how the two groups were formed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">internal validity</span><span class="chip t2">selection and attrition</span></div>
+<div class="stem">15. Which statements about attrition as a threat to internal validity are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Attrition is participants dropping out of a study before it is completed</li><li class="fopt"><span class="mk">B</span>Attrition is harmless as long as the number of dropouts is the same in each group</li><li class="fopt right"><span class="mk">&#10003;</span>It is a threat when the dropouts differ in type from those who remain</li><li class="fopt right"><span class="mk">&#10003;</span>It is a threat when there is a difference in the number and type of dropouts between groups</li><li class="fopt right"><span class="mk">&#10003;</span>Attrition greater than 25% could affect the accuracy of the results</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Attrition is participants dropping out before completion. It threatens internal validity when dropouts differ in type from those who remain, or when the number and type of dropouts differ between groups, and attrition greater than 25% could affect the accuracy of results.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the count-only reflex. Equal numbers do not settle it, because attrition is a threat mainly on account of who leaves; equal counts of very different people still bias the comparison.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">internal validity</span><span class="chip t2">history and maturation</span></div>
+<div class="stem">16. During a 12-month cardiac rehabilitation support study, several of the nurses who deliver the program quit. Which internal validity threat does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Maturation</li><li class="fopt right"><span class="mk">&#10003;</span>History</li><li class="fopt"><span class="mk">C</span>Attrition</li><li class="fopt"><span class="mk">D</span>Selection</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>History is an event that is not related to the planned study but occurs during the time of the study; the chapter's own example is several nurses quitting during a cardiac rehabilitation support study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex because someone left. Attrition refers to participants dropping out, not staff departing, and staff leaving is an external event acting on the study.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">internal validity</span><span class="chip t2">history and maturation</span></div>
+<div class="stem">17. Over an 18-month longitudinal study with repeated measures, participants become stronger and more experienced at the study tasks in ways the researchers neither planned nor noticed. Which threat is this, and where is it most likely?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>History; most likely in cross-sectional studies</li><li class="fopt"><span class="mk">B</span>Selection; most likely when randomization is used</li><li class="fopt"><span class="mk">C</span>Attrition; most likely when the study period is short</li><li class="fopt right"><span class="mk">&#10003;</span>Maturation; most likely in longitudinal studies with repeated measures</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Maturation is growing older, wiser, stronger, hungrier, more tired, or more experienced during the study; the changes are unplanned and unrecognized, and maturation is more likely in longitudinal studies with repeated measures.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>History and maturation are routinely swapped. History is an external event that happens to the study; maturation is change occurring inside the participants themselves.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">external validity</span><span class="chip t2">interaction of selection and intervention</span></div>
+<div class="stem">18. A published study reports that 39% of those approached declined to participate. Which threat does this raise, and to which type of design validity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Interaction of selection and intervention; external validity</li><li class="fopt"><span class="mk">B</span>Selection; internal validity</li><li class="fopt"><span class="mk">C</span>Attrition; internal validity</li><li class="fopt"><span class="mk">D</span>Interaction of history and intervention; external validity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A high refusal rate limits the sample in non-obvious ways. With 39% declining, those enrolled may be volunteers, do-gooders, or those with nothing better to do, so generalizing to all nurses or patients is not justified, and researchers must report the refusal rate.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) wins on the shared word. The plain selection threat concerns how enrolled participants were chosen and grouped and is an internal validity problem; the refusal rate concerns who never entered at all and is an external validity problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">external validity</span><span class="chip t2">limits of generalization</span></div>
+<div class="stem">19. Which statements about external validity are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>With the most serious threat, the findings would be meaningful only for the group studied</li><li class="fopt right"><span class="mk">&#10003;</span>Generalization is usually narrower for a single study than for multiple replications using different samples, populations, and settings</li><li class="fopt right"><span class="mk">&#10003;</span>Hospitals seeking Magnet designation may welcome nursing studies while others resist, so the two types of setting may differ in important ways</li><li class="fopt"><span class="mk">D</span>Replicating a study during various time periods allows the findings to be generalized to the future</li><li class="fopt right"><span class="mk">&#10003;</span>Choosing instruments that are valid and reliable but have fewer items decreases participant burden and helps reduce the selection threat</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>With the most serious threat, findings would be meaningful only for the group studied; generalization is narrower for a single study than for multiple replications; the Magnet example illustrates interaction of setting and intervention; and shorter valid and reliable instruments reduce participant burden and help reduce the selection threat.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) overshoots the chapter's own caution. Logically one can never generalize to the future; replicating during various time periods strengthens the usefulness of findings over time but licenses no claim about it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">external validity</span><span class="chip t2">limits of generalization</span></div>
+<div class="stem">20. Three patients die from dialysis equipment failure during a study of a support intervention for patients receiving dialysis. Which external validity threat does this create for the published findings?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Interaction of selection and intervention</li><li class="fopt"><span class="mk">B</span>Interaction of setting and intervention</li><li class="fopt right"><span class="mk">&#10003;</span>Interaction of history and intervention</li><li class="fopt"><span class="mk">D</span>Maturation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Interaction of history and intervention means the circumstances at the time the study was conducted affect generalization; the chapter's example is exactly this dialysis equipment failure during a dialysis support study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>History appears in both validity lists, so read what the item is asking. As a plain internal validity threat, history asks whether the event explains the result; as an interaction with intervention, it asks whether those circumstances make the findings ungeneralizable to other times.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">statistical conclusion validity</span><span class="chip t2">statistical power and Type II error</span></div>
+<div class="stem">21. A study with 18 participants per group finds no significant difference between the intervention and comparison groups. Which threat is most likely, and which error does it produce?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Low statistical power; Type II error</li><li class="fopt"><span class="mk">B</span>Low statistical power; Type I error</li><li class="fopt"><span class="mk">C</span>Unreliable measurement methods; Type I error</li><li class="fopt"><span class="mk">D</span>Extraneous variances in the setting; Type I error</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Low statistical power increases the probability of concluding there is no significant relationship or difference when actually there is one, which is a Type II error. It is most likely when the sample size is small or the power of the statistical test is low.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) keeps the right threat and swaps the error. Low power means missing a real effect, which is Type II; nothing about a small sample manufactures a false positive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">statistical conclusion validity</span><span class="chip t2">statistical power and Type II error</span></div>
+<div class="stem">22. Which of the following is a Type II error as this chapter defines it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Concluding there is a significant difference when in fact there is not one</li><li class="fopt right"><span class="mk">&#10003;</span>Concluding there is no significant relationship or difference when actually there is one</li><li class="fopt"><span class="mk">C</span>Using only one method of measurement to assess a construct</li><li class="fopt"><span class="mk">D</span>Generalizing findings beyond the sample that was studied</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A Type II error is concluding there is no significant relationship or difference when actually there is one, and low statistical power increases its probability.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror-image error and reads as the more familiar mistake. Sort it by what was missed: a stem describing a false alarm points the other way, while a stem describing a small sample and a null result points to Type II.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">statistical conclusion validity</span><span class="chip t2">measurement and intervention fidelity</span></div>
+<div class="stem">23. A physiological instrument gives the same reading each time the same variable is measured under the same conditions. Which appraisal statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The measure is valid, because consistency establishes accuracy</li><li class="fopt"><span class="mk">B</span>The measure demonstrates construct validity, because it matches the conceptual definition</li><li class="fopt"><span class="mk">C</span>The measure demonstrates intervention fidelity</li><li class="fopt right"><span class="mk">&#10003;</span>The measure is reliable, and a physiological measure that measures consistently is described as precise</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A measure is reliable if it gives the same result each time the same situation or variable is measured, and physiological measures that measure consistently are precise, as with a thermometer showing the same reading on repeat testing.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) equates consistency with accuracy, which is the single most common inversion here. A consistently wrong scale is still reliable; reliability is sameness of result, not truth of result.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">statistical conclusion validity</span><span class="chip t2">measurement and intervention fidelity</span></div>
+<div class="stem">24. Which of the following are threats to statistical conclusion validity as this chapter lists them? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Low statistical power</li><li class="fopt right"><span class="mk">&#10003;</span>Unreliable measurement methods</li><li class="fopt"><span class="mk">C</span>Interaction of setting and intervention</li><li class="fopt right"><span class="mk">&#10003;</span>Limited intervention fidelity</li><li class="fopt right"><span class="mk">&#10003;</span>Extraneous variances in the setting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists low statistical power, unreliable measurement methods, limited intervention fidelity, and extraneous variances in the setting. Limited fidelity matters because when administration varies from one person to another, the chance of detecting a true difference decreases, so data collectors must be trained for consistency.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) trades on the shared word setting. Extraneous variance in the setting muddies the analysis and is a statistical conclusion threat; interaction of setting and intervention limits who the findings apply to and is an external validity threat.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"research design fundamentals","subtopic":"concepts underlying design","stem":"A reviewer reads this purpose statement: \"to determine the effect of a nurse-led sleep hygiene protocol on the incidence of ICU delirium.\" Using the chapter's appraisal question, how should the reviewer classify what this study is doing?","options":["Describing variables as they exist","Examining relationships among variables","Examining causality","Testing a proposed model of relationships"],"correct":[2],"sata":false,"why":"In critical appraisal, determine whether the study's purpose is to examine causality, examine relationships, or describe variables; the purpose statement and the framework's propositions usually reveal which. Determining the effect of an intervention on an outcome is causality.","trap":"(B) is the reflex whenever two variables share a sentence. A relationship purpose asks whether variables vary together; a causal purpose asks whether one produces the other."},{"topic":"research design fundamentals","subtopic":"concepts underlying design","stem":"Which statement reflects this chapter's position on causality in nursing phenomena?","options":["A well-developed theory identifies every element involved in causing a particular outcome","A multicausal perspective includes fewer variables so the true cause can be isolated","Absolute causality is the standard that quantitative designs are built to achieve","Very few phenomena in nursing can be clearly linked to a single cause and a single effect"],"correct":[3],"sata":false,"why":"The chapter states that very few phenomena in nursing can be clearly linked to a single cause and a single effect, and that studies taking a multicausal perspective include more variables.","trap":"(B) inverts the text, since multicausality adds variables rather than stripping them out. (C) ignores probability, which addresses relative rather than absolute causality: a cause probably will result in a specific effect."},{"topic":"research design fundamentals","subtopic":"concepts underlying design","stem":"Beyond calling a research design a blueprint, the chapter's fuller definition specifies that the design does what?","options":["Establishes the conceptual definitions of the study variables","Maximizes control over factors that could interfere with the validity of the findings","Guarantees that the findings can be generalized to the target population","Determines which statistical tests will reach significance"],"correct":[1],"sata":false,"why":"A research design is a blueprint for conducting a quantitative study that maximizes control over factors that could interfere with the validity of the findings.","trap":"(C) overstates. Generalization is external validity, and it is usually narrower for a single study than for multiple replications using different samples and settings."},{"topic":"research design fundamentals","subtopic":"bias","stem":"Which statements about bias reflect what this chapter says? Select all that apply.","options":["Bias is a slant or deviation from the true or expected","A study that used random assignment can be appraised as free of bias","The composition of the sample and the groups that are formed are potential sources of bias","Not all biases can be identified from the published study report","The environment and the data collection process are potential sources of bias"],"correct":[0,2,3,4],"sata":true,"why":"Bias is a slant or deviation from the true or expected that distorts findings from what they would have been without it. Named sources include researcher attitudes or motivations, the environment, selection of participants, sample composition, the groups formed, measurement methods, the data collection process, and statistical analyses.","trap":"(B) is the overreach the chapter warns against directly. The article may not provide sufficient detail about methods to detect possible biases, so no appraisal can declare a study bias-free."},{"topic":"quantitative design types","subtopic":"descriptive and correlational designs","stem":"A researcher measures fall rates on three medical-surgical units over one quarter and reports how the units differ. No intervention is delivered and no relationships are tested. Which design is this?","options":["Simple descriptive","Comparative descriptive","Descriptive correlational","Predictive correlational"],"correct":[1],"sata":false,"why":"A comparative descriptive design describes and compares variables across groups; a simple descriptive design only describes variables as they exist.","trap":"(A) is chosen because nothing was manipulated, but the absence of an intervention is not what separates these two. The comparison across the three units is what moves it from simple to comparative descriptive."},{"topic":"quantitative design types","subtopic":"descriptive and correlational designs","stem":"A researcher measures resilience and burnout scores in staff nurses at one time point and reports how strongly the two are related. There is no attempt to forecast one score from the other. Which design is this?","options":["Descriptive correlational","Predictive correlational","Model testing","Comparative descriptive"],"correct":[0],"sata":false,"why":"A descriptive correlational design describes relationships among variables, whereas a predictive correlational design measures independent variables in order to predict a dependent variable.","trap":"(B) is the reflex whenever a correlation coefficient appears. Prediction requires that independent variables be measured to predict a dependent variable, not merely that a relationship be described."},{"topic":"quantitative design types","subtopic":"descriptive and correlational designs","stem":"Which statements about the chapter's design families are accurate? Select all that apply.","options":["A predictive correlational design measures independent variables to predict a dependent variable","A model testing design tests a proposed model of relationships","A descriptive correlational design tests the effect of an intervention","A simple descriptive design describes variables as they exist","A comparative descriptive design describes and compares variables across groups"],"correct":[0,1,3,4],"sata":true,"why":"The chapter's families are simple descriptive, comparative descriptive, descriptive correlational, predictive correlational, model testing, and quasi-experimental or experimental designs, which test the effect of an intervention.","trap":"(C) hands the intervention-testing job to a correlational design. Only quasi-experimental and experimental designs test the effect of an intervention, because only they involve manipulation."},{"topic":"quantitative design types","subtopic":"designs examining causality","stem":"Postoperative patients are assigned to receive either guided imagery or usual care, and pain scores are compared. Which element distinguishes this family of designs from descriptive and correlational designs?","options":["Prospective data collection","Use of more than one measurement method","A large sample size","Manipulation of the independent variable"],"correct":[3],"sata":false,"why":"Manipulation is a form of control generally used in quasi-experimental and experimental studies, which are the designs that test the effect of an intervention.","trap":"(A) is true of many experiments but does not define them. Descriptive and correlational studies can also collect data looking forward, so time orientation never settles the design family."},{"topic":"quantitative design types","subtopic":"designs examining causality","stem":"Which statements about designs that examine causality are accurate? Select all that apply.","options":["Descriptive and correlational designs also test the effect of an intervention","Manipulation is a form of control generally used in quasi-experimental and experimental studies","A randomized controlled trial is a type of experimental design often considered one of the strongest designs to examine cause and effect","Internal validity is a concern in all studies but is a major focus in studies examining causality","Random assignment decreases the selection threat"],"correct":[1,2,3,4],"sata":true,"why":"Manipulation is generally used in quasi-experimental and experimental studies; the RCT is an experimental design often considered one of the strongest for examining cause and effect; internal validity is a concern in all studies but a major focus in causal studies; and random assignment decreases the selection threat.","trap":"(D) looks too generous to be keyed, which is why students drop it. Any option restricting internal validity to experimental designs is too narrow, and so is any answer key that leaves this statement out."},{"topic":"quantitative design types","subtopic":"time orientation","stem":"One researcher enrolls patients at the time of catheter insertion and follows them forward for 30 days to record infections. A second researcher pulls last year's charts to identify who developed an infection after insertion. These two approaches are, respectively:","options":["Prospective and retrospective","Retrospective and prospective","Experimental and quasi-experimental","Descriptive and correlational"],"correct":[0],"sata":false,"why":"Prospective means looking forward; retrospective means looking backward, usually in relation to time.","trap":"The data source does not decide this. A chart review can serve either direction, so what settles it is whether the look runs forward from enrollment or backward from the outcome."},{"topic":"construct validity","subtopic":"mono-operation bias","stem":"A researcher studying postoperative pain uses a 0-to-10 numeric rating scale as the only measure of pain. Which threat to construct validity does this illustrate?","options":["Inadequate definition of the construct","Unreliable measurement method","Mono-operation bias","Experimenter expectancy"],"correct":[2],"sata":false,"why":"Mono-operation bias occurs when only one method of measurement is used to assess a construct, so fewer dimensions of the construct are measured; construct validity greatly improves with more than one instrument.","trap":"(B) belongs to statistical conclusion validity and concerns whether a measure gives the same result each time. A single measure can be perfectly reliable and still produce mono-operation bias, because the problem is the count of methods, not their consistency."},{"topic":"construct validity","subtopic":"mono-operation bias","stem":"Following the chapter's own pain example, which measures would strengthen construct validity when pain is the dependent variable? Select all that apply.","options":["A pain rating scale","Verbal reports from the patient","Physical responses such as increased pulse, blood pressure, and respirations","Observed behaviors such as crying, grimacing, guarding, and pulling away","The number of persons approached who declined to participate"],"correct":[0,1,2,3],"sata":true,"why":"The chapter's mono-operation example names a pain rating scale, verbal reports, physical responses including increased pulse, blood pressure, and respirations, and observed behaviors including crying, grimacing, guarding, and pulling away.","trap":"(E) is the refusal rate. It must be reported, but it belongs to external validity as part of the interaction of selection and intervention, not to measuring the construct."},{"topic":"construct validity","subtopic":"experimenter expectancy","stem":"The principal investigator of a new mobility protocol believes strongly in the protocol and personally collects all outcome data. Which threat is this, and what is the chapter's fix?","options":["An internal validity threat (selection); randomly assign participants to groups","A statistical conclusion validity threat (low power); increase the sample size","An external validity threat (interaction of setting and intervention); add more study sites","A construct validity threat (experimenter expectancy); blind the data collectors to group assignment"],"correct":[3],"sata":false,"why":"Experimenter expectancy, the Rosenthal effect, means the expectancies of the researcher can bias the data. Using nonbiased data collectors or those blinded to group assignment increases construct design validity, and some researchers choose not to be involved in data collection at all.","trap":"(A) is the common misfile. This text classifies the Rosenthal effect as a construct validity threat, even though it sounds like a rival explanation for the finding and therefore feels like internal validity."},{"topic":"internal validity","subtopic":"selection and attrition","stem":"Day-shift nurses receive a new handoff protocol and night-shift nurses serve as the comparison group, because randomizing individual nurses was not feasible. Which internal validity threat is most prominent?","options":["History","Maturation","Selection","Mono-operation bias"],"correct":[2],"sata":false,"why":"Selection is the process whereby participants are chosen to take part and how they are grouped within a study. It is more likely to occur in studies in which randomization is not possible, and random assignment decreases the threat.","trap":"(A) requires an unrelated event occurring during the study. Here the problem exists before the first data point, in how the two groups were formed."},{"topic":"internal validity","subtopic":"selection and attrition","stem":"Which statements about attrition as a threat to internal validity are accurate? Select all that apply.","options":["Attrition is participants dropping out of a study before it is completed","Attrition is harmless as long as the number of dropouts is the same in each group","It is a threat when the dropouts differ in type from those who remain","It is a threat when there is a difference in the number and type of dropouts between groups","Attrition greater than 25% could affect the accuracy of the results"],"correct":[0,2,3,4],"sata":true,"why":"Attrition is participants dropping out before completion. It threatens internal validity when dropouts differ in type from those who remain, or when the number and type of dropouts differ between groups, and attrition greater than 25% could affect the accuracy of results.","trap":"(B) is the count-only reflex. Equal numbers do not settle it, because attrition is a threat mainly on account of who leaves; equal counts of very different people still bias the comparison."},{"topic":"internal validity","subtopic":"history and maturation","stem":"During a 12-month cardiac rehabilitation support study, several of the nurses who deliver the program quit. Which internal validity threat does this illustrate?","options":["Maturation","History","Attrition","Selection"],"correct":[1],"sata":false,"why":"History is an event that is not related to the planned study but occurs during the time of the study; the chapter's own example is several nurses quitting during a cardiac rehabilitation support study.","trap":"(C) is the reflex because someone left. Attrition refers to participants dropping out, not staff departing, and staff leaving is an external event acting on the study."},{"topic":"internal validity","subtopic":"history and maturation","stem":"Over an 18-month longitudinal study with repeated measures, participants become stronger and more experienced at the study tasks in ways the researchers neither planned nor noticed. Which threat is this, and where is it most likely?","options":["History; most likely in cross-sectional studies","Selection; most likely when randomization is used","Attrition; most likely when the study period is short","Maturation; most likely in longitudinal studies with repeated measures"],"correct":[3],"sata":false,"why":"Maturation is growing older, wiser, stronger, hungrier, more tired, or more experienced during the study; the changes are unplanned and unrecognized, and maturation is more likely in longitudinal studies with repeated measures.","trap":"History and maturation are routinely swapped. History is an external event that happens to the study; maturation is change occurring inside the participants themselves."},{"topic":"external validity","subtopic":"interaction of selection and intervention","stem":"A published study reports that 39% of those approached declined to participate. Which threat does this raise, and to which type of design validity?","options":["Interaction of selection and intervention; external validity","Selection; internal validity","Attrition; internal validity","Interaction of history and intervention; external validity"],"correct":[0],"sata":false,"why":"A high refusal rate limits the sample in non-obvious ways. With 39% declining, those enrolled may be volunteers, do-gooders, or those with nothing better to do, so generalizing to all nurses or patients is not justified, and researchers must report the refusal rate.","trap":"(B) wins on the shared word. The plain selection threat concerns how enrolled participants were chosen and grouped and is an internal validity problem; the refusal rate concerns who never entered at all and is an external validity problem."},{"topic":"external validity","subtopic":"limits of generalization","stem":"Which statements about external validity are accurate? Select all that apply.","options":["With the most serious threat, the findings would be meaningful only for the group studied","Generalization is usually narrower for a single study than for multiple replications using different samples, populations, and settings","Hospitals seeking Magnet designation may welcome nursing studies while others resist, so the two types of setting may differ in important ways","Replicating a study during various time periods allows the findings to be generalized to the future","Choosing instruments that are valid and reliable but have fewer items decreases participant burden and helps reduce the selection threat"],"correct":[0,1,2,4],"sata":true,"why":"With the most serious threat, findings would be meaningful only for the group studied; generalization is narrower for a single study than for multiple replications; the Magnet example illustrates interaction of setting and intervention; and shorter valid and reliable instruments reduce participant burden and help reduce the selection threat.","trap":"(D) overshoots the chapter's own caution. Logically one can never generalize to the future; replicating during various time periods strengthens the usefulness of findings over time but licenses no claim about it."},{"topic":"external validity","subtopic":"limits of generalization","stem":"Three patients die from dialysis equipment failure during a study of a support intervention for patients receiving dialysis. Which external validity threat does this create for the published findings?","options":["Interaction of selection and intervention","Interaction of setting and intervention","Interaction of history and intervention","Maturation"],"correct":[2],"sata":false,"why":"Interaction of history and intervention means the circumstances at the time the study was conducted affect generalization; the chapter's example is exactly this dialysis equipment failure during a dialysis support study.","trap":"History appears in both validity lists, so read what the item is asking. As a plain internal validity threat, history asks whether the event explains the result; as an interaction with intervention, it asks whether those circumstances make the findings ungeneralizable to other times."},{"topic":"statistical conclusion validity","subtopic":"statistical power and Type II error","stem":"A study with 18 participants per group finds no significant difference between the intervention and comparison groups. Which threat is most likely, and which error does it produce?","options":["Low statistical power; Type II error","Low statistical power; Type I error","Unreliable measurement methods; Type I error","Extraneous variances in the setting; Type I error"],"correct":[0],"sata":false,"why":"Low statistical power increases the probability of concluding there is no significant relationship or difference when actually there is one, which is a Type II error. It is most likely when the sample size is small or the power of the statistical test is low.","trap":"(B) keeps the right threat and swaps the error. Low power means missing a real effect, which is Type II; nothing about a small sample manufactures a false positive."},{"topic":"statistical conclusion validity","subtopic":"statistical power and Type II error","stem":"Which of the following is a Type II error as this chapter defines it?","options":["Concluding there is a significant difference when in fact there is not one","Concluding there is no significant relationship or difference when actually there is one","Using only one method of measurement to assess a construct","Generalizing findings beyond the sample that was studied"],"correct":[1],"sata":false,"why":"A Type II error is concluding there is no significant relationship or difference when actually there is one, and low statistical power increases its probability.","trap":"(A) is the mirror-image error and reads as the more familiar mistake. Sort it by what was missed: a stem describing a false alarm points the other way, while a stem describing a small sample and a null result points to Type II."},{"topic":"statistical conclusion validity","subtopic":"measurement and intervention fidelity","stem":"A physiological instrument gives the same reading each time the same variable is measured under the same conditions. Which appraisal statement is accurate?","options":["The measure is valid, because consistency establishes accuracy","The measure demonstrates construct validity, because it matches the conceptual definition","The measure demonstrates intervention fidelity","The measure is reliable, and a physiological measure that measures consistently is described as precise"],"correct":[3],"sata":false,"why":"A measure is reliable if it gives the same result each time the same situation or variable is measured, and physiological measures that measure consistently are precise, as with a thermometer showing the same reading on repeat testing.","trap":"(A) equates consistency with accuracy, which is the single most common inversion here. A consistently wrong scale is still reliable; reliability is sameness of result, not truth of result."},{"topic":"statistical conclusion validity","subtopic":"measurement and intervention fidelity","stem":"Which of the following are threats to statistical conclusion validity as this chapter lists them? Select all that apply.","options":["Low statistical power","Unreliable measurement methods","Interaction of setting and intervention","Limited intervention fidelity","Extraneous variances in the setting"],"correct":[0,1,3,4],"sata":true,"why":"The chapter lists low statistical power, unreliable measurement methods, limited intervention fidelity, and extraneous variances in the setting. Limited fidelity matters because when administration varies from one person to another, the chance of detecting a true difference decreases, so data collectors must be trained for consistency.","trap":"(C) trades on the shared word setting. Extraneous variance in the setting muddies the analysis and is a statistical conclusion threat; interaction of setting and intervention limits who the findings apply to and is an external validity threat."}];
+const TITLE = "Chapter 8 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 8";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 4 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 4</div><h1>Chapter 4 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">historical research abuses</span><span class="chip t2">nazi medical experiments</span></div>
+<div class="stem">1. A student argues that although the Nazi medical experiments were cruel, they at least produced valuable scientific data. How does the chapter characterize those experiments?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They were rigorously designed but conducted without consent</li><li class="fopt right"><span class="mk">&#10003;</span>They were poorly conceived and conducted and generated little, if any, useful scientific knowledge</li><li class="fopt"><span class="mk">C</span>They produced hypothermia findings that remain scientifically useful</li><li class="fopt"><span class="mk">D</span>They were reviewed by an ethics committee before being carried out</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In addition to unjust selection of subjects, involuntary participation, and permanent damage including death, the experiments are described as poorly conceived and conducted, generating little, if any, useful scientific knowledge.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex position that sound science and bad ethics can coexist here. The chapter denies the premise outright rather than weighing the data against the harm.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">historical research abuses</span><span class="chip t2">tuskegee syphilis study</span></div>
+<div class="stem">2. What finally brought the Tuskegee Syphilis Study to an end in 1972?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A Centers for Disease Control review concluded the study should be stopped</li><li class="fopt"><span class="mk">B</span>The Belmont Report made the design illegal</li><li class="fopt right"><span class="mk">&#10003;</span>Public outrage after an account of the study appeared in the Washington Star</li><li class="fopt"><span class="mk">D</span>The institution's review committee withdrew its approval</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In 1969 the CDC reviewed the study and decided it should continue; the study stopped only after a 1972 account in the Washington Star sparked public outrage.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts the record — the scientific review that did occur voted to continue the study. Any option crediting internal or scientific oversight with ending Tuskegee is wrong.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">historical research abuses</span><span class="chip t2">tuskegee syphilis study</span></div>
+<div class="stem">3. Which statements about the Tuskegee Syphilis Study are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The study ran 40 years, from 1932 to 1972</li><li class="fopt"><span class="mk">B</span>Subjects were informed of the purpose and procedures of the study at enrollment</li><li class="fopt right"><span class="mk">&#10003;</span>Treatment was withheld even after penicillin was known to be an effective treatment in the 1940s</li><li class="fopt right"><span class="mk">&#10003;</span>By 1936 the group with syphilis had developed more complications than the control group</li><li class="fopt right"><span class="mk">&#10003;</span>Ten years later the death rate in the syphilis group was twice that of the control group</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The US Public Health Service study of the natural history of syphilis in black men ran from 1932 to 1972; deliberate steps were taken to deprive subjects of treatment after penicillin was known effective; by 1936 the syphilis group had more complications, and ten years later its death rate was twice the control group's.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is tempting because reports on the study were published openly every four to six years. Publication in the literature is not disclosure to subjects — many were never informed, and some did not know they were subjects at all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">historical research abuses</span><span class="chip t2">willowbrook and jewish chronic disease hospital</span></div>
+<div class="stem">4. At Willowbrook, the institution was closed to new admissions because of overcrowding, but the research ward kept admitting, so parents could place their child only by agreeing to enrollment in the hepatitis study. Which violation does this arrangement describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Invasion of privacy</li><li class="fopt"><span class="mk">B</span>Breach of confidentiality</li><li class="fopt"><span class="mk">C</span>Falsification of data</li><li class="fopt right"><span class="mk">&#10003;</span>Coerced consent involving a vulnerable population</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Parents could admit their children only if they were willing to give permission for the child to be in the study, which made the consent coercive and used a vulnerable population.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The harm students name first is the deliberate infection of children with hepatitis. The stem is describing the separate wrong — consent extracted as the price of admission.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">historical research abuses</span><span class="chip t2">willowbrook and jewish chronic disease hospital</span></div>
+<div class="stem">5. In the Jewish Chronic Disease Hospital study of the 1960s, live cancer cells were injected into 22 patients who were not told they were in a study. Beyond violating self-determination and protection from harm, what additional failure occurred?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The study was never reviewed by the institution's research committee</li><li class="fopt"><span class="mk">B</span>The findings were never published in the scientific literature</li><li class="fopt"><span class="mk">C</span>The consent forms required subjects to waive their legal rights</li><li class="fopt"><span class="mk">D</span>The subjects were all children in an institution</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The study was never reviewed by the research committee, and the patients' own physicians were unaware that their patients were enrolled.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) belongs to Willowbrook. These four studies are routinely swapped, so anchor each to its one distinctive feature: Tuskegee withheld available treatment, Willowbrook coerced parental consent, Jewish Chronic Disease bypassed review entirely, the Nazi experiments were involuntary and lethal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical codes and standards</span><span class="chip t2">nuremberg code</span></div>
+<div class="stem">6. A committee drafts criteria requiring that a study be undertaken only when the knowledge cannot be gained any other way, that it build on previous work including animal experimentation, and that the anticipated results justify conducting it. These belong to which category of the Nuremberg Code?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Rationale for the study</li><li class="fopt"><span class="mk">B</span>Rights of human subjects</li><li class="fopt"><span class="mk">C</span>Risk avoidance</li><li class="fopt"><span class="mk">D</span>Resources</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The rationale-for-study category requires that the knowledge cannot be gained any other way, that the study be based on previous studies including animal experimentation and the natural history of the disease, that it be designed to yield results needed by society, and that anticipated results justify conducting it.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) risk avoidance covers avoiding unnecessary physical or mental suffering and terminating a study if the risk of harm increases. It is about conduct during the study, not about whether the study is justified in the first place.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical codes and standards</span><span class="chip t2">therapeutic vs nontherapeutic research</span></div>
+<div class="stem">7. A patient with advanced cancer enrolls in a trial of an investigational drug that may shrink her tumor. Under the distinction the Declaration of Helsinki set out to clarify, this is:</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Nontherapeutic research, because the drug is still experimental</li><li class="fopt right"><span class="mk">&#10003;</span>Therapeutic research, because she has an opportunity to receive a treatment that might have beneficial results</li><li class="fopt"><span class="mk">C</span>Exempt research, because she gave consent</li><li class="fopt"><span class="mk">D</span>Nontherapeutic research, because the findings will help future patients</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Therapeutic research provides patients with an opportunity to receive an experimental treatment that might have beneficial results, and clarifying this distinction was the major focus of the Declaration of Helsinki.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats &quot;unproven&quot; as the deciding feature. The distinction turns on whether the participants themselves might benefit, not on how well established the treatment is.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical codes and standards</span><span class="chip t2">therapeutic vs nontherapeutic research</span></div>
+<div class="stem">8. Healthy volunteers give repeated blood samples so researchers can map inflammatory biomarkers; nothing in the protocol is expected to change the volunteers' own health. This study is best classified as:</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Therapeutic research, because the findings may eventually benefit these volunteers</li><li class="fopt"><span class="mk">B</span>Therapeutic research, because participation is voluntary</li><li class="fopt right"><span class="mk">&#10003;</span>Nontherapeutic research, because it generates knowledge for science and is not expected to benefit those acting as participants</li><li class="fopt"><span class="mk">D</span>Nontherapeutic research, because the volunteers are healthy rather than ill</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nontherapeutic research is conducted to generate knowledge for science; the results may help future patients but are not expected to benefit those acting as research participants.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the previous item, and (D) is the dangerous option because it reaches the right label by the wrong route. Health status is not the criterion; a study can enroll sick patients and still be nontherapeutic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical codes and standards</span><span class="chip t2">sequence of the major standards</span></div>
+<div class="stem">9. Which statements about the major ethical standards are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The Nuremberg Code was released in 1949 after the Nuremberg Tribunals of German war crimes</li><li class="fopt right"><span class="mk">&#10003;</span>The Declaration of Helsinki was developed in 1964 and built on the Nuremberg Code</li><li class="fopt"><span class="mk">C</span>The Common Rule was issued in 1949 and has not been revised since</li><li class="fopt right"><span class="mk">&#10003;</span>The Belmont Report, published in 1979, was the first major US ethical guide</li><li class="fopt right"><span class="mk">&#10003;</span>The commission that produced the Belmont Report was formed in response to the outcry over Tuskegee</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Nuremberg Code followed the Nuremberg Tribunals in 1949, the Declaration of Helsinki built on it in 1964, and the Belmont Report of 1979 was the first major US ethical guide, written by the National Commission formed after the Tuskegee outcry.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) collapses two different documents. The Common Rule is the Code of Federal Regulations standard, named for the similarities among departments' CFR chapters, and it was most recently revised in 2017, effective January 2018.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical principles and human rights</span><span class="chip t2">justice</span></div>
+<div class="stem">10. A researcher restricts enrollment in a study of a new wound care protocol to privately insured patients and offers no scientific rationale for the restriction. Which ethical principle is violated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Respect for persons</li><li class="fopt"><span class="mk">B</span>Beneficence</li><li class="fopt right"><span class="mk">&#10003;</span>Justice</li><li class="fopt"><span class="mk">D</span>Autonomy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Justice is the right to fair treatment, which includes access to the potential benefits of a study and not overexposure to its risks; inclusion and exclusion criteria must have scientific and/or logical explanations.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex answer because uninsured patients are denied a possible good. A stem about unjustified inclusion or exclusion criteria is testing justice, not beneficence.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical principles and human rights</span><span class="chip t2">beneficence</span></div>
+<div class="stem">11. A study finds that enhanced diabetic education improved glucose control in the treatment group. At the end of the study the researcher offers the same education program to the control group. Which principle is she acting on?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Beneficence</li><li class="fopt"><span class="mk">B</span>Justice</li><li class="fopt"><span class="mk">C</span>Respect for persons</li><li class="fopt"><span class="mk">D</span>Self-determination</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A researcher guided by beneficence would provide the intervention for the subjects in the control group at the end of the study, consistent with doing good and, above all, doing no harm.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is tempting because the act equalizes access, which sounds like fairness. The chapter names this exact scenario as its illustration of beneficence.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical principles and human rights</span><span class="chip t2">beneficence</span></div>
+<div class="stem">12. Which statements reflect the principle of beneficence as the chapter applies it? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The researcher should do good and, above all, do no harm</li><li class="fopt right"><span class="mk">&#10003;</span>It is the foundation for analyzing the benefits and risks of a study</li><li class="fopt right"><span class="mk">&#10003;</span>Providing the effective intervention to the control group at the end of the study is an expression of it</li><li class="fopt"><span class="mk">D</span>Inclusion and exclusion criteria must have scientific or logical explanations</li><li class="fopt right"><span class="mk">&#10003;</span>Maintaining the integrity of the study and disseminating the findings are part of it</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Beneficence encourages the researcher to do good and above all do no harm, is the foundation for analyzing benefits and risks, and extends to maintaining the integrity of the study and disseminating findings, because findings of poorly designed and implemented studies have no benefit.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is justice, not beneficence. Note also that beneficence is broader than harm avoidance — a badly designed study is itself an ethical failure under this principle.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical principles and human rights</span><span class="chip t2">respect for persons and self-determination</span></div>
+<div class="stem">13. Six weeks into a 12-week trial, a participant tells the nurse she no longer wants to continue. The consent form she signed stated that she would forfeit her clinic follow-up appointments if she withdrew early. What is the correct evaluation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>She must complete the study because she gave consent at enrollment</li><li class="fopt"><span class="mk">B</span>Withdrawal is permitted only if the IRB approves it</li><li class="fopt"><span class="mk">C</span>The clause is acceptable because it protects the integrity of the study</li><li class="fopt right"><span class="mk">&#10003;</span>The clause is improper; a subject may withdraw at any time without penalty or loss of benefits</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The right to self-determination is based on respect for persons: a subject who consents and begins a study is allowed to withdraw at any time without penalty, and consent must state the right to refuse or withdraw without loss of benefits.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) treats controlling attrition as a legitimate competing interest. No design consideration overrides the right to withdraw, and no consent document can create that penalty.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ethical principles and human rights</span><span class="chip t2">the five human rights</span></div>
+<div class="stem">14. Which of the following are among the five human rights that require protection in research? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Self-determination</li><li class="fopt right"><span class="mk">&#10003;</span>Privacy</li><li class="fopt"><span class="mk">C</span>Guaranteed access to the experimental treatment after the study ends</li><li class="fopt right"><span class="mk">&#10003;</span>Anonymity and confidentiality</li><li class="fopt right"><span class="mk">&#10003;</span>Fair selection and treatment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The five human rights requiring protection are self-determination, privacy, anonymity and confidentiality, protection from discomfort and harm, and fair selection and treatment. The ANA Code of Ethics for Nurses (2015) reiterates these rights.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is a real obligation the chapter describes — beneficence supports offering the intervention to the control group afterward — but it is an application of a principle, not one of the five named rights.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">privacy, anonymity, and confidentiality</span><span class="chip t2">invasion of privacy</span></div>
+<div class="stem">15. A nurse manager gives a researcher a printout of patients' names, diagnoses, and payment histories, without the patients' knowledge, so the researcher can recruit for a study. What has occurred?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A breach of confidentiality, because raw study data were released</li><li class="fopt"><span class="mk">B</span>An acceptable use, because the information was already in the medical record</li><li class="fopt"><span class="mk">C</span>Broad consent, because the patients signed treatment consents at admission</li><li class="fopt right"><span class="mk">&#10003;</span>An invasion of privacy, because private information was shared without the persons' knowledge</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Invasion of privacy occurs when private information is shared without a person's knowledge or against his or her will, and the HIPAA Privacy Rule protects identifiable information about a person's past or current health condition, the care received, and payment for health care received.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the near neighbor and the most common wrong choice. A breach of confidentiality is an unauthorized person gaining access to the raw research data; here no study data exist yet, and the wrong occurred at the moment existing private information was disclosed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">privacy, anonymity, and confidentiality</span><span class="chip t2">anonymity vs confidentiality</span></div>
+<div class="stem">16. A nurse researcher collects signed consent forms, knows every participant by name, and stores coded data in a locked file. How should this study's data protection be described?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Complete anonymity, because names do not appear in the data file</li><li class="fopt right"><span class="mk">&#10003;</span>Confidentiality, because the researcher is safely managing data whose sources she can identify</li><li class="fopt"><span class="mk">C</span>Complete anonymity, because the consent forms are stored separately from the data</li><li class="fopt"><span class="mk">D</span>Invasion of privacy, because the researcher knows the subjects' identities</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Confidentiality is the researcher's safe management of information or data shared by a subject so that the data are kept private from others; complete anonymity exists only when the researcher cannot link a subject's identity with her or his individual responses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Calling a study with signed consent forms anonymous is the classic error. In most studies researchers know the identity of their subjects, which is why complete anonymity is uncommon.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">privacy, anonymity, and confidentiality</span><span class="chip t2">anonymity vs confidentiality</span></div>
+<div class="stem">17. Which situation meets the standard for complete anonymity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Surveys arrive by mail with no identifiers, and the researcher cannot connect any response to a respondent</li><li class="fopt"><span class="mk">B</span>The researcher replaces each name with a code number that she is able to decode when needed</li><li class="fopt"><span class="mk">C</span>The researcher keeps a master list of names in a locked cabinet separate from the data</li><li class="fopt"><span class="mk">D</span>The researcher reports findings only for subgroups and never for individuals</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Complete anonymity exists when the researcher cannot link a subject's identity with her or his individual responses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex answer because coding feels like anonymizing, but a code the researcher can reverse preserves the link. That is confidentiality — safe management of identities the researcher knows.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">privacy, anonymity, and confidentiality</span><span class="chip t2">breaches in qualitative research</span></div>
+<div class="stem">18. A researcher conducts in-depth interviews with eight women about their experiences of intimate partner violence and plans to publish long verbatim quotes. Compared with a large quantitative survey study, the risk of a breach of confidentiality here is:</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Lower, because results will be presented for the group rather than for individuals</li><li class="fopt"><span class="mk">B</span>Lower, because narrative data are less identifiable than numeric data</li><li class="fopt"><span class="mk">C</span>Unchanged, because both designs require the same safeguards</li><li class="fopt right"><span class="mk">&#10003;</span>Higher, because the data come from fewer participants and long quotes are reported</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In quantitative studies results are presented for subgroups or groups and a breach is less likely; in qualitative studies a breach is more likely because the researcher gathers data from fewer participants and reports long quotes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Students often assume the reverse, and (A) is dangerous because it states the quantitative case accurately — it just belongs to the comparison study, not this one. Confidentiality must be maintained during data collection, analysis, and reporting.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">privacy, anonymity, and confidentiality</span><span class="chip t2">broad consent</span></div>
+<div class="stem">19. A biobank asks patients for permission to store, maintain, and use identifiable private information and biospecimens for future studies. Which elements must this broad consent include? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Whether the analysis will include whole genome sequencing</li><li class="fopt"><span class="mk">B</span>A commitment to notify subjects about each specific future study conducted with their data</li><li class="fopt right"><span class="mk">&#10003;</span>Whether biospecimens may be used for commercial profit and whether subjects will receive a share of any profits</li><li class="fopt right"><span class="mk">&#10003;</span>The length of time the data will be kept, which may be indefinite</li><li class="fopt right"><span class="mk">&#10003;</span>A statement that results will not be shared unless they are clinically relevant</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Beyond the standard consent components, broad consent must address commercial profit and profit sharing, whole genome sequencing, the types of research the data may be used for, the length of time data will be kept, and contact information.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the requirement. Broad consent states that subjects will not be informed about the specific studies later conducted with their information — that is precisely what makes the consent broad.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">informed consent</span><span class="chip t2">elements of informed consent</span></div>
+<div class="stem">20. A patient signs a consent form after the researcher reads it aloud to her, but when the nurse asks what the study involves, the patient answers that she is &quot;getting a new medicine that will fix my kidneys&quot; — something the study does not offer. Which element of informed consent is deficient?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Disclosure</li><li class="fopt"><span class="mk">B</span>Competence</li><li class="fopt right"><span class="mk">&#10003;</span>Comprehension</li><li class="fopt"><span class="mk">D</span>Voluntary agreement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Comprehension is the extent to which the potential subject actually understands the information, and the researcher must take the time to teach the subjects about the study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because the information clearly was delivered. Comprehension is a separate element from disclosure precisely because telling is not the same as understanding.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">informed consent</span><span class="chip t2">competence</span></div>
+<div class="stem">21. A researcher wants to enroll adults residing in a state psychiatric facility under court-ordered commitment. What does the chapter say about their capacity to give consent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They may consent, because institutional residence does not affect legal competence</li><li class="fopt right"><span class="mk">&#10003;</span>Persons with diminished autonomy because of legal or mental incompetence or confinement to an institution are not legally competent to consent</li><li class="fopt"><span class="mk">C</span>Consent is unnecessary because the facility administrator authorizes participation</li><li class="fopt"><span class="mk">D</span>Their consent is valid as long as the form is written in plain, understandable language</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Persons with diminished autonomy because of legal or mental incompetence or confinement to an institution are not legally competent to consent, and investigators must report the competence of subjects and the consent process used.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) swaps competence for comprehension. Readable language supports understanding, but competence is the prior question of whether the person is capable of weighing benefits and risks at all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">informed consent</span><span class="chip t2">disclosure under the revised common rule</span></div>
+<div class="stem">22. Under the 2017 revision of the Common Rule, how did the focus of disclosure in the consent process change?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>From sharing every possible detail of a study to providing the information a reasonable person would need to make a decision</li><li class="fopt"><span class="mk">B</span>From a written consent document to an entirely verbal process</li><li class="fopt"><span class="mk">C</span>From disclosing risks to emphasizing anticipated benefits</li><li class="fopt"><span class="mk">D</span>From researcher-led disclosure to disclosure performed by the IRB</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The revision changed the focus of the consent process from sharing every possible detail of a study to providing the information that a reasonable person would need to make a decision, consistent with the revision's twin goals of enhancing subject protection and reducing administrative burden.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) mistakes less content for less documentation. The consent form remains a written document containing the elements of informed consent required by the Common Rule.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">informed consent</span><span class="chip t2">components of the consent form</span></div>
+<div class="stem">23. An IRB is reviewing a consent form for completeness. Which components must be present for the consent to be comprehensive? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Purpose and procedures of the study and the expected length of involvement</li><li class="fopt"><span class="mk">B</span>A statement that the subject waives the right to sue the researcher for negligence</li><li class="fopt right"><span class="mk">&#10003;</span>Benefits and the risks or discomforts of participating</li><li class="fopt right"><span class="mk">&#10003;</span>Compensation for research-related injury and any alternative treatments</li><li class="fopt right"><span class="mk">&#10003;</span>Contact persons and the right to refuse or withdraw without loss of benefits</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A comprehensive consent covers purpose and procedures, length of involvement, benefits and risks or discomforts, compensation for research-related injury, alternative treatments, confidentiality of records, contact persons, and the right to refuse or withdraw without loss of benefits.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) violates the requirement that consent be cautious — the subject does not waive any legal rights or release the researcher or funder from negligence. A form containing that waiver is invalid, not merely poorly worded.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">institutional review boards</span><span class="chip t2">level of review</span></div>
+<div class="stem">24. A nurse plans an anonymous survey of staff attitudes, decides on her own that it qualifies as exempt, and begins collecting data without submitting anything to the IRB. What is the problem with what she did?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Surveys can never qualify for exemption from review</li><li class="fopt right"><span class="mk">&#10003;</span>The IRB chairperson and/or committee, not the researcher, decides the level of review required for each study</li><li class="fopt"><span class="mk">C</span>Exempt studies still require continuing review every 12 months</li><li class="fopt"><span class="mk">D</span>Only federally funded studies may be classified as exempt</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The IRB chairperson and/or committee, not the researcher, decides the level of the review required for each study; the levels are exempt, expedited, and full.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) overcorrects. Surveys with unidentified subjects whose data are not linked to them are one of the listed exempt categories, so her conclusion may well have been right. The error is who made the determination.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">institutional review boards</span><span class="chip t2">exempt studies</span></div>
+<div class="stem">25. An IRB classifies a nurse's study of an educational intervention as exempt. What follows from that classification?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The study must still undergo continuing review annually</li><li class="fopt"><span class="mk">B</span>The study may proceed without informed consent of any kind</li><li class="fopt right"><span class="mk">&#10003;</span>No continuing review is required, and exempt status is a common outcome for studies conducted by nurses</li><li class="fopt"><span class="mk">D</span>The study must be re-registered with the Office of Human Research Protection each year</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Exempt studies pose no apparent risks, and once a study is exempt no continuing review is required, unlike other levels of review; studies conducted by nurses frequently are evaluated as being exempt from review.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Treating exempt status as unusual, or as evidence a corner was cut, misreads the chapter — the revised Common Rule deliberately broadened the types of study that qualify.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">institutional review boards</span><span class="chip t2">exempt studies</span></div>
+<div class="stem">26. A researcher asks passersby in a public park to spend two minutes sorting neutral word cards, recording no identifying information. Which term describes this procedure in the exempt categories?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Nontherapeutic intervention</li><li class="fopt"><span class="mk">B</span>Expedited intervention</li><li class="fopt"><span class="mk">C</span>Minimal-risk therapeutic intervention</li><li class="fopt right"><span class="mk">&#10003;</span>Benign behavioral intervention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Benign behavioral interventions are short, noninvasive actions that are not expected to have a long-term adverse impact or to be embarrassing or offensive; studies using them with data not linked to subjects are among the exempt categories.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) borrows the vocabulary of review levels. Expedited names a level of IRB review, not a type of intervention, so it can never describe the procedure itself.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">institutional review boards</span><span class="chip t2">board composition</span></div>
+<div class="stem">27. An institution is assembling an IRB. Which requirements apply to its membership? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>There must be at least five members</li><li class="fopt"><span class="mk">B</span>A member who submits a study for review may take part in the deliberations and the decision on it as long as the conflict is disclosed</li><li class="fopt right"><span class="mk">&#10003;</span>At least one member must have scientific expertise</li><li class="fopt right"><span class="mk">&#10003;</span>At least one member must be a community member without scientific training</li><li class="fopt right"><span class="mk">&#10003;</span>At least one member must have no affiliation with the institution in any way</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An IRB has at least five members of varying cultural, economic, educational, gender, and racial backgrounds, including at least one scientist, at least one nonscientist community member, and one member unaffiliated with the institution, who may be the same person as the nonscientist.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is wrong even with disclosure: a member who proposes a study cannot be involved in the deliberations and decision other than to provide information. Note also that an all-clinician IRB is noncompliant no matter how large it is.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research misconduct</span><span class="chip t2">intent and honest error</span></div>
+<div class="stem">28. A researcher discovers that an assistant transposed digits when entering 12 blood pressure values, corrects the dataset, and documents the correction. Does this meet the definition of research misconduct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>No, because misconduct does not include honest error and requires an intentional, significant departure from accepted practice</li><li class="fopt"><span class="mk">B</span>Yes, because the data as originally recorded did not accurately represent the research</li><li class="fopt"><span class="mk">C</span>Yes, because changing values already recorded in a dataset is falsification</li><li class="fopt"><span class="mk">D</span>No, because only the principal investigator can commit research misconduct</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Research misconduct is fabrication, falsification, or plagiarism in processing, performing, or reviewing research or in reporting results; it does not include honest error or differences in opinion, and it is an intentional act involving a significant departure from accepted practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) recites the mechanism of falsification — changing or omitting data — while quietly dropping the intent requirement, which is exactly what makes it plausible.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research misconduct</span><span class="chip t2">plagiarism</span></div>
+<div class="stem">29. A faculty member serves as a confidential peer reviewer for a colleague's grant proposal, then incorporates the colleague's novel design into her own proposal without credit. How is this classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Falsification, because she altered the research process</li><li class="fopt"><span class="mk">B</span>A difference of opinion rather than misconduct, because study designs are not owned</li><li class="fopt right"><span class="mk">&#10003;</span>Plagiarism, because appropriating another's ideas or processes without credit includes material obtained through confidential peer review</li><li class="fopt"><span class="mk">D</span>Fabrication, because the design was not the product of her own work</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Plagiarism is the appropriation of another person's ideas, processes, results, or words without giving appropriate credit, including material obtained through confidential peer review of others' proposals and manuscripts.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Students associate plagiarism with copied published text, so unpublished ideas seen while reviewing feel like fair game. The peer-review clause is the least intuitive part of the ORI definition and the reason this scenario is testable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research misconduct</span><span class="chip t2">the ori definition</span></div>
+<div class="stem">30. Which statements about research misconduct are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The Office of Research Integrity, part of DHHS, defines and manages research misconduct</li><li class="fopt right"><span class="mk">&#10003;</span>It comprises fabrication, falsification, and plagiarism</li><li class="fopt"><span class="mk">C</span>Honest error and differences in opinion are included within the definition</li><li class="fopt right"><span class="mk">&#10003;</span>An allegation must be confirmed by a preponderance of evidence before action is taken</li><li class="fopt right"><span class="mk">&#10003;</span>Research misconduct does occur in the nursing profession, and the principal investigator was usually identified as the responsible party</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>ORI, within DHHS, defines and manages research misconduct as fabrication, falsification, and plagiarism; action requires confirmation by a preponderance of evidence. Research coordinators who reported misconduct often learned of it firsthand and usually identified the principal investigator as responsible.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the explicit exclusion, not an inclusion. Also resist concluding that nursing is unaffected because the seven ORI cases in 2016 were all laboratory cellular studies that rarely include nurse researchers — the chapter states directly that misconduct does occur in the profession, beginning with protocol and consent violations.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"historical research abuses","subtopic":"nazi medical experiments","stem":"A student argues that although the Nazi medical experiments were cruel, they at least produced valuable scientific data. How does the chapter characterize those experiments?","options":["They were rigorously designed but conducted without consent","They were poorly conceived and conducted and generated little, if any, useful scientific knowledge","They produced hypothermia findings that remain scientifically useful","They were reviewed by an ethics committee before being carried out"],"correct":[1],"sata":false,"why":"In addition to unjust selection of subjects, involuntary participation, and permanent damage including death, the experiments are described as poorly conceived and conducted, generating little, if any, useful scientific knowledge.","trap":"(A) is the reflex position that sound science and bad ethics can coexist here. The chapter denies the premise outright rather than weighing the data against the harm."},{"topic":"historical research abuses","subtopic":"tuskegee syphilis study","stem":"What finally brought the Tuskegee Syphilis Study to an end in 1972?","options":["A Centers for Disease Control review concluded the study should be stopped","The Belmont Report made the design illegal","Public outrage after an account of the study appeared in the Washington Star","The institution's review committee withdrew its approval"],"correct":[2],"sata":false,"why":"In 1969 the CDC reviewed the study and decided it should continue; the study stopped only after a 1972 account in the Washington Star sparked public outrage.","trap":"(A) inverts the record — the scientific review that did occur voted to continue the study. Any option crediting internal or scientific oversight with ending Tuskegee is wrong."},{"topic":"historical research abuses","subtopic":"tuskegee syphilis study","stem":"Which statements about the Tuskegee Syphilis Study are accurate? Select all that apply.","options":["The study ran 40 years, from 1932 to 1972","Subjects were informed of the purpose and procedures of the study at enrollment","Treatment was withheld even after penicillin was known to be an effective treatment in the 1940s","By 1936 the group with syphilis had developed more complications than the control group","Ten years later the death rate in the syphilis group was twice that of the control group"],"correct":[0,2,3,4],"sata":true,"why":"The US Public Health Service study of the natural history of syphilis in black men ran from 1932 to 1972; deliberate steps were taken to deprive subjects of treatment after penicillin was known effective; by 1936 the syphilis group had more complications, and ten years later its death rate was twice the control group's.","trap":"(B) is tempting because reports on the study were published openly every four to six years. Publication in the literature is not disclosure to subjects — many were never informed, and some did not know they were subjects at all."},{"topic":"historical research abuses","subtopic":"willowbrook and jewish chronic disease hospital","stem":"At Willowbrook, the institution was closed to new admissions because of overcrowding, but the research ward kept admitting, so parents could place their child only by agreeing to enrollment in the hepatitis study. Which violation does this arrangement describe?","options":["Invasion of privacy","Breach of confidentiality","Falsification of data","Coerced consent involving a vulnerable population"],"correct":[3],"sata":false,"why":"Parents could admit their children only if they were willing to give permission for the child to be in the study, which made the consent coercive and used a vulnerable population.","trap":"The harm students name first is the deliberate infection of children with hepatitis. The stem is describing the separate wrong — consent extracted as the price of admission."},{"topic":"historical research abuses","subtopic":"willowbrook and jewish chronic disease hospital","stem":"In the Jewish Chronic Disease Hospital study of the 1960s, live cancer cells were injected into 22 patients who were not told they were in a study. Beyond violating self-determination and protection from harm, what additional failure occurred?","options":["The study was never reviewed by the institution's research committee","The findings were never published in the scientific literature","The consent forms required subjects to waive their legal rights","The subjects were all children in an institution"],"correct":[0],"sata":false,"why":"The study was never reviewed by the research committee, and the patients' own physicians were unaware that their patients were enrolled.","trap":"(D) belongs to Willowbrook. These four studies are routinely swapped, so anchor each to its one distinctive feature: Tuskegee withheld available treatment, Willowbrook coerced parental consent, Jewish Chronic Disease bypassed review entirely, the Nazi experiments were involuntary and lethal."},{"topic":"ethical codes and standards","subtopic":"nuremberg code","stem":"A committee drafts criteria requiring that a study be undertaken only when the knowledge cannot be gained any other way, that it build on previous work including animal experimentation, and that the anticipated results justify conducting it. These belong to which category of the Nuremberg Code?","options":["Rationale for the study","Rights of human subjects","Risk avoidance","Resources"],"correct":[0],"sata":false,"why":"The rationale-for-study category requires that the knowledge cannot be gained any other way, that the study be based on previous studies including animal experimentation and the natural history of the disease, that it be designed to yield results needed by society, and that anticipated results justify conducting it.","trap":"(C) risk avoidance covers avoiding unnecessary physical or mental suffering and terminating a study if the risk of harm increases. It is about conduct during the study, not about whether the study is justified in the first place."},{"topic":"ethical codes and standards","subtopic":"therapeutic vs nontherapeutic research","stem":"A patient with advanced cancer enrolls in a trial of an investigational drug that may shrink her tumor. Under the distinction the Declaration of Helsinki set out to clarify, this is:","options":["Nontherapeutic research, because the drug is still experimental","Therapeutic research, because she has an opportunity to receive a treatment that might have beneficial results","Exempt research, because she gave consent","Nontherapeutic research, because the findings will help future patients"],"correct":[1],"sata":false,"why":"Therapeutic research provides patients with an opportunity to receive an experimental treatment that might have beneficial results, and clarifying this distinction was the major focus of the Declaration of Helsinki.","trap":"(A) treats \"unproven\" as the deciding feature. The distinction turns on whether the participants themselves might benefit, not on how well established the treatment is."},{"topic":"ethical codes and standards","subtopic":"therapeutic vs nontherapeutic research","stem":"Healthy volunteers give repeated blood samples so researchers can map inflammatory biomarkers; nothing in the protocol is expected to change the volunteers' own health. This study is best classified as:","options":["Therapeutic research, because the findings may eventually benefit these volunteers","Therapeutic research, because participation is voluntary","Nontherapeutic research, because it generates knowledge for science and is not expected to benefit those acting as participants","Nontherapeutic research, because the volunteers are healthy rather than ill"],"correct":[2],"sata":false,"why":"Nontherapeutic research is conducted to generate knowledge for science; the results may help future patients but are not expected to benefit those acting as research participants.","trap":"This is the mirror of the previous item, and (D) is the dangerous option because it reaches the right label by the wrong route. Health status is not the criterion; a study can enroll sick patients and still be nontherapeutic."},{"topic":"ethical codes and standards","subtopic":"sequence of the major standards","stem":"Which statements about the major ethical standards are accurate? Select all that apply.","options":["The Nuremberg Code was released in 1949 after the Nuremberg Tribunals of German war crimes","The Declaration of Helsinki was developed in 1964 and built on the Nuremberg Code","The Common Rule was issued in 1949 and has not been revised since","The Belmont Report, published in 1979, was the first major US ethical guide","The commission that produced the Belmont Report was formed in response to the outcry over Tuskegee"],"correct":[0,1,3,4],"sata":true,"why":"The Nuremberg Code followed the Nuremberg Tribunals in 1949, the Declaration of Helsinki built on it in 1964, and the Belmont Report of 1979 was the first major US ethical guide, written by the National Commission formed after the Tuskegee outcry.","trap":"(C) collapses two different documents. The Common Rule is the Code of Federal Regulations standard, named for the similarities among departments' CFR chapters, and it was most recently revised in 2017, effective January 2018."},{"topic":"ethical principles and human rights","subtopic":"justice","stem":"A researcher restricts enrollment in a study of a new wound care protocol to privately insured patients and offers no scientific rationale for the restriction. Which ethical principle is violated?","options":["Respect for persons","Beneficence","Justice","Autonomy"],"correct":[2],"sata":false,"why":"Justice is the right to fair treatment, which includes access to the potential benefits of a study and not overexposure to its risks; inclusion and exclusion criteria must have scientific and/or logical explanations.","trap":"(B) is the reflex answer because uninsured patients are denied a possible good. A stem about unjustified inclusion or exclusion criteria is testing justice, not beneficence."},{"topic":"ethical principles and human rights","subtopic":"beneficence","stem":"A study finds that enhanced diabetic education improved glucose control in the treatment group. At the end of the study the researcher offers the same education program to the control group. Which principle is she acting on?","options":["Beneficence","Justice","Respect for persons","Self-determination"],"correct":[0],"sata":false,"why":"A researcher guided by beneficence would provide the intervention for the subjects in the control group at the end of the study, consistent with doing good and, above all, doing no harm.","trap":"(B) is tempting because the act equalizes access, which sounds like fairness. The chapter names this exact scenario as its illustration of beneficence."},{"topic":"ethical principles and human rights","subtopic":"beneficence","stem":"Which statements reflect the principle of beneficence as the chapter applies it? Select all that apply.","options":["The researcher should do good and, above all, do no harm","It is the foundation for analyzing the benefits and risks of a study","Providing the effective intervention to the control group at the end of the study is an expression of it","Inclusion and exclusion criteria must have scientific or logical explanations","Maintaining the integrity of the study and disseminating the findings are part of it"],"correct":[0,1,2,4],"sata":true,"why":"Beneficence encourages the researcher to do good and above all do no harm, is the foundation for analyzing benefits and risks, and extends to maintaining the integrity of the study and disseminating findings, because findings of poorly designed and implemented studies have no benefit.","trap":"(D) is justice, not beneficence. Note also that beneficence is broader than harm avoidance — a badly designed study is itself an ethical failure under this principle."},{"topic":"ethical principles and human rights","subtopic":"respect for persons and self-determination","stem":"Six weeks into a 12-week trial, a participant tells the nurse she no longer wants to continue. The consent form she signed stated that she would forfeit her clinic follow-up appointments if she withdrew early. What is the correct evaluation?","options":["She must complete the study because she gave consent at enrollment","Withdrawal is permitted only if the IRB approves it","The clause is acceptable because it protects the integrity of the study","The clause is improper; a subject may withdraw at any time without penalty or loss of benefits"],"correct":[3],"sata":false,"why":"The right to self-determination is based on respect for persons: a subject who consents and begins a study is allowed to withdraw at any time without penalty, and consent must state the right to refuse or withdraw without loss of benefits.","trap":"(C) treats controlling attrition as a legitimate competing interest. No design consideration overrides the right to withdraw, and no consent document can create that penalty."},{"topic":"ethical principles and human rights","subtopic":"the five human rights","stem":"Which of the following are among the five human rights that require protection in research? Select all that apply.","options":["Self-determination","Privacy","Guaranteed access to the experimental treatment after the study ends","Anonymity and confidentiality","Fair selection and treatment"],"correct":[0,1,3,4],"sata":true,"why":"The five human rights requiring protection are self-determination, privacy, anonymity and confidentiality, protection from discomfort and harm, and fair selection and treatment. The ANA Code of Ethics for Nurses (2015) reiterates these rights.","trap":"(C) is a real obligation the chapter describes — beneficence supports offering the intervention to the control group afterward — but it is an application of a principle, not one of the five named rights."},{"topic":"privacy, anonymity, and confidentiality","subtopic":"invasion of privacy","stem":"A nurse manager gives a researcher a printout of patients' names, diagnoses, and payment histories, without the patients' knowledge, so the researcher can recruit for a study. What has occurred?","options":["A breach of confidentiality, because raw study data were released","An acceptable use, because the information was already in the medical record","Broad consent, because the patients signed treatment consents at admission","An invasion of privacy, because private information was shared without the persons' knowledge"],"correct":[3],"sata":false,"why":"Invasion of privacy occurs when private information is shared without a person's knowledge or against his or her will, and the HIPAA Privacy Rule protects identifiable information about a person's past or current health condition, the care received, and payment for health care received.","trap":"(A) is the near neighbor and the most common wrong choice. A breach of confidentiality is an unauthorized person gaining access to the raw research data; here no study data exist yet, and the wrong occurred at the moment existing private information was disclosed."},{"topic":"privacy, anonymity, and confidentiality","subtopic":"anonymity vs confidentiality","stem":"A nurse researcher collects signed consent forms, knows every participant by name, and stores coded data in a locked file. How should this study's data protection be described?","options":["Complete anonymity, because names do not appear in the data file","Confidentiality, because the researcher is safely managing data whose sources she can identify","Complete anonymity, because the consent forms are stored separately from the data","Invasion of privacy, because the researcher knows the subjects' identities"],"correct":[1],"sata":false,"why":"Confidentiality is the researcher's safe management of information or data shared by a subject so that the data are kept private from others; complete anonymity exists only when the researcher cannot link a subject's identity with her or his individual responses.","trap":"Calling a study with signed consent forms anonymous is the classic error. In most studies researchers know the identity of their subjects, which is why complete anonymity is uncommon."},{"topic":"privacy, anonymity, and confidentiality","subtopic":"anonymity vs confidentiality","stem":"Which situation meets the standard for complete anonymity?","options":["Surveys arrive by mail with no identifiers, and the researcher cannot connect any response to a respondent","The researcher replaces each name with a code number that she is able to decode when needed","The researcher keeps a master list of names in a locked cabinet separate from the data","The researcher reports findings only for subgroups and never for individuals"],"correct":[0],"sata":false,"why":"Complete anonymity exists when the researcher cannot link a subject's identity with her or his individual responses.","trap":"(B) is the reflex answer because coding feels like anonymizing, but a code the researcher can reverse preserves the link. That is confidentiality — safe management of identities the researcher knows."},{"topic":"privacy, anonymity, and confidentiality","subtopic":"breaches in qualitative research","stem":"A researcher conducts in-depth interviews with eight women about their experiences of intimate partner violence and plans to publish long verbatim quotes. Compared with a large quantitative survey study, the risk of a breach of confidentiality here is:","options":["Lower, because results will be presented for the group rather than for individuals","Lower, because narrative data are less identifiable than numeric data","Unchanged, because both designs require the same safeguards","Higher, because the data come from fewer participants and long quotes are reported"],"correct":[3],"sata":false,"why":"In quantitative studies results are presented for subgroups or groups and a breach is less likely; in qualitative studies a breach is more likely because the researcher gathers data from fewer participants and reports long quotes.","trap":"Students often assume the reverse, and (A) is dangerous because it states the quantitative case accurately — it just belongs to the comparison study, not this one. Confidentiality must be maintained during data collection, analysis, and reporting."},{"topic":"privacy, anonymity, and confidentiality","subtopic":"broad consent","stem":"A biobank asks patients for permission to store, maintain, and use identifiable private information and biospecimens for future studies. Which elements must this broad consent include? Select all that apply.","options":["Whether the analysis will include whole genome sequencing","A commitment to notify subjects about each specific future study conducted with their data","Whether biospecimens may be used for commercial profit and whether subjects will receive a share of any profits","The length of time the data will be kept, which may be indefinite","A statement that results will not be shared unless they are clinically relevant"],"correct":[0,2,3,4],"sata":true,"why":"Beyond the standard consent components, broad consent must address commercial profit and profit sharing, whole genome sequencing, the types of research the data may be used for, the length of time data will be kept, and contact information.","trap":"(B) inverts the requirement. Broad consent states that subjects will not be informed about the specific studies later conducted with their information — that is precisely what makes the consent broad."},{"topic":"informed consent","subtopic":"elements of informed consent","stem":"A patient signs a consent form after the researcher reads it aloud to her, but when the nurse asks what the study involves, the patient answers that she is \"getting a new medicine that will fix my kidneys\" — something the study does not offer. Which element of informed consent is deficient?","options":["Disclosure","Competence","Comprehension","Voluntary agreement"],"correct":[2],"sata":false,"why":"Comprehension is the extent to which the potential subject actually understands the information, and the researcher must take the time to teach the subjects about the study.","trap":"(A) is the reflex answer because the information clearly was delivered. Comprehension is a separate element from disclosure precisely because telling is not the same as understanding."},{"topic":"informed consent","subtopic":"competence","stem":"A researcher wants to enroll adults residing in a state psychiatric facility under court-ordered commitment. What does the chapter say about their capacity to give consent?","options":["They may consent, because institutional residence does not affect legal competence","Persons with diminished autonomy because of legal or mental incompetence or confinement to an institution are not legally competent to consent","Consent is unnecessary because the facility administrator authorizes participation","Their consent is valid as long as the form is written in plain, understandable language"],"correct":[1],"sata":false,"why":"Persons with diminished autonomy because of legal or mental incompetence or confinement to an institution are not legally competent to consent, and investigators must report the competence of subjects and the consent process used.","trap":"(D) swaps competence for comprehension. Readable language supports understanding, but competence is the prior question of whether the person is capable of weighing benefits and risks at all."},{"topic":"informed consent","subtopic":"disclosure under the revised common rule","stem":"Under the 2017 revision of the Common Rule, how did the focus of disclosure in the consent process change?","options":["From sharing every possible detail of a study to providing the information a reasonable person would need to make a decision","From a written consent document to an entirely verbal process","From disclosing risks to emphasizing anticipated benefits","From researcher-led disclosure to disclosure performed by the IRB"],"correct":[0],"sata":false,"why":"The revision changed the focus of the consent process from sharing every possible detail of a study to providing the information that a reasonable person would need to make a decision, consistent with the revision's twin goals of enhancing subject protection and reducing administrative burden.","trap":"(B) mistakes less content for less documentation. The consent form remains a written document containing the elements of informed consent required by the Common Rule."},{"topic":"informed consent","subtopic":"components of the consent form","stem":"An IRB is reviewing a consent form for completeness. Which components must be present for the consent to be comprehensive? Select all that apply.","options":["Purpose and procedures of the study and the expected length of involvement","A statement that the subject waives the right to sue the researcher for negligence","Benefits and the risks or discomforts of participating","Compensation for research-related injury and any alternative treatments","Contact persons and the right to refuse or withdraw without loss of benefits"],"correct":[0,2,3,4],"sata":true,"why":"A comprehensive consent covers purpose and procedures, length of involvement, benefits and risks or discomforts, compensation for research-related injury, alternative treatments, confidentiality of records, contact persons, and the right to refuse or withdraw without loss of benefits.","trap":"(B) violates the requirement that consent be cautious — the subject does not waive any legal rights or release the researcher or funder from negligence. A form containing that waiver is invalid, not merely poorly worded."},{"topic":"institutional review boards","subtopic":"level of review","stem":"A nurse plans an anonymous survey of staff attitudes, decides on her own that it qualifies as exempt, and begins collecting data without submitting anything to the IRB. What is the problem with what she did?","options":["Surveys can never qualify for exemption from review","The IRB chairperson and/or committee, not the researcher, decides the level of review required for each study","Exempt studies still require continuing review every 12 months","Only federally funded studies may be classified as exempt"],"correct":[1],"sata":false,"why":"The IRB chairperson and/or committee, not the researcher, decides the level of the review required for each study; the levels are exempt, expedited, and full.","trap":"(A) overcorrects. Surveys with unidentified subjects whose data are not linked to them are one of the listed exempt categories, so her conclusion may well have been right. The error is who made the determination."},{"topic":"institutional review boards","subtopic":"exempt studies","stem":"An IRB classifies a nurse's study of an educational intervention as exempt. What follows from that classification?","options":["The study must still undergo continuing review annually","The study may proceed without informed consent of any kind","No continuing review is required, and exempt status is a common outcome for studies conducted by nurses","The study must be re-registered with the Office of Human Research Protection each year"],"correct":[2],"sata":false,"why":"Exempt studies pose no apparent risks, and once a study is exempt no continuing review is required, unlike other levels of review; studies conducted by nurses frequently are evaluated as being exempt from review.","trap":"Treating exempt status as unusual, or as evidence a corner was cut, misreads the chapter — the revised Common Rule deliberately broadened the types of study that qualify."},{"topic":"institutional review boards","subtopic":"exempt studies","stem":"A researcher asks passersby in a public park to spend two minutes sorting neutral word cards, recording no identifying information. Which term describes this procedure in the exempt categories?","options":["Nontherapeutic intervention","Expedited intervention","Minimal-risk therapeutic intervention","Benign behavioral intervention"],"correct":[3],"sata":false,"why":"Benign behavioral interventions are short, noninvasive actions that are not expected to have a long-term adverse impact or to be embarrassing or offensive; studies using them with data not linked to subjects are among the exempt categories.","trap":"(B) borrows the vocabulary of review levels. Expedited names a level of IRB review, not a type of intervention, so it can never describe the procedure itself."},{"topic":"institutional review boards","subtopic":"board composition","stem":"An institution is assembling an IRB. Which requirements apply to its membership? Select all that apply.","options":["There must be at least five members","A member who submits a study for review may take part in the deliberations and the decision on it as long as the conflict is disclosed","At least one member must have scientific expertise","At least one member must be a community member without scientific training","At least one member must have no affiliation with the institution in any way"],"correct":[0,2,3,4],"sata":true,"why":"An IRB has at least five members of varying cultural, economic, educational, gender, and racial backgrounds, including at least one scientist, at least one nonscientist community member, and one member unaffiliated with the institution, who may be the same person as the nonscientist.","trap":"(B) is wrong even with disclosure: a member who proposes a study cannot be involved in the deliberations and decision other than to provide information. Note also that an all-clinician IRB is noncompliant no matter how large it is."},{"topic":"research misconduct","subtopic":"intent and honest error","stem":"A researcher discovers that an assistant transposed digits when entering 12 blood pressure values, corrects the dataset, and documents the correction. Does this meet the definition of research misconduct?","options":["No, because misconduct does not include honest error and requires an intentional, significant departure from accepted practice","Yes, because the data as originally recorded did not accurately represent the research","Yes, because changing values already recorded in a dataset is falsification","No, because only the principal investigator can commit research misconduct"],"correct":[0],"sata":false,"why":"Research misconduct is fabrication, falsification, or plagiarism in processing, performing, or reviewing research or in reporting results; it does not include honest error or differences in opinion, and it is an intentional act involving a significant departure from accepted practice.","trap":"(C) recites the mechanism of falsification — changing or omitting data — while quietly dropping the intent requirement, which is exactly what makes it plausible."},{"topic":"research misconduct","subtopic":"plagiarism","stem":"A faculty member serves as a confidential peer reviewer for a colleague's grant proposal, then incorporates the colleague's novel design into her own proposal without credit. How is this classified?","options":["Falsification, because she altered the research process","A difference of opinion rather than misconduct, because study designs are not owned","Plagiarism, because appropriating another's ideas or processes without credit includes material obtained through confidential peer review","Fabrication, because the design was not the product of her own work"],"correct":[2],"sata":false,"why":"Plagiarism is the appropriation of another person's ideas, processes, results, or words without giving appropriate credit, including material obtained through confidential peer review of others' proposals and manuscripts.","trap":"Students associate plagiarism with copied published text, so unpublished ideas seen while reviewing feel like fair game. The peer-review clause is the least intuitive part of the ORI definition and the reason this scenario is testable."},{"topic":"research misconduct","subtopic":"the ori definition","stem":"Which statements about research misconduct are accurate? Select all that apply.","options":["The Office of Research Integrity, part of DHHS, defines and manages research misconduct","It comprises fabrication, falsification, and plagiarism","Honest error and differences in opinion are included within the definition","An allegation must be confirmed by a preponderance of evidence before action is taken","Research misconduct does occur in the nursing profession, and the principal investigator was usually identified as the responsible party"],"correct":[0,1,3,4],"sata":true,"why":"ORI, within DHHS, defines and manages research misconduct as fabrication, falsification, and plagiarism; action requires confirmation by a preponderance of evidence. Research coordinators who reported misconduct often learned of it firsthand and usually identified the principal investigator as responsible.","trap":"(C) is the explicit exclusion, not an inclusion. Also resist concluding that nursing is unaffected because the seven ORI cases in 2016 were all laboratory cellular studies that rarely include nurse researchers — the chapter states directly that misconduct does occur in the profession, beginning with protocol and consent violations."}];
+const TITLE = "Chapter 4 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 4";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

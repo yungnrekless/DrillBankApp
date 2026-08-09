@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 6 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 6</div><h1>Chapter 6 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">source types</span><span class="chip t2">primary versus secondary sources</span></div>
+<div class="stem">1. A student is appraising a research report published in a nursing journal and written by the three investigators who designed and conducted the study. How should the student classify this source?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A primary source, because it was written by the people who generated the ideas being reported</li><li class="fopt"><span class="mk">B</span>A secondary source, because it appears in a periodical rather than as the original data</li><li class="fopt"><span class="mk">C</span>A secondary source, because a journal editor and peer reviewers shaped the final text</li><li class="fopt"><span class="mk">D</span>A primary source only if the report includes the raw data set</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A primary source is written by the person who originated or is responsible for generating the ideas published, so a research report written by the researchers who conducted the study is a primary source.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Students routinely reclassify journal articles as secondary because they are published. Primary versus secondary turns on who generated the ideas, not on the format or the editorial process.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source types</span><span class="chip t2">primary versus secondary sources</span></div>
+<div class="stem">2. A review cites a textbook chapter in which the author paraphrases the work of several researchers and theorists and presents her own interpretation of what they wrote. What is the source type, and what risk does the chapter attach to it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Primary source; the risk is that the author's credentials cannot be verified</li><li class="fopt"><span class="mk">B</span>Primary source; the risk is that book chapters are rarely peer-reviewed</li><li class="fopt right"><span class="mk">&#10003;</span>Secondary source; the information may be a misinterpretation of the primary authors' thoughts</li><li class="fopt"><span class="mk">D</span>Secondary source; the information is by definition more than 5 years old</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A secondary source summarizes or quotes content from primary sources, and the chapter's stated risk is that the information may be a misinterpretation of the primary authors' thoughts.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) fuses two separate standards. Source type and currency are independent dimensions, so a secondary source can be brand new and still carry the misinterpretation risk.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source types</span><span class="chip t2">primary versus secondary sources</span></div>
+<div class="stem">3. A faculty reviewer questions a student's use of a secondary source. According to the chapter, which conditions justify citing one? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The primary source cannot be located</li><li class="fopt right"><span class="mk">&#10003;</span>The secondary source presents creative ideas not found in a primary source</li><li class="fopt right"><span class="mk">&#10003;</span>The secondary source offers a unique organization of information not found in a primary source</li><li class="fopt"><span class="mk">D</span>The secondary source is written more clearly than the primary source</li><li class="fopt"><span class="mk">E</span>The secondary source was published more recently than the primary source</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Secondary sources are used only when primary sources cannot be located, or when the secondary source provides creative ideas or a unique organization of information not found in a primary source.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Readability and recency are not exemptions. Most references in a quality review are primary sources that are peer-reviewed, so the secondary source is a narrow exception rather than an interchangeable substitute.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source types</span><span class="chip t2">peer review</span></div>
+<div class="stem">4. An author submitted a manuscript to a publication editor, who identified scholars familiar with the topic to review it; those scholars advised on whether it was accurate, met quality standards, and was appropriate for the journal. What does completing this process establish about the article?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>That it is a primary rather than a secondary source</li><li class="fopt"><span class="mk">B</span>That it reports data-based rather than theoretical knowledge</li><li class="fopt"><span class="mk">C</span>That it is current, having been published within the past 5 years</li><li class="fopt right"><span class="mk">&#10003;</span>That it has undergone significant scrutiny and its content is considered trustworthy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Peer review means the manuscript has undergone significant scrutiny and its content is considered trustworthy.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because quality reviews cite sources that are both primary and peer-reviewed. They are separate dimensions — a secondary source can be peer-reviewed, and a primary source can appear in an outlet that never reviewed it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source types</span><span class="chip t2">theoretical versus empirical literature</span></div>
+<div class="stem">5. A student is sorting the sources cited in a review into empirical and theoretical literature. Which sources belong in the empirical category? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A published report of a quasi-experimental study</li><li class="fopt right"><span class="mk">&#10003;</span>An unpublished master's thesis reporting a completed research project</li><li class="fopt right"><span class="mk">&#10003;</span>A doctoral dissertation reporting an original research project</li><li class="fopt"><span class="mk">D</span>A published concept analysis of the concept of hope</li><li class="fopt"><span class="mk">E</span>A conceptual framework proposed to explain self-care behavior</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Empirical literature is knowledge derived from research and is data-based, including published studies plus unpublished studies such as theses and dissertations. Concept analyses and conceptual frameworks are theoretical literature.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Excluding unpublished theses and dissertations from the empirical category is the common error — publication status does not decide it, data do. Keep the degrees straight as well: a thesis reports a master's project, a dissertation is the final requirement for a doctorate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source types</span><span class="chip t2">theoretical versus empirical literature</span></div>
+<div class="stem">6. A researcher is developing the research framework for a planned study. Which body of literature provides the basis for that framework?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Theoretical literature — concept analyses, models, theories, and conceptual frameworks</li><li class="fopt"><span class="mk">B</span>Empirical literature — data-based reports of completed studies</li><li class="fopt"><span class="mk">C</span>Secondary sources that summarize several theorists at once</li><li class="fopt"><span class="mk">D</span>Unpublished theses and dissertations on the same topic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Theoretical literature consists of concept analyses, models, theories, and conceptual frameworks that support a selected research problem and purpose, and it provides the basis for the research framework.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex because empirical sources usually dominate the reference list. The framework is built from theoretical literature; the empirical literature documents what is known about the problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source currency and relevance</span><span class="chip t2">current sources</span></div>
+<div class="stem">7. A faculty member tells a student that most of the sources in her synthesis paper must be current. How does the chapter define a current source?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Published within 2 years before publication of the manuscript</li><li class="fopt right"><span class="mk">&#10003;</span>Published within 5 years before publication of the manuscript</li><li class="fopt"><span class="mk">C</span>Published within 10 years before publication of the manuscript</li><li class="fopt"><span class="mk">D</span>Published since the most recent revision of the relevant clinical guideline</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Current sources are those published within 5 years before publication of the manuscript.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Currency is a separate test from relevance. A source published last month with no direct bearing on the problem of concern is current but not relevant.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source currency and relevance</span><span class="chip t2">seminal and landmark studies</span></div>
+<div class="stem">8. A peer reviewer criticizes a literature review for citing a 1967 study, calling it out of date. That study was the first study on the topic and signaled the beginning of a new way of thinking about it. What is the best appraisal of the criticism?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The criticism is correct; sources older than 5 years should be removed from the review</li><li class="fopt"><span class="mk">B</span>The criticism is correct unless the 1967 study has been replicated since</li><li class="fopt right"><span class="mk">&#10003;</span>The criticism is unfounded; a review should be comprehensive as well as current, and seminal studies belong in it</li><li class="fopt"><span class="mk">D</span>The criticism is unfounded because the currency rule applies only to qualitative reviews</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sources should be comprehensive as well as current, and because some problems have been studied for decades, reviews properly include seminal and landmark studies conducted years ago.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The 5-year rule is real, but it is a currency standard, not a ban. An old citation is not automatically a weakness if it is seminal or landmark.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source currency and relevance</span><span class="chip t2">seminal and landmark studies</span></div>
+<div class="stem">9. A review describes one cited study as a significant research project that generated knowledge influencing the discipline and sometimes society as a whole, and notes that it has been replicated frequently. Which term names this kind of study?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A relevant study</li><li class="fopt"><span class="mk">B</span>A current source</li><li class="fopt"><span class="mk">C</span>A seminal study</li><li class="fopt right"><span class="mk">&#10003;</span>A landmark study</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Landmark studies are significant research projects that have generated knowledge influencing a discipline and sometimes society as a whole, and they are frequently replicated or used as the basis for further studies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the near-neighbor and the most-swapped pair in the chapter. Landmark means influential and discipline-shaping; seminal means first.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source currency and relevance</span><span class="chip t2">seminal and landmark studies</span></div>
+<div class="stem">10. An author refers to a group of cited works as classic studies. Which term does the chapter treat as interchangeable, and what does that term denote?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Seminal studies — the first studies on a topic, which signaled the beginning of a new way of thinking</li><li class="fopt"><span class="mk">B</span>Landmark studies — studies that generated knowledge influencing an entire discipline</li><li class="fopt"><span class="mk">C</span>Relevant studies — studies with a direct bearing on the problem of concern</li><li class="fopt"><span class="mk">D</span>Empirical studies — studies whose knowledge is derived from data</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Seminal studies are the first studies on a particular topic that signaled the beginning of a new way of thinking, and they are sometimes called classic studies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the landmark item. Sort by the cue word in the stem: first or classic means seminal, influential or frequently replicated means landmark.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">source currency and relevance</span><span class="chip t2">standards for a quality review</span></div>
+<div class="stem">11. A student is appraising the reference list and scope of a published literature review. Which features indicate a sound review? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Most of the references are primary sources that are peer-reviewed</li><li class="fopt right"><span class="mk">&#10003;</span>The sources are relevant, having a direct bearing on the problem of concern</li><li class="fopt right"><span class="mk">&#10003;</span>The review is broad enough for the reader to become familiar with the research problem</li><li class="fopt right"><span class="mk">&#10003;</span>The review is narrow enough to include only the most relevant sources</li><li class="fopt"><span class="mk">E</span>Every source without exception was published within the past 5 years</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Most references in quality reviews are primary and peer-reviewed, relevant sources have a direct bearing on the problem, and the scope is broad enough to familiarize the reader yet narrow enough to include only the most relevant sources.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) turns a currency guideline into an absolute. Reviews must be comprehensive as well as current, which is exactly why seminal and landmark studies survive the 5-year cutoff.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">purpose of the literature review</span><span class="chip t2">what the review accomplishes</span></div>
+<div class="stem">12. According to the chapter, what does the literature review in a published research report do? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Describes the current knowledge of a practice problem</li><li class="fopt right"><span class="mk">&#10003;</span>Identifies the gaps in that knowledge base</li><li class="fopt right"><span class="mk">&#10003;</span>Explains how the study being reported has contributed to building knowledge in the area</li><li class="fopt"><span class="mk">D</span>Establishes whether the study's findings reached statistical significance</li><li class="fopt"><span class="mk">E</span>Substitutes for the study's research framework</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A review in a published report describes current knowledge of a practice problem, identifies gaps in that knowledge base, and explains how the reported study contributed to building knowledge in the area.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) inverts the relationship. The framework is built from theoretical literature rather than replaced by the review, and both may be folded into the introduction without a separate heading.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">purpose of the literature review</span><span class="chip t2">what the review accomplishes</span></div>
+<div class="stem">13. A nurse wants to change a unit practice and asks a colleague where the process starts. What does the chapter identify as the first step in implementing evidence-based practice and identifying research problems?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Convening a practice council to select an outcome measure</li><li class="fopt right"><span class="mk">&#10003;</span>Reviewing the literature</li><li class="fopt"><span class="mk">C</span>Selecting a research framework</li><li class="fopt"><span class="mk">D</span>Collecting baseline data on the unit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Reviewing the literature is the first step in implementing evidence-based practice and in identifying research problems.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is attractive because baseline data feel like step one on a quality-improvement project. The chapter puts the review first, before anything is measured or framed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">literature review timing by research type</span><span class="chip t2">quantitative research</span></div>
+<div class="stem">14. A quantitative study report contains an extensive review written before data collection plus a shorter review of studies published since the study began 3 years earlier. How should this be appraised?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A flaw, because a report should present a single unified review</li><li class="fopt"><span class="mk">B</span>A flaw, because the later review should have replaced the earlier one rather than been added to it</li><li class="fopt"><span class="mk">C</span>A flaw, because it shows the researchers did not adequately plan the study</li><li class="fopt right"><span class="mk">&#10003;</span>Appropriate, because the major review directs planning and execution and a limited review after completion identifies studies published since, especially when a year or longer has passed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In quantitative research the major review is performed at the beginning to direct the planning and execution of the study, a limited review is conducted after completion — especially if a year or longer has passed — and both reviews appear in the report.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option describing the review as happening only after data collection is describing the qualitative pattern, not the quantitative one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">literature review timing by research type</span><span class="chip t2">qualitative approaches</span></div>
+<div class="stem">15. A phenomenological researcher deliberately delays the literature review until after data collection and initial analysis are complete. What is the best appraisal?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A weakness, because the review must always precede data collection</li><li class="fopt"><span class="mk">B</span>A weakness unique to phenomenology that reviewers should require the author to correct</li><li class="fopt right"><span class="mk">&#10003;</span>Consistent with the approach, because reviewing early could bias data collection, data analysis, and findings</li><li class="fopt"><span class="mk">D</span>Acceptable only when fewer than five studies exist on the topic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Phenomenologists are likely to delay the review until after data collection and initial analysis, because some qualitative researchers do not want their expectations about the topic to bias data collection, analysis, and findings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Calling a delayed review sloppiness is the reflex error. Delaying it is a deliberate methodological choice that keeps the researcher open to participants' perspectives.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">literature review timing by research type</span><span class="chip t2">qualitative approaches</span></div>
+<div class="stem">16. Which statements about the timing of the literature review in qualitative research are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Phenomenologists are likely to delay the review until after data collection and initial analysis</li><li class="fopt right"><span class="mk">&#10003;</span>Grounded theory researchers conduct a minimal review at the beginning, merely to be aware of what has been done and that a problem exists</li><li class="fopt right"><span class="mk">&#10003;</span>In ethnography the review is handled similarly to the way it is handled in quantitative research</li><li class="fopt right"><span class="mk">&#10003;</span>A deeper review may be omitted because qualitative studies are often conducted on topics about which we know very little</li><li class="fopt"><span class="mk">E</span>In grounded theory the early review is used to direct data collection and theory development</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Phenomenology delays the review, grounded theory does a minimal review at the beginning, ethnography resembles quantitative research, and a deeper review may be omitted because little literature exists on topics about which we know very little.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses grounded theory's rule. The early review is explicitly not used to direct data collection or theory development; the literature is used afterward to explain, support, and extend the theory generated.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">searching the literature</span><span class="chip t2">selecting a database</span></div>
+<div class="stem">17. A nursing student needs clinical, theoretical, and research articles drawn from nursing and allied health journals. Which database is the best fit?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>CINAHL</li><li class="fopt"><span class="mk">B</span>PsycARTICLES</li><li class="fopt"><span class="mk">C</span>PubMed</li><li class="fopt"><span class="mk">D</span>Academic Search Complete</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>CINAHL indexes nursing and allied health journals and includes clinical, theoretical, and research articles, many in full text.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex because PubMed is free and familiar. PubMed is free access to MEDLINE, which indexes biomedical journals deemed reputable by the National Library of Medicine — not a nursing-specific body of literature.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">searching the literature</span><span class="chip t2">search strategy</span></div>
+<div class="stem">18. A student is planning a database search for a synthesis paper. Which actions and cautions match the chapter's guidance? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Look beneath a useful article's abstract to see whether its search terms are listed, and reuse them as keywords</li><li class="fopt right"><span class="mk">&#10003;</span>Consult a librarian, who is an information specialist and may make searching more effective</li><li class="fopt right"><span class="mk">&#10003;</span>Assess sources retrieved through general search engines for quality, such as evidence of peer review</li><li class="fopt right"><span class="mk">&#10003;</span>Review the abstracts to identify relevant studies before reading full articles</li><li class="fopt"><span class="mk">E</span>Treat Google Scholar results as equivalent to bibliographic database results, since both index scholarly work</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's process moves from selecting databases and search terms through searching, refining, reviewing abstracts to identify relevant studies, and reading the articles; it recommends reusing a good article's listed search terms and consulting a librarian.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is tempting because general search engines do return scholarly publications. They may also return sources that are not reliable and may not be the most current, which is why the peer-review check is required.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appraising review quality</span><span class="chip t2">synthesis versus summary</span></div>
+<div class="stem">19. A student's literature review is a series of paragraphs, each describing a single study, with no link drawn to the other studies being reviewed. What is the correct appraisal?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is acceptable, because each study is described accurately and given its own paragraph</li><li class="fopt right"><span class="mk">&#10003;</span>It does not provide evidence of adequate analysis or synthesis of the literature</li><li class="fopt"><span class="mk">C</span>It is acceptable as long as the studies are arranged chronologically</li><li class="fopt"><span class="mk">D</span>It is acceptable as long as every study cited is a current primary source</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states directly that a review consisting of paragraphs each describing a single study, with no link to other studies, does not provide evidence of adequate analysis or synthesis of the literature.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is tempting because source quality is a separate standard the review may genuinely satisfy. Excellent sources arranged one per paragraph are still a summary; synthesis requires linking the studies to one another.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appraising review quality</span><span class="chip t2">locating the review in the report</span></div>
+<div class="stem">20. A student reports that a published quantitative article contains no literature review, because there is no heading labeled Review of Literature. What is the best response?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The student is correct; an article without that heading has no review</li><li class="fopt"><span class="mk">B</span>The student is correct unless the article reports a qualitative study</li><li class="fopt right"><span class="mk">&#10003;</span>The review section may not be labeled and may be integrated into the introduction, as the framework may also be</li><li class="fopt"><span class="mk">D</span>The review was almost certainly moved to the discussion section instead</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The literature review section may not be labeled and may be integrated into the introduction, and the same is true of the framework; citations may appear in all sections of the report.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Judging a report by its headings is the reflex here, and (D) reinforces it by naming a real section with a different job — the discussion compares this study's findings with other studies' findings and states conclusions that synthesize previous research with the present findings. The absence of a labeled review section is a formatting choice, not evidence that the review was never done.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"source types","subtopic":"primary versus secondary sources","stem":"A student is appraising a research report published in a nursing journal and written by the three investigators who designed and conducted the study. How should the student classify this source?","options":["A primary source, because it was written by the people who generated the ideas being reported","A secondary source, because it appears in a periodical rather than as the original data","A secondary source, because a journal editor and peer reviewers shaped the final text","A primary source only if the report includes the raw data set"],"correct":[0],"sata":false,"why":"A primary source is written by the person who originated or is responsible for generating the ideas published, so a research report written by the researchers who conducted the study is a primary source.","trap":"Students routinely reclassify journal articles as secondary because they are published. Primary versus secondary turns on who generated the ideas, not on the format or the editorial process."},{"topic":"source types","subtopic":"primary versus secondary sources","stem":"A review cites a textbook chapter in which the author paraphrases the work of several researchers and theorists and presents her own interpretation of what they wrote. What is the source type, and what risk does the chapter attach to it?","options":["Primary source; the risk is that the author's credentials cannot be verified","Primary source; the risk is that book chapters are rarely peer-reviewed","Secondary source; the information may be a misinterpretation of the primary authors' thoughts","Secondary source; the information is by definition more than 5 years old"],"correct":[2],"sata":false,"why":"A secondary source summarizes or quotes content from primary sources, and the chapter's stated risk is that the information may be a misinterpretation of the primary authors' thoughts.","trap":"(D) fuses two separate standards. Source type and currency are independent dimensions, so a secondary source can be brand new and still carry the misinterpretation risk."},{"topic":"source types","subtopic":"primary versus secondary sources","stem":"A faculty reviewer questions a student's use of a secondary source. According to the chapter, which conditions justify citing one? Select all that apply.","options":["The primary source cannot be located","The secondary source presents creative ideas not found in a primary source","The secondary source offers a unique organization of information not found in a primary source","The secondary source is written more clearly than the primary source","The secondary source was published more recently than the primary source"],"correct":[0,1,2],"sata":true,"why":"Secondary sources are used only when primary sources cannot be located, or when the secondary source provides creative ideas or a unique organization of information not found in a primary source.","trap":"Readability and recency are not exemptions. Most references in a quality review are primary sources that are peer-reviewed, so the secondary source is a narrow exception rather than an interchangeable substitute."},{"topic":"source types","subtopic":"peer review","stem":"An author submitted a manuscript to a publication editor, who identified scholars familiar with the topic to review it; those scholars advised on whether it was accurate, met quality standards, and was appropriate for the journal. What does completing this process establish about the article?","options":["That it is a primary rather than a secondary source","That it reports data-based rather than theoretical knowledge","That it is current, having been published within the past 5 years","That it has undergone significant scrutiny and its content is considered trustworthy"],"correct":[3],"sata":false,"why":"Peer review means the manuscript has undergone significant scrutiny and its content is considered trustworthy.","trap":"(A) is the reflex answer because quality reviews cite sources that are both primary and peer-reviewed. They are separate dimensions — a secondary source can be peer-reviewed, and a primary source can appear in an outlet that never reviewed it."},{"topic":"source types","subtopic":"theoretical versus empirical literature","stem":"A student is sorting the sources cited in a review into empirical and theoretical literature. Which sources belong in the empirical category? Select all that apply.","options":["A published report of a quasi-experimental study","An unpublished master's thesis reporting a completed research project","A doctoral dissertation reporting an original research project","A published concept analysis of the concept of hope","A conceptual framework proposed to explain self-care behavior"],"correct":[0,1,2],"sata":true,"why":"Empirical literature is knowledge derived from research and is data-based, including published studies plus unpublished studies such as theses and dissertations. Concept analyses and conceptual frameworks are theoretical literature.","trap":"Excluding unpublished theses and dissertations from the empirical category is the common error — publication status does not decide it, data do. Keep the degrees straight as well: a thesis reports a master's project, a dissertation is the final requirement for a doctorate."},{"topic":"source types","subtopic":"theoretical versus empirical literature","stem":"A researcher is developing the research framework for a planned study. Which body of literature provides the basis for that framework?","options":["Theoretical literature — concept analyses, models, theories, and conceptual frameworks","Empirical literature — data-based reports of completed studies","Secondary sources that summarize several theorists at once","Unpublished theses and dissertations on the same topic"],"correct":[0],"sata":false,"why":"Theoretical literature consists of concept analyses, models, theories, and conceptual frameworks that support a selected research problem and purpose, and it provides the basis for the research framework.","trap":"(B) is the reflex because empirical sources usually dominate the reference list. The framework is built from theoretical literature; the empirical literature documents what is known about the problem."},{"topic":"source currency and relevance","subtopic":"current sources","stem":"A faculty member tells a student that most of the sources in her synthesis paper must be current. How does the chapter define a current source?","options":["Published within 2 years before publication of the manuscript","Published within 5 years before publication of the manuscript","Published within 10 years before publication of the manuscript","Published since the most recent revision of the relevant clinical guideline"],"correct":[1],"sata":false,"why":"Current sources are those published within 5 years before publication of the manuscript.","trap":"Currency is a separate test from relevance. A source published last month with no direct bearing on the problem of concern is current but not relevant."},{"topic":"source currency and relevance","subtopic":"seminal and landmark studies","stem":"A peer reviewer criticizes a literature review for citing a 1967 study, calling it out of date. That study was the first study on the topic and signaled the beginning of a new way of thinking about it. What is the best appraisal of the criticism?","options":["The criticism is correct; sources older than 5 years should be removed from the review","The criticism is correct unless the 1967 study has been replicated since","The criticism is unfounded; a review should be comprehensive as well as current, and seminal studies belong in it","The criticism is unfounded because the currency rule applies only to qualitative reviews"],"correct":[2],"sata":false,"why":"Sources should be comprehensive as well as current, and because some problems have been studied for decades, reviews properly include seminal and landmark studies conducted years ago.","trap":"The 5-year rule is real, but it is a currency standard, not a ban. An old citation is not automatically a weakness if it is seminal or landmark."},{"topic":"source currency and relevance","subtopic":"seminal and landmark studies","stem":"A review describes one cited study as a significant research project that generated knowledge influencing the discipline and sometimes society as a whole, and notes that it has been replicated frequently. Which term names this kind of study?","options":["A relevant study","A current source","A seminal study","A landmark study"],"correct":[3],"sata":false,"why":"Landmark studies are significant research projects that have generated knowledge influencing a discipline and sometimes society as a whole, and they are frequently replicated or used as the basis for further studies.","trap":"(C) is the near-neighbor and the most-swapped pair in the chapter. Landmark means influential and discipline-shaping; seminal means first."},{"topic":"source currency and relevance","subtopic":"seminal and landmark studies","stem":"An author refers to a group of cited works as classic studies. Which term does the chapter treat as interchangeable, and what does that term denote?","options":["Seminal studies — the first studies on a topic, which signaled the beginning of a new way of thinking","Landmark studies — studies that generated knowledge influencing an entire discipline","Relevant studies — studies with a direct bearing on the problem of concern","Empirical studies — studies whose knowledge is derived from data"],"correct":[0],"sata":false,"why":"Seminal studies are the first studies on a particular topic that signaled the beginning of a new way of thinking, and they are sometimes called classic studies.","trap":"This is the mirror of the landmark item. Sort by the cue word in the stem: first or classic means seminal, influential or frequently replicated means landmark."},{"topic":"source currency and relevance","subtopic":"standards for a quality review","stem":"A student is appraising the reference list and scope of a published literature review. Which features indicate a sound review? Select all that apply.","options":["Most of the references are primary sources that are peer-reviewed","The sources are relevant, having a direct bearing on the problem of concern","The review is broad enough for the reader to become familiar with the research problem","The review is narrow enough to include only the most relevant sources","Every source without exception was published within the past 5 years"],"correct":[0,1,2,3],"sata":true,"why":"Most references in quality reviews are primary and peer-reviewed, relevant sources have a direct bearing on the problem, and the scope is broad enough to familiarize the reader yet narrow enough to include only the most relevant sources.","trap":"(E) turns a currency guideline into an absolute. Reviews must be comprehensive as well as current, which is exactly why seminal and landmark studies survive the 5-year cutoff."},{"topic":"purpose of the literature review","subtopic":"what the review accomplishes","stem":"According to the chapter, what does the literature review in a published research report do? Select all that apply.","options":["Describes the current knowledge of a practice problem","Identifies the gaps in that knowledge base","Explains how the study being reported has contributed to building knowledge in the area","Establishes whether the study's findings reached statistical significance","Substitutes for the study's research framework"],"correct":[0,1,2],"sata":true,"why":"A review in a published report describes current knowledge of a practice problem, identifies gaps in that knowledge base, and explains how the reported study contributed to building knowledge in the area.","trap":"(E) inverts the relationship. The framework is built from theoretical literature rather than replaced by the review, and both may be folded into the introduction without a separate heading."},{"topic":"purpose of the literature review","subtopic":"what the review accomplishes","stem":"A nurse wants to change a unit practice and asks a colleague where the process starts. What does the chapter identify as the first step in implementing evidence-based practice and identifying research problems?","options":["Convening a practice council to select an outcome measure","Reviewing the literature","Selecting a research framework","Collecting baseline data on the unit"],"correct":[1],"sata":false,"why":"Reviewing the literature is the first step in implementing evidence-based practice and in identifying research problems.","trap":"(D) is attractive because baseline data feel like step one on a quality-improvement project. The chapter puts the review first, before anything is measured or framed."},{"topic":"literature review timing by research type","subtopic":"quantitative research","stem":"A quantitative study report contains an extensive review written before data collection plus a shorter review of studies published since the study began 3 years earlier. How should this be appraised?","options":["A flaw, because a report should present a single unified review","A flaw, because the later review should have replaced the earlier one rather than been added to it","A flaw, because it shows the researchers did not adequately plan the study","Appropriate, because the major review directs planning and execution and a limited review after completion identifies studies published since, especially when a year or longer has passed"],"correct":[3],"sata":false,"why":"In quantitative research the major review is performed at the beginning to direct the planning and execution of the study, a limited review is conducted after completion — especially if a year or longer has passed — and both reviews appear in the report.","trap":"An option describing the review as happening only after data collection is describing the qualitative pattern, not the quantitative one."},{"topic":"literature review timing by research type","subtopic":"qualitative approaches","stem":"A phenomenological researcher deliberately delays the literature review until after data collection and initial analysis are complete. What is the best appraisal?","options":["A weakness, because the review must always precede data collection","A weakness unique to phenomenology that reviewers should require the author to correct","Consistent with the approach, because reviewing early could bias data collection, data analysis, and findings","Acceptable only when fewer than five studies exist on the topic"],"correct":[2],"sata":false,"why":"Phenomenologists are likely to delay the review until after data collection and initial analysis, because some qualitative researchers do not want their expectations about the topic to bias data collection, analysis, and findings.","trap":"Calling a delayed review sloppiness is the reflex error. Delaying it is a deliberate methodological choice that keeps the researcher open to participants' perspectives."},{"topic":"literature review timing by research type","subtopic":"qualitative approaches","stem":"Which statements about the timing of the literature review in qualitative research are accurate? Select all that apply.","options":["Phenomenologists are likely to delay the review until after data collection and initial analysis","Grounded theory researchers conduct a minimal review at the beginning, merely to be aware of what has been done and that a problem exists","In ethnography the review is handled similarly to the way it is handled in quantitative research","A deeper review may be omitted because qualitative studies are often conducted on topics about which we know very little","In grounded theory the early review is used to direct data collection and theory development"],"correct":[0,1,2,3],"sata":true,"why":"Phenomenology delays the review, grounded theory does a minimal review at the beginning, ethnography resembles quantitative research, and a deeper review may be omitted because little literature exists on topics about which we know very little.","trap":"(E) reverses grounded theory's rule. The early review is explicitly not used to direct data collection or theory development; the literature is used afterward to explain, support, and extend the theory generated."},{"topic":"searching the literature","subtopic":"selecting a database","stem":"A nursing student needs clinical, theoretical, and research articles drawn from nursing and allied health journals. Which database is the best fit?","options":["CINAHL","PsycARTICLES","PubMed","Academic Search Complete"],"correct":[0],"sata":false,"why":"CINAHL indexes nursing and allied health journals and includes clinical, theoretical, and research articles, many in full text.","trap":"(C) is the reflex because PubMed is free and familiar. PubMed is free access to MEDLINE, which indexes biomedical journals deemed reputable by the National Library of Medicine — not a nursing-specific body of literature."},{"topic":"searching the literature","subtopic":"search strategy","stem":"A student is planning a database search for a synthesis paper. Which actions and cautions match the chapter's guidance? Select all that apply.","options":["Look beneath a useful article's abstract to see whether its search terms are listed, and reuse them as keywords","Consult a librarian, who is an information specialist and may make searching more effective","Assess sources retrieved through general search engines for quality, such as evidence of peer review","Review the abstracts to identify relevant studies before reading full articles","Treat Google Scholar results as equivalent to bibliographic database results, since both index scholarly work"],"correct":[0,1,2,3],"sata":true,"why":"The chapter's process moves from selecting databases and search terms through searching, refining, reviewing abstracts to identify relevant studies, and reading the articles; it recommends reusing a good article's listed search terms and consulting a librarian.","trap":"(E) is tempting because general search engines do return scholarly publications. They may also return sources that are not reliable and may not be the most current, which is why the peer-review check is required."},{"topic":"appraising review quality","subtopic":"synthesis versus summary","stem":"A student's literature review is a series of paragraphs, each describing a single study, with no link drawn to the other studies being reviewed. What is the correct appraisal?","options":["It is acceptable, because each study is described accurately and given its own paragraph","It does not provide evidence of adequate analysis or synthesis of the literature","It is acceptable as long as the studies are arranged chronologically","It is acceptable as long as every study cited is a current primary source"],"correct":[1],"sata":false,"why":"The chapter states directly that a review consisting of paragraphs each describing a single study, with no link to other studies, does not provide evidence of adequate analysis or synthesis of the literature.","trap":"(D) is tempting because source quality is a separate standard the review may genuinely satisfy. Excellent sources arranged one per paragraph are still a summary; synthesis requires linking the studies to one another."},{"topic":"appraising review quality","subtopic":"locating the review in the report","stem":"A student reports that a published quantitative article contains no literature review, because there is no heading labeled Review of Literature. What is the best response?","options":["The student is correct; an article without that heading has no review","The student is correct unless the article reports a qualitative study","The review section may not be labeled and may be integrated into the introduction, as the framework may also be","The review was almost certainly moved to the discussion section instead"],"correct":[2],"sata":false,"why":"The literature review section may not be labeled and may be integrated into the introduction, and the same is true of the framework; citations may appear in all sections of the report.","trap":"Judging a report by its headings is the reflex here, and (D) reinforces it by naming a real section with a different job — the discussion compares this study's findings with other studies' findings and states conclusions that synthesize previous research with the present findings. The absence of a labeled review section is a formatting choice, not evidence that the review was never done."}];
+const TITLE = "Chapter 6 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 6";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

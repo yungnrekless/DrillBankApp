@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 7 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 7</div><h1>Chapter 7 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">theory components</span><span class="chip t2">concepts and statements</span></div>
+<div class="stem">1. A theorist writes that adherence to medications improves clinical outcomes and reduces the development of complications, patient suffering, and healthcare costs. In this sentence, what is patient suffering?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A statement</li><li class="fopt"><span class="mk">B</span>A philosophy</li><li class="fopt"><span class="mk">C</span>An assumption</li><li class="fopt right"><span class="mk">&#10003;</span>A concept</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Concepts abstractly describe and name an object, idea, experience, or phenomenon, giving it a separate identity or meaning, and they are the basic element of a theory. Adherence to medications, clinical outcomes, complications, patient suffering, and healthcare costs are all concepts here.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The sentence as a whole is the statement, because it expresses the relationships among the concepts. A single named idea inside it is a concept, not a statement.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">theory components</span><span class="chip t2">concepts and statements</span></div>
+<div class="stem">2. Which characteristics describe concepts as the chapter defines them? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They abstractly describe and name an object, idea, experience, or phenomenon</li><li class="fopt"><span class="mk">B</span>They are narrower and more measurable than variables</li><li class="fopt right"><span class="mk">&#10003;</span>They provide what they name with a separate identity or meaning</li><li class="fopt right"><span class="mk">&#10003;</span>They are the basic element of a theory</li><li class="fopt right"><span class="mk">&#10003;</span>Each one must be defined by the theorist</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Concepts are the basic element of a theory, they name and describe abstractly, they give what they name a separate identity or meaning, and each must be defined by the theorist. Theories with clearly identified and defined concepts provide a stronger basis for a research framework.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the abstraction ladder. A variable is more specific than a concept, not the reverse.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">theory components</span><span class="chip t2">philosophies and assumptions</span></div>
+<div class="stem">3. A theorist opens a paper with the claim that people want to assume control of their own health problems and offers no supporting evidence for it. How should a reader classify that claim?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An assumption</li><li class="fopt"><span class="mk">B</span>A hypothesis to be tested in the study</li><li class="fopt"><span class="mk">C</span>A finding carried over from prior research</li><li class="fopt"><span class="mk">D</span>A specific proposition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Assumptions are statements taken for granted or considered true even though they have not been scientifically tested, and this is the chapter's own example. You may doubt the truth of it, but theorists begin with assumptions, explicit or implicit.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Assumptions are never what the study tests. Calling one a hypothesis, or treating it as a finding, is the standard error on this term.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">theory components</span><span class="chip t2">philosophies and assumptions</span></div>
+<div class="stem">4. Which term names rational intellectual explorations of truths or principles of being, knowledge, or conduct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Assumption</li><li class="fopt"><span class="mk">B</span>Theory</li><li class="fopt right"><span class="mk">&#10003;</span>Philosophy</li><li class="fopt"><span class="mk">D</span>Research framework</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Philosophies are rational intellectual explorations of truths or principles of being, knowledge, or conduct, and they describe viewpoints on what reality is, how knowledge is developed, and which ethical values and principles should guide practice.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">theory components</span><span class="chip t2">metaparadigm concepts</span></div>
+<div class="stem">5. Which of the following are among nursing's metaparadigm concepts? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Environment</li><li class="fopt"><span class="mk">B</span>Caring</li><li class="fopt right"><span class="mk">&#10003;</span>Health</li><li class="fopt"><span class="mk">D</span>Adaptation</li><li class="fopt right"><span class="mk">&#10003;</span>Person</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The metaparadigm concepts are person, environment, health, and nursing, described as the essence of nursing. Three of them appear here; nursing is the fourth.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Caring is Swanson's middle range theory and adaptation is the core concept of Roy's grand theory. Neither is a metaparadigm concept. There are four, and only these four.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of abstraction</span><span class="chip t2">construct, concept, and variable</span></div>
+<div class="stem">6. A research team diagrams its framework with resources at the top, social support and household income beneath it, and emotional support beneath those. What is resources in this structure?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A concept</li><li class="fopt right"><span class="mk">&#10003;</span>A construct</li><li class="fopt"><span class="mk">C</span>A variable</li><li class="fopt"><span class="mk">D</span>An operational definition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A construct is a broader category or idea that may encompass several concepts. In the chapter's example the construct resources encompasses the concepts social support and household income.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Reversing construct and concept is the standard swap in this chapter. The construct is the broader of the two, and the concept sits inside it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of abstraction</span><span class="chip t2">construct, concept, and variable</span></div>
+<div class="stem">7. In that same framework, emotional support is scored by summing a three-item subscale of the Functional Social Support Questionnaire. What is emotional support?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The construct</li><li class="fopt"><span class="mk">B</span>The concept</li><li class="fopt"><span class="mk">C</span>The phenomenon</li><li class="fopt right"><span class="mk">&#10003;</span>The variable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A variable is defined so that it is measurable and its numerical values can vary from one instance to another, and it is more specific than a concept. Emotional support is the variable; the FSSQ subscale is the measurement method.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror image of the construct item. Sort the three by breadth, not by which term appears in the sentence: construct is broadest, concept sits under it, variable is the narrow measurable one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of abstraction</span><span class="chip t2">construct, concept, and variable</span></div>
+<div class="stem">8. A nurse discusses the experience of chronic pain in general terms, apart from any specific patient. This way of thinking is best described as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Concrete</li><li class="fopt"><span class="mk">B</span>Denotative</li><li class="fopt right"><span class="mk">&#10003;</span>Abstract</li><li class="fopt"><span class="mk">D</span>Operational</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Abstract means the expression of an idea apart from any specific instance and focuses on a general view. Concrete refers to realities or actual instances and focuses on the particular.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Concrete is not a criticism and abstract is not a compliment. They describe level of generality, not quality of thinking.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of abstraction</span><span class="chip t2">conceptual and operational definitions</span></div>
+<div class="stem">9. A researcher defines home as including feelings of security, love, and comfort. A dictionary defines home as a dwelling in which a group of people live, who may or may not be related. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The researcher's definition is denotative and therefore more precise</li><li class="fopt right"><span class="mk">&#10003;</span>The researcher's definition is connotative and more comprehensive</li><li class="fopt"><span class="mk">C</span>The dictionary definition is the conceptual definition</li><li class="fopt"><span class="mk">D</span>The two definitions are interchangeable in a research report</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Conceptual definitions are connotative and are more comprehensive than a denotative dictionary definition, because they include associated meanings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A conceptual definition is more comprehensive, not more precise. The narrower and more specific one is the dictionary definition.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of abstraction</span><span class="chip t2">conceptual and operational definitions</span></div>
+<div class="stem">10. What is the correct relationship between the conceptual and operational definitions of a study variable?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They are developed independently of one another</li><li class="fopt"><span class="mk">B</span>The operational definition comes from the theory and provides the basis for the conceptual definition</li><li class="fopt right"><span class="mk">&#10003;</span>The conceptual definition comes from the theory and provides the basis for the operational definition</li><li class="fopt"><span class="mk">D</span>The conceptual definition is derived from the scoring rules of the measurement instrument</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The conceptual definition comes from a theory and provides the basis for the operational definition. The operational definition then states how the concept is manipulated or measured.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The dependency runs one way only. (B) is the reflex answer for students who remember that the operational definition is what appears in the methods section and assume the methods drive the theory.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of abstraction</span><span class="chip t2">conceptual and operational definitions</span></div>
+<div class="stem">11. A study's intervention is described as a 6-week mindfulness program delivered in weekly 60-minute groups. This description functions as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The conceptual definition of mindfulness</li><li class="fopt right"><span class="mk">&#10003;</span>The operational definition of the independent variable</li><li class="fopt"><span class="mk">C</span>A proposition of the framework</li><li class="fopt"><span class="mk">D</span>An assumption of the study</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An operational definition states how a concept is manipulated, for an intervention or independent variable, or measured, for a dependent or outcome variable.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The conceptual definition of mindfulness would come from the theory and describe what mindfulness means, not how many minutes the sessions ran.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of abstraction</span><span class="chip t2">conceptual and operational definitions</span></div>
+<div class="stem">12. Which statements about conceptual definitions are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They are described as connotative</li><li class="fopt"><span class="mk">B</span>They state the specific method for assigning numerical values to the variable</li><li class="fopt right"><span class="mk">&#10003;</span>They are more comprehensive than a denotative dictionary definition</li><li class="fopt right"><span class="mk">&#10003;</span>They are drawn from a theory</li><li class="fopt right"><span class="mk">&#10003;</span>They may be explicit or implicit in a published study</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Conceptual definitions are connotative, more comprehensive than a dictionary definition, drawn from theory, and may be explicit or implicit. The chapter warns that identifying the researcher's conceptual definitions is part of critically appraising a study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) describes measurement, the specific method for assigning numerical values, which belongs to the operational definition rather than the conceptual one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of abstraction</span><span class="chip t2">conceptual and operational definitions</span></div>
+<div class="stem">13. A student is appraising a quantitative study and wants to trace each study variable back through the framework. Which elements should ideally be identifiable for each variable? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The concept the variable represents</li><li class="fopt"><span class="mk">B</span>A dictionary definition of the term</li><li class="fopt right"><span class="mk">&#10003;</span>The conceptual definition of that concept</li><li class="fopt right"><span class="mk">&#10003;</span>The operational definition</li><li class="fopt"><span class="mk">E</span>An untested assumption that supports the variable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Each variable is ideally associated with a concept, a conceptual definition, and an operational definition, with the conceptual definition drawn from the theory.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is denotative and is exactly what a conceptual definition is not. (E) confuses assumptions, which are global and untested, with the definitional chain attached to a variable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">propositions and hypotheses</span><span class="chip t2">levels of propositions</span></div>
+<div class="stem">14. A grand theory states that health-related quality of life is related to depression. A framework built on it states that among persons on antiretroviral therapy for HIV infection, domains of health-related quality of life are related to depressive symptoms. The second statement is best labeled as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A general proposition</li><li class="fopt"><span class="mk">B</span>A hypothesis</li><li class="fopt"><span class="mk">C</span>An assumption</li><li class="fopt right"><span class="mk">&#10003;</span>A specific proposition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>General propositions are the relational statements found in more abstract theories, while a specific proposition states the relationship in a more narrow way, making it more concrete and testable. Specific propositions live in less abstract frameworks such as middle range theories.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>It reads like a hypothesis because it names a population, but the chapter's hypothesis narrows further still, to African American persons and to named domains and symptom parameters.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">propositions and hypotheses</span><span class="chip t2">levels of propositions</span></div>
+<div class="stem">15. Which statement is written at the lowest level of abstraction and is the one actually tested in the study?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Health-related quality of life is related to depression</li><li class="fopt"><span class="mk">B</span>Among persons on antiretroviral therapy for HIV infection, domains of health-related quality of life are related to depressive symptoms</li><li class="fopt right"><span class="mk">&#10003;</span>Among African American persons on antiretroviral therapy for HIV infection, poor physical functioning and increased role limitations are related to increased frequency and severity of depressive symptoms</li><li class="fopt"><span class="mk">D</span>People want to assume control of their own health problems</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hypotheses are written at the lowest level of abstraction to be tested in a study, and they are developed from propositions in a grand or middle range theory.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the chapter's assumption example. Assumptions are taken as true without testing and are never the study's tested claim.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">propositions and hypotheses</span><span class="chip t2">levels of propositions</span></div>
+<div class="stem">16. Which statements about propositions and hypotheses are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A proposition is a label given to statements describing relationships among concepts</li><li class="fopt"><span class="mk">B</span>Hypotheses are more abstract than general propositions</li><li class="fopt right"><span class="mk">&#10003;</span>Specific propositions in middle range theories may lead to hypotheses</li><li class="fopt right"><span class="mk">&#10003;</span>Hypotheses are developed based on propositions from a grand or middle range theory</li><li class="fopt right"><span class="mk">&#10003;</span>A specific proposition is more concrete and testable than a general proposition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The order runs general proposition, then specific proposition, then hypothesis, in decreasing abstraction, and hypotheses are derived from propositions.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the hierarchy. Any option that places the hypothesis above the proposition in abstraction is wrong.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">propositions and hypotheses</span><span class="chip t2">testing a theory</span></div>
+<div class="stem">17. A single study finds support for one relational statement in a middle range theory. What conclusion is warranted?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>One statement has been supported, and many studies are required to validate all the statements in a theory</li><li class="fopt"><span class="mk">B</span>The theory has been proven</li><li class="fopt"><span class="mk">C</span>The theory has been validated for that population</li><li class="fopt"><span class="mk">D</span>The theory should be reclassified as a grand theory</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Testing a theory involves determining the truth of each statement in it, and many studies are required to validate all the statements in a theory.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>One supporting study never proves or validates a theory, no matter how well the study was conducted. The claim size has to match the number of statements tested.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">propositions and hypotheses</span><span class="chip t2">testing a theory</span></div>
+<div class="stem">18. When research tests a theory, what is it about the theory that is being tested?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Its concepts</li><li class="fopt"><span class="mk">B</span>Its assumptions</li><li class="fopt"><span class="mk">C</span>Its philosophy</li><li class="fopt right"><span class="mk">&#10003;</span>Its statements of relationships</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The statements of relationships are what are tested through research.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Concepts are defined rather than tested, and assumptions are taken for granted precisely because they have not been scientifically tested.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of theory</span><span class="chip t2">grand, middle range, and practice theories</span></div>
+<div class="stem">19. A theory addresses nursing actions and patient responses across multiple settings and sits at the most abstract level of theoretical thinking. Which level is this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Grand nursing theory</li><li class="fopt"><span class="mk">B</span>Middle range theory</li><li class="fopt"><span class="mk">C</span>Practice theory</li><li class="fopt"><span class="mk">D</span>Scientific theory</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Grand nursing theories are the most abstract and encompass nursing actions and patient responses in multiple settings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Early scholars called these conceptual models or conceptual frameworks. Recognizing that older label does not make them a different or less abstract level.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of theory</span><span class="chip t2">grand, middle range, and practice theories</span></div>
+<div class="stem">20. A researcher wants a framework with clearly identified concepts, definitions of those concepts, and relational statements, and notes that this level is the one most commonly applied as a framework in nursing studies. Which level fits?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Middle range theory</li><li class="fopt"><span class="mk">B</span>Grand nursing theory</li><li class="fopt"><span class="mk">C</span>Practice theory</li><li class="fopt"><span class="mk">D</span>Philosophy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Middle range theories are less abstract and narrower in scope, are more closely linked to clinical practice and research, and are more commonly applied as frameworks in nursing studies because they have clearly identified concepts, definitions of concepts, and relational statements.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Grand theories are the better known names, so they are the reflex answer. Fame is not the criterion; usable concepts, definitions, and relational statements are.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of theory</span><span class="chip t2">grand, middle range, and practice theories</span></div>
+<div class="stem">21. Why are middle range theories also called substantive theories?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They have been substantiated by more research than grand theories</li><li class="fopt"><span class="mk">B</span>They substitute for a grand theory when none exists for the topic</li><li class="fopt"><span class="mk">C</span>They contain a larger number of concepts than grand theories do</li><li class="fopt right"><span class="mk">&#10003;</span>They are closer to the substance of clinical practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Middle range theories are called substantive theories because they are closer to the substance of clinical practice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Substantive sounds like substantiated, which is where (A) comes from, but the word points at clinical substance, not at accumulated evidence.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of theory</span><span class="chip t2">grand, middle range, and practice theories</span></div>
+<div class="stem">22. Which description of practice theories is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They are a type of middle range theory designed to propose specific approaches to particular nursing practice situations</li><li class="fopt"><span class="mk">B</span>They are a fourth, independent level that is more abstract than middle range theories</li><li class="fopt"><span class="mk">C</span>They are another name for grand nursing theories</li><li class="fopt"><span class="mk">D</span>They are theories derived from physiology, genetics, and physics</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Practice theories, also called situation-specific theories, are a type of middle range theory that are more specific and are designed to propose specific approaches to particular nursing practice situations.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Practice theories are a subtype of middle range, not a separate fourth level, and they are the most specific rather than the most abstract. (D) describes scientific theory.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of theory</span><span class="chip t2">origins of middle range theories</span></div>
+<div class="stem">23. From which sources may a middle range theory emerge? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A grounded theory study</li><li class="fopt"><span class="mk">B</span>The four metaparadigm concepts</li><li class="fopt right"><span class="mk">&#10003;</span>Deduction from a grand nursing theory</li><li class="fopt right"><span class="mk">&#10003;</span>A synthesis of the literature on a particular topic</li><li class="fopt"><span class="mk">E</span>A dictionary definition of the central concept</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Middle range theories may emerge from a grounded theory study, be deduced from a grand nursing theory, or be created through a synthesis of the literature on a particular topic.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An option requiring that middle range theories always derive from a grand theory is too narrow. Deduction is one of three routes, not the only one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">levels of theory</span><span class="chip t2">origins of middle range theories</span></div>
+<div class="stem">24. Which of these are named in the chapter as middle range theories with ongoing use? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Uncertainty in illness (Mishel)</li><li class="fopt"><span class="mk">B</span>Self-Care Deficit Theory of Nursing (Orem)</li><li class="fopt right"><span class="mk">&#10003;</span>Comfort (Kolcaba)</li><li class="fopt right"><span class="mk">&#10003;</span>Transitions (Meleis)</li><li class="fopt right"><span class="mk">&#10003;</span>Unpleasant symptoms (Lenz et al.)</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's list of middle range theories in ongoing use includes caring, comfort, inner strength, nursing intellectual capital, self-transcendence, transitions, uncertainty in illness, unpleasant symptoms, and women's anger.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Orem's Self-Care Deficit Theory of Nursing is one of the four grand nursing theories, not a middle range theory. It is the theorist name most likely to be pulled into the middle range list.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">grand nursing theories</span><span class="chip t2">matching theorist to core concept</span></div>
+<div class="stem">25. A nurse assesses a patient's responses to focal, contextual, and residual stimuli and plans care aimed at returning the patient to homeostasis and promoting growth. Which grand theory is guiding this nurse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Orem's Self-Care Deficit Theory of Nursing</li><li class="fopt"><span class="mk">B</span>Rogers' Science of Unitary Human Beings</li><li class="fopt right"><span class="mk">&#10003;</span>Roy's Adaptation Model</li><li class="fopt"><span class="mk">D</span>King's Theory of Goal Attainment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In Roy and Andrews' Adaptation Model, people adapt to focal, contextual, and residual stimuli using processes and systems that are partly automatic and partly learned, with the goal of returning to homeostasis and promoting growth.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The three kinds of stimuli are the giveaway and belong to Roy alone. No other grand theory in the chapter uses focal, contextual, and residual.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">grand nursing theories</span><span class="chip t2">matching theorist to core concept</span></div>
+<div class="stem">26. A nurse evaluates how a patient's developmental stage, current disease, and available resources have reduced her ability to care for herself, and then provides care in proportion to her remaining capacity. Which theory is guiding this nurse?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Orem's Self-Care Deficit Theory of Nursing</li><li class="fopt"><span class="mk">B</span>Roy's Adaptation Model</li><li class="fopt"><span class="mk">C</span>King's Theory of Goal Attainment</li><li class="fopt"><span class="mk">D</span>Rogers' Science of Unitary Human Beings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In Orem's theory the ability to self-care is affected by developmental stage, presence of disease, and available resources and may result in a self-care deficit, and nursing provides care in proportion to the person's self-care capacity.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Developmental stage and resources also sound like contextual factors, which pulls toward Roy. The deciding feature is that the nursing dose is scaled to the patient's self-care capacity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">grand nursing theories</span><span class="chip t2">matching theorist to core concept</span></div>
+<div class="stem">27. A nurse describes the patient and the environment as energy fields interacting as open systems and looks for the patterns those fields produce. Which theory is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Roy's Adaptation Model</li><li class="fopt"><span class="mk">B</span>Orem's Self-Care Deficit Theory of Nursing</li><li class="fopt"><span class="mk">C</span>King's Theory of Goal Attainment</li><li class="fopt right"><span class="mk">&#10003;</span>Rogers' Science of Unitary Human Beings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Rogers' Science of Unitary Human Beings holds that persons and environment are energy fields interacting as open systems, and that the fields produce patterns usable for identification.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Open systems appear in King's work as well, which is where the confusion starts. Energy fields and patterns are what mark the answer as Rogers.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">grand nursing theories</span><span class="chip t2">matching theorist to core concept</span></div>
+<div class="stem">28. A nurse and a patient sit down together, agree on goals for discharge, and the nurse then educates, supports, and guides the patient toward them. Which theory is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Roy's Adaptation Model</li><li class="fopt right"><span class="mk">&#10003;</span>King's Theory of Goal Attainment</li><li class="fopt"><span class="mk">C</span>Orem's Self-Care Deficit Theory of Nursing</li><li class="fopt"><span class="mk">D</span>Rogers' Science of Unitary Human Beings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In King's Theory of Goal Attainment, persons within systems are goal-oriented, the nurse and patient set mutually agreed-upon goals, and through interaction the nurse educates, supports, and guides.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Orem is the near-neighbor any time the nurse's role is described as supportive. The deciding feature here is that the goals are set mutually by nurse and patient, not scaled to a self-care deficit.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">grand nursing theories</span><span class="chip t2">programs of research around a grand theory</span></div>
+<div class="stem">29. Which statements about building nursing knowledge around a grand theory are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It requires an organized program of research and a group of scholars</li><li class="fopt right"><span class="mk">&#10003;</span>The Roy Adaptation Association analyzes, critiques, and synthesizes the English-language studies based on the model</li><li class="fopt"><span class="mk">C</span>The International Orem Society publishes the journal Nursing Science Quarterly</li><li class="fopt right"><span class="mk">&#10003;</span>The Roy Adaptation Model has been in use for over 25 years</li><li class="fopt right"><span class="mk">&#10003;</span>The Society of Rogerian Scholars publishes the journal Visions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Building knowledge around a grand theory requires an organized program of research and a group of scholars, and the chapter names the Roy Adaptation Association, the Society of Rogerian Scholars with its journal Visions, and the International Orem Society.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The International Orem Society's journal is Self-Care, Dependent-Care, and Nursing. Nursing Science Quarterly is not the journal the chapter attaches to any of these societies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">what a framework does</span></div>
+<div class="stem">30. Which statements accurately describe a research framework? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is an abstract and logical structure of meaning</li><li class="fopt right"><span class="mk">&#10003;</span>It may be a portion of a theory</li><li class="fopt"><span class="mk">C</span>It is developed after data analysis to explain unexpected results</li><li class="fopt right"><span class="mk">&#10003;</span>It guides the development of the study</li><li class="fopt right"><span class="mk">&#10003;</span>It enables the researcher to link the findings to nursing's body of knowledge</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A research framework is an abstract and logical structure of meaning, such as a portion of a theory, which guides the development of the study and enables the researcher to link the findings to nursing's body of knowledge.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the timing. A framework is in place to guide the study, not assembled afterward to account for results.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">what a framework does</span></div>
+<div class="stem">31. How does the chapter characterize a clearly expressed framework in a quantitative study?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>One indication of a well-developed quantitative study</li><li class="fopt"><span class="mk">B</span>A requirement for institutional review board approval</li><li class="fopt"><span class="mk">C</span>Evidence that the underlying theory has been validated</li><li class="fopt"><span class="mk">D</span>A feature unique to physiological studies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A clearly expressed framework is one indication of a well-developed quantitative study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A clear framework says something about the quality of the study's development. It says nothing about whether the theory itself has been validated, which would take many studies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">explicit versus implicit frameworks</span></div>
+<div class="stem">32. A student appraising a quantitative article cannot find any section naming a theory or framework. Which conclusion is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The study has no framework</li><li class="fopt"><span class="mk">B</span>The study must actually be qualitative</li><li class="fopt"><span class="mk">C</span>The framework must be a scientific theory drawn from physiology</li><li class="fopt right"><span class="mk">&#10003;</span>The framework is implicit, because every quantitative study has an implicit or explicit framework</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Every quantitative study has an implicit or explicit framework, whether the focus is physiological, psychological, social, or cultural. The appraisal question is not whether a framework exists but whether it is explicit and how well developed it is.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer and it is wrong by the chapter's own rule. There is no such thing as a quantitative study with no framework.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">explicit versus implicit frameworks</span></div>
+<div class="stem">33. A study's introduction notes that earlier work linked the variables but never explains why they should be related, and no framework section follows. What does the chapter recommend the reader do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Reject the study as unappraisable</li><li class="fopt right"><span class="mk">&#10003;</span>Extract the implicit framework from the text and, if it helps, draw a model of how the variables are linked</li><li class="fopt"><span class="mk">C</span>Substitute a grand nursing theory of the reader's own choosing</li><li class="fopt"><span class="mk">D</span>Treat the literature review as the study's operational definitions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In most cases a careful reader can extract an implicit framework from the text, and when researchers do not clearly describe the framework you may want to draw a model, which helps you visualize the framework and how the variables are linked.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the classic implicit-framework signature: the linkage appears in the introduction or literature review and then the researcher stops without developing it into a framework.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">explicit versus implicit frameworks</span></div>
+<div class="stem">34. What is the consequence of a researcher leaving the framework implicit?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It invalidates the study's statistical results</li><li class="fopt"><span class="mk">B</span>It converts the study into a qualitative design</li><li class="fopt right"><span class="mk">&#10003;</span>It provides limited guidance for the development and conduct of the study and limits the contribution of the findings to nursing knowledge</li><li class="fopt"><span class="mk">D</span>It means the study's hypotheses cannot be tested</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Implicit frameworks provide limited guidance for the development and conduct of a study and limit the contribution of the study findings to nursing knowledge.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An implicit framework weakens guidance and contribution. It does not make the statistics invalid or change the design, so options that escalate to invalidation overshoot.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">models and maps</span></div>
+<div class="stem">35. In a diagram of a study's framework, an arrow drawn from one concept to another is a graphic illustration of what?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A statistical correlation found in the study's data</li><li class="fopt right"><span class="mk">&#10003;</span>A relational statement, or proposition, of the theory</li><li class="fopt"><span class="mk">C</span>A causal pathway already proven by prior research</li><li class="fopt"><span class="mk">D</span>An operational definition of the concept</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A model is a diagram with the concepts and relationships graphically displayed, it includes all the major concepts in a research framework, and each linkage shown by an arrow is a graphic illustration of a relational statement, or proposition, of the theory.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>An arrow is a claim from the theory, not a finding from the data. Reading arrows as correlations or as proven causation is the standard misread.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">sources of frameworks</span></div>
+<div class="stem">36. Which of the following are identified as sources of research frameworks? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Grand nursing theories</li><li class="fopt right"><span class="mk">&#10003;</span>Middle range theories from nursing and from other professions</li><li class="fopt"><span class="mk">C</span>The study's data analysis plan</li><li class="fopt right"><span class="mk">&#10003;</span>Syntheses of concepts and relationships from more than one theory</li><li class="fopt right"><span class="mk">&#10003;</span>Syntheses of research findings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The four sources are grand nursing theories, middle range theories from nursing and other professions, syntheses of concepts and relationships from more than one theory, and syntheses of research findings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Middle range theories borrowed from other professions count. Restricting frameworks to nursing-only theories drops a legitimate source.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">sources of frameworks</span></div>
+<div class="stem">37. A researcher combines concepts from two different theories with findings from several published studies to build a framework for one particular study. What is this framework called?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A grand theory</li><li class="fopt"><span class="mk">B</span>A scientific theory</li><li class="fopt right"><span class="mk">&#10003;</span>A tentative theory</li><li class="fopt"><span class="mk">D</span>A practice theory</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A tentative theory is a newly proposed framework, often a synthesis of concepts from more than one theory or of research findings, and it is usually developed for a particular study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Synthesizing across theories does not produce a grand theory. Tentative theories are built for one study rather than for a program of research across settings.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research frameworks</span><span class="chip t2">sources of frameworks</span></div>
+<div class="stem">38. A study of a cooling protocol's effect on cerebral perfusion draws its framework from pathophysiology and physics. This framework is best described as which of the following?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A grand nursing theory</li><li class="fopt right"><span class="mk">&#10003;</span>A scientific theory</li><li class="fopt"><span class="mk">C</span>A tentative theory</li><li class="fopt"><span class="mk">D</span>A practice theory</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Frameworks for physiological studies come from physiology, genetics, pathophysiology, and physics, and are scientific theories, which have extensive research evidence to support their claims, concepts clearly linked to study variables, and valid and reliable methods for measuring each concept.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>A framework that is not a nursing theory is still a framework. Physiological studies are exactly the case students use to argue, wrongly, that a study has no framework.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"theory components","subtopic":"concepts and statements","stem":"A theorist writes that adherence to medications improves clinical outcomes and reduces the development of complications, patient suffering, and healthcare costs. In this sentence, what is patient suffering?","options":["A statement","A philosophy","An assumption","A concept"],"correct":[3],"sata":false,"why":"Concepts abstractly describe and name an object, idea, experience, or phenomenon, giving it a separate identity or meaning, and they are the basic element of a theory. Adherence to medications, clinical outcomes, complications, patient suffering, and healthcare costs are all concepts here.","trap":"The sentence as a whole is the statement, because it expresses the relationships among the concepts. A single named idea inside it is a concept, not a statement."},{"topic":"theory components","subtopic":"concepts and statements","stem":"Which characteristics describe concepts as the chapter defines them? Select all that apply.","options":["They abstractly describe and name an object, idea, experience, or phenomenon","They are narrower and more measurable than variables","They provide what they name with a separate identity or meaning","They are the basic element of a theory","Each one must be defined by the theorist"],"correct":[0,2,3,4],"sata":true,"why":"Concepts are the basic element of a theory, they name and describe abstractly, they give what they name a separate identity or meaning, and each must be defined by the theorist. Theories with clearly identified and defined concepts provide a stronger basis for a research framework.","trap":"(B) inverts the abstraction ladder. A variable is more specific than a concept, not the reverse."},{"topic":"theory components","subtopic":"philosophies and assumptions","stem":"A theorist opens a paper with the claim that people want to assume control of their own health problems and offers no supporting evidence for it. How should a reader classify that claim?","options":["An assumption","A hypothesis to be tested in the study","A finding carried over from prior research","A specific proposition"],"correct":[0],"sata":false,"why":"Assumptions are statements taken for granted or considered true even though they have not been scientifically tested, and this is the chapter's own example. You may doubt the truth of it, but theorists begin with assumptions, explicit or implicit.","trap":"Assumptions are never what the study tests. Calling one a hypothesis, or treating it as a finding, is the standard error on this term."},{"topic":"theory components","subtopic":"philosophies and assumptions","stem":"Which term names rational intellectual explorations of truths or principles of being, knowledge, or conduct?","options":["Assumption","Theory","Philosophy","Research framework"],"correct":[2],"sata":false,"why":"Philosophies are rational intellectual explorations of truths or principles of being, knowledge, or conduct, and they describe viewpoints on what reality is, how knowledge is developed, and which ethical values and principles should guide practice.","trap":null},{"topic":"theory components","subtopic":"metaparadigm concepts","stem":"Which of the following are among nursing's metaparadigm concepts? Select all that apply.","options":["Environment","Caring","Health","Adaptation","Person"],"correct":[0,2,4],"sata":true,"why":"The metaparadigm concepts are person, environment, health, and nursing, described as the essence of nursing. Three of them appear here; nursing is the fourth.","trap":"Caring is Swanson's middle range theory and adaptation is the core concept of Roy's grand theory. Neither is a metaparadigm concept. There are four, and only these four."},{"topic":"levels of abstraction","subtopic":"construct, concept, and variable","stem":"A research team diagrams its framework with resources at the top, social support and household income beneath it, and emotional support beneath those. What is resources in this structure?","options":["A concept","A construct","A variable","An operational definition"],"correct":[1],"sata":false,"why":"A construct is a broader category or idea that may encompass several concepts. In the chapter's example the construct resources encompasses the concepts social support and household income.","trap":"Reversing construct and concept is the standard swap in this chapter. The construct is the broader of the two, and the concept sits inside it."},{"topic":"levels of abstraction","subtopic":"construct, concept, and variable","stem":"In that same framework, emotional support is scored by summing a three-item subscale of the Functional Social Support Questionnaire. What is emotional support?","options":["The construct","The concept","The phenomenon","The variable"],"correct":[3],"sata":false,"why":"A variable is defined so that it is measurable and its numerical values can vary from one instance to another, and it is more specific than a concept. Emotional support is the variable; the FSSQ subscale is the measurement method.","trap":"This is the mirror image of the construct item. Sort the three by breadth, not by which term appears in the sentence: construct is broadest, concept sits under it, variable is the narrow measurable one."},{"topic":"levels of abstraction","subtopic":"construct, concept, and variable","stem":"A nurse discusses the experience of chronic pain in general terms, apart from any specific patient. This way of thinking is best described as which of the following?","options":["Concrete","Denotative","Abstract","Operational"],"correct":[2],"sata":false,"why":"Abstract means the expression of an idea apart from any specific instance and focuses on a general view. Concrete refers to realities or actual instances and focuses on the particular.","trap":"Concrete is not a criticism and abstract is not a compliment. They describe level of generality, not quality of thinking."},{"topic":"levels of abstraction","subtopic":"conceptual and operational definitions","stem":"A researcher defines home as including feelings of security, love, and comfort. A dictionary defines home as a dwelling in which a group of people live, who may or may not be related. Which statement is accurate?","options":["The researcher's definition is denotative and therefore more precise","The researcher's definition is connotative and more comprehensive","The dictionary definition is the conceptual definition","The two definitions are interchangeable in a research report"],"correct":[1],"sata":false,"why":"Conceptual definitions are connotative and are more comprehensive than a denotative dictionary definition, because they include associated meanings.","trap":"A conceptual definition is more comprehensive, not more precise. The narrower and more specific one is the dictionary definition."},{"topic":"levels of abstraction","subtopic":"conceptual and operational definitions","stem":"What is the correct relationship between the conceptual and operational definitions of a study variable?","options":["They are developed independently of one another","The operational definition comes from the theory and provides the basis for the conceptual definition","The conceptual definition comes from the theory and provides the basis for the operational definition","The conceptual definition is derived from the scoring rules of the measurement instrument"],"correct":[2],"sata":false,"why":"The conceptual definition comes from a theory and provides the basis for the operational definition. The operational definition then states how the concept is manipulated or measured.","trap":"The dependency runs one way only. (B) is the reflex answer for students who remember that the operational definition is what appears in the methods section and assume the methods drive the theory."},{"topic":"levels of abstraction","subtopic":"conceptual and operational definitions","stem":"A study's intervention is described as a 6-week mindfulness program delivered in weekly 60-minute groups. This description functions as which of the following?","options":["The conceptual definition of mindfulness","The operational definition of the independent variable","A proposition of the framework","An assumption of the study"],"correct":[1],"sata":false,"why":"An operational definition states how a concept is manipulated, for an intervention or independent variable, or measured, for a dependent or outcome variable.","trap":"The conceptual definition of mindfulness would come from the theory and describe what mindfulness means, not how many minutes the sessions ran."},{"topic":"levels of abstraction","subtopic":"conceptual and operational definitions","stem":"Which statements about conceptual definitions are accurate? Select all that apply.","options":["They are described as connotative","They state the specific method for assigning numerical values to the variable","They are more comprehensive than a denotative dictionary definition","They are drawn from a theory","They may be explicit or implicit in a published study"],"correct":[0,2,3,4],"sata":true,"why":"Conceptual definitions are connotative, more comprehensive than a dictionary definition, drawn from theory, and may be explicit or implicit. The chapter warns that identifying the researcher's conceptual definitions is part of critically appraising a study.","trap":"(B) describes measurement, the specific method for assigning numerical values, which belongs to the operational definition rather than the conceptual one."},{"topic":"levels of abstraction","subtopic":"conceptual and operational definitions","stem":"A student is appraising a quantitative study and wants to trace each study variable back through the framework. Which elements should ideally be identifiable for each variable? Select all that apply.","options":["The concept the variable represents","A dictionary definition of the term","The conceptual definition of that concept","The operational definition","An untested assumption that supports the variable"],"correct":[0,2,3],"sata":true,"why":"Each variable is ideally associated with a concept, a conceptual definition, and an operational definition, with the conceptual definition drawn from the theory.","trap":"(B) is denotative and is exactly what a conceptual definition is not. (E) confuses assumptions, which are global and untested, with the definitional chain attached to a variable."},{"topic":"propositions and hypotheses","subtopic":"levels of propositions","stem":"A grand theory states that health-related quality of life is related to depression. A framework built on it states that among persons on antiretroviral therapy for HIV infection, domains of health-related quality of life are related to depressive symptoms. The second statement is best labeled as which of the following?","options":["A general proposition","A hypothesis","An assumption","A specific proposition"],"correct":[3],"sata":false,"why":"General propositions are the relational statements found in more abstract theories, while a specific proposition states the relationship in a more narrow way, making it more concrete and testable. Specific propositions live in less abstract frameworks such as middle range theories.","trap":"It reads like a hypothesis because it names a population, but the chapter's hypothesis narrows further still, to African American persons and to named domains and symptom parameters."},{"topic":"propositions and hypotheses","subtopic":"levels of propositions","stem":"Which statement is written at the lowest level of abstraction and is the one actually tested in the study?","options":["Health-related quality of life is related to depression","Among persons on antiretroviral therapy for HIV infection, domains of health-related quality of life are related to depressive symptoms","Among African American persons on antiretroviral therapy for HIV infection, poor physical functioning and increased role limitations are related to increased frequency and severity of depressive symptoms","People want to assume control of their own health problems"],"correct":[2],"sata":false,"why":"Hypotheses are written at the lowest level of abstraction to be tested in a study, and they are developed from propositions in a grand or middle range theory.","trap":"(D) is the chapter's assumption example. Assumptions are taken as true without testing and are never the study's tested claim."},{"topic":"propositions and hypotheses","subtopic":"levels of propositions","stem":"Which statements about propositions and hypotheses are accurate? Select all that apply.","options":["A proposition is a label given to statements describing relationships among concepts","Hypotheses are more abstract than general propositions","Specific propositions in middle range theories may lead to hypotheses","Hypotheses are developed based on propositions from a grand or middle range theory","A specific proposition is more concrete and testable than a general proposition"],"correct":[0,2,3,4],"sata":true,"why":"The order runs general proposition, then specific proposition, then hypothesis, in decreasing abstraction, and hypotheses are derived from propositions.","trap":"(B) inverts the hierarchy. Any option that places the hypothesis above the proposition in abstraction is wrong."},{"topic":"propositions and hypotheses","subtopic":"testing a theory","stem":"A single study finds support for one relational statement in a middle range theory. What conclusion is warranted?","options":["One statement has been supported, and many studies are required to validate all the statements in a theory","The theory has been proven","The theory has been validated for that population","The theory should be reclassified as a grand theory"],"correct":[0],"sata":false,"why":"Testing a theory involves determining the truth of each statement in it, and many studies are required to validate all the statements in a theory.","trap":"One supporting study never proves or validates a theory, no matter how well the study was conducted. The claim size has to match the number of statements tested."},{"topic":"propositions and hypotheses","subtopic":"testing a theory","stem":"When research tests a theory, what is it about the theory that is being tested?","options":["Its concepts","Its assumptions","Its philosophy","Its statements of relationships"],"correct":[3],"sata":false,"why":"The statements of relationships are what are tested through research.","trap":"Concepts are defined rather than tested, and assumptions are taken for granted precisely because they have not been scientifically tested."},{"topic":"levels of theory","subtopic":"grand, middle range, and practice theories","stem":"A theory addresses nursing actions and patient responses across multiple settings and sits at the most abstract level of theoretical thinking. Which level is this?","options":["Grand nursing theory","Middle range theory","Practice theory","Scientific theory"],"correct":[0],"sata":false,"why":"Grand nursing theories are the most abstract and encompass nursing actions and patient responses in multiple settings.","trap":"Early scholars called these conceptual models or conceptual frameworks. Recognizing that older label does not make them a different or less abstract level."},{"topic":"levels of theory","subtopic":"grand, middle range, and practice theories","stem":"A researcher wants a framework with clearly identified concepts, definitions of those concepts, and relational statements, and notes that this level is the one most commonly applied as a framework in nursing studies. Which level fits?","options":["Middle range theory","Grand nursing theory","Practice theory","Philosophy"],"correct":[0],"sata":false,"why":"Middle range theories are less abstract and narrower in scope, are more closely linked to clinical practice and research, and are more commonly applied as frameworks in nursing studies because they have clearly identified concepts, definitions of concepts, and relational statements.","trap":"Grand theories are the better known names, so they are the reflex answer. Fame is not the criterion; usable concepts, definitions, and relational statements are."},{"topic":"levels of theory","subtopic":"grand, middle range, and practice theories","stem":"Why are middle range theories also called substantive theories?","options":["They have been substantiated by more research than grand theories","They substitute for a grand theory when none exists for the topic","They contain a larger number of concepts than grand theories do","They are closer to the substance of clinical practice"],"correct":[3],"sata":false,"why":"Middle range theories are called substantive theories because they are closer to the substance of clinical practice.","trap":"Substantive sounds like substantiated, which is where (A) comes from, but the word points at clinical substance, not at accumulated evidence."},{"topic":"levels of theory","subtopic":"grand, middle range, and practice theories","stem":"Which description of practice theories is accurate?","options":["They are a type of middle range theory designed to propose specific approaches to particular nursing practice situations","They are a fourth, independent level that is more abstract than middle range theories","They are another name for grand nursing theories","They are theories derived from physiology, genetics, and physics"],"correct":[0],"sata":false,"why":"Practice theories, also called situation-specific theories, are a type of middle range theory that are more specific and are designed to propose specific approaches to particular nursing practice situations.","trap":"Practice theories are a subtype of middle range, not a separate fourth level, and they are the most specific rather than the most abstract. (D) describes scientific theory."},{"topic":"levels of theory","subtopic":"origins of middle range theories","stem":"From which sources may a middle range theory emerge? Select all that apply.","options":["A grounded theory study","The four metaparadigm concepts","Deduction from a grand nursing theory","A synthesis of the literature on a particular topic","A dictionary definition of the central concept"],"correct":[0,2,3],"sata":true,"why":"Middle range theories may emerge from a grounded theory study, be deduced from a grand nursing theory, or be created through a synthesis of the literature on a particular topic.","trap":"An option requiring that middle range theories always derive from a grand theory is too narrow. Deduction is one of three routes, not the only one."},{"topic":"levels of theory","subtopic":"origins of middle range theories","stem":"Which of these are named in the chapter as middle range theories with ongoing use? Select all that apply.","options":["Uncertainty in illness (Mishel)","Self-Care Deficit Theory of Nursing (Orem)","Comfort (Kolcaba)","Transitions (Meleis)","Unpleasant symptoms (Lenz et al.)"],"correct":[0,2,3,4],"sata":true,"why":"The chapter's list of middle range theories in ongoing use includes caring, comfort, inner strength, nursing intellectual capital, self-transcendence, transitions, uncertainty in illness, unpleasant symptoms, and women's anger.","trap":"Orem's Self-Care Deficit Theory of Nursing is one of the four grand nursing theories, not a middle range theory. It is the theorist name most likely to be pulled into the middle range list."},{"topic":"grand nursing theories","subtopic":"matching theorist to core concept","stem":"A nurse assesses a patient's responses to focal, contextual, and residual stimuli and plans care aimed at returning the patient to homeostasis and promoting growth. Which grand theory is guiding this nurse?","options":["Orem's Self-Care Deficit Theory of Nursing","Rogers' Science of Unitary Human Beings","Roy's Adaptation Model","King's Theory of Goal Attainment"],"correct":[2],"sata":false,"why":"In Roy and Andrews' Adaptation Model, people adapt to focal, contextual, and residual stimuli using processes and systems that are partly automatic and partly learned, with the goal of returning to homeostasis and promoting growth.","trap":"The three kinds of stimuli are the giveaway and belong to Roy alone. No other grand theory in the chapter uses focal, contextual, and residual."},{"topic":"grand nursing theories","subtopic":"matching theorist to core concept","stem":"A nurse evaluates how a patient's developmental stage, current disease, and available resources have reduced her ability to care for herself, and then provides care in proportion to her remaining capacity. Which theory is guiding this nurse?","options":["Orem's Self-Care Deficit Theory of Nursing","Roy's Adaptation Model","King's Theory of Goal Attainment","Rogers' Science of Unitary Human Beings"],"correct":[0],"sata":false,"why":"In Orem's theory the ability to self-care is affected by developmental stage, presence of disease, and available resources and may result in a self-care deficit, and nursing provides care in proportion to the person's self-care capacity.","trap":"Developmental stage and resources also sound like contextual factors, which pulls toward Roy. The deciding feature is that the nursing dose is scaled to the patient's self-care capacity."},{"topic":"grand nursing theories","subtopic":"matching theorist to core concept","stem":"A nurse describes the patient and the environment as energy fields interacting as open systems and looks for the patterns those fields produce. Which theory is this?","options":["Roy's Adaptation Model","Orem's Self-Care Deficit Theory of Nursing","King's Theory of Goal Attainment","Rogers' Science of Unitary Human Beings"],"correct":[3],"sata":false,"why":"Rogers' Science of Unitary Human Beings holds that persons and environment are energy fields interacting as open systems, and that the fields produce patterns usable for identification.","trap":"Open systems appear in King's work as well, which is where the confusion starts. Energy fields and patterns are what mark the answer as Rogers."},{"topic":"grand nursing theories","subtopic":"matching theorist to core concept","stem":"A nurse and a patient sit down together, agree on goals for discharge, and the nurse then educates, supports, and guides the patient toward them. Which theory is this?","options":["Roy's Adaptation Model","King's Theory of Goal Attainment","Orem's Self-Care Deficit Theory of Nursing","Rogers' Science of Unitary Human Beings"],"correct":[1],"sata":false,"why":"In King's Theory of Goal Attainment, persons within systems are goal-oriented, the nurse and patient set mutually agreed-upon goals, and through interaction the nurse educates, supports, and guides.","trap":"Orem is the near-neighbor any time the nurse's role is described as supportive. The deciding feature here is that the goals are set mutually by nurse and patient, not scaled to a self-care deficit."},{"topic":"grand nursing theories","subtopic":"programs of research around a grand theory","stem":"Which statements about building nursing knowledge around a grand theory are accurate? Select all that apply.","options":["It requires an organized program of research and a group of scholars","The Roy Adaptation Association analyzes, critiques, and synthesizes the English-language studies based on the model","The International Orem Society publishes the journal Nursing Science Quarterly","The Roy Adaptation Model has been in use for over 25 years","The Society of Rogerian Scholars publishes the journal Visions"],"correct":[0,1,3,4],"sata":true,"why":"Building knowledge around a grand theory requires an organized program of research and a group of scholars, and the chapter names the Roy Adaptation Association, the Society of Rogerian Scholars with its journal Visions, and the International Orem Society.","trap":"The International Orem Society's journal is Self-Care, Dependent-Care, and Nursing. Nursing Science Quarterly is not the journal the chapter attaches to any of these societies."},{"topic":"research frameworks","subtopic":"what a framework does","stem":"Which statements accurately describe a research framework? Select all that apply.","options":["It is an abstract and logical structure of meaning","It may be a portion of a theory","It is developed after data analysis to explain unexpected results","It guides the development of the study","It enables the researcher to link the findings to nursing's body of knowledge"],"correct":[0,1,3,4],"sata":true,"why":"A research framework is an abstract and logical structure of meaning, such as a portion of a theory, which guides the development of the study and enables the researcher to link the findings to nursing's body of knowledge.","trap":"(C) reverses the timing. A framework is in place to guide the study, not assembled afterward to account for results."},{"topic":"research frameworks","subtopic":"what a framework does","stem":"How does the chapter characterize a clearly expressed framework in a quantitative study?","options":["One indication of a well-developed quantitative study","A requirement for institutional review board approval","Evidence that the underlying theory has been validated","A feature unique to physiological studies"],"correct":[0],"sata":false,"why":"A clearly expressed framework is one indication of a well-developed quantitative study.","trap":"A clear framework says something about the quality of the study's development. It says nothing about whether the theory itself has been validated, which would take many studies."},{"topic":"research frameworks","subtopic":"explicit versus implicit frameworks","stem":"A student appraising a quantitative article cannot find any section naming a theory or framework. Which conclusion is correct?","options":["The study has no framework","The study must actually be qualitative","The framework must be a scientific theory drawn from physiology","The framework is implicit, because every quantitative study has an implicit or explicit framework"],"correct":[3],"sata":false,"why":"Every quantitative study has an implicit or explicit framework, whether the focus is physiological, psychological, social, or cultural. The appraisal question is not whether a framework exists but whether it is explicit and how well developed it is.","trap":"(A) is the reflex answer and it is wrong by the chapter's own rule. There is no such thing as a quantitative study with no framework."},{"topic":"research frameworks","subtopic":"explicit versus implicit frameworks","stem":"A study's introduction notes that earlier work linked the variables but never explains why they should be related, and no framework section follows. What does the chapter recommend the reader do?","options":["Reject the study as unappraisable","Extract the implicit framework from the text and, if it helps, draw a model of how the variables are linked","Substitute a grand nursing theory of the reader's own choosing","Treat the literature review as the study's operational definitions"],"correct":[1],"sata":false,"why":"In most cases a careful reader can extract an implicit framework from the text, and when researchers do not clearly describe the framework you may want to draw a model, which helps you visualize the framework and how the variables are linked.","trap":"This is the classic implicit-framework signature: the linkage appears in the introduction or literature review and then the researcher stops without developing it into a framework."},{"topic":"research frameworks","subtopic":"explicit versus implicit frameworks","stem":"What is the consequence of a researcher leaving the framework implicit?","options":["It invalidates the study's statistical results","It converts the study into a qualitative design","It provides limited guidance for the development and conduct of the study and limits the contribution of the findings to nursing knowledge","It means the study's hypotheses cannot be tested"],"correct":[2],"sata":false,"why":"Implicit frameworks provide limited guidance for the development and conduct of a study and limit the contribution of the study findings to nursing knowledge.","trap":"An implicit framework weakens guidance and contribution. It does not make the statistics invalid or change the design, so options that escalate to invalidation overshoot."},{"topic":"research frameworks","subtopic":"models and maps","stem":"In a diagram of a study's framework, an arrow drawn from one concept to another is a graphic illustration of what?","options":["A statistical correlation found in the study's data","A relational statement, or proposition, of the theory","A causal pathway already proven by prior research","An operational definition of the concept"],"correct":[1],"sata":false,"why":"A model is a diagram with the concepts and relationships graphically displayed, it includes all the major concepts in a research framework, and each linkage shown by an arrow is a graphic illustration of a relational statement, or proposition, of the theory.","trap":"An arrow is a claim from the theory, not a finding from the data. Reading arrows as correlations or as proven causation is the standard misread."},{"topic":"research frameworks","subtopic":"sources of frameworks","stem":"Which of the following are identified as sources of research frameworks? Select all that apply.","options":["Grand nursing theories","Middle range theories from nursing and from other professions","The study's data analysis plan","Syntheses of concepts and relationships from more than one theory","Syntheses of research findings"],"correct":[0,1,3,4],"sata":true,"why":"The four sources are grand nursing theories, middle range theories from nursing and other professions, syntheses of concepts and relationships from more than one theory, and syntheses of research findings.","trap":"Middle range theories borrowed from other professions count. Restricting frameworks to nursing-only theories drops a legitimate source."},{"topic":"research frameworks","subtopic":"sources of frameworks","stem":"A researcher combines concepts from two different theories with findings from several published studies to build a framework for one particular study. What is this framework called?","options":["A grand theory","A scientific theory","A tentative theory","A practice theory"],"correct":[2],"sata":false,"why":"A tentative theory is a newly proposed framework, often a synthesis of concepts from more than one theory or of research findings, and it is usually developed for a particular study.","trap":"Synthesizing across theories does not produce a grand theory. Tentative theories are built for one study rather than for a program of research across settings."},{"topic":"research frameworks","subtopic":"sources of frameworks","stem":"A study of a cooling protocol's effect on cerebral perfusion draws its framework from pathophysiology and physics. This framework is best described as which of the following?","options":["A grand nursing theory","A scientific theory","A tentative theory","A practice theory"],"correct":[1],"sata":false,"why":"Frameworks for physiological studies come from physiology, genetics, pathophysiology, and physics, and are scientific theories, which have extensive research evidence to support their claims, concepts clearly linked to study variables, and valid and reliable methods for measuring each concept.","trap":"A framework that is not a nursing theory is still a framework. Physiological studies are exactly the case students use to argue, wrongly, that a study has no framework."}];
+const TITLE = "Chapter 7 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 7";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

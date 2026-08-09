@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 2 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 2</div><h1>Chapter 2 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of quantitative research</span><span class="chip t2">descriptive research</span></div>
+<div class="stem">1. A nurse researcher enrolls 480 patients across six medical units and records the frequency of falls, the time of day each fall occurred, and the characteristics of the patients who fell. No intervention is delivered and the units operate as they normally do. Which type of quantitative research is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Correlational</li><li class="fopt right"><span class="mk">&#10003;</span>Descriptive</li><li class="fopt"><span class="mk">C</span>Quasi-experimental</li><li class="fopt"><span class="mk">D</span>Experimental</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Descriptive research is the exploration and description of phenomena in real-life situations, giving an accurate account of the characteristics of particular individuals, situations, or groups using numbers. It is usually conducted with large numbers of participants in natural settings with no manipulation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because several variables are being measured at once. Correlational research requires that the study systematically investigate the relationship between those variables, not merely count and categorize them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of quantitative research</span><span class="chip t2">descriptive research</span></div>
+<div class="stem">2. Which of the following are outcomes of descriptive research as the chapter describes them? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Identification and description of concepts</li><li class="fopt"><span class="mk">B</span>Determination of the degree and strength of the relationship between two variables</li><li class="fopt right"><span class="mk">&#10003;</span>Identification of possible relationships</li><li class="fopt right"><span class="mk">&#10003;</span>Development of hypotheses that provide a basis for future quantitative research</li><li class="fopt"><span class="mk">E</span>Determination that one variable causes a change in another</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives three outcomes of descriptive studies: identification and description of concepts, identification of possible relationships, and development of hypotheses that provide a basis for future quantitative research.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) belongs to correlational research, which measures variables and then applies correlational statistics to determine the degree and type of relationship. Descriptive research identifies only possible relationships.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of quantitative research</span><span class="chip t2">quasi-experimental and experimental research</span></div>
+<div class="stem">3. A nurse implements a structured early-mobility protocol on one postoperative unit and compares outcomes with a unit receiving usual care. Participants could not be randomly selected because staffing patterns determined which unit each patient entered. Which type of quantitative research is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Descriptive</li><li class="fopt"><span class="mk">B</span>Correlational</li><li class="fopt right"><span class="mk">&#10003;</span>Quasi-experimental</li><li class="fopt"><span class="mk">D</span>Experimental</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Quasi-experimental research implements an intervention to examine causal relationships but has less control over the implementation of the intervention, the management of the setting, and/or the selection of participants. Inability to randomly select participants points to quasi-experimental.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex answer because an intervention is present. Both quasi-experimental and experimental studies involve interventions; the level of control, not the presence of an intervention, decides which one it is.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of quantitative research</span><span class="chip t2">quasi-experimental and experimental research</span></div>
+<div class="stem">4. Which statements about the four types of quantitative research are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Descriptive and correlational studies are typically designed with minimal researcher control</li><li class="fopt right"><span class="mk">&#10003;</span>Both quasi-experimental and experimental studies involve implementing an intervention</li><li class="fopt right"><span class="mk">&#10003;</span>Experimental research is the most highly controlled of the four types</li><li class="fopt"><span class="mk">D</span>When little knowledge is available about a phenomenon, experimental studies are conducted first in order to establish control</li><li class="fopt right"><span class="mk">&#10003;</span>Descriptive and correlational studies are frequently conducted to provide a basis for quasi-experimental and experimental studies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Descriptive and correlational research are conducted with minimal control, both quasi-experimental and experimental research implement interventions, and experimental research is the highly controlled investigation conducted to predict and control phenomena. When little knowledge is available, descriptive studies are conducted first and provide a basis for correlational and then for the more highly controlled designs.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reverses the progression. The four types build on one another from the least controlled to the most controlled, so descriptive work comes first when little is known.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of quantitative research</span><span class="chip t2">quasi-experimental and experimental research</span></div>
+<div class="stem">5. Why does the chapter state that nurse researchers conduct more quasi-experimental studies than experimental studies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Quasi-experimental designs provide stronger evidence of causality than experimental designs</li><li class="fopt"><span class="mk">B</span>Experimental designs cannot examine the effect of one variable on another</li><li class="fopt"><span class="mk">C</span>Quasi-experimental designs do not require an intervention, which makes them easier to run in practice</li><li class="fopt right"><span class="mk">&#10003;</span>In clinical settings researchers frequently cannot select participants randomly or control certain variables related to the intervention or the setting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>When studying human behavior, especially in clinical settings, researchers frequently are unable to select participants randomly or to control certain variables related to the intervention or setting, so nurse researchers conduct more quasi-experimental than experimental studies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts the hierarchy. Quasi-experimental studies dominate nursing because of feasibility, not because they are the stronger design; the experimental design carries the highest control.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">correlational reasoning</span><span class="chip t2">direction and strength of relationships</span></div>
+<div class="stem">6. A study reports that as smoking pack-years increase, life span decreases. How is this relationship best described?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A positive relationship, because both variables were measured with precision</li><li class="fopt"><span class="mk">B</span>A weak relationship, because the direction is negative</li><li class="fopt right"><span class="mk">&#10003;</span>A negative relationship, because the variables vary in opposite directions</li><li class="fopt"><span class="mk">D</span>No relationship, because the two variables move in different directions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A negative relationship means the variables vary in opposite directions, so that as one increases the other decreases. This is the chapter's own smoking and life-span example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the classic misread. Negative names the direction of the relationship, not its weakness; a value near negative 1 is a strong relationship.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">correlational reasoning</span><span class="chip t2">direction and strength of relationships</span></div>
+<div class="stem">7. A study finds that the more minutes people exercise each week, the greater their bone density. How is this relationship best described?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A positive relationship, because the variables vary together</li><li class="fopt"><span class="mk">B</span>A positive relationship, because the health outcome is a desirable one</li><li class="fopt"><span class="mk">C</span>A negative relationship, because exercise reduces the rate of bone loss</li><li class="fopt"><span class="mk">D</span>A causal relationship, because exercise preceded the change in bone density</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A positive relationship means the variables vary together, both increasing or both decreasing. This is the chapter's exercise and bone-density example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror image of the smoking item's trap. Positive and negative name direction only; they do not mean the finding is good news or bad news.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">correlational reasoning</span><span class="chip t2">direction and strength of relationships</span></div>
+<div class="stem">8. Two correlational findings are reported from the same study: variable pair 1 has a value of negative 0.86 and variable pair 2 has a value of positive 0.14. Which interpretation is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Pair 2 has the stronger relationship because its value is positive</li><li class="fopt"><span class="mk">B</span>Pair 1 shows no relationship because its value falls below zero</li><li class="fopt"><span class="mk">C</span>Both values fall outside the range possible for a correlational value</li><li class="fopt right"><span class="mk">&#10003;</span>Pair 1 has the stronger relationship, and pair 2 is close to showing no relationship</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Correlational values range from negative 1, a perfect negative relationship, to positive 1, a perfect positive relationship, with 0 indicating no relationship. Negative 0.86 is near a perfect negative relationship, while positive 0.14 sits close to zero.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats a negative value as an absence of relationship. It is 0, not any negative number, that indicates no relationship.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">correlational reasoning</span><span class="chip t2">correlation and causation</span></div>
+<div class="stem">9. Which statements about correlational research are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is the systematic investigation of relationships between or among variables</li><li class="fopt"><span class="mk">B</span>Its primary intent is to determine whether one variable causes a change in another</li><li class="fopt right"><span class="mk">&#10003;</span>Its findings generate hypotheses that are then tested in quasi-experimental and experimental studies</li><li class="fopt right"><span class="mk">&#10003;</span>It uses correlational statistics to determine the degree and the type of relationship present</li><li class="fopt right"><span class="mk">&#10003;</span>It is usually conducted with minimal researcher control</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Correlational research systematically investigates relationships between or among variables, measures those variables in a sample and applies correlational statistics to determine strength and type of relationship, is designed with minimal control, and generates hypotheses for the causal designs.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the single highest-yield distractor in this chapter. The primary intent of correlational studies is to explain the nature of relationships in the real world, not to determine cause and effect.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">basic and applied research</span><span class="chip t2">knowledge for its own sake</span></div>
+<div class="stem">10. Wacker et al. (2016) studied the muscle and bone pathology of rickets in mice in a laboratory. How is this study classified?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Basic research, because it pursues knowledge for its own sake and works toward general scientific principles</li><li class="fopt"><span class="mk">B</span>Applied research, because rickets is a clinical condition that nurses treat</li><li class="fopt"><span class="mk">C</span>Applied research, because the investigators used an experimental design</li><li class="fopt"><span class="mk">D</span>Basic research, because studies using animals cannot include an intervention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Basic, or pure or bench, research is scientific investigation conducted for the pursuit of knowledge for its own sake, typically laboratory work with animals or humans on physiological functioning, genetics, or pathological processes. The mouse rickets study is the chapter's example of a basic experimental study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex answer because the topic sounds clinical. Classification follows the purpose of the knowledge being generated, not whether the disease appears in practice.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">basic and applied research</span><span class="chip t2">knowledge that changes practice</span></div>
+<div class="stem">11. A nurse conducts a study comparing two catheter-care protocols to determine which one reduces catheter-associated infections on her unit. How is this study classified, and what is its aim?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Basic research, aimed at establishing general scientific principles</li><li class="fopt"><span class="mk">B</span>Basic research, aimed at the pleasure of learning and finding truth</li><li class="fopt"><span class="mk">C</span>Applied research, aimed at describing phenomena in real-life situations without changing them</li><li class="fopt right"><span class="mk">&#10003;</span>Applied research, aimed at solving problems and making decisions about outcomes in real-life practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Applied, or practical, research generates knowledge that will directly influence or improve clinical practice, with the aim of solving problems, making decisions, and predicting or controlling outcomes in real-life practice settings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) attaches a descriptive-research purpose to the applied label. Applied names the use to which the knowledge is put; it does not name the study type or the level of control.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rigor and control</span><span class="chip t2">precision in measurement</span></div>
+<div class="stem">12. A researcher chooses to record heart rate with a cardiac monitor rather than palpating the radial pulse for 30 seconds and writing the value on a data sheet. Which element of a rigorous study is being strengthened, and what does strengthening it make possible?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Control, which allows the researcher to manipulate the study setting</li><li class="fopt right"><span class="mk">&#10003;</span>Precision, which supports transparency and therefore replication</li><li class="fopt"><span class="mk">C</span>Rigor, which is achieved primarily by increasing the size of the sample</li><li class="fopt"><span class="mk">D</span>Intervention fidelity, which supports consistent implementation of the intervention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Precision encompasses accuracy, detail, and order and is most explicitly demonstrated in the measurement or quantification of the study variables. The chapter uses this exact monitor-versus-palpation contrast, and notes that precision enables transparency, which enables replication.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is plausible because fidelity also concerns consistency, but intervention fidelity is the detailed development and consistent implementation of the intervention, not the way an outcome variable is measured.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rigor and control</span><span class="chip t2">extraneous variables</span></div>
+<div class="stem">13. A researcher studying the effect of relaxation therapy on incisional pain enrolls only patients who have abdominal incisions and who are receiving one type of intravenous pain medication. What is the researcher doing?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Establishing intervention fidelity</li><li class="fopt"><span class="mk">B</span>Operationally defining the dependent variable</li><li class="fopt right"><span class="mk">&#10003;</span>Controlling extraneous variables that could interfere with understanding the relationships among the study variables</li><li class="fopt"><span class="mk">D</span>Obtaining a random sample of postoperative patients</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Extraneous variables can interfere with obtaining a clear understanding of the relationships among the study variables. In this worked example the type of surgical incision and the time, amount, and type of pain medication must be controlled, which the researcher accomplishes through the selection criteria.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) confuses narrowing the sample for control with random selection. Restricting who is eligible controls extraneous variables; it does not make the resulting sample random.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rigor and control</span><span class="chip t2">extraneous variables</span></div>
+<div class="stem">14. Which statement about extraneous variables and rigor is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Extraneous variables occur only in experimental studies, where an intervention is delivered</li><li class="fopt right"><span class="mk">&#10003;</span>Extraneous variables exist in all studies, and descriptive and correlational studies are rigorously conducted even though they are designed with minimal control</li><li class="fopt"><span class="mk">C</span>A tightly controlled design eliminates extraneous variables from a study entirely</li><li class="fopt"><span class="mk">D</span>Descriptive studies cannot be considered rigorous, because the researcher exercises minimal control</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Extraneous variables exist in all studies and can interfere with understanding the relationships among the study variables. Descriptive and correlational studies are rigorously conducted but are often designed with minimal researcher control.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) equates low control with low rigor. Rigor is the striving for excellence through discipline, adherence to detail, precision, and accuracy, and it is expected of every quantitative design regardless of how much control the design permits.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rigor and control</span><span class="chip t2">design and control</span></div>
+<div class="stem">15. Which statements about control and design in quantitative research are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Control is the imposing of rules by researchers to decrease the possibility of error</li><li class="fopt right"><span class="mk">&#10003;</span>Design is the set of rules used to achieve control in research</li><li class="fopt right"><span class="mk">&#10003;</span>A design is a blueprint for the conduct of a study that maximizes control over factors that could interfere with the study's desired outcome</li><li class="fopt"><span class="mk">D</span>Design refers strictly to the plan for collecting data from participants</li><li class="fopt right"><span class="mk">&#10003;</span>Quantitative studies range from uncontrolled to highly controlled</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Control is the imposing of rules to decrease the possibility of error, which increases the probability that the findings accurately reflect reality. The rules used to achieve control are the design, defined also as a blueprint that maximizes control, and studies range from uncontrolled to highly controlled.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is too narrow to be the chapter's definition. Data collection is one part of a design, but the chapter defines design by control, not by data collection.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research settings</span><span class="chip t2">levels of setting control</span></div>
+<div class="stem">16. A nurse researcher measures and interviews participants in their own homes and deliberately changes nothing about the home environment. Which setting is this, and which types of study typically use it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Natural or field setting, typically used for descriptive and correlational studies</li><li class="fopt"><span class="mk">B</span>Partially controlled setting, typically used for descriptive and correlational studies</li><li class="fopt"><span class="mk">C</span>Highly controlled setting, typically used for bench and experimental studies</li><li class="fopt"><span class="mk">D</span>Natural or field setting, typically used for experimental studies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A natural or field setting is an uncontrolled real-life situation or environment that the researcher does not manipulate or change, and descriptive and correlational studies are commonly conducted in natural settings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) pairs the correct setting with the wrong study type. Experimental research requires a level of control that a natural setting by definition does not provide.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">research settings</span><span class="chip t2">levels of setting control</span></div>
+<div class="stem">17. A study is conducted in a research center built solely for the purpose of conducting research, where temperature, lighting, and participant activity are all regulated by the investigators. Which setting is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Natural setting</li><li class="fopt"><span class="mk">B</span>Field setting</li><li class="fopt"><span class="mk">C</span>Partially controlled setting</li><li class="fopt right"><span class="mk">&#10003;</span>Highly controlled setting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A highly controlled setting is an artificially constructed environment developed for the sole purpose of conducting research, such as a laboratory, research center, or test unit, and it is where bench and experimental studies are conducted.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the near neighbor and the mirror image of this item. A partially controlled setting is a real environment that the researcher has manipulated or modified in some way, not one constructed for research from the beginning.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sampling and assignment</span><span class="chip t2">random selection versus random assignment</span></div>
+<div class="stem">18. Liao et al. (2017) recruited older adults through convenience sampling and then randomly placed each participant into either an exercise intervention group or a usual-activity group. Which statement about this study is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The sample must have been randomly selected, because random assignment was used</li><li class="fopt right"><span class="mk">&#10003;</span>The sample was obtained nonrandomly, and the design was strengthened by the random assignment</li><li class="fopt"><span class="mk">C</span>The study lacked control, because a nonrandom sample cannot be used in an intervention study</li><li class="fopt"><span class="mk">D</span>The random assignment converted the study environment into a highly controlled setting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The sample of older adults was obtained by nonrandom convenience sampling, and the design was strengthened by the random assignment of those adults to the exercise intervention or usual activity.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the inversion the chapter warns about directly. Random assignment to groups says nothing about how the sample was selected; nonrandom selection combined with random assignment is a real and common design in nursing research.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sampling and assignment</span><span class="chip t2">random selection versus random assignment</span></div>
+<div class="stem">19. Which statements about sampling in quantitative nursing research are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Sampling is the process of selecting participants who are representative of the population being studied</li><li class="fopt right"><span class="mk">&#10003;</span>In random sampling, each member of the population is selected independently and has an equal chance of being included</li><li class="fopt"><span class="mk">C</span>A population is a subset of the sample that is selected for a particular study</li><li class="fopt right"><span class="mk">&#10003;</span>Quantitative nursing studies often are conducted with nonrandom samples, because randomly selected samples are very difficult to obtain</li><li class="fopt right"><span class="mk">&#10003;</span>Randomly assigning participants to intervention and control groups increases control and rigor and decreases bias</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sampling selects participants representative of the population; random sampling gives each member an independent and equal chance of inclusion; nursing studies often use nonrandom samples, and participants selected nonrandomly are often randomly assigned to groups to increase control and rigor and decrease bias.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the two terms. The population is all the elements that meet the criteria for inclusion, and the sample is the subset of that population whose members are the participants.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">conceptual and operational definitions</span><span class="chip t2">telling the two definitions apart</span></div>
+<div class="stem">20. Moon et al. (2017) built a level-of-care variable as the sum of five questions about chores, shopping, personal care, getting around the home, and transportation, each scored from 1, meaning rarely, to 4, meaning every day. What kind of definition is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A conceptual definition, because it was drawn from the study framework</li><li class="fopt"><span class="mk">B</span>A conceptual definition, because it names the components that make up the concept</li><li class="fopt"><span class="mk">C</span>An operational definition, because it identifies the population of interest</li><li class="fopt right"><span class="mk">&#10003;</span>An operational definition, because it specifies how the variable can be measured</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An operational definition is developed so that the variable can be measured or an intervention implemented in a study, and scoring, coding, and summing items is measurement.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is tempting because the five questions do enumerate the components of caregiving, but attaching scores and summing them is measurement. If a definition names numbers, scales, coding, or instruments, it is operational.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">conceptual and operational definitions</span><span class="chip t2">telling the two definitions apart</span></div>
+<div class="stem">21. A researcher states that primary stressors are the care recipient's dementia status, the level of care the caregiver provides, and whether that care is given on a regular schedule, taking that meaning from a theorist's work. What kind of definition is this, and what does it do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A conceptual definition, which gives the variable theoretical meaning and links the study framework to the study variables</li><li class="fopt"><span class="mk">B</span>An operational definition, which makes the variable measurable within the study</li><li class="fopt"><span class="mk">C</span>A conceptual definition, which specifies the instrument used to measure the variable</li><li class="fopt"><span class="mk">D</span>An operational definition, which is derived from a theorist's definition or a concept analysis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A conceptual definition provides a variable or concept with theoretical meaning, is derived from a theorist's definition or a concept analysis, and links the study framework to the study variables.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the mirror-image error to the previous item. It carries the conceptual label but describes operational work, and naming an instrument is always operational no matter which label the option attaches to it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nursing process versus research process</span><span class="chip t2">comparing the two processes</span></div>
+<div class="stem">22. Which statements accurately describe how the research process differs from the nursing process? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The research process focuses on large groups, whereas the nursing process focuses on a specific patient and family</li><li class="fopt right"><span class="mk">&#10003;</span>The research process requires greater precision, rigor, and control</li><li class="fopt"><span class="mk">C</span>The research process has weaker theoretical underpinnings, because it is driven by collected data rather than by theory</li><li class="fopt right"><span class="mk">&#10003;</span>The research process is more complex and involves the rigorous application of a variety of research methods</li><li class="fopt right"><span class="mk">&#10003;</span>Research outcomes are shared widely through presentations and publications and can be synthesized across studies into evidence for practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The research process is more complex, focuses on large groups rather than an individual patient and family, demands greater precision, rigor, and control, and produces outcomes that are shared widely and synthesized across studies into evidence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the theory dimension. The research process has much stronger theoretical underpinnings than the nursing process, with all steps logically linked to each other and to the study's theoretical foundations.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"types of quantitative research","subtopic":"descriptive research","stem":"A nurse researcher enrolls 480 patients across six medical units and records the frequency of falls, the time of day each fall occurred, and the characteristics of the patients who fell. No intervention is delivered and the units operate as they normally do. Which type of quantitative research is this?","options":["Correlational","Descriptive","Quasi-experimental","Experimental"],"correct":[1],"sata":false,"why":"Descriptive research is the exploration and description of phenomena in real-life situations, giving an accurate account of the characteristics of particular individuals, situations, or groups using numbers. It is usually conducted with large numbers of participants in natural settings with no manipulation.","trap":"(A) is the reflex answer because several variables are being measured at once. Correlational research requires that the study systematically investigate the relationship between those variables, not merely count and categorize them."},{"topic":"types of quantitative research","subtopic":"descriptive research","stem":"Which of the following are outcomes of descriptive research as the chapter describes them? Select all that apply.","options":["Identification and description of concepts","Determination of the degree and strength of the relationship between two variables","Identification of possible relationships","Development of hypotheses that provide a basis for future quantitative research","Determination that one variable causes a change in another"],"correct":[0,2,3],"sata":true,"why":"The chapter gives three outcomes of descriptive studies: identification and description of concepts, identification of possible relationships, and development of hypotheses that provide a basis for future quantitative research.","trap":"(B) belongs to correlational research, which measures variables and then applies correlational statistics to determine the degree and type of relationship. Descriptive research identifies only possible relationships."},{"topic":"types of quantitative research","subtopic":"quasi-experimental and experimental research","stem":"A nurse implements a structured early-mobility protocol on one postoperative unit and compares outcomes with a unit receiving usual care. Participants could not be randomly selected because staffing patterns determined which unit each patient entered. Which type of quantitative research is this?","options":["Descriptive","Correlational","Quasi-experimental","Experimental"],"correct":[2],"sata":false,"why":"Quasi-experimental research implements an intervention to examine causal relationships but has less control over the implementation of the intervention, the management of the setting, and/or the selection of participants. Inability to randomly select participants points to quasi-experimental.","trap":"(D) is the reflex answer because an intervention is present. Both quasi-experimental and experimental studies involve interventions; the level of control, not the presence of an intervention, decides which one it is."},{"topic":"types of quantitative research","subtopic":"quasi-experimental and experimental research","stem":"Which statements about the four types of quantitative research are accurate? Select all that apply.","options":["Descriptive and correlational studies are typically designed with minimal researcher control","Both quasi-experimental and experimental studies involve implementing an intervention","Experimental research is the most highly controlled of the four types","When little knowledge is available about a phenomenon, experimental studies are conducted first in order to establish control","Descriptive and correlational studies are frequently conducted to provide a basis for quasi-experimental and experimental studies"],"correct":[0,1,2,4],"sata":true,"why":"Descriptive and correlational research are conducted with minimal control, both quasi-experimental and experimental research implement interventions, and experimental research is the highly controlled investigation conducted to predict and control phenomena. When little knowledge is available, descriptive studies are conducted first and provide a basis for correlational and then for the more highly controlled designs.","trap":"(D) reverses the progression. The four types build on one another from the least controlled to the most controlled, so descriptive work comes first when little is known."},{"topic":"types of quantitative research","subtopic":"quasi-experimental and experimental research","stem":"Why does the chapter state that nurse researchers conduct more quasi-experimental studies than experimental studies?","options":["Quasi-experimental designs provide stronger evidence of causality than experimental designs","Experimental designs cannot examine the effect of one variable on another","Quasi-experimental designs do not require an intervention, which makes them easier to run in practice","In clinical settings researchers frequently cannot select participants randomly or control certain variables related to the intervention or the setting"],"correct":[3],"sata":false,"why":"When studying human behavior, especially in clinical settings, researchers frequently are unable to select participants randomly or to control certain variables related to the intervention or setting, so nurse researchers conduct more quasi-experimental than experimental studies.","trap":"(A) inverts the hierarchy. Quasi-experimental studies dominate nursing because of feasibility, not because they are the stronger design; the experimental design carries the highest control."},{"topic":"correlational reasoning","subtopic":"direction and strength of relationships","stem":"A study reports that as smoking pack-years increase, life span decreases. How is this relationship best described?","options":["A positive relationship, because both variables were measured with precision","A weak relationship, because the direction is negative","A negative relationship, because the variables vary in opposite directions","No relationship, because the two variables move in different directions"],"correct":[2],"sata":false,"why":"A negative relationship means the variables vary in opposite directions, so that as one increases the other decreases. This is the chapter's own smoking and life-span example.","trap":"(B) is the classic misread. Negative names the direction of the relationship, not its weakness; a value near negative 1 is a strong relationship."},{"topic":"correlational reasoning","subtopic":"direction and strength of relationships","stem":"A study finds that the more minutes people exercise each week, the greater their bone density. How is this relationship best described?","options":["A positive relationship, because the variables vary together","A positive relationship, because the health outcome is a desirable one","A negative relationship, because exercise reduces the rate of bone loss","A causal relationship, because exercise preceded the change in bone density"],"correct":[0],"sata":false,"why":"A positive relationship means the variables vary together, both increasing or both decreasing. This is the chapter's exercise and bone-density example.","trap":"(B) is the mirror image of the smoking item's trap. Positive and negative name direction only; they do not mean the finding is good news or bad news."},{"topic":"correlational reasoning","subtopic":"direction and strength of relationships","stem":"Two correlational findings are reported from the same study: variable pair 1 has a value of negative 0.86 and variable pair 2 has a value of positive 0.14. Which interpretation is accurate?","options":["Pair 2 has the stronger relationship because its value is positive","Pair 1 shows no relationship because its value falls below zero","Both values fall outside the range possible for a correlational value","Pair 1 has the stronger relationship, and pair 2 is close to showing no relationship"],"correct":[3],"sata":false,"why":"Correlational values range from negative 1, a perfect negative relationship, to positive 1, a perfect positive relationship, with 0 indicating no relationship. Negative 0.86 is near a perfect negative relationship, while positive 0.14 sits close to zero.","trap":"(B) treats a negative value as an absence of relationship. It is 0, not any negative number, that indicates no relationship."},{"topic":"correlational reasoning","subtopic":"correlation and causation","stem":"Which statements about correlational research are accurate? Select all that apply.","options":["It is the systematic investigation of relationships between or among variables","Its primary intent is to determine whether one variable causes a change in another","Its findings generate hypotheses that are then tested in quasi-experimental and experimental studies","It uses correlational statistics to determine the degree and the type of relationship present","It is usually conducted with minimal researcher control"],"correct":[0,2,3,4],"sata":true,"why":"Correlational research systematically investigates relationships between or among variables, measures those variables in a sample and applies correlational statistics to determine strength and type of relationship, is designed with minimal control, and generates hypotheses for the causal designs.","trap":"(B) is the single highest-yield distractor in this chapter. The primary intent of correlational studies is to explain the nature of relationships in the real world, not to determine cause and effect."},{"topic":"basic and applied research","subtopic":"knowledge for its own sake","stem":"Wacker et al. (2016) studied the muscle and bone pathology of rickets in mice in a laboratory. How is this study classified?","options":["Basic research, because it pursues knowledge for its own sake and works toward general scientific principles","Applied research, because rickets is a clinical condition that nurses treat","Applied research, because the investigators used an experimental design","Basic research, because studies using animals cannot include an intervention"],"correct":[0],"sata":false,"why":"Basic, or pure or bench, research is scientific investigation conducted for the pursuit of knowledge for its own sake, typically laboratory work with animals or humans on physiological functioning, genetics, or pathological processes. The mouse rickets study is the chapter's example of a basic experimental study.","trap":"(B) is the reflex answer because the topic sounds clinical. Classification follows the purpose of the knowledge being generated, not whether the disease appears in practice."},{"topic":"basic and applied research","subtopic":"knowledge that changes practice","stem":"A nurse conducts a study comparing two catheter-care protocols to determine which one reduces catheter-associated infections on her unit. How is this study classified, and what is its aim?","options":["Basic research, aimed at establishing general scientific principles","Basic research, aimed at the pleasure of learning and finding truth","Applied research, aimed at describing phenomena in real-life situations without changing them","Applied research, aimed at solving problems and making decisions about outcomes in real-life practice"],"correct":[3],"sata":false,"why":"Applied, or practical, research generates knowledge that will directly influence or improve clinical practice, with the aim of solving problems, making decisions, and predicting or controlling outcomes in real-life practice settings.","trap":"(C) attaches a descriptive-research purpose to the applied label. Applied names the use to which the knowledge is put; it does not name the study type or the level of control."},{"topic":"rigor and control","subtopic":"precision in measurement","stem":"A researcher chooses to record heart rate with a cardiac monitor rather than palpating the radial pulse for 30 seconds and writing the value on a data sheet. Which element of a rigorous study is being strengthened, and what does strengthening it make possible?","options":["Control, which allows the researcher to manipulate the study setting","Precision, which supports transparency and therefore replication","Rigor, which is achieved primarily by increasing the size of the sample","Intervention fidelity, which supports consistent implementation of the intervention"],"correct":[1],"sata":false,"why":"Precision encompasses accuracy, detail, and order and is most explicitly demonstrated in the measurement or quantification of the study variables. The chapter uses this exact monitor-versus-palpation contrast, and notes that precision enables transparency, which enables replication.","trap":"(D) is plausible because fidelity also concerns consistency, but intervention fidelity is the detailed development and consistent implementation of the intervention, not the way an outcome variable is measured."},{"topic":"rigor and control","subtopic":"extraneous variables","stem":"A researcher studying the effect of relaxation therapy on incisional pain enrolls only patients who have abdominal incisions and who are receiving one type of intravenous pain medication. What is the researcher doing?","options":["Establishing intervention fidelity","Operationally defining the dependent variable","Controlling extraneous variables that could interfere with understanding the relationships among the study variables","Obtaining a random sample of postoperative patients"],"correct":[2],"sata":false,"why":"Extraneous variables can interfere with obtaining a clear understanding of the relationships among the study variables. In this worked example the type of surgical incision and the time, amount, and type of pain medication must be controlled, which the researcher accomplishes through the selection criteria.","trap":"(D) confuses narrowing the sample for control with random selection. Restricting who is eligible controls extraneous variables; it does not make the resulting sample random."},{"topic":"rigor and control","subtopic":"extraneous variables","stem":"Which statement about extraneous variables and rigor is accurate?","options":["Extraneous variables occur only in experimental studies, where an intervention is delivered","Extraneous variables exist in all studies, and descriptive and correlational studies are rigorously conducted even though they are designed with minimal control","A tightly controlled design eliminates extraneous variables from a study entirely","Descriptive studies cannot be considered rigorous, because the researcher exercises minimal control"],"correct":[1],"sata":false,"why":"Extraneous variables exist in all studies and can interfere with understanding the relationships among the study variables. Descriptive and correlational studies are rigorously conducted but are often designed with minimal researcher control.","trap":"(D) equates low control with low rigor. Rigor is the striving for excellence through discipline, adherence to detail, precision, and accuracy, and it is expected of every quantitative design regardless of how much control the design permits."},{"topic":"rigor and control","subtopic":"design and control","stem":"Which statements about control and design in quantitative research are accurate? Select all that apply.","options":["Control is the imposing of rules by researchers to decrease the possibility of error","Design is the set of rules used to achieve control in research","A design is a blueprint for the conduct of a study that maximizes control over factors that could interfere with the study's desired outcome","Design refers strictly to the plan for collecting data from participants","Quantitative studies range from uncontrolled to highly controlled"],"correct":[0,1,2,4],"sata":true,"why":"Control is the imposing of rules to decrease the possibility of error, which increases the probability that the findings accurately reflect reality. The rules used to achieve control are the design, defined also as a blueprint that maximizes control, and studies range from uncontrolled to highly controlled.","trap":"(D) is too narrow to be the chapter's definition. Data collection is one part of a design, but the chapter defines design by control, not by data collection."},{"topic":"research settings","subtopic":"levels of setting control","stem":"A nurse researcher measures and interviews participants in their own homes and deliberately changes nothing about the home environment. Which setting is this, and which types of study typically use it?","options":["Natural or field setting, typically used for descriptive and correlational studies","Partially controlled setting, typically used for descriptive and correlational studies","Highly controlled setting, typically used for bench and experimental studies","Natural or field setting, typically used for experimental studies"],"correct":[0],"sata":false,"why":"A natural or field setting is an uncontrolled real-life situation or environment that the researcher does not manipulate or change, and descriptive and correlational studies are commonly conducted in natural settings.","trap":"(D) pairs the correct setting with the wrong study type. Experimental research requires a level of control that a natural setting by definition does not provide."},{"topic":"research settings","subtopic":"levels of setting control","stem":"A study is conducted in a research center built solely for the purpose of conducting research, where temperature, lighting, and participant activity are all regulated by the investigators. Which setting is this?","options":["Natural setting","Field setting","Partially controlled setting","Highly controlled setting"],"correct":[3],"sata":false,"why":"A highly controlled setting is an artificially constructed environment developed for the sole purpose of conducting research, such as a laboratory, research center, or test unit, and it is where bench and experimental studies are conducted.","trap":"(C) is the near neighbor and the mirror image of this item. A partially controlled setting is a real environment that the researcher has manipulated or modified in some way, not one constructed for research from the beginning."},{"topic":"sampling and assignment","subtopic":"random selection versus random assignment","stem":"Liao et al. (2017) recruited older adults through convenience sampling and then randomly placed each participant into either an exercise intervention group or a usual-activity group. Which statement about this study is accurate?","options":["The sample must have been randomly selected, because random assignment was used","The sample was obtained nonrandomly, and the design was strengthened by the random assignment","The study lacked control, because a nonrandom sample cannot be used in an intervention study","The random assignment converted the study environment into a highly controlled setting"],"correct":[1],"sata":false,"why":"The sample of older adults was obtained by nonrandom convenience sampling, and the design was strengthened by the random assignment of those adults to the exercise intervention or usual activity.","trap":"(A) is the inversion the chapter warns about directly. Random assignment to groups says nothing about how the sample was selected; nonrandom selection combined with random assignment is a real and common design in nursing research."},{"topic":"sampling and assignment","subtopic":"random selection versus random assignment","stem":"Which statements about sampling in quantitative nursing research are accurate? Select all that apply.","options":["Sampling is the process of selecting participants who are representative of the population being studied","In random sampling, each member of the population is selected independently and has an equal chance of being included","A population is a subset of the sample that is selected for a particular study","Quantitative nursing studies often are conducted with nonrandom samples, because randomly selected samples are very difficult to obtain","Randomly assigning participants to intervention and control groups increases control and rigor and decreases bias"],"correct":[0,1,3,4],"sata":true,"why":"Sampling selects participants representative of the population; random sampling gives each member an independent and equal chance of inclusion; nursing studies often use nonrandom samples, and participants selected nonrandomly are often randomly assigned to groups to increase control and rigor and decrease bias.","trap":"(C) reverses the two terms. The population is all the elements that meet the criteria for inclusion, and the sample is the subset of that population whose members are the participants."},{"topic":"conceptual and operational definitions","subtopic":"telling the two definitions apart","stem":"Moon et al. (2017) built a level-of-care variable as the sum of five questions about chores, shopping, personal care, getting around the home, and transportation, each scored from 1, meaning rarely, to 4, meaning every day. What kind of definition is this?","options":["A conceptual definition, because it was drawn from the study framework","A conceptual definition, because it names the components that make up the concept","An operational definition, because it identifies the population of interest","An operational definition, because it specifies how the variable can be measured"],"correct":[3],"sata":false,"why":"An operational definition is developed so that the variable can be measured or an intervention implemented in a study, and scoring, coding, and summing items is measurement.","trap":"(B) is tempting because the five questions do enumerate the components of caregiving, but attaching scores and summing them is measurement. If a definition names numbers, scales, coding, or instruments, it is operational."},{"topic":"conceptual and operational definitions","subtopic":"telling the two definitions apart","stem":"A researcher states that primary stressors are the care recipient's dementia status, the level of care the caregiver provides, and whether that care is given on a regular schedule, taking that meaning from a theorist's work. What kind of definition is this, and what does it do?","options":["A conceptual definition, which gives the variable theoretical meaning and links the study framework to the study variables","An operational definition, which makes the variable measurable within the study","A conceptual definition, which specifies the instrument used to measure the variable","An operational definition, which is derived from a theorist's definition or a concept analysis"],"correct":[0],"sata":false,"why":"A conceptual definition provides a variable or concept with theoretical meaning, is derived from a theorist's definition or a concept analysis, and links the study framework to the study variables.","trap":"(C) is the mirror-image error to the previous item. It carries the conceptual label but describes operational work, and naming an instrument is always operational no matter which label the option attaches to it."},{"topic":"nursing process versus research process","subtopic":"comparing the two processes","stem":"Which statements accurately describe how the research process differs from the nursing process? Select all that apply.","options":["The research process focuses on large groups, whereas the nursing process focuses on a specific patient and family","The research process requires greater precision, rigor, and control","The research process has weaker theoretical underpinnings, because it is driven by collected data rather than by theory","The research process is more complex and involves the rigorous application of a variety of research methods","Research outcomes are shared widely through presentations and publications and can be synthesized across studies into evidence for practice"],"correct":[0,1,3,4],"sata":true,"why":"The research process is more complex, focuses on large groups rather than an individual patient and family, demands greater precision, rigor, and control, and produces outcomes that are shared widely and synthesized across studies into evidence.","trap":"(C) inverts the theory dimension. The research process has much stronger theoretical underpinnings than the nursing process, with all steps logically linked to each other and to the study's theoretical foundations."}];
+const TITLE = "Chapter 2 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 2";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

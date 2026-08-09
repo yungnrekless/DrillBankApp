@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 12 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 12</div><h1>Chapter 12 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">critical appraisal fundamentals</span><span class="chip t2">what appraisal is and is not</span></div>
+<div class="stem">1. A student's written appraisal of a published study concludes that the researcher lacks the expertise to conduct this kind of work. Why does this comment fall outside an intellectual critical appraisal?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is directed at the creator rather than at the product that was created</li><li class="fopt"><span class="mk">B</span>It uses the word critique, which the chapter treats as a negative term</li><li class="fopt"><span class="mk">C</span>It reports a weakness without also reporting a strength</li><li class="fopt"><span class="mk">D</span>It was made before the entire study had been read</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Intellectual critical appraisal is associated with critical thinking and evaluation and is directed at the product that is created, such as a study, rather than at the creator, and it involves evaluating the quality of that product.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names a real violation of the principles, but the fatal problem here is what the comment is aimed at, not how balanced it is. The chapter does examine author expertise as part of appraisal, which makes attacking the researcher feel permissible; the appraisal still belongs to the study.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">critical appraisal fundamentals</span><span class="chip t2">markers of a quality study</span></div>
+<div class="stem">2. Which characteristics identify a high-quality study as the chapter describes one? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Focuses on a significant problem</li><li class="fopt"><span class="mk">B</span>Produces findings that can be generalized to all similar patient populations</li><li class="fopt right"><span class="mk">&#10003;</span>Demonstrates sound methodology</li><li class="fopt right"><span class="mk">&#10003;</span>Produces credible findings and indicates implications for practice</li><li class="fopt right"><span class="mk">&#10003;</span>Provides a basis for additional studies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A high-quality study focuses on a significant problem, demonstrates sound methodology, produces credible findings, indicates implications for practice, and provides a basis for additional studies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) borrows quantitative sampling language and applies it as a universal quality marker. Generalizability is not one of the five markers, and for qualitative work the chapter rejects it outright in favor of transferability.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">who appraises research</span><span class="chip t2">role and education-level expectations</span></div>
+<div class="stem">3. A baccalaureate student asks how much critical appraisal skill her program is expected to give her. Which response reflects the chapter's role expectations?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Appraisal skill is expected only after several years of clinical practice</li><li class="fopt"><span class="mk">B</span>Basic and advanced analytic appraisal skills are both acquired at the baccalaureate level</li><li class="fopt"><span class="mk">C</span>Appraisal is a doctoral competency, and prelicensure students are expected only to read findings</li><li class="fopt right"><span class="mk">&#10003;</span>Basic research and appraisal knowledge is acquired in the baccalaureate program, with more advanced analytic skills at the master's and doctoral levels</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Basic research and appraisal knowledge is acquired in the baccalaureate program, and more advanced analytic skills are developed at the master's and doctoral levels.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is tempting because beginners are told to focus on step 1 of the appraisal process, but QSEN identifies striving to base practice on evidence as a competency for associate and baccalaureate prelicensure students. Beginning is not the same as being excused.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">who appraises research</span><span class="chip t2">role and education-level expectations</span></div>
+<div class="stem">4. Which statements about who critically appraises research, and why, are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>QSEN identifies striving to base practice on evidence as a competency for associate and baccalaureate prelicensure students</li><li class="fopt right"><span class="mk">&#10003;</span>Evidence-based practice is essential in agencies seeking or maintaining Magnet status</li><li class="fopt"><span class="mk">C</span>Advanced analytic appraisal skills are the ones acquired in the baccalaureate program</li><li class="fopt right"><span class="mk">&#10003;</span>Nurse educators appraise studies to expand their clinical knowledge base, update curriculum content, and serve as role models for students</li><li class="fopt right"><span class="mk">&#10003;</span>Practicing nurses appraise studies so that practice rests on current research evidence rather than on tradition or trial and error</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Students, practicing nurses, educators, and researchers all appraise studies; QSEN names EBP a prelicensure competency, Magnet status depends on EBP, educators update curriculum and model the skill, and practicing nurses appraise so practice is not built on tradition or trial and error.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the levels. Baccalaureate preparation supplies basic research and appraisal knowledge; the more advanced analytic skills come at the master's and doctoral levels.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">who appraises research</span><span class="chip t2">awareness versus appraisal</span></div>
+<div class="stem">5. A unit council emails a current research article to staff each month and posts copies in the break room, and the manager reports this as the unit's critical appraisal activity. Which evaluation is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The activity qualifies as critical appraisal because staff are reading current studies</li><li class="fopt right"><span class="mk">&#10003;</span>The activity increases awareness of study findings but is not sufficient for critical appraisal to occur</li><li class="fopt"><span class="mk">C</span>The activity qualifies as critical appraisal for quantitative studies but not for qualitative ones</li><li class="fopt"><span class="mk">D</span>The activity satisfies the requirement for evidence-based practice in an agency seeking Magnet status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Reading research journals and posting or emailing current studies at work can increase nurses' awareness of study findings but are not sufficient for critical appraisal to occur; nurses must question the quality of the studies, the credibility of the findings, and the meaning for practice, as in a research journal club.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the plausible pull because EBP really is essential to Magnet status, so anything labeled EBP feels like it counts. Circulating articles produces awareness, not appraisal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">principles of critical appraisal</span><span class="chip t2">strengths and weaknesses</span></div>
+<div class="stem">6. A nurse's appraisal of a study lists seven weaknesses, names no strengths, and concludes that the study is worthless. Which principle of critical appraisal does this appraisal violate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Read and critically appraise the entire study</li><li class="fopt"><span class="mk">B</span>Indicate the type of study conducted and identify its steps or elements</li><li class="fopt right"><span class="mk">&#10003;</span>Identify strengths as well as weaknesses, and avoid being overly critical</li><li class="fopt"><span class="mk">D</span>Discuss the usefulness of the findings for practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>All studies have strengths and weaknesses, so attention must be given to all aspects, and the appraiser should try not to be overly critical in identifying weaknesses or overly flattering in identifying strengths.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Harshness reads as rigor, which is why this appraisal looks thorough. An appraisal made entirely of weaknesses is a failed appraisal, not a demanding one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">principles of critical appraisal</span><span class="chip t2">strengths and weaknesses</span></div>
+<div class="stem">7. A second nurse appraises the same study, reports that it has no weaknesses at all, and recommends an immediate practice change. Compared with an appraisal that lists only weaknesses, how does this one rate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Stronger, because it identifies strengths as the principles require</li><li class="fopt"><span class="mk">B</span>Stronger, because it discusses usefulness of the findings for practice as the principles require</li><li class="fopt"><span class="mk">C</span>Weaker, because recommending a practice change falls outside the scope of critical appraisal</li><li class="fopt right"><span class="mk">&#10003;</span>Equally flawed, because being overly flattering is named as an error alongside being overly critical</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The principles state that all studies have strengths and weaknesses and that the appraiser should be objective and realistic, neither overly critical in identifying weaknesses nor overly flattering in identifying strengths.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) misuses a real principle. Discussing usefulness for practice is required, but it does not license skipping the weaknesses, and this is the mirror image of the only-weaknesses appraisal, not an improvement on it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">principles of critical appraisal</span><span class="chip t2">examples and rationale</span></div>
+<div class="stem">8. An appraisal of a study contains the single comment, &quot;The sampling section is inadequate.&quot; Which principles of critical appraisal does this comment fail to satisfy? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Provide specific examples of the strength or weakness identified</li><li class="fopt"><span class="mk">B</span>Examine the organization and presentation of the report</li><li class="fopt right"><span class="mk">&#10003;</span>Provide a rationale for the comment, documented with sources from the current literature</li><li class="fopt right"><span class="mk">&#10003;</span>Identify the study's strengths as well as its weaknesses</li><li class="fopt"><span class="mk">E</span>Appraise only those sections of the report that bear directly on practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The principles require identifying both strengths and weaknesses, providing specific examples of each, and providing a rationale for comments documented with sources from the current literature.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) inverts principle 1, which requires reading and critically appraising the entire study. (B) is a genuine principle but concerns the report's overall organization and presentation, which this comment says nothing about either way.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the appraisal process</span><span class="chip t2">the three steps</span></div>
+<div class="stem">9. A journal club is appraising one quantitative study and one qualitative study. Which statements about the appraisal process are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The same three steps apply to both quantitative and qualitative studies</li><li class="fopt"><span class="mk">B</span>Quantitative and qualitative studies are appraised with the same detailed set of questions</li><li class="fopt right"><span class="mk">&#10003;</span>The first step is identifying the steps or elements of the study</li><li class="fopt right"><span class="mk">&#10003;</span>The second step is determining the study's strengths and weaknesses or limitations</li><li class="fopt right"><span class="mk">&#10003;</span>The final step is evaluating the credibility and meaning of the study findings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The same three steps apply to both study types: identify the steps or elements of the study, determine strengths and weaknesses, and evaluate the credibility and meaning of the findings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the near miss. The steps are identical, but the detailed question sets are not — Box 12.2 supplies the quantitative questions and Box 12.3 the qualitative ones.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the appraisal process</span><span class="chip t2">the beginning appraiser</span></div>
+<div class="stem">10. A student appraising her first research report is unsure where to concentrate her effort. Which step should she expect to occupy most of it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Determining the study's strengths and weaknesses</li><li class="fopt"><span class="mk">B</span>Evaluating the credibility and meaning of the findings</li><li class="fopt right"><span class="mk">&#10003;</span>Identifying the steps or elements of the study</li><li class="fopt"><span class="mk">D</span>Performing all three steps at the same time</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Because you are new to critical appraisal of research, you will probably be focusing on step 1, identifying the steps of the research process in the report.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) describes the experienced appraiser, who might perform two or three steps simultaneously. It is a real description in the chapter, just not of a beginner.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">trustworthiness in qualitative research</span><span class="chip t2">dependability and confirmability</span></div>
+<div class="stem">11. While analyzing interview data, a qualitative researcher documents every coding decision and the reasoning behind it. Which element of trustworthiness is she primarily supporting?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Credibility</li><li class="fopt right"><span class="mk">&#10003;</span>Dependability</li><li class="fopt"><span class="mk">C</span>Transferability</li><li class="fopt"><span class="mk">D</span>Confirmability</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Dependability is the documentation of the steps taken and decisions made during analysis, and it is supported by the audit trail, the researchers' record of the analysis process.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the immediate neighbor and the next event in the sequence. Documenting the decisions is dependability; other researchers reading that record and agreeing is confirmability.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">trustworthiness in qualitative research</span><span class="chip t2">dependability and confirmability</span></div>
+<div class="stem">12. An independent research team reviews the audit trail of a completed qualitative study and agrees that the authors' conclusions are logical. Which element of trustworthiness has been demonstrated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Credibility</li><li class="fopt"><span class="mk">B</span>Dependability</li><li class="fopt"><span class="mk">C</span>Transferability</li><li class="fopt right"><span class="mk">&#10003;</span>Confirmability</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Confirmability is the extent to which other researchers can review the audit trail and agree that the authors' conclusions are logical.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the dependability item, and (A) pulls because agreement sounds like believability. Credibility is the reader's confidence that the results reflect the views of the participants, not another team's endorsement of the reasoning.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">trustworthiness in qualitative research</span><span class="chip t2">credibility and transferability</span></div>
+<div class="stem">13. A nurse on a rural home health team reads a qualitative study of rural family caregivers and wants to use its findings. Which statement about applying them is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The findings are not generalizable, but they may be transferable to other settings with similar participants</li><li class="fopt"><span class="mk">B</span>The findings are generalizable because the researchers reached data saturation</li><li class="fopt"><span class="mk">C</span>The findings may not be applied outside the setting in which the study was conducted</li><li class="fopt"><span class="mk">D</span>The findings are generalizable only if the study also reported statistical significance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Qualitative findings are not generalizable but are transferable or applicable in other settings with similar participants.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overcorrects the rule everyone memorizes. &quot;Not generalizable&quot; does not mean &quot;not usable&quot; — the chapter's word is transferable, to settings and participants like the ones studied.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">trustworthiness in qualitative research</span><span class="chip t2">credibility and transferability</span></div>
+<div class="stem">14. Which statements about trustworthiness in qualitative research are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Trustworthiness is the extent to which a study is dependable, confirmable, credible, and transferable</li><li class="fopt"><span class="mk">B</span>Confirmability means the researcher returns to the participants to confirm that the findings are correct</li><li class="fopt right"><span class="mk">&#10003;</span>Credibility is the reader's confidence that the results reflect the views of the participants</li><li class="fopt right"><span class="mk">&#10003;</span>Dependability is supported by the researchers' audit trail</li><li class="fopt right"><span class="mk">&#10003;</span>When findings are appraised to be confirmable and dependable, they have more credibility</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Trustworthiness is the determination that a qualitative study is rigorous and of high quality, meaning it is dependable, confirmable, credible, and transferable, and findings appraised as confirmable and dependable carry more credibility.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) describes member checking, not confirmability. Confirmability as defined here is about other researchers reviewing the audit trail, not about the participants ratifying the results.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">trustworthiness in qualitative research</span><span class="chip t2">qualitative and quantitative analogues</span></div>
+<div class="stem">15. A nurse comfortable with quantitative terms asks which element of trustworthiness plays the role that reliability plays in quantitative research. Which answer is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Credibility</li><li class="fopt"><span class="mk">B</span>Transferability</li><li class="fopt right"><span class="mk">&#10003;</span>Dependability</li><li class="fopt"><span class="mk">D</span>Trustworthiness as a whole</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Dependability, along with confirmability, is the qualitative analogue of reliability; credibility corresponds to validity, and transferability takes the place of generalizability.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex because credibility sounds like results you can rely on. Credibility maps to validity. If the stem says reliability, the answer is dependability or confirmability.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appraising rigor and study design</span><span class="chip t2">logical links and method experts</span></div>
+<div class="stem">16. An appraiser finds that a qualitative study's stated purpose does not match the research questions it asks. How should this finding be characterized?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A weakness, because logical inconsistency is a common flaw in qualitative research just as it is in quantitative research</li><li class="fopt"><span class="mk">B</span>A neutral observation, because qualitative research has fewer rules than quantitative research</li><li class="fopt"><span class="mk">C</span>A strength, because a qualitative purpose is expected to evolve during data collection</li><li class="fopt"><span class="mk">D</span>A weakness only if the researchers also failed to report an audit trail</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Common weaknesses in qualitative studies are logical inconsistencies and improperly applied methods, the same as in quantitative research, and the logical links among study elements are critical to the credibility of the study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) leans on a true statement to reach a wrong conclusion. Qualitative research does have fewer rules, which is why appraising it can seem daunting, but that does not exempt purpose, research questions, and method from having to line up.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appraising rigor and study design</span><span class="chip t2">logical links and method experts</span></div>
+<div class="stem">17. In appraising a hermeneutic phenomenological study, reviewers noted that the researchers cited Max van Manen but never cited Heidegger. Why does this count as an appraisal finding?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Van Manen is not recognized as an expert in hermeneutic phenomenology</li><li class="fopt"><span class="mk">B</span>A study must cite at least two methodologists to be considered rigorous</li><li class="fopt"><span class="mk">C</span>Citing a contemporary expert instead of the originator invalidates the study's findings</li><li class="fopt right"><span class="mk">&#10003;</span>Heidegger originated hermeneutic phenomenology, and consistency with experts in the method used is part of the appraisal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Van Manen is a commonly cited contemporary expert in hermeneutic phenomenology, but the researchers did not cite Heidegger, the originator; guidance from an expert in the method matters, and areas of consistency are strengths whereas areas of inconsistency may indicate weaknesses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overstates a real finding into a fatal one. This is a documented weakness in one section of the appraisal, not grounds to discard the study.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appraising rigor and study design</span><span class="chip t2">quantitative design weaknesses</span></div>
+<div class="stem">18. In a study appraised in the chapter, participants completed a quality-of-life scale as a pretest, received a 4-week transition-to-care intervention, and then completed the same scale as a posttest. The appraisal judged the design weak. What was the stated reason?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The same instrument was administered twice, which invalidates the posttest scores</li><li class="fopt right"><span class="mk">&#10003;</span>There was only one group and no separate comparison group, so the change from pretest to posttest could have been caused by extraneous variables</li><li class="fopt"><span class="mk">C</span>The intervention lasted only 4 weeks, which is too short to change quality of life</li><li class="fopt"><span class="mk">D</span>The researcher's credentials did not include preparation in the study's clinical area</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The design was judged weak because there was only one group and no separate comparison group to determine whether the treatment was effective or whether the change from pretest to posttest was caused by extraneous variables.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the chapter's own note on author expertise. The researcher was a DNP-prepared family nurse practitioner with clinical and research experience in that area, and the design was still judged weak — expertise does not rescue a design.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"critical appraisal fundamentals","subtopic":"what appraisal is and is not","stem":"A student's written appraisal of a published study concludes that the researcher lacks the expertise to conduct this kind of work. Why does this comment fall outside an intellectual critical appraisal?","options":["It is directed at the creator rather than at the product that was created","It uses the word critique, which the chapter treats as a negative term","It reports a weakness without also reporting a strength","It was made before the entire study had been read"],"correct":[0],"sata":false,"why":"Intellectual critical appraisal is associated with critical thinking and evaluation and is directed at the product that is created, such as a study, rather than at the creator, and it involves evaluating the quality of that product.","trap":"(C) names a real violation of the principles, but the fatal problem here is what the comment is aimed at, not how balanced it is. The chapter does examine author expertise as part of appraisal, which makes attacking the researcher feel permissible; the appraisal still belongs to the study."},{"topic":"critical appraisal fundamentals","subtopic":"markers of a quality study","stem":"Which characteristics identify a high-quality study as the chapter describes one? Select all that apply.","options":["Focuses on a significant problem","Produces findings that can be generalized to all similar patient populations","Demonstrates sound methodology","Produces credible findings and indicates implications for practice","Provides a basis for additional studies"],"correct":[0,2,3,4],"sata":true,"why":"A high-quality study focuses on a significant problem, demonstrates sound methodology, produces credible findings, indicates implications for practice, and provides a basis for additional studies.","trap":"(B) borrows quantitative sampling language and applies it as a universal quality marker. Generalizability is not one of the five markers, and for qualitative work the chapter rejects it outright in favor of transferability."},{"topic":"who appraises research","subtopic":"role and education-level expectations","stem":"A baccalaureate student asks how much critical appraisal skill her program is expected to give her. Which response reflects the chapter's role expectations?","options":["Appraisal skill is expected only after several years of clinical practice","Basic and advanced analytic appraisal skills are both acquired at the baccalaureate level","Appraisal is a doctoral competency, and prelicensure students are expected only to read findings","Basic research and appraisal knowledge is acquired in the baccalaureate program, with more advanced analytic skills at the master's and doctoral levels"],"correct":[3],"sata":false,"why":"Basic research and appraisal knowledge is acquired in the baccalaureate program, and more advanced analytic skills are developed at the master's and doctoral levels.","trap":"(C) is tempting because beginners are told to focus on step 1 of the appraisal process, but QSEN identifies striving to base practice on evidence as a competency for associate and baccalaureate prelicensure students. Beginning is not the same as being excused."},{"topic":"who appraises research","subtopic":"role and education-level expectations","stem":"Which statements about who critically appraises research, and why, are accurate? Select all that apply.","options":["QSEN identifies striving to base practice on evidence as a competency for associate and baccalaureate prelicensure students","Evidence-based practice is essential in agencies seeking or maintaining Magnet status","Advanced analytic appraisal skills are the ones acquired in the baccalaureate program","Nurse educators appraise studies to expand their clinical knowledge base, update curriculum content, and serve as role models for students","Practicing nurses appraise studies so that practice rests on current research evidence rather than on tradition or trial and error"],"correct":[0,1,3,4],"sata":true,"why":"Students, practicing nurses, educators, and researchers all appraise studies; QSEN names EBP a prelicensure competency, Magnet status depends on EBP, educators update curriculum and model the skill, and practicing nurses appraise so practice is not built on tradition or trial and error.","trap":"(C) inverts the levels. Baccalaureate preparation supplies basic research and appraisal knowledge; the more advanced analytic skills come at the master's and doctoral levels."},{"topic":"who appraises research","subtopic":"awareness versus appraisal","stem":"A unit council emails a current research article to staff each month and posts copies in the break room, and the manager reports this as the unit's critical appraisal activity. Which evaluation is accurate?","options":["The activity qualifies as critical appraisal because staff are reading current studies","The activity increases awareness of study findings but is not sufficient for critical appraisal to occur","The activity qualifies as critical appraisal for quantitative studies but not for qualitative ones","The activity satisfies the requirement for evidence-based practice in an agency seeking Magnet status"],"correct":[1],"sata":false,"why":"Reading research journals and posting or emailing current studies at work can increase nurses' awareness of study findings but are not sufficient for critical appraisal to occur; nurses must question the quality of the studies, the credibility of the findings, and the meaning for practice, as in a research journal club.","trap":"(D) is the plausible pull because EBP really is essential to Magnet status, so anything labeled EBP feels like it counts. Circulating articles produces awareness, not appraisal."},{"topic":"principles of critical appraisal","subtopic":"strengths and weaknesses","stem":"A nurse's appraisal of a study lists seven weaknesses, names no strengths, and concludes that the study is worthless. Which principle of critical appraisal does this appraisal violate?","options":["Read and critically appraise the entire study","Indicate the type of study conducted and identify its steps or elements","Identify strengths as well as weaknesses, and avoid being overly critical","Discuss the usefulness of the findings for practice"],"correct":[2],"sata":false,"why":"All studies have strengths and weaknesses, so attention must be given to all aspects, and the appraiser should try not to be overly critical in identifying weaknesses or overly flattering in identifying strengths.","trap":"Harshness reads as rigor, which is why this appraisal looks thorough. An appraisal made entirely of weaknesses is a failed appraisal, not a demanding one."},{"topic":"principles of critical appraisal","subtopic":"strengths and weaknesses","stem":"A second nurse appraises the same study, reports that it has no weaknesses at all, and recommends an immediate practice change. Compared with an appraisal that lists only weaknesses, how does this one rate?","options":["Stronger, because it identifies strengths as the principles require","Stronger, because it discusses usefulness of the findings for practice as the principles require","Weaker, because recommending a practice change falls outside the scope of critical appraisal","Equally flawed, because being overly flattering is named as an error alongside being overly critical"],"correct":[3],"sata":false,"why":"The principles state that all studies have strengths and weaknesses and that the appraiser should be objective and realistic, neither overly critical in identifying weaknesses nor overly flattering in identifying strengths.","trap":"(B) misuses a real principle. Discussing usefulness for practice is required, but it does not license skipping the weaknesses, and this is the mirror image of the only-weaknesses appraisal, not an improvement on it."},{"topic":"principles of critical appraisal","subtopic":"examples and rationale","stem":"An appraisal of a study contains the single comment, \"The sampling section is inadequate.\" Which principles of critical appraisal does this comment fail to satisfy? Select all that apply.","options":["Provide specific examples of the strength or weakness identified","Examine the organization and presentation of the report","Provide a rationale for the comment, documented with sources from the current literature","Identify the study's strengths as well as its weaknesses","Appraise only those sections of the report that bear directly on practice"],"correct":[0,2,3],"sata":true,"why":"The principles require identifying both strengths and weaknesses, providing specific examples of each, and providing a rationale for comments documented with sources from the current literature.","trap":"(E) inverts principle 1, which requires reading and critically appraising the entire study. (B) is a genuine principle but concerns the report's overall organization and presentation, which this comment says nothing about either way."},{"topic":"the appraisal process","subtopic":"the three steps","stem":"A journal club is appraising one quantitative study and one qualitative study. Which statements about the appraisal process are accurate? Select all that apply.","options":["The same three steps apply to both quantitative and qualitative studies","Quantitative and qualitative studies are appraised with the same detailed set of questions","The first step is identifying the steps or elements of the study","The second step is determining the study's strengths and weaknesses or limitations","The final step is evaluating the credibility and meaning of the study findings"],"correct":[0,2,3,4],"sata":true,"why":"The same three steps apply to both study types: identify the steps or elements of the study, determine strengths and weaknesses, and evaluate the credibility and meaning of the findings.","trap":"(B) is the near miss. The steps are identical, but the detailed question sets are not — Box 12.2 supplies the quantitative questions and Box 12.3 the qualitative ones."},{"topic":"the appraisal process","subtopic":"the beginning appraiser","stem":"A student appraising her first research report is unsure where to concentrate her effort. Which step should she expect to occupy most of it?","options":["Determining the study's strengths and weaknesses","Evaluating the credibility and meaning of the findings","Identifying the steps or elements of the study","Performing all three steps at the same time"],"correct":[2],"sata":false,"why":"Because you are new to critical appraisal of research, you will probably be focusing on step 1, identifying the steps of the research process in the report.","trap":"(D) describes the experienced appraiser, who might perform two or three steps simultaneously. It is a real description in the chapter, just not of a beginner."},{"topic":"trustworthiness in qualitative research","subtopic":"dependability and confirmability","stem":"While analyzing interview data, a qualitative researcher documents every coding decision and the reasoning behind it. Which element of trustworthiness is she primarily supporting?","options":["Credibility","Dependability","Transferability","Confirmability"],"correct":[1],"sata":false,"why":"Dependability is the documentation of the steps taken and decisions made during analysis, and it is supported by the audit trail, the researchers' record of the analysis process.","trap":"(D) is the immediate neighbor and the next event in the sequence. Documenting the decisions is dependability; other researchers reading that record and agreeing is confirmability."},{"topic":"trustworthiness in qualitative research","subtopic":"dependability and confirmability","stem":"An independent research team reviews the audit trail of a completed qualitative study and agrees that the authors' conclusions are logical. Which element of trustworthiness has been demonstrated?","options":["Credibility","Dependability","Transferability","Confirmability"],"correct":[3],"sata":false,"why":"Confirmability is the extent to which other researchers can review the audit trail and agree that the authors' conclusions are logical.","trap":"This is the mirror of the dependability item, and (A) pulls because agreement sounds like believability. Credibility is the reader's confidence that the results reflect the views of the participants, not another team's endorsement of the reasoning."},{"topic":"trustworthiness in qualitative research","subtopic":"credibility and transferability","stem":"A nurse on a rural home health team reads a qualitative study of rural family caregivers and wants to use its findings. Which statement about applying them is correct?","options":["The findings are not generalizable, but they may be transferable to other settings with similar participants","The findings are generalizable because the researchers reached data saturation","The findings may not be applied outside the setting in which the study was conducted","The findings are generalizable only if the study also reported statistical significance"],"correct":[0],"sata":false,"why":"Qualitative findings are not generalizable but are transferable or applicable in other settings with similar participants.","trap":"(C) overcorrects the rule everyone memorizes. \"Not generalizable\" does not mean \"not usable\" — the chapter's word is transferable, to settings and participants like the ones studied."},{"topic":"trustworthiness in qualitative research","subtopic":"credibility and transferability","stem":"Which statements about trustworthiness in qualitative research are accurate? Select all that apply.","options":["Trustworthiness is the extent to which a study is dependable, confirmable, credible, and transferable","Confirmability means the researcher returns to the participants to confirm that the findings are correct","Credibility is the reader's confidence that the results reflect the views of the participants","Dependability is supported by the researchers' audit trail","When findings are appraised to be confirmable and dependable, they have more credibility"],"correct":[0,2,3,4],"sata":true,"why":"Trustworthiness is the determination that a qualitative study is rigorous and of high quality, meaning it is dependable, confirmable, credible, and transferable, and findings appraised as confirmable and dependable carry more credibility.","trap":"(B) describes member checking, not confirmability. Confirmability as defined here is about other researchers reviewing the audit trail, not about the participants ratifying the results."},{"topic":"trustworthiness in qualitative research","subtopic":"qualitative and quantitative analogues","stem":"A nurse comfortable with quantitative terms asks which element of trustworthiness plays the role that reliability plays in quantitative research. Which answer is correct?","options":["Credibility","Transferability","Dependability","Trustworthiness as a whole"],"correct":[2],"sata":false,"why":"Dependability, along with confirmability, is the qualitative analogue of reliability; credibility corresponds to validity, and transferability takes the place of generalizability.","trap":"(A) is the reflex because credibility sounds like results you can rely on. Credibility maps to validity. If the stem says reliability, the answer is dependability or confirmability."},{"topic":"appraising rigor and study design","subtopic":"logical links and method experts","stem":"An appraiser finds that a qualitative study's stated purpose does not match the research questions it asks. How should this finding be characterized?","options":["A weakness, because logical inconsistency is a common flaw in qualitative research just as it is in quantitative research","A neutral observation, because qualitative research has fewer rules than quantitative research","A strength, because a qualitative purpose is expected to evolve during data collection","A weakness only if the researchers also failed to report an audit trail"],"correct":[0],"sata":false,"why":"Common weaknesses in qualitative studies are logical inconsistencies and improperly applied methods, the same as in quantitative research, and the logical links among study elements are critical to the credibility of the study.","trap":"(B) leans on a true statement to reach a wrong conclusion. Qualitative research does have fewer rules, which is why appraising it can seem daunting, but that does not exempt purpose, research questions, and method from having to line up."},{"topic":"appraising rigor and study design","subtopic":"logical links and method experts","stem":"In appraising a hermeneutic phenomenological study, reviewers noted that the researchers cited Max van Manen but never cited Heidegger. Why does this count as an appraisal finding?","options":["Van Manen is not recognized as an expert in hermeneutic phenomenology","A study must cite at least two methodologists to be considered rigorous","Citing a contemporary expert instead of the originator invalidates the study's findings","Heidegger originated hermeneutic phenomenology, and consistency with experts in the method used is part of the appraisal"],"correct":[3],"sata":false,"why":"Van Manen is a commonly cited contemporary expert in hermeneutic phenomenology, but the researchers did not cite Heidegger, the originator; guidance from an expert in the method matters, and areas of consistency are strengths whereas areas of inconsistency may indicate weaknesses.","trap":"(C) overstates a real finding into a fatal one. This is a documented weakness in one section of the appraisal, not grounds to discard the study."},{"topic":"appraising rigor and study design","subtopic":"quantitative design weaknesses","stem":"In a study appraised in the chapter, participants completed a quality-of-life scale as a pretest, received a 4-week transition-to-care intervention, and then completed the same scale as a posttest. The appraisal judged the design weak. What was the stated reason?","options":["The same instrument was administered twice, which invalidates the posttest scores","There was only one group and no separate comparison group, so the change from pretest to posttest could have been caused by extraneous variables","The intervention lasted only 4 weeks, which is too short to change quality of life","The researcher's credentials did not include preparation in the study's clinical area"],"correct":[1],"sata":false,"why":"The design was judged weak because there was only one group and no separate comparison group to determine whether the treatment was effective or whether the change from pretest to posttest was caused by extraneous variables.","trap":"(D) inverts the chapter's own note on author expertise. The researcher was a DNP-prepared family nurse practitioner with clinical and research experience in that area, and the design was still judged weak — expertise does not rescue a design."}];
+const TITLE = "Chapter 12 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 12";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>

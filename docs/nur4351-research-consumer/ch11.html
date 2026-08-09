@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 11 — NUR 4351 — Prof Dev: Consumer of Research</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 11</div><h1>Chapter 11 — NUR 4351 — Prof Dev: Consumer of Research</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">probability and statistical significance</span><span class="chip t2">decision theory</span></div>
+<div class="stem">1. A researcher comparing an intervention group and a control group begins from the assumption that both groups are components of the same population relative to the study variables. Which framework is being applied, and how is that assumption stated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Probability theory, stated as the effect size</li><li class="fopt right"><span class="mk">&#10003;</span>Decision theory, stated as the null hypothesis</li><li class="fopt"><span class="mk">C</span>Probability theory, stated as the research hypothesis</li><li class="fopt"><span class="mk">D</span>Decision theory, stated as the confidence interval</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Decision theory assumes that all of the groups in a study are components of the same population relative to the variables under study, an assumption expressed as the null hypothesis, which states there is no difference between or among the groups.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Probability theory is the other named framework, but it is used to explain the extent of a relationship or the probability that an event will occur or be accurately predicted. It is not the same-population assumption, and it is up to the researcher to provide evidence for a genuine difference.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">probability and statistical significance</span><span class="chip t2">alpha and p values</span></div>
+<div class="stem">2. An analysis reports p = 0.23. What does that value mean?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The two groups differ by 23 percentage points</li><li class="fopt"><span class="mk">B</span>23% of participants fell outside the confidence interval</li><li class="fopt right"><span class="mk">&#10003;</span>There is a 23% probability that the outcome occurs</li><li class="fopt"><span class="mk">D</span>The result is significant at the 0.23 level</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Probability ranges from 0 to 1 and can be expressed as a decimal or a percentage; p = 0.23 means a 23% probability that the outcome occurs.</p>
+</div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">probability and statistical significance</span><span class="chip t2">alpha and p values</span></div>
+<div class="stem">3. In a published study, which value reveals the risk of a Type I error in that particular study?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The effect size</li><li class="fopt"><span class="mk">B</span>The power level</li><li class="fopt"><span class="mk">C</span>Beta</li><li class="fopt right"><span class="mk">&#10003;</span>The probability (p) value</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's summary is explicit: the probability (p) value reveals the risk of a Type I error in a particular study.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Students routinely attach p to Type II risk. Type II risk is the province of power and beta; p speaks only to the chance of calling something significant when it is not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">probability and statistical significance</span><span class="chip t2">alpha and p values</span></div>
+<div class="stem">4. Which value, established before the study begins, reveals whether the probability value met the cutoff point?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The alpha (level of statistical significance)</li><li class="fopt"><span class="mk">B</span>The probability (p) value</li><li class="fopt"><span class="mk">C</span>The coefficient of determination</li><li class="fopt"><span class="mk">D</span>The standard deviation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The alpha value, set before the study, reveals whether the probability value met the cutoff point; alpha is the probability level at which results are judged to indicate a statistically significant difference between groups.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the previous item. Sort it by timing: alpha is chosen in advance and is a threshold; p comes out of the analysis and is a risk estimate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">probability and statistical significance</span><span class="chip t2">alpha and p values</span></div>
+<div class="stem">5. Which statements about the alpha level in a nursing study are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is set before data collection begins</li><li class="fopt right"><span class="mk">&#10003;</span>The level of significance selected for most nursing studies is 0.05</li><li class="fopt"><span class="mk">C</span>It is calculated from the sample data once the analysis is complete</li><li class="fopt right"><span class="mk">&#10003;</span>If p is less than or equal to alpha, the groups are considered significantly different, that is, members of different populations</li><li class="fopt right"><span class="mk">&#10003;</span>It reveals whether the probability value met the cutoff point</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Alpha is set before data collection, is 0.05 for most nursing studies, and functions as the cutoff: p at or below it means the groups are considered significantly different and therefore members of different populations.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the whole logic. Nothing about alpha is derived from the data; a cutoff chosen after seeing the results is not a cutoff.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">probability and statistical significance</span><span class="chip t2">degrees of significance</span></div>
+<div class="stem">6. A researcher set alpha at 0.05 and obtained p = 0.051. The report states the findings &quot;approached significance.&quot; How should a consumer of research evaluate this statement?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Acceptable, because 0.051 rounds to 0.05</li><li class="fopt"><span class="mk">B</span>Acceptable, provided the sample was large enough for adequate power</li><li class="fopt right"><span class="mk">&#10003;</span>Inappropriate; decision theory requires an absolute cutoff, so the groups are not significantly different</li><li class="fopt"><span class="mk">D</span>Inappropriate; the researcher should reset alpha to 0.10 and reanalyze</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Decision theory requires that the cutoff point selected for a study be absolute, and the chapter calls it inappropriate to state that findings approached significance at p = 0.051 when alpha was 0.05. Under decision theory that result means the groups are not significantly different.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>&quot;Approached significance&quot; sounds like careful hedging, which is exactly why it survives in published abstracts. The chapter names this phrase specifically as the error.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">probability and statistical significance</span><span class="chip t2">degrees of significance</span></div>
+<div class="stem">7. A study set alpha at 0.05. One comparison yields p = 0.001 and another yields p = 0.05. Which statements are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Both comparisons are statistically significant</li><li class="fopt"><span class="mk">B</span>The p = 0.001 comparison is more significant than the p = 0.05 comparison</li><li class="fopt right"><span class="mk">&#10003;</span>The level of significance is dichotomous, so there are no degrees of significance</li><li class="fopt right"><span class="mk">&#10003;</span>From a probability standpoint, the chance the groups are from the same population is 1 in 1000 at p = 0.001 and 5 in 100 at p = 0.05</li><li class="fopt"><span class="mk">E</span>The p = 0.05 comparison should be reported as approaching significance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Once alpha is set at 0.05, a result of 0.001 is not considered more significant than 0.05 — the level of significance is dichotomous, with no degrees of significance. From a probability-theory perspective the two still differ in Type I error risk: 1 in 1000 versus 5 in 100.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex answer because the two p values genuinely do differ in Type I risk. The distinction the chapter draws is that they differ in risk, not in significance. And p = 0.05 with alpha at 0.05 is significant, not &quot;approaching&quot; anything.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">type I and type II error</span><span class="chip t2">identifying the error</span></div>
+<div class="stem">8. A study concludes that a fall-prevention bundle significantly reduced falls. In fact the null hypothesis was true and there is no difference between the groups. What has occurred?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A Type I error</li><li class="fopt"><span class="mk">B</span>A Type II error</li><li class="fopt"><span class="mk">C</span>A correct decision, because the p value met alpha</li><li class="fopt"><span class="mk">D</span>A power failure, because power fell below 0.80</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A Type I error occurs when the null hypothesis is rejected when it is true — saying something is significant when it is not.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The tell is which hypothesis was true and what the researcher did with it. Rejecting a true null is Type I; the significance of the p value is irrelevant to naming the error.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">type I and type II error</span><span class="chip t2">identifying the error</span></div>
+<div class="stem">9. A study reports no significant difference in pressure injury rates between two turning schedules. A later, larger trial establishes that a real difference does exist. Which error did the first study make, and by which symbol is it represented?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Type I error, symbolized by alpha</li><li class="fopt"><span class="mk">B</span>Type I error, symbolized by beta</li><li class="fopt"><span class="mk">C</span>Type II error, symbolized by alpha</li><li class="fopt right"><span class="mk">&#10003;</span>Type II error, symbolized by beta</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A Type II error occurs when the null hypothesis is regarded as true but is in fact false — saying something is not significant when it is. It is symbolized by beta.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the previous item. Alpha belongs to Type I, beta to Type II; pairing the right error name with the wrong Greek letter is the standard half-credit trap.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">type I and type II error</span><span class="chip t2">identifying the error</span></div>
+<div class="stem">10. In 5% of statistical tests, the value of one of the groups can be expected to fall outside the 95% range and yet still belong to the same population. What is this situation called?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A nondirectional result</li><li class="fopt right"><span class="mk">&#10003;</span>A Type I error</li><li class="fopt"><span class="mk">C</span>A Type II error</li><li class="fopt"><span class="mk">D</span>An effect size of zero</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If groups come from the same population their values fall within the 95% range; a value outside it leads to concluding they belong to different populations. In 5% of tests that conclusion is wrong while the groups still belong to the same population, which is a Type I error.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The 5% here is the same 5% as alpha = 0.05. That is why the level of significance is what indicates Type I risk.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">type I and type II error</span><span class="chip t2">alpha and the error tradeoff</span></div>
+<div class="stem">11. A researcher changes the level of significance from 0.05 to 0.01 to be more conservative. What is the consequence?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both Type I and Type II risk decrease</li><li class="fopt"><span class="mk">B</span>Both Type I and Type II risk increase</li><li class="fopt right"><span class="mk">&#10003;</span>Type I risk decreases and Type II risk increases</li><li class="fopt"><span class="mk">D</span>Type I risk increases and Type II risk decreases</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The risk of a Type I error is greater at 0.05 (5 in 100) than at 0.01 (1 in 100), while the risk of a Type II error is greater at 0.01 than at 0.05. Tightening alpha trades one error for the other.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because &quot;more conservative&quot; sounds like it should be safer in every direction. Any option claiming a stricter alpha reduces both errors is wrong.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">type I and type II error</span><span class="chip t2">alpha and the error tradeoff</span></div>
+<div class="stem">12. Compared with an alpha of 0.01, an alpha of 0.05 carries which risk profile?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Less Type I risk and more Type II risk</li><li class="fopt right"><span class="mk">&#10003;</span>More Type I risk, at 5 in 100 rather than 1 in 100, and less Type II risk</li><li class="fopt"><span class="mk">C</span>More Type I risk and more Type II risk</li><li class="fopt"><span class="mk">D</span>Identical risk, because significance is dichotomous</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>At alpha = 0.05 the chance of a Type I error is 5 in 100, versus 1 in 100 at 0.01; Type II risk moves in the opposite direction and is greater at 0.01.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the same tradeoff run backward from the previous item. (D) misapplies a true statement — significance is dichotomous, but that says nothing about error risk across different alpha levels.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">type I and type II error</span><span class="chip t2">type II risk in nursing research</span></div>
+<div class="stem">13. The chapter concludes that the risk of a Type II error is often high in nursing studies. Which reasons does it give? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Many nursing studies are conducted with small samples</li><li class="fopt right"><span class="mk">&#10003;</span>Instruments frequently do not accurately and precisely measure the variables</li><li class="fopt right"><span class="mk">&#10003;</span>Multiple variables interact, and examining only a few can let small differences between groups be overlooked</li><li class="fopt right"><span class="mk">&#10003;</span>Type II errors are often caused by flaws in the research methods</li><li class="fopt"><span class="mk">E</span>Nursing studies conventionally set alpha at 0.001 rather than 0.05</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter attributes Type II errors to flaws in research methods, and names small samples, imprecise instruments, and multiple interacting variables of which only a few are examined as the reasons Type II risk is often high in nursing studies.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is false on its own terms — 0.05 is the conventional nursing alpha — and it also reverses the tradeoff, since a stricter alpha would raise Type II risk rather than being an argument against it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">power and effect size</span><span class="chip t2">power analysis</span></div>
+<div class="stem">14. Which elements are the four parameters of a power analysis, any three of which allow the fourth to be calculated? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Power</li><li class="fopt right"><span class="mk">&#10003;</span>Level of significance</li><li class="fopt right"><span class="mk">&#10003;</span>Effect size</li><li class="fopt right"><span class="mk">&#10003;</span>Sample size</li><li class="fopt"><span class="mk">E</span>Level of measurement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Cohen's four parameters of a power analysis are power, level of significance, effect size, and sample size; if three of the four are known, the fourth can be calculated.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is a real and heavily tested concept in this chapter, but it belongs to test selection, not power analysis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">power and effect size</span><span class="chip t2">power analysis</span></div>
+<div class="stem">15. Which statement defines power?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The probability level at which results are judged to indicate a statistically significant difference</li><li class="fopt right"><span class="mk">&#10003;</span>The probability that a statistical test will detect a significant difference that exists</li><li class="fopt"><span class="mk">C</span>The degree to which the phenomenon is present in the population</li><li class="fopt"><span class="mk">D</span>The probability that the null hypothesis is rejected when it is true</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Power is the probability that a statistical test will detect a significant difference that exists.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Every distractor is a real chapter definition attached to the wrong term — (A) is alpha, (C) is effect size, (D) is a Type I error.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">power and effect size</span><span class="chip t2">effect size and sample size</span></div>
+<div class="stem">16. A researcher planning a nursing intervention study can expect only a small effect size. What sample size does the chapter indicate is often needed to detect a significant difference?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>30 or more</li><li class="fopt"><span class="mk">B</span>50 or more</li><li class="fopt"><span class="mk">C</span>100 or more</li><li class="fopt right"><span class="mk">&#10003;</span>200 or more</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In many nursing studies only small effect sizes can be expected, and with a small effect a sample of 200 or more is often needed to detect a significant difference.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Small effect sizes themselves arise from small samples, weak study designs, and instruments that measure only large changes — so the fix is not simply to accept the small effect and proceed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">power and effect size</span><span class="chip t2">interpreting nonsignificant findings</span></div>
+<div class="stem">17. A study fails to reject the null hypothesis and reports a power level of 0.65. How should a consumer of research respond?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Question the validity of the nonsignificant findings, because power is below 0.80</li><li class="fopt"><span class="mk">B</span>Accept the nonsignificant findings, because power above 0.50 is adequate</li><li class="fopt"><span class="mk">C</span>Conclude that a Type I error occurred</li><li class="fopt"><span class="mk">D</span>Conclude that alpha was set too low</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The power level should be discussed in studies that fail to reject the null hypothesis, and if power is below 0.80 you need to question the validity of the nonsignificant findings. The minimum acceptable power is 0.80.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the error. A nonsignificant finding that may be wrong is a candidate Type II error, not a Type I error.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the normal curve and tailedness</span><span class="chip t2">standard deviation landmarks</span></div>
+<div class="stem">18. A student claims that the height data collected from one nursing class &quot;fits the normal curve exactly.&quot; Why is that claim inaccurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The normal curve is a theoretical frequency distribution of all possible values in a population, and no real distribution exactly fits it</li><li class="fopt"><span class="mk">B</span>The normal curve applies only to nominal-level data</li><li class="fopt"><span class="mk">C</span>The normal curve requires a sample of at least 200 before it can be applied</li><li class="fopt"><span class="mk">D</span>The normal curve describes samples rather than populations, so populations fit it less well</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The normal curve is a theoretical frequency distribution of all possible values in a population; however, no real distribution exactly fits the normal curve. It was developed by Johann Gauss in 1795 at age 18.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Because so much of inferential statistics depends on the normal curve, students treat it as a description of real data. It is a model, not a measurement.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the normal curve and tailedness</span><span class="chip t2">standard deviation landmarks</span></div>
+<div class="stem">19. Which statements about the normal curve and standard deviations are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Approximately 68% of values fall within 1 SD above and below the mean</li><li class="fopt"><span class="mk">B</span>Exactly 95% of values fall within 2 SDs above and below the mean</li><li class="fopt right"><span class="mk">&#10003;</span>95.5% of values fall between -2 and +2 SDs</li><li class="fopt right"><span class="mk">&#10003;</span>99% of values fall within 2.58 SDs</li><li class="fopt right"><span class="mk">&#10003;</span>Each tail beyond 1.96 SDs from the mean contains 2.5% of values</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The landmarks are 68% within 1 SD, 95% within 1.96 SDs, 95.5% within 2 SDs, and 99% within 2.58 SDs; the tails below -1.96 and above +1.96 SDs hold 2.5% each.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the fine-grained inversion. 95% goes with 1.96 SDs, not 2 SDs; a full 2 SDs captures 95.5%. Both numbers are in the chapter and the exam can use either.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the normal curve and tailedness</span><span class="chip t2">one-tailed versus two-tailed tests</span></div>
+<div class="stem">20. A researcher hypothesizes that anxiety scores will differ between two groups but does not predict which group will score higher. Which test is indicated, and where does the 5% lie?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>One-tailed, with all 5% in the upper tail</li><li class="fopt"><span class="mk">B</span>One-tailed, with all 5% in the lower tail</li><li class="fopt right"><span class="mk">&#10003;</span>Two-tailed, with 2.5% in each tail</li><li class="fopt"><span class="mk">D</span>Two-tailed, with 5% in each tail</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A two-tailed test is the analysis of a nondirectional hypothesis, and the 5% is split across both tails at 2.5% each.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) doubles the alpha without meaning to. Splitting 5% across two tails yields 2.5% per tail, not 5% per tail.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the normal curve and tailedness</span><span class="chip t2">one-tailed versus two-tailed tests</span></div>
+<div class="stem">21. A researcher predicts specifically that the intervention group will have lower anxiety scores than the control group. Which statement about the appropriate test is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A two-tailed test is required, because comparing two groups always splits the 5% across both tails</li><li class="fopt"><span class="mk">B</span>A one-tailed test is indicated, but it carries less power than a two-tailed test</li><li class="fopt"><span class="mk">C</span>A one-tailed test is indicated, and it increases the possibility of a Type II error</li><li class="fopt right"><span class="mk">&#10003;</span>A one-tailed test is indicated, and it is more powerful, decreasing the possibility of a Type II error</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A one-tailed test is used when the hypothesis is directional, with all 5% in a single tail; one-tailed tests are uniformly more powerful than two-tailed tests, decreasing the possibility of a Type II error.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) both assume that concentrating the alpha in one tail is a concession. It is the opposite — the cost of a one-tailed test is that the researcher must have sufficient knowledge of the variables to predict which tail the difference will fall in.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">descriptive statistics</span><span class="chip t2">measures of central tendency</span></div>
+<div class="stem">22. A researcher summarizes the blood types of a sample. Which measure of central tendency is appropriate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The mode</li><li class="fopt"><span class="mk">B</span>The median</li><li class="fopt"><span class="mk">C</span>The mean</li><li class="fopt"><span class="mk">D</span>The standard deviation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The mode is the numerical value or score that occurs with greatest frequency and is the appropriate measure for nominal data.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The mode does not necessarily indicate the center of the data set, which is why students reject it — but for nominal categories no other measure of central tendency applies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">descriptive statistics</span><span class="chip t2">measures of central tendency</span></div>
+<div class="stem">23. A study's income data contain several extreme outliers. Which measure of central tendency is the research report most likely to present, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The mean, because it uses every score in the data set</li><li class="fopt right"><span class="mk">&#10003;</span>The median, because it is not affected by extreme scores or outliers</li><li class="fopt"><span class="mk">C</span>The mode, because outliers cannot be the most frequent value</li><li class="fopt"><span class="mk">D</span>The mean, because outliers cancel out above and below</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If the study has outliers, the mean is most affected by these, and the median might be the measure of central tendency included in the research report.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is true as a description of the mean and is exactly why it fails here — using every score is what lets a handful of extreme values drag it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">descriptive statistics</span><span class="chip t2">measures of central tendency</span></div>
+<div class="stem">24. Which statements about measures of central tendency are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>In a perfect normal distribution the mean, median, and mode are equal</li><li class="fopt right"><span class="mk">&#10003;</span>The median is the 50th percentile of an ungrouped frequency distribution</li><li class="fopt"><span class="mk">C</span>The mean is the measure least affected by extreme scores</li><li class="fopt right"><span class="mk">&#10003;</span>With an even number of scores the median is the average of the two middle scores and may not be an actual score in the data set</li><li class="fopt"><span class="mk">E</span>A distribution with more than two modes is described as bimodal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>All three measures coincide in a perfect normal distribution; the median is the exact center, or 50th percentile, and with an even number of scores it is the average of the two middle scores, so it may not be a member of the data set.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the outlier rule — the mean is the measure most affected by extreme scores. (E) misnames the count: two modes is bimodal, more than two is multimodal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">descriptive statistics</span><span class="chip t2">dispersion and standard deviation</span></div>
+<div class="stem">25. A sample has a mean score of 5.28 with an SD of 2.22. Approximately 68% of the sample falls between which two values?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>0.84 and 9.72</li><li class="fopt"><span class="mk">B</span>2.22 and 7.50</li><li class="fopt right"><span class="mk">&#10003;</span>3.06 and 7.50</li><li class="fopt"><span class="mk">D</span>5.28 and 7.50</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>One SD below the mean is 5.28 minus 2.22 = 3.06 and one SD above is 7.50, so about 68% of the sample falls in that interval. Two SDs would give 0.84 to 9.72.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the 2 SD interval, which holds about 95.5%, not 68%. Match the percentage in the stem to the number of SDs before computing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">descriptive statistics</span><span class="chip t2">dispersion and standard deviation</span></div>
+<div class="stem">26. A report gives a mean pain score of 5.28 with an SD of 2.22. What does the standard deviation tell the reader?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The distance between the highest and lowest scores in the sample</li><li class="fopt"><span class="mk">B</span>The proportion of participants who scored above the mean</li><li class="fopt"><span class="mk">C</span>The interval within which the population mean falls 95% of the time</li><li class="fopt right"><span class="mk">&#10003;</span>The average deviation of a value from the mean, indicating the degree of error that would result if the mean alone were used to interpret the data</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The standard deviation is the square root of the variance and is the average difference or deviation value; it indicates the degree of error that would result if the mean alone were used to interpret the data.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) describes the 95% confidence interval, which is a different reported statistic even though both accompany a mean.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">descriptive statistics</span><span class="chip t2">confidence intervals and z-scores</span></div>
+<div class="stem">27. Which statements about confidence intervals and z-scores are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A 95% CI indicates that 95% of the time the population mean would fall within that interval</li><li class="fopt"><span class="mk">B</span>A 95% CI indicates that 95% of the participants' scores fall within that interval</li><li class="fopt right"><span class="mk">&#10003;</span>Confidence intervals can be calculated around parameters such as correlation coefficients and t-test values</li><li class="fopt right"><span class="mk">&#10003;</span>The mean expressed as a z-score is 0</li><li class="fopt"><span class="mk">E</span>A z-score of -2 indicates a score 2 SDs above the mean</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The 95% CI indicates that 95% of the time the population mean would fall within this interval; CIs are usually calculated for 95% and 99% and can be built around any population parameter, including correlation coefficients and t-test values. A z-score expresses deviation from the mean in SD units, so the mean itself is 0.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the standard misreading of a CI — it is a statement about where the population mean sits, not about where participants sit. (E) drops the sign: values above the mean are positive z-scores, below are negative.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">correlation and prediction</span><span class="chip t2">interpreting r</span></div>
+<div class="stem">28. A study reports r = -0.72 between hours of sleep and perceived fatigue. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A weak relationship, because the coefficient is negative</li><li class="fopt"><span class="mk">B</span>A moderate relationship in which both variables change in the same direction</li><li class="fopt"><span class="mk">C</span>A strong relationship establishing that sleep loss causes fatigue</li><li class="fopt right"><span class="mk">&#10003;</span>A strong inverse relationship, in which high scores on one variable occur with low scores on the other</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Strength is judged by the absolute value: below 0.3 is weak, 0.3 to 0.5 moderate, and above 0.5 strong. A negative correlation is inverse, meaning a high score on one variable occurs with a low score on the other.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the single most common correlation error — reading the minus sign as weakness. Strength decreases as r approaches 0 from either direction, so -0.72 is strong.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">correlation and prediction</span><span class="chip t2">interpreting r</span></div>
+<div class="stem">29. Which statements about the Pearson product-moment correlation are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It examines the relationship between two variables measured on a single sample</li><li class="fopt right"><span class="mk">&#10003;</span>It indicates both the nature and the magnitude of the relationship</li><li class="fopt"><span class="mk">C</span>It establishes whether variable A leads to or causes variable B</li><li class="fopt right"><span class="mk">&#10003;</span>Its values range from -1 to +1, with 0 indicating no relationship</li><li class="fopt right"><span class="mk">&#10003;</span>It is symmetrical, giving no indication of the direction of the relationship</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pearson correlation is an inferential technique for bivariate correlations, giving the nature (positive or negative) and the magnitude of a relationship between two variables measured on one sample, with values from -1 to +1.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the causal reading. Because correlational outcomes are symmetrical, it is not possible to establish whether A causes B or B causes A — the analysis gives no indication of direction at all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">correlation and prediction</span><span class="chip t2">explained variance and prediction</span></div>
+<div class="stem">30. A study reports r = 0.6 for anxiety and depression. What percentage of the variance is explained by the relationship between the two variables?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>6%</li><li class="fopt right"><span class="mk">&#10003;</span>36%</li><li class="fopt"><span class="mk">C</span>60%</li><li class="fopt"><span class="mk">D</span>64%</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Explained variance is indicated by r squared and expressed as a percentage: r = 0.6 gives r squared = 0.36, or 36% explained variance.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reads r itself as a percentage. The correlation and the proportion of variance it explains are different numbers, and the second is always the smaller for any r between 0 and 1.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">correlation and prediction</span><span class="chip t2">explained variance and prediction</span></div>
+<div class="stem">31. A regression model is reported with R squared giving 26% and model significance tested by ANOVA, F(4,79) = 7.051, p &lt; 0.001. What does the 26% represent?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The percentage of variance in the dependent variable explained by the model</li><li class="fopt"><span class="mk">B</span>The percentage of participants whose outcomes the model predicted correctly</li><li class="fopt"><span class="mk">C</span>The correlation between the predictors and the outcome</li><li class="fopt"><span class="mk">D</span>The probability that the model result reflects a Type I error</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In regression, R squared multiplied by 100% gives the percentage of variance explained; the chapter's worked example reports 26%, with the model tested for significance by ANOVA at F(4,79) = 7.051, p &lt; 0.001.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) confuses the model's explanatory power with the p value. Type I risk here is carried by p &lt; 0.001, not by R squared. Standardized beta coefficients, not R squared, identify which individual predictors are significant.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">choosing a statistical test</span><span class="chip t2">the four judgments</span></div>
+<div class="stem">32. Which judgments determine which statistical analysis is appropriate for a study? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Whether the question focuses on differences or on relationships and associations</li><li class="fopt right"><span class="mk">&#10003;</span>The level of measurement of the data</li><li class="fopt right"><span class="mk">&#10003;</span>How many groups are being compared</li><li class="fopt right"><span class="mk">&#10003;</span>Whether the samples are independent or paired</li><li class="fopt"><span class="mk">E</span>The alpha level the researcher selected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Four judgments determine the appropriate analysis: differences versus relationships, level of measurement, number of groups, and independent versus paired samples.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) matters enormously for interpreting the result but plays no part in choosing the test. Alpha is set before data collection regardless of which test will be run.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">choosing a statistical test</span><span class="chip t2">parametric versus nonparametric</span></div>
+<div class="stem">33. Body weight in kilograms is measured for all participants, but the Kolmogorov-Smirnov test shows the values are not normally distributed. Which approach is appropriate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Parametric, because weight is ratio-level data</li><li class="fopt"><span class="mk">B</span>Parametric, because the Kolmogorov-Smirnov test checks only for outliers</li><li class="fopt right"><span class="mk">&#10003;</span>Nonparametric, because parametric analysis requires interval or ratio data and a normal distribution</li><li class="fopt"><span class="mk">D</span>Nonparametric, because ratio-level data are always analyzed nonparametrically</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Parametric analyses are conducted when variables are at the interval or ratio level and the values are normally distributed; both conditions are required. Nonparametric analyses are conducted when variables are at the nominal and ordinal levels.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because level of measurement is the criterion students memorize first. Interval or ratio data that are not normally distributed do not automatically qualify for parametric analysis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">choosing a statistical test</span><span class="chip t2">independent versus paired groups</span></div>
+<div class="stem">34. Each participant's pretest score serves as the control for that same participant's posttest score. How are these observations classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Independent, because each participant contributes one score to each condition</li><li class="fopt"><span class="mk">B</span>Independent, because no randomization to separate arms occurred</li><li class="fopt"><span class="mk">C</span>Paired, but only if the participants were also randomly assigned</li><li class="fopt right"><span class="mk">&#10003;</span>Paired (dependent), because the observations are related to one another</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Paired or dependent groups exist when participants or observations are related in some way to the selection of other participants or observations, which includes a participant serving as their own control with the pretest as the control.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Misclassifying a pretest-posttest design as independent samples changes the correct test. Paired designs also include matched pairs and twins with one in each group, and groups sometimes matched on age and severity of illness.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">choosing a statistical test</span><span class="chip t2">independent versus paired groups</span></div>
+<div class="stem">35. Participants are randomly assigned to either a treatment group or a control group, and no participant appears in both. How are these samples classified?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Independent, because the selection of one participant is unrelated to the selection of the others</li><li class="fopt"><span class="mk">B</span>Paired, because both groups were drawn from the same recruitment pool</li><li class="fopt"><span class="mk">C</span>Independent, only if the groups are also matched on age and severity of illness</li><li class="fopt"><span class="mk">D</span>Paired, because random assignment produces equivalent matched groups</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Independent groups exist when the selection of one study participant is unrelated to the selection of other participants, as when participants are randomly assigned to treatment and control groups.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror of the pretest-posttest item. (C) and (D) both treat matching as something random assignment accomplishes; matching is a deliberate pairing procedure and is what makes groups dependent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">choosing a statistical test</span><span class="chip t2">matching the test to the comparison</span></div>
+<div class="stem">36. Two independent groups are compared on mean serum sodium, a ratio-level variable that is normally distributed. Which test is appropriate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Chi-square test of independence</li><li class="fopt right"><span class="mk">&#10003;</span>t-test</li><li class="fopt"><span class="mk">C</span>ANOVA</li><li class="fopt"><span class="mk">D</span>Post hoc analysis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The t-test is used to examine differences between two groups with interval or ratio level data.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex answer for anyone who has learned ANOVA as the general difference test. ANOVA is for three or more groups; using the wrong one of this pair is the classic error in both directions.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">choosing a statistical test</span><span class="chip t2">matching the test to the comparison</span></div>
+<div class="stem">37. Three clinic sites are compared on whether patients did or did not return for follow-up, a yes or no outcome. Which test is appropriate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>t-test, because the outcome has two categories</li><li class="fopt"><span class="mk">B</span>ANOVA, because there are three groups</li><li class="fopt right"><span class="mk">&#10003;</span>Chi-square test of independence, because the outcome is nominal</li><li class="fopt"><span class="mk">D</span>Pearson product-moment correlation, because two variables are involved</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chi-square test of independence is used with three or more groups when the data are nominal or ordinal; ANOVA and ANCOVA require interval or ratio data.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex answer because &quot;three or more groups&quot; points straight at ANOVA. Number of groups alone never settles the test — level of measurement has to be checked with it, and nominal data rule out the parametric options.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">choosing a statistical test</span><span class="chip t2">matching the test to the comparison</span></div>
+<div class="stem">38. A researcher compares four groups using ANOVA and reports a significant F value. Which statements are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>ANOVA tests for differences in variance, not in means alone</li><li class="fopt"><span class="mk">B</span>The significant F value identifies which specific pair of groups differs</li><li class="fopt right"><span class="mk">&#10003;</span>Post hoc analyses are conducted to determine the location of the differences among groups</li><li class="fopt right"><span class="mk">&#10003;</span>Bonferroni correction, Newman-Keuls, Tukey HSD, Scheffe, and Dunnett are post hoc options</li><li class="fopt right"><span class="mk">&#10003;</span>Between-group variance is the variation of the group means around the grand mean</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>ANOVA tests for differences in variance, partitioned into within-group variance and between-group variance around the grand mean; with more than two groups it is not possible to determine from the ANOVA where the significant differences occur, so post hoc analyses are conducted.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the single most tested misreading of ANOVA. A significant F tells you that the groups differ, not which ones — with only two groups the location would be obvious, which is precisely why post hoc tests exist for three or more.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"probability and statistical significance","subtopic":"decision theory","stem":"A researcher comparing an intervention group and a control group begins from the assumption that both groups are components of the same population relative to the study variables. Which framework is being applied, and how is that assumption stated?","options":["Probability theory, stated as the effect size","Decision theory, stated as the null hypothesis","Probability theory, stated as the research hypothesis","Decision theory, stated as the confidence interval"],"correct":[1],"sata":false,"why":"Decision theory assumes that all of the groups in a study are components of the same population relative to the variables under study, an assumption expressed as the null hypothesis, which states there is no difference between or among the groups.","trap":"Probability theory is the other named framework, but it is used to explain the extent of a relationship or the probability that an event will occur or be accurately predicted. It is not the same-population assumption, and it is up to the researcher to provide evidence for a genuine difference."},{"topic":"probability and statistical significance","subtopic":"alpha and p values","stem":"An analysis reports p = 0.23. What does that value mean?","options":["The two groups differ by 23 percentage points","23% of participants fell outside the confidence interval","There is a 23% probability that the outcome occurs","The result is significant at the 0.23 level"],"correct":[2],"sata":false,"why":"Probability ranges from 0 to 1 and can be expressed as a decimal or a percentage; p = 0.23 means a 23% probability that the outcome occurs.","trap":null},{"topic":"probability and statistical significance","subtopic":"alpha and p values","stem":"In a published study, which value reveals the risk of a Type I error in that particular study?","options":["The effect size","The power level","Beta","The probability (p) value"],"correct":[3],"sata":false,"why":"The chapter's summary is explicit: the probability (p) value reveals the risk of a Type I error in a particular study.","trap":"Students routinely attach p to Type II risk. Type II risk is the province of power and beta; p speaks only to the chance of calling something significant when it is not."},{"topic":"probability and statistical significance","subtopic":"alpha and p values","stem":"Which value, established before the study begins, reveals whether the probability value met the cutoff point?","options":["The alpha (level of statistical significance)","The probability (p) value","The coefficient of determination","The standard deviation"],"correct":[0],"sata":false,"why":"The alpha value, set before the study, reveals whether the probability value met the cutoff point; alpha is the probability level at which results are judged to indicate a statistically significant difference between groups.","trap":"This is the mirror of the previous item. Sort it by timing: alpha is chosen in advance and is a threshold; p comes out of the analysis and is a risk estimate."},{"topic":"probability and statistical significance","subtopic":"alpha and p values","stem":"Which statements about the alpha level in a nursing study are accurate? Select all that apply.","options":["It is set before data collection begins","The level of significance selected for most nursing studies is 0.05","It is calculated from the sample data once the analysis is complete","If p is less than or equal to alpha, the groups are considered significantly different, that is, members of different populations","It reveals whether the probability value met the cutoff point"],"correct":[0,1,3,4],"sata":true,"why":"Alpha is set before data collection, is 0.05 for most nursing studies, and functions as the cutoff: p at or below it means the groups are considered significantly different and therefore members of different populations.","trap":"(C) inverts the whole logic. Nothing about alpha is derived from the data; a cutoff chosen after seeing the results is not a cutoff."},{"topic":"probability and statistical significance","subtopic":"degrees of significance","stem":"A researcher set alpha at 0.05 and obtained p = 0.051. The report states the findings \"approached significance.\" How should a consumer of research evaluate this statement?","options":["Acceptable, because 0.051 rounds to 0.05","Acceptable, provided the sample was large enough for adequate power","Inappropriate; decision theory requires an absolute cutoff, so the groups are not significantly different","Inappropriate; the researcher should reset alpha to 0.10 and reanalyze"],"correct":[2],"sata":false,"why":"Decision theory requires that the cutoff point selected for a study be absolute, and the chapter calls it inappropriate to state that findings approached significance at p = 0.051 when alpha was 0.05. Under decision theory that result means the groups are not significantly different.","trap":"\"Approached significance\" sounds like careful hedging, which is exactly why it survives in published abstracts. The chapter names this phrase specifically as the error."},{"topic":"probability and statistical significance","subtopic":"degrees of significance","stem":"A study set alpha at 0.05. One comparison yields p = 0.001 and another yields p = 0.05. Which statements are accurate? Select all that apply.","options":["Both comparisons are statistically significant","The p = 0.001 comparison is more significant than the p = 0.05 comparison","The level of significance is dichotomous, so there are no degrees of significance","From a probability standpoint, the chance the groups are from the same population is 1 in 1000 at p = 0.001 and 5 in 100 at p = 0.05","The p = 0.05 comparison should be reported as approaching significance"],"correct":[0,2,3],"sata":true,"why":"Once alpha is set at 0.05, a result of 0.001 is not considered more significant than 0.05 — the level of significance is dichotomous, with no degrees of significance. From a probability-theory perspective the two still differ in Type I error risk: 1 in 1000 versus 5 in 100.","trap":"(B) is the reflex answer because the two p values genuinely do differ in Type I risk. The distinction the chapter draws is that they differ in risk, not in significance. And p = 0.05 with alpha at 0.05 is significant, not \"approaching\" anything."},{"topic":"type I and type II error","subtopic":"identifying the error","stem":"A study concludes that a fall-prevention bundle significantly reduced falls. In fact the null hypothesis was true and there is no difference between the groups. What has occurred?","options":["A Type I error","A Type II error","A correct decision, because the p value met alpha","A power failure, because power fell below 0.80"],"correct":[0],"sata":false,"why":"A Type I error occurs when the null hypothesis is rejected when it is true — saying something is significant when it is not.","trap":"The tell is which hypothesis was true and what the researcher did with it. Rejecting a true null is Type I; the significance of the p value is irrelevant to naming the error."},{"topic":"type I and type II error","subtopic":"identifying the error","stem":"A study reports no significant difference in pressure injury rates between two turning schedules. A later, larger trial establishes that a real difference does exist. Which error did the first study make, and by which symbol is it represented?","options":["Type I error, symbolized by alpha","Type I error, symbolized by beta","Type II error, symbolized by alpha","Type II error, symbolized by beta"],"correct":[3],"sata":false,"why":"A Type II error occurs when the null hypothesis is regarded as true but is in fact false — saying something is not significant when it is. It is symbolized by beta.","trap":"This is the mirror of the previous item. Alpha belongs to Type I, beta to Type II; pairing the right error name with the wrong Greek letter is the standard half-credit trap."},{"topic":"type I and type II error","subtopic":"identifying the error","stem":"In 5% of statistical tests, the value of one of the groups can be expected to fall outside the 95% range and yet still belong to the same population. What is this situation called?","options":["A nondirectional result","A Type I error","A Type II error","An effect size of zero"],"correct":[1],"sata":false,"why":"If groups come from the same population their values fall within the 95% range; a value outside it leads to concluding they belong to different populations. In 5% of tests that conclusion is wrong while the groups still belong to the same population, which is a Type I error.","trap":"The 5% here is the same 5% as alpha = 0.05. That is why the level of significance is what indicates Type I risk."},{"topic":"type I and type II error","subtopic":"alpha and the error tradeoff","stem":"A researcher changes the level of significance from 0.05 to 0.01 to be more conservative. What is the consequence?","options":["Both Type I and Type II risk decrease","Both Type I and Type II risk increase","Type I risk decreases and Type II risk increases","Type I risk increases and Type II risk decreases"],"correct":[2],"sata":false,"why":"The risk of a Type I error is greater at 0.05 (5 in 100) than at 0.01 (1 in 100), while the risk of a Type II error is greater at 0.01 than at 0.05. Tightening alpha trades one error for the other.","trap":"(A) is the reflex answer because \"more conservative\" sounds like it should be safer in every direction. Any option claiming a stricter alpha reduces both errors is wrong."},{"topic":"type I and type II error","subtopic":"alpha and the error tradeoff","stem":"Compared with an alpha of 0.01, an alpha of 0.05 carries which risk profile?","options":["Less Type I risk and more Type II risk","More Type I risk, at 5 in 100 rather than 1 in 100, and less Type II risk","More Type I risk and more Type II risk","Identical risk, because significance is dichotomous"],"correct":[1],"sata":false,"why":"At alpha = 0.05 the chance of a Type I error is 5 in 100, versus 1 in 100 at 0.01; Type II risk moves in the opposite direction and is greater at 0.01.","trap":"This is the same tradeoff run backward from the previous item. (D) misapplies a true statement — significance is dichotomous, but that says nothing about error risk across different alpha levels."},{"topic":"type I and type II error","subtopic":"type II risk in nursing research","stem":"The chapter concludes that the risk of a Type II error is often high in nursing studies. Which reasons does it give? Select all that apply.","options":["Many nursing studies are conducted with small samples","Instruments frequently do not accurately and precisely measure the variables","Multiple variables interact, and examining only a few can let small differences between groups be overlooked","Type II errors are often caused by flaws in the research methods","Nursing studies conventionally set alpha at 0.001 rather than 0.05"],"correct":[0,1,2,3],"sata":true,"why":"The chapter attributes Type II errors to flaws in research methods, and names small samples, imprecise instruments, and multiple interacting variables of which only a few are examined as the reasons Type II risk is often high in nursing studies.","trap":"(E) is false on its own terms — 0.05 is the conventional nursing alpha — and it also reverses the tradeoff, since a stricter alpha would raise Type II risk rather than being an argument against it."},{"topic":"power and effect size","subtopic":"power analysis","stem":"Which elements are the four parameters of a power analysis, any three of which allow the fourth to be calculated? Select all that apply.","options":["Power","Level of significance","Effect size","Sample size","Level of measurement"],"correct":[0,1,2,3],"sata":true,"why":"Cohen's four parameters of a power analysis are power, level of significance, effect size, and sample size; if three of the four are known, the fourth can be calculated.","trap":"(E) is a real and heavily tested concept in this chapter, but it belongs to test selection, not power analysis."},{"topic":"power and effect size","subtopic":"power analysis","stem":"Which statement defines power?","options":["The probability level at which results are judged to indicate a statistically significant difference","The probability that a statistical test will detect a significant difference that exists","The degree to which the phenomenon is present in the population","The probability that the null hypothesis is rejected when it is true"],"correct":[1],"sata":false,"why":"Power is the probability that a statistical test will detect a significant difference that exists.","trap":"Every distractor is a real chapter definition attached to the wrong term — (A) is alpha, (C) is effect size, (D) is a Type I error."},{"topic":"power and effect size","subtopic":"effect size and sample size","stem":"A researcher planning a nursing intervention study can expect only a small effect size. What sample size does the chapter indicate is often needed to detect a significant difference?","options":["30 or more","50 or more","100 or more","200 or more"],"correct":[3],"sata":false,"why":"In many nursing studies only small effect sizes can be expected, and with a small effect a sample of 200 or more is often needed to detect a significant difference.","trap":"Small effect sizes themselves arise from small samples, weak study designs, and instruments that measure only large changes — so the fix is not simply to accept the small effect and proceed."},{"topic":"power and effect size","subtopic":"interpreting nonsignificant findings","stem":"A study fails to reject the null hypothesis and reports a power level of 0.65. How should a consumer of research respond?","options":["Question the validity of the nonsignificant findings, because power is below 0.80","Accept the nonsignificant findings, because power above 0.50 is adequate","Conclude that a Type I error occurred","Conclude that alpha was set too low"],"correct":[0],"sata":false,"why":"The power level should be discussed in studies that fail to reject the null hypothesis, and if power is below 0.80 you need to question the validity of the nonsignificant findings. The minimum acceptable power is 0.80.","trap":"(C) inverts the error. A nonsignificant finding that may be wrong is a candidate Type II error, not a Type I error."},{"topic":"the normal curve and tailedness","subtopic":"standard deviation landmarks","stem":"A student claims that the height data collected from one nursing class \"fits the normal curve exactly.\" Why is that claim inaccurate?","options":["The normal curve is a theoretical frequency distribution of all possible values in a population, and no real distribution exactly fits it","The normal curve applies only to nominal-level data","The normal curve requires a sample of at least 200 before it can be applied","The normal curve describes samples rather than populations, so populations fit it less well"],"correct":[0],"sata":false,"why":"The normal curve is a theoretical frequency distribution of all possible values in a population; however, no real distribution exactly fits the normal curve. It was developed by Johann Gauss in 1795 at age 18.","trap":"Because so much of inferential statistics depends on the normal curve, students treat it as a description of real data. It is a model, not a measurement."},{"topic":"the normal curve and tailedness","subtopic":"standard deviation landmarks","stem":"Which statements about the normal curve and standard deviations are accurate? Select all that apply.","options":["Approximately 68% of values fall within 1 SD above and below the mean","Exactly 95% of values fall within 2 SDs above and below the mean","95.5% of values fall between -2 and +2 SDs","99% of values fall within 2.58 SDs","Each tail beyond 1.96 SDs from the mean contains 2.5% of values"],"correct":[0,2,3,4],"sata":true,"why":"The landmarks are 68% within 1 SD, 95% within 1.96 SDs, 95.5% within 2 SDs, and 99% within 2.58 SDs; the tails below -1.96 and above +1.96 SDs hold 2.5% each.","trap":"(B) is the fine-grained inversion. 95% goes with 1.96 SDs, not 2 SDs; a full 2 SDs captures 95.5%. Both numbers are in the chapter and the exam can use either."},{"topic":"the normal curve and tailedness","subtopic":"one-tailed versus two-tailed tests","stem":"A researcher hypothesizes that anxiety scores will differ between two groups but does not predict which group will score higher. Which test is indicated, and where does the 5% lie?","options":["One-tailed, with all 5% in the upper tail","One-tailed, with all 5% in the lower tail","Two-tailed, with 2.5% in each tail","Two-tailed, with 5% in each tail"],"correct":[2],"sata":false,"why":"A two-tailed test is the analysis of a nondirectional hypothesis, and the 5% is split across both tails at 2.5% each.","trap":"(D) doubles the alpha without meaning to. Splitting 5% across two tails yields 2.5% per tail, not 5% per tail."},{"topic":"the normal curve and tailedness","subtopic":"one-tailed versus two-tailed tests","stem":"A researcher predicts specifically that the intervention group will have lower anxiety scores than the control group. Which statement about the appropriate test is accurate?","options":["A two-tailed test is required, because comparing two groups always splits the 5% across both tails","A one-tailed test is indicated, but it carries less power than a two-tailed test","A one-tailed test is indicated, and it increases the possibility of a Type II error","A one-tailed test is indicated, and it is more powerful, decreasing the possibility of a Type II error"],"correct":[3],"sata":false,"why":"A one-tailed test is used when the hypothesis is directional, with all 5% in a single tail; one-tailed tests are uniformly more powerful than two-tailed tests, decreasing the possibility of a Type II error.","trap":"(B) and (C) both assume that concentrating the alpha in one tail is a concession. It is the opposite — the cost of a one-tailed test is that the researcher must have sufficient knowledge of the variables to predict which tail the difference will fall in."},{"topic":"descriptive statistics","subtopic":"measures of central tendency","stem":"A researcher summarizes the blood types of a sample. Which measure of central tendency is appropriate?","options":["The mode","The median","The mean","The standard deviation"],"correct":[0],"sata":false,"why":"The mode is the numerical value or score that occurs with greatest frequency and is the appropriate measure for nominal data.","trap":"The mode does not necessarily indicate the center of the data set, which is why students reject it — but for nominal categories no other measure of central tendency applies."},{"topic":"descriptive statistics","subtopic":"measures of central tendency","stem":"A study's income data contain several extreme outliers. Which measure of central tendency is the research report most likely to present, and why?","options":["The mean, because it uses every score in the data set","The median, because it is not affected by extreme scores or outliers","The mode, because outliers cannot be the most frequent value","The mean, because outliers cancel out above and below"],"correct":[1],"sata":false,"why":"If the study has outliers, the mean is most affected by these, and the median might be the measure of central tendency included in the research report.","trap":"(A) is true as a description of the mean and is exactly why it fails here — using every score is what lets a handful of extreme values drag it."},{"topic":"descriptive statistics","subtopic":"measures of central tendency","stem":"Which statements about measures of central tendency are accurate? Select all that apply.","options":["In a perfect normal distribution the mean, median, and mode are equal","The median is the 50th percentile of an ungrouped frequency distribution","The mean is the measure least affected by extreme scores","With an even number of scores the median is the average of the two middle scores and may not be an actual score in the data set","A distribution with more than two modes is described as bimodal"],"correct":[0,1,3],"sata":true,"why":"All three measures coincide in a perfect normal distribution; the median is the exact center, or 50th percentile, and with an even number of scores it is the average of the two middle scores, so it may not be a member of the data set.","trap":"(C) reverses the outlier rule — the mean is the measure most affected by extreme scores. (E) misnames the count: two modes is bimodal, more than two is multimodal."},{"topic":"descriptive statistics","subtopic":"dispersion and standard deviation","stem":"A sample has a mean score of 5.28 with an SD of 2.22. Approximately 68% of the sample falls between which two values?","options":["0.84 and 9.72","2.22 and 7.50","3.06 and 7.50","5.28 and 7.50"],"correct":[2],"sata":false,"why":"One SD below the mean is 5.28 minus 2.22 = 3.06 and one SD above is 7.50, so about 68% of the sample falls in that interval. Two SDs would give 0.84 to 9.72.","trap":"(A) is the 2 SD interval, which holds about 95.5%, not 68%. Match the percentage in the stem to the number of SDs before computing."},{"topic":"descriptive statistics","subtopic":"dispersion and standard deviation","stem":"A report gives a mean pain score of 5.28 with an SD of 2.22. What does the standard deviation tell the reader?","options":["The distance between the highest and lowest scores in the sample","The proportion of participants who scored above the mean","The interval within which the population mean falls 95% of the time","The average deviation of a value from the mean, indicating the degree of error that would result if the mean alone were used to interpret the data"],"correct":[3],"sata":false,"why":"The standard deviation is the square root of the variance and is the average difference or deviation value; it indicates the degree of error that would result if the mean alone were used to interpret the data.","trap":"(C) describes the 95% confidence interval, which is a different reported statistic even though both accompany a mean."},{"topic":"descriptive statistics","subtopic":"confidence intervals and z-scores","stem":"Which statements about confidence intervals and z-scores are accurate? Select all that apply.","options":["A 95% CI indicates that 95% of the time the population mean would fall within that interval","A 95% CI indicates that 95% of the participants' scores fall within that interval","Confidence intervals can be calculated around parameters such as correlation coefficients and t-test values","The mean expressed as a z-score is 0","A z-score of -2 indicates a score 2 SDs above the mean"],"correct":[0,2,3],"sata":true,"why":"The 95% CI indicates that 95% of the time the population mean would fall within this interval; CIs are usually calculated for 95% and 99% and can be built around any population parameter, including correlation coefficients and t-test values. A z-score expresses deviation from the mean in SD units, so the mean itself is 0.","trap":"(B) is the standard misreading of a CI — it is a statement about where the population mean sits, not about where participants sit. (E) drops the sign: values above the mean are positive z-scores, below are negative."},{"topic":"correlation and prediction","subtopic":"interpreting r","stem":"A study reports r = -0.72 between hours of sleep and perceived fatigue. How should this be interpreted?","options":["A weak relationship, because the coefficient is negative","A moderate relationship in which both variables change in the same direction","A strong relationship establishing that sleep loss causes fatigue","A strong inverse relationship, in which high scores on one variable occur with low scores on the other"],"correct":[3],"sata":false,"why":"Strength is judged by the absolute value: below 0.3 is weak, 0.3 to 0.5 moderate, and above 0.5 strong. A negative correlation is inverse, meaning a high score on one variable occurs with a low score on the other.","trap":"(A) is the single most common correlation error — reading the minus sign as weakness. Strength decreases as r approaches 0 from either direction, so -0.72 is strong."},{"topic":"correlation and prediction","subtopic":"interpreting r","stem":"Which statements about the Pearson product-moment correlation are accurate? Select all that apply.","options":["It examines the relationship between two variables measured on a single sample","It indicates both the nature and the magnitude of the relationship","It establishes whether variable A leads to or causes variable B","Its values range from -1 to +1, with 0 indicating no relationship","It is symmetrical, giving no indication of the direction of the relationship"],"correct":[0,1,3,4],"sata":true,"why":"Pearson correlation is an inferential technique for bivariate correlations, giving the nature (positive or negative) and the magnitude of a relationship between two variables measured on one sample, with values from -1 to +1.","trap":"(C) is the causal reading. Because correlational outcomes are symmetrical, it is not possible to establish whether A causes B or B causes A — the analysis gives no indication of direction at all."},{"topic":"correlation and prediction","subtopic":"explained variance and prediction","stem":"A study reports r = 0.6 for anxiety and depression. What percentage of the variance is explained by the relationship between the two variables?","options":["6%","36%","60%","64%"],"correct":[1],"sata":false,"why":"Explained variance is indicated by r squared and expressed as a percentage: r = 0.6 gives r squared = 0.36, or 36% explained variance.","trap":"(C) reads r itself as a percentage. The correlation and the proportion of variance it explains are different numbers, and the second is always the smaller for any r between 0 and 1."},{"topic":"correlation and prediction","subtopic":"explained variance and prediction","stem":"A regression model is reported with R squared giving 26% and model significance tested by ANOVA, F(4,79) = 7.051, p \u003c 0.001. What does the 26% represent?","options":["The percentage of variance in the dependent variable explained by the model","The percentage of participants whose outcomes the model predicted correctly","The correlation between the predictors and the outcome","The probability that the model result reflects a Type I error"],"correct":[0],"sata":false,"why":"In regression, R squared multiplied by 100% gives the percentage of variance explained; the chapter's worked example reports 26%, with the model tested for significance by ANOVA at F(4,79) = 7.051, p \u003c 0.001.","trap":"(D) confuses the model's explanatory power with the p value. Type I risk here is carried by p \u003c 0.001, not by R squared. Standardized beta coefficients, not R squared, identify which individual predictors are significant."},{"topic":"choosing a statistical test","subtopic":"the four judgments","stem":"Which judgments determine which statistical analysis is appropriate for a study? Select all that apply.","options":["Whether the question focuses on differences or on relationships and associations","The level of measurement of the data","How many groups are being compared","Whether the samples are independent or paired","The alpha level the researcher selected"],"correct":[0,1,2,3],"sata":true,"why":"Four judgments determine the appropriate analysis: differences versus relationships, level of measurement, number of groups, and independent versus paired samples.","trap":"(E) matters enormously for interpreting the result but plays no part in choosing the test. Alpha is set before data collection regardless of which test will be run."},{"topic":"choosing a statistical test","subtopic":"parametric versus nonparametric","stem":"Body weight in kilograms is measured for all participants, but the Kolmogorov-Smirnov test shows the values are not normally distributed. Which approach is appropriate?","options":["Parametric, because weight is ratio-level data","Parametric, because the Kolmogorov-Smirnov test checks only for outliers","Nonparametric, because parametric analysis requires interval or ratio data and a normal distribution","Nonparametric, because ratio-level data are always analyzed nonparametrically"],"correct":[2],"sata":false,"why":"Parametric analyses are conducted when variables are at the interval or ratio level and the values are normally distributed; both conditions are required. Nonparametric analyses are conducted when variables are at the nominal and ordinal levels.","trap":"(A) is the reflex answer because level of measurement is the criterion students memorize first. Interval or ratio data that are not normally distributed do not automatically qualify for parametric analysis."},{"topic":"choosing a statistical test","subtopic":"independent versus paired groups","stem":"Each participant's pretest score serves as the control for that same participant's posttest score. How are these observations classified?","options":["Independent, because each participant contributes one score to each condition","Independent, because no randomization to separate arms occurred","Paired, but only if the participants were also randomly assigned","Paired (dependent), because the observations are related to one another"],"correct":[3],"sata":false,"why":"Paired or dependent groups exist when participants or observations are related in some way to the selection of other participants or observations, which includes a participant serving as their own control with the pretest as the control.","trap":"Misclassifying a pretest-posttest design as independent samples changes the correct test. Paired designs also include matched pairs and twins with one in each group, and groups sometimes matched on age and severity of illness."},{"topic":"choosing a statistical test","subtopic":"independent versus paired groups","stem":"Participants are randomly assigned to either a treatment group or a control group, and no participant appears in both. How are these samples classified?","options":["Independent, because the selection of one participant is unrelated to the selection of the others","Paired, because both groups were drawn from the same recruitment pool","Independent, only if the groups are also matched on age and severity of illness","Paired, because random assignment produces equivalent matched groups"],"correct":[0],"sata":false,"why":"Independent groups exist when the selection of one study participant is unrelated to the selection of other participants, as when participants are randomly assigned to treatment and control groups.","trap":"This is the mirror of the pretest-posttest item. (C) and (D) both treat matching as something random assignment accomplishes; matching is a deliberate pairing procedure and is what makes groups dependent."},{"topic":"choosing a statistical test","subtopic":"matching the test to the comparison","stem":"Two independent groups are compared on mean serum sodium, a ratio-level variable that is normally distributed. Which test is appropriate?","options":["Chi-square test of independence","t-test","ANOVA","Post hoc analysis"],"correct":[1],"sata":false,"why":"The t-test is used to examine differences between two groups with interval or ratio level data.","trap":"(C) is the reflex answer for anyone who has learned ANOVA as the general difference test. ANOVA is for three or more groups; using the wrong one of this pair is the classic error in both directions."},{"topic":"choosing a statistical test","subtopic":"matching the test to the comparison","stem":"Three clinic sites are compared on whether patients did or did not return for follow-up, a yes or no outcome. Which test is appropriate?","options":["t-test, because the outcome has two categories","ANOVA, because there are three groups","Chi-square test of independence, because the outcome is nominal","Pearson product-moment correlation, because two variables are involved"],"correct":[2],"sata":false,"why":"The chi-square test of independence is used with three or more groups when the data are nominal or ordinal; ANOVA and ANCOVA require interval or ratio data.","trap":"(B) is the reflex answer because \"three or more groups\" points straight at ANOVA. Number of groups alone never settles the test — level of measurement has to be checked with it, and nominal data rule out the parametric options."},{"topic":"choosing a statistical test","subtopic":"matching the test to the comparison","stem":"A researcher compares four groups using ANOVA and reports a significant F value. Which statements are accurate? Select all that apply.","options":["ANOVA tests for differences in variance, not in means alone","The significant F value identifies which specific pair of groups differs","Post hoc analyses are conducted to determine the location of the differences among groups","Bonferroni correction, Newman-Keuls, Tukey HSD, Scheffe, and Dunnett are post hoc options","Between-group variance is the variation of the group means around the grand mean"],"correct":[0,2,3,4],"sata":true,"why":"ANOVA tests for differences in variance, partitioned into within-group variance and between-group variance around the grand mean; with more than two groups it is not possible to determine from the ANOVA where the significant differences occur, so post hoc analyses are conducted.","trap":"(B) is the single most tested misreading of ANOVA. A significant F tells you that the groups differ, not which ones — with only two groups the location would be obvious, which is precisely why post hoc tests exist for three or more."}];
+const TITLE = "Chapter 11 — NUR 4351 — Prof Dev: Consumer of Research";
+const SUBTITLE = "Chapter 11";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question; rationales never refer to
+  // options by letter, so nothing depends on the printed order.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(q.why) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+</script>
+</body>
+</html>
