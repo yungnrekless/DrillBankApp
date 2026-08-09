@@ -166,3 +166,29 @@ test('the script replaces the static view rather than appending to it', () => {
   assert.match(html, /app\.innerHTML =\s*\n?\s*'<div class="top">/);
   assert.match(html, /catch \(err\)/, 'a boot failure restores the answer key');
 });
+
+test('both runners inline the letter-relabeller and use it on reveal', () => {
+  const items = [{ ...bank.q_0001, sata: false, why: bank.q_0001.rationale, trap: bank.q_0001.trap }];
+  const pages = {
+    'chapter export': renderExport(bank),
+    'landing page': renderIndex([
+      { href: 'ch25.html', title: 'Chapter 25', count: 1, sata: 0, topics: ['poverty'], items },
+    ]),
+  };
+
+  for (const [name, html] of Object.entries(pages)) {
+    assert.match(html, /function relabelLetters\(text, order\)/, `${name} inlines the helper`);
+    // Both the rationale and the trap have to go through it, against the
+    // display order — printing either one raw is the bug this guards.
+    assert.match(html, /esc\(relabelLetters\(q\.why, shown\)\)/, `${name} relabels the rationale`);
+    assert.match(html, /esc\(relabelLetters\(q\.trap, shown\)\)/, `${name} relabels the trap`);
+  }
+});
+
+test('the static answer key does not relabel, because it prints stored order', () => {
+  const html = renderExport({
+    q_0001: { ...bank.q_0001, trap: 'Option B is the one to watch.' },
+  });
+  const body = html.slice(html.indexOf('<body>'), html.indexOf('<script>'));
+  assert.ok(body.includes('Option B is the one to watch.'), 'letters already agree with the unshuffled list');
+});

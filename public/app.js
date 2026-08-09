@@ -11,6 +11,7 @@ import { api } from '/api.js';
 import {
   buildQueue, grade, todayISO, weakTopics, topicAccuracy, WEAK_THRESHOLD,
 } from '/src/scheduler.js';
+import { relabelLetters } from '/src/relabel.js';
 import { renderDashboard } from '/dashboard.js';
 
 const $ = (id) => document.getElementById(id);
@@ -278,16 +279,17 @@ function revealAnswer(selected, correct) {
     : (q.type === 'sata' ? 'Wrong — SATA is all or nothing' : 'Wrong');
   verdict.className = `verdict ${correct ? 'right' : 'wrong'}`;
 
-  // Rationales in the source files often refer to options by their original
-  // letters ("(C) is right for fee-for-service"). With reshuffling on, those
-  // letters no longer line up, so state the key in the order shown right now.
+  // Rationales and traps in the source files often refer to options by their
+  // stored letters ("(C) is right for fee-for-service"). With reshuffling on
+  // those letters point at the wrong option, so state the key in the order
+  // shown right now and translate the prose to match it.
   $('q-key').textContent = q.correct
     .map((realIdx) => `${String.fromCharCode(65 + order.indexOf(realIdx))}. ${q.options[realIdx]}`)
     .sort()
     .join('  ·  ');
-  $('q-rationale').textContent = q.rationale;
+  $('q-rationale').textContent = relabelLetters(q.rationale, order);
   if (q.trap) {
-    $('q-trap').textContent = q.trap;
+    $('q-trap').textContent = relabelLetters(q.trap, order);
     $('trap-block').hidden = false;
   }
   $('reveal').hidden = false;

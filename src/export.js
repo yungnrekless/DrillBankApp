@@ -11,6 +11,8 @@
  * and a weakest-first topic breakdown at the end.
  */
 
+import { relabelSource } from './relabel.js';
+
 const PALETTE = {
   navy: '#16283B',
   accent: '#B23A2E',
@@ -239,6 +241,8 @@ const FALLBACK = app.innerHTML;
 
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+${relabelSource}
 
 // ── setup screen ───────────────────────────────────────────────────
 function showSetup(){
@@ -387,8 +391,8 @@ function grade(){
   document.getElementById('rev').innerHTML =
     '<div class="rev ' + (ok ? '' : 'no') + '">' +
       '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
-      '<p>' + esc(q.why) + '</p>' +
-      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
     '</div>';
 
   const sc = document.querySelector('.score');
@@ -584,13 +588,17 @@ const FALLBACK = app.innerHTML;
 
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+${relabelSource}
 shuffle(order);
 
 function render(){
   if (i >= order.length) return done();
   const q = Q[order[i]];
-  // Answer order is reshuffled per question; rationales never refer to
-  // options by letter, so nothing depends on the printed order.
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
   shown = shuffle([...q.options.keys()]);
   app.innerHTML =
    '<div class="top">' +
@@ -661,8 +669,8 @@ function grade(){
   document.getElementById('rev').innerHTML =
     '<div class="rev ' + (ok ? '' : 'no') + '">' +
       '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
-      '<p>' + esc(q.why) + '</p>' +
-      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(q.trap) + '</p></div>' : '') +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
     '</div>';
 
   const sc = document.querySelector('.score');

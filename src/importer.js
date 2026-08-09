@@ -22,6 +22,10 @@
  *    inherits them until the next declaration. If a file never declares a
  *    topic, the filename is used.
  *
+ *    Letter references in Rationale/Trap are fine — the runners translate them
+ *    to the shuffled display order. `checkOptionRefs` warns about the two kinds
+ *    that translation cannot rescue.
+ *
  * 2. JSON — either an array of question objects or a `{qid: question}` map.
  *    Used to re-import a previously exported bank.
  *
@@ -31,6 +35,7 @@
  */
 
 import { validateQuestion, makeQid } from './schema.js';
+import { optionRefs } from './relabel.js';
 
 /**
  * Key lines are matched after emphasis markers are stripped, because drill
@@ -173,7 +178,58 @@ export function parseMarkdown(text, filename = 'unknown') {
     }
   }
 
+  for (const q of questions) warnings.push(...checkOptionRefs(q, filename));
+
   return { questions, warnings };
+}
+
+/**
+ * Flag letter references in feedback text that point somewhere unhelpful.
+ *
+ * Writing "(C) is the reflex answer" in a Trap is normal and supported — the
+ * runners translate those letters into whatever slot the option is shuffled
+ * into (see src/relabel.js). What they cannot fix is a reference that is wrong
+ * in the source:
+ *
+ * - A letter past the end of the option list names nothing, so it is left as
+ *   written and prints a letter the reader cannot find on screen.
+ * - A trap whose references are *all* correct answers usually means the author
+ *   miscounted, since a trap exists to explain a distractor. It is not always a
+ *   mistake — "(D) looks too generous to be keyed, which is why students drop
+ *   it" is a real pattern — so this warns rather than rejects. Exactly one
+ *   question in the two current banks trips it, which is why it stays a signal
+ *   and not noise.
+ *
+ * @param {object} q draft question, after any gap remapping
+ * @param {string} filename for the warning text
+ * @returns {string[]} warnings
+ */
+function checkOptionRefs(q, filename) {
+  const warnings = [];
+  if (!Array.isArray(q.options)) return warnings;
+  const where = `${filename}: "${q.stem.slice(0, 40)}..."`;
+  const letter = (i) => String.fromCharCode(65 + i);
+
+  for (const field of ['rationale', 'trap']) {
+    const refs = optionRefs(q[field]);
+    if (!refs.length) continue;
+
+    const past = [...new Set(refs.filter((i) => i >= q.options.length))];
+    if (past.length) {
+      warnings.push(`${where} ${field} refers to (${past.map(letter).join(') (')}) ` +
+        `but the question has only ${q.options.length} options`);
+    }
+
+    if (field === 'trap' && !past.length) {
+      const key = new Set(q.correct || []);
+      if (refs.every((i) => key.has(i))) {
+        warnings.push(`${where} trap refers only to correct answers ` +
+          `(${[...new Set(refs)].map(letter).join(') (')}) — check the letters name the distractor`);
+      }
+    }
+  }
+
+  return warnings;
 }
 
 /** Parse a JSON bank (array or {qid: q} map) into draft questions. */

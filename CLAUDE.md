@@ -105,7 +105,43 @@ drill → `bridge/sync_misses.py` → factbank regenerate.
 - `embedJson` escapes `<`→`<` and U+2028/U+2029 so payloads can't break out of the `<script>` block. `qid` and source filenames are stripped from shipped payloads.
 - `renderIndex`'s drill runner is a deliberate copy of `renderExport`'s, not an oversight — the per-chapter pages are already deployed, and keeping the landing page's changes out of that code path is worth more than removing the duplication. Don't "fix" it.
 
+## Rationale/trap text refers to options by letter — the runners must translate
+326 of the 1206 banked questions (300 of the 404 in `nur4351-research-consumer`)
+have a `Trap:` or `Rationale:` that names options by letter — "(B) and (E) look
+like rigor". Those letters are the **stored** option order, and all three
+runners reshuffle options before printing them, so a raw letter points at
+whatever landed in that slot, frequently the correct answer.
+
+`src/relabel.js` translates the letters through the display order at reveal
+time. Data is never rewritten: the letters are also in the hand-authored
+`drills/*.md`, and a re-import will not overwrite an existing question
+(`mergeIntoBank` matches on stem), so a bank-only edit would just go stale.
+
+- Apply it wherever feedback is printed against a shuffled list — currently
+  `public/app.js` (imports it) and both runners in `src/export.js` (inline it
+  via `relabelSource`, which is `relabelLetters.toString()`, so the shipped
+  copy cannot drift from the tested one). Keep the function self-contained;
+  closing over anything module-level would break the exported pages silently.
+- The static answer key in `staticFallback` prints options in stored order, so
+  its letters already agree with the prose. Do **not** relabel there.
+- A letter with no on-screen slot is left as written rather than remapped.
+- The importer warns about the two cases translation cannot rescue: a letter
+  past the end of the option list, and a trap whose references are *all*
+  correct answers (`checkOptionRefs` in `src/importer.js`). It warns rather
+  than rejects — the whole current corpus trips it exactly once, on a
+  deliberate "students wrongly drop this correct answer" trap in
+  `nur4351-research-consumer/ch8.md`. A plain letter reference is **not**
+  warned about; that is a supported thing to write.
+- **Republish after touching either runner.** `docs/**` has the runner baked in
+  as text; the fix does not reach the live site until `npm run publish` and a
+  push. `grep -lr "function relabelLetters" docs/` should hit every page except
+  `docs/index.html` (the course picker, which has no runner).
+
 ## Other things that look safe and are not
+- **The export runners live inside template literals.** A stray backtick in
+  code or even a comment there ends the string — `src/export.js` fails to parse
+  and every export test dies at import with a confusing `SyntaxError` pointing
+  at ordinary-looking JS. Use `"quotes"` in those comments.
 - **Never renumber or regenerate qids.** `mergeIntoBank` matches on a normalized stem so re-importing an unchanged drill file keeps the existing qid, and the qid is what attempt history and schedule state are keyed by. Rewriting ids silently orphans the log.
 - **The scheduler constants are mirrored in `bridge/sync_misses.py`** (0.7 threshold, 20-attempt rolling window). Change one, change both, or the two ends disagree about what "weak" means.
 - Server writes go through temp-file-and-rename and are serialized through one promise chain, so a crash mid-write cannot truncate the log.

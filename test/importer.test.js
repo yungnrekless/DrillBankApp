@@ -157,3 +157,44 @@ test('invalid questions are rejected rather than written', () => {
   assert.deepEqual(bank, {});
   assert.ok(errors.length);
 });
+
+const drill = (body) => `
+Topic: economics
+Subtopic: payment mechanisms
+
+Q: Who carries utilization risk under capitation?
+A) The patient
+B) The provider organization
+C) The payer
+Answer: B
+${body}
+`;
+
+test('a normal letter reference in a trap is not warned about', () => {
+  // The runners translate these to display order, so they are correct as-is.
+  const { warnings } = parseMarkdown(drill('Rationale: Fixed PMPM.\nTrap: (C) is right for fee-for-service.'), 'econ.md');
+  assert.deepEqual(warnings, []);
+});
+
+test('a letter reference past the end of the option list is warned about', () => {
+  const { warnings } = parseMarkdown(drill('Rationale: Fixed PMPM.\nTrap: (E) is the reflex answer.'), 'econ.md');
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /trap refers to \(E\).*only 3 options/);
+});
+
+test('a trap naming only correct answers is warned about', () => {
+  const { warnings } = parseMarkdown(drill('Rationale: Fixed PMPM.\nTrap: (B) looks too generous to be keyed.'), 'econ.md');
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /trap refers only to correct answers \(B\)/);
+});
+
+test('a trap naming a distractor alongside the answer is fine', () => {
+  const { warnings } = parseMarkdown(drill('Rationale: Fixed PMPM.\nTrap: (B) is keyed but (C) tempts you.'), 'econ.md');
+  assert.deepEqual(warnings, []);
+});
+
+test('the out-of-range check also covers rationales', () => {
+  const { warnings } = parseMarkdown(drill('Rationale: Option F restates the stem.\nTrap: (C) is right for FFS.'), 'econ.md');
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /rationale refers to \(F\)/);
+});
