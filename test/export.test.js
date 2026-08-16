@@ -192,3 +192,41 @@ test('the static answer key does not relabel, because it prints stored order', (
   const body = html.slice(html.indexOf('<body>'), html.indexOf('<script>'));
   assert.ok(body.includes('Option B is the one to watch.'), 'letters already agree with the unshuffled list');
 });
+
+test('a published page carries the tracker; a standalone export does not', () => {
+  // A file handed to a classmate has no course to file attempts against, so
+  // the widget must not appear there.
+  const published = renderExport(bank, { course: 'nur4353-community-and-culture' });
+  assert.match(published, /id="lt-btn"/, 'published pages mount the LT button');
+  assert.match(published, /function ltRecord\(q, ok, picked\)/);
+  assert.match(published, /ltRecord\(q, ok, sel\);/, 'grade() feeds the recorder');
+
+  const standalone = renderExport(bank);
+  assert.doesNotMatch(standalone, /id="lt-btn"/);
+  assert.match(standalone, /const COURSE = "";/, 'no course means the mount is skipped');
+});
+
+test('the landing page tracks too, under the same course key', () => {
+  const html = renderIndex([{ href: 'ch25.html', title: 'Chapter 25', count: 1, sata: 0, topics: ['poverty'], items: [] }], {
+    course: 'nur4353-community-and-culture',
+  });
+  assert.match(html, /id="lt-btn"/);
+  assert.match(html, /const COURSE = "nur4353-community-and-culture";/);
+  assert.match(html, /ltRecord\(q, ok, sel\);/);
+});
+
+test('the payload carries a tracking key that is not the qid', () => {
+  const html = renderExport(bank, { course: 'nur4353-community-and-culture' });
+  const payload = JSON.parse(html.match(/const Q = (\[.*?\]);\n/s)[1]);
+  for (const item of payload) {
+    assert.match(item.k, /^[0-9a-z]+$/, 'every item has a tracking key');
+  }
+  // The existing strip-the-internals guarantee still holds.
+  assert.ok(!html.includes('q_0001'), 'qids stay out of the payload');
+  assert.ok(!html.includes('ch25.md'), 'source filenames stay out of the payload');
+});
+
+test('a tracked page still references nothing external', () => {
+  assert.deepEqual(externalRefs(renderExport(bank, { course: 'nur4353-community-and-culture' })), []);
+  assert.deepEqual(externalRefs(renderIndex([], { course: 'nur4353-community-and-culture' })), []);
+});

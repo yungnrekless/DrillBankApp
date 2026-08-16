@@ -24,6 +24,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { renderExport, renderIndex, renderCourseIndex } from '../src/export.js';
+import { stemKey } from '../src/tracker.js';
 import { ROOT, coursePaths, displayName, listCourses, resolveCourseOrExit } from '../src/courses.js';
 
 const DOCS = path.join(ROOT, 'docs');
@@ -52,6 +53,7 @@ const toDrillItem = (q) => ({
   sata: q.type === 'sata',
   why: q.rationale,
   trap: q.trap || null,
+  k: stemKey(q.stem),
 });
 
 function loadBank(slug) {
@@ -102,6 +104,7 @@ function publishCourse(slug, siteTitle) {
       title: `${name} — ${courseName}`,
       subtitle: name,
       note: 'Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.',
+      course: slug,
     });
     fs.writeFileSync(path.join(outDir, `${fileSlug}.html`), html);
     chapters.push({
@@ -118,6 +121,7 @@ function publishCourse(slug, siteTitle) {
   fs.writeFileSync(path.join(outDir, 'index.html'), renderIndex(chapters, {
     title: courseName,
     subtitle: `${chapters.length} chapter${chapters.length === 1 ? '' : 's'} · ${siteTitle}`,
+    course: slug,
   }));
   return true;
 }

@@ -12,6 +12,150 @@
  */
 
 import { relabelSource } from './relabel.js';
+import { stemKey } from './tracker.js';
+
+/**
+ * The long-term-tracking widget, shared verbatim by both runners.
+ *
+ * Published pages are static and the repo is public, so results cannot be
+ * posted anywhere — see src/tracker.js. Instead this buffers graded attempts
+ * in localStorage and hands them over on demand for
+ * `scripts/import-attempts.js` to merge into the course's attempt log.
+ *
+ * Off until switched on, and deliberately unobtrusive: a dim "LT" in the
+ * corner that only colours up once it is recording.
+ */
+const LT_CSS = `
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+`;
+
+/**
+ * Browser half of the tracker. Written as string concatenation rather than
+ * template literals because it is itself interpolated into one.
+ *
+ * Every localStorage touch is wrapped: private-mode Safari throws on write,
+ * and a drill page that dies because tracking is unavailable would be a much
+ * worse bug than not tracking.
+ */
+const LT_JS = `
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+`;
+
+/**
+ * Tracking code only ships to pages that belong to a course.
+ *
+ * A standalone export is a file you hand someone else; it has nothing to file
+ * attempts against, so carrying the widget would be dead weight and a
+ * confusing button. `grade()` calls `ltRecord` unconditionally, so the
+ * untracked build still needs the name to exist — hence the stub rather than
+ * nothing at all.
+ */
+const ltCss = (course) => (course ? LT_CSS : '');
+const ltJs = (course) => (course
+  ? LT_JS
+  : '\n// Not a course page: nothing to record against.\nfunction ltRecord(){}\n');
 
 const PALETTE = {
   navy: '#16283B',
@@ -215,6 +359,7 @@ button.btn:disabled{opacity:.35;cursor:default}
 .brow.weak .n{color:var(--accent);font-weight:700}
 .hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
 .note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+${ltCss(meta.course)}
 </style>
 </head>
 <body>
@@ -232,6 +377,7 @@ own text &mdash; and if you find an error, say so, so it can be fixed for everyo
 const CHAPTERS = ${embedJson(chapterData)};
 const TITLE = ${embedJson(title)};
 const SITE_SUB = ${embedJson(subtitle)};
+const COURSE = ${embedJson(meta.course || '')};
 const COUNTS = [25, 50, 75, 100];
 
 let Q = [], order = [], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
@@ -376,6 +522,7 @@ function grade(){
   const ok = got.length === key.length && got.every((v,n) => v === key[n]);
   if (ok) score++;
   log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
 
   [...document.querySelectorAll('.opt')].forEach(b => {
     const k = +b.dataset.k;
@@ -432,6 +579,8 @@ document.addEventListener('keydown', (e) => {
   if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
 });
 
+${ltJs(meta.course)}
+
 try {
   showSetup();
 } catch (err) {
@@ -439,6 +588,9 @@ try {
     esc(err && err.message ? err.message : String(err)) +
     ' The chapter list is below.</div>' + FALLBACK;
 }
+
+// See the matching note in renderExport: tracking must never stop the drill.
+try { if (COURSE) ltMount(); } catch (err) {}
 </script>
 </body>
 </html>
@@ -506,6 +658,10 @@ export function renderExport(questions, meta = {}) {
     sata: q.type === 'sata',
     why: q.rationale,
     trap: q.trap || null,
+    // Identity for long-term tracking. Not the qid — a hash of the stem that
+    // is already printed on the page, so the payload still gives away nothing
+    // about the bank. See src/tracker.js.
+    k: stemKey(q.stem),
   }));
 
   return `<!doctype html>
@@ -570,6 +726,7 @@ button.btn:disabled{opacity:.35;cursor:default}
 .fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
 .fopt.right .mk{color:var(--teal)}
 @media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+${ltCss(meta.course)}
 </style>
 </head>
 <body>
@@ -579,6 +736,7 @@ const Q = ${embedJson(items)};
 const TITLE = ${embedJson(title)};
 const SUBTITLE = ${embedJson(subtitle)};
 const NOTE = ${embedJson(note)};
+const COURSE = ${embedJson(meta.course || '')};
 
 let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
 const app = document.getElementById('app');
@@ -654,6 +812,7 @@ function grade(){
   const ok = got.length === key.length && got.every((v,n) => v === key[n]);
   if (ok) score++;
   log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
 
   [...document.querySelectorAll('.opt')].forEach(b => {
     const k = +b.dataset.k;
@@ -709,6 +868,8 @@ document.addEventListener('keydown', (e) => {
   if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
 });
 
+${ltJs(meta.course)}
+
 try {
   render();
 } catch (err) {
@@ -716,6 +877,12 @@ try {
     esc(err && err.message ? err.message : String(err)) +
     ' The full answer key is below.</div>' + FALLBACK;
 }
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
 </script>
 </body>
 </html>
