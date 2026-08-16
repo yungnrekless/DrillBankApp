@@ -43,7 +43,7 @@ them, and a merged log would make both dashboards lie.
 - `src/courses.js` — course discovery + slug resolution. The only path-aware module.
 - `src/scheduler.js` — SM-2-ish scheduling (pure; runs in node and browser). Ladder 1/3/7/14/30, ease 1.3–2.8, topics under 70% rolling accuracy pulled forward, round-robin topic interleaving within priority buckets.
 - `src/importer.js` — drill-file parser + bank merge.
-- `src/tracker.js` — stem-key identity shared by the published pages and the import CLI (`stemKey`, `stemKeySource`, `keyIndex`, `mergeAttempts`). Pure; runs in node and browser.
+- `src/tracker.js` — stem-key identity shared by the publisher and the import CLI (`stemKey`, `keyIndex`, `mergeAttempts`). Pure, and node-side only: the pages read the precomputed `k` rather than hashing anything.
 - `src/export.js` — standalone HTML export + landing-page renderers (`renderExport`, `renderIndex`, `renderCourseIndex`, `embedJson`, `escapeHtml`).
 - `scripts/import.js` — importer CLI. `scripts/export.js` — one shareable file. `scripts/publish.js` — builds `docs/` for Pages. `scripts/import-attempts.js` — pulls drilled answers off the published pages.
 - `public/` — the app. `server.js` — static server + JSON API. `test/` — node:test suites.
@@ -146,6 +146,29 @@ is the other end. studybank surfaces the same script as **Import drill results**
 - **A republish is required before any of this reaches the live site** — same
   rule as the relabel below. `grep -lr "LT_STORE" docs/` should hit every page
   except `docs/index.html`, which is the course picker and has no runner.
+
+### Only course pages track — `scripts/export.js` deliberately does not
+
+`renderExport` gates the tracker on its `course` option (`ltCss`/`ltJs` in
+`src/export.js`): `scripts/publish.js` passes `course: slug`, `scripts/export.js`
+passes nothing and gets a no-op `ltRecord(){}` stub. That is correct — storage is
+keyed `drillbank.lt.<course>` and `import-attempts.js` refuses a blob that does
+not name its course, so a one-off shareable file has nothing to file answers
+against and would only produce un-importable data. **A file exported by
+`scripts/export.js` can never be used to test the tracker.**
+
+Which is what `public/lt-check.html` is for: a copy of a *published* page, put in
+`public/` because `server.js` serves only that directory (`docs/` is not served
+at all) and `localStorage` needs a real `http://` origin — browsers treat
+`file://` as opaque for storage. It makes the whole loop testable at
+`http://localhost:4173/lt-check.html` without a publish-and-deploy cycle per
+iteration. It is gitignored: it can only be refreshed *after* a publish, so it is
+a snapshot that silently goes stale into an old runner. Refresh it with a copy,
+not an export:
+
+```
+cp docs/nur4351-research-consumer/ch5.html public/lt-check.html
+```
 
 ## Rationale/trap text refers to options by letter — the runners must translate
 326 of the 1206 banked questions (300 of the 404 in `nur4351-research-consumer`)

@@ -29,8 +29,12 @@
  * a bank this size is closer to a birthday collision than is comfortable, and
  * a collision would silently file attempts against the wrong question.
  *
- * Self-contained on purpose: `stemKeySource` ships this function's own text to
- * the publisher, so it must not close over anything module-level.
+ * Runs at build time and in the import CLI, never in the browser: `src/export.js`
+ * and `scripts/publish.js` stamp each shipped question with its key (`k:`) and
+ * the pages just read that. Nothing ships this function's text, unlike
+ * `relabelSource`, so there is no second copy to keep in step — but changing the
+ * hash invalidates every already-published page, which goes on recording against
+ * keys the bank no longer knows. Republish after touching it.
  *
  * @param {string} stem
  * @returns {string} lowercase base36 key
@@ -46,9 +50,6 @@ export function stemKey(stem) {
   }
   return a.toString(36) + b.toString(36);
 }
-
-/** @see stemKey — the function's own text, for tooling that cannot import it. */
-export const stemKeySource = stemKey.toString();
 
 /**
  * Map every question in a bank to its stem key.
