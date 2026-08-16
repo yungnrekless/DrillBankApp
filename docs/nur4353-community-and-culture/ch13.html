@@ -60,6 +60,24 @@ button.btn:disabled{opacity:.35;cursor:default}
 .fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
 .fopt.right .mk{color:var(--teal)}
 @media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
 </style>
 </head>
 <body>
@@ -199,10 +217,11 @@ with the correct answers marked &#10003; &mdash; it prints cleanly as a study sh
 <div class="trap"><div class="lb2">Watch for</div><p>Key informant and gatekeeper both describe influential community members, but only the gatekeeper controls access; a key informant is valued for knowledge and connection, not control.</p></div></div>
 </article></div>
 <script>
-const Q = [{"topic":"community assessment","subtopic":"windshield survey","stem":"A public health nurse drives slowly through an assigned neighborhood, noting housing conditions, businesses, open space, and signs of decay or vitality before planning a fuller assessment. What is this method called?","options":["Windshield survey","Key informant interview","Focus group","Photovoice"],"correct":[0],"sata":false,"why":"A windshield survey is a method of simple observation that gives a quick overview of a community — described as the \"community equivalent of a head-to-toe assessment\" — done by driving or walking through.","trap":"The stem is the classic test cue: a nurse driving or walking through to get a general first impression of housing and conditions. It is observational and preliminary, not a substitute for a fuller assessment if interventions are planned."},{"topic":"community assessment","subtopic":"windshield survey","stem":"What is the recommended way to conduct a windshield survey?","options":["By a single nurse working alone to avoid bias","With more than one person, since one can drive/watch the road while another observes and takes notes","Only after secondary data has been fully analyzed","Only during a community-sponsored event such as a fair or festival"],"correct":[1],"sata":false,"why":"A windshield survey is best conducted with more than one person — one drives or watches the road while another observes and takes notes, and the shared experience adds insight. A second tour may be needed to fill in blanks.","trap":"Option D describes participant observation, not a windshield survey."},{"topic":"community assessment","subtopic":"windshield survey","stem":"Which statements about the windshield survey are accurate? Select all that apply.","options":["It is a form of simple observation","It is called the \"community equivalent of a head-to-toe assessment\"","It is a secondary data method because it summarizes existing records","It may require a second tour to fill in blanks","It provides context for a community's health status, strengths, risks, and vulnerabilities"],"correct":[0,1,3,4],"sata":true,"why":"The windshield survey is a method of simple observation, nicknamed the \"community equivalent of a head-to-toe assessment,\" may need a second tour to fill in blanks, and gives context for health status, strengths, risks, and vulnerabilities.","trap":"It is a primary data method — the nurse collects it firsthand — not a secondary one."},{"topic":"community assessment","subtopic":"key informants","stem":"A community health nursing student is told that county health department nurses and church leaders are often good sources of insight into local concerns, even though they may hold no formal title. What term describes these sources?","options":["Gatekeepers","Stakeholders","Key informants","Community diagnosticians"],"correct":[2],"sata":false,"why":"Key informants are community members who provide insight into local issues, strengths, and concerns, and often hold an informal role rather than a formal title. County health department nurses and church leaders are the examples given.","trap":null},{"topic":"community assessment","subtopic":"key informants","stem":"A nurse assumes that a true key informant must be an elected official or an agency head. Why is this reasoning flawed?","options":["Key informants must have clinical training","Key informants are chosen for their knowledge of and connection to the community, not their official rank","Key informants are always appointed by the health department","Key informants must be lifelong residents of the community"],"correct":[1],"sata":false,"why":"A key informant is chosen for knowledge of and connection to the community, not official rank; the classic distractor is assuming a formal title is required, but it doesn't have to be.","trap":null},{"topic":"community assessment","subtopic":"key informants","stem":"In addition to sharing their own knowledge of the community, what else can key informants do?","options":["Certify the community assessment for accuracy","Identify other key informants","Independently authorize a community diagnosis","Replace the need for a windshield survey"],"correct":[1],"sata":false,"why":"Key informants know many community members and can identify other key informants — a snowball referral process.","trap":null},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"Which of the following are primary data collection methods for a community assessment? Select all that apply.","options":["Windshield survey","Key informant interviews","Focus groups","Census data","Photovoice"],"correct":[0,1,2,4],"sata":true,"why":"Primary data is collected directly by the assessment team — windshield survey, key informant interviews, focus groups, participant observation, and photovoice are all primary methods. Census data is secondary.","trap":"Census data is a common distractor planted among primary-method lists; it is pre-existing numeric data from a recognized agency, which makes it secondary."},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"A student mistakenly labels the windshield survey as a secondary data source because it produces a written summary the team can file and reuse later. What is the error?","options":["There is no error; reused documents are always secondary data","The windshield survey is primary data because the nurse collects it firsthand through direct observation","The windshield survey is neither primary nor secondary","The windshield survey only becomes primary data if photographs are taken"],"correct":[1],"sata":false,"why":"Primary data is defined by who collects it and how — directly, by the nurse or assessment team — not by whether the output gets filed for later use. The windshield survey is a primary data method because it involves the nurse observing firsthand.","trap":null},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"Which of the following are examples of secondary data used in community assessment? Select all that apply.","options":["US Census","Vital statistics","BRFSS (Behavioral Risk Factor Surveillance System)","Focus groups","CDC WONDER"],"correct":[0,1,2,4],"sata":true,"why":"Secondary data is pre-existing numeric data from a recognized agency — the Census, vital statistics, morbidity/mortality reports, BRFSS, and CDC WONDER are all secondary sources.","trap":"Focus groups involve direct interaction with community members and are a primary data method, not secondary."},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"A comprehensive community assessment is best built using which combination of data?","options":["Primary data alone, since it reflects firsthand community knowledge","Secondary data alone, since it is already validated by recognized agencies","Both primary and secondary data","Neither; community diagnosis relies only on clinical judgment"],"correct":[2],"sata":false,"why":"A comprehensive community assessment uses both primary and secondary data — firsthand methods like windshield surveys and key informant interviews, and existing numeric sources like census and vital statistics.","trap":null},{"topic":"community assessment","subtopic":"community as client and partner","stem":"A PHN designs an assessment in which the community's collective health and common good are the direct recipient of nursing care. This reflects which model?","options":["Community as partner","Community as client","Community diagnosis","Participant observation"],"correct":[1],"sata":false,"why":"Community as client frames the community itself as the unit and recipient of nursing care, with a focus on the collective or common good.","trap":null},{"topic":"community assessment","subtopic":"community as client and partner","stem":"How does the \"community as partner\" model differ from \"community as client\"?","options":["It removes the community from the assessment process entirely","It emphasizes the community's active collaboration in its own assessment and care, rather than being only the recipient of care","It applies only to secondary data collection","It replaces the nursing process with an epidemiologic model"],"correct":[1],"sata":false,"why":"Community as partner is a model in which the community actively collaborates in its own assessment and care, contrasted with community as client, where the community is framed as the recipient of care.","trap":null},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A community diagnosis, the nursing diagnosis written for a community rather than an individual, may be formatted using which of the following? Select all that apply.","options":["NANDA","The Omaha system","The Federal Poverty Guidelines","BRFSS categories"],"correct":[0,1],"sata":true,"why":"Community diagnosis may use the NANDA taxonomy or the Omaha system.","trap":null},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"Which three factors define a community according to the chapter?","options":["Income, education, and access to care","People, place, and function","Stakeholders, gatekeepers, and key informants","Assessment, diagnosis, and evaluation"],"correct":[1],"sata":false,"why":"A community is defined by people (residents), place (geographic or shared space), and function (the community's aims and activities).","trap":null},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A focus group works best under which condition?","options":["When the topic is highly sensitive, encouraging catharsis","When the topic is not sensitive and participants feel comfortable speaking openly","When participants are unfamiliar with one another","When the group is used only to verify secondary data"],"correct":[1],"sata":false,"why":"Focus groups use open-ended questioning of a small group and work best when the topic is not sensitive and participants feel comfortable speaking.","trap":null},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A nurse notes that a certain resident controls who can enter and use a community center, effectively controlling access to that part of the community. This person is best described as a:","options":["Key informant","Stakeholder","Gatekeeper","Community diagnostician"],"correct":[2],"sata":false,"why":"Gatekeepers are people who control access to the community or its members — distinct from stakeholders, who are anyone with a personal or occupational interest in the community's life, and key informants, who are chosen for their insight and connections.","trap":"Key informant and gatekeeper both describe influential community members, but only the gatekeeper controls access; a key informant is valued for knowledge and connection, not control."}];
+const Q = [{"topic":"community assessment","subtopic":"windshield survey","stem":"A public health nurse drives slowly through an assigned neighborhood, noting housing conditions, businesses, open space, and signs of decay or vitality before planning a fuller assessment. What is this method called?","options":["Windshield survey","Key informant interview","Focus group","Photovoice"],"correct":[0],"sata":false,"why":"A windshield survey is a method of simple observation that gives a quick overview of a community — described as the \"community equivalent of a head-to-toe assessment\" — done by driving or walking through.","trap":"The stem is the classic test cue: a nurse driving or walking through to get a general first impression of housing and conditions. It is observational and preliminary, not a substitute for a fuller assessment if interventions are planned.","k":"itf3zx6mt747"},{"topic":"community assessment","subtopic":"windshield survey","stem":"What is the recommended way to conduct a windshield survey?","options":["By a single nurse working alone to avoid bias","With more than one person, since one can drive/watch the road while another observes and takes notes","Only after secondary data has been fully analyzed","Only during a community-sponsored event such as a fair or festival"],"correct":[1],"sata":false,"why":"A windshield survey is best conducted with more than one person — one drives or watches the road while another observes and takes notes, and the shared experience adds insight. A second tour may be needed to fill in blanks.","trap":"Option D describes participant observation, not a windshield survey.","k":"1er4st31uy5ajp"},{"topic":"community assessment","subtopic":"windshield survey","stem":"Which statements about the windshield survey are accurate? Select all that apply.","options":["It is a form of simple observation","It is called the \"community equivalent of a head-to-toe assessment\"","It is a secondary data method because it summarizes existing records","It may require a second tour to fill in blanks","It provides context for a community's health status, strengths, risks, and vulnerabilities"],"correct":[0,1,3,4],"sata":true,"why":"The windshield survey is a method of simple observation, nicknamed the \"community equivalent of a head-to-toe assessment,\" may need a second tour to fill in blanks, and gives context for health status, strengths, risks, and vulnerabilities.","trap":"It is a primary data method — the nurse collects it firsthand — not a secondary one.","k":"1ljef3zizs9fh"},{"topic":"community assessment","subtopic":"key informants","stem":"A community health nursing student is told that county health department nurses and church leaders are often good sources of insight into local concerns, even though they may hold no formal title. What term describes these sources?","options":["Gatekeepers","Stakeholders","Key informants","Community diagnosticians"],"correct":[2],"sata":false,"why":"Key informants are community members who provide insight into local issues, strengths, and concerns, and often hold an informal role rather than a formal title. County health department nurses and church leaders are the examples given.","trap":null,"k":"1dyybig12rlaw6"},{"topic":"community assessment","subtopic":"key informants","stem":"A nurse assumes that a true key informant must be an elected official or an agency head. Why is this reasoning flawed?","options":["Key informants must have clinical training","Key informants are chosen for their knowledge of and connection to the community, not their official rank","Key informants are always appointed by the health department","Key informants must be lifelong residents of the community"],"correct":[1],"sata":false,"why":"A key informant is chosen for knowledge of and connection to the community, not official rank; the classic distractor is assuming a formal title is required, but it doesn't have to be.","trap":null,"k":"107pzk310xeogx"},{"topic":"community assessment","subtopic":"key informants","stem":"In addition to sharing their own knowledge of the community, what else can key informants do?","options":["Certify the community assessment for accuracy","Identify other key informants","Independently authorize a community diagnosis","Replace the need for a windshield survey"],"correct":[1],"sata":false,"why":"Key informants know many community members and can identify other key informants — a snowball referral process.","trap":null,"k":"5cwcrssi05pu"},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"Which of the following are primary data collection methods for a community assessment? Select all that apply.","options":["Windshield survey","Key informant interviews","Focus groups","Census data","Photovoice"],"correct":[0,1,2,4],"sata":true,"why":"Primary data is collected directly by the assessment team — windshield survey, key informant interviews, focus groups, participant observation, and photovoice are all primary methods. Census data is secondary.","trap":"Census data is a common distractor planted among primary-method lists; it is pre-existing numeric data from a recognized agency, which makes it secondary.","k":"1ycw3nedk95fk"},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"A student mistakenly labels the windshield survey as a secondary data source because it produces a written summary the team can file and reuse later. What is the error?","options":["There is no error; reused documents are always secondary data","The windshield survey is primary data because the nurse collects it firsthand through direct observation","The windshield survey is neither primary nor secondary","The windshield survey only becomes primary data if photographs are taken"],"correct":[1],"sata":false,"why":"Primary data is defined by who collects it and how — directly, by the nurse or assessment team — not by whether the output gets filed for later use. The windshield survey is a primary data method because it involves the nurse observing firsthand.","trap":null,"k":"mj9373ckyvhx"},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"Which of the following are examples of secondary data used in community assessment? Select all that apply.","options":["US Census","Vital statistics","BRFSS (Behavioral Risk Factor Surveillance System)","Focus groups","CDC WONDER"],"correct":[0,1,2,4],"sata":true,"why":"Secondary data is pre-existing numeric data from a recognized agency — the Census, vital statistics, morbidity/mortality reports, BRFSS, and CDC WONDER are all secondary sources.","trap":"Focus groups involve direct interaction with community members and are a primary data method, not secondary.","k":"9al0wy19b9ea4"},{"topic":"community assessment","subtopic":"primary vs. secondary data","stem":"A comprehensive community assessment is best built using which combination of data?","options":["Primary data alone, since it reflects firsthand community knowledge","Secondary data alone, since it is already validated by recognized agencies","Both primary and secondary data","Neither; community diagnosis relies only on clinical judgment"],"correct":[2],"sata":false,"why":"A comprehensive community assessment uses both primary and secondary data — firsthand methods like windshield surveys and key informant interviews, and existing numeric sources like census and vital statistics.","trap":null,"k":"1miqviyj56ejg"},{"topic":"community assessment","subtopic":"community as client and partner","stem":"A PHN designs an assessment in which the community's collective health and common good are the direct recipient of nursing care. This reflects which model?","options":["Community as partner","Community as client","Community diagnosis","Participant observation"],"correct":[1],"sata":false,"why":"Community as client frames the community itself as the unit and recipient of nursing care, with a focus on the collective or common good.","trap":null,"k":"1cah0sd1vffxw7"},{"topic":"community assessment","subtopic":"community as client and partner","stem":"How does the \"community as partner\" model differ from \"community as client\"?","options":["It removes the community from the assessment process entirely","It emphasizes the community's active collaboration in its own assessment and care, rather than being only the recipient of care","It applies only to secondary data collection","It replaces the nursing process with an epidemiologic model"],"correct":[1],"sata":false,"why":"Community as partner is a model in which the community actively collaborates in its own assessment and care, contrasted with community as client, where the community is framed as the recipient of care.","trap":null,"k":"1eb87q97vef7f"},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A community diagnosis, the nursing diagnosis written for a community rather than an individual, may be formatted using which of the following? Select all that apply.","options":["NANDA","The Omaha system","The Federal Poverty Guidelines","BRFSS categories"],"correct":[0,1],"sata":true,"why":"Community diagnosis may use the NANDA taxonomy or the Omaha system.","trap":null,"k":"1g3aupx19vzinj"},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"Which three factors define a community according to the chapter?","options":["Income, education, and access to care","People, place, and function","Stakeholders, gatekeepers, and key informants","Assessment, diagnosis, and evaluation"],"correct":[1],"sata":false,"why":"A community is defined by people (residents), place (geographic or shared space), and function (the community's aims and activities).","trap":null,"k":"17nw6oiv50qk4"},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A focus group works best under which condition?","options":["When the topic is highly sensitive, encouraging catharsis","When the topic is not sensitive and participants feel comfortable speaking openly","When participants are unfamiliar with one another","When the group is used only to verify secondary data"],"correct":[1],"sata":false,"why":"Focus groups use open-ended questioning of a small group and work best when the topic is not sensitive and participants feel comfortable speaking.","trap":null,"k":"1h4iw5j2gz9up"},{"topic":"community assessment","subtopic":"community diagnosis and framework","stem":"A nurse notes that a certain resident controls who can enter and use a community center, effectively controlling access to that part of the community. This person is best described as a:","options":["Key informant","Stakeholder","Gatekeeper","Community diagnostician"],"correct":[2],"sata":false,"why":"Gatekeepers are people who control access to the community or its members — distinct from stakeholders, who are anyone with a personal or occupational interest in the community's life, and key informants, who are chosen for their insight and connections.","trap":"Key informant and gatekeeper both describe influential community members, but only the gatekeeper controls access; a key informant is valued for knowledge and connection, not control.","k":"cu7oar1r2gpsh"}];
 const TITLE = "Chapter 13 — NUR 4353 — Community/Public Health Nursing";
 const SUBTITLE = "Chapter 13";
 const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4353-community-and-culture";
 
 let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
 const app = document.getElementById('app');
@@ -306,6 +325,7 @@ function grade(){
   const ok = got.length === key.length && got.every((v,n) => v === key[n]);
   if (ok) score++;
   log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
 
   [...document.querySelectorAll('.opt')].forEach(b => {
     const k = +b.dataset.k;
@@ -361,6 +381,97 @@ document.addEventListener('keydown', (e) => {
   if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
 });
 
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
 try {
   render();
 } catch (err) {
@@ -368,6 +479,12 @@ try {
     esc(err && err.message ? err.message : String(err)) +
     ' The full answer key is below.</div>' + FALLBACK;
 }
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
 </script>
 </body>
 </html>
