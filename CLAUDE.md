@@ -43,13 +43,16 @@ them, and a merged log would make both dashboards lie.
 - `src/courses.js` — course discovery + slug resolution. The only path-aware module.
 - `src/scheduler.js` — SM-2-ish scheduling (pure; runs in node and browser). Ladder 1/3/7/14/30, ease 1.3–2.8, topics under 70% rolling accuracy pulled forward, round-robin topic interleaving within priority buckets.
 - `src/importer.js` — drill-file parser + bank merge.
+- `src/tracker.js` — stem-key identity shared by the published pages and the import CLI (`stemKey`, `stemKeySource`, `keyIndex`, `mergeAttempts`). Pure; runs in node and browser.
 - `src/export.js` — standalone HTML export + landing-page renderers (`renderExport`, `renderIndex`, `renderCourseIndex`, `embedJson`, `escapeHtml`).
-- `scripts/import.js` — importer CLI. `scripts/export.js` — one shareable file. `scripts/publish.js` — builds `docs/` for Pages.
+- `scripts/import.js` — importer CLI. `scripts/export.js` — one shareable file. `scripts/publish.js` — builds `docs/` for Pages. `scripts/import-attempts.js` — pulls drilled answers off the published pages.
 - `public/` — the app. `server.js` — static server + JSON API. `test/` — node:test suites.
 
 ## Common commands
 ```
 node scripts/import.js --course nur4353         # that course's drills/ -> its questions.json
+node scripts/import-attempts.js results.json    # drilled answers -> that course's attempts_log.json
+node scripts/import-attempts.js --stdin         # paste the export, then Ctrl-Z / Ctrl-D
 node server.js                                  # http://localhost:4173
 npm test                                        # node --test test/*.test.js (~39 tests, no deps)
 npm run publish -- --title "Nursing Drills"     # rebuild all of docs/ for Pages
@@ -104,6 +107,45 @@ drill → `bridge/sync_misses.py` → factbank regenerate.
 - Questions render as static HTML *before* any script runs, with answers marked; the script replaces that view on boot and a boot failure restores it (try/catch). Never let the page be blank with JS off.
 - `embedJson` escapes `<`→`<` and U+2028/U+2029 so payloads can't break out of the `<script>` block. `qid` and source filenames are stripped from shipped payloads.
 - `renderIndex`'s drill runner is a deliberate copy of `renderExport`'s, not an oversight — the per-chapter pages are already deployed, and keeping the landing page's changes out of that code path is worth more than removing the duplication. Don't "fix" it.
+
+## Attempts come back by hand — the published pages cannot phone home
+
+`docs/**` is standalone HTML on Pages with no backend to post to, so for a
+long time drilling on a phone left no trace at all: 1206 authored questions
+against an empty `attempts_log.json`, which meant the dashboard, the scheduler
+and `bridge/sync_misses.py` had never had data to work on. The LT button in the
+page corner buffers graded answers in `localStorage`; `scripts/import-attempts.js`
+is the other end. studybank surfaces the same script as **Import drill results**.
+
+- **Identity is the normalized stem key, not the qid.** `embedJson` strips qids
+  from shipped payloads, so the page cannot name the question it just graded.
+  `stemKey()` in `src/tracker.js` is what both ends agree on, and it is why an
+  unrelated edit elsewhere in the bank does not orphan a pending buffer.
+- **The key is computed at build time, not in the browser** — unlike
+  `relabelSource`, no copy of the hashing function is shipped. `src/export.js`
+  and `scripts/publish.js` both import `stemKey` and stamp each shipped question
+  with `k:` (plus the course slug); the page only ever reads `q.k` and skips
+  recording when it is absent. That is stronger than inlining, because there is
+  no second copy that can drift — but it does mean **a page built before this
+  change records nothing**, silently, and the only fix is a republish.
+- **`keyIndex()` refuses rather than guesses.** Two questions normalizing to the
+  same key abort the import with both qids named, because filing an answer
+  against the wrong question corrupts that topic's accuracy and its schedule.
+- **Import is idempotent on qid + timestamp + session**, so the browser buffer
+  is deliberately *not* cleared after an export. Import, keep drilling, import
+  again — the overlap does not double-count. Don't add an auto-clear; the buffer
+  is the only copy until it lands here.
+- **The export names its own course**, and a `--course` that resolves to a
+  different slug is an error, not a preference — one class's answers in
+  another's log makes both dashboards lie.
+- **Unmatched records are normal after a bank edit.** They mean the stem changed
+  since those pages were built; the fix is republish, not a data repair.
+- `attempts_log.json` is the one file that cannot be regenerated, so the write
+  is temp-file-and-rename. `schedule_state.json` is derived and gets rebuilt
+  wholesale by `replay()` rather than patched.
+- **A republish is required before any of this reaches the live site** — same
+  rule as the relabel below. `grep -lr "LT_STORE" docs/` should hit every page
+  except `docs/index.html`, which is the course picker and has no runner.
 
 ## Rationale/trap text refers to options by letter — the runners must translate
 326 of the 1206 banked questions (300 of the 404 in `nur4351-research-consumer`)
