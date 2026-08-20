@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 29 — NUR 3420/1 — Pharmacology I &amp; II</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 29</div><h1>Chapter 29 — NUR 3420/1 — Pharmacology I &amp; II</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">body fluid compartments and blood fluid terms</span><span class="chip t2">how total body water is distributed</span></div>
+<div class="stem">1. A nursing student is building a diagram of body fluid compartments before a fluid-replacement clinical. Which statements about the distribution of total body water are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Water makes up roughly 60% of an average adult's body weight</li><li class="fopt right"><span class="mk">&#10003;</span>Two thirds of total body water is intracellular fluid</li><li class="fopt right"><span class="mk">&#10003;</span>Extracellular fluid comprises the interstitial fluid and the intravascular fluid</li><li class="fopt"><span class="mk">D</span>Interstitial fluid is a subdivision of the intracellular fluid</li><li class="fopt right"><span class="mk">&#10003;</span>Transcellular fluid, such as cerebrospinal, pleural, and synovial fluid, lies within the interstitial fluid</li><li class="fopt"><span class="mk">F</span>Total body water accounts for a smaller share of body weight in an infant than in an adult</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Total body water is about 60% of adult body weight and splits two thirds intracellular to one third extracellular; the extracellular third is itself the interstitial fluid plus the intravascular fluid, and the transcellular fluid of the specialized cavities sits inside the interstitial portion rather than beside it as a fourth peer compartment. Death often occurs when 20% to 25% of total body water is lost.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex error because &quot;interstitial&quot; and &quot;intracellular&quot; differ by three letters and both start with &quot;int&quot; — interstitial fluid fills the spaces *between* cells and is extracellular by definition. (F) inverts the age rule: total body water is a *higher* proportion of body weight in infants and a lower one in older adults.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">body fluid compartments and blood fluid terms</span><span class="chip t2">serum versus plasma</span></div>
+<div class="stem">2. A chemistry panel is drawn into a clot-activator tube and the result returns as &quot;serum potassium 3.2 mEq/L.&quot; Which description matches the fluid the value was actually measured in?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The clear, cell-free portion of the blood from which fibrinogen has been separated during the clotting process</li><li class="fopt"><span class="mk">B</span>The watery, straw-colored liquid component of blood in which the erythrocytes, leukocytes, and platelets are suspended</li><li class="fopt"><span class="mk">C</span>The extracellular fluid drawn from the spaces between the cells of the body</li><li class="fopt"><span class="mk">D</span>Whole blood, meaning the liquid component together with all three of its major solid components</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Serum is defined as the clear, cell-free portion of the blood from which fibrinogen has been separated during clotting, as typically carried out with a laboratory sample. That is why every reference value in this chapter is written as a *serum* potassium or a *serum* sodium.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because it is the richer, more textbook-sounding definition — but it defines plasma, which still holds the cells and still contains fibrinogen. The cue is that serum is the lab-tube word.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">body fluid compartments and blood fluid terms</span><span class="chip t2">serum versus plasma</span></div>
+<div class="stem">3. The same patient is now to receive two units of fresh frozen plasma. Which statement about plasma is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is the cell-free fraction that remains after fibrinogen has been removed by clotting</li><li class="fopt right"><span class="mk">&#10003;</span>It is the watery, straw-colored liquid component of lymph and blood in which the leukocytes, erythrocytes, and platelets are suspended</li><li class="fopt"><span class="mk">C</span>It is the fluid contained within specialized body compartments such as the pleural and synovial cavities</li><li class="fopt"><span class="mk">D</span>It is the portion of the extracellular fluid that fills the spaces between most of the cells of the body</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Plasma is the watery, straw-colored fluid component of lymph and blood in which the leukocytes, erythrocytes, and platelets are suspended, and it retains fibrinogen — which is exactly why fresh frozen plasma is the product given to replace clotting factors.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, swapping the serum definition onto plasma. (C) defines transcellular fluid and (D) defines interstitial fluid, both of which are compartment words rather than blood-component words.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iv fluid tonicity and types of dehydration</span><span class="chip t2">osmolality versus tonicity</span></div>
+<div class="stem">4. A patient's chart records a serum osmolality of 302 mOsm/kg, and the pharmacy label on a hanging bag of 0.45% sodium chloride reads &quot;hypotonic.&quot; A student asks whether the two terms mean the same thing. What is the accurate response?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Osmolality is used in reference to body fluids and tonicity is used in reference to intravenous fluids</li><li class="fopt"><span class="mk">B</span>Osmolality is used in reference to intravenous fluids and tonicity is used in reference to body fluids</li><li class="fopt"><span class="mk">C</span>Osmolality applies only to electrolyte solutions and tonicity applies only to protein solutions</li><li class="fopt"><span class="mk">D</span>They are interchangeable, so either word may be used for either measurement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Osmolality is used in reference to body fluids, with a normal range of 290 to 310 mOsm/kg, while tonicity is used in reference to intravenous fluids. The axis is what is being measured: osmolality describes the patient, tonicity describes the bag.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex pick precisely because the textbook calls these &quot;similar terms that are often used interchangeably&quot; — that sentence is the book flagging a common error, not endorsing it. (B) is the direct inversion and is the one students who half-remember the rule choose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iv fluid tonicity and types of dehydration</span><span class="chip t2">where water moves with each tonicity</span></div>
+<div class="stem">5. A patient is receiving 0.45% sodium chloride. What fluid movement should the nurse expect, and what is the associated risk?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fluid moves out of the vein and into the tissues and cells, and the cells may swell and burst</li><li class="fopt"><span class="mk">B</span>Fluid is pulled from the interstitial space into the veins, and the cells shrink as water leaves them</li><li class="fopt"><span class="mk">C</span>No net fluid movement occurs, because the pressures inside and outside the cell are the same</li><li class="fopt"><span class="mk">D</span>No fluid shift occurs, but red blood cells are destroyed on contact because the solution contains no sodium at all</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A hypotonic solution has a lower concentration of solutes outside the cell than inside it, so fluid moves out of the vein and into the tissues and cells; the chapter warns that cells can burst as a result. The most dilute member of this group, 0.25% sodium chloride, can cause hemolysis of the red blood cells.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is a plausible-but-adjacent distractor built from a real fact attached to the wrong solution and the wrong reason — hemolysis belongs to 0.25% sodium chloride, and 0.45% is dilute, not sodium-free. (C) describes an isotonic fluid.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iv fluid tonicity and types of dehydration</span><span class="chip t2">where water moves with each tonicity</span></div>
+<div class="stem">6. The same patient is later switched to 3% sodium chloride. What fluid movement should the nurse now expect?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Fluid moves out of the vein into the cells, which swell and may burst</li><li class="fopt right"><span class="mk">&#10003;</span>Fluid moves from the interstitial space into the veins, and the cells shrink as water leaves them</li><li class="fopt"><span class="mk">C</span>No net fluid movement occurs in either direction</li><li class="fopt"><span class="mk">D</span>Fluid moves out of the veins into the interstitial space, producing peripheral edema</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A hypertonic solution has a higher concentration of solutes outside the cell, so fluid is drawn from the interstitial fluid into the veins and the cells shrink. This is why 3% and 5% sodium chloride are classed as hypertonic and flagged high-alert.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — it is the hypotonic answer attached to the hypertonic solution. The reliable cue for a *fluid* is to name where the water goes, and hypertonic pulls water toward the vein.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iv fluid tonicity and types of dehydration</span><span class="chip t2">the same three words as a type of dehydration</span></div>
+<div class="stem">7. A patient is admitted after two days of vomiting and diarrhea. Which type of dehydration does this presentation represent?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Isotonic dehydration, because sodium and water are lost together and the volume of extracellular fluid falls</li><li class="fopt"><span class="mk">B</span>Hypotonic dehydration, because sodium loss is greater than water loss</li><li class="fopt"><span class="mk">C</span>Hypertonic dehydration, because water loss is greater than sodium loss</li><li class="fopt"><span class="mk">D</span>No dehydration is present, because gastrointestinal losses replace themselves from the intracellular compartment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Isotonic dehydration is the loss of both sodium and water, producing a decrease in the volume of extracellular fluid, and the chapter's own example is diarrhea and vomiting. The chapter's critical thinking exercise uses this same case.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) pull because &quot;isotonic&quot; sounds like a normal, balanced state and therefore not like a diagnosis at all, so students reach for a word that sounds abnormal. For a *dehydration*, name the loss that is greater; when neither is greater, it is isotonic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iv fluid tonicity and types of dehydration</span><span class="chip t2">the same three words as a type of dehydration</span></div>
+<div class="stem">8. A different patient has spiked a fever with profuse perspiration over the past 12 hours. Which type of dehydration does this represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Isotonic dehydration, because sodium and water are lost in equal proportion</li><li class="fopt"><span class="mk">B</span>Hypotonic dehydration, because sodium loss is greater than water loss</li><li class="fopt right"><span class="mk">&#10003;</span>Hypertonic dehydration, because water loss is greater than sodium loss, which dehydrates the cells</li><li class="fopt"><span class="mk">D</span>Hypertonic dehydration, because sodium loss is greater than water loss, which swells the cells</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hypertonic dehydration is water loss greater than sodium loss, thus dehydrating the cells, and the chapter's example is fever with perspiration. Hypotonic dehydration is the opposite case — sodium loss greater than water loss, with fluid pulled from outside the cells into the cells — and its examples are renal insufficiency and inadequate aldosterone.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, carrying the vomiting-and-diarrhea answer onto a case where only water is being lost. (D) is the same word as the key with the definition inverted, which is the reason the tonicity words must be read as a rule about which loss is greater rather than recognized on sight.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">crystalloid colloid and blood product selection</span><span class="chip t2">what distinguishes the three categories</span></div>
+<div class="stem">9. A patient in shock needs plasma volume expansion, and the team is weighing 5% albumin against 0.9% sodium chloride. Which statement correctly distinguishes the two categories?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Crystalloids are substances in solution that diffuse through a semipermeable membrane, whereas colloids are protein substances that raise colloid oncotic pressure and move fluid from the interstitial compartment into the plasma compartment</li><li class="fopt"><span class="mk">B</span>Crystalloids are protein substances that raise colloid oncotic pressure, whereas colloids are small solutes that diffuse freely across the membrane</li><li class="fopt"><span class="mk">C</span>Both categories contain protein, and they differ only in cost and shelf life</li><li class="fopt"><span class="mk">D</span>Colloids supply water and sodium but contain no protein, which is why they are the maintenance fluid of choice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Crystalloids are defined as substances in a solution that diffuse through a semipermeable membrane, and they supply water and sodium with no proteins; colloids are protein substances that increase the colloid oncotic pressure and move fluid from the interstitial compartment to the plasma compartment. Albumin generates approximately 70% of the colloid oncotic pressure.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the straight inversion and is the one chosen by anyone who anchors on &quot;crystal&quot; sounding large and structured. The discriminator to hold is that crystalloids diffuse through the membrane and colloids cannot.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">crystalloid colloid and blood product selection</span><span class="chip t2">what distinguishes the three categories</span></div>
+<div class="stem">10. A trauma patient in the emergency department needs immediate plasma volume expansion. A student argues for a colloid on the ground that colloids last longer. What is the accurate response?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Colloids do hold plasma volume longer, but crystalloids are better than colloids for emergency short-term plasma volume expansion</li><li class="fopt"><span class="mk">B</span>Colloids are the better choice in every time frame, both immediate and sustained</li><li class="fopt"><span class="mk">C</span>Crystalloids hold plasma volume longer than colloids, so the premise is wrong</li><li class="fopt"><span class="mk">D</span>Neither category expands plasma volume; only blood products do</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Both statements appear on the same page: colloids hold plasma volume longer and are less likely than crystalloids to cause edema, yet crystalloids are better than colloids for emergency short-term plasma volume expansion. Crystalloids are also the cheapest option, carry no risk for viral transmission or anaphylaxis, and do not alter the coagulation profile.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because the word &quot;longer&quot; reads as &quot;better,&quot; and the sentence containing &quot;better&quot; is about a different time frame entirely. Read the time frame before the adjective.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">crystalloid colloid and blood product selection</span><span class="chip t2">matching a blood product to its reason</span></div>
+<div class="stem">11. A nurse is reviewing why each blood product is selected. Which statements correctly match a product to its reason for use? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Packed red blood cells are given to increase oxygen-carrying capacity</li><li class="fopt right"><span class="mk">&#10003;</span>Fresh frozen plasma is given to replace clotting factors</li><li class="fopt right"><span class="mk">&#10003;</span>Whole blood is reserved for extreme loss, over 25% of blood volume, because it adds plasma proteins, the chief osmotic component</li><li class="fopt right"><span class="mk">&#10003;</span>Cryoprecipitate and plasma protein fraction are used for acute bleeding</li><li class="fopt"><span class="mk">E</span>Packed red blood cells are given chiefly to supply clotting factors</li><li class="fopt"><span class="mk">F</span>Hetastarch is given as a source of clotting factors when plasma is unavailable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The blood-product table matches each agent to a reason rather than to a severity: packed red blood cells for oxygen-carrying capacity, fresh frozen plasma for clotting factors, whole blood for extreme loss because it adds plasma proteins, and cryoprecipitate and plasma protein fraction for acute bleeding. Blood products are the only category that carries oxygen, and they hold oncotic pressure for several hours to days.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) swaps two products that sit adjacent in the same table, which is the single most common inversion here. (F) is drawn from the wrong category entirely: colloids such as hetastarch have no oxygen-carrying ability and no clotting factors, and are in fact more likely than crystalloids to promote bleeding.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">crystalloid colloid and blood product selection</span><span class="chip t2">transfusion administration priorities</span></div>
+<div class="stem">12. A nurse prepares to hang a unit of packed red blood cells and finds that the tubing has been primed with 5% dextrose in water. Thirty minutes into a correctly hung unit, a different patient develops a new fever and hematuria. Which statement reflects correct practice for both situations?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Blood products can be administered with normal saline only, so the dextrose tubing must be replaced before hanging; new fever or hematuria during a transfusion is a reaction requiring immediate attention</li><li class="fopt"><span class="mk">B</span>Dextrose in water is an acceptable primer for blood products; new fever or hematuria is a reaction requiring immediate attention</li><li class="fopt"><span class="mk">C</span>Blood products can be administered with normal saline only, so the dextrose tubing must be replaced; new fever or hematuria is an expected response to transfused cells and may be monitored</li><li class="fopt"><span class="mk">D</span>Either fluid may be used for priming, and fever or hematuria is an expected response to transfused cells</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Blood products can be administered with normal saline only, because dextrose solutions hemolyze red cells, and fever or hematuria appearing during a transfusion is a reaction that requires immediate attention rather than an expected finding. Blood products are also the one category with no absolute contraindications, so the safety work is in administration rather than in screening.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>The dextrose flush in (B) and (D) is the standing distractor for anyone who reaches for the most familiar intravenous solution on the unit. (C) and (D) pull through the word &quot;expected,&quot; which quietly converts a transfusion reaction into routine monitoring — the single most costly wrong answer in this chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">potassium imbalance and iv potassium safety</span><span class="chip t2">recognizing high versus low potassium</span></div>
+<div class="stem">13. A patient taking furosemide and digoxin has a serum potassium of 3.0 mEq/L. Which cluster of findings fits this value?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hypotension, lethargy, mental confusion, muscle weakness, and nausea, progressing to cardiac irregularities and paralytic ileus</li><li class="fopt"><span class="mk">B</span>Generalized fatigue, paresthesia, and palpitations, progressing to paralysis</li><li class="fopt"><span class="mk">C</span>Flushed skin, dry sticky mucous membranes, thirst, and decreased urination</li><li class="fopt"><span class="mk">D</span>Muscle cramps, headache, and seizures caused by cellular dehydration</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hypokalemia is a serum potassium below 3.5 mEq/L; early findings are hypotension, lethargy, mental confusion, muscle weakness, and nausea, and late findings are cardiac irregularities, neuropathies, and paralytic ileus. A low potassium also raises the risk of digoxin toxicity, which matters directly for this patient.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>Muscle weakness appears at both ends of the potassium range, so weakness decides nothing and cannot be used to pick between the first two options — hypotension, lethargy, confusion, nausea, and ileus are what point low. (C) and (D) are sodium presentations rather than potassium ones.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">potassium imbalance and iv potassium safety</span><span class="chip t2">recognizing high versus low potassium</span></div>
+<div class="stem">14. A patient with chronic kidney disease taking an ACE inhibitor has a serum potassium of 6.2 mEq/L. Which cluster of findings fits this value, and what is the danger if it climbs further?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hypotension, lethargy, mental confusion, nausea, and paralytic ileus, with hypertension expected above 7 mEq/L</li><li class="fopt right"><span class="mk">&#10003;</span>Generalized fatigue, weakness, paresthesia, palpitations, and paralysis, with ventricular fibrillation and cardiac arrest above 7 mEq/L</li><li class="fopt"><span class="mk">C</span>Flushed skin, dry sticky mucous membranes, and thirst, with seizures above 7 mEq/L</li><li class="fopt"><span class="mk">D</span>No findings at all, because potassium excess is asymptomatic until dialysis is required</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hyperkalemia is generally a serum potassium above 5.5 mEq/L and its effects are generally related to the heart: generalized fatigue, weakness, paresthesia, palpitations, and paralysis, with ventricular fibrillation and cardiac arrest once the level exceeds 7 mEq/L. Defective renal excretion is the most common cause, and potassium-sparing diuretics and ACE inhibitors are named contributors.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, attaching the hypokalemia cluster to a high value. The chapter is also internally inconsistent on the cutoff — one page gives greater than 5.5 and the safety box gives greater than 5 — so carry both: above 5 is reportable and above 5.5 is toxic and dangerous.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">potassium imbalance and iv potassium safety</span><span class="chip t2">administering intravenous potassium</span></div>
+<div class="stem">15. An order reads potassium chloride 40 mEq intravenously for a patient on a general medical floor with no cardiac monitoring. Which administration plan is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Dilute the dose and infuse no faster than 10 mEq/hr, never by intravenous push or bolus, at a peripheral concentration no greater than 20 to 40 mEq/L</li><li class="fopt"><span class="mk">B</span>Give the dose as a slow intravenous push over 5 minutes to shorten the patient's infusion time</li><li class="fopt"><span class="mk">C</span>Infuse at 20 mEq/hr or faster, since that rate is standard for adult replacement on any unit</li><li class="fopt"><span class="mk">D</span>Dilute the dose and infuse at any rate, since the rate limit applies only to central lines</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Intravenous potassium is given no faster than 10 mEq/hr in unmonitored patients, with 20 mEq/hr or more reserved for critically ill patients on cardiac monitors, and maximum concentrations of 20 to 40 mEq/L peripherally and 60 mEq/L centrally. It is never given by intravenous push or bolus, because cardiac arrest may occur.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex pick because 20 mEq/hr is a rate students genuinely see written — it belongs to the monitored critical care patient, and this stem specifies no cardiac monitoring, so the rate band is the whole question. (B) is the error the chapter warns is fatal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sodium imbalance and hypertonic saline safety</span><span class="chip t2">recognizing high versus low sodium</span></div>
+<div class="stem">16. A patient admitted after several days of excessive water intake has a serum sodium of 128 mEq/L. Which findings should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Lethargy, hypotension, stomach cramps, vomiting, diarrhea, and seizures, along with anorexia, confusion, agitation, and headache</li><li class="fopt"><span class="mk">B</span>Flushed skin, dry sticky mucous membranes, thirst, temperature elevation, and decreased urination</li><li class="fopt"><span class="mk">C</span>Palpitations, paresthesia, and generalized fatigue progressing to paralysis</li><li class="fopt"><span class="mk">D</span>Muscle cramps and headache caused by cellular dehydration, with a risk of intracranial hemorrhage</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hyponatremia is a serum sodium below 135 mEq/L, caused by inadequate excretion of water or by excessive water intake, and presents with lethargy, hypotension, stomach cramps, vomiting, diarrhea, and seizures, as well as anorexia, confusion, agitation, and headache. The normal serum sodium range is 135 to 145 mEq/L.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) are the hypernatremia presentations, and D pulls hardest because it names a dramatic complication that feels like it should belong to the more acute-sounding problem. (C) is a potassium excess cluster.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sodium imbalance and hypertonic saline safety</span><span class="chip t2">recognizing high versus low sodium</span></div>
+<div class="stem">17. A patient's serum sodium returns at 152 mEq/L, and the nurse assumes the patient must be fluid-overloaded. Which statement corrects that assumption?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A sodium above 145 mEq/L always indicates excess fluid volume, so the assumption is correct and no further assessment is needed</li><li class="fopt right"><span class="mk">&#10003;</span>Hypernatremia is associated with symptoms of water retention but can also occur with normal or even low fluid volume, so volume status cannot be inferred from the sodium value alone</li><li class="fopt"><span class="mk">C</span>Hypernatremia causes cellular swelling, so the patient's cells are overhydrated even if the vascular volume is low</li><li class="fopt"><span class="mk">D</span>A sodium above 145 mEq/L always indicates dehydration, so the patient must be volume-depleted</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hypernatremia is associated with symptoms of water retention but can be associated with normal fluid or even low fluid volume, so the number does not settle volume status. It causes cellular dehydration, presenting with flushed skin, dry sticky mucous membranes, thirst, temperature elevation, decreased urination, muscle cramps, headache, lethargy, seizures, coma, and possible intracranial hemorrhage.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (D) are the two opposite over-readings of the same number, and both are wrong for the same reason — a serum concentration is a ratio, so it cannot tell you the size of either the sodium pool or the water pool. (C) inverts the cellular effect: high extracellular sodium pulls water out of cells and dehydrates them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sodium imbalance and hypertonic saline safety</span><span class="chip t2">correcting hyponatremia safely</span></div>
+<div class="stem">18. A patient with hyponatremia present for several weeks is ordered 3% sodium chloride. Which statement reflects safe administration?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is a high-alert drug and should be infused no faster than 100 mL/hr with frequent serum monitoring, because too-rapid correction causes osmotic demyelination syndrome, which is potentially fatal and worst when chronic hyponatremia is corrected quickly</li><li class="fopt"><span class="mk">B</span>It should be run wide open until the serum sodium returns to normal, since the fastest correction carries the lowest risk</li><li class="fopt"><span class="mk">C</span>It is a high-alert drug, but the infusion rate matters only in acute hyponatremia; chronic hyponatremia may be corrected at any rate</li><li class="fopt"><span class="mk">D</span>It is an isotonic maintenance fluid and requires no special monitoring beyond routine intake and output</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hypertonic saline is a high-alert drug and should not be given faster than 100 mL/hr, with frequent serum monitoring. Infusing it too rapidly produces osmotic demyelination syndrome, formerly called central pontine myelinolysis, which is potentially fatal and is most associated with the rapid correction of chronic hyponatremia.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the plausible-but-adjacent error because it sounds like a nuance and gets the modifier exactly backward — chronic hyponatremia is the higher-risk case, not the exempt one. (D) misclassifies 3% sodium chloride as isotonic, which is the mistake that would let it be hung without a pump limit at all.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"body fluid compartments and blood fluid terms","subtopic":"how total body water is distributed","stem":"A nursing student is building a diagram of body fluid compartments before a fluid-replacement clinical. Which statements about the distribution of total body water are accurate? Select all that apply.","options":["Water makes up roughly 60% of an average adult's body weight","Two thirds of total body water is intracellular fluid","Extracellular fluid comprises the interstitial fluid and the intravascular fluid","Interstitial fluid is a subdivision of the intracellular fluid","Transcellular fluid, such as cerebrospinal, pleural, and synovial fluid, lies within the interstitial fluid","Total body water accounts for a smaller share of body weight in an infant than in an adult"],"correct":[0,1,2,4],"sata":true,"why":"Total body water is about 60% of adult body weight and splits two thirds intracellular to one third extracellular; the extracellular third is itself the interstitial fluid plus the intravascular fluid, and the transcellular fluid of the specialized cavities sits inside the interstitial portion rather than beside it as a fourth peer compartment. Death often occurs when 20% to 25% of total body water is lost.","trap":"(D) is the reflex error because \"interstitial\" and \"intracellular\" differ by three letters and both start with \"int\" — interstitial fluid fills the spaces *between* cells and is extracellular by definition. (F) inverts the age rule: total body water is a *higher* proportion of body weight in infants and a lower one in older adults.","k":"2n74o5d46mlj"},{"topic":"body fluid compartments and blood fluid terms","subtopic":"serum versus plasma","stem":"A chemistry panel is drawn into a clot-activator tube and the result returns as \"serum potassium 3.2 mEq/L.\" Which description matches the fluid the value was actually measured in?","options":["The clear, cell-free portion of the blood from which fibrinogen has been separated during the clotting process","The watery, straw-colored liquid component of blood in which the erythrocytes, leukocytes, and platelets are suspended","The extracellular fluid drawn from the spaces between the cells of the body","Whole blood, meaning the liquid component together with all three of its major solid components"],"correct":[0],"sata":false,"why":"Serum is defined as the clear, cell-free portion of the blood from which fibrinogen has been separated during clotting, as typically carried out with a laboratory sample. That is why every reference value in this chapter is written as a *serum* potassium or a *serum* sodium.","trap":"(B) is the reflex pick because it is the richer, more textbook-sounding definition — but it defines plasma, which still holds the cells and still contains fibrinogen. The cue is that serum is the lab-tube word.","k":"97efkj10i9n0p"},{"topic":"body fluid compartments and blood fluid terms","subtopic":"serum versus plasma","stem":"The same patient is now to receive two units of fresh frozen plasma. Which statement about plasma is accurate?","options":["It is the cell-free fraction that remains after fibrinogen has been removed by clotting","It is the watery, straw-colored liquid component of lymph and blood in which the leukocytes, erythrocytes, and platelets are suspended","It is the fluid contained within specialized body compartments such as the pleural and synovial cavities","It is the portion of the extracellular fluid that fills the spaces between most of the cells of the body"],"correct":[1],"sata":false,"why":"Plasma is the watery, straw-colored fluid component of lymph and blood in which the leukocytes, erythrocytes, and platelets are suspended, and it retains fibrinogen — which is exactly why fresh frozen plasma is the product given to replace clotting factors.","trap":"(A) is the mirror error of the previous item, swapping the serum definition onto plasma. (C) defines transcellular fluid and (D) defines interstitial fluid, both of which are compartment words rather than blood-component words.","k":"37t8f6wmqejs"},{"topic":"iv fluid tonicity and types of dehydration","subtopic":"osmolality versus tonicity","stem":"A patient's chart records a serum osmolality of 302 mOsm/kg, and the pharmacy label on a hanging bag of 0.45% sodium chloride reads \"hypotonic.\" A student asks whether the two terms mean the same thing. What is the accurate response?","options":["Osmolality is used in reference to body fluids and tonicity is used in reference to intravenous fluids","Osmolality is used in reference to intravenous fluids and tonicity is used in reference to body fluids","Osmolality applies only to electrolyte solutions and tonicity applies only to protein solutions","They are interchangeable, so either word may be used for either measurement"],"correct":[0],"sata":false,"why":"Osmolality is used in reference to body fluids, with a normal range of 290 to 310 mOsm/kg, while tonicity is used in reference to intravenous fluids. The axis is what is being measured: osmolality describes the patient, tonicity describes the bag.","trap":"(D) is the reflex pick precisely because the textbook calls these \"similar terms that are often used interchangeably\" — that sentence is the book flagging a common error, not endorsing it. (B) is the direct inversion and is the one students who half-remember the rule choose.","k":"1grym6x1pshfrv"},{"topic":"iv fluid tonicity and types of dehydration","subtopic":"where water moves with each tonicity","stem":"A patient is receiving 0.45% sodium chloride. What fluid movement should the nurse expect, and what is the associated risk?","options":["Fluid moves out of the vein and into the tissues and cells, and the cells may swell and burst","Fluid is pulled from the interstitial space into the veins, and the cells shrink as water leaves them","No net fluid movement occurs, because the pressures inside and outside the cell are the same","No fluid shift occurs, but red blood cells are destroyed on contact because the solution contains no sodium at all"],"correct":[0],"sata":false,"why":"A hypotonic solution has a lower concentration of solutes outside the cell than inside it, so fluid moves out of the vein and into the tissues and cells; the chapter warns that cells can burst as a result. The most dilute member of this group, 0.25% sodium chloride, can cause hemolysis of the red blood cells.","trap":"(D) is a plausible-but-adjacent distractor built from a real fact attached to the wrong solution and the wrong reason — hemolysis belongs to 0.25% sodium chloride, and 0.45% is dilute, not sodium-free. (C) describes an isotonic fluid.","k":"1wvodajwevly5"},{"topic":"iv fluid tonicity and types of dehydration","subtopic":"where water moves with each tonicity","stem":"The same patient is later switched to 3% sodium chloride. What fluid movement should the nurse now expect?","options":["Fluid moves out of the vein into the cells, which swell and may burst","Fluid moves from the interstitial space into the veins, and the cells shrink as water leaves them","No net fluid movement occurs in either direction","Fluid moves out of the veins into the interstitial space, producing peripheral edema"],"correct":[1],"sata":false,"why":"A hypertonic solution has a higher concentration of solutes outside the cell, so fluid is drawn from the interstitial fluid into the veins and the cells shrink. This is why 3% and 5% sodium chloride are classed as hypertonic and flagged high-alert.","trap":"(A) is the mirror error of the previous item — it is the hypotonic answer attached to the hypertonic solution. The reliable cue for a *fluid* is to name where the water goes, and hypertonic pulls water toward the vein.","k":"cvdt48hs48b6"},{"topic":"iv fluid tonicity and types of dehydration","subtopic":"the same three words as a type of dehydration","stem":"A patient is admitted after two days of vomiting and diarrhea. Which type of dehydration does this presentation represent?","options":["Isotonic dehydration, because sodium and water are lost together and the volume of extracellular fluid falls","Hypotonic dehydration, because sodium loss is greater than water loss","Hypertonic dehydration, because water loss is greater than sodium loss","No dehydration is present, because gastrointestinal losses replace themselves from the intracellular compartment"],"correct":[0],"sata":false,"why":"Isotonic dehydration is the loss of both sodium and water, producing a decrease in the volume of extracellular fluid, and the chapter's own example is diarrhea and vomiting. The chapter's critical thinking exercise uses this same case.","trap":"(B) and (C) pull because \"isotonic\" sounds like a normal, balanced state and therefore not like a diagnosis at all, so students reach for a word that sounds abnormal. For a *dehydration*, name the loss that is greater; when neither is greater, it is isotonic.","k":"xdlsm11wgotdv"},{"topic":"iv fluid tonicity and types of dehydration","subtopic":"the same three words as a type of dehydration","stem":"A different patient has spiked a fever with profuse perspiration over the past 12 hours. Which type of dehydration does this represent?","options":["Isotonic dehydration, because sodium and water are lost in equal proportion","Hypotonic dehydration, because sodium loss is greater than water loss","Hypertonic dehydration, because water loss is greater than sodium loss, which dehydrates the cells","Hypertonic dehydration, because sodium loss is greater than water loss, which swells the cells"],"correct":[2],"sata":false,"why":"Hypertonic dehydration is water loss greater than sodium loss, thus dehydrating the cells, and the chapter's example is fever with perspiration. Hypotonic dehydration is the opposite case — sodium loss greater than water loss, with fluid pulled from outside the cells into the cells — and its examples are renal insufficiency and inadequate aldosterone.","trap":"(A) is the mirror error of the previous item, carrying the vomiting-and-diarrhea answer onto a case where only water is being lost. (D) is the same word as the key with the definition inverted, which is the reason the tonicity words must be read as a rule about which loss is greater rather than recognized on sight.","k":"6smdtq1oos3sk"},{"topic":"crystalloid colloid and blood product selection","subtopic":"what distinguishes the three categories","stem":"A patient in shock needs plasma volume expansion, and the team is weighing 5% albumin against 0.9% sodium chloride. Which statement correctly distinguishes the two categories?","options":["Crystalloids are substances in solution that diffuse through a semipermeable membrane, whereas colloids are protein substances that raise colloid oncotic pressure and move fluid from the interstitial compartment into the plasma compartment","Crystalloids are protein substances that raise colloid oncotic pressure, whereas colloids are small solutes that diffuse freely across the membrane","Both categories contain protein, and they differ only in cost and shelf life","Colloids supply water and sodium but contain no protein, which is why they are the maintenance fluid of choice"],"correct":[0],"sata":false,"why":"Crystalloids are defined as substances in a solution that diffuse through a semipermeable membrane, and they supply water and sodium with no proteins; colloids are protein substances that increase the colloid oncotic pressure and move fluid from the interstitial compartment to the plasma compartment. Albumin generates approximately 70% of the colloid oncotic pressure.","trap":"(B) is the straight inversion and is the one chosen by anyone who anchors on \"crystal\" sounding large and structured. The discriminator to hold is that crystalloids diffuse through the membrane and colloids cannot.","k":"195dc20psvhfu"},{"topic":"crystalloid colloid and blood product selection","subtopic":"what distinguishes the three categories","stem":"A trauma patient in the emergency department needs immediate plasma volume expansion. A student argues for a colloid on the ground that colloids last longer. What is the accurate response?","options":["Colloids do hold plasma volume longer, but crystalloids are better than colloids for emergency short-term plasma volume expansion","Colloids are the better choice in every time frame, both immediate and sustained","Crystalloids hold plasma volume longer than colloids, so the premise is wrong","Neither category expands plasma volume; only blood products do"],"correct":[0],"sata":false,"why":"Both statements appear on the same page: colloids hold plasma volume longer and are less likely than crystalloids to cause edema, yet crystalloids are better than colloids for emergency short-term plasma volume expansion. Crystalloids are also the cheapest option, carry no risk for viral transmission or anaphylaxis, and do not alter the coagulation profile.","trap":"(B) is the reflex pick because the word \"longer\" reads as \"better,\" and the sentence containing \"better\" is about a different time frame entirely. Read the time frame before the adjective.","k":"16dj50g1obwmze"},{"topic":"crystalloid colloid and blood product selection","subtopic":"matching a blood product to its reason","stem":"A nurse is reviewing why each blood product is selected. Which statements correctly match a product to its reason for use? Select all that apply.","options":["Packed red blood cells are given to increase oxygen-carrying capacity","Fresh frozen plasma is given to replace clotting factors","Whole blood is reserved for extreme loss, over 25% of blood volume, because it adds plasma proteins, the chief osmotic component","Cryoprecipitate and plasma protein fraction are used for acute bleeding","Packed red blood cells are given chiefly to supply clotting factors","Hetastarch is given as a source of clotting factors when plasma is unavailable"],"correct":[0,1,2,3],"sata":true,"why":"The blood-product table matches each agent to a reason rather than to a severity: packed red blood cells for oxygen-carrying capacity, fresh frozen plasma for clotting factors, whole blood for extreme loss because it adds plasma proteins, and cryoprecipitate and plasma protein fraction for acute bleeding. Blood products are the only category that carries oxygen, and they hold oncotic pressure for several hours to days.","trap":"(E) swaps two products that sit adjacent in the same table, which is the single most common inversion here. (F) is drawn from the wrong category entirely: colloids such as hetastarch have no oxygen-carrying ability and no clotting factors, and are in fact more likely than crystalloids to promote bleeding.","k":"r6o45wa5ptru"},{"topic":"crystalloid colloid and blood product selection","subtopic":"transfusion administration priorities","stem":"A nurse prepares to hang a unit of packed red blood cells and finds that the tubing has been primed with 5% dextrose in water. Thirty minutes into a correctly hung unit, a different patient develops a new fever and hematuria. Which statement reflects correct practice for both situations?","options":["Blood products can be administered with normal saline only, so the dextrose tubing must be replaced before hanging; new fever or hematuria during a transfusion is a reaction requiring immediate attention","Dextrose in water is an acceptable primer for blood products; new fever or hematuria is a reaction requiring immediate attention","Blood products can be administered with normal saline only, so the dextrose tubing must be replaced; new fever or hematuria is an expected response to transfused cells and may be monitored","Either fluid may be used for priming, and fever or hematuria is an expected response to transfused cells"],"correct":[0],"sata":false,"why":"Blood products can be administered with normal saline only, because dextrose solutions hemolyze red cells, and fever or hematuria appearing during a transfusion is a reaction that requires immediate attention rather than an expected finding. Blood products are also the one category with no absolute contraindications, so the safety work is in administration rather than in screening.","trap":"The dextrose flush in (B) and (D) is the standing distractor for anyone who reaches for the most familiar intravenous solution on the unit. (C) and (D) pull through the word \"expected,\" which quietly converts a transfusion reaction into routine monitoring — the single most costly wrong answer in this chapter.","k":"1lry4k41c9b6ey"},{"topic":"potassium imbalance and iv potassium safety","subtopic":"recognizing high versus low potassium","stem":"A patient taking furosemide and digoxin has a serum potassium of 3.0 mEq/L. Which cluster of findings fits this value?","options":["Hypotension, lethargy, mental confusion, muscle weakness, and nausea, progressing to cardiac irregularities and paralytic ileus","Generalized fatigue, paresthesia, and palpitations, progressing to paralysis","Flushed skin, dry sticky mucous membranes, thirst, and decreased urination","Muscle cramps, headache, and seizures caused by cellular dehydration"],"correct":[0],"sata":false,"why":"Hypokalemia is a serum potassium below 3.5 mEq/L; early findings are hypotension, lethargy, mental confusion, muscle weakness, and nausea, and late findings are cardiac irregularities, neuropathies, and paralytic ileus. A low potassium also raises the risk of digoxin toxicity, which matters directly for this patient.","trap":"Muscle weakness appears at both ends of the potassium range, so weakness decides nothing and cannot be used to pick between the first two options — hypotension, lethargy, confusion, nausea, and ileus are what point low. (C) and (D) are sodium presentations rather than potassium ones.","k":"8mm9t31rn4mjl"},{"topic":"potassium imbalance and iv potassium safety","subtopic":"recognizing high versus low potassium","stem":"A patient with chronic kidney disease taking an ACE inhibitor has a serum potassium of 6.2 mEq/L. Which cluster of findings fits this value, and what is the danger if it climbs further?","options":["Hypotension, lethargy, mental confusion, nausea, and paralytic ileus, with hypertension expected above 7 mEq/L","Generalized fatigue, weakness, paresthesia, palpitations, and paralysis, with ventricular fibrillation and cardiac arrest above 7 mEq/L","Flushed skin, dry sticky mucous membranes, and thirst, with seizures above 7 mEq/L","No findings at all, because potassium excess is asymptomatic until dialysis is required"],"correct":[1],"sata":false,"why":"Hyperkalemia is generally a serum potassium above 5.5 mEq/L and its effects are generally related to the heart: generalized fatigue, weakness, paresthesia, palpitations, and paralysis, with ventricular fibrillation and cardiac arrest once the level exceeds 7 mEq/L. Defective renal excretion is the most common cause, and potassium-sparing diuretics and ACE inhibitors are named contributors.","trap":"(A) is the mirror error of the previous item, attaching the hypokalemia cluster to a high value. The chapter is also internally inconsistent on the cutoff — one page gives greater than 5.5 and the safety box gives greater than 5 — so carry both: above 5 is reportable and above 5.5 is toxic and dangerous.","k":"1k257w7qxlhsx"},{"topic":"potassium imbalance and iv potassium safety","subtopic":"administering intravenous potassium","stem":"An order reads potassium chloride 40 mEq intravenously for a patient on a general medical floor with no cardiac monitoring. Which administration plan is correct?","options":["Dilute the dose and infuse no faster than 10 mEq/hr, never by intravenous push or bolus, at a peripheral concentration no greater than 20 to 40 mEq/L","Give the dose as a slow intravenous push over 5 minutes to shorten the patient's infusion time","Infuse at 20 mEq/hr or faster, since that rate is standard for adult replacement on any unit","Dilute the dose and infuse at any rate, since the rate limit applies only to central lines"],"correct":[0],"sata":false,"why":"Intravenous potassium is given no faster than 10 mEq/hr in unmonitored patients, with 20 mEq/hr or more reserved for critically ill patients on cardiac monitors, and maximum concentrations of 20 to 40 mEq/L peripherally and 60 mEq/L centrally. It is never given by intravenous push or bolus, because cardiac arrest may occur.","trap":"(C) is the reflex pick because 20 mEq/hr is a rate students genuinely see written — it belongs to the monitored critical care patient, and this stem specifies no cardiac monitoring, so the rate band is the whole question. (B) is the error the chapter warns is fatal.","k":"8ne1lsrf86re"},{"topic":"sodium imbalance and hypertonic saline safety","subtopic":"recognizing high versus low sodium","stem":"A patient admitted after several days of excessive water intake has a serum sodium of 128 mEq/L. Which findings should the nurse anticipate?","options":["Lethargy, hypotension, stomach cramps, vomiting, diarrhea, and seizures, along with anorexia, confusion, agitation, and headache","Flushed skin, dry sticky mucous membranes, thirst, temperature elevation, and decreased urination","Palpitations, paresthesia, and generalized fatigue progressing to paralysis","Muscle cramps and headache caused by cellular dehydration, with a risk of intracranial hemorrhage"],"correct":[0],"sata":false,"why":"Hyponatremia is a serum sodium below 135 mEq/L, caused by inadequate excretion of water or by excessive water intake, and presents with lethargy, hypotension, stomach cramps, vomiting, diarrhea, and seizures, as well as anorexia, confusion, agitation, and headache. The normal serum sodium range is 135 to 145 mEq/L.","trap":"(B) and (D) are the hypernatremia presentations, and D pulls hardest because it names a dramatic complication that feels like it should belong to the more acute-sounding problem. (C) is a potassium excess cluster.","k":"ax1xv89j2ika"},{"topic":"sodium imbalance and hypertonic saline safety","subtopic":"recognizing high versus low sodium","stem":"A patient's serum sodium returns at 152 mEq/L, and the nurse assumes the patient must be fluid-overloaded. Which statement corrects that assumption?","options":["A sodium above 145 mEq/L always indicates excess fluid volume, so the assumption is correct and no further assessment is needed","Hypernatremia is associated with symptoms of water retention but can also occur with normal or even low fluid volume, so volume status cannot be inferred from the sodium value alone","Hypernatremia causes cellular swelling, so the patient's cells are overhydrated even if the vascular volume is low","A sodium above 145 mEq/L always indicates dehydration, so the patient must be volume-depleted"],"correct":[1],"sata":false,"why":"Hypernatremia is associated with symptoms of water retention but can be associated with normal fluid or even low fluid volume, so the number does not settle volume status. It causes cellular dehydration, presenting with flushed skin, dry sticky mucous membranes, thirst, temperature elevation, decreased urination, muscle cramps, headache, lethargy, seizures, coma, and possible intracranial hemorrhage.","trap":"(A) and (D) are the two opposite over-readings of the same number, and both are wrong for the same reason — a serum concentration is a ratio, so it cannot tell you the size of either the sodium pool or the water pool. (C) inverts the cellular effect: high extracellular sodium pulls water out of cells and dehydrates them.","k":"1s2pda0i6pe12"},{"topic":"sodium imbalance and hypertonic saline safety","subtopic":"correcting hyponatremia safely","stem":"A patient with hyponatremia present for several weeks is ordered 3% sodium chloride. Which statement reflects safe administration?","options":["It is a high-alert drug and should be infused no faster than 100 mL/hr with frequent serum monitoring, because too-rapid correction causes osmotic demyelination syndrome, which is potentially fatal and worst when chronic hyponatremia is corrected quickly","It should be run wide open until the serum sodium returns to normal, since the fastest correction carries the lowest risk","It is a high-alert drug, but the infusion rate matters only in acute hyponatremia; chronic hyponatremia may be corrected at any rate","It is an isotonic maintenance fluid and requires no special monitoring beyond routine intake and output"],"correct":[0],"sata":false,"why":"Hypertonic saline is a high-alert drug and should not be given faster than 100 mL/hr, with frequent serum monitoring. Infusing it too rapidly produces osmotic demyelination syndrome, formerly called central pontine myelinolysis, which is potentially fatal and is most associated with the rapid correction of chronic hyponatremia.","trap":"(C) is the plausible-but-adjacent error because it sounds like a nuance and gets the modifier exactly backward — chronic hyponatremia is the higher-risk case, not the exempt one. (D) misclassifies 3% sodium chloride as isotonic, which is the mistake that would let it be hung without a pump limit at all.","k":"19esg8x1hnsgj7"}];
+const TITLE = "Chapter 29 — NUR 3420/1 — Pharmacology I & II";
+const SUBTITLE = "Chapter 29";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur3420-3421-pharm";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

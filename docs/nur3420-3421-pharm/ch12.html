@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 12 — NUR 3420/1 — Pharmacology I &amp; II</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 12</div><h1>Chapter 12 — NUR 3420/1 — Pharmacology I &amp; II</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative and hypnotic terminology</span><span class="chip t2">dose decides the label</span></div>
+<div class="stem">1. A patient receives a small dose of a CNS depressant before a painful dressing change and becomes calm and less irritable but stays awake and conversational. That evening the same drug is given at a much larger dose and the patient sleeps through the night. Which statement best explains what the nurse observed?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The drug acted as a sedative at the lower dose and as a hypnotic at the higher dose</li><li class="fopt"><span class="mk">B</span>The drug is a hypnotic, and the smaller dose simply failed to reach the sleep-inducing threshold of its class</li><li class="fopt"><span class="mk">C</span>The patient developed tolerance between the two doses</li><li class="fopt"><span class="mk">D</span>The evening dose produced a paradoxical reaction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sedatives have an inhibitory effect on the CNS to the degree that they reduce nervousness, excitability, and irritability without causing sleep, whereas hypnotics cause sleep. The Overview states the rule directly: &quot;a sedative can become a hypnotic if it is given in large enough doses,&quot; which is why a sedative-hypnotic is defined as a drug that can act in the body either as a sedative or as a hypnotic (p. 184).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats the label as a fixed property of the molecule. The chapter says a drug is one or the other depending on the degree to which it inhibits the transmission of nerve impulses to the CNS, not because of what the package insert calls it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative and hypnotic terminology</span><span class="chip t2">dose decides the label</span></div>
+<div class="stem">2. A nursing student charts that a newly ordered drug &quot;is a sedative and therefore cannot cause sleep at any dose.&quot; Which correction should the nurse make?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The statement is correct; a sedative never induces sleep</li><li class="fopt right"><span class="mk">&#10003;</span>Sedative and hypnotic name effects at different points on a dose continuum, and a sedative given in large enough doses becomes a hypnotic</li><li class="fopt"><span class="mk">C</span>Only barbiturates cross from sedation into sleep induction; benzodiazepines do not</li><li class="fopt"><span class="mk">D</span>The distinction depends on the route of administration, not the dose</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;any of these drugs can function along a continuum as a sedative and/or hypnotic and/or anxiolytic, depending on the dosage and patient sensitivity,&quot; and that hypnotics cause sleep and have &quot;a much more potent effect&quot; on the CNS (p. 184).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — it freezes the label to the molecule instead of to the dose. (C) invents a class restriction; the continuum statement is made about the sedative-hypnotics generally, benzodiazepines included.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative and hypnotic terminology</span><span class="chip t2">therapeutic index and GABA</span></div>
+<div class="stem">3. A patient's family asks why the prescriber chose a benzodiazepine rather than a barbiturate for short-term sedation. Which fact about the barbiturates most directly supports that choice?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Barbiturates have a low therapeutic index, so the difference between the therapeutic and the toxic concentration is small</li><li class="fopt"><span class="mk">B</span>Barbiturates have a high therapeutic index, so much larger doses are required to achieve an effect</li><li class="fopt"><span class="mk">C</span>Barbiturates have no effect on GABA and are therefore less predictable</li><li class="fopt"><span class="mk">D</span>Barbiturates are not controlled substances and are therefore more easily diverted</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Therapeutic index is the ratio between the toxic and therapeutic concentrations of a drug; if the index is low, the difference between the two is small and use of the drug is more hazardous (p. 183). The chapter applies this to the barbiturates by name — they &quot;are physiologically habit forming and have a low therapeutic index&quot; (p. 188) — and says they fell out of use because of &quot;the favorable safety profile and proven efficacy of the benzodiazepines.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the index, and the inversion is intuitive because &quot;high&quot; sounds like high risk. A high index means a wide, safe gap. (D) is false twice over: the barbiturates are scheduled C-II, C-III, or C-IV depending on the drug.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative and hypnotic terminology</span><span class="chip t2">therapeutic index and GABA</span></div>
+<div class="stem">4. A drug ordered for a patient is described as potentiating the action of gamma-aminobutyric acid in the brain. Which effect should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increased CNS stimulation, because gamma-aminobutyric acid is excitatory</li><li class="fopt right"><span class="mk">&#10003;</span>Increased CNS depression, because gamma-aminobutyric acid is the primary inhibitory neurotransmitter in the brain</li><li class="fopt"><span class="mk">C</span>No CNS effect, because gamma-aminobutyric acid acts only at the neuromuscular junction</li><li class="fopt"><span class="mk">D</span>Analgesia without any sedation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>GABA is the primary inhibitory neurotransmitter found in the brain and is the key compound affected by sedative, anxiolytic, psychotropic, and muscle-relaxing medications (p. 183). Barbiturates potentiate the action of GABA (p. 189), and benzodiazepines are thought to bind GABA receptors or adjacent receptors and, like GABA, inhibit stimulation of the brain (p. 185).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts the neurotransmitter's role, and that single inversion unravels every mechanism statement in the chapter. GABA is inhibitory, so potentiating it deepens depression rather than producing stimulation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sleep architecture and rem disruption</span><span class="chip t2">rem interference versus rem rebound</span></div>
+<div class="stem">5. A 68-year-old woman has taken alprazolam almost every night for a week to help her fall asleep. She tells the nurse, &quot;I am sleeping very well, but I'm so tired during the day. I don't understand how I can get such good sleep and still feel tired.&quot; Which explanation should the nurse give?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The drug is reducing her cumulative REM sleep time, and REM sleep supplies part of the restfulness of sleep</li><li class="fopt"><span class="mk">B</span>She is experiencing REM rebound from the alprazolam</li><li class="fopt"><span class="mk">C</span>One week is too short for the drug to have taken effect</li><li class="fopt"><span class="mk">D</span>The daytime fatigue indicates that the alprazolam dose is too low</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Prolonged sedative-hypnotic use may reduce the cumulative amount of REM sleep; this is known as REM interference. This can result in daytime fatigue because REM sleep provides a certain component of the 'restfulness' of sleep&quot; (p. 184). Sleep quantity is preserved while sleep quality is degraded, which is exactly what she describes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because rebound is the other REM word in the key-term box. Rebound happens after the drug is stopped; she is still taking it nightly, so the phenomenon in play is the one that happens while on the drug.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sleep architecture and rem disruption</span><span class="chip t2">rem interference versus rem rebound</span></div>
+<div class="stem">6. A patient who has taken a sedative-hypnotic nightly for a month stops it abruptly and then reports several nights of unusually frequent, vivid dreams and nightmares. Which phenomenon is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>REM interference</li><li class="fopt right"><span class="mk">&#10003;</span>REM rebound</li><li class="fopt"><span class="mk">C</span>Paradoxical excitement</li><li class="fopt"><span class="mk">D</span>Rebound insomnia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>REM rebound is excessive REM sleep following discontinuation of a sleep-altering drug (p. 183). With the barbiturates the chapter is explicit that during rebound &quot;the proportion of REM sleep is increased and nightmares often ensue&quot; (p. 189).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. Interference happens while the patient is on the drug and yields less REM with daytime fatigue; rebound happens after stopping and yields more REM with vivid dreams. (D) is the neighboring withdrawal phenomenon, but it names too much wakefulness rather than too much dreaming.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sleep architecture and rem disruption</span><span class="chip t2">rem interference versus rem rebound</span></div>
+<div class="stem">7. A patient stops a benzodiazepine abruptly and reports that she now lies awake far longer than she ever did before she started the drug. Which phenomenon should the nurse document, and what prevents it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>REM rebound, prevented by taking the drug earlier in the evening</li><li class="fopt right"><span class="mk">&#10003;</span>Rebound insomnia, prevented by a gradual weaning-off period</li><li class="fopt"><span class="mk">C</span>Paradoxical excitement, prevented by increasing the dose</li><li class="fopt"><span class="mk">D</span>A hangover effect, prevented by reducing the evening dose</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Rebound insomnia is greater insomnia than pretreatment and occurs with abrupt discontinuation (p. 186). &quot;Gradual weaning-off periods are recommended for benzodiazepines and all CNS depressants&quot; (p. 194), and patient teaching instructs patients not to abruptly discontinue these drugs in order to avoid rebound insomnia.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) confuses the two rebound phenomena. Both follow withdrawal, which is why the words trade places so easily, but REM rebound is too much dreaming and rebound insomnia is too much wakefulness.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sleep architecture and rem disruption</span><span class="chip t2">the stages of sleep</span></div>
+<div class="stem">8. A parent reports that their school-age child gets out of bed and walks around the house while still asleep and occasionally wets the bed. Which stage of sleep does Table 12.1 assign these events to?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Non-REM stage 1</li><li class="fopt"><span class="mk">B</span>Non-REM stage 2</li><li class="fopt right"><span class="mk">&#10003;</span>Non-REM stage 4</li><li class="fopt"><span class="mk">D</span>REM sleep</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 12.1 assigns sleepwalking and bedwetting to non-REM stage 4, together with being very difficult to wake and being very groggy if awakened. Dreaming also occurs in stage 4, &quot;especially about daily events.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) pulls because REM is the stage students associate with everything that happens during dreaming. In Table 12.1 the REM row owns rapid eye movements, vivid dreams, and irregular breathing — not sleepwalking or bedwetting.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sleep architecture and rem disruption</span><span class="chip t2">the stages of sleep</span></div>
+<div class="stem">9. A nurse is teaching a patient about the characteristics of REM sleep. Which findings belong to REM sleep as this chapter describes it? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Rapid movement of the eyes</li><li class="fopt right"><span class="mk">&#10003;</span>Vivid dreams</li><li class="fopt right"><span class="mk">&#10003;</span>Irregular breathing</li><li class="fopt"><span class="mk">D</span>Slow, side-to-side eye movements</li><li class="fopt"><span class="mk">E</span>The highest arousal threshold of any stage</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The key term defines REM sleep by three characteristics named together — rapid movement of the eyes, vivid dreams, and irregular breathing (p. 183) — and the REM row of Table 12.1 repeats all three. Naming only vivid dreams is half the term.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the stage 1 finding, where eye movement is slow and side to side; any mention of eye movement feels like REM, which is what makes it pull. (E) belongs to delta sleep, stages 3 and 4 combined, where the arousal threshold is highest.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine pharmacology and adverse effects</span><span class="chip t2">site of action and contraindications</span></div>
+<div class="stem">10. A patient asks how her newly prescribed benzodiazepine works in the brain. Which description matches the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It depresses the brainstem reticular formation, reducing nerve impulses traveling to the cerebral cortex</li><li class="fopt right"><span class="mk">&#10003;</span>It depresses activity in the hypothalamic, thalamic, and limbic systems of the brain</li><li class="fopt"><span class="mk">C</span>It acts directly on the excitation-contraction coupling of muscle fibers</li><li class="fopt"><span class="mk">D</span>It agonizes melatonin receptors and regulates circadian rhythm</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Benzodiazepines act on the hypothalamic, thalamic, and limbic systems of the brain; their receptor sites are thought to be either GABA receptors or other adjacent receptors, and like GABA they inhibit stimulation of the brain (p. 185).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the barbiturate mechanism — the brainstem reticular formation, with reduced nerve impulses traveling to the cerebral cortex (p. 189). Both classes are CNS depressants that involve GABA, so the anatomic sites are the only thing separating them and they trade places readily.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine pharmacology and adverse effects</span><span class="chip t2">site of action and contraindications</span></div>
+<div class="stem">11. A prescriber is considering a benzodiazepine for a patient. Which findings in the history are stated contraindications in this chapter? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Known drug allergy to the benzodiazepines</li><li class="fopt right"><span class="mk">&#10003;</span>Narrow-angle glaucoma</li><li class="fopt right"><span class="mk">&#10003;</span>Pregnancy</li><li class="fopt"><span class="mk">D</span>A history of low back strain with muscle spasm</li><li class="fopt"><span class="mk">E</span>Age older than 65 years</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The contraindications to benzodiazepines are known drug allergy, narrow-angle glaucoma, and pregnancy (p. 185).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) pulls because older adults get an entire caution paragraph — increased sensitivity, significant fall hazard, lowest effective dose — but caution is not contraindication. (D) names an indication rather than a contraindication, since skeletal muscle relaxation is on the benzodiazepine indication list.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine pharmacology and adverse effects</span><span class="chip t2">adverse effects in the older adult</span></div>
+<div class="stem">12. A 79-year-old is started on a benzodiazepine for sleep. Which dosing principle does the chapter attach specifically to benzodiazepines in older adults?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Reduce the usual adult dose by half whenever possible</li><li class="fopt right"><span class="mk">&#10003;</span>Use the lowest effective dose, because of the significant fall hazard</li><li class="fopt"><span class="mk">C</span>Give the full adult dose but restrict it to alternate nights</li><li class="fopt"><span class="mk">D</span>Keep the dose unchanged and double the interval between doses</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Benzodiazepines pose &quot;a significant fall hazard in older adults, and the lowest effective dose must be used&quot; (p. 185).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the barbiturate rule, where &quot;the usual dose is reduced by half whenever possible&quot; (p. 189). Two classes, two different instructions, and the half-dose figure belongs to the barbiturates only.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine pharmacology and adverse effects</span><span class="chip t2">adverse effects in the older adult</span></div>
+<div class="stem">13. An older adult is given a benzodiazepine at bedtime to help her sleep and instead stays awake most of the night, watching television and reading in bed. How should the nurse describe this response?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An allergic reaction</li><li class="fopt"><span class="mk">B</span>A teratogenic effect</li><li class="fopt right"><span class="mk">&#10003;</span>A paradoxical reaction</li><li class="fopt"><span class="mk">D</span>An idiosyncratic response to the trade formulation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists &quot;paradoxical excitement or nervousness&quot; among the commonly reported benzodiazepine adverse effects (p. 185), and repeats the pattern as &quot;paradoxical restlessness or excitement&quot; for barbiturates (p. 189) and &quot;paradoxical excitement in children&quot; (p. 193). The drug produced the opposite of its intended effect.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because any unexpected drug response reads as allergy. Nothing here describes urticaria, angioedema, rash, or the other hypersensitivity findings the chapter names.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine pharmacology and adverse effects</span><span class="chip t2">adverse effects in the older adult</span></div>
+<div class="stem">14. A patient started on a benzodiazepine for insomnia complains of drowsiness the morning after each dose. What is this effect, and whom does the chapter say it affects most?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A hangover effect, more problematic in older adults and in patients with altered renal and hepatic function</li><li class="fopt"><span class="mk">B</span>REM rebound, which resolves once the drug reaches steady state</li><li class="fopt"><span class="mk">C</span>An early sign of overdose requiring flumazenil</li><li class="fopt"><span class="mk">D</span>Rebound insomnia, which requires an increased dose</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names a &quot;hangover&quot; effect and gives daytime sleepiness as its example (p. 186); patient teaching adds that hangover effects are &quot;more problematic in older adults or in patients with altered renal and hepatic function&quot; (p. 196). It also occurs less frequently with benzodiazepines and nonbenzodiazepines than with barbiturates.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) escalates a listed adverse effect into an emergency. Flumazenil is for oral overdose or excessive intravenous sedation, not for morning grogginess in a patient taking a prescribed dose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine overdose and flumazenil reversal</span><span class="chip t2">matching the antidote to the class</span></div>
+<div class="stem">15. A patient is brought to the emergency department after taking an overdose of an oral benzodiazepine. He is drowsy but responsive, and his vital signs are stable. Which intervention should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hemodialysis</li><li class="fopt right"><span class="mk">&#10003;</span>Administration of flumazenil</li><li class="fopt"><span class="mk">C</span>Administration of naloxone</li><li class="fopt"><span class="mk">D</span>Immediate intubation and mechanical ventilation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Flumazenil is the benzodiazepine antidote and can be used to acutely reverse the sedative effects of benzodiazepines; it antagonizes their action on the CNS by directly competing with the benzodiazepine for binding at the receptors, and it is used in cases of oral overdose or excessive intravenous sedation (p. 186).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) tempts because respiratory failure is the feared outcome of any CNS depressant, but the chapter states that benzodiazepine overdose alone rarely results in hypotension and respiratory depression, and this patient is still responsive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine overdose and flumazenil reversal</span><span class="chip t2">matching the antidote to the class</span></div>
+<div class="stem">16. The patient in the next bed took an overdose of an opioid analgesic and is unresponsive with a respiratory rate of 6 breaths/min. Which reversal drug applies to him?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Flumazenil</li><li class="fopt right"><span class="mk">&#10003;</span>Naloxone</li><li class="fopt"><span class="mk">C</span>Activated charcoal</li><li class="fopt"><span class="mk">D</span>Procaine</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter pairs the two antidotes deliberately: flumazenil reverses the benzodiazepines by competing for benzodiazepine receptor binding, while naloxone is the opioid antagonist carried in Chapter 10. Flumazenil has no action at opioid receptors.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, and it is the most common error in this chapter because both drugs are competitive antagonists given for CNS depressant overdose. Match the antidote to the drug class, not to the symptom.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine overdose and flumazenil reversal</span><span class="chip t2">the limits of reversal</span></div>
+<div class="stem">17. Flumazenil is given to a patient who overdosed on a long-acting benzodiazepine, and she wakes up and answers questions appropriately. What should the nurse do next?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Discontinue monitoring, since the antagonist has reversed the drug</li><li class="fopt right"><span class="mk">&#10003;</span>Continue close monitoring, because flumazenil may wear off before the benzodiazepine does and the patient may become sedated again</li><li class="fopt"><span class="mk">C</span>Give naloxone as well, to cover the possibility of a co-ingestion</li><li class="fopt"><span class="mk">D</span>Withhold any further flumazenil permanently, since the maximum dose has been reached</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The note to Table 12.3 states that flumazenil has a relatively short half-life and a duration of effect of 1 to 4 hours, so if it is used to reverse a long-acting benzodiazepine, &quot;the dose of the reversal drug may wear off and the patient may become sedated again, requiring more flumazenil.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats a successful reversal as the end of the intervention, which is exactly what the table's own note defeats. The antidote is shorter acting than the drug it is reversing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">benzodiazepine overdose and flumazenil reversal</span><span class="chip t2">the limits of reversal</span></div>
+<div class="stem">18. Flumazenil is ordered for two purposes on the same unit — reversal of moderate sedation in one patient and suspected benzodiazepine overdose in another. Which statement about the maximum cumulative doses in Table 12.3 is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both regimens stop at a total of 1 mg</li><li class="fopt right"><span class="mk">&#10003;</span>Sedation reversal stops at 1 mg, and suspected overdose may go up to 3 mg</li><li class="fopt"><span class="mk">C</span>Sedation reversal stops at 3 mg, and suspected overdose stops at 1 mg</li><li class="fopt"><span class="mk">D</span>Neither regimen has a stated ceiling</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 12.3 gives 0.2 mg intravenously over 15 seconds for reversal of moderate sedation or general anesthesia, repeated at 60-second intervals up to four additional times, to a maximum total dose of 1 mg. For suspected benzodiazepine overdose the regimen starts at 0.2 mg over 30 seconds and escalates through 0.3 mg and then 0.5 mg doses at 1-minute intervals to a cumulative dose of 3 mg.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) swaps the two ceilings, and the swap is easy because both regimens open with the same 0.2 mg dose. The difference between the 1 mg and the 3 mg ceiling is the cleanest discriminator between the two indications.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative-hypnotic interactions and black box warnings</span><span class="chip t2">enzyme inhibition versus enzyme induction</span></div>
+<div class="stem">19. A patient taking a benzodiazepine mentions that she drinks a large glass of grapefruit juice every morning. What should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Decreased benzodiazepine metabolism, with prolonged effect and possible toxicity</li><li class="fopt"><span class="mk">B</span>Increased benzodiazepine metabolism, with loss of therapeutic effect</li><li class="fopt"><span class="mk">C</span>No interaction, since grapefruit affects only the oral anticoagulants</li><li class="fopt"><span class="mk">D</span>An additive CNS depressant effect contributed by the juice itself</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Grapefruit and grapefruit juice alter drug metabolism by inhibition of the cytochrome P-450 system and can result in prolonged effect, increased effect, and toxicity (p. 186). Table 12.4 groups grapefruit juice with the azole antifungals, verapamil, diltiazem, protease inhibitors, and macrolide antibiotics under decreased benzodiazepine metabolism and prolonged benzodiazepine action.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) runs the interaction backwards. Inhibition slows metabolism, so more drug stays in the body longer; only induction produces the loss of effect described there.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative-hypnotic interactions and black box warnings</span><span class="chip t2">enzyme inhibition versus enzyme induction</span></div>
+<div class="stem">20. A patient stabilized on a benzodiazepine is started on rifampin for tuberculosis, and within days he reports that the benzodiazepine no longer seems to work. What explains this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rifampin inhibits benzodiazepine metabolism, causing accumulation and tolerance</li><li class="fopt right"><span class="mk">&#10003;</span>Rifampin increases benzodiazepine metabolism, decreasing benzodiazepine effects</li><li class="fopt"><span class="mk">C</span>Rifampin displaces the benzodiazepine from its receptors, acting as an antagonist</li><li class="fopt"><span class="mk">D</span>Rifampin adds to CNS depression, masking the benzodiazepine effect</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 12.4 lists rifampin with increased metabolism and decreased benzodiazepine effects. Rifampin is the one row of that table that runs against all the others, which is why it is printed there; the chapter also names rifampin as reducing the efficacy of ramelteon by speeding its metabolism (p. 188).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — it applies the grapefruit and azole direction to an inducer. Inducers speed metabolism and cause treatment failure; inhibitors slow it and cause toxicity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative-hypnotic interactions and black box warnings</span><span class="chip t2">enzyme inhibition versus enzyme induction</span></div>
+<div class="stem">21. A patient takes a benzodiazepine nightly. According to this chapter, which of the following would prolong or increase the benzodiazepine's effect? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An azole antifungal</li><li class="fopt right"><span class="mk">&#10003;</span>Grapefruit juice</li><li class="fopt"><span class="mk">C</span>Rifampin</li><li class="fopt right"><span class="mk">&#10003;</span>An opioid analgesic</li><li class="fopt right"><span class="mk">&#10003;</span>Verapamil</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 12.4 assigns decreased benzodiazepine metabolism and prolonged benzodiazepine action to the azole antifungals, verapamil, diltiazem, protease inhibitors, macrolide antibiotics, and grapefruit juice, and assigns additive effects with increased CNS depression to the CNS depressants, which the chapter exemplifies with alcohol, opioids, and muscle relaxants.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the single row in Table 12.4 that goes the other way — increased metabolism and decreased benzodiazepine effects. A learner who sorts the whole table into one bucket keeps it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative-hypnotic interactions and black box warnings</span><span class="chip t2">the three black box warnings</span></div>
+<div class="stem">22. A prescriber orders an opioid analgesic and a benzodiazepine together for a postoperative patient. Which statement reflects the 2016 FDA black box warning?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The combination is absolutely prohibited in every patient</li><li class="fopt right"><span class="mk">&#10003;</span>The combination should be used only if no other alternatives are available, because of extreme sleepiness, respiratory depression, coma, and death</li><li class="fopt"><span class="mk">C</span>The warning applies only when the opioid is given intravenously</li><li class="fopt"><span class="mk">D</span>The warning concerns complex sleep behaviors such as sleepwalking and sleep-driving</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The 2016 warning covers all opioids and all benzodiazepines regarding the risk of combined use, and states that they should be used &quot;only if no other alternatives are available,&quot; with risks including extreme sleepiness, respiratory depression, coma, and death (p. 186). The assessment section operationalizes it by watching for severe decreases in blood pressure, respiratory rate, reflexes, and level of consciousness.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the 2019 warning, which belongs to the nonbenzodiazepines. It is the most memorable of the three, so it gets attached to the wrong box; three warnings, three years, three different scopes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sedative-hypnotic interactions and black box warnings</span><span class="chip t2">the three black box warnings</span></div>
+<div class="stem">23. A patient asks which drugs carry the FDA warning about complex sleep behaviors, including sleepwalking, sleep-driving, and engaging in other activities while not fully awake. Which answer is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The entire benzodiazepine class</li><li class="fopt right"><span class="mk">&#10003;</span>The nonbenzodiazepines zolpidem, eszopiclone, and zaleplon</li><li class="fopt"><span class="mk">C</span>All barbiturates</li><li class="fopt"><span class="mk">D</span>The orexin receptor antagonists</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The 2019 warning names complex sleep behaviors for the nonbenzodiazepines zolpidem, eszopiclone, and zaleplon (p. 184). The late-2020 warning is the one covering the entire benzodiazepine class, and it concerns the risk for abuse, misuse, addiction, physical dependence, and withdrawal.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) crosses the years. It is the correct scope for the 2020 dependence warning and the wrong scope for the 2019 sleep-behavior warning, and the two collapse together because they were issued about a year apart.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonbenzodiazepine and novel-mechanism hypnotics</span><span class="chip t2">which drugs are actually benzodiazepines</span></div>
+<div class="stem">24. Table 12.2 lists temazepam, triazolam, zolpidem, and eszopiclone together in one table of sedative-hypnotics, and a student concludes that all four are benzodiazepines. Which correction is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>All four are benzodiazepines, since they appear in the same table and share schedule IV status</li><li class="fopt right"><span class="mk">&#10003;</span>Zolpidem and eszopiclone are classified as miscellaneous hypnotic drugs that share many characteristics with the benzodiazepines but are chemically distinct from them</li><li class="fopt"><span class="mk">C</span>Only temazepam is a benzodiazepine; triazolam is a barbiturate</li><li class="fopt"><span class="mk">D</span>Classification depends on the duration column, not on the drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The footnote to Table 12.2 states that these drugs &quot;share many characteristics with the benzodiazepines but are classified as miscellaneous hypnotic drugs,&quot; and the chapter describes zolpidem, eszopiclone, and zaleplon as functioning much like benzodiazepines but chemically distinct from them (pp. 184 and 185). The Clinical Pearl supplies the naming cue: many benzodiazepines end in &quot;pam.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is exactly the error the chapter's own Key Points make when they list eszopiclone, ramelteon, zaleplon, and zolpidem as short-acting benzodiazepines. The rows and the footnote have to be read together, and the shared schedule IV status makes the merge feel safe.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonbenzodiazepine and novel-mechanism hypnotics</span><span class="chip t2">which drugs are actually benzodiazepines</span></div>
+<div class="stem">25. A woman is discharged after a hysterectomy with a new prescription for zolpidem 10 mg at bedtime. What is the nurse's most appropriate action?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Review the adverse effects with her and reinforce the bedtime timing</li><li class="fopt"><span class="mk">B</span>Suggest a glass of wine at bedtime if the drug alone is not effective</li><li class="fopt right"><span class="mk">&#10003;</span>Contact the prescriber to question the dose</li><li class="fopt"><span class="mk">D</span>Help her locate a pharmacy that stocks the drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The FDA now recommends doses of 5 mg as a maximum dose for women, or 5 to 10 mg for men, because of the risk for next-morning impairment (p. 188). A 10 mg dose for a female patient is twice the recommended maximum.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the safe-looking choice, and it is wrong precisely because teaching about a dose the FDA capped at half leaves the hazard in place. (B) fails on a separate rule: alcohol is an additive CNS depressant, and Box 12.1 says it fragments sleep rather than producing it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonbenzodiazepine and novel-mechanism hypnotics</span><span class="chip t2">melatonin agonists and orexin antagonists</span></div>
+<div class="stem">26. A patient with a history of alcohol and sedative misuse needs help falling asleep. Which drug in this chapter is described as an option for patients likely to abuse CNS depressants, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Temazepam, because it is intermediate acting and therefore less reinforcing</li><li class="fopt right"><span class="mk">&#10003;</span>Ramelteon, because it is not a controlled substance, is technically not a CNS depressant, and does not lead to withdrawal symptoms</li><li class="fopt"><span class="mk">C</span>Suvorexant, because the orexin receptor antagonists are not scheduled</li><li class="fopt"><span class="mk">D</span>Phenobarbital, because its long half-life smooths withdrawal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Ramelteon is structurally similar to melatonin and works as an agonist at melatonin receptors in the CNS; it is &quot;technically not a CNS depressant&quot; and is &quot;not classified as a controlled substance because of its lack of observed dependency risk&quot; (p. 188). The nursing sections add that it does not carry the potential for abuse or dependence and does not lead to withdrawal symptoms, so it may be an option for patients likely to abuse CNS depressants.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the closest wrong answer, because suvorexant is also a newer non-benzodiazepine hypnotic with an unfamiliar mechanism. Suvorexant is a schedule IV drug; ramelteon is the only unscheduled hypnotic in this chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonbenzodiazepine and novel-mechanism hypnotics</span><span class="chip t2">melatonin agonists and orexin antagonists</span></div>
+<div class="stem">27. Suvorexant is ordered for a patient with insomnia. Which explanation of its mechanism is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It blocks orexin receptors, opposing hypothalamic neuropeptides that promote wakefulness</li><li class="fopt"><span class="mk">B</span>It agonizes melatonin receptors and resets the circadian rhythm</li><li class="fopt"><span class="mk">C</span>It potentiates GABA at the brainstem reticular formation</li><li class="fopt"><span class="mk">D</span>It decreases calcium release from the sarcoplasmic reticulum of muscle fibers</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Suvorexant is the first drug in a new class called the orexin receptor antagonists. Orexin A and orexin B are hypothalamic neuropeptides that play a key role in promoting wakefulness and regulating the sleep-wake cycle, and orexin antagonists compete with the physiologic effects of orexin (p. 188).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the ramelteon mechanism, and the two are the chapter's easiest swap because both are newer hypnotics that do not work through GABA. Suvorexant blocks a wake-promoting peptide; ramelteon agonizes a sleep-promoting receptor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonbenzodiazepine and novel-mechanism hypnotics</span><span class="chip t2">melatonin agonists and orexin antagonists</span></div>
+<div class="stem">28. A patient is starting suvorexant. Which statements should the nurse include in the teaching? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Take the drug about 30 minutes before bedtime</li><li class="fopt"><span class="mk">B</span>Take the drug 2 hours before bedtime, because of its slow onset</li><li class="fopt right"><span class="mk">&#10003;</span>Be cautious about daytime somnolence and unconscious nighttime behaviors</li><li class="fopt"><span class="mk">D</span>This drug is less likely than other hypnotics to interact with alcohol</li><li class="fopt"><span class="mk">E</span>The drug is available over the counter if a refill runs out</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Suvorexant's profile gives a 30-minute onset, and the chapter's dosing rule is to match the teaching time to the onset column, since a drug with an onset of 30 to 60 minutes is dosed 60 minutes before bedtime (p. 194). The safety concerns regarding daytime somnolence and unconscious nighttime behaviors are stated verbatim (pp. 188 and 196).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is defeated by one phrase in the profile: suvorexant is a schedule IV drug, and a scheduled drug is never sold over the counter. (B) fabricates a pharmacokinetic that contradicts the 30-minute onset printed in that same profile.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barbiturate pharmacology and toxicity</span><span class="chip t2">site of action, duration groups, and schedules</span></div>
+<div class="stem">29. A patient asks how phenobarbital differs from a benzodiazepine in where it acts. Which description fits the barbiturates?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They act primarily on the brainstem in an area called the reticular formation, reducing nerve impulses traveling to the cerebral cortex</li><li class="fopt"><span class="mk">B</span>They act on the hypothalamic, thalamic, and limbic systems</li><li class="fopt"><span class="mk">C</span>They act at the neuromuscular junction</li><li class="fopt"><span class="mk">D</span>They antagonize orexin receptors in the hypothalamus</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Barbiturates are CNS depressants that act primarily on the brainstem in an area called the reticular formation, and they work by reducing the nerve impulses traveling to the cerebral cortex; they also potentiate the action of the inhibitory neurotransmitter GABA and raise the seizure threshold (p. 189).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the benzodiazepine site. Both classes are CNS depressants that involve GABA, so the anatomic site is the only thing separating them and it is the detail most often traded between them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barbiturate pharmacology and toxicity</span><span class="chip t2">site of action, duration groups, and schedules</span></div>
+<div class="stem">30. A patient is scheduled for a short surgical procedure requiring anesthesia induction, and the neurosurgical team also wants intracranial pressure reduced. Which barbiturate duration group does Table 12.5 assign these purposes to?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ultrashort acting, such as methohexital and thiopental</li><li class="fopt"><span class="mk">B</span>Short acting, such as pentobarbital and secobarbital</li><li class="fopt"><span class="mk">C</span>Intermediate acting, such as butabarbital</li><li class="fopt"><span class="mk">D</span>Long acting, such as phenobarbital and mephobarbital</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The ultrashort-acting barbiturates methohexital and thiopental are used for anesthesia for short surgical procedures, anesthesia induction, control of convulsions, and reduction of intracranial pressure in neurosurgical patients (p. 189). The long-acting group is used for epileptic seizure prophylaxis, and the short- and intermediate-acting groups carry the identical printed indication of sedation and control of convulsive conditions.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) picks the group whose drug names are most familiar, since phenobarbital is the prototype. Because the short and intermediate groups share word-for-word identical indications, any item separating the four tiers must be answered on the drug names rather than on the stated purpose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barbiturate pharmacology and toxicity</span><span class="chip t2">site of action, duration groups, and schedules</span></div>
+<div class="stem">31. A nurse assumes that the shorter a barbiturate's duration of action, the more restrictive its controlled-substance schedule will be. Which fact from Table 12.7 defeats that assumption?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Phenobarbital is long acting and is schedule C-II</li><li class="fopt right"><span class="mk">&#10003;</span>Thiopental is ultrashort acting but only schedule C-III, and methohexital is ultrashort acting but only schedule C-IV</li><li class="fopt"><span class="mk">C</span>Butabarbital is intermediate acting and is unscheduled</li><li class="fopt"><span class="mk">D</span>All barbiturates share a single schedule, the same one as the benzodiazepines</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 12.7 places pentobarbital and secobarbital, both short acting, at schedule C-II, the tightest in the chapter, while the two ultrashort-acting drugs sit lower — thiopental at C-III and methohexital at C-IV. Phenobarbital, the long-acting prototype, is C-IV, the same schedule as the benzodiazepines.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts phenobarbital's schedule, which is C-IV rather than C-II. Tables 12.5 and 12.7 have to be read as independent lists, because the intuitive duration-tracks-schedule rule fails on two of the seven drugs.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barbiturate pharmacology and toxicity</span><span class="chip t2">enzyme induction and its victims</span></div>
+<div class="stem">32. A woman taking oral contraceptives is started on phenobarbital. What should the nurse teach her?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The contraceptive will be more effective, so its dose may be reduced</li><li class="fopt right"><span class="mk">&#10003;</span>Phenobarbital accelerates the metabolism of the contraceptive, so she should use an additional method of contraception as a backup</li><li class="fopt"><span class="mk">C</span>Phenobarbital has no meaningful effect on oral contraceptives</li><li class="fopt"><span class="mk">D</span>She should stop the contraceptive entirely, since the combination causes clot formation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Barbiturates as a class are notorious enzyme inducers: they increase the activity of hepatic microsomal or cytochrome P-450 enzymes, causing many drugs to be metabolized more quickly, which usually shortens their duration of action (pp. 189 and 190). With oral contraceptives the printed result is accelerated metabolism of the contraceptive drug and possible unintended pregnancy, and the chapter advises an additional method of contraception as a backup.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) borrows the clot-formation outcome, which belongs to the anticoagulant row, and attaches it to the wrong drug. Induction lowers the other drug's level, so the victim drug fails at its own job: the anticoagulant stops preventing clots and the contraceptive stops preventing pregnancy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barbiturate pharmacology and toxicity</span><span class="chip t2">enzyme induction and its victims</span></div>
+<div class="stem">33. A patient stabilized on a barbiturate is also taking a monoamine oxidase inhibitor. How does this interaction differ from the barbiturate's other listed interactions?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It causes the barbiturate itself to have prolonged effects, rather than causing the other drug to fail</li><li class="fopt"><span class="mk">B</span>It causes accelerated metabolism of the monoamine oxidase inhibitor</li><li class="fopt"><span class="mk">C</span>It produces purely additive CNS depression, exactly as alcohol does</li><li class="fopt"><span class="mk">D</span>It has no clinical significance and requires no monitoring</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The interaction table gives monoamine oxidase inhibitors the result of prolonged barbiturate effects. Every other listed interaction is either additive CNS depression, as with alcohol, antihistamines, benzodiazepines, opioids, and tranquilizers, or induction-driven failure of the other drug, as with the anticoagulants and the oral contraceptives (p. 190).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error of the previous item — it applies the induction direction, in which the other drug loses effect, to the one row where the arrow points back at the barbiturate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barbiturate pharmacology and toxicity</span><span class="chip t2">barbiturate overdose</span></div>
+<div class="stem">34. A patient is admitted after a phenobarbital overdose. Which measures does this chapter identify as part of management? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Maintenance of an adequate airway, assisted ventilation, and oxygen administration if needed</li><li class="fopt right"><span class="mk">&#10003;</span>Alkalinization of the urine, raising the pH</li><li class="fopt right"><span class="mk">&#10003;</span>Forced diuresis using a diuretic such as furosemide</li><li class="fopt"><span class="mk">D</span>Administration of flumazenil as the specific antidote</li><li class="fopt"><span class="mk">E</span>Activated charcoal, which recent clinical data support as improving outcome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Barbiturate overdose treatment is mainly symptomatic and supportive, with the mainstays being maintenance of an adequate airway, assisted ventilation, and oxygen administration if needed, along with fluid and pressor support. Because phenobarbital and mephobarbital are relatively acidic, alkalinizing the urine keeps the drug in the urine and prevents it from being resorbed back into the circulation, and alkalinization along with forced diuresis using diuretics such as furosemide can hasten elimination (p. 189).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) offers the benzodiazepine antidote for a barbiturate, which trades on both drugs being CNS depressants; the barbiturates have no antidote. (E) is named and then dismissed in the same sentence of the chapter, which states that recent clinical data do not support charcoal because no improvement in clinical outcome has been shown.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">skeletal muscle relaxant therapy</span><span class="chip t2">centrally acting versus direct acting</span></div>
+<div class="stem">35. A patient with multiple sclerosis is prescribed baclofen for spasticity, and a family member asks how the drug works on the muscles. Which explanation is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It acts directly on the muscle fiber by decreasing calcium release from the sarcoplasmic reticulum</li><li class="fopt right"><span class="mk">&#10003;</span>Its beneficial effects are thought to come from its sedative effects rather than from direct muscle relaxation, because it acts in the CNS</li><li class="fopt"><span class="mk">C</span>It blocks transmission at the muscle-nerve junction</li><li class="fopt"><span class="mk">D</span>It increases the force of muscle contraction to overcome spasm</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Most muscle relaxants are centrally acting because their site of action is the CNS — the brainstem, thalamus, and basal ganglia, and also the spinal cord. Their beneficial effects are thought to come from their sedative effects rather than from direct muscle relaxation, and they have no direct effects on muscles, nerve conduction, or muscle-nerve junctions (p. 191).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is dantrolene's mechanism, the one direct-acting drug in the chapter. Because every drug in the section is called a muscle relaxant, crediting a centrally acting agent with direct muscle action is the reflex error.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">skeletal muscle relaxant therapy</span><span class="chip t2">centrally acting versus direct acting</span></div>
+<div class="stem">36. A patient develops malignant hyperthermia during general anesthesia. Which muscle relaxant is indicated, and why is it the only one that fits?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Baclofen, because it can be delivered by an implantable pump</li><li class="fopt"><span class="mk">B</span>Cyclobenzaprine, because it is the most commonly used drug in the class</li><li class="fopt right"><span class="mk">&#10003;</span>Dantrolene, because it acts directly on the excitation-contraction coupling of muscle fibers rather than at the level of the CNS</li><li class="fopt"><span class="mk">D</span>Diazepam, because it is a centrally acting skeletal muscle relaxant</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Only one compound, dantrolene, acts directly on skeletal muscle; it works on the excitation-contraction coupling of muscle fibers and not at the level of the CNS, by decreasing the amount of calcium released from storage sites in the sarcoplasmic reticula of muscle fibers. Intravenous dantrolene is used for the management of skeletal muscle spasms that accompany the crisis condition known as malignant hyperthermia (p. 191).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — it offers a centrally acting drug for a crisis occurring in the muscle fiber itself. Baclofen's pump and test dose are real facts attached to the wrong problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">skeletal muscle relaxant therapy</span><span class="chip t2">the two profiled relaxants and their adverse effects</span></div>
+<div class="stem">37. Two centrally acting muscle relaxants are on a unit's formulary. Which statement correctly distinguishes them?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Baclofen is available with an implantable pump requiring an initial test dose and relieves hiccups; cyclobenzaprine is related to the tricyclic antidepressants and commonly causes marked sedation</li><li class="fopt"><span class="mk">B</span>Cyclobenzaprine is the drug given by implantable pump; baclofen is the one related to the tricyclic antidepressants</li><li class="fopt"><span class="mk">C</span>Baclofen acts directly on muscle fibers, while cyclobenzaprine acts centrally</li><li class="fopt"><span class="mk">D</span>Only cyclobenzaprine is listed for spasticity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Baclofen's injectable form is for use with an implantable baclofen pump device, and a test dose must be administered initially to test for a positive response; baclofen has also been shown to be effective in relieving hiccups (pp. 191 and 192). Cyclobenzaprine is structurally and pharmacologically related to the tricyclic antidepressants, is the most commonly used drug in this class to reduce spasms after musculoskeletal injuries, and very commonly produces marked sedation (p. 192).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) swaps the two drugs' signature facts, which is easy because both are centrally acting, both are dosed three times daily, and the dosages table lists spasticity for both.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">skeletal muscle relaxant therapy</span><span class="chip t2">the two profiled relaxants and their adverse effects</span></div>
+<div class="stem">38. A patient receiving a skeletal muscle relaxant is being monitored for adverse effects. Which is the priority concern?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hypertension</li><li class="fopt"><span class="mk">B</span>Peripheral edema</li><li class="fopt"><span class="mk">C</span>Blurred vision</li><li class="fopt right"><span class="mk">&#10003;</span>CNS depression</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The adverse effects of the muscle relaxants are an extension of their effects on the CNS and skeletal muscles, and include generalized CNS depression manifested as sedation, somnolence, ataxia, and respiratory and cardiovascular depression (p. 191). Implementation escalates this: frequent monitoring of airway, breathing, and circulation is warranted, and early identification of toxicity is critical (p. 194).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) has the vital-sign direction backwards. The chapter lists hypotension among the less common adverse effects, not hypertension, so the option is inverted rather than merely unlisted.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">skeletal muscle relaxant therapy</span><span class="chip t2">the two profiled relaxants and their adverse effects</span></div>
+<div class="stem">39. A patient takes the first dose of a newly prescribed muscle relaxant at home. Which teaching addresses the chapter's stated window of greatest risk?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The greatest risk for hypotension is usually within 1 hour of dosing, so change positions purposefully and slowly and ambulate cautiously</li><li class="fopt"><span class="mk">B</span>The greatest risk for hypotension occurs 8 to 12 hours after dosing, so avoid all morning activity</li><li class="fopt"><span class="mk">C</span>There is no hypotension risk with the centrally acting agents</li><li class="fopt"><span class="mk">D</span>Early dizziness and drowsiness mean the drug is failing and the dose should be doubled</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The greatest risk for hypotension... is usually within 1 hour of dosing, so caution must be taken with activity&quot; (p. 194); the patient is taught to change positions purposefully and slowly to prevent syncope or dizziness and to ambulate cautiously.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) misreads the chapter's reassurance about early effects. Euphoria, lightheadedness, dizziness, drowsiness, fatigue, confusion, and muscle weakness are common early in treatment and are generally short lived because patients grow tolerant to them — tolerance to the adverse effects, not loss of benefit, and never grounds for increasing the dose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cns depressant administration and sleep hygiene teaching</span><span class="chip t2">the two intravenous rate rules</span></div>
+<div class="stem">40. A nurse prepares to give intravenous diazepam. Which action is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Dilute the drug in 50 mL of normal saline and infuse it over 30 minutes</li><li class="fopt right"><span class="mk">&#10003;</span>Inject it slowly, taking at least 1 minute for each 5 mg, through the infusion tubing as close as possible to the vein insertion site</li><li class="fopt"><span class="mk">C</span>Mix it in the same syringe with the ordered analgesic to reduce the number of injections</li><li class="fopt"><span class="mk">D</span>Choose a small vein in the hand so the site is easy to observe</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Intravenous diazepam must be injected slowly, at least 1 minute for each 5 mg given, through the infusion tubing as close as possible to the vein insertion site. It must not be mixed or diluted with other solutions or drugs in a syringe or infusion container, small veins are not to be used, and intraarterial administration and extravasation must be avoided (p. 194).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies the barbiturate rule to diazepam. Barbiturates require dilution with normal saline; diazepam must not be diluted at all, and swapping the two rules is the error the chapter's own page layout invites.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cns depressant administration and sleep hygiene teaching</span><span class="chip t2">the two intravenous rate rules</span></div>
+<div class="stem">41. A barbiturate is ordered intravenously. Which administration rule applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Give it undiluted by rapid intravenous push to reach a therapeutic level quickly</li><li class="fopt right"><span class="mk">&#10003;</span>Dilute it with normal saline and give it no faster than 1 mg/kg/min</li><li class="fopt"><span class="mk">C</span>Give it no faster than 1 minute for each 5 mg</li><li class="fopt"><span class="mk">D</span>Add it to a running infusion of hydrocortisone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Intravenous administration of a barbiturate requires dilution of the drug with normal saline, and most of these drugs are not to be given any faster than 1 mg/kg/min. Too rapid an infusion of a barbiturate may produce profound hypotension and marked respiratory depression, and the Key Points warn that too rapid an infusion may precipitate respiratory or cardiac arrest (pp. 194 and 196).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the mirror error of the previous item — it is diazepam's fixed time-per-dose rule, whereas the barbiturate rule is weight based. (D) names one of the chapter's stated incompatibilities, listed alongside amphotericin B and hydromorphone.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cns depressant administration and sleep hygiene teaching</span><span class="chip t2">monitoring and nondrug measures</span></div>
+<div class="stem">42. A patient taking phenobarbital has a serum level of 46 mcg/mL and is found with cold, clammy skin and a respiratory rate of 8 breaths/min. How should the nurse interpret these findings?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The level is therapeutic, and the findings are unrelated to the drug</li><li class="fopt right"><span class="mk">&#10003;</span>The level is above the therapeutic range, and the findings are the chapter's described signs of toxicity</li><li class="fopt"><span class="mk">C</span>The level is subtherapeutic, and the dose should be increased</li><li class="fopt"><span class="mk">D</span>The respiratory rate is within the acceptable range for this drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The therapeutic level of phenobarbital must range between 15 and 40 mcg/mL, and patients with serum levels greater than 40 mcg/mL may experience toxicity manifested by cold and clammy skin, a respiratory rate of less than 10 breaths/min, and other signs of severe CNS depression (p. 194).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) treats a rate of 8 as acceptable by rounding toward the printed threshold. The chapter's cutoff is a rate of less than 10, so a rate of 8 is already inside the toxic description rather than approaching it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cns depressant administration and sleep hygiene teaching</span><span class="chip t2">monitoring and nondrug measures</span></div>
+<div class="stem">43. A hospitalized patient tells the nurse she cannot fall asleep. Which action should the nurse take first?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Give the ordered sedative-hypnotic</li><li class="fopt"><span class="mk">B</span>Offer valerian tea</li><li class="fopt"><span class="mk">C</span>Encourage her to walk the halls for exercise</li><li class="fopt right"><span class="mk">&#10003;</span>Provide a restful environment and decrease exposure to loud noises</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states in four separate places that nonpharmacologic measures come before drug therapy, and gives the reason directly: benzodiazepines and other drugs are used only when nonpharmacologic methods fail (p. 194). Decreasing exposure to loud noises is itself an item in Box 12.1.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) looks nonpharmacologic because it is herbal, but valerian is a drug with hepatotoxicity and CNS depressant interactions of its own. (C) is contradicted by Box 12.1's instruction to avoid exercise late in the evening.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cns depressant administration and sleep hygiene teaching</span><span class="chip t2">monitoring and nondrug measures</span></div>
+<div class="stem">44. A nurse teaches a patient the nonpharmacologic measures in Box 12.1. Which instructions belong to that box? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Keep fixed bed and wake times in order to reset your internal clock</li><li class="fopt right"><span class="mk">&#10003;</span>Avoid daytime napping</li><li class="fopt right"><span class="mk">&#10003;</span>Avoid caffeine within 6 hours of bedtime</li><li class="fopt"><span class="mk">D</span>Have a glass of wine in the evening to help you fall asleep</li><li class="fopt right"><span class="mk">&#10003;</span>If you are still awake 20 minutes after going to bed, get up and do something relaxing until you feel drowsy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 12.1 lists a set sleep pattern with fixed bed and wake times to reset the internal clock, avoiding daytime napping, avoiding stimulants such as caffeine, nicotine, and alcohol close to bedtime with no caffeine within 6 hours of bedtime, and getting up after 20 minutes awake to engage in a relaxing activity before returning to bed once drowsy (p. 195).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the trap the box itself sets up: alcohol is listed among the things to avoid in the evening &quot;because rather than putting you to sleep, it actually results in fragmented sleep.&quot; Alcohol is never a correct sleep intervention in this chapter, in any form.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"sedative and hypnotic terminology","subtopic":"dose decides the label","stem":"A patient receives a small dose of a CNS depressant before a painful dressing change and becomes calm and less irritable but stays awake and conversational. That evening the same drug is given at a much larger dose and the patient sleeps through the night. Which statement best explains what the nurse observed?","options":["The drug acted as a sedative at the lower dose and as a hypnotic at the higher dose","The drug is a hypnotic, and the smaller dose simply failed to reach the sleep-inducing threshold of its class","The patient developed tolerance between the two doses","The evening dose produced a paradoxical reaction"],"correct":[0],"sata":false,"why":"Sedatives have an inhibitory effect on the CNS to the degree that they reduce nervousness, excitability, and irritability without causing sleep, whereas hypnotics cause sleep. The Overview states the rule directly: \"a sedative can become a hypnotic if it is given in large enough doses,\" which is why a sedative-hypnotic is defined as a drug that can act in the body either as a sedative or as a hypnotic (p. 184).","trap":"(B) treats the label as a fixed property of the molecule. The chapter says a drug is one or the other depending on the degree to which it inhibits the transmission of nerve impulses to the CNS, not because of what the package insert calls it.","k":"hy63pfm4wtc1"},{"topic":"sedative and hypnotic terminology","subtopic":"dose decides the label","stem":"A nursing student charts that a newly ordered drug \"is a sedative and therefore cannot cause sleep at any dose.\" Which correction should the nurse make?","options":["The statement is correct; a sedative never induces sleep","Sedative and hypnotic name effects at different points on a dose continuum, and a sedative given in large enough doses becomes a hypnotic","Only barbiturates cross from sedation into sleep induction; benzodiazepines do not","The distinction depends on the route of administration, not the dose"],"correct":[1],"sata":false,"why":"The chapter states that \"any of these drugs can function along a continuum as a sedative and/or hypnotic and/or anxiolytic, depending on the dosage and patient sensitivity,\" and that hypnotics cause sleep and have \"a much more potent effect\" on the CNS (p. 184).","trap":"(A) is the mirror error of the previous item — it freezes the label to the molecule instead of to the dose. (C) invents a class restriction; the continuum statement is made about the sedative-hypnotics generally, benzodiazepines included.","k":"4j7huwqwkmu"},{"topic":"sedative and hypnotic terminology","subtopic":"therapeutic index and GABA","stem":"A patient's family asks why the prescriber chose a benzodiazepine rather than a barbiturate for short-term sedation. Which fact about the barbiturates most directly supports that choice?","options":["Barbiturates have a low therapeutic index, so the difference between the therapeutic and the toxic concentration is small","Barbiturates have a high therapeutic index, so much larger doses are required to achieve an effect","Barbiturates have no effect on GABA and are therefore less predictable","Barbiturates are not controlled substances and are therefore more easily diverted"],"correct":[0],"sata":false,"why":"Therapeutic index is the ratio between the toxic and therapeutic concentrations of a drug; if the index is low, the difference between the two is small and use of the drug is more hazardous (p. 183). The chapter applies this to the barbiturates by name — they \"are physiologically habit forming and have a low therapeutic index\" (p. 188) — and says they fell out of use because of \"the favorable safety profile and proven efficacy of the benzodiazepines.\"","trap":"(B) inverts the index, and the inversion is intuitive because \"high\" sounds like high risk. A high index means a wide, safe gap. (D) is false twice over: the barbiturates are scheduled C-II, C-III, or C-IV depending on the drug.","k":"r0wwkd1v6afrb"},{"topic":"sedative and hypnotic terminology","subtopic":"therapeutic index and GABA","stem":"A drug ordered for a patient is described as potentiating the action of gamma-aminobutyric acid in the brain. Which effect should the nurse anticipate?","options":["Increased CNS stimulation, because gamma-aminobutyric acid is excitatory","Increased CNS depression, because gamma-aminobutyric acid is the primary inhibitory neurotransmitter in the brain","No CNS effect, because gamma-aminobutyric acid acts only at the neuromuscular junction","Analgesia without any sedation"],"correct":[1],"sata":false,"why":"GABA is the primary inhibitory neurotransmitter found in the brain and is the key compound affected by sedative, anxiolytic, psychotropic, and muscle-relaxing medications (p. 183). Barbiturates potentiate the action of GABA (p. 189), and benzodiazepines are thought to bind GABA receptors or adjacent receptors and, like GABA, inhibit stimulation of the brain (p. 185).","trap":"(A) inverts the neurotransmitter's role, and that single inversion unravels every mechanism statement in the chapter. GABA is inhibitory, so potentiating it deepens depression rather than producing stimulation.","k":"1oy28vcy0nbii"},{"topic":"sleep architecture and rem disruption","subtopic":"rem interference versus rem rebound","stem":"A 68-year-old woman has taken alprazolam almost every night for a week to help her fall asleep. She tells the nurse, \"I am sleeping very well, but I'm so tired during the day. I don't understand how I can get such good sleep and still feel tired.\" Which explanation should the nurse give?","options":["The drug is reducing her cumulative REM sleep time, and REM sleep supplies part of the restfulness of sleep","She is experiencing REM rebound from the alprazolam","One week is too short for the drug to have taken effect","The daytime fatigue indicates that the alprazolam dose is too low"],"correct":[0],"sata":false,"why":"\"Prolonged sedative-hypnotic use may reduce the cumulative amount of REM sleep; this is known as REM interference. This can result in daytime fatigue because REM sleep provides a certain component of the 'restfulness' of sleep\" (p. 184). Sleep quantity is preserved while sleep quality is degraded, which is exactly what she describes.","trap":"(B) is the reflex pick because rebound is the other REM word in the key-term box. Rebound happens after the drug is stopped; she is still taking it nightly, so the phenomenon in play is the one that happens while on the drug.","k":"jr6fcb54ld09"},{"topic":"sleep architecture and rem disruption","subtopic":"rem interference versus rem rebound","stem":"A patient who has taken a sedative-hypnotic nightly for a month stops it abruptly and then reports several nights of unusually frequent, vivid dreams and nightmares. Which phenomenon is this?","options":["REM interference","REM rebound","Paradoxical excitement","Rebound insomnia"],"correct":[1],"sata":false,"why":"REM rebound is excessive REM sleep following discontinuation of a sleep-altering drug (p. 183). With the barbiturates the chapter is explicit that during rebound \"the proportion of REM sleep is increased and nightmares often ensue\" (p. 189).","trap":"(A) is the mirror error of the previous item. Interference happens while the patient is on the drug and yields less REM with daytime fatigue; rebound happens after stopping and yields more REM with vivid dreams. (D) is the neighboring withdrawal phenomenon, but it names too much wakefulness rather than too much dreaming.","k":"xg82t816vr5pi"},{"topic":"sleep architecture and rem disruption","subtopic":"rem interference versus rem rebound","stem":"A patient stops a benzodiazepine abruptly and reports that she now lies awake far longer than she ever did before she started the drug. Which phenomenon should the nurse document, and what prevents it?","options":["REM rebound, prevented by taking the drug earlier in the evening","Rebound insomnia, prevented by a gradual weaning-off period","Paradoxical excitement, prevented by increasing the dose","A hangover effect, prevented by reducing the evening dose"],"correct":[1],"sata":false,"why":"Rebound insomnia is greater insomnia than pretreatment and occurs with abrupt discontinuation (p. 186). \"Gradual weaning-off periods are recommended for benzodiazepines and all CNS depressants\" (p. 194), and patient teaching instructs patients not to abruptly discontinue these drugs in order to avoid rebound insomnia.","trap":"(A) confuses the two rebound phenomena. Both follow withdrawal, which is why the words trade places so easily, but REM rebound is too much dreaming and rebound insomnia is too much wakefulness.","k":"53v7j21ui678k"},{"topic":"sleep architecture and rem disruption","subtopic":"the stages of sleep","stem":"A parent reports that their school-age child gets out of bed and walks around the house while still asleep and occasionally wets the bed. Which stage of sleep does Table 12.1 assign these events to?","options":["Non-REM stage 1","Non-REM stage 2","Non-REM stage 4","REM sleep"],"correct":[2],"sata":false,"why":"Table 12.1 assigns sleepwalking and bedwetting to non-REM stage 4, together with being very difficult to wake and being very groggy if awakened. Dreaming also occurs in stage 4, \"especially about daily events.\"","trap":"(D) pulls because REM is the stage students associate with everything that happens during dreaming. In Table 12.1 the REM row owns rapid eye movements, vivid dreams, and irregular breathing — not sleepwalking or bedwetting.","k":"1b03n7l1ltrg5v"},{"topic":"sleep architecture and rem disruption","subtopic":"the stages of sleep","stem":"A nurse is teaching a patient about the characteristics of REM sleep. Which findings belong to REM sleep as this chapter describes it? Select all that apply.","options":["Rapid movement of the eyes","Vivid dreams","Irregular breathing","Slow, side-to-side eye movements","The highest arousal threshold of any stage"],"correct":[0,1,2],"sata":true,"why":"The key term defines REM sleep by three characteristics named together — rapid movement of the eyes, vivid dreams, and irregular breathing (p. 183) — and the REM row of Table 12.1 repeats all three. Naming only vivid dreams is half the term.","trap":"(D) is the stage 1 finding, where eye movement is slow and side to side; any mention of eye movement feels like REM, which is what makes it pull. (E) belongs to delta sleep, stages 3 and 4 combined, where the arousal threshold is highest.","k":"20sfgcxzc41m"},{"topic":"benzodiazepine pharmacology and adverse effects","subtopic":"site of action and contraindications","stem":"A patient asks how her newly prescribed benzodiazepine works in the brain. Which description matches the chapter?","options":["It depresses the brainstem reticular formation, reducing nerve impulses traveling to the cerebral cortex","It depresses activity in the hypothalamic, thalamic, and limbic systems of the brain","It acts directly on the excitation-contraction coupling of muscle fibers","It agonizes melatonin receptors and regulates circadian rhythm"],"correct":[1],"sata":false,"why":"Benzodiazepines act on the hypothalamic, thalamic, and limbic systems of the brain; their receptor sites are thought to be either GABA receptors or other adjacent receptors, and like GABA they inhibit stimulation of the brain (p. 185).","trap":"(A) is the barbiturate mechanism — the brainstem reticular formation, with reduced nerve impulses traveling to the cerebral cortex (p. 189). Both classes are CNS depressants that involve GABA, so the anatomic sites are the only thing separating them and they trade places readily.","k":"1tplj7p17ts29z"},{"topic":"benzodiazepine pharmacology and adverse effects","subtopic":"site of action and contraindications","stem":"A prescriber is considering a benzodiazepine for a patient. Which findings in the history are stated contraindications in this chapter? Select all that apply.","options":["Known drug allergy to the benzodiazepines","Narrow-angle glaucoma","Pregnancy","A history of low back strain with muscle spasm","Age older than 65 years"],"correct":[0,1,2],"sata":true,"why":"The contraindications to benzodiazepines are known drug allergy, narrow-angle glaucoma, and pregnancy (p. 185).","trap":"(E) pulls because older adults get an entire caution paragraph — increased sensitivity, significant fall hazard, lowest effective dose — but caution is not contraindication. (D) names an indication rather than a contraindication, since skeletal muscle relaxation is on the benzodiazepine indication list.","k":"v3g1d11t57zzz"},{"topic":"benzodiazepine pharmacology and adverse effects","subtopic":"adverse effects in the older adult","stem":"A 79-year-old is started on a benzodiazepine for sleep. Which dosing principle does the chapter attach specifically to benzodiazepines in older adults?","options":["Reduce the usual adult dose by half whenever possible","Use the lowest effective dose, because of the significant fall hazard","Give the full adult dose but restrict it to alternate nights","Keep the dose unchanged and double the interval between doses"],"correct":[1],"sata":false,"why":"Benzodiazepines pose \"a significant fall hazard in older adults, and the lowest effective dose must be used\" (p. 185).","trap":"(A) is the barbiturate rule, where \"the usual dose is reduced by half whenever possible\" (p. 189). Two classes, two different instructions, and the half-dose figure belongs to the barbiturates only.","k":"jmaroyt3p0t8"},{"topic":"benzodiazepine pharmacology and adverse effects","subtopic":"adverse effects in the older adult","stem":"An older adult is given a benzodiazepine at bedtime to help her sleep and instead stays awake most of the night, watching television and reading in bed. How should the nurse describe this response?","options":["An allergic reaction","A teratogenic effect","A paradoxical reaction","An idiosyncratic response to the trade formulation"],"correct":[2],"sata":false,"why":"The chapter lists \"paradoxical excitement or nervousness\" among the commonly reported benzodiazepine adverse effects (p. 185), and repeats the pattern as \"paradoxical restlessness or excitement\" for barbiturates (p. 189) and \"paradoxical excitement in children\" (p. 193). The drug produced the opposite of its intended effect.","trap":"(A) is the reflex pick because any unexpected drug response reads as allergy. Nothing here describes urticaria, angioedema, rash, or the other hypersensitivity findings the chapter names.","k":"19l1xecsmogfa"},{"topic":"benzodiazepine pharmacology and adverse effects","subtopic":"adverse effects in the older adult","stem":"A patient started on a benzodiazepine for insomnia complains of drowsiness the morning after each dose. What is this effect, and whom does the chapter say it affects most?","options":["A hangover effect, more problematic in older adults and in patients with altered renal and hepatic function","REM rebound, which resolves once the drug reaches steady state","An early sign of overdose requiring flumazenil","Rebound insomnia, which requires an increased dose"],"correct":[0],"sata":false,"why":"The chapter names a \"hangover\" effect and gives daytime sleepiness as its example (p. 186); patient teaching adds that hangover effects are \"more problematic in older adults or in patients with altered renal and hepatic function\" (p. 196). It also occurs less frequently with benzodiazepines and nonbenzodiazepines than with barbiturates.","trap":"(C) escalates a listed adverse effect into an emergency. Flumazenil is for oral overdose or excessive intravenous sedation, not for morning grogginess in a patient taking a prescribed dose.","k":"bam19s6yr98y"},{"topic":"benzodiazepine overdose and flumazenil reversal","subtopic":"matching the antidote to the class","stem":"A patient is brought to the emergency department after taking an overdose of an oral benzodiazepine. He is drowsy but responsive, and his vital signs are stable. Which intervention should the nurse anticipate?","options":["Hemodialysis","Administration of flumazenil","Administration of naloxone","Immediate intubation and mechanical ventilation"],"correct":[1],"sata":false,"why":"Flumazenil is the benzodiazepine antidote and can be used to acutely reverse the sedative effects of benzodiazepines; it antagonizes their action on the CNS by directly competing with the benzodiazepine for binding at the receptors, and it is used in cases of oral overdose or excessive intravenous sedation (p. 186).","trap":"(D) tempts because respiratory failure is the feared outcome of any CNS depressant, but the chapter states that benzodiazepine overdose alone rarely results in hypotension and respiratory depression, and this patient is still responsive.","k":"14yt1vl1eo4e5v"},{"topic":"benzodiazepine overdose and flumazenil reversal","subtopic":"matching the antidote to the class","stem":"The patient in the next bed took an overdose of an opioid analgesic and is unresponsive with a respiratory rate of 6 breaths/min. Which reversal drug applies to him?","options":["Flumazenil","Naloxone","Activated charcoal","Procaine"],"correct":[1],"sata":false,"why":"The chapter pairs the two antidotes deliberately: flumazenil reverses the benzodiazepines by competing for benzodiazepine receptor binding, while naloxone is the opioid antagonist carried in Chapter 10. Flumazenil has no action at opioid receptors.","trap":"(A) is the mirror error of the previous item, and it is the most common error in this chapter because both drugs are competitive antagonists given for CNS depressant overdose. Match the antidote to the drug class, not to the symptom.","k":"128s4qe6hdjw"},{"topic":"benzodiazepine overdose and flumazenil reversal","subtopic":"the limits of reversal","stem":"Flumazenil is given to a patient who overdosed on a long-acting benzodiazepine, and she wakes up and answers questions appropriately. What should the nurse do next?","options":["Discontinue monitoring, since the antagonist has reversed the drug","Continue close monitoring, because flumazenil may wear off before the benzodiazepine does and the patient may become sedated again","Give naloxone as well, to cover the possibility of a co-ingestion","Withhold any further flumazenil permanently, since the maximum dose has been reached"],"correct":[1],"sata":false,"why":"The note to Table 12.3 states that flumazenil has a relatively short half-life and a duration of effect of 1 to 4 hours, so if it is used to reverse a long-acting benzodiazepine, \"the dose of the reversal drug may wear off and the patient may become sedated again, requiring more flumazenil.\"","trap":"(A) treats a successful reversal as the end of the intervention, which is exactly what the table's own note defeats. The antidote is shorter acting than the drug it is reversing.","k":"o8k1bt1u42b3j"},{"topic":"benzodiazepine overdose and flumazenil reversal","subtopic":"the limits of reversal","stem":"Flumazenil is ordered for two purposes on the same unit — reversal of moderate sedation in one patient and suspected benzodiazepine overdose in another. Which statement about the maximum cumulative doses in Table 12.3 is correct?","options":["Both regimens stop at a total of 1 mg","Sedation reversal stops at 1 mg, and suspected overdose may go up to 3 mg","Sedation reversal stops at 3 mg, and suspected overdose stops at 1 mg","Neither regimen has a stated ceiling"],"correct":[1],"sata":false,"why":"Table 12.3 gives 0.2 mg intravenously over 15 seconds for reversal of moderate sedation or general anesthesia, repeated at 60-second intervals up to four additional times, to a maximum total dose of 1 mg. For suspected benzodiazepine overdose the regimen starts at 0.2 mg over 30 seconds and escalates through 0.3 mg and then 0.5 mg doses at 1-minute intervals to a cumulative dose of 3 mg.","trap":"(C) swaps the two ceilings, and the swap is easy because both regimens open with the same 0.2 mg dose. The difference between the 1 mg and the 3 mg ceiling is the cleanest discriminator between the two indications.","k":"bzdqff19bi9vd"},{"topic":"sedative-hypnotic interactions and black box warnings","subtopic":"enzyme inhibition versus enzyme induction","stem":"A patient taking a benzodiazepine mentions that she drinks a large glass of grapefruit juice every morning. What should the nurse anticipate?","options":["Decreased benzodiazepine metabolism, with prolonged effect and possible toxicity","Increased benzodiazepine metabolism, with loss of therapeutic effect","No interaction, since grapefruit affects only the oral anticoagulants","An additive CNS depressant effect contributed by the juice itself"],"correct":[0],"sata":false,"why":"Grapefruit and grapefruit juice alter drug metabolism by inhibition of the cytochrome P-450 system and can result in prolonged effect, increased effect, and toxicity (p. 186). Table 12.4 groups grapefruit juice with the azole antifungals, verapamil, diltiazem, protease inhibitors, and macrolide antibiotics under decreased benzodiazepine metabolism and prolonged benzodiazepine action.","trap":"(B) runs the interaction backwards. Inhibition slows metabolism, so more drug stays in the body longer; only induction produces the loss of effect described there.","k":"3ft57o5vjth6"},{"topic":"sedative-hypnotic interactions and black box warnings","subtopic":"enzyme inhibition versus enzyme induction","stem":"A patient stabilized on a benzodiazepine is started on rifampin for tuberculosis, and within days he reports that the benzodiazepine no longer seems to work. What explains this?","options":["Rifampin inhibits benzodiazepine metabolism, causing accumulation and tolerance","Rifampin increases benzodiazepine metabolism, decreasing benzodiazepine effects","Rifampin displaces the benzodiazepine from its receptors, acting as an antagonist","Rifampin adds to CNS depression, masking the benzodiazepine effect"],"correct":[1],"sata":false,"why":"Table 12.4 lists rifampin with increased metabolism and decreased benzodiazepine effects. Rifampin is the one row of that table that runs against all the others, which is why it is printed there; the chapter also names rifampin as reducing the efficacy of ramelteon by speeding its metabolism (p. 188).","trap":"(A) is the mirror error of the previous item — it applies the grapefruit and azole direction to an inducer. Inducers speed metabolism and cause treatment failure; inhibitors slow it and cause toxicity.","k":"1f4s3y3xfao75"},{"topic":"sedative-hypnotic interactions and black box warnings","subtopic":"enzyme inhibition versus enzyme induction","stem":"A patient takes a benzodiazepine nightly. According to this chapter, which of the following would prolong or increase the benzodiazepine's effect? Select all that apply.","options":["An azole antifungal","Grapefruit juice","Rifampin","An opioid analgesic","Verapamil"],"correct":[0,1,3,4],"sata":true,"why":"Table 12.4 assigns decreased benzodiazepine metabolism and prolonged benzodiazepine action to the azole antifungals, verapamil, diltiazem, protease inhibitors, macrolide antibiotics, and grapefruit juice, and assigns additive effects with increased CNS depression to the CNS depressants, which the chapter exemplifies with alcohol, opioids, and muscle relaxants.","trap":"(C) is the single row in Table 12.4 that goes the other way — increased metabolism and decreased benzodiazepine effects. A learner who sorts the whole table into one bucket keeps it.","k":"p4t01tlf4iwv"},{"topic":"sedative-hypnotic interactions and black box warnings","subtopic":"the three black box warnings","stem":"A prescriber orders an opioid analgesic and a benzodiazepine together for a postoperative patient. Which statement reflects the 2016 FDA black box warning?","options":["The combination is absolutely prohibited in every patient","The combination should be used only if no other alternatives are available, because of extreme sleepiness, respiratory depression, coma, and death","The warning applies only when the opioid is given intravenously","The warning concerns complex sleep behaviors such as sleepwalking and sleep-driving"],"correct":[1],"sata":false,"why":"The 2016 warning covers all opioids and all benzodiazepines regarding the risk of combined use, and states that they should be used \"only if no other alternatives are available,\" with risks including extreme sleepiness, respiratory depression, coma, and death (p. 186). The assessment section operationalizes it by watching for severe decreases in blood pressure, respiratory rate, reflexes, and level of consciousness.","trap":"(D) is the 2019 warning, which belongs to the nonbenzodiazepines. It is the most memorable of the three, so it gets attached to the wrong box; three warnings, three years, three different scopes.","k":"bx33sy1boshy0"},{"topic":"sedative-hypnotic interactions and black box warnings","subtopic":"the three black box warnings","stem":"A patient asks which drugs carry the FDA warning about complex sleep behaviors, including sleepwalking, sleep-driving, and engaging in other activities while not fully awake. Which answer is correct?","options":["The entire benzodiazepine class","The nonbenzodiazepines zolpidem, eszopiclone, and zaleplon","All barbiturates","The orexin receptor antagonists"],"correct":[1],"sata":false,"why":"The 2019 warning names complex sleep behaviors for the nonbenzodiazepines zolpidem, eszopiclone, and zaleplon (p. 184). The late-2020 warning is the one covering the entire benzodiazepine class, and it concerns the risk for abuse, misuse, addiction, physical dependence, and withdrawal.","trap":"(A) crosses the years. It is the correct scope for the 2020 dependence warning and the wrong scope for the 2019 sleep-behavior warning, and the two collapse together because they were issued about a year apart.","k":"fhionb1noeli9"},{"topic":"nonbenzodiazepine and novel-mechanism hypnotics","subtopic":"which drugs are actually benzodiazepines","stem":"Table 12.2 lists temazepam, triazolam, zolpidem, and eszopiclone together in one table of sedative-hypnotics, and a student concludes that all four are benzodiazepines. Which correction is accurate?","options":["All four are benzodiazepines, since they appear in the same table and share schedule IV status","Zolpidem and eszopiclone are classified as miscellaneous hypnotic drugs that share many characteristics with the benzodiazepines but are chemically distinct from them","Only temazepam is a benzodiazepine; triazolam is a barbiturate","Classification depends on the duration column, not on the drug"],"correct":[1],"sata":false,"why":"The footnote to Table 12.2 states that these drugs \"share many characteristics with the benzodiazepines but are classified as miscellaneous hypnotic drugs,\" and the chapter describes zolpidem, eszopiclone, and zaleplon as functioning much like benzodiazepines but chemically distinct from them (pp. 184 and 185). The Clinical Pearl supplies the naming cue: many benzodiazepines end in \"pam.\"","trap":"(A) is exactly the error the chapter's own Key Points make when they list eszopiclone, ramelteon, zaleplon, and zolpidem as short-acting benzodiazepines. The rows and the footnote have to be read together, and the shared schedule IV status makes the merge feel safe.","k":"a5i0xyh3kw40"},{"topic":"nonbenzodiazepine and novel-mechanism hypnotics","subtopic":"which drugs are actually benzodiazepines","stem":"A woman is discharged after a hysterectomy with a new prescription for zolpidem 10 mg at bedtime. What is the nurse's most appropriate action?","options":["Review the adverse effects with her and reinforce the bedtime timing","Suggest a glass of wine at bedtime if the drug alone is not effective","Contact the prescriber to question the dose","Help her locate a pharmacy that stocks the drug"],"correct":[2],"sata":false,"why":"The FDA now recommends doses of 5 mg as a maximum dose for women, or 5 to 10 mg for men, because of the risk for next-morning impairment (p. 188). A 10 mg dose for a female patient is twice the recommended maximum.","trap":"(A) is the safe-looking choice, and it is wrong precisely because teaching about a dose the FDA capped at half leaves the hazard in place. (B) fails on a separate rule: alcohol is an additive CNS depressant, and Box 12.1 says it fragments sleep rather than producing it.","k":"gqqhxm6th95w"},{"topic":"nonbenzodiazepine and novel-mechanism hypnotics","subtopic":"melatonin agonists and orexin antagonists","stem":"A patient with a history of alcohol and sedative misuse needs help falling asleep. Which drug in this chapter is described as an option for patients likely to abuse CNS depressants, and why?","options":["Temazepam, because it is intermediate acting and therefore less reinforcing","Ramelteon, because it is not a controlled substance, is technically not a CNS depressant, and does not lead to withdrawal symptoms","Suvorexant, because the orexin receptor antagonists are not scheduled","Phenobarbital, because its long half-life smooths withdrawal"],"correct":[1],"sata":false,"why":"Ramelteon is structurally similar to melatonin and works as an agonist at melatonin receptors in the CNS; it is \"technically not a CNS depressant\" and is \"not classified as a controlled substance because of its lack of observed dependency risk\" (p. 188). The nursing sections add that it does not carry the potential for abuse or dependence and does not lead to withdrawal symptoms, so it may be an option for patients likely to abuse CNS depressants.","trap":"(C) is the closest wrong answer, because suvorexant is also a newer non-benzodiazepine hypnotic with an unfamiliar mechanism. Suvorexant is a schedule IV drug; ramelteon is the only unscheduled hypnotic in this chapter.","k":"1n7n7t1gmrt97"},{"topic":"nonbenzodiazepine and novel-mechanism hypnotics","subtopic":"melatonin agonists and orexin antagonists","stem":"Suvorexant is ordered for a patient with insomnia. Which explanation of its mechanism is accurate?","options":["It blocks orexin receptors, opposing hypothalamic neuropeptides that promote wakefulness","It agonizes melatonin receptors and resets the circadian rhythm","It potentiates GABA at the brainstem reticular formation","It decreases calcium release from the sarcoplasmic reticulum of muscle fibers"],"correct":[0],"sata":false,"why":"Suvorexant is the first drug in a new class called the orexin receptor antagonists. Orexin A and orexin B are hypothalamic neuropeptides that play a key role in promoting wakefulness and regulating the sleep-wake cycle, and orexin antagonists compete with the physiologic effects of orexin (p. 188).","trap":"(B) is the ramelteon mechanism, and the two are the chapter's easiest swap because both are newer hypnotics that do not work through GABA. Suvorexant blocks a wake-promoting peptide; ramelteon agonizes a sleep-promoting receptor.","k":"r4re8k6bhv4u"},{"topic":"nonbenzodiazepine and novel-mechanism hypnotics","subtopic":"melatonin agonists and orexin antagonists","stem":"A patient is starting suvorexant. Which statements should the nurse include in the teaching? Select all that apply.","options":["Take the drug about 30 minutes before bedtime","Take the drug 2 hours before bedtime, because of its slow onset","Be cautious about daytime somnolence and unconscious nighttime behaviors","This drug is less likely than other hypnotics to interact with alcohol","The drug is available over the counter if a refill runs out"],"correct":[0,2],"sata":true,"why":"Suvorexant's profile gives a 30-minute onset, and the chapter's dosing rule is to match the teaching time to the onset column, since a drug with an onset of 30 to 60 minutes is dosed 60 minutes before bedtime (p. 194). The safety concerns regarding daytime somnolence and unconscious nighttime behaviors are stated verbatim (pp. 188 and 196).","trap":"(E) is defeated by one phrase in the profile: suvorexant is a schedule IV drug, and a scheduled drug is never sold over the counter. (B) fabricates a pharmacokinetic that contradicts the 30-minute onset printed in that same profile.","k":"olr6ptxj4jc3"},{"topic":"barbiturate pharmacology and toxicity","subtopic":"site of action, duration groups, and schedules","stem":"A patient asks how phenobarbital differs from a benzodiazepine in where it acts. Which description fits the barbiturates?","options":["They act primarily on the brainstem in an area called the reticular formation, reducing nerve impulses traveling to the cerebral cortex","They act on the hypothalamic, thalamic, and limbic systems","They act at the neuromuscular junction","They antagonize orexin receptors in the hypothalamus"],"correct":[0],"sata":false,"why":"Barbiturates are CNS depressants that act primarily on the brainstem in an area called the reticular formation, and they work by reducing the nerve impulses traveling to the cerebral cortex; they also potentiate the action of the inhibitory neurotransmitter GABA and raise the seizure threshold (p. 189).","trap":"(B) is the benzodiazepine site. Both classes are CNS depressants that involve GABA, so the anatomic site is the only thing separating them and it is the detail most often traded between them.","k":"1cjglnl1sx3713"},{"topic":"barbiturate pharmacology and toxicity","subtopic":"site of action, duration groups, and schedules","stem":"A patient is scheduled for a short surgical procedure requiring anesthesia induction, and the neurosurgical team also wants intracranial pressure reduced. Which barbiturate duration group does Table 12.5 assign these purposes to?","options":["Ultrashort acting, such as methohexital and thiopental","Short acting, such as pentobarbital and secobarbital","Intermediate acting, such as butabarbital","Long acting, such as phenobarbital and mephobarbital"],"correct":[0],"sata":false,"why":"The ultrashort-acting barbiturates methohexital and thiopental are used for anesthesia for short surgical procedures, anesthesia induction, control of convulsions, and reduction of intracranial pressure in neurosurgical patients (p. 189). The long-acting group is used for epileptic seizure prophylaxis, and the short- and intermediate-acting groups carry the identical printed indication of sedation and control of convulsive conditions.","trap":"(D) picks the group whose drug names are most familiar, since phenobarbital is the prototype. Because the short and intermediate groups share word-for-word identical indications, any item separating the four tiers must be answered on the drug names rather than on the stated purpose.","k":"1mlp6gw12ucyb2"},{"topic":"barbiturate pharmacology and toxicity","subtopic":"site of action, duration groups, and schedules","stem":"A nurse assumes that the shorter a barbiturate's duration of action, the more restrictive its controlled-substance schedule will be. Which fact from Table 12.7 defeats that assumption?","options":["Phenobarbital is long acting and is schedule C-II","Thiopental is ultrashort acting but only schedule C-III, and methohexital is ultrashort acting but only schedule C-IV","Butabarbital is intermediate acting and is unscheduled","All barbiturates share a single schedule, the same one as the benzodiazepines"],"correct":[1],"sata":false,"why":"Table 12.7 places pentobarbital and secobarbital, both short acting, at schedule C-II, the tightest in the chapter, while the two ultrashort-acting drugs sit lower — thiopental at C-III and methohexital at C-IV. Phenobarbital, the long-acting prototype, is C-IV, the same schedule as the benzodiazepines.","trap":"(A) inverts phenobarbital's schedule, which is C-IV rather than C-II. Tables 12.5 and 12.7 have to be read as independent lists, because the intuitive duration-tracks-schedule rule fails on two of the seven drugs.","k":"1wdy6m21apmjsk"},{"topic":"barbiturate pharmacology and toxicity","subtopic":"enzyme induction and its victims","stem":"A woman taking oral contraceptives is started on phenobarbital. What should the nurse teach her?","options":["The contraceptive will be more effective, so its dose may be reduced","Phenobarbital accelerates the metabolism of the contraceptive, so she should use an additional method of contraception as a backup","Phenobarbital has no meaningful effect on oral contraceptives","She should stop the contraceptive entirely, since the combination causes clot formation"],"correct":[1],"sata":false,"why":"Barbiturates as a class are notorious enzyme inducers: they increase the activity of hepatic microsomal or cytochrome P-450 enzymes, causing many drugs to be metabolized more quickly, which usually shortens their duration of action (pp. 189 and 190). With oral contraceptives the printed result is accelerated metabolism of the contraceptive drug and possible unintended pregnancy, and the chapter advises an additional method of contraception as a backup.","trap":"(D) borrows the clot-formation outcome, which belongs to the anticoagulant row, and attaches it to the wrong drug. Induction lowers the other drug's level, so the victim drug fails at its own job: the anticoagulant stops preventing clots and the contraceptive stops preventing pregnancy.","k":"1x354l6108hlr8"},{"topic":"barbiturate pharmacology and toxicity","subtopic":"enzyme induction and its victims","stem":"A patient stabilized on a barbiturate is also taking a monoamine oxidase inhibitor. How does this interaction differ from the barbiturate's other listed interactions?","options":["It causes the barbiturate itself to have prolonged effects, rather than causing the other drug to fail","It causes accelerated metabolism of the monoamine oxidase inhibitor","It produces purely additive CNS depression, exactly as alcohol does","It has no clinical significance and requires no monitoring"],"correct":[0],"sata":false,"why":"The interaction table gives monoamine oxidase inhibitors the result of prolonged barbiturate effects. Every other listed interaction is either additive CNS depression, as with alcohol, antihistamines, benzodiazepines, opioids, and tranquilizers, or induction-driven failure of the other drug, as with the anticoagulants and the oral contraceptives (p. 190).","trap":"(B) is the mirror error of the previous item — it applies the induction direction, in which the other drug loses effect, to the one row where the arrow points back at the barbiturate.","k":"1djsl0jox8jl1"},{"topic":"barbiturate pharmacology and toxicity","subtopic":"barbiturate overdose","stem":"A patient is admitted after a phenobarbital overdose. Which measures does this chapter identify as part of management? Select all that apply.","options":["Maintenance of an adequate airway, assisted ventilation, and oxygen administration if needed","Alkalinization of the urine, raising the pH","Forced diuresis using a diuretic such as furosemide","Administration of flumazenil as the specific antidote","Activated charcoal, which recent clinical data support as improving outcome"],"correct":[0,1,2],"sata":true,"why":"Barbiturate overdose treatment is mainly symptomatic and supportive, with the mainstays being maintenance of an adequate airway, assisted ventilation, and oxygen administration if needed, along with fluid and pressor support. Because phenobarbital and mephobarbital are relatively acidic, alkalinizing the urine keeps the drug in the urine and prevents it from being resorbed back into the circulation, and alkalinization along with forced diuresis using diuretics such as furosemide can hasten elimination (p. 189).","trap":"(D) offers the benzodiazepine antidote for a barbiturate, which trades on both drugs being CNS depressants; the barbiturates have no antidote. (E) is named and then dismissed in the same sentence of the chapter, which states that recent clinical data do not support charcoal because no improvement in clinical outcome has been shown.","k":"gw3dezo917lp"},{"topic":"skeletal muscle relaxant therapy","subtopic":"centrally acting versus direct acting","stem":"A patient with multiple sclerosis is prescribed baclofen for spasticity, and a family member asks how the drug works on the muscles. Which explanation is accurate?","options":["It acts directly on the muscle fiber by decreasing calcium release from the sarcoplasmic reticulum","Its beneficial effects are thought to come from its sedative effects rather than from direct muscle relaxation, because it acts in the CNS","It blocks transmission at the muscle-nerve junction","It increases the force of muscle contraction to overcome spasm"],"correct":[1],"sata":false,"why":"Most muscle relaxants are centrally acting because their site of action is the CNS — the brainstem, thalamus, and basal ganglia, and also the spinal cord. Their beneficial effects are thought to come from their sedative effects rather than from direct muscle relaxation, and they have no direct effects on muscles, nerve conduction, or muscle-nerve junctions (p. 191).","trap":"(A) is dantrolene's mechanism, the one direct-acting drug in the chapter. Because every drug in the section is called a muscle relaxant, crediting a centrally acting agent with direct muscle action is the reflex error.","k":"tygam6fdb48"},{"topic":"skeletal muscle relaxant therapy","subtopic":"centrally acting versus direct acting","stem":"A patient develops malignant hyperthermia during general anesthesia. Which muscle relaxant is indicated, and why is it the only one that fits?","options":["Baclofen, because it can be delivered by an implantable pump","Cyclobenzaprine, because it is the most commonly used drug in the class","Dantrolene, because it acts directly on the excitation-contraction coupling of muscle fibers rather than at the level of the CNS","Diazepam, because it is a centrally acting skeletal muscle relaxant"],"correct":[2],"sata":false,"why":"Only one compound, dantrolene, acts directly on skeletal muscle; it works on the excitation-contraction coupling of muscle fibers and not at the level of the CNS, by decreasing the amount of calcium released from storage sites in the sarcoplasmic reticula of muscle fibers. Intravenous dantrolene is used for the management of skeletal muscle spasms that accompany the crisis condition known as malignant hyperthermia (p. 191).","trap":"(A) is the mirror error of the previous item — it offers a centrally acting drug for a crisis occurring in the muscle fiber itself. Baclofen's pump and test dose are real facts attached to the wrong problem.","k":"1lzew7aale5s0"},{"topic":"skeletal muscle relaxant therapy","subtopic":"the two profiled relaxants and their adverse effects","stem":"Two centrally acting muscle relaxants are on a unit's formulary. Which statement correctly distinguishes them?","options":["Baclofen is available with an implantable pump requiring an initial test dose and relieves hiccups; cyclobenzaprine is related to the tricyclic antidepressants and commonly causes marked sedation","Cyclobenzaprine is the drug given by implantable pump; baclofen is the one related to the tricyclic antidepressants","Baclofen acts directly on muscle fibers, while cyclobenzaprine acts centrally","Only cyclobenzaprine is listed for spasticity"],"correct":[0],"sata":false,"why":"Baclofen's injectable form is for use with an implantable baclofen pump device, and a test dose must be administered initially to test for a positive response; baclofen has also been shown to be effective in relieving hiccups (pp. 191 and 192). Cyclobenzaprine is structurally and pharmacologically related to the tricyclic antidepressants, is the most commonly used drug in this class to reduce spasms after musculoskeletal injuries, and very commonly produces marked sedation (p. 192).","trap":"(B) swaps the two drugs' signature facts, which is easy because both are centrally acting, both are dosed three times daily, and the dosages table lists spasticity for both.","k":"iihsle1xfexg"},{"topic":"skeletal muscle relaxant therapy","subtopic":"the two profiled relaxants and their adverse effects","stem":"A patient receiving a skeletal muscle relaxant is being monitored for adverse effects. Which is the priority concern?","options":["Hypertension","Peripheral edema","Blurred vision","CNS depression"],"correct":[3],"sata":false,"why":"The adverse effects of the muscle relaxants are an extension of their effects on the CNS and skeletal muscles, and include generalized CNS depression manifested as sedation, somnolence, ataxia, and respiratory and cardiovascular depression (p. 191). Implementation escalates this: frequent monitoring of airway, breathing, and circulation is warranted, and early identification of toxicity is critical (p. 194).","trap":"(A) has the vital-sign direction backwards. The chapter lists hypotension among the less common adverse effects, not hypertension, so the option is inverted rather than merely unlisted.","k":"1i18bjcgb9096"},{"topic":"skeletal muscle relaxant therapy","subtopic":"the two profiled relaxants and their adverse effects","stem":"A patient takes the first dose of a newly prescribed muscle relaxant at home. Which teaching addresses the chapter's stated window of greatest risk?","options":["The greatest risk for hypotension is usually within 1 hour of dosing, so change positions purposefully and slowly and ambulate cautiously","The greatest risk for hypotension occurs 8 to 12 hours after dosing, so avoid all morning activity","There is no hypotension risk with the centrally acting agents","Early dizziness and drowsiness mean the drug is failing and the dose should be doubled"],"correct":[0],"sata":false,"why":"\"The greatest risk for hypotension... is usually within 1 hour of dosing, so caution must be taken with activity\" (p. 194); the patient is taught to change positions purposefully and slowly to prevent syncope or dizziness and to ambulate cautiously.","trap":"(D) misreads the chapter's reassurance about early effects. Euphoria, lightheadedness, dizziness, drowsiness, fatigue, confusion, and muscle weakness are common early in treatment and are generally short lived because patients grow tolerant to them — tolerance to the adverse effects, not loss of benefit, and never grounds for increasing the dose.","k":"1czht3s1nbeqs6"},{"topic":"cns depressant administration and sleep hygiene teaching","subtopic":"the two intravenous rate rules","stem":"A nurse prepares to give intravenous diazepam. Which action is correct?","options":["Dilute the drug in 50 mL of normal saline and infuse it over 30 minutes","Inject it slowly, taking at least 1 minute for each 5 mg, through the infusion tubing as close as possible to the vein insertion site","Mix it in the same syringe with the ordered analgesic to reduce the number of injections","Choose a small vein in the hand so the site is easy to observe"],"correct":[1],"sata":false,"why":"Intravenous diazepam must be injected slowly, at least 1 minute for each 5 mg given, through the infusion tubing as close as possible to the vein insertion site. It must not be mixed or diluted with other solutions or drugs in a syringe or infusion container, small veins are not to be used, and intraarterial administration and extravasation must be avoided (p. 194).","trap":"(A) applies the barbiturate rule to diazepam. Barbiturates require dilution with normal saline; diazepam must not be diluted at all, and swapping the two rules is the error the chapter's own page layout invites.","k":"on8knn18xfss9"},{"topic":"cns depressant administration and sleep hygiene teaching","subtopic":"the two intravenous rate rules","stem":"A barbiturate is ordered intravenously. Which administration rule applies?","options":["Give it undiluted by rapid intravenous push to reach a therapeutic level quickly","Dilute it with normal saline and give it no faster than 1 mg/kg/min","Give it no faster than 1 minute for each 5 mg","Add it to a running infusion of hydrocortisone"],"correct":[1],"sata":false,"why":"Intravenous administration of a barbiturate requires dilution of the drug with normal saline, and most of these drugs are not to be given any faster than 1 mg/kg/min. Too rapid an infusion of a barbiturate may produce profound hypotension and marked respiratory depression, and the Key Points warn that too rapid an infusion may precipitate respiratory or cardiac arrest (pp. 194 and 196).","trap":"(C) is the mirror error of the previous item — it is diazepam's fixed time-per-dose rule, whereas the barbiturate rule is weight based. (D) names one of the chapter's stated incompatibilities, listed alongside amphotericin B and hydromorphone.","k":"1us9ktu1os7pqk"},{"topic":"cns depressant administration and sleep hygiene teaching","subtopic":"monitoring and nondrug measures","stem":"A patient taking phenobarbital has a serum level of 46 mcg/mL and is found with cold, clammy skin and a respiratory rate of 8 breaths/min. How should the nurse interpret these findings?","options":["The level is therapeutic, and the findings are unrelated to the drug","The level is above the therapeutic range, and the findings are the chapter's described signs of toxicity","The level is subtherapeutic, and the dose should be increased","The respiratory rate is within the acceptable range for this drug"],"correct":[1],"sata":false,"why":"The therapeutic level of phenobarbital must range between 15 and 40 mcg/mL, and patients with serum levels greater than 40 mcg/mL may experience toxicity manifested by cold and clammy skin, a respiratory rate of less than 10 breaths/min, and other signs of severe CNS depression (p. 194).","trap":"(D) treats a rate of 8 as acceptable by rounding toward the printed threshold. The chapter's cutoff is a rate of less than 10, so a rate of 8 is already inside the toxic description rather than approaching it.","k":"1jta8ym1lj5fs0"},{"topic":"cns depressant administration and sleep hygiene teaching","subtopic":"monitoring and nondrug measures","stem":"A hospitalized patient tells the nurse she cannot fall asleep. Which action should the nurse take first?","options":["Give the ordered sedative-hypnotic","Offer valerian tea","Encourage her to walk the halls for exercise","Provide a restful environment and decrease exposure to loud noises"],"correct":[3],"sata":false,"why":"The chapter states in four separate places that nonpharmacologic measures come before drug therapy, and gives the reason directly: benzodiazepines and other drugs are used only when nonpharmacologic methods fail (p. 194). Decreasing exposure to loud noises is itself an item in Box 12.1.","trap":"(B) looks nonpharmacologic because it is herbal, but valerian is a drug with hepatotoxicity and CNS depressant interactions of its own. (C) is contradicted by Box 12.1's instruction to avoid exercise late in the evening.","k":"njpsa4nrdohy"},{"topic":"cns depressant administration and sleep hygiene teaching","subtopic":"monitoring and nondrug measures","stem":"A nurse teaches a patient the nonpharmacologic measures in Box 12.1. Which instructions belong to that box? Select all that apply.","options":["Keep fixed bed and wake times in order to reset your internal clock","Avoid daytime napping","Avoid caffeine within 6 hours of bedtime","Have a glass of wine in the evening to help you fall asleep","If you are still awake 20 minutes after going to bed, get up and do something relaxing until you feel drowsy"],"correct":[0,1,2,4],"sata":true,"why":"Box 12.1 lists a set sleep pattern with fixed bed and wake times to reset the internal clock, avoiding daytime napping, avoiding stimulants such as caffeine, nicotine, and alcohol close to bedtime with no caffeine within 6 hours of bedtime, and getting up after 20 minutes awake to engage in a relaxing activity before returning to bed once drowsy (p. 195).","trap":"(D) is the trap the box itself sets up: alcohol is listed among the things to avoid in the evening \"because rather than putting you to sleep, it actually results in fragmented sleep.\" Alcohol is never a correct sleep intervention in this chapter, in any form.","k":"s73rec14v27ga"}];
+const TITLE = "Chapter 12 — NUR 3420/1 — Pharmacology I & II";
+const SUBTITLE = "Chapter 12";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur3420-3421-pharm";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

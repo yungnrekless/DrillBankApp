@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 39 — NUR 3420/1 — Pharmacology I &amp; II</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 39</div><h1>Chapter 39 — NUR 3420/1 — Pharmacology I &amp; II</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">resistant organism vocabulary and treatment</span><span class="chip t2">which organism resists what</span></div>
+<div class="stem">1. A patient's blood cultures grow vancomycin-resistant Enterococcus faecium. Which drugs does the chapter list as treatment options for this organism? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>daptomycin</li><li class="fopt right"><span class="mk">&#10003;</span>linezolid</li><li class="fopt right"><span class="mk">&#10003;</span>tedizolid</li><li class="fopt"><span class="mk">D</span>vancomycin</li><li class="fopt"><span class="mk">E</span>ceftaroline</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 39.1 lists daptomycin, linezolid, and tedizolid as the treatments for VRE. Vancomycin-resistant Enterococcus is defined in the key term box as Enterococcus species resistant to beta-lactam antibiotics and vancomycin, most commonly Enterococcus faecium.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is wrong by definition of the organism's own name, and it still pulls because vancomycin is the reflex answer for any resistant gram-positive organism. (E) ceftaroline appears on the MRSA treatment list only; the two lists overlap in daptomycin, linezolid, and tedizolid, and everything else on the MRSA list is a discriminator.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">resistant organism vocabulary and treatment</span><span class="chip t2">which organism resists what</span></div>
+<div class="stem">2. A different patient has an MRSA bloodstream infection. Which drug appears on the chapter's MRSA treatment list but not on its VRE list?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>vancomycin</li><li class="fopt"><span class="mk">B</span>daptomycin</li><li class="fopt"><span class="mk">C</span>linezolid</li><li class="fopt"><span class="mk">D</span>tedizolid</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 39.1 gives vancomycin, daptomycin, linezolid, tedizolid, telavancin, oritavancin, dalbavancin, and ceftaroline for MRSA, but only daptomycin, linezolid, and tedizolid for VRE. Vancomycin is separately named as the antibiotic of choice for the treatment of MRSA infection.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror error of the previous item. (B), (C), and (D) are the three drugs the two lists share, so a learner who remembers only that the lists overlap will pick one of them; the discriminator is what MRSA gets that VRE cannot.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">resistant organism vocabulary and treatment</span><span class="chip t2">the ESBL to CRO escalation</span></div>
+<div class="stem">3. A urine culture grows an extended-spectrum beta-lactamase-producing Klebsiella. The nurse anticipates an order for a drug from which class?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Carbapenems</li><li class="fopt"><span class="mk">B</span>Penicillins</li><li class="fopt"><span class="mk">C</span>Cephalosporins</li><li class="fopt"><span class="mk">D</span>Monobactams such as aztreonam</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that organisms producing ESBL are resistant to all beta-lactam antibiotics, meaning penicillins and cephalosporins, and to aztreonam, and can be treated only with carbapenems or sometimes fluoroquinolones. Box 39.1 gives carbapenems as the ESBL treatment.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) pulls hardest because aztreonam is a monobactam rather than a penicillin or cephalosporin, so it reads as an escape from beta-lactam resistance. The key term definition explicitly includes aztreonam in what ESBL producers resist.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">resistant organism vocabulary and treatment</span><span class="chip t2">the ESBL to CRO escalation</span></div>
+<div class="stem">4. A week later the same patient's culture grows a carbapenem-resistant organism, and meropenem is ordered. Which agents does the chapter name as the remaining options for this infection?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>colistin and tigecycline</li><li class="fopt"><span class="mk">B</span>carbapenems such as meropenem</li><li class="fopt"><span class="mk">C</span>penicillins and cephalosporins</li><li class="fopt"><span class="mk">D</span>aztreonam</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 39.1 names colistin and tigecycline as the treatment for carbapenem-resistant organisms. The chapter tells the escalation as cause and effect: heavy carbapenem use against ESBL producers drove bacteria to produce carbapenemase, which renders all carbapenems ineffective, leaving few known antibiotics.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error of the previous item — carbapenems are the correct escalation for ESBL, and a learner who banked that rule will apply it one organism too far. A carbapenem for a carbapenem-resistant organism names the exact drug class the organism is defined by resisting.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">resistant organism vocabulary and treatment</span><span class="chip t2">preventing spread</span></div>
+<div class="stem">5. A nurse is assigned to a patient in contact isolation for a multidrug-resistant organism and asks what single action most reduces the risk of spreading it to other patients. Which response reflects the chapter's repeated emphasis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Washing hands before and after every patient contact</li><li class="fopt"><span class="mk">B</span>Wearing a mask whenever entering the room</li><li class="fopt"><span class="mk">C</span>Restricting the patient's visitors to immediate family</li><li class="fopt"><span class="mk">D</span>Obtaining repeat cultures every 48 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states three separate times that these organisms are spread by contact, that all health care professionals must wash their hands before and after all patient contact, and that the importance of handwashing cannot be overemphasized. The vancomycin case study asks directly for the single best action to prevent spread.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because isolation and masks travel together in the learner's memory, but the chapter pairs multidrug-resistant organisms with contact isolation, not droplet or airborne precautions, and names handwashing rather than any barrier as the action of utmost importance.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside pharmacology and spectrum</span><span class="chip t2">mechanism and route</span></div>
+<div class="stem">6. A student notes that aminoglycosides and tetracyclines bind the same ribosomal subunit and asks whether the two classes therefore do the same thing to bacteria. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Both bind the 30S ribosome, but aminoglycosides are bactericidal while tetracyclines are bacteriostatic</li><li class="fopt"><span class="mk">B</span>Both bind the 30S ribosome and both are bacteriostatic</li><li class="fopt"><span class="mk">C</span>Aminoglycosides bind the 50S ribosome, which is why they kill rather than suppress</li><li class="fopt"><span class="mk">D</span>Both bind the 50S ribosome, but only the tetracyclines are bactericidal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that aminoglycosides work in a way similar to that of the tetracyclines, in that they bind to ribosomes, specifically the 30S ribosome, and thereby prevent protein synthesis in bacteria. It separately classifies aminoglycosides as bactericidal and potent, making them drugs of choice for particularly virulent infections.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the pull, because same binding site reads as same behavior. Shared target does not mean shared outcome here: the 30S site is common ground and the killing behavior is opposite.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside pharmacology and spectrum</span><span class="chip t2">mechanism and route</span></div>
+<div class="stem">7. An oral aminoglycoside is ordered for a patient with hepatic encephalopathy. Which statement explains why this order is not the class exception it first appears to be?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>neomycin is given orally precisely because it is too toxic for systemic use, and it acts locally on gut bacteria</li><li class="fopt"><span class="mk">B</span>All aminoglycosides are well absorbed orally when given with food</li><li class="fopt"><span class="mk">C</span>Oral aminoglycosides are absorbed systemically and reach the liver in high concentration</li><li class="fopt"><span class="mk">D</span>neomycin is the only aminoglycoside available in an injectable form</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that aminoglycosides are not given orally because of their poor oral absorption, with neomycin as the exception, and that neomycin's toxicity limits its use to the gastrointestinal tract and topical application. In hepatic encephalopathy it reduces the number of ammonia-producing bacteria in the gastrointestinal tract, and the resulting drop in blood ammonia levels sometimes improves neurologic symptoms.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the fact that matters most about this drug: neomycin is not available in injectable form at all. A learner who remembers neomycin as the odd one out but not which way it is odd will pick it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside pharmacology and spectrum</span><span class="chip t2">choosing among the aminoglycosides</span></div>
+<div class="stem">8. A patient's wound culture reports an organism resistant to both gentamicin and tobramycin. Which aminoglycoside does the chapter describe as reserved for exactly this situation?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>amikacin</li><li class="fopt"><span class="mk">B</span>neomycin</li><li class="fopt"><span class="mk">C</span>streptomycin</li><li class="fopt"><span class="mk">D</span>paromomycin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 39.2 describes amikacin as generally reserved for resistant infections and states that it is often used to treat infections that are resistant to gentamicin or tobramycin.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) streptomycin looks like a reserve agent because its listed uses are unusual ones, but those uses are organism-specific rather than resistance-driven: plague, tularemia, tuberculosis, and granuloma inguinale. Reserve status for resistance belongs to amikacin.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside pharmacology and spectrum</span><span class="chip t2">choosing among the aminoglycosides</span></div>
+<div class="stem">9. A child with cystic fibrosis has recurrent Pseudomonas pulmonary infections and is started on an inhaled aminoglycoside. Which drug is the chapter describing?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>tobramycin</li><li class="fopt"><span class="mk">B</span>amikacin</li><li class="fopt"><span class="mk">C</span>gentamicin</li><li class="fopt"><span class="mk">D</span>neomycin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 39.2 states that tobramycin is commonly used to treat recurrent pulmonary infections in patients with cystic fibrosis, by both injectable and inhaled dosing. The chapter separately notes that aminoglycosides as a class can be given by inhalation for the treatment of lung infections.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) gentamicin is the default workhorse of the class and is the reflex pick whenever no other cue is obvious, but the cystic fibrosis and inhalation cues belong to tobramycin specifically. Gentamicin's signature pairing is with penicillin for gram-positive synergy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside pharmacology and spectrum</span><span class="chip t2">combination therapy and sequence</span></div>
+<div class="stem">10. Gentamicin 300 mg IV and a beta-lactam antibiotic are both scheduled at 0900. Which should the nurse infuse first, and why?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The beta-lactam, because it breaks down the bacterial cell wall so the aminoglycoside can reach the ribosomes</li><li class="fopt"><span class="mk">B</span>The aminoglycoside, because it needs the highest possible peak concentration and should not be delayed</li><li class="fopt"><span class="mk">C</span>The beta-lactam, because giving the aminoglycoside first inactivates the beta-lactam in the tubing</li><li class="fopt"><span class="mk">D</span>Either order is acceptable, because the synergistic effect does not depend on sequence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that when aminoglycosides are used in combination with beta-lactam antibiotics, the beta-lactam antibiotic is given first, because the beta-lactams break down the cell wall of the bacteria and allow the aminoglycoside to gain access to the ribosomes, where they work. Critical thinking exercise 2 is built on this sequence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick for anyone who has just learned concentration-dependent killing, since it argues from a real property of the class. Concentration matters for dosing interval, not for which bag hangs first; the sequence rule is mechanistic and runs the other way.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside therapeutic drug monitoring</span><span class="chip t2">concentration-dependent versus time-dependent killing</span></div>
+<div class="stem">11. A pharmacist converts a patient from gentamicin three times daily to a single daily dose and explains that this drug kills best when a high plasma concentration is achieved even briefly. Which property is being described?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Concentration-dependent killing</li><li class="fopt"><span class="mk">B</span>Time-dependent killing</li><li class="fopt"><span class="mk">C</span>The postantibiotic effect</li><li class="fopt"><span class="mk">D</span>The synergistic effect</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The key term box defines concentration-dependent killing as a property of some antibiotics, especially aminoglycosides, whereby achieving high plasma drug concentrations, even if briefly, results in the most effective bacterial kill. This is the rationale for moving aminoglycosides toward once-daily dosing.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is adjacent and genuinely true of aminoglycosides, which makes it tempting: the postantibiotic effect is continued bacterial suppression after brief exposure. But that names what happens after the drug is gone, not the property that determines how high the level must go.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside therapeutic drug monitoring</span><span class="chip t2">concentration-dependent versus time-dependent killing</span></div>
+<div class="stem">12. A different antibiotic's monograph states that prolonged high plasma concentrations are required for effective bacterial kill, which is why it is infused frequently rather than once daily. Which property is this, and which classes does the chapter say show it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Time-dependent killing, and it is the property of most antibiotic classes</li><li class="fopt"><span class="mk">B</span>Time-dependent killing, and it is unique to the aminoglycosides</li><li class="fopt"><span class="mk">C</span>Concentration-dependent killing, and it is the property of most antibiotic classes</li><li class="fopt"><span class="mk">D</span>Concentration-dependent killing, and it is unique to the beta-lactams</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The key term box defines time-dependent killing as a property of most antibiotic classes whereby prolonged high plasma drug concentrations are required for effective bacterial kill, and cross-references it to concentration-dependent killing. The two definitions point at each other in the source text.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror error of the previous item, and (B) is where it lands: a learner who has just attached a monitoring rule to aminoglycosides tends to attach the second property to them as well. The aminoglycosides are the concentration-dependent exception; most other classes, including the beta-lactams, are time-dependent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside therapeutic drug monitoring</span><span class="chip t2">when peaks and troughs are drawn</span></div>
+<div class="stem">13. A patient is receiving tobramycin 5 mg/kg once daily. When should the nurse expect the laboratory sample for a drug level to be drawn?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A trough only, 8 to 12 hours after completion of the dose</li><li class="fopt"><span class="mk">B</span>A peak only, 30 to 60 minutes after the infusion ends</li><li class="fopt"><span class="mk">C</span>Both a peak and a trough, with the trough drawn just before the next dose</li><li class="fopt"><span class="mk">D</span>A trough only, drawn immediately before the next scheduled dose</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>For once-daily regimens the chapter states that peak levels are usually not measured, because the peak for a single daily dose is assumed to be short-lived, and that trough levels are drawn at least 8 to 12 hours after completion of dose administration, with a therapeutic goal at or below 1 mcg/mL.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the near miss and the most dangerous one, because drawing immediately before the next dose is the correct rule for traditional aminoglycoside dosing and for vancomycin. The sampling rule splits by dosing regimen, not by drug.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside therapeutic drug monitoring</span><span class="chip t2">when peaks and troughs are drawn</span></div>
+<div class="stem">14. Another patient receives gentamicin three times daily. Which sampling schedule matches the chapter's rule for traditional dosing?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Peak 30 to 60 minutes after a 30-minute infusion, and trough just before the next dose</li><li class="fopt"><span class="mk">B</span>Peak 8 to 12 hours after the dose, and no trough</li><li class="fopt"><span class="mk">C</span>Trough only, 8 to 12 hours after completion of the dose</li><li class="fopt"><span class="mk">D</span>Peak just before the next dose, and trough 30 minutes after the infusion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>With traditional three-times-daily dosing both peak and trough levels are measured. Samples for peak levels are drawn 30 to 60 minutes after a 30-minute infusion, and samples for trough levels are drawn just before the next dose.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror error of the previous item, and (D) is its full inversion — a peak drawn just before the next dose has the two definitions reversed. A trough is the lowest level and therefore comes at the end of the interval; a peak is the highest and comes shortly after the infusion.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside therapeutic drug monitoring</span><span class="chip t2">interpreting the numbers</span></div>
+<div class="stem">15. A patient on once-daily tobramycin has a reported trough of 3 mcg/mL, and the next dose is due now. What does the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hold the dose and notify the prescriber, because this trough is above the level associated with toxicity</li><li class="fopt"><span class="mk">B</span>Give the dose, because troughs up to 5 mcg/mL are therapeutic for tobramycin</li><li class="fopt"><span class="mk">C</span>Repeat the level in 24 hours and give the dose now</li><li class="fopt"><span class="mk">D</span>Skip one dose only and resume the schedule without notifying anyone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 39.1 gives a once-daily trough goal of less than 1 mcg/mL for gentamicin and tobramycin, and the text states that trough levels above 2 mcg/mL are associated with a greater risk for both ototoxicity and nephrotoxicity. The chapter also states that alteration in auditory, vestibular, or renal function may indicate the need for a possible dosage adjustment or withdrawal of the drug.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) both delay a decision the number already supports, which is what makes them attractive to a learner who is unsure of the threshold. Repeating a level or skipping a single dose without notification leaves the prescriber unaware that the patient is in the toxic range.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside therapeutic drug monitoring</span><span class="chip t2">interpreting the numbers</span></div>
+<div class="stem">16. An amikacin trough returns at 8 mcg/mL on once-daily dosing, and a new nurse says this must be toxic because gentamicin troughs are kept below 1. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Amikacin's therapeutic range runs an order of magnitude higher, and less than 10 mcg/mL is the once-daily trough goal</li><li class="fopt"><span class="mk">B</span>The nurse is correct; all aminoglycoside troughs share the same goal of less than 1 mcg/mL</li><li class="fopt"><span class="mk">C</span>Amikacin troughs should be reported in mg/mL rather than mcg/mL, so the value must be converted</li><li class="fopt"><span class="mk">D</span>Amikacin peaks rather than troughs are the monitored value on once-daily dosing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 39.1 gives amikacin a once-daily trough goal of less than 10 mcg/mL and a traditional-dosing trough range of 5 to 10 mcg/mL, against 1 to 2 mcg/mL for gentamicin and tobramycin. The chapter states that peak levels are usually not measured on once-daily regimens for any of these drugs.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the unit trap the chapter gives its own key term for, warning that confusion of microgram and milligram sometimes results in drug dosage errors. Every level in this chapter is in mcg/mL, and a value reported in mg/mL is off by a factor of 1000.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside toxicity and monitoring priorities</span><span class="chip t2">nephrotoxicity versus ototoxicity</span></div>
+<div class="stem">17. A patient has been on IV gentamicin for six days. Which findings would the nurse interpret as evidence of nephrotoxicity? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Urinary casts</li><li class="fopt right"><span class="mk">&#10003;</span>Proteinuria</li><li class="fopt right"><span class="mk">&#10003;</span>Rising BUN and serum creatinine levels</li><li class="fopt"><span class="mk">D</span>Tinnitus</li><li class="fopt"><span class="mk">E</span>A sense of fullness in the ears</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists urinary casts, described as visible remnants of destroyed renal cells, along with proteinuria and increased BUN and serum creatinine levels, as the manifestations of aminoglycoside nephrotoxicity. Serum creatinine is measured at least every 3 days as an index of renal function.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) and (E) are the wrong side of the same toxicity table. Tinnitus and a sense of fullness in the ears are ototoxicity symptoms, and they pull because both toxicities are aminoglycoside toxicities monitored by the same drug levels. The distinction that matters clinically is that nephrotoxicity is usually reversible and ototoxicity likely is not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside toxicity and monitoring priorities</span><span class="chip t2">nephrotoxicity versus ototoxicity</span></div>
+<div class="stem">18. A patient receiving an IV aminoglycoside reports new ringing in the ears partway through the infusion. Which action is the priority?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stop the infusion and notify the prescriber</li><li class="fopt"><span class="mk">B</span>Reassure the patient that ringing is expected and will resolve when therapy ends</li><li class="fopt"><span class="mk">C</span>Slow the infusion rate and continue the dose</li><li class="fopt"><span class="mk">D</span>Increase the infusion rate so the dose finishes sooner</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Tinnitus is a symptom of ototoxicity, which the chapter says often is not reversible and can result in varying degrees of permanent hearing loss from injury to the eighth cranial nerve. Alteration in auditory, vestibular, or renal function may indicate the need for a possible dosage adjustment or withdrawal of the drug, and patient teaching states that hearing loss may occur even after completion of therapy.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the mirror error of a different drug's rule — slowing the rate is the correct response to vancomycin red man syndrome, where rate is the actual mechanism. Ototoxicity is not rate-related, so the rate-adjustment options are answering the wrong drug's problem. (B) is wrong because the loss is likely permanent, not self-limiting.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside toxicity and monitoring priorities</span><span class="chip t2">interactions that raise each toxicity</span></div>
+<div class="stem">19. A patient on IV tobramycin is also receiving furosemide. Which risk does this combination specifically raise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ototoxicity</li><li class="fopt"><span class="mk">B</span>Nephrotoxicity</li><li class="fopt"><span class="mk">C</span>Neuromuscular blockade</li><li class="fopt"><span class="mk">D</span>Bleeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's interaction table pairs loop diuretics with an increased risk for ototoxicity, while vancomycin, cyclosporine, and amphotericin B, as other nephrotoxic drugs, raise the risk for nephrotoxicity.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because furosemide acts on the kidney, so a renal consequence feels obvious. The chapter assigns loop diuretics to the ears; the nephrotoxicity partners are the other nephrotoxic drugs, plus IV contrast media for CT scans.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">aminoglycoside toxicity and monitoring priorities</span><span class="chip t2">interactions that raise each toxicity</span></div>
+<div class="stem">20. A patient stabilized on warfarin is started on IV gentamicin. Which effect does the chapter predict, and by what mechanism?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Potentiated warfarin toxicity, because the aminoglycoside kills gut flora and reduces vitamin K production</li><li class="fopt"><span class="mk">B</span>Reduced warfarin effect, because the aminoglycoside induces hepatic metabolism of warfarin</li><li class="fopt"><span class="mk">C</span>No interaction, because aminoglycosides are not absorbed from the gut</li><li class="fopt"><span class="mk">D</span>Potentiated warfarin toxicity, because the aminoglycoside displaces warfarin from albumin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that aminoglycosides kill intestinal bacterial flora and so reduce the amount of vitamin K produced by these gut bacteria, and therefore can potentiate warfarin toxicity. The quinolone section gives the same mechanism for that class, describing antibiotic-induced alteration of the intestinal flora, which affects vitamin K synthesis.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) borrows a true fact and draws the wrong conclusion from it. Poor oral absorption is why aminoglycosides are not given by mouth, but a systemically administered aminoglycoside still reaches and kills gut flora, which is exactly why the warfarin interaction exists.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone mechanism and drug selection</span><span class="chip t2">mechanism and oral absorption</span></div>
+<div class="stem">21. A patient asks whether an antibiotic that works by destroying bacterial DNA will also damage human DNA. Which response reflects the chapter's description of the quinolones?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They interfere with the bacterial enzymes DNA gyrase and topoisomerase IV and do not inhibit the production of human DNA</li><li class="fopt"><span class="mk">B</span>They bind the 30S ribosome, so human DNA is not involved at all</li><li class="fopt"><span class="mk">C</span>They inhibit both bacterial and human DNA synthesis, which is why courses are kept short</li><li class="fopt"><span class="mk">D</span>They disrupt the bacterial cell membrane rather than acting on DNA</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that quinolones destroy bacteria by altering their deoxyribonucleic acid, accomplishing this by interfering with the bacterial enzymes DNA gyrase and topoisomerase IV, and that quinolones do not inhibit the production of human DNA.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the aminoglycoside and tetracycline mechanism imported into the wrong class, and it pulls because both answers sound like plausible bacteria-specific targets. Ribosomal binding belongs to the protein-synthesis inhibitors; the quinolones act on the bacterial DNA enzymes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone mechanism and drug selection</span><span class="chip t2">mechanism and oral absorption</span></div>
+<div class="stem">22. A hospitalized patient on IV levofloxacin is ready for discharge, and the prescriber changes the order to the oral form at the same dose. The patient's family questions whether pills can work as well as an IV drug. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Quinolones other than norfloxacin have excellent oral absorption, comparable in most cases to intravenous injection</li><li class="fopt"><span class="mk">B</span>Oral quinolones reach roughly half the blood level of the IV form, so the dose is usually doubled</li><li class="fopt"><span class="mk">C</span>All quinolones including norfloxacin are equally well absorbed orally</li><li class="fopt"><span class="mk">D</span>Oral quinolones are absorbed well only when taken with milk or an antacid</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that with the exception of norfloxacin these antibiotics have excellent oral absorption, and that in most cases the extent of oral absorption is comparable to that of intravenous injection. Ciprofloxacin is described as working orally as well as many intravenous antibiotics.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the class's central interaction. Dairy products and antacids reduce quinolone absorption and must be separated by at least 1 hour on either side, so the option names the exact pairing that defeats the oral route.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone mechanism and drug selection</span><span class="chip t2">matching the quinolone to the infection</span></div>
+<div class="stem">23. A prescriber wants a single quinolone for a mixed infection that includes anaerobic organisms. Which drug does the chapter identify as carrying real anaerobic coverage?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>moxifloxacin</li><li class="fopt"><span class="mk">B</span>norfloxacin</li><li class="fopt"><span class="mk">C</span>ciprofloxacin</li><li class="fopt"><span class="mk">D</span>gemifloxacin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 39.3 describes moxifloxacin's spectrum as comparable to that of levofloxacin plus anaerobic coverage, with anaerobic infections among its indications, and Box 39.2 notes that moxifloxacin is strongest against the listed anaerobes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) ciprofloxacin is the reflex pick because it carries the broadest general use in the table and is the drug most learners can name. Broad general use is not the same as anaerobic coverage, and the table builds each drug's spectrum by reference to the one above it, so the anaerobic link belongs only to moxifloxacin.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone mechanism and drug selection</span><span class="chip t2">matching the quinolone to the infection</span></div>
+<div class="stem">24. A public health nurse is arranging postexposure prophylaxis after a suspected inhalational anthrax exposure. Which quinolone does the chapter name for this indication?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>ciprofloxacin</li><li class="fopt"><span class="mk">B</span>levofloxacin</li><li class="fopt"><span class="mk">C</span>delafloxacin</li><li class="fopt"><span class="mk">D</span>norfloxacin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 39.3 lists inhalational anthrax postexposure among ciprofloxacin's common indications, along with respiratory, skin, urinary tract, prostate, intraabdominal, gastrointestinal, bone, and joint infections, typhoid fever, and selected health care-associated pneumonias.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) norfloxacin is the trap for anyone who remembers it as the oldest and therefore most established member of the class. It is oral only with limited absorption, and its use is limited to genitourinary tract infections, which excludes it from a systemic exposure indication.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone safety warnings and interactions</span><span class="chip t2">the black box and the FDA alerts</span></div>
+<div class="stem">25. A nurse reviews the black box warning that applies to all quinolones. Which risks does that warning cover? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Tendinitis and tendon rupture</li><li class="fopt right"><span class="mk">&#10003;</span>Peripheral neuropathy</li><li class="fopt right"><span class="mk">&#10003;</span>Central nervous system effects including seizures</li><li class="fopt right"><span class="mk">&#10003;</span>Exacerbation of myasthenia gravis</li><li class="fopt"><span class="mk">E</span>Aortic rupture</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that the FDA requires a black box warning for all quinolones because of the increased risk for tendinitis and tendon rupture, as well as peripheral neuropathy, central nervous system effects such as seizures, and exacerbation of myasthenia gravis. Table 39.4 dates the tendon black box to 2008.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) aortic rupture is real and quinolone-related, but it belongs to the 2018 labeling change alongside mental health side effects and serious blood glucose disturbances, not to the black box. The chapter's three FDA actions fall in three different years with three different contents, and crossing them is the economical distractor here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone safety warnings and interactions</span><span class="chip t2">the black box and the FDA alerts</span></div>
+<div class="stem">26. An older adult on prednisone with chronic kidney disease is started on levofloxacin. Which teaching is most important?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Report any new joint, tendon, or heel pain immediately and stop the drug</li><li class="fopt"><span class="mk">B</span>Expect mild joint aching for the first three days of therapy</li><li class="fopt"><span class="mk">C</span>Take the drug with milk to reduce gastrointestinal upset</li><li class="fopt"><span class="mk">D</span>Restrict fluids to reduce the drug's renal load</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names older adult patients, patients with renal failure, and those receiving concurrent glucocorticoid therapy such as prednisone as the group at risk for tendon rupture, which is the subject of the 2008 black box warning. This patient carries all three risk factors at once.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reframes a black box event as an expected minor effect, which is exactly how tendon symptoms get dismissed in practice. (C) names the dairy interaction that reduces quinolone absorption, so it is wrong for a second reason as well.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone safety warnings and interactions</span><span class="chip t2">cardiac effect versus interaction</span></div>
+<div class="stem">27. A patient on amiodarone is prescribed a quinolone. Which cardiac concern does the chapter attach to the quinolone itself, and which to this combination?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The drug prolongs the QT interval; the combination with a class Ia or class III antidysrhythmic makes dangerous dysrhythmias more likely</li><li class="fopt"><span class="mk">B</span>The drug causes dysrhythmias; the combination prolongs the QT interval</li><li class="fopt"><span class="mk">C</span>The drug causes bradycardia; the combination causes tachycardia</li><li class="fopt"><span class="mk">D</span>The drug has no cardiac effect; only the combination is a concern</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names prolongation of the QT interval on the electrocardiogram as the quinolone cardiac effect, and states that dangerous cardiac dysrhythmias are more likely to occur when quinolones are taken by patients also receiving class Ia and class III antidysrhythmic drugs such as disopyramide and amiodarone, so such combinations are best avoided.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the direct swap and the one review question 1 is built around, offering bradycardia, dysrhythmias, tachycardia, and prolonged QT interval side by side. The effect of the drug is the electrocardiogram finding; the dysrhythmia is what the interaction produces.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone safety warnings and interactions</span><span class="chip t2">absorption interactions and teaching</span></div>
+<div class="stem">28. A patient taking ciprofloxacin also takes calcium carbonate antacids and an iron supplement. What spacing does the chapter direct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Take the interacting products at least 1 hour before or after the quinolone</li><li class="fopt"><span class="mk">B</span>Take the interacting products 2 hours before or 3 hours after the quinolone</li><li class="fopt"><span class="mk">C</span>Take everything together to improve tolerance</li><li class="fopt"><span class="mk">D</span>Discontinue the antacid and iron for the full course of therapy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that antacids, calcium, magnesium, iron, zinc preparations, and sucralfate cause a reduction in the oral absorption of the quinolone, and that patients need to take the interacting drugs at least 1 hour before or after taking quinolones. Dairy products and enteral tube feedings reduce absorption in the same way and are separated the same way.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the tetracycline interval from Chapter 38 applied to the wrong class. Both classes are blocked by antacids, calcium, magnesium, and iron, and both are fixed by spacing, which makes borrowing the wrong interval the most economical distractor available. Quinolone is 1 hour either side; tetracycline is 2 before and 3 after.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">quinolone safety warnings and interactions</span><span class="chip t2">absorption interactions and teaching</span></div>
+<div class="stem">29. A patient with a stubborn urinary tract infection is taking nitrofurantoin, and a quinolone is now proposed to be added. Why does the nurse question this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>nitrofurantoin can antagonize the antibacterial activity of the quinolones</li><li class="fopt"><span class="mk">B</span>The combination produces a synergistic effect that would require dose reduction of both</li><li class="fopt"><span class="mk">C</span>nitrofurantoin increases quinolone absorption to toxic levels</li><li class="fopt"><span class="mk">D</span>Both drugs are excreted unchanged in urine, so the combination causes crystalluria</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The quinolone interaction list states that nitrofurantoin can antagonize the antibacterial activity of the quinolones, and it appears again in the patient teaching material.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because two urinary anti-infectives look like a sensible pairing for a stubborn infection, and synergy is the combination concept this chapter teaches elsewhere with the aminoglycosides. Here the two drugs work against each other rather than together.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">clindamycin linezolid and metronidazole profiles</span><span class="chip t2">clindamycin administration and adverse effects</span></div>
+<div class="stem">30. A new graduate prepares to give IV clindamycin by slow intravenous push. Which response by the charge nurse is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Most references state never to give this drug by intravenous push, because too rapid infusion may lead to severe hypotension and possible cardiac arrest</li><li class="fopt"><span class="mk">B</span>Intravenous push is acceptable if given over at least 5 minutes</li><li class="fopt"><span class="mk">C</span>Intravenous push is preferred, because piggyback infusion inactivates the drug</li><li class="fopt"><span class="mk">D</span>Intravenous push is acceptable only for doses under 300 mg</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The implementation section states that clindamycin is given intravenously by piggyback technique and that most references state never to give these drugs by intravenous push, because too rapid an intravenous infusion may lead to severe hypotension and possible cardiac arrest.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the pull because slowing a push feels like an adequate safeguard and is how many other drugs are handled. The chapter's prohibition is categorical rather than rate-qualified, and it pairs with the same prohibition on vancomycin, where the consequence is severe hypotension and red man syndrome.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">clindamycin linezolid and metronidazole profiles</span><span class="chip t2">clindamycin administration and adverse effects</span></div>
+<div class="stem">31. A prescriber orders clindamycin for a patient with a history of ulcerative colitis. Why does the nurse question the order?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ulcerative colitis is a listed contraindication, and clindamycin is the antibiotic most associated with pseudomembranous colitis</li><li class="fopt"><span class="mk">B</span>Clindamycin has no activity against the anaerobes that colonize an inflamed bowel</li><li class="fopt"><span class="mk">C</span>Ulcerative colitis increases clindamycin absorption to toxic levels</li><li class="fopt"><span class="mk">D</span>Clindamycin is contraindicated only in patients older than 65 years</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Clindamycin is contraindicated in known hypersensitivity, in those with ulcerative colitis or enteritis, and in infants younger than 1 month of age. Its most common adverse effects are gastrointestinal, including pseudomembranous colitis, which the chapter says is often associated with antibiotic therapy, especially clindamycin therapy.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) states the opposite of the drug's main strength, which is that it is active against several anaerobic organisms and is most often used for this purpose. A learner who knows the bowel is the problem may reach for the wrong reason and land on a false pharmacologic claim.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">clindamycin linezolid and metronidazole profiles</span><span class="chip t2">linezolid interactions</span></div>
+<div class="stem">32. A patient is starting linezolid. Which concurrent therapies does the chapter name as interacting with it? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A selective serotonin reuptake inhibitor antidepressant</li><li class="fopt right"><span class="mk">&#10003;</span>A vasopressor such as dopamine</li><li class="fopt"><span class="mk">C</span>An oral anticoagulant</li><li class="fopt"><span class="mk">D</span>Thyroid replacement hormone</li><li class="fopt"><span class="mk">E</span>A beta blocker</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names two drug interactions for linezolid: vasopressors such as dopamine, whose prohypertensive effects linezolid has the potential to strengthen, and serotonergic drugs, with postmarketing case reports of serotonin syndrome. It names no interaction with anticoagulants, thyroid hormone, or beta blockers.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) pulls because warfarin interacts with both the aminoglycosides and the quinolones in this same chapter, so an anticoagulator feels like a safe pick on any antibiotic list. Linezolid's named interactions are the two blood-pressure and serotonin pathways plus tyramine-containing foods, not the vitamin K pathway.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">clindamycin linezolid and metronidazole profiles</span><span class="chip t2">linezolid interactions</span></div>
+<div class="stem">33. A patient on linezolid reports eating aged cheese, smoked fish, and sauerkraut at a family gathering. Which effect does the nurse assess for, and how does it differ from the SSRI interaction?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Increased blood pressure from tyramine, whereas the SSRI interaction produces serotonin syndrome</li><li class="fopt"><span class="mk">B</span>Serotonin syndrome from tyramine, whereas the SSRI interaction produces hypertension</li><li class="fopt"><span class="mk">C</span>Decreased blood pressure from tyramine, whereas the SSRI interaction produces hypertension</li><li class="fopt"><span class="mk">D</span>No effect from food, because only injected vasopressors interact</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that tyramine-containing foods such as aged cheese or wine, soy sauce, smoked meats or fish, and sauerkraut can interact with linezolid to raise blood pressure, and separately reports serotonin syndrome with serotonergic drugs. It explains that tyramine is normally broken down by monoamine oxidase, and that large amounts of tyramine lead to release of adrenalin-like substances and an increased blood pressure.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the direct swap of the two interactions, which pulls because both must be assessed on the same patient and both are consequences of the same drug. The food and vasopressor routes converge on hypertension; only the serotonergic drugs produce serotonin syndrome.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">clindamycin linezolid and metronidazole profiles</span><span class="chip t2">metronidazole and alcohol</span></div>
+<div class="stem">34. A patient is discharged on oral metronidazole and mentions that the annual office party is tomorrow night. What does the nurse teach?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Avoid alcohol entirely, starting 24 hours before therapy began and continuing at least 36 hours after the last dose</li><li class="fopt"><span class="mk">B</span>Avoid alcohol for 72 hours after the last dose only</li><li class="fopt"><span class="mk">C</span>One drink is acceptable if taken at least 2 hours after a dose</li><li class="fopt"><span class="mk">D</span>Alcohol is a concern only with the intravenous form</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that metronidazole causes acute alcohol intolerance when taken with alcoholic beverages, because of the accumulation of acetaldehyde, the principal alcohol metabolite, and that patients must avoid alcohol for 24 hours before initiation of therapy and for at least 36 hours after the last dose. Critical thinking exercise 1 is built on this exact scenario.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the cefotetan window from Chapter 38, where the rule is to avoid alcohol within 72 hours after. Two disulfiram-like reactions with two different windows invite the swap, and metronidazole is the only drug across these two chapters that also carries a restriction before therapy starts.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daptomycin nitrofurantoin and streptogramin profiles</span><span class="chip t2">daptomycin</span></div>
+<div class="stem">35. A patient with MRSA pneumonia is prescribed daptomycin. Why does the nurse question this order?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>daptomycin cannot treat pneumonia, because it is inactivated by lung surfactant</li><li class="fopt"><span class="mk">B</span>daptomycin cannot treat pneumonia, because of an increased risk for mortality in that population</li><li class="fopt"><span class="mk">C</span>daptomycin has no activity against MRSA</li><li class="fopt"><span class="mk">D</span>daptomycin is available only in an oral form, which is inadequate for pneumonia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states plainly that daptomycin cannot be used to treat pneumonia, because it is inactivated by lung surfactant. It does treat complicated skin and soft-tissue infections caused by susceptible gram-positive bacteria including MRSA and VRE, and is injectable only.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) gives the right conclusion with the wrong mechanism, and it is the reason doripenem in Chapter 38 must not be used for pneumonia. Two drugs across these two chapters carry a pneumonia exclusion for entirely different reasons, so a stem that supplies the wrong reason is testing mechanism rather than recall.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daptomycin nitrofurantoin and streptogramin profiles</span><span class="chip t2">daptomycin</span></div>
+<div class="stem">36. A patient on daptomycin also takes atorvastatin. Which laboratory value does the chapter direct the nurse to monitor throughout therapy?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Creatine phosphokinase</li><li class="fopt"><span class="mk">B</span>Platelet count</li><li class="fopt"><span class="mk">C</span>Serum ammonia</li><li class="fopt"><span class="mk">D</span>Prothrombin time</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs monitoring of creatine phosphokinase levels throughout daptomycin therapy because daptomycin may increase these levels, and notes a theoretical risk for increased myopathy with statins.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) platelet count is the linezolid monitoring parameter, since that drug has been shown to decrease platelet count. The miscellaneous antibiotics each carry one signature laboratory value, and swapping them between drugs is the reflex error this group produces.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daptomycin nitrofurantoin and streptogramin profiles</span><span class="chip t2">nitrofurantoin</span></div>
+<div class="stem">37. nitrofurantoin is proposed for a urinary tract infection in a patient with significantly impaired renal function. What is the nurse's concern?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is contraindicated in significant renal impairment because the drug concentrates in the urine</li><li class="fopt"><span class="mk">B</span>It should be given at a doubled dose to compensate for reduced urinary concentration</li><li class="fopt"><span class="mk">C</span>It is contraindicated because it is available only in intravenous form</li><li class="fopt"><span class="mk">D</span>It is safe in renal impairment but must be avoided in liver disease alone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>nitrofurantoin is contraindicated in significant renal function impairment because the drug concentrates in the urine, and the dose must be reduced for older adult patients or those with decreased renal function. It is oral only and is indicated primarily for urinary tract infections.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reasons from the true fact that impaired kidneys deliver less drug to the urine and arrives at exactly the wrong action. The chapter treats concentration in the urine as the source of toxicity risk in renal impairment, not as a reason to escalate the dose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daptomycin nitrofurantoin and streptogramin profiles</span><span class="chip t2">quinupristin and dalfopristin</span></div>
+<div class="stem">38. A nurse is preparing quinupristin and dalfopristin for a patient with a VRE bloodstream infection through a peripheral line. Which preparation step is required?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reconstitute and infuse with 5% dextrose in water only, and avoid saline and heparinized flushes</li><li class="fopt"><span class="mk">B</span>Reconstitute with normal saline and infuse over 10 minutes</li><li class="fopt"><span class="mk">C</span>Shake the vial vigorously to ensure the two components fully dissolve</li><li class="fopt"><span class="mk">D</span>Flush the line with heparin immediately before and after the infusion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that this drug must be infused with 5% dextrose in water only and cannot be mixed with saline or heparin, including heparinized flushes. Reconstitution uses only that diluent, mixing is done with a gentle swirling action instead of shaking to minimize foaming, and infusions are generally given over at least 60 minutes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the pull for anyone reconstituting a stubborn powder, and shaking is exactly what the chapter forbids because of foaming. (D) names the prohibition a distractor most often omits: the ban extends past the infusion itself to heparinized flushes in the same line.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vancomycin monitoring and administration</span><span class="chip t2">red man syndrome versus hypersensitivity</span></div>
+<div class="stem">39. Two days into IV vancomycin, a patient reports feeling hot and itchy in the face and neck, and those areas are flushed. What does the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Recognize red man syndrome and slow the infusion to run over at least 1 hour</li><li class="fopt"><span class="mk">B</span>Stop the drug, treat for anaphylaxis, and document a vancomycin allergy</li><li class="fopt"><span class="mk">C</span>Continue the infusion at the current rate and apply a cool cloth</li><li class="fopt"><span class="mk">D</span>Increase the rate so the infusion finishes before symptoms worsen</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes red man syndrome as bothersome but usually not harmful, characterized by flushing or itching of the head, face, neck, and upper trunk area, most commonly seen when the drug is infused too rapidly, and usually alleviated by slowing the rate of infusion to at least 1 hour. Vancomycin must be infused over at least 60 minutes, and longer for higher doses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because flushing and itching read as an allergic reaction, and rapid infusion can also cause hypotension, which makes the anaphylaxis reading more tempting still. Red man syndrome is rate-related rather than immune, and documenting a false allergy would remove the antibiotic of choice for MRSA from this patient's options.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vancomycin monitoring and administration</span><span class="chip t2">red man syndrome versus hypersensitivity</span></div>
+<div class="stem">40. A different vancomycin patient develops hives, then stridor, wheezing, and a falling blood pressure. Which interpretation is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>This is a hypersensitivity reaction, because laryngeal edema and bronchospasm are outside the red man picture</li><li class="fopt"><span class="mk">B</span>This is red man syndrome, because hypotension occurs with rapid infusion</li><li class="fopt"><span class="mk">C</span>This is red man syndrome, because vancomycin does not cause hypersensitivity</li><li class="fopt"><span class="mk">D</span>This is expected and requires only that the rate be slowed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The assessment section describes the hypersensitivity spectrum as ranging from mild reactions with rash, pruritus, or hives to severe reactions with laryngeal edema, bronchospasm, hypotension, and possible cardiac arrest. Red man syndrome is confined to flushing and itching of the head, face, neck, and upper trunk.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror error of the previous item, and (B) is where it lands: a learner who has just banked the rule that vancomycin flushing is harmless will apply it to a genuine airway reaction. Hypotension appears in both pictures, so it does not discriminate; laryngeal edema and bronchospasm do.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vancomycin monitoring and administration</span><span class="chip t2">oral versus parenteral vancomycin</span></div>
+<div class="stem">41. Which conditions require the parenteral rather than the oral form of vancomycin? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bone and joint infection caused by Staphylococcus</li><li class="fopt right"><span class="mk">&#10003;</span>Bacterial bloodstream infection caused by Staphylococcus</li><li class="fopt"><span class="mk">C</span>Clostridioides difficile antibiotic-induced colitis</li><li class="fopt"><span class="mk">D</span>Staphylococcal enterocolitis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter assigns bone and joint infections and bacterial bloodstream infections caused by Staphylococcus species to the parenteral route, and antibiotic-induced colitis and staphylococcal enterocolitis to the oral route. The implementation section restates it: oral dosage forms are only used to treat microbes in the gastrointestinal tract, and parenteral forms must be used to treat infection outside it.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) are the wrong side of the same route table, and they pull because both are serious infections and seriousness reads as a reason to go intravenous. The oral formulation is poorly absorbed and is used for its local effects on the tract's surface, so intravenous vancomycin would never reach the gut lumen where those two infections live.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vancomycin monitoring and administration</span><span class="chip t2">oral versus parenteral vancomycin</span></div>
+<div class="stem">42. A patient develops Clostridioides difficile diarrhea, and the prescriber orders IV vancomycin. Why does the nurse question the route?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Oral vancomycin is required, because the drug is not absorbed and works only on the surface of the gastrointestinal tract</li><li class="fopt"><span class="mk">B</span>Oral vancomycin is required, because the intravenous form is inactivated by gastric acid</li><li class="fopt"><span class="mk">C</span>The intravenous route is correct, because oral vancomycin is too well absorbed to stay in the gut</li><li class="fopt"><span class="mk">D</span>Either route is acceptable, because vancomycin distributes freely between blood and bowel lumen</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The dosage table footnote states flatly that oral vancomycin is not absorbed and is used only for Clostridioides difficile diarrhea. Because the oral formulation is poorly absorbed from the gastrointestinal tract, it is used for its local effects on the tract's surface.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>This is the mirror error of the previous item. (C) inverts the absorption fact that makes the whole rule work — the oral form is useful in the gut precisely because it stays there, not despite it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vancomycin monitoring and administration</span><span class="chip t2">trough monitoring</span></div>
+<div class="stem">43. A patient is on IV vancomycin every 12 hours. When and why is the blood sample for a level drawn?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A trough, drawn immediately before the next dose, generally before the third or fourth dose of a new regimen</li><li class="fopt"><span class="mk">B</span>A peak, drawn 30 to 60 minutes after the infusion ends</li><li class="fopt"><span class="mk">C</span>A trough, drawn 8 to 12 hours after the infusion ends</li><li class="fopt"><span class="mk">D</span>Both a peak and a trough with every dose</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that measurement of peak levels is no longer routinely recommended and that only trough levels are commonly monitored, with blood samples for trough levels drawn immediately before administration of the next dose. The assessment section says troughs are generally done before the fourth dose and need to be obtained within 30 minutes before the next scheduled dose; the implementation section says before the third or fourth dose.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) imports the once-daily aminoglycoside rule, where the trough is drawn at least 8 to 12 hours after the dose ends. (B) is out of date by the chapter's own statement even though an optimal peak range of 18 to 50 mcg/mL is still printed in the same paragraph, which is what keeps the option alive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vancomycin monitoring and administration</span><span class="chip t2">trough monitoring</span></div>
+<div class="stem">44. A vancomycin trough returns at 1 mcg/mL, and a nurse familiar with gentamicin says the level looks reassuringly low. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A vancomycin trough of 1 mcg/mL is subtherapeutic; the optimal trough is 10 to 20 mcg/mL</li><li class="fopt"><span class="mk">B</span>A vancomycin trough of 1 mcg/mL is therapeutic, matching the aminoglycoside goal</li><li class="fopt"><span class="mk">C</span>A vancomycin trough of 1 mcg/mL is toxic and the next dose should be held</li><li class="fopt"><span class="mk">D</span>Vancomycin troughs are not interpreted, because only peaks are meaningful</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives subtherapeutic vancomycin levels as less than 5 mcg/mL, an optimal trough of 10 to 20 mcg/mL with many practitioners working toward 15 to 20 depending on indication, and toxic levels as over 50 mcg/mL.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because both drugs use troughs drawn before the next dose and both guard against nephrotoxicity and ototoxicity, so the numbers feel interchangeable. They are an order of magnitude apart: a gentamicin trough of 15 is frankly toxic while a vancomycin trough of 15 is the working goal, and the same number means opposite things depending on the drug.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"resistant organism vocabulary and treatment","subtopic":"which organism resists what","stem":"A patient's blood cultures grow vancomycin-resistant Enterococcus faecium. Which drugs does the chapter list as treatment options for this organism? Select all that apply.","options":["daptomycin","linezolid","tedizolid","vancomycin","ceftaroline"],"correct":[0,1,2],"sata":true,"why":"Box 39.1 lists daptomycin, linezolid, and tedizolid as the treatments for VRE. Vancomycin-resistant Enterococcus is defined in the key term box as Enterococcus species resistant to beta-lactam antibiotics and vancomycin, most commonly Enterococcus faecium.","trap":"(D) is wrong by definition of the organism's own name, and it still pulls because vancomycin is the reflex answer for any resistant gram-positive organism. (E) ceftaroline appears on the MRSA treatment list only; the two lists overlap in daptomycin, linezolid, and tedizolid, and everything else on the MRSA list is a discriminator.","k":"1flxg471k7qcjx"},{"topic":"resistant organism vocabulary and treatment","subtopic":"which organism resists what","stem":"A different patient has an MRSA bloodstream infection. Which drug appears on the chapter's MRSA treatment list but not on its VRE list?","options":["vancomycin","daptomycin","linezolid","tedizolid"],"correct":[0],"sata":false,"why":"Box 39.1 gives vancomycin, daptomycin, linezolid, tedizolid, telavancin, oritavancin, dalbavancin, and ceftaroline for MRSA, but only daptomycin, linezolid, and tedizolid for VRE. Vancomycin is separately named as the antibiotic of choice for the treatment of MRSA infection.","trap":"This is the mirror error of the previous item. (B), (C), and (D) are the three drugs the two lists share, so a learner who remembers only that the lists overlap will pick one of them; the discriminator is what MRSA gets that VRE cannot.","k":"1q6zym11ya2oh3"},{"topic":"resistant organism vocabulary and treatment","subtopic":"the ESBL to CRO escalation","stem":"A urine culture grows an extended-spectrum beta-lactamase-producing Klebsiella. The nurse anticipates an order for a drug from which class?","options":["Carbapenems","Penicillins","Cephalosporins","Monobactams such as aztreonam"],"correct":[0],"sata":false,"why":"The chapter states that organisms producing ESBL are resistant to all beta-lactam antibiotics, meaning penicillins and cephalosporins, and to aztreonam, and can be treated only with carbapenems or sometimes fluoroquinolones. Box 39.1 gives carbapenems as the ESBL treatment.","trap":"(D) pulls hardest because aztreonam is a monobactam rather than a penicillin or cephalosporin, so it reads as an escape from beta-lactam resistance. The key term definition explicitly includes aztreonam in what ESBL producers resist.","k":"1dq2tzz22s7mt"},{"topic":"resistant organism vocabulary and treatment","subtopic":"the ESBL to CRO escalation","stem":"A week later the same patient's culture grows a carbapenem-resistant organism, and meropenem is ordered. Which agents does the chapter name as the remaining options for this infection?","options":["colistin and tigecycline","carbapenems such as meropenem","penicillins and cephalosporins","aztreonam"],"correct":[0],"sata":false,"why":"Box 39.1 names colistin and tigecycline as the treatment for carbapenem-resistant organisms. The chapter tells the escalation as cause and effect: heavy carbapenem use against ESBL producers drove bacteria to produce carbapenemase, which renders all carbapenems ineffective, leaving few known antibiotics.","trap":"(B) is the mirror error of the previous item — carbapenems are the correct escalation for ESBL, and a learner who banked that rule will apply it one organism too far. A carbapenem for a carbapenem-resistant organism names the exact drug class the organism is defined by resisting.","k":"1f9pnmdci0zqf"},{"topic":"resistant organism vocabulary and treatment","subtopic":"preventing spread","stem":"A nurse is assigned to a patient in contact isolation for a multidrug-resistant organism and asks what single action most reduces the risk of spreading it to other patients. Which response reflects the chapter's repeated emphasis?","options":["Washing hands before and after every patient contact","Wearing a mask whenever entering the room","Restricting the patient's visitors to immediate family","Obtaining repeat cultures every 48 hours"],"correct":[0],"sata":false,"why":"The chapter states three separate times that these organisms are spread by contact, that all health care professionals must wash their hands before and after all patient contact, and that the importance of handwashing cannot be overemphasized. The vancomycin case study asks directly for the single best action to prevent spread.","trap":"(B) is the reflex pick because isolation and masks travel together in the learner's memory, but the chapter pairs multidrug-resistant organisms with contact isolation, not droplet or airborne precautions, and names handwashing rather than any barrier as the action of utmost importance.","k":"ex4j3bgf9t1"},{"topic":"aminoglycoside pharmacology and spectrum","subtopic":"mechanism and route","stem":"A student notes that aminoglycosides and tetracyclines bind the same ribosomal subunit and asks whether the two classes therefore do the same thing to bacteria. Which statement is accurate?","options":["Both bind the 30S ribosome, but aminoglycosides are bactericidal while tetracyclines are bacteriostatic","Both bind the 30S ribosome and both are bacteriostatic","Aminoglycosides bind the 50S ribosome, which is why they kill rather than suppress","Both bind the 50S ribosome, but only the tetracyclines are bactericidal"],"correct":[0],"sata":false,"why":"The chapter states that aminoglycosides work in a way similar to that of the tetracyclines, in that they bind to ribosomes, specifically the 30S ribosome, and thereby prevent protein synthesis in bacteria. It separately classifies aminoglycosides as bactericidal and potent, making them drugs of choice for particularly virulent infections.","trap":"(B) is the pull, because same binding site reads as same behavior. Shared target does not mean shared outcome here: the 30S site is common ground and the killing behavior is opposite.","k":"1d3eyir1balza9"},{"topic":"aminoglycoside pharmacology and spectrum","subtopic":"mechanism and route","stem":"An oral aminoglycoside is ordered for a patient with hepatic encephalopathy. Which statement explains why this order is not the class exception it first appears to be?","options":["neomycin is given orally precisely because it is too toxic for systemic use, and it acts locally on gut bacteria","All aminoglycosides are well absorbed orally when given with food","Oral aminoglycosides are absorbed systemically and reach the liver in high concentration","neomycin is the only aminoglycoside available in an injectable form"],"correct":[0],"sata":false,"why":"The chapter states that aminoglycosides are not given orally because of their poor oral absorption, with neomycin as the exception, and that neomycin's toxicity limits its use to the gastrointestinal tract and topical application. In hepatic encephalopathy it reduces the number of ammonia-producing bacteria in the gastrointestinal tract, and the resulting drop in blood ammonia levels sometimes improves neurologic symptoms.","trap":"(D) inverts the fact that matters most about this drug: neomycin is not available in injectable form at all. A learner who remembers neomycin as the odd one out but not which way it is odd will pick it.","k":"sbpf3e1u5173k"},{"topic":"aminoglycoside pharmacology and spectrum","subtopic":"choosing among the aminoglycosides","stem":"A patient's wound culture reports an organism resistant to both gentamicin and tobramycin. Which aminoglycoside does the chapter describe as reserved for exactly this situation?","options":["amikacin","neomycin","streptomycin","paromomycin"],"correct":[0],"sata":false,"why":"Table 39.2 describes amikacin as generally reserved for resistant infections and states that it is often used to treat infections that are resistant to gentamicin or tobramycin.","trap":"(C) streptomycin looks like a reserve agent because its listed uses are unusual ones, but those uses are organism-specific rather than resistance-driven: plague, tularemia, tuberculosis, and granuloma inguinale. Reserve status for resistance belongs to amikacin.","k":"xjzwp71amdnt9"},{"topic":"aminoglycoside pharmacology and spectrum","subtopic":"choosing among the aminoglycosides","stem":"A child with cystic fibrosis has recurrent Pseudomonas pulmonary infections and is started on an inhaled aminoglycoside. Which drug is the chapter describing?","options":["tobramycin","amikacin","gentamicin","neomycin"],"correct":[0],"sata":false,"why":"Table 39.2 states that tobramycin is commonly used to treat recurrent pulmonary infections in patients with cystic fibrosis, by both injectable and inhaled dosing. The chapter separately notes that aminoglycosides as a class can be given by inhalation for the treatment of lung infections.","trap":"(C) gentamicin is the default workhorse of the class and is the reflex pick whenever no other cue is obvious, but the cystic fibrosis and inhalation cues belong to tobramycin specifically. Gentamicin's signature pairing is with penicillin for gram-positive synergy.","k":"y9fou4kkip1e"},{"topic":"aminoglycoside pharmacology and spectrum","subtopic":"combination therapy and sequence","stem":"Gentamicin 300 mg IV and a beta-lactam antibiotic are both scheduled at 0900. Which should the nurse infuse first, and why?","options":["The beta-lactam, because it breaks down the bacterial cell wall so the aminoglycoside can reach the ribosomes","The aminoglycoside, because it needs the highest possible peak concentration and should not be delayed","The beta-lactam, because giving the aminoglycoside first inactivates the beta-lactam in the tubing","Either order is acceptable, because the synergistic effect does not depend on sequence"],"correct":[0],"sata":false,"why":"The chapter states that when aminoglycosides are used in combination with beta-lactam antibiotics, the beta-lactam antibiotic is given first, because the beta-lactams break down the cell wall of the bacteria and allow the aminoglycoside to gain access to the ribosomes, where they work. Critical thinking exercise 2 is built on this sequence.","trap":"(B) is the reflex pick for anyone who has just learned concentration-dependent killing, since it argues from a real property of the class. Concentration matters for dosing interval, not for which bag hangs first; the sequence rule is mechanistic and runs the other way.","k":"mxxwrzdpbv35"},{"topic":"aminoglycoside therapeutic drug monitoring","subtopic":"concentration-dependent versus time-dependent killing","stem":"A pharmacist converts a patient from gentamicin three times daily to a single daily dose and explains that this drug kills best when a high plasma concentration is achieved even briefly. Which property is being described?","options":["Concentration-dependent killing","Time-dependent killing","The postantibiotic effect","The synergistic effect"],"correct":[0],"sata":false,"why":"The key term box defines concentration-dependent killing as a property of some antibiotics, especially aminoglycosides, whereby achieving high plasma drug concentrations, even if briefly, results in the most effective bacterial kill. This is the rationale for moving aminoglycosides toward once-daily dosing.","trap":"(C) is adjacent and genuinely true of aminoglycosides, which makes it tempting: the postantibiotic effect is continued bacterial suppression after brief exposure. But that names what happens after the drug is gone, not the property that determines how high the level must go.","k":"1kutql1q6ifpb"},{"topic":"aminoglycoside therapeutic drug monitoring","subtopic":"concentration-dependent versus time-dependent killing","stem":"A different antibiotic's monograph states that prolonged high plasma concentrations are required for effective bacterial kill, which is why it is infused frequently rather than once daily. Which property is this, and which classes does the chapter say show it?","options":["Time-dependent killing, and it is the property of most antibiotic classes","Time-dependent killing, and it is unique to the aminoglycosides","Concentration-dependent killing, and it is the property of most antibiotic classes","Concentration-dependent killing, and it is unique to the beta-lactams"],"correct":[0],"sata":false,"why":"The key term box defines time-dependent killing as a property of most antibiotic classes whereby prolonged high plasma drug concentrations are required for effective bacterial kill, and cross-references it to concentration-dependent killing. The two definitions point at each other in the source text.","trap":"This is the mirror error of the previous item, and (B) is where it lands: a learner who has just attached a monitoring rule to aminoglycosides tends to attach the second property to them as well. The aminoglycosides are the concentration-dependent exception; most other classes, including the beta-lactams, are time-dependent.","k":"1gkwzvsl7619q"},{"topic":"aminoglycoside therapeutic drug monitoring","subtopic":"when peaks and troughs are drawn","stem":"A patient is receiving tobramycin 5 mg/kg once daily. When should the nurse expect the laboratory sample for a drug level to be drawn?","options":["A trough only, 8 to 12 hours after completion of the dose","A peak only, 30 to 60 minutes after the infusion ends","Both a peak and a trough, with the trough drawn just before the next dose","A trough only, drawn immediately before the next scheduled dose"],"correct":[0],"sata":false,"why":"For once-daily regimens the chapter states that peak levels are usually not measured, because the peak for a single daily dose is assumed to be short-lived, and that trough levels are drawn at least 8 to 12 hours after completion of dose administration, with a therapeutic goal at or below 1 mcg/mL.","trap":"(D) is the near miss and the most dangerous one, because drawing immediately before the next dose is the correct rule for traditional aminoglycoside dosing and for vancomycin. The sampling rule splits by dosing regimen, not by drug.","k":"m7pqto1yrnndu"},{"topic":"aminoglycoside therapeutic drug monitoring","subtopic":"when peaks and troughs are drawn","stem":"Another patient receives gentamicin three times daily. Which sampling schedule matches the chapter's rule for traditional dosing?","options":["Peak 30 to 60 minutes after a 30-minute infusion, and trough just before the next dose","Peak 8 to 12 hours after the dose, and no trough","Trough only, 8 to 12 hours after completion of the dose","Peak just before the next dose, and trough 30 minutes after the infusion"],"correct":[0],"sata":false,"why":"With traditional three-times-daily dosing both peak and trough levels are measured. Samples for peak levels are drawn 30 to 60 minutes after a 30-minute infusion, and samples for trough levels are drawn just before the next dose.","trap":"This is the mirror error of the previous item, and (D) is its full inversion — a peak drawn just before the next dose has the two definitions reversed. A trough is the lowest level and therefore comes at the end of the interval; a peak is the highest and comes shortly after the infusion.","k":"1gnxmqm12ljr40"},{"topic":"aminoglycoside therapeutic drug monitoring","subtopic":"interpreting the numbers","stem":"A patient on once-daily tobramycin has a reported trough of 3 mcg/mL, and the next dose is due now. What does the nurse do?","options":["Hold the dose and notify the prescriber, because this trough is above the level associated with toxicity","Give the dose, because troughs up to 5 mcg/mL are therapeutic for tobramycin","Repeat the level in 24 hours and give the dose now","Skip one dose only and resume the schedule without notifying anyone"],"correct":[0],"sata":false,"why":"Table 39.1 gives a once-daily trough goal of less than 1 mcg/mL for gentamicin and tobramycin, and the text states that trough levels above 2 mcg/mL are associated with a greater risk for both ototoxicity and nephrotoxicity. The chapter also states that alteration in auditory, vestibular, or renal function may indicate the need for a possible dosage adjustment or withdrawal of the drug.","trap":"(C) and (D) both delay a decision the number already supports, which is what makes them attractive to a learner who is unsure of the threshold. Repeating a level or skipping a single dose without notification leaves the prescriber unaware that the patient is in the toxic range.","k":"9fagjx114ub3f"},{"topic":"aminoglycoside therapeutic drug monitoring","subtopic":"interpreting the numbers","stem":"An amikacin trough returns at 8 mcg/mL on once-daily dosing, and a new nurse says this must be toxic because gentamicin troughs are kept below 1. Which response is accurate?","options":["Amikacin's therapeutic range runs an order of magnitude higher, and less than 10 mcg/mL is the once-daily trough goal","The nurse is correct; all aminoglycoside troughs share the same goal of less than 1 mcg/mL","Amikacin troughs should be reported in mg/mL rather than mcg/mL, so the value must be converted","Amikacin peaks rather than troughs are the monitored value on once-daily dosing"],"correct":[0],"sata":false,"why":"Table 39.1 gives amikacin a once-daily trough goal of less than 10 mcg/mL and a traditional-dosing trough range of 5 to 10 mcg/mL, against 1 to 2 mcg/mL for gentamicin and tobramycin. The chapter states that peak levels are usually not measured on once-daily regimens for any of these drugs.","trap":"(C) is the unit trap the chapter gives its own key term for, warning that confusion of microgram and milligram sometimes results in drug dosage errors. Every level in this chapter is in mcg/mL, and a value reported in mg/mL is off by a factor of 1000.","k":"1cvmus21rn91rs"},{"topic":"aminoglycoside toxicity and monitoring priorities","subtopic":"nephrotoxicity versus ototoxicity","stem":"A patient has been on IV gentamicin for six days. Which findings would the nurse interpret as evidence of nephrotoxicity? Select all that apply.","options":["Urinary casts","Proteinuria","Rising BUN and serum creatinine levels","Tinnitus","A sense of fullness in the ears"],"correct":[0,1,2],"sata":true,"why":"The chapter lists urinary casts, described as visible remnants of destroyed renal cells, along with proteinuria and increased BUN and serum creatinine levels, as the manifestations of aminoglycoside nephrotoxicity. Serum creatinine is measured at least every 3 days as an index of renal function.","trap":"(D) and (E) are the wrong side of the same toxicity table. Tinnitus and a sense of fullness in the ears are ototoxicity symptoms, and they pull because both toxicities are aminoglycoside toxicities monitored by the same drug levels. The distinction that matters clinically is that nephrotoxicity is usually reversible and ototoxicity likely is not.","k":"1q4sdx81f5gzgm"},{"topic":"aminoglycoside toxicity and monitoring priorities","subtopic":"nephrotoxicity versus ototoxicity","stem":"A patient receiving an IV aminoglycoside reports new ringing in the ears partway through the infusion. Which action is the priority?","options":["Stop the infusion and notify the prescriber","Reassure the patient that ringing is expected and will resolve when therapy ends","Slow the infusion rate and continue the dose","Increase the infusion rate so the dose finishes sooner"],"correct":[0],"sata":false,"why":"Tinnitus is a symptom of ototoxicity, which the chapter says often is not reversible and can result in varying degrees of permanent hearing loss from injury to the eighth cranial nerve. Alteration in auditory, vestibular, or renal function may indicate the need for a possible dosage adjustment or withdrawal of the drug, and patient teaching states that hearing loss may occur even after completion of therapy.","trap":"(C) is the mirror error of a different drug's rule — slowing the rate is the correct response to vancomycin red man syndrome, where rate is the actual mechanism. Ototoxicity is not rate-related, so the rate-adjustment options are answering the wrong drug's problem. (B) is wrong because the loss is likely permanent, not self-limiting.","k":"i1d3fj764trd"},{"topic":"aminoglycoside toxicity and monitoring priorities","subtopic":"interactions that raise each toxicity","stem":"A patient on IV tobramycin is also receiving furosemide. Which risk does this combination specifically raise?","options":["Ototoxicity","Nephrotoxicity","Neuromuscular blockade","Bleeding"],"correct":[0],"sata":false,"why":"The chapter's interaction table pairs loop diuretics with an increased risk for ototoxicity, while vancomycin, cyclosporine, and amphotericin B, as other nephrotoxic drugs, raise the risk for nephrotoxicity.","trap":"(B) is the reflex pick because furosemide acts on the kidney, so a renal consequence feels obvious. The chapter assigns loop diuretics to the ears; the nephrotoxicity partners are the other nephrotoxic drugs, plus IV contrast media for CT scans.","k":"1me0533qg7yt"},{"topic":"aminoglycoside toxicity and monitoring priorities","subtopic":"interactions that raise each toxicity","stem":"A patient stabilized on warfarin is started on IV gentamicin. Which effect does the chapter predict, and by what mechanism?","options":["Potentiated warfarin toxicity, because the aminoglycoside kills gut flora and reduces vitamin K production","Reduced warfarin effect, because the aminoglycoside induces hepatic metabolism of warfarin","No interaction, because aminoglycosides are not absorbed from the gut","Potentiated warfarin toxicity, because the aminoglycoside displaces warfarin from albumin"],"correct":[0],"sata":false,"why":"The chapter states that aminoglycosides kill intestinal bacterial flora and so reduce the amount of vitamin K produced by these gut bacteria, and therefore can potentiate warfarin toxicity. The quinolone section gives the same mechanism for that class, describing antibiotic-induced alteration of the intestinal flora, which affects vitamin K synthesis.","trap":"(C) borrows a true fact and draws the wrong conclusion from it. Poor oral absorption is why aminoglycosides are not given by mouth, but a systemically administered aminoglycoside still reaches and kills gut flora, which is exactly why the warfarin interaction exists.","k":"1wu4i8y1ebgsq8"},{"topic":"quinolone mechanism and drug selection","subtopic":"mechanism and oral absorption","stem":"A patient asks whether an antibiotic that works by destroying bacterial DNA will also damage human DNA. Which response reflects the chapter's description of the quinolones?","options":["They interfere with the bacterial enzymes DNA gyrase and topoisomerase IV and do not inhibit the production of human DNA","They bind the 30S ribosome, so human DNA is not involved at all","They inhibit both bacterial and human DNA synthesis, which is why courses are kept short","They disrupt the bacterial cell membrane rather than acting on DNA"],"correct":[0],"sata":false,"why":"The chapter states that quinolones destroy bacteria by altering their deoxyribonucleic acid, accomplishing this by interfering with the bacterial enzymes DNA gyrase and topoisomerase IV, and that quinolones do not inhibit the production of human DNA.","trap":"(B) is the aminoglycoside and tetracycline mechanism imported into the wrong class, and it pulls because both answers sound like plausible bacteria-specific targets. Ribosomal binding belongs to the protein-synthesis inhibitors; the quinolones act on the bacterial DNA enzymes.","k":"nyjrs9dnsw3f"},{"topic":"quinolone mechanism and drug selection","subtopic":"mechanism and oral absorption","stem":"A hospitalized patient on IV levofloxacin is ready for discharge, and the prescriber changes the order to the oral form at the same dose. The patient's family questions whether pills can work as well as an IV drug. Which statement is accurate?","options":["Quinolones other than norfloxacin have excellent oral absorption, comparable in most cases to intravenous injection","Oral quinolones reach roughly half the blood level of the IV form, so the dose is usually doubled","All quinolones including norfloxacin are equally well absorbed orally","Oral quinolones are absorbed well only when taken with milk or an antacid"],"correct":[0],"sata":false,"why":"The chapter states that with the exception of norfloxacin these antibiotics have excellent oral absorption, and that in most cases the extent of oral absorption is comparable to that of intravenous injection. Ciprofloxacin is described as working orally as well as many intravenous antibiotics.","trap":"(D) inverts the class's central interaction. Dairy products and antacids reduce quinolone absorption and must be separated by at least 1 hour on either side, so the option names the exact pairing that defeats the oral route.","k":"7ix3i3r7aia9"},{"topic":"quinolone mechanism and drug selection","subtopic":"matching the quinolone to the infection","stem":"A prescriber wants a single quinolone for a mixed infection that includes anaerobic organisms. Which drug does the chapter identify as carrying real anaerobic coverage?","options":["moxifloxacin","norfloxacin","ciprofloxacin","gemifloxacin"],"correct":[0],"sata":false,"why":"Table 39.3 describes moxifloxacin's spectrum as comparable to that of levofloxacin plus anaerobic coverage, with anaerobic infections among its indications, and Box 39.2 notes that moxifloxacin is strongest against the listed anaerobes.","trap":"(C) ciprofloxacin is the reflex pick because it carries the broadest general use in the table and is the drug most learners can name. Broad general use is not the same as anaerobic coverage, and the table builds each drug's spectrum by reference to the one above it, so the anaerobic link belongs only to moxifloxacin.","k":"ehnny57udun"},{"topic":"quinolone mechanism and drug selection","subtopic":"matching the quinolone to the infection","stem":"A public health nurse is arranging postexposure prophylaxis after a suspected inhalational anthrax exposure. Which quinolone does the chapter name for this indication?","options":["ciprofloxacin","levofloxacin","delafloxacin","norfloxacin"],"correct":[0],"sata":false,"why":"Table 39.3 lists inhalational anthrax postexposure among ciprofloxacin's common indications, along with respiratory, skin, urinary tract, prostate, intraabdominal, gastrointestinal, bone, and joint infections, typhoid fever, and selected health care-associated pneumonias.","trap":"(D) norfloxacin is the trap for anyone who remembers it as the oldest and therefore most established member of the class. It is oral only with limited absorption, and its use is limited to genitourinary tract infections, which excludes it from a systemic exposure indication.","k":"gx8zan1ydy2o9"},{"topic":"quinolone safety warnings and interactions","subtopic":"the black box and the FDA alerts","stem":"A nurse reviews the black box warning that applies to all quinolones. Which risks does that warning cover? Select all that apply.","options":["Tendinitis and tendon rupture","Peripheral neuropathy","Central nervous system effects including seizures","Exacerbation of myasthenia gravis","Aortic rupture"],"correct":[0,1,2,3],"sata":true,"why":"The chapter states that the FDA requires a black box warning for all quinolones because of the increased risk for tendinitis and tendon rupture, as well as peripheral neuropathy, central nervous system effects such as seizures, and exacerbation of myasthenia gravis. Table 39.4 dates the tendon black box to 2008.","trap":"(E) aortic rupture is real and quinolone-related, but it belongs to the 2018 labeling change alongside mental health side effects and serious blood glucose disturbances, not to the black box. The chapter's three FDA actions fall in three different years with three different contents, and crossing them is the economical distractor here.","k":"bydwkb11c814d"},{"topic":"quinolone safety warnings and interactions","subtopic":"the black box and the FDA alerts","stem":"An older adult on prednisone with chronic kidney disease is started on levofloxacin. Which teaching is most important?","options":["Report any new joint, tendon, or heel pain immediately and stop the drug","Expect mild joint aching for the first three days of therapy","Take the drug with milk to reduce gastrointestinal upset","Restrict fluids to reduce the drug's renal load"],"correct":[0],"sata":false,"why":"The chapter names older adult patients, patients with renal failure, and those receiving concurrent glucocorticoid therapy such as prednisone as the group at risk for tendon rupture, which is the subject of the 2008 black box warning. This patient carries all three risk factors at once.","trap":"(B) reframes a black box event as an expected minor effect, which is exactly how tendon symptoms get dismissed in practice. (C) names the dairy interaction that reduces quinolone absorption, so it is wrong for a second reason as well.","k":"bhcd1j1hhe0nh"},{"topic":"quinolone safety warnings and interactions","subtopic":"cardiac effect versus interaction","stem":"A patient on amiodarone is prescribed a quinolone. Which cardiac concern does the chapter attach to the quinolone itself, and which to this combination?","options":["The drug prolongs the QT interval; the combination with a class Ia or class III antidysrhythmic makes dangerous dysrhythmias more likely","The drug causes dysrhythmias; the combination prolongs the QT interval","The drug causes bradycardia; the combination causes tachycardia","The drug has no cardiac effect; only the combination is a concern"],"correct":[0],"sata":false,"why":"The chapter names prolongation of the QT interval on the electrocardiogram as the quinolone cardiac effect, and states that dangerous cardiac dysrhythmias are more likely to occur when quinolones are taken by patients also receiving class Ia and class III antidysrhythmic drugs such as disopyramide and amiodarone, so such combinations are best avoided.","trap":"(B) is the direct swap and the one review question 1 is built around, offering bradycardia, dysrhythmias, tachycardia, and prolonged QT interval side by side. The effect of the drug is the electrocardiogram finding; the dysrhythmia is what the interaction produces.","k":"ru1n7615m2qqg"},{"topic":"quinolone safety warnings and interactions","subtopic":"absorption interactions and teaching","stem":"A patient taking ciprofloxacin also takes calcium carbonate antacids and an iron supplement. What spacing does the chapter direct?","options":["Take the interacting products at least 1 hour before or after the quinolone","Take the interacting products 2 hours before or 3 hours after the quinolone","Take everything together to improve tolerance","Discontinue the antacid and iron for the full course of therapy"],"correct":[0],"sata":false,"why":"The chapter states that antacids, calcium, magnesium, iron, zinc preparations, and sucralfate cause a reduction in the oral absorption of the quinolone, and that patients need to take the interacting drugs at least 1 hour before or after taking quinolones. Dairy products and enteral tube feedings reduce absorption in the same way and are separated the same way.","trap":"(B) is the tetracycline interval from Chapter 38 applied to the wrong class. Both classes are blocked by antacids, calcium, magnesium, and iron, and both are fixed by spacing, which makes borrowing the wrong interval the most economical distractor available. Quinolone is 1 hour either side; tetracycline is 2 before and 3 after.","k":"17hc39l4mk52j"},{"topic":"quinolone safety warnings and interactions","subtopic":"absorption interactions and teaching","stem":"A patient with a stubborn urinary tract infection is taking nitrofurantoin, and a quinolone is now proposed to be added. Why does the nurse question this?","options":["nitrofurantoin can antagonize the antibacterial activity of the quinolones","The combination produces a synergistic effect that would require dose reduction of both","nitrofurantoin increases quinolone absorption to toxic levels","Both drugs are excreted unchanged in urine, so the combination causes crystalluria"],"correct":[0],"sata":false,"why":"The quinolone interaction list states that nitrofurantoin can antagonize the antibacterial activity of the quinolones, and it appears again in the patient teaching material.","trap":"(B) is the reflex pick because two urinary anti-infectives look like a sensible pairing for a stubborn infection, and synergy is the combination concept this chapter teaches elsewhere with the aminoglycosides. Here the two drugs work against each other rather than together.","k":"1qexoj5fpvomf"},{"topic":"clindamycin linezolid and metronidazole profiles","subtopic":"clindamycin administration and adverse effects","stem":"A new graduate prepares to give IV clindamycin by slow intravenous push. Which response by the charge nurse is correct?","options":["Most references state never to give this drug by intravenous push, because too rapid infusion may lead to severe hypotension and possible cardiac arrest","Intravenous push is acceptable if given over at least 5 minutes","Intravenous push is preferred, because piggyback infusion inactivates the drug","Intravenous push is acceptable only for doses under 300 mg"],"correct":[0],"sata":false,"why":"The implementation section states that clindamycin is given intravenously by piggyback technique and that most references state never to give these drugs by intravenous push, because too rapid an intravenous infusion may lead to severe hypotension and possible cardiac arrest.","trap":"(B) is the pull because slowing a push feels like an adequate safeguard and is how many other drugs are handled. The chapter's prohibition is categorical rather than rate-qualified, and it pairs with the same prohibition on vancomycin, where the consequence is severe hypotension and red man syndrome.","k":"rjrir69poc3g"},{"topic":"clindamycin linezolid and metronidazole profiles","subtopic":"clindamycin administration and adverse effects","stem":"A prescriber orders clindamycin for a patient with a history of ulcerative colitis. Why does the nurse question the order?","options":["Ulcerative colitis is a listed contraindication, and clindamycin is the antibiotic most associated with pseudomembranous colitis","Clindamycin has no activity against the anaerobes that colonize an inflamed bowel","Ulcerative colitis increases clindamycin absorption to toxic levels","Clindamycin is contraindicated only in patients older than 65 years"],"correct":[0],"sata":false,"why":"Clindamycin is contraindicated in known hypersensitivity, in those with ulcerative colitis or enteritis, and in infants younger than 1 month of age. Its most common adverse effects are gastrointestinal, including pseudomembranous colitis, which the chapter says is often associated with antibiotic therapy, especially clindamycin therapy.","trap":"(B) states the opposite of the drug's main strength, which is that it is active against several anaerobic organisms and is most often used for this purpose. A learner who knows the bowel is the problem may reach for the wrong reason and land on a false pharmacologic claim.","k":"uqgai11z2own"},{"topic":"clindamycin linezolid and metronidazole profiles","subtopic":"linezolid interactions","stem":"A patient is starting linezolid. Which concurrent therapies does the chapter name as interacting with it? Select all that apply.","options":["A selective serotonin reuptake inhibitor antidepressant","A vasopressor such as dopamine","An oral anticoagulant","Thyroid replacement hormone","A beta blocker"],"correct":[0,1],"sata":true,"why":"The chapter names two drug interactions for linezolid: vasopressors such as dopamine, whose prohypertensive effects linezolid has the potential to strengthen, and serotonergic drugs, with postmarketing case reports of serotonin syndrome. It names no interaction with anticoagulants, thyroid hormone, or beta blockers.","trap":"(C) pulls because warfarin interacts with both the aminoglycosides and the quinolones in this same chapter, so an anticoagulator feels like a safe pick on any antibiotic list. Linezolid's named interactions are the two blood-pressure and serotonin pathways plus tyramine-containing foods, not the vitamin K pathway.","k":"e5mxrr18ahq0p"},{"topic":"clindamycin linezolid and metronidazole profiles","subtopic":"linezolid interactions","stem":"A patient on linezolid reports eating aged cheese, smoked fish, and sauerkraut at a family gathering. Which effect does the nurse assess for, and how does it differ from the SSRI interaction?","options":["Increased blood pressure from tyramine, whereas the SSRI interaction produces serotonin syndrome","Serotonin syndrome from tyramine, whereas the SSRI interaction produces hypertension","Decreased blood pressure from tyramine, whereas the SSRI interaction produces hypertension","No effect from food, because only injected vasopressors interact"],"correct":[0],"sata":false,"why":"The chapter states that tyramine-containing foods such as aged cheese or wine, soy sauce, smoked meats or fish, and sauerkraut can interact with linezolid to raise blood pressure, and separately reports serotonin syndrome with serotonergic drugs. It explains that tyramine is normally broken down by monoamine oxidase, and that large amounts of tyramine lead to release of adrenalin-like substances and an increased blood pressure.","trap":"(B) is the direct swap of the two interactions, which pulls because both must be assessed on the same patient and both are consequences of the same drug. The food and vasopressor routes converge on hypertension; only the serotonergic drugs produce serotonin syndrome.","k":"19eldnw1olndiq"},{"topic":"clindamycin linezolid and metronidazole profiles","subtopic":"metronidazole and alcohol","stem":"A patient is discharged on oral metronidazole and mentions that the annual office party is tomorrow night. What does the nurse teach?","options":["Avoid alcohol entirely, starting 24 hours before therapy began and continuing at least 36 hours after the last dose","Avoid alcohol for 72 hours after the last dose only","One drink is acceptable if taken at least 2 hours after a dose","Alcohol is a concern only with the intravenous form"],"correct":[0],"sata":false,"why":"The chapter states that metronidazole causes acute alcohol intolerance when taken with alcoholic beverages, because of the accumulation of acetaldehyde, the principal alcohol metabolite, and that patients must avoid alcohol for 24 hours before initiation of therapy and for at least 36 hours after the last dose. Critical thinking exercise 1 is built on this exact scenario.","trap":"(B) is the cefotetan window from Chapter 38, where the rule is to avoid alcohol within 72 hours after. Two disulfiram-like reactions with two different windows invite the swap, and metronidazole is the only drug across these two chapters that also carries a restriction before therapy starts.","k":"4oturffripdt"},{"topic":"daptomycin nitrofurantoin and streptogramin profiles","subtopic":"daptomycin","stem":"A patient with MRSA pneumonia is prescribed daptomycin. Why does the nurse question this order?","options":["daptomycin cannot treat pneumonia, because it is inactivated by lung surfactant","daptomycin cannot treat pneumonia, because of an increased risk for mortality in that population","daptomycin has no activity against MRSA","daptomycin is available only in an oral form, which is inadequate for pneumonia"],"correct":[0],"sata":false,"why":"The chapter states plainly that daptomycin cannot be used to treat pneumonia, because it is inactivated by lung surfactant. It does treat complicated skin and soft-tissue infections caused by susceptible gram-positive bacteria including MRSA and VRE, and is injectable only.","trap":"(B) gives the right conclusion with the wrong mechanism, and it is the reason doripenem in Chapter 38 must not be used for pneumonia. Two drugs across these two chapters carry a pneumonia exclusion for entirely different reasons, so a stem that supplies the wrong reason is testing mechanism rather than recall.","k":"1d95lp2k24l6k"},{"topic":"daptomycin nitrofurantoin and streptogramin profiles","subtopic":"daptomycin","stem":"A patient on daptomycin also takes atorvastatin. Which laboratory value does the chapter direct the nurse to monitor throughout therapy?","options":["Creatine phosphokinase","Platelet count","Serum ammonia","Prothrombin time"],"correct":[0],"sata":false,"why":"The chapter directs monitoring of creatine phosphokinase levels throughout daptomycin therapy because daptomycin may increase these levels, and notes a theoretical risk for increased myopathy with statins.","trap":"(B) platelet count is the linezolid monitoring parameter, since that drug has been shown to decrease platelet count. The miscellaneous antibiotics each carry one signature laboratory value, and swapping them between drugs is the reflex error this group produces.","k":"1klucirtdtxcx"},{"topic":"daptomycin nitrofurantoin and streptogramin profiles","subtopic":"nitrofurantoin","stem":"nitrofurantoin is proposed for a urinary tract infection in a patient with significantly impaired renal function. What is the nurse's concern?","options":["It is contraindicated in significant renal impairment because the drug concentrates in the urine","It should be given at a doubled dose to compensate for reduced urinary concentration","It is contraindicated because it is available only in intravenous form","It is safe in renal impairment but must be avoided in liver disease alone"],"correct":[0],"sata":false,"why":"nitrofurantoin is contraindicated in significant renal function impairment because the drug concentrates in the urine, and the dose must be reduced for older adult patients or those with decreased renal function. It is oral only and is indicated primarily for urinary tract infections.","trap":"(B) reasons from the true fact that impaired kidneys deliver less drug to the urine and arrives at exactly the wrong action. The chapter treats concentration in the urine as the source of toxicity risk in renal impairment, not as a reason to escalate the dose.","k":"5cyg2h1kc2n7b"},{"topic":"daptomycin nitrofurantoin and streptogramin profiles","subtopic":"quinupristin and dalfopristin","stem":"A nurse is preparing quinupristin and dalfopristin for a patient with a VRE bloodstream infection through a peripheral line. Which preparation step is required?","options":["Reconstitute and infuse with 5% dextrose in water only, and avoid saline and heparinized flushes","Reconstitute with normal saline and infuse over 10 minutes","Shake the vial vigorously to ensure the two components fully dissolve","Flush the line with heparin immediately before and after the infusion"],"correct":[0],"sata":false,"why":"The chapter states that this drug must be infused with 5% dextrose in water only and cannot be mixed with saline or heparin, including heparinized flushes. Reconstitution uses only that diluent, mixing is done with a gentle swirling action instead of shaking to minimize foaming, and infusions are generally given over at least 60 minutes.","trap":"(C) is the pull for anyone reconstituting a stubborn powder, and shaking is exactly what the chapter forbids because of foaming. (D) names the prohibition a distractor most often omits: the ban extends past the infusion itself to heparinized flushes in the same line.","k":"l6k7elbl3r3r"},{"topic":"vancomycin monitoring and administration","subtopic":"red man syndrome versus hypersensitivity","stem":"Two days into IV vancomycin, a patient reports feeling hot and itchy in the face and neck, and those areas are flushed. What does the nurse do?","options":["Recognize red man syndrome and slow the infusion to run over at least 1 hour","Stop the drug, treat for anaphylaxis, and document a vancomycin allergy","Continue the infusion at the current rate and apply a cool cloth","Increase the rate so the infusion finishes before symptoms worsen"],"correct":[0],"sata":false,"why":"The chapter describes red man syndrome as bothersome but usually not harmful, characterized by flushing or itching of the head, face, neck, and upper trunk area, most commonly seen when the drug is infused too rapidly, and usually alleviated by slowing the rate of infusion to at least 1 hour. Vancomycin must be infused over at least 60 minutes, and longer for higher doses.","trap":"(B) is the reflex pick because flushing and itching read as an allergic reaction, and rapid infusion can also cause hypotension, which makes the anaphylaxis reading more tempting still. Red man syndrome is rate-related rather than immune, and documenting a false allergy would remove the antibiotic of choice for MRSA from this patient's options.","k":"1irlu661brkc44"},{"topic":"vancomycin monitoring and administration","subtopic":"red man syndrome versus hypersensitivity","stem":"A different vancomycin patient develops hives, then stridor, wheezing, and a falling blood pressure. Which interpretation is correct?","options":["This is a hypersensitivity reaction, because laryngeal edema and bronchospasm are outside the red man picture","This is red man syndrome, because hypotension occurs with rapid infusion","This is red man syndrome, because vancomycin does not cause hypersensitivity","This is expected and requires only that the rate be slowed"],"correct":[0],"sata":false,"why":"The assessment section describes the hypersensitivity spectrum as ranging from mild reactions with rash, pruritus, or hives to severe reactions with laryngeal edema, bronchospasm, hypotension, and possible cardiac arrest. Red man syndrome is confined to flushing and itching of the head, face, neck, and upper trunk.","trap":"This is the mirror error of the previous item, and (B) is where it lands: a learner who has just banked the rule that vancomycin flushing is harmless will apply it to a genuine airway reaction. Hypotension appears in both pictures, so it does not discriminate; laryngeal edema and bronchospasm do.","k":"64zsoo18ng9uq"},{"topic":"vancomycin monitoring and administration","subtopic":"oral versus parenteral vancomycin","stem":"Which conditions require the parenteral rather than the oral form of vancomycin? Select all that apply.","options":["Bone and joint infection caused by Staphylococcus","Bacterial bloodstream infection caused by Staphylococcus","Clostridioides difficile antibiotic-induced colitis","Staphylococcal enterocolitis"],"correct":[0,1],"sata":true,"why":"The chapter assigns bone and joint infections and bacterial bloodstream infections caused by Staphylococcus species to the parenteral route, and antibiotic-induced colitis and staphylococcal enterocolitis to the oral route. The implementation section restates it: oral dosage forms are only used to treat microbes in the gastrointestinal tract, and parenteral forms must be used to treat infection outside it.","trap":"(C) and (D) are the wrong side of the same route table, and they pull because both are serious infections and seriousness reads as a reason to go intravenous. The oral formulation is poorly absorbed and is used for its local effects on the tract's surface, so intravenous vancomycin would never reach the gut lumen where those two infections live.","k":"7akfbk14ep4k6"},{"topic":"vancomycin monitoring and administration","subtopic":"oral versus parenteral vancomycin","stem":"A patient develops Clostridioides difficile diarrhea, and the prescriber orders IV vancomycin. Why does the nurse question the route?","options":["Oral vancomycin is required, because the drug is not absorbed and works only on the surface of the gastrointestinal tract","Oral vancomycin is required, because the intravenous form is inactivated by gastric acid","The intravenous route is correct, because oral vancomycin is too well absorbed to stay in the gut","Either route is acceptable, because vancomycin distributes freely between blood and bowel lumen"],"correct":[0],"sata":false,"why":"The dosage table footnote states flatly that oral vancomycin is not absorbed and is used only for Clostridioides difficile diarrhea. Because the oral formulation is poorly absorbed from the gastrointestinal tract, it is used for its local effects on the tract's surface.","trap":"This is the mirror error of the previous item. (C) inverts the absorption fact that makes the whole rule work — the oral form is useful in the gut precisely because it stays there, not despite it.","k":"1989xrk6oe1iu"},{"topic":"vancomycin monitoring and administration","subtopic":"trough monitoring","stem":"A patient is on IV vancomycin every 12 hours. When and why is the blood sample for a level drawn?","options":["A trough, drawn immediately before the next dose, generally before the third or fourth dose of a new regimen","A peak, drawn 30 to 60 minutes after the infusion ends","A trough, drawn 8 to 12 hours after the infusion ends","Both a peak and a trough with every dose"],"correct":[0],"sata":false,"why":"The chapter states that measurement of peak levels is no longer routinely recommended and that only trough levels are commonly monitored, with blood samples for trough levels drawn immediately before administration of the next dose. The assessment section says troughs are generally done before the fourth dose and need to be obtained within 30 minutes before the next scheduled dose; the implementation section says before the third or fourth dose.","trap":"(C) imports the once-daily aminoglycoside rule, where the trough is drawn at least 8 to 12 hours after the dose ends. (B) is out of date by the chapter's own statement even though an optimal peak range of 18 to 50 mcg/mL is still printed in the same paragraph, which is what keeps the option alive.","k":"3421adgs1y9f"},{"topic":"vancomycin monitoring and administration","subtopic":"trough monitoring","stem":"A vancomycin trough returns at 1 mcg/mL, and a nurse familiar with gentamicin says the level looks reassuringly low. Which response is accurate?","options":["A vancomycin trough of 1 mcg/mL is subtherapeutic; the optimal trough is 10 to 20 mcg/mL","A vancomycin trough of 1 mcg/mL is therapeutic, matching the aminoglycoside goal","A vancomycin trough of 1 mcg/mL is toxic and the next dose should be held","Vancomycin troughs are not interpreted, because only peaks are meaningful"],"correct":[0],"sata":false,"why":"The chapter gives subtherapeutic vancomycin levels as less than 5 mcg/mL, an optimal trough of 10 to 20 mcg/mL with many practitioners working toward 15 to 20 depending on indication, and toxic levels as over 50 mcg/mL.","trap":"(B) is the reflex pick because both drugs use troughs drawn before the next dose and both guard against nephrotoxicity and ototoxicity, so the numbers feel interchangeable. They are an order of magnitude apart: a gentamicin trough of 15 is frankly toxic while a vancomycin trough of 15 is the working goal, and the same number means opposite things depending on the drug.","k":"10j7le7dc0nk5"}];
+const TITLE = "Chapter 39 — NUR 3420/1 — Pharmacology I & II";
+const SUBTITLE = "Chapter 39";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur3420-3421-pharm";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

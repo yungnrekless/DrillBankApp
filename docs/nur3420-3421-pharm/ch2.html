@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 2 — NUR 3420/1 — Pharmacology I &amp; II</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 2</div><h1>Chapter 2 — NUR 3420/1 — Pharmacology I &amp; II</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">branches of pharmacology</span><span class="chip t2">kinetics versus dynamics</span></div>
+<div class="stem">1. A drug monograph states that only 35% of an oral dose reaches the systemic circulation, because the liver inactivates the rest before it gets there. Which branch of pharmacology does that statement belong to?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Pharmacodynamics</li><li class="fopt"><span class="mk">B</span>Pharmaceutics</li><li class="fopt right"><span class="mk">&#10003;</span>Pharmacokinetics</li><li class="fopt"><span class="mk">D</span>Pharmacotherapeutics</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pharmacokinetics is the study of what happens to a drug from the time it is put into the body until the parent drug and all metabolites have left it — absorption into, distribution and metabolism within, and excretion from the body. How much drug survives hepatic metabolism is a kinetic fact.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because the two words differ by four letters. Pharmacokinetics is what the body does to the drug; pharmacodynamics is what the drug does to the body.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">branches of pharmacology</span><span class="chip t2">kinetics versus dynamics</span></div>
+<div class="stem">2. The same monograph states that the drug slows heart rate by binding beta-1 receptors and reducing the rate at which cardiac cells contract. Which branch of pharmacology does that statement belong to?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Pharmacokinetics</li><li class="fopt right"><span class="mk">&#10003;</span>Pharmacodynamics</li><li class="fopt"><span class="mk">C</span>Pharmaceutics</li><li class="fopt"><span class="mk">D</span>Pharmacognosy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pharmacodynamics is the study of the biochemical and physiologic interactions of drugs at their sites of activity; it examines the effect of the drug on the body. Receptor binding at the site of action is the definition case.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. Nothing here describes the drug's journey through the body — it describes what the drug does once it has arrived.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">branches of pharmacology</span><span class="chip t2">pharmaceutics as its own phase</span></div>
+<div class="stem">3. A pharmacist explains that micronized glyburide reaches its maximum concentration peak faster than nonmicronized glyburide, because the smaller particle size dissolves more quickly. Which science does this observation belong to?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Pharmaceutics</li><li class="fopt"><span class="mk">B</span>Pharmacokinetics</li><li class="fopt"><span class="mk">C</span>Pharmacotherapeutics</li><li class="fopt"><span class="mk">D</span>Pharmacoeconomics</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pharmaceutics is the study of how various dosage forms influence the way in which the drug affects the body, and dosage form determines the rate at which dissolution occurs. Micronized versus nonmicronized glyburide is the chapter's own example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) sounds defensible because dissolution feeds absorption, but Fig. 2.2 orders the three phases pharmaceutical, then pharmacokinetic, then pharmacodynamic. Anything decided by the dosage form before the body gets involved is pharmaceutic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug names and approval</span><span class="chip t2">chemical, generic, and trade names</span></div>
+<div class="stem">4. A discharge list reads &quot;ibuprofen (Motrin) 400 mg,&quot; and the package insert gives the same drug as 2-p-isobutylphenyl propionic acid. Which of these names is the registered trademark?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>ibuprofen, because it is the name used in most official drug compendiums</li><li class="fopt right"><span class="mk">&#10003;</span>Motrin, because it is the commercial name given to the product by its manufacturer</li><li class="fopt"><span class="mk">C</span>2-p-isobutylphenyl propionic acid, because it uniquely identifies the molecule</li><li class="fopt"><span class="mk">D</span>Both ibuprofen and Motrin, because both are proprietary</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The trade or proprietary name is the drug's registered trademark, indicating that its commercial use is restricted to the owner of the patent. Trade names are created with marketability in mind, which is why they are shorter and easier to pronounce than generic names.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is chosen by students who assume the name printed first is the official, protected one. The generic name is the official compendium name and is explicitly not protected by trademark.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug names and approval</span><span class="chip t2">chemical, generic, and trade names</span></div>
+<div class="stem">5. The same patient asks who decides what a drug's generic name will be. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The manufacturer chooses it, with marketability in mind</li><li class="fopt right"><span class="mk">&#10003;</span>The United States Adopted Names Council assigns it, and it is not protected by trademark</li><li class="fopt"><span class="mk">C</span>The FDA assigns it at approval and protects it for the life of the patent</li><li class="fopt"><span class="mk">D</span>It is derived from the drug's chemical composition and molecular structure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The generic or nonproprietary name is given to a drug by the United States Adopted Names Council. It is much shorter and simpler than the chemical name and is not protected by trademark.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — marketability drives the trade name, not the generic one. (D) describes the chemical name, which is the one that states composition and molecular structure.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug names and approval</span><span class="chip t2">bioequivalence versus therapeutic equivalence</span></div>
+<div class="stem">6. A formulary committee designates one drug in a class as the preferred agent and substitutes it for the others, even though the drugs do not contain the same active ingredient, on the ground that all have been proven to produce the same therapeutic effect. Which term names this practice?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Bioequivalence</li><li class="fopt right"><span class="mk">&#10003;</span>Therapeutic equivalence</li><li class="fopt"><span class="mk">C</span>Biosimilarity</li><li class="fopt"><span class="mk">D</span>Off-label substitution</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Therapeutic equivalence is the practice of choosing one drug in a class of several as the preferred agent even though the drugs do not have the same active ingredients; the drugs must have been proven to have the same therapeutic effect before one can be substituted for another.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because the two terms differ by one word. Bioequivalence requires the same active ingredient at the same concentration with the same bioavailability. The phrase &quot;do not contain the same active ingredient&quot; is what rules it out here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug names and approval</span><span class="chip t2">bioequivalence versus therapeutic equivalence</span></div>
+<div class="stem">7. A pharmacist substitutes a generic tablet for the brand-name product, noting that the two contain the same active ingredient at the same concentration and have the same bioavailability. Which term names this relationship?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Therapeutic equivalence</li><li class="fopt right"><span class="mk">&#10003;</span>Bioequivalence</li><li class="fopt"><span class="mk">C</span>Prototypical substitution</li><li class="fopt"><span class="mk">D</span>Off-label substitution</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If two drug products have the same bioavailability and the same concentration of active ingredient, they are said to be bioequivalent — the chapter's own example is a brand-name drug and the same generic drug.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error. Therapeutic equivalence is the looser, formulary-level standard that spans drugs with different active ingredients; bioequivalence is the strict same-ingredient, same-bioavailability match.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug names and approval</span><span class="chip t2">patents and off-label use</span></div>
+<div class="stem">8. A patient asks why a newly approved drug costs so much more than an older one in the same class. Which statements about drug patents are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The patent life of a newly discovered drug molecule is normally 17 years</li><li class="fopt right"><span class="mk">&#10003;</span>The research process for new drug development normally requires about 10 of those years</li><li class="fopt right"><span class="mk">&#10003;</span>The manufacturer generally has the remaining 7 years for sales profits</li><li class="fopt right"><span class="mk">&#10003;</span>After the patent expires, other manufacturers may make generics with the same active ingredient and the price usually decreases substantially</li><li class="fopt"><span class="mk">E</span>The 17 years begins at FDA approval, giving the manufacturer 17 years of marketing exclusivity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Patent life is normally 17 years, development consumes about 10, roughly 7 remain for sales profits, and generic competition after expiration usually drops the price substantially.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) confuses patent life with the post-approval remainder, and it is the version that sounds most generous to the manufacturer. The clock runs on the molecule from discovery, which is exactly why only about 7 of the 17 years earn anything.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug names and approval</span><span class="chip t2">patents and off-label use</span></div>
+<div class="stem">9. A prescriber orders a drug for an indication that does not appear in the manufacturer's labeling. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>This is illegal, and the nurse should refuse to administer the drug</li><li class="fopt right"><span class="mk">&#10003;</span>This is off-label prescribing; only the manufacturer's written labeling is restricted to FDA-approved indications</li><li class="fopt"><span class="mk">C</span>This is off-label prescribing, which the FDA prohibits once a drug has an approved indication</li><li class="fopt"><span class="mk">D</span>This means the drug has not completed FDA approval for any indication</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The FDA permits only FDA-approved indications to be described in the manufacturer's written information, or labeling. Prescribers may at times choose to use drugs for non-FDA-approved indications, which is known as off-label prescribing, and previously off-label indications often become approved over time.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reads the labeling restriction as a restriction on practice. What is regulated is what the manufacturer may claim in print, not what the prescriber may judge appropriate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">dosage forms and dissolution</span><span class="chip t2">oral absorption ranking</span></div>
+<div class="stem">10. Four oral formulations of the same drug are stocked. Which will be absorbed most rapidly?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Enteric-coated tablet</li><li class="fopt right"><span class="mk">&#10003;</span>Oral soluble wafer</li><li class="fopt"><span class="mk">C</span>Suspension</li><li class="fopt"><span class="mk">D</span>Capsule</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.1 ranks oral disintegration forms, buccal tablets, and oral soluble wafers as the fastest-absorbed oral preparations, ahead of liquids and elixirs, suspensions, powders, capsules, tablets, coated tablets, and enteric-coated tablets.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the strong second choice, because liquids are already dissolved and genuinely do beat every solid form. The wafer beats the liquid because nothing has to dissolve at all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">dosage forms and dissolution</span><span class="chip t2">oral absorption ranking</span></div>
+<div class="stem">11. Of those same four formulations, which will be absorbed most slowly?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Enteric-coated tablet</li><li class="fopt"><span class="mk">B</span>Oral soluble wafer</li><li class="fopt"><span class="mk">C</span>Suspension</li><li class="fopt"><span class="mk">D</span>Capsule</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An enteric coating prevents the tablet from being broken down in the acidic pH of the stomach, so the drug is not absorbed until it reaches the higher, more alkaline pH of the intestines. That property produces slower dissolution and therefore slower absorption.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex pick for anyone ranking by how solid the form looks. A plain capsule sits in the middle of Table 2.1; the enteric-coated tablet is last because the delay is engineered, not incidental.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">dosage forms and dissolution</span><span class="chip t2">crushing, chewing, and extended release</span></div>
+<div class="stem">12. A patient who has trouble swallowing is prescribed a tablet whose name ends in XL. What is the nurse's best action?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Crush the tablet and mix it into applesauce</li><li class="fopt"><span class="mk">B</span>Instruct the patient to chew the tablet thoroughly before swallowing</li><li class="fopt right"><span class="mk">&#10003;</span>Consult the pharmacist about an alternative dosage form</li><li class="fopt"><span class="mk">D</span>Dissolve the tablet in 3 ounces of orange juice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>SR, SA, CR, XL, and XT all mark extended-release formulations, which must not be crushed, because crushing could cause accelerated release of drug from the dosage form and possible toxicity. The chapter directs consultation with a pharmacist or other suitable source whenever a question exists.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because the chapter does endorse applesauce and pudding — but as a vehicle for capsule contents and granules that are sprinkled, not as permission to crush an extended-release tablet. The soft food is the delivery method, not the authorization.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">dosage forms and dissolution</span><span class="chip t2">crushing, chewing, and extended release</span></div>
+<div class="stem">13. A patient asks why an enteric-coated tablet cannot be chewed. Which explanation is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Chewing releases the whole dose at once, which can cause toxicity</li><li class="fopt right"><span class="mk">&#10003;</span>Chewing destroys a coating that protects the stomach lining from the drug and protects the drug from stomach acid</li><li class="fopt"><span class="mk">C</span>Chewing makes the drug dissolve too slowly to be absorbed at all</li><li class="fopt"><span class="mk">D</span>Chewing converts the drug into an inactive metabolite before absorption</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names both purposes of an enteric coat in one sentence — protecting the stomach lining from the local effects of the drug, and protecting the drug from being prematurely disrupted by stomach acid. A stem may want either half.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the extended-release rationale attached to the wrong dosage form. One prohibited action, two different harms: crushing an extended-release form dumps the dose and risks toxicity, while destroying an enteric coat removes acid protection.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">absorption and bioavailability</span><span class="chip t2">first-pass versus non-first-pass routes</span></div>
+<div class="stem">14. A patient with acute chest pain receives sublingual nitroglycerin rather than an oral tablet. Which statement best explains the choice?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Sublingual tissue absorbs slowly, which prolongs the drug's duration of action</li><li class="fopt right"><span class="mk">&#10003;</span>The area under the tongue is highly vascular, so absorption is rapid, and the drug bypasses the liver while remaining systemically bioavailable</li><li class="fopt"><span class="mk">C</span>Sublingual administration is a topical route and therefore produces only local effects</li><li class="fopt"><span class="mk">D</span>Sublingual drugs undergo a first-pass effect that converts them to their active form</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sublingual drugs are absorbed into the highly vascularized tissue under the tongue, absorbed rapidly because the area has a large blood supply, and bypass the liver while still being systemically bioavailable.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) turns the first-pass effect into an activation step. The first pass inactivates, which is why it reduces bioavailability to less than 100%. Metabolism that activates a drug is the separate case of a prodrug.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">absorption and bioavailability</span><span class="chip t2">first-pass versus non-first-pass routes</span></div>
+<div class="stem">15. Which routes deliver drug to the systemic circulation without a first pass through the liver? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Oral</li><li class="fopt right"><span class="mk">&#10003;</span>Sublingual</li><li class="fopt right"><span class="mk">&#10003;</span>Intravenous</li><li class="fopt right"><span class="mk">&#10003;</span>Transdermal</li><li class="fopt right"><span class="mk">&#10003;</span>Intramuscular</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 2.2 lists hepatic arterial, oral, portal venous, and rectal as first-pass routes. Sublingual, buccal, intravenous, intramuscular, subcutaneous, transdermal, inhaled, intranasal, intraarterial, intraocular, intravaginal, and aural are all non-first-pass.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the single first-pass route in this list, and it is the one most often let through, because oral feels like the default rather than a special case. Anything draining into the portal circulation is first-passed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">absorption and bioavailability</span><span class="chip t2">first-pass versus non-first-pass routes</span></div>
+<div class="stem">16. A patient receives an acetaminophen suppository. Which statement about the rectal route is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rectal administration is topical and therefore completely avoids the first-pass effect</li><li class="fopt right"><span class="mk">&#10003;</span>Rectal administration leads to both first-pass and non-first-pass effects, because some drug reaches the portal vein while some is absorbed into perirectal tissue</li><li class="fopt"><span class="mk">C</span>Rectal administration is handled identically to oral administration</li><li class="fopt"><span class="mk">D</span>Rectal administration produces 100% bioavailability</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>All topical routes avoid first-pass effects with the exception of rectal administration. Because the rectum is part of the GI tract, some drug is absorbed into capillaries feeding the portal vein, while some is absorbed locally into perirectal tissues. Box 2.2 footnotes rectal on both lists.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) states the general topical rule and stops one clause early. The chapter names the exception in the same sentence as the rule, and rectal is the one route that appears on both sides of Box 2.2.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">absorption and bioavailability</span><span class="chip t2">route choice and conditions that alter absorption</span></div>
+<div class="stem">17. A trauma patient is in shock with decreased cardiac output and urine output under 30 mL/hr, and needs a drug to take effect immediately. Which route should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Intramuscular</li><li class="fopt"><span class="mk">B</span>Subcutaneous</li><li class="fopt right"><span class="mk">&#10003;</span>Intravenous</li><li class="fopt"><span class="mk">D</span>Oral</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The parenteral route is the fastest route by which a drug can be absorbed, and drugs injected intravenously are immediately placed into solution in the bloodstream, so 100% absorption is assumed to occur immediately. Intramuscular and subcutaneous doses are absorbed over a period of several hours.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the common miss, because intramuscular is also parenteral and feels fast. Intramuscular and subcutaneous absorption both depend on blood flow to the tissue, and perfusion is precisely what has failed in this patient — decreased blood flow decreases absorption.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">absorption and bioavailability</span><span class="chip t2">route choice and conditions that alter absorption</span></div>
+<div class="stem">18. A nurse reviews the timing of a patient's medications with respect to food. Which statements are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Alendronate is taken on an empty stomach with at least 6 ounces of water</li><li class="fopt right"><span class="mk">&#10003;</span>Taking an enteric-coated medication with a large amount of food may cause it to be dissolved by acidic stomach contents</li><li class="fopt right"><span class="mk">&#10003;</span>The presence of food may enhance the absorption of some fat-soluble drugs</li><li class="fopt right"><span class="mk">&#10003;</span>Macrolides and oral opioids are often taken with food to minimize gastrointestinal irritation, even though they are specified for an empty stomach</li><li class="fopt"><span class="mk">E</span>Anticholinergic drugs speed gastrointestinal transit time and increase the absorption of acid-susceptible drugs</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 2.1 places alendronate and risedronate on an empty stomach with at least 6 ounces of water, and carbamazepine, iron, hydralazine, lithium, propranolol, spironolactone, NSAIDs, and theophylline with food. Macrolides and oral opioids are its third category — specified for an empty stomach but often given with food for tolerability.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the anticholinergic effect in both halves of the sentence. Anticholinergic drugs slow GI transit time, which may reduce the amount absorbed for acid-susceptible drugs.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">absorption and bioavailability</span><span class="chip t2">route choice and conditions that alter absorption</span></div>
+<div class="stem">19. A patient has had a large portion of the small intestine resected and now has short bowel syndrome. Which effect on oral drug therapy should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increased absorption, because transit time is shortened</li><li class="fopt right"><span class="mk">&#10003;</span>Decreased absorption, because the surface available for absorption is reduced</li><li class="fopt"><span class="mk">C</span>No change, because absorption occurs primarily in the stomach</li><li class="fopt"><span class="mk">D</span>Increased first-pass effect, because the liver receives more drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists surgical alteration of GI anatomy among the factors that alter absorption, naming short bowel syndrome from small-intestine resection and bariatric surgery, where stomach contents are delivered to the intestines more rapidly than usual in what is called gastric dumping.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) mislocates absorption. Orally administered drugs are absorbed through the mucosa of the stomach and the small or large intestine, and the small intestine is the highly vascularized surface that resection removes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">distribution and protein binding</span><span class="chip t2">free versus bound drug</span></div>
+<div class="stem">20. A patient with extensive burns and a low serum albumin is receiving a highly protein-bound drug at a standard dose and develops signs of toxicity. Which explanation is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Low albumin leaves a larger fraction of free, pharmacologically active drug</li><li class="fopt"><span class="mk">B</span>Low albumin leaves more drug bound to protein and therefore more active</li><li class="fopt"><span class="mk">C</span>Low albumin slows hepatic metabolism of the drug</li><li class="fopt"><span class="mk">D</span>Low albumin increases the drug's distribution into adipose tissue</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Only drug molecules not bound to plasma proteins can freely distribute to extravascular tissue and reach the site of action, and the unbound portion is the pharmacologically active one. Conditions causing low albumin, such as extensive burns and malnourished states, result in a larger fraction of free drug and raise the risk for toxicity.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the rule, and it is the intuitive inversion, because &quot;bound to a carrier&quot; sounds like &quot;being delivered.&quot; Bound drug is stuck in the bloodstream in a complex too large to cross the capillary wall, and it is doing nothing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">distribution and protein binding</span><span class="chip t2">free versus bound drug</span></div>
+<div class="stem">21. A patient stabilized on warfarin, which is highly protein bound, is started on amiodarone, which is also highly protein bound. Which effect should the nurse anticipate, and in which pharmacokinetic phase does it occur?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Decreased effect of both drugs, in the absorption phase</li><li class="fopt right"><span class="mk">&#10003;</span>Higher levels of free warfarin and amiodarone with increased actions of both, in the distribution phase</li><li class="fopt"><span class="mk">C</span>Decreased metabolism of warfarin with toxic accumulation, in the metabolism phase</li><li class="fopt"><span class="mk">D</span>Prolonged plasma levels of both drugs, in the excretion phase</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.10 gives warfarin with amiodarone as its distribution-phase example: both drugs compete for protein-binding sites, producing higher levels of free, unbound drug and increasing the actions of both, which is harmful.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names a plausible outcome with the wrong mechanism, and it is the reflex answer because most interactions in this chapter turn out to be enzyme interactions. Competition for albumin is displacement, not enzyme competition, and the phase label is what this item is testing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">distribution and protein binding</span><span class="chip t2">volume of distribution</span></div>
+<div class="stem">22. A drug is described as highly water-soluble, or hydrophilic. What should the nurse expect?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A large volume of distribution and low blood concentrations</li><li class="fopt right"><span class="mk">&#10003;</span>A small volume of distribution and high blood concentrations</li><li class="fopt"><span class="mk">C</span>A large volume of distribution and high blood concentrations</li><li class="fopt"><span class="mk">D</span>Extensive distribution into adipose tissue</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Highly water-soluble drugs have a smaller volume of distribution and high blood concentrations. Volume of distribution is a theoretical volume describing the compartments — blood, total body water, body fat, other tissues and organs — into which a drug may distribute.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the lipophilic pattern, and it is the more commonly chosen inversion, because &quot;distributes widely&quot; sounds like it should mean higher levels. Water-soluble drugs stay in the water compartment, which is small, so the concentration there is high.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">distribution and protein binding</span><span class="chip t2">volume of distribution</span></div>
+<div class="stem">23. A drug is described as highly fat-soluble, or lipophilic. What should the nurse expect?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A small volume of distribution and high blood concentrations</li><li class="fopt right"><span class="mk">&#10003;</span>A large volume of distribution and low blood concentrations</li><li class="fopt"><span class="mk">C</span>A small volume of distribution and low blood concentrations</li><li class="fopt"><span class="mk">D</span>Distribution confined to the intravascular space</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Fat-soluble drugs have a larger volume of distribution and low blood concentrations, because they disperse out of the blood into fat and other tissues.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. The relationship is inverse in both directions, and the practical danger is reading a low blood level on a lipophilic drug as &quot;not enough drug on board.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">distribution and protein binding</span><span class="chip t2">sites that are hard to reach</span></div>
+<div class="stem">24. An antibiotic reaches therapeutic serum concentrations but fails to clear an infection in bone. Which explanation does the chapter give?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Bone is protected by a physiologic barrier similar to the blood-brain barrier</li><li class="fopt right"><span class="mk">&#10003;</span>Bone has a poor blood supply, which makes drug distribution to it difficult</li><li class="fopt"><span class="mk">C</span>Bone tissue metabolizes drugs faster than other tissues</li><li class="fopt"><span class="mk">D</span>Bone binds drug to albumin more tightly than plasma does</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names two kinds of hard-to-reach site and gives one example of each: sites with a poor blood supply, such as bone, and sites with physiologic barriers, such as the brain with its blood-brain barrier. Heart, liver, kidneys, and brain receive drug rapidly, while muscle, skin, and fat receive it more slowly.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) transfers the brain's reason onto bone. There is no bone-blood barrier in this chapter; the obstacle is perfusion, which is a different problem with a different set of solutions.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">metabolism</span><span class="chip t2">enzyme inducers versus inhibitors</span></div>
+<div class="stem">25. A patient stable on a maintenance drug is started on rifampin, and within two weeks the original drug is no longer controlling their symptoms. What has most likely happened?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rifampin inhibited the cytochrome P-450 enzymes, so the drug accumulated</li><li class="fopt right"><span class="mk">&#10003;</span>Rifampin induced the cytochrome P-450 enzymes, speeding metabolism and lowering drug levels</li><li class="fopt"><span class="mk">C</span>Rifampin displaced the drug from albumin, increasing the free fraction</li><li class="fopt"><span class="mk">D</span>Rifampin blocked renal tubular secretion of the drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Rifampin and phenytoin are the chapter's named P-450 inducers, and barbiturates also increase metabolism. Enzyme inducers stimulate drug metabolism, often by stimulating the formation of new microsomal enzymes, which causes decreased pharmacologic effects.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer for anyone who hears &quot;enzyme interaction&quot; and reaches for accumulation. An inducer speeds metabolism, so there is less drug present and the failure is therapeutic, not toxic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">metabolism</span><span class="chip t2">enzyme inducers versus inhibitors</span></div>
+<div class="stem">26. A patient stable on a maintenance drug is started on ketoconazole, and within a week shows signs of toxicity from the original drug. What has most likely happened?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Ketoconazole induced the cytochrome P-450 enzymes, speeding metabolism</li><li class="fopt right"><span class="mk">&#10003;</span>Ketoconazole inhibited the cytochrome P-450 enzymes, so the drug accumulated and its effects were prolonged</li><li class="fopt"><span class="mk">C</span>Ketoconazole increased the drug's volume of distribution</li><li class="fopt"><span class="mk">D</span>Ketoconazole increased renal excretion of the drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Ketoconazole is the chapter's named P-450 inhibitor. Decreases in drug metabolism result in accumulation of the drug and prolongation of its effects, which can lead to drug toxicity.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. The word &quot;inhibitor&quot; misleads because it sounds like it should reduce the drug's effect — it reduces enzyme activity, which raises drug levels.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">metabolism</span><span class="chip t2">what alters metabolism</span></div>
+<div class="stem">27. Which conditions and drugs decrease drug metabolism? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Renal insufficiency</li><li class="fopt right"><span class="mk">&#10003;</span>Slow acetylator status</li><li class="fopt"><span class="mk">C</span>Barbiturates</li><li class="fopt right"><span class="mk">&#10003;</span>Obstructive jaundice</li><li class="fopt right"><span class="mk">&#10003;</span>Starvation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.6 sorts in two directions. Cardiovascular dysfunction, renal insufficiency, starvation, obstructive jaundice, slow acetylator status, and ketoconazole all decrease metabolism; only fast acetylator status, barbiturates, rifampin, and phenytoin increase it.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the one entry here from the increased side, and it slips through because barbiturates are sedatives and sedation reads as &quot;slowing.&quot; Barbiturates belong with rifampin and phenytoin as agents that stimulate metabolism, not with the disease states that impair it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">metabolism</span><span class="chip t2">what alters metabolism</span></div>
+<div class="stem">28. A patient is described as a slow acetylator. What is the clinical consequence?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Metabolism of certain drugs is increased, risking therapeutic failure</li><li class="fopt right"><span class="mk">&#10003;</span>Metabolism of certain drugs is reduced, so the drug accumulates and toxicity is more likely</li><li class="fopt"><span class="mk">C</span>Red blood cells hemolyze when the patient is exposed to oxidizing drugs</li><li class="fopt"><span class="mk">D</span>Renal excretion of the drug is accelerated</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.6 lists slow acetylator status under genetic constitution with decreased metabolism, and fast acetylator status with increased metabolism. Reduced metabolism means the drug accumulates.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the other genetic host factor this course teaches, and it is the substitution students make under time pressure. G6PD deficiency makes red cells break down; slow acetylation makes drug pile up. They are not interchangeable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">metabolism</span><span class="chip t2">prodrugs and active metabolites</span></div>
+<div class="stem">29. A prodrug is ordered for a patient with severe hepatic impairment. Why is the nurse concerned?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The prodrug is already active and will accumulate to toxic levels</li><li class="fopt right"><span class="mk">&#10003;</span>The prodrug is inactive until biochemical reactions convert it to an active metabolite, and impaired metabolism may leave it ineffective</li><li class="fopt"><span class="mk">C</span>The prodrug will bypass the first-pass effect entirely</li><li class="fopt"><span class="mk">D</span>The prodrug will be excreted unchanged by the kidney before it can act</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A prodrug is an inactive drug dosage form that is converted to an active metabolite by various biochemical reactions once it is inside the body, and the liver is the organ most responsible for drug metabolism. Cefuroxime axetil is the course's worked example, hydrolyzed in the liver to its active cefuroxime form.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats every metabolic problem as an accumulation problem, which is the correct instinct for most drugs and exactly backwards here. With a prodrug the failure runs the other way: no metabolism means no active drug.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">excretion and half-life</span><span class="chip t2">half-life and steady state</span></div>
+<div class="stem">30. A drug's peak level is 100 mg/L, and the level measured 8 hours later is 50 mg/L. Approximately how long after the peak will this drug be considered effectively removed from the body?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>16 hours</li><li class="fopt"><span class="mk">B</span>24 hours</li><li class="fopt right"><span class="mk">&#10003;</span>40 hours</li><li class="fopt"><span class="mk">D</span>80 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A fall from 100 to 50 mg/L over 8 hours makes the half-life 8 hours. After about five half-lives most drugs are considered effectively removed, with approximately 97% eliminated — five times 8 hours is 40 hours.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is what you get by stopping at three half-lives, where Table 2.7 shows 88% removed. Eighty-eight percent feels like &quot;most of it is gone,&quot; but the chapter's threshold is five half-lives and 97%.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">excretion and half-life</span><span class="chip t2">half-life and steady state</span></div>
+<div class="stem">31. A drug with a half-life of 24 hours is started at a fixed dose on a fixed schedule. When should the nurse expect steady-state blood levels?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>After the first dose, once absorption is complete</li><li class="fopt right"><span class="mk">&#10003;</span>After about four to five half-lives, so roughly 4 to 5 days</li><li class="fopt"><span class="mk">C</span>After one half-life, so roughly 24 hours</li><li class="fopt"><span class="mk">D</span>Never, because drugs with long half-lives do not reach steady state</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Steady state is the physiologic state in which the amount of drug removed via elimination equals the amount absorbed with each dose, and this plateau typically occurs after four to five half-lives. A drug with an extremely long half-life takes much longer to reach steady-state blood levels.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) collapses the plateau into a single half-life. Both of this chapter's milestones are counted in half-lives — about five to clear a drug out, four to five to build up to steady state — and the shared unit is what makes them swappable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">excretion and half-life</span><span class="chip t2">peak and trough</span></div>
+<div class="stem">32. A patient's therapeutic drug monitoring returns a peak level above the reference range and a trough level below it. Which interpretation is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The high peak risks toxicity and the low trough risks a period below therapeutic levels</li><li class="fopt"><span class="mk">B</span>The high peak risks a period below therapeutic levels and the low trough risks toxicity</li><li class="fopt"><span class="mk">C</span>Both values indicate toxicity</li><li class="fopt"><span class="mk">D</span>Peak and trough describe drug effects only, never drug concentrations</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If the peak blood level is too high, drug toxicity may occur, ranging from intensified drug effects such as excessive sedation to damage to vital organs. If the trough blood level is too low, the drug may not be at therapeutic levels to produce a response.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the two ends of the same curve, which is the whole reason monitoring measures both. (D) is half true and therefore tempting: onset, peak, duration, and trough all describe drug effects, but peak and trough are also used for concentrations measured from blood samples.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">excretion and half-life</span><span class="chip t2">renal handling and recirculation</span></div>
+<div class="stem">33. A drug undergoes active tubular reabsorption in the nephron. What is the effect on that drug?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is taken back up into the systemic circulation rather than eliminated</li><li class="fopt"><span class="mk">B</span>It is moved from the surrounding vasculature into the nephron for elimination</li><li class="fopt"><span class="mk">C</span>It is passively filtered at the glomerulus</li><li class="fopt"><span class="mk">D</span>It is conjugated into a more water-soluble metabolite</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In active tubular reabsorption, substances present in the nephron are taken back up into the systemic circulation and transported away from the kidney, in what the chapter calls an attempt by the body to retain needed substances.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the definition of active tubular secretion, and the two are swapped constantly because both are &quot;active tubular&quot; processes. Reabsorption returns drug to the body; secretion pushes more into the nephron. This is the transporter probenecid blocks, which is why it keeps penicillin in the blood.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">excretion and half-life</span><span class="chip t2">renal handling and recirculation</span></div>
+<div class="stem">34. A fat-soluble drug persists in a patient far longer than its elimination rate alone would predict. It is taken up by the liver, released into bile, reabsorbed from the intestine, returned to the liver, and secreted into bile again. Which process is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>First-pass effect</li><li class="fopt right"><span class="mk">&#10003;</span>Enterohepatic recirculation</li><li class="fopt"><span class="mk">C</span>Active tubular reabsorption</li><li class="fopt"><span class="mk">D</span>Protein binding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Drugs eliminated by biliary excretion are taken up by the liver, released into the bile, and eliminated in the feces, but fat-soluble drugs in the bile may be reabsorbed into the bloodstream, returned to the liver, and again secreted into the bile. Enterohepatically recirculated drugs persist in the body for much longer periods.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is chosen because both processes involve the liver and the gut. The first-pass effect happens once, on the way in, and reduces bioavailability; recirculation happens repeatedly, on the way out, and prolongs the drug.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pharmacodynamics</span><span class="chip t2">agonists and antagonists</span></div>
+<div class="stem">35. A patient receives naloxone after an opioid overdose. Naloxone binds the opioid receptor, produces no response, and prevents the opioid from binding. How is naloxone classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Agonist</li><li class="fopt"><span class="mk">B</span>Partial agonist</li><li class="fopt right"><span class="mk">&#10003;</span>Antagonist</li><li class="fopt"><span class="mk">D</span>Substrate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.8 defines an antagonist as a drug that binds to the receptor with no response and prevents the binding of agonists. Antagonists are also called inhibitors.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is picked by students who reason that some effect must be occurring, since the patient visibly improves. A partial agonist binds and produces a diminished response; naloxone's benefit comes from producing no response at all while blocking the opioid.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pharmacodynamics</span><span class="chip t2">agonists and antagonists</span></div>
+<div class="stem">36. A drug binds its receptor and produces the full expected cellular response. How is it classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Antagonist</li><li class="fopt right"><span class="mk">&#10003;</span>Agonist</li><li class="fopt"><span class="mk">C</span>Competitive antagonist</li><li class="fopt"><span class="mk">D</span>Noncompetitive antagonist</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An agonist binds to and stimulates the activity of one or more receptors in the body, and Table 2.8 states simply that the drug binds the receptor and there is a response.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the inversion this chapter warns about most directly, because both agonists and antagonists bind. Fig. 2.7 makes the point visually: the antagonist occupies the site and produces a blocked response. The distinction is what happens after binding, not whether attachment occurs.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pharmacodynamics</span><span class="chip t2">agonists and antagonists</span></div>
+<div class="stem">37. A patient who took a long-acting opioid is given naloxone, improves, then deteriorates again 45 minutes later. Which property of naloxone explains why repeat dosing is required?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is a noncompetitive antagonist and permanently inactivates the receptor</li><li class="fopt right"><span class="mk">&#10003;</span>It is a competitive antagonist, so the remaining opioid can reoccupy the receptor as naloxone's level falls</li><li class="fopt"><span class="mk">C</span>It is a partial agonist whose diminished response wears off</li><li class="fopt"><span class="mk">D</span>It induces the P-450 enzymes that metabolize the opioid</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A competitive antagonist competes with the agonist for binding to the receptor, and if it binds there is no response. Because the competition is for the same site, the balance shifts back as the antagonist is cleared. Naloxone and naltrexone are competitive antagonists with strong affinity for the opioid receptors.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) describes the noncompetitive pattern, in which the drug combines with a different part of the receptor and inactivates it, so more agonist does not help. If naloxone worked that way, redosing would be unnecessary — which is exactly the clinical error this distinction prevents.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pharmacodynamics</span><span class="chip t2">affinity and mechanism of action</span></div>
+<div class="stem">38. A drug is described as having very high affinity for its receptor. What does this tell the nurse?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The drug will produce a strong therapeutic response</li><li class="fopt right"><span class="mk">&#10003;</span>The drug attaches to and binds the receptor strongly; among agonists that predicts a greater response, but an antagonist with high affinity produces no response at all</li><li class="fopt"><span class="mk">C</span>The drug must be an agonist, since only agonists bind receptors</li><li class="fopt"><span class="mk">D</span>The drug has a high therapeutic index</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Affinity is the degree to which a drug attaches to and binds with a receptor, and the drug with the best fit and strongest affinity elicits the greatest response. Affinity describes the strength of attachment; whether a response follows is a separate question, which is why naloxone can be a strong-affinity antagonist.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) conflates affinity with intrinsic activity, and the lock-and-key figure invites it by pairing &quot;the better the fit&quot; with &quot;the better the response.&quot; Binding strongly and producing an effect are two different claims.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pharmacodynamics</span><span class="chip t2">affinity and mechanism of action</span></div>
+<div class="stem">39. An antibiotic kills bacteria by causing formation of a defective cell wall that ruptures the cell. Which mechanism of action is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Receptor interaction</li><li class="fopt"><span class="mk">B</span>Enzyme interaction</li><li class="fopt right"><span class="mk">&#10003;</span>Nonselective interaction with cellular processes</li><li class="fopt"><span class="mk">D</span>Competitive antagonism</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Drugs with nonspecific mechanisms of action do not interact with receptors or enzymes; their main targets are cell membranes and cellular processes such as metabolic activities. By incorporating into a normal metabolic process they cause a defect in the final product — an improperly formed cell wall that results in cell death through cell lysis, or the lack of a necessary energy substrate leading to cell starvation. Some cancer drugs and antibiotics work this way.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the chapter's other non-receptor mechanism and the closer distractor: in a selective enzyme interaction the drug inhibits, more commonly, or enhances, less commonly, a specific enzyme. The clue is the target — a defective structural product rather than a catalyzed reaction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of drug therapy</span><span class="chip t2">maintenance, supplemental, and supportive</span></div>
+<div class="stem">40. A patient takes a beta blocker daily to keep blood pressure within a target range and prevent end-organ damage. Which type of therapy is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Palliative</li><li class="fopt right"><span class="mk">&#10003;</span>Maintenance</li><li class="fopt"><span class="mk">C</span>Supportive</li><li class="fopt"><span class="mk">D</span>Supplemental</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Maintenance therapy does not eradicate preexisting problems but prevents progression of a disease or condition, and it is used for chronic illnesses. Hypertension is the chapter's own example: maintenance therapy keeps blood pressure within given limits, which prevents certain end-organ damage.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the closest miss, because a daily drug feels like something the body is being supplied with. Supplemental, or replacement, therapy supplies a substance the body cannot make or does not make in sufficient quantity — insulin, or iron in iron-deficiency anemia. A beta blocker replaces nothing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of drug therapy</span><span class="chip t2">maintenance, supplemental, and supportive</span></div>
+<div class="stem">41. A patient who is vomiting and has diarrhea receives intravenous fluids and electrolytes to prevent dehydration while the illness resolves. Which type of therapy is this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Supportive</li><li class="fopt"><span class="mk">B</span>Supplemental</li><li class="fopt"><span class="mk">C</span>Maintenance</li><li class="fopt"><span class="mk">D</span>Prophylactic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Supportive therapy maintains the integrity of body functions while the patient is recovering from illness or trauma. The chapter's examples are fluids and electrolytes for a vomiting patient with diarrhea, and fluids, volume expanders, or blood products for a patient who has lost blood during surgery.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex answer because fluid is being supplied, and supplemental therapy also supplies something. Supplemental therapy replaces a substance the body cannot produce in adequate quantity as an ongoing deficit; supportive therapy holds body functions steady through a temporary insult.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of drug therapy</span><span class="chip t2">maintenance, supplemental, and supportive</span></div>
+<div class="stem">42. A patient in the final stages of cancer receives high-dose opioid analgesics. The family asks whether starting these means treatment has been abandoned. Which response reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Palliative therapy is begun only after all curative treatment has been stopped</li><li class="fopt right"><span class="mk">&#10003;</span>Palliative therapy focuses on relief from symptoms, pain, and stress, and can be provided along with curative treatment</li><li class="fopt"><span class="mk">C</span>Palliative therapy is a form of maintenance therapy that prevents disease progression</li><li class="fopt"><span class="mk">D</span>Palliative therapy is limited to the last 48 hours of life</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Palliative therapy makes the patient as comfortable as possible and focuses on providing relief from the symptoms, pain, and stress of a serious illness, with the goal of improving quality of life for both patient and family. It is typically used in the end stages of an illness when attempts at curative therapy have failed, but it can be provided along with curative treatment.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the widespread assumption the chapter explicitly contradicts in the same paragraph where it names the typical timing. &quot;Typically used at the end stages&quot; is not the same claim as &quot;only after curative therapy stops.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of drug therapy</span><span class="chip t2">prophylactic versus empiric</span></div>
+<div class="stem">43. A patient is given an antibiotic before the surgical incision is made, to prevent a postoperative infection. Which type of therapy is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Empiric</li><li class="fopt right"><span class="mk">&#10003;</span>Prophylactic</li><li class="fopt"><span class="mk">C</span>Supportive</li><li class="fopt"><span class="mk">D</span>Maintenance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Prophylactic therapy is provided to prevent illness or another undesirable outcome during a planned event. The chapter's examples are preoperative antibiotic therapy, with the antibiotic given before the incision is made, and disease-specific vaccines for travel to areas where a disease is endemic.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer, because both types start before any organism has been identified. The deciding fact is that this patient has no infection — prophylaxis prevents, while empiric therapy treats something already present.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of drug therapy</span><span class="chip t2">prophylactic versus empiric</span></div>
+<div class="stem">44. A patient arrives with signs of pneumonia. Cultures are drawn, and an antibiotic active against the organism most commonly associated with that infection is started before results return. Which type of therapy is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Prophylactic</li><li class="fopt right"><span class="mk">&#10003;</span>Empiric</li><li class="fopt"><span class="mk">C</span>Palliative</li><li class="fopt"><span class="mk">D</span>Supplemental</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Empiric therapy is based on clinical probabilities and involves drug administration when a pathologic condition has a high likelihood of occurrence based on the patient's initial presenting symptoms — the chapter's example is an antibiotic active against the most commonly associated organism, started before culture and sensitivity reports are available.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, and the culture is what gives it away. You do not draw cultures on a patient who has no infection; the pending culture means illness is present and the choice is a probability judgment, not prevention.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">therapeutic index, tolerance, and dependence</span><span class="chip t2">therapeutic index</span></div>
+<div class="stem">45. A patient is started on warfarin, and the nurse notes that it has a low therapeutic index. What does this mean for the plan of care?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The drug is unusually safe and rarely associated with overdose</li><li class="fopt right"><span class="mk">&#10003;</span>The difference between a therapeutically active dose and a toxic dose is small, so closer monitoring is required</li><li class="fopt"><span class="mk">C</span>The drug requires a loading dose to reach steady state</li><li class="fopt"><span class="mk">D</span>The drug has low bioavailability by the oral route</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The therapeutic index is the ratio of a drug's toxic level to the level that provides therapeutic benefits, and it determines the safety of the therapy. With a low therapeutic index the difference between an active dose and a toxic dose is small, which brings a greater likelihood of an adverse reaction and requires closer monitoring. Warfarin and digoxin are the chapter's examples.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts the scale, and the inversion is built into the wording — &quot;low&quot; sounds like low risk. The index is a ratio, so a small ratio means the therapeutic and toxic doses sit close together.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">therapeutic index, tolerance, and dependence</span><span class="chip t2">therapeutic index</span></div>
+<div class="stem">46. A different drug is described as having a high therapeutic index. What does this indicate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The drug is more dangerous and needs frequent serum levels</li><li class="fopt right"><span class="mk">&#10003;</span>The drug has a wide margin between therapeutic and toxic levels and is rarely associated with overdose events</li><li class="fopt"><span class="mk">C</span>The drug reaches toxic levels after a single dose</li><li class="fopt"><span class="mk">D</span>The drug must be given intravenously to be safe</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Drugs with a high therapeutic index are rarely associated with overdose events, and the chapter's example is amoxicillin.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error. Consistent monitoring belongs to the low-index drugs — warfarin, digoxin, and the aminoglycosides and vancomycin taken up in Chapter 39 — precisely because their margin is narrow.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">therapeutic index, tolerance, and dependence</span><span class="chip t2">tolerance versus dependence</span></div>
+<div class="stem">47. A patient has needed steadily larger doses of an analgesic over several months to obtain the same relief, and reports no craving and no withdrawal when a dose is late. Which term describes this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Psychological dependence</li><li class="fopt"><span class="mk">B</span>Physical dependence</li><li class="fopt right"><span class="mk">&#10003;</span>Tolerance</li><li class="fopt"><span class="mk">D</span>Idiosyncratic reaction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Tolerance is a decreasing response to repeated drug doses, or reduced response to a drug after prolonged use. Dependence, by contrast, is a physiologic or psychological need for a drug.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the standing confusion in this course, and it is not the student's fault: Chapter 10's key terms call tolerance the same thing as physical dependence, while this chapter keeps them separate. When a stem turns on the distinction, this chapter's version is the more precise one — tolerance is a decreasing response, dependence is a need.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">therapeutic index, tolerance, and dependence</span><span class="chip t2">tolerance versus dependence</span></div>
+<div class="stem">48. A patient with an opioid use disorder develops tachycardia and other physical symptoms when the drug is withheld, and describes an obsessive desire for its euphoric effects. Which terms apply? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Physical dependence, shown by withdrawal symptoms when the drug is withheld</li><li class="fopt right"><span class="mk">&#10003;</span>Psychological dependence, also known as addiction</li><li class="fopt"><span class="mk">C</span>Tolerance, defined as a physiologic need to avoid withdrawal</li><li class="fopt"><span class="mk">D</span>An idiosyncratic reaction to the opioid</li><li class="fopt right"><span class="mk">&#10003;</span>Dependence, defined as a physiologic or psychological need for a drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Physical dependence is the physiologic need for a drug to avoid physical withdrawal symptoms, with tachycardia in an opioid-addicted patient as the chapter's example. Psychological dependence, also known as addiction, is the obsessive desire for a drug's euphoric effects and typically involves recreational use of drugs such as benzodiazepines, opioids, and amphetamines.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) attaches the definition of physical dependence to the word tolerance, which is the substitution this chapter exists to prevent. Tolerance is a decreasing response to repeated doses, not a need to avoid withdrawal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug interaction principles</span><span class="chip t2">additive, synergistic, and antagonistic</span></div>
+<div class="stem">49. Two antibiotics with similar actions are given together, and the combined effect is greater than the sum of their individual effects. Which term names this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Additive effects</li><li class="fopt right"><span class="mk">&#10003;</span>Synergistic effects</li><li class="fopt"><span class="mk">C</span>Antagonistic effects</li><li class="fopt"><span class="mk">D</span>Incompatibility</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Synergistic effects are drug interactions in which the effect of a combination of two or more drugs with similar actions is greater than the sum of the individual effects — the chapter's arithmetic is 1 + 1 is greater than 2. Sulfamethoxazole-trimethoprim and an aminoglycoside plus a beta-lactam are the course's worked examples.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer for any beneficial combination. Additive means the combination equals the sum, 1 + 1 = 2. The word &quot;greater&quot; in the stem is doing all the work.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug interaction principles</span><span class="chip t2">additive, synergistic, and antagonistic</span></div>
+<div class="stem">50. A tetracycline is given together with a bactericidal antibiotic, and the combined effect is less than the sum of the individual effects. Which term names this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Additive effects</li><li class="fopt"><span class="mk">B</span>Synergistic effects</li><li class="fopt right"><span class="mk">&#10003;</span>Antagonistic effects</li><li class="fopt"><span class="mk">D</span>Incompatibility</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Antagonistic effects are interactions in which the effect of a combination is less than the sum of the individual effects, 1 + 1 equals less than 2, usually caused by an antagonizing, blocking, or reducing effect of one drug on another.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is chosen because both terms sound like drugs working against each other. Incompatibility is a physical or chemical event between two parenteral drugs mixed together — a precipitate, haziness, or color change — not a diminished pharmacologic effect in the patient.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug interaction principles</span><span class="chip t2">food and drug interactions</span></div>
+<div class="stem">51. A patient taking simvastatin asks whether grapefruit juice is a problem. Which response is accurate, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Grapefruit juice increases metabolism of the drug, so the drug becomes less effective</li><li class="fopt right"><span class="mk">&#10003;</span>Grapefruit juice decreases metabolism of the drug, so drug levels and effects increase</li><li class="fopt"><span class="mk">C</span>Grapefruit juice binds the drug in the gut, so less is absorbed</li><li class="fopt"><span class="mk">D</span>Grapefruit juice has no effect on statins</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.9 gives grapefruit juice with amiodarone, buspirone, carbamazepine, cyclosporine, tacrolimus, several calcium channel blockers, simvastatin, and atorvastatin, with the result listed as decreased metabolism of drugs and increased effects.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reads &quot;decreased&quot; as &quot;less drug effect,&quot; which is the direction most students assume, because the word sits right next to the juice. What is decreased is the enzyme activity, so the drug accumulates and the effect is stronger.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug interaction principles</span><span class="chip t2">food and drug interactions</span></div>
+<div class="stem">52. A patient on warfarin begins eating large servings of leafy green vegetables daily. Which effect should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increased anticoagulant effect and bleeding risk</li><li class="fopt right"><span class="mk">&#10003;</span>Decreased anticoagulant effect</li><li class="fopt"><span class="mk">C</span>Chemical binding of warfarin, preventing absorption</li><li class="fopt"><span class="mk">D</span>Hypertensive crisis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.9 lists leafy green vegetables with warfarin and gives the result as a decreased anticoagulant effect from warfarin.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex answer because bleeding is the outcome students associate with warfarin teaching, so any change gets read as more bleeding. (D) belongs to aged cheese and wine with monoamine oxidase inhibitors, the other food row in the same table.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug interaction principles</span><span class="chip t2">interactions by pharmacokinetic phase</span></div>
+<div class="stem">53. Match each drug interaction to the pharmacokinetic phase in which it occurs. Which pairings are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Antacid with levofloxacin — absorption, because the antacid binds the drug in the gut</li><li class="fopt right"><span class="mk">&#10003;</span>Warfarin with amiodarone — distribution, because the drugs compete for protein-binding sites</li><li class="fopt right"><span class="mk">&#10003;</span>Erythromycin with cyclosporine — metabolism, because the drugs compete for the same hepatic enzymes</li><li class="fopt right"><span class="mk">&#10003;</span>Amoxicillin with probenecid — excretion, because probenecid inhibits secretion of amoxicillin into the kidneys</li><li class="fopt"><span class="mk">E</span>Antacid with levofloxacin — metabolism, because the antacid inhibits P-450 enzymes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.10 gives exactly one example per phase, and marks the first three harmful and the probenecid pairing as potentially beneficial, since it elevates and prolongs plasma levels of amoxicillin.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reassigns the antacid interaction to the metabolism phase, and it is tempting because the chapter states that most drug interactions involve competition for metabolizing enzymes. This one is the exception the table uses to teach the absorption phase — binding in the gut, before anything is absorbed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adverse drug events</span><span class="chip t2">classifying adverse drug events</span></div>
+<div class="stem">54. A patient took a sleep medication and reports feeling restless and being unable to sleep at all that night. There is no rash, swelling, or respiratory involvement. How should this reaction be classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Allergic reaction</li><li class="fopt right"><span class="mk">&#10003;</span>Idiosyncratic reaction</li><li class="fopt"><span class="mk">C</span>Pharmacologic reaction</li><li class="fopt"><span class="mk">D</span>Synergistic effect</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An idiosyncratic reaction is an abnormal and unexpected response to a medication, other than an allergic reaction, that is peculiar to an individual patient. A response opposite to the drug's intended effect in one individual fits that definition.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the default label students apply to any unexpected reaction. An allergic reaction is an immunologic hypersensitivity reaction involving immunoglobulins, and nothing in this stem points to the immune system. (C) would require an extension of the drug's normal effect — excessive sedation, not the reverse.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adverse drug events</span><span class="chip t2">classifying adverse drug events</span></div>
+<div class="stem">55. A nurse omits a scheduled dose of a patient's antihypertensive, and the patient's blood pressure rises. Which term best describes what has occurred?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An adverse drug reaction, because the outcome occurred at a therapeutic dose</li><li class="fopt right"><span class="mk">&#10003;</span>An adverse drug event, because it is an undesirable occurrence related to failing to administer a prescribed medication</li><li class="fopt"><span class="mk">C</span>An idiosyncratic reaction, because the response was peculiar to this patient</li><li class="fopt"><span class="mk">D</span>Neither, because no drug was given</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An adverse drug event is any undesirable occurrence related to administering or failing to administer a prescribed medication, and it is the broadest of the chapter's four overlapping terms. A medication error is any preventable adverse drug event, and it may or may not cause patient harm.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the intuitive answer, since nothing entered the patient. The definition of an adverse drug event explicitly includes failing to administer, which is what separates it from an adverse drug reaction — the narrower term, restricted to responses at therapeutic dosages.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adverse drug events</span><span class="chip t2">teratogenesis and genetic host factors</span></div>
+<div class="stem">56. A patient asks during which part of pregnancy the fetus is most vulnerable to a drug's teratogenic effects. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>From conception through delivery, with equal risk throughout</li><li class="fopt right"><span class="mk">&#10003;</span>From the third week of development until the end of the third month</li><li class="fopt"><span class="mk">C</span>Only during the third trimester</li><li class="fopt"><span class="mk">D</span>Only in the 48 hours before delivery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The period during which the fetus is most vulnerable to teratogenic effects begins with the third week of development and usually ends after the third month. Teratogenic effects are structural defects in the fetus, caused by drugs capable of crossing the placenta.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the cautious-sounding answer and is wrong in a way that matters, because it treats every trimester alike. Late-pregnancy drug risks are real but work by different mechanisms — the NSAID risk in Chapter 44 is bleeding and neonatal toxicity, not teratogenesis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adverse drug events</span><span class="chip t2">teratogenesis and genetic host factors</span></div>
+<div class="stem">57. A patient of Mediterranean descent with G6PD deficiency is prescribed a sulfonamide antibiotic. Which statements are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The patient may suffer life-threatening hemolysis of red blood cells</li><li class="fopt right"><span class="mk">&#10003;</span>Manifestations may include pallor, jaundice, dark urine, shortness of breath, and tachycardia</li><li class="fopt right"><span class="mk">&#10003;</span>The deficiency is sex-linked and carried on the X chromosome</li><li class="fopt right"><span class="mk">&#10003;</span>Aspirin and nitrate derivatives are also oxidizing drugs that can trigger the reaction</li><li class="fopt"><span class="mk">E</span>The reaction is an immunoglobulin-mediated hypersensitivity response</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>G6PD is an enzyme that reduces the risk for hemolysis in red blood cells exposed to oxidizing drugs such as aspirin, nitrate derivatives, and sulfonamides. Patients deficient in it may suffer life-threatening hemolysis, with red blood cells destroyed faster than they can be replaced. The deficit is sex-linked, carried on the X chromosome, and transmitted from a healthy carrier mother to a son or daughter.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) files a hereditary enzyme deficiency under allergy, which is the reflex for any drug reaction involving a rash-free systemic response. Nothing immunologic is involved; the red cells lack the enzyme that would have protected them from oxidation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">toxicology and antidotes</span><span class="chip t2">priorities in the poisoned patient</span></div>
+<div class="stem">58. A patient arrives unresponsive with shallow respirations after an overdose of an unknown substance. Which action is the priority?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Administer the appropriate antidote as soon as the substance is identified</li><li class="fopt right"><span class="mk">&#10003;</span>Maintain the airway, ventilation, and circulation</li><li class="fopt"><span class="mk">C</span>Give activated charcoal to prevent further absorption</li><li class="fopt"><span class="mk">D</span>Obtain a serum drug level to guide dosing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter numbers its two priorities in treating the poisoned patient: first, preserve the patient's vital functions by maintaining the airway, ventilation, and circulation; second, prevent absorption of the toxic substance and speed its elimination from the body.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the answer the antidote table trains you toward, and it skips priority one. Chapter 10 runs the same ladder for opioid-induced respiratory depression — stimulate, ventilate, and only then naloxone.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">toxicology and antidotes</span><span class="chip t2">poisons and their antidotes</span></div>
+<div class="stem">59. Which poison-antidote pairings are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Acetaminophen — acetylcysteine</li><li class="fopt right"><span class="mk">&#10003;</span>Calcium channel blocker overdose — intravenous calcium</li><li class="fopt right"><span class="mk">&#10003;</span>Beta blocker overdose — glucagon</li><li class="fopt right"><span class="mk">&#10003;</span>Ethylene glycol or methanol — ethanol given intravenously</li><li class="fopt"><span class="mk">E</span>Benzodiazepines — naloxone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 2.11 pairs acetaminophen with acetylcysteine, organophosphates with atropine, tricyclic antidepressants and quinidine with sodium bicarbonate, calcium channel blockers with intravenous calcium, iron salts with deferoxamine, digoxin with digoxin antibodies, ethylene glycol and methanol with intravenous ethanol, benzodiazepines with flumazenil, beta blockers with glucagon, opioids with naloxone, and carbon monoxide with high-concentration oxygen.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) swaps the two reversal agents that both treat sedated, hypoventilating patients. Flumazenil reverses benzodiazepines; naloxone reverses opioids. The three counterintuitive pairings worth memorizing outright are the other way around: calcium for calcium channel blockers, glucagon for beta blockers, ethanol for antifreeze.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">toxicology and antidotes</span><span class="chip t2">poisons and their antidotes</span></div>
+<div class="stem">60. A nurse notes that a patient's toxic reaction to an antihypertensive is profound hypotension. Which statement reflects the chapter's principle about toxicity?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Toxic effects are usually idiosyncratic and cannot be predicted</li><li class="fopt right"><span class="mk">&#10003;</span>Toxic effects are often an extension of a drug's therapeutic action</li><li class="fopt"><span class="mk">C</span>Toxic effects occur only when the drug is taken above the prescribed dose</li><li class="fopt"><span class="mk">D</span>Toxic effects always involve an immune mechanism</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that toxic effects are often an extension of a drug's therapeutic action, which is the same idea as the pharmacologic category of adverse drug reaction — predictable, well known, dose related, and usually resolving on discontinuation. A blood pressure drug that lowers pressure to the point of unconsciousness is the chapter's own example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) contradicts two separate statements in the chapter and is chosen because &quot;toxic&quot; sounds unpredictable. Most toxicity is the drug doing exactly what it does, too much.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"branches of pharmacology","subtopic":"kinetics versus dynamics","stem":"A drug monograph states that only 35% of an oral dose reaches the systemic circulation, because the liver inactivates the rest before it gets there. Which branch of pharmacology does that statement belong to?","options":["Pharmacodynamics","Pharmaceutics","Pharmacokinetics","Pharmacotherapeutics"],"correct":[2],"sata":false,"why":"Pharmacokinetics is the study of what happens to a drug from the time it is put into the body until the parent drug and all metabolites have left it — absorption into, distribution and metabolism within, and excretion from the body. How much drug survives hepatic metabolism is a kinetic fact.","trap":"(A) is the reflex pick because the two words differ by four letters. Pharmacokinetics is what the body does to the drug; pharmacodynamics is what the drug does to the body.","k":"j8qwxi1yrg9dg"},{"topic":"branches of pharmacology","subtopic":"kinetics versus dynamics","stem":"The same monograph states that the drug slows heart rate by binding beta-1 receptors and reducing the rate at which cardiac cells contract. Which branch of pharmacology does that statement belong to?","options":["Pharmacokinetics","Pharmacodynamics","Pharmaceutics","Pharmacognosy"],"correct":[1],"sata":false,"why":"Pharmacodynamics is the study of the biochemical and physiologic interactions of drugs at their sites of activity; it examines the effect of the drug on the body. Receptor binding at the site of action is the definition case.","trap":"(A) is the mirror error of the previous item. Nothing here describes the drug's journey through the body — it describes what the drug does once it has arrived.","k":"xo4eslddbtzr"},{"topic":"branches of pharmacology","subtopic":"pharmaceutics as its own phase","stem":"A pharmacist explains that micronized glyburide reaches its maximum concentration peak faster than nonmicronized glyburide, because the smaller particle size dissolves more quickly. Which science does this observation belong to?","options":["Pharmaceutics","Pharmacokinetics","Pharmacotherapeutics","Pharmacoeconomics"],"correct":[0],"sata":false,"why":"Pharmaceutics is the study of how various dosage forms influence the way in which the drug affects the body, and dosage form determines the rate at which dissolution occurs. Micronized versus nonmicronized glyburide is the chapter's own example.","trap":"(B) sounds defensible because dissolution feeds absorption, but Fig. 2.2 orders the three phases pharmaceutical, then pharmacokinetic, then pharmacodynamic. Anything decided by the dosage form before the body gets involved is pharmaceutic.","k":"pm2znew2hj6c"},{"topic":"drug names and approval","subtopic":"chemical, generic, and trade names","stem":"A discharge list reads \"ibuprofen (Motrin) 400 mg,\" and the package insert gives the same drug as 2-p-isobutylphenyl propionic acid. Which of these names is the registered trademark?","options":["ibuprofen, because it is the name used in most official drug compendiums","Motrin, because it is the commercial name given to the product by its manufacturer","2-p-isobutylphenyl propionic acid, because it uniquely identifies the molecule","Both ibuprofen and Motrin, because both are proprietary"],"correct":[1],"sata":false,"why":"The trade or proprietary name is the drug's registered trademark, indicating that its commercial use is restricted to the owner of the patent. Trade names are created with marketability in mind, which is why they are shorter and easier to pronounce than generic names.","trap":"(A) is chosen by students who assume the name printed first is the official, protected one. The generic name is the official compendium name and is explicitly not protected by trademark.","k":"bmsxwuuvfzuo"},{"topic":"drug names and approval","subtopic":"chemical, generic, and trade names","stem":"The same patient asks who decides what a drug's generic name will be. Which response is accurate?","options":["The manufacturer chooses it, with marketability in mind","The United States Adopted Names Council assigns it, and it is not protected by trademark","The FDA assigns it at approval and protects it for the life of the patent","It is derived from the drug's chemical composition and molecular structure"],"correct":[1],"sata":false,"why":"The generic or nonproprietary name is given to a drug by the United States Adopted Names Council. It is much shorter and simpler than the chemical name and is not protected by trademark.","trap":"(A) is the mirror error of the previous item — marketability drives the trade name, not the generic one. (D) describes the chemical name, which is the one that states composition and molecular structure.","k":"1fpnct1l8fanr"},{"topic":"drug names and approval","subtopic":"bioequivalence versus therapeutic equivalence","stem":"A formulary committee designates one drug in a class as the preferred agent and substitutes it for the others, even though the drugs do not contain the same active ingredient, on the ground that all have been proven to produce the same therapeutic effect. Which term names this practice?","options":["Bioequivalence","Therapeutic equivalence","Biosimilarity","Off-label substitution"],"correct":[1],"sata":false,"why":"Therapeutic equivalence is the practice of choosing one drug in a class of several as the preferred agent even though the drugs do not have the same active ingredients; the drugs must have been proven to have the same therapeutic effect before one can be substituted for another.","trap":"(A) is the reflex answer because the two terms differ by one word. Bioequivalence requires the same active ingredient at the same concentration with the same bioavailability. The phrase \"do not contain the same active ingredient\" is what rules it out here.","k":"7ht7fv154ybq9"},{"topic":"drug names and approval","subtopic":"bioequivalence versus therapeutic equivalence","stem":"A pharmacist substitutes a generic tablet for the brand-name product, noting that the two contain the same active ingredient at the same concentration and have the same bioavailability. Which term names this relationship?","options":["Therapeutic equivalence","Bioequivalence","Prototypical substitution","Off-label substitution"],"correct":[1],"sata":false,"why":"If two drug products have the same bioavailability and the same concentration of active ingredient, they are said to be bioequivalent — the chapter's own example is a brand-name drug and the same generic drug.","trap":"(A) is the mirror error. Therapeutic equivalence is the looser, formulary-level standard that spans drugs with different active ingredients; bioequivalence is the strict same-ingredient, same-bioavailability match.","k":"qw78yyw29oe8"},{"topic":"drug names and approval","subtopic":"patents and off-label use","stem":"A patient asks why a newly approved drug costs so much more than an older one in the same class. Which statements about drug patents are accurate? Select all that apply.","options":["The patent life of a newly discovered drug molecule is normally 17 years","The research process for new drug development normally requires about 10 of those years","The manufacturer generally has the remaining 7 years for sales profits","After the patent expires, other manufacturers may make generics with the same active ingredient and the price usually decreases substantially","The 17 years begins at FDA approval, giving the manufacturer 17 years of marketing exclusivity"],"correct":[0,1,2,3],"sata":true,"why":"Patent life is normally 17 years, development consumes about 10, roughly 7 remain for sales profits, and generic competition after expiration usually drops the price substantially.","trap":"(E) confuses patent life with the post-approval remainder, and it is the version that sounds most generous to the manufacturer. The clock runs on the molecule from discovery, which is exactly why only about 7 of the 17 years earn anything.","k":"fsyagd1h5r6f3"},{"topic":"drug names and approval","subtopic":"patents and off-label use","stem":"A prescriber orders a drug for an indication that does not appear in the manufacturer's labeling. Which statement is accurate?","options":["This is illegal, and the nurse should refuse to administer the drug","This is off-label prescribing; only the manufacturer's written labeling is restricted to FDA-approved indications","This is off-label prescribing, which the FDA prohibits once a drug has an approved indication","This means the drug has not completed FDA approval for any indication"],"correct":[1],"sata":false,"why":"The FDA permits only FDA-approved indications to be described in the manufacturer's written information, or labeling. Prescribers may at times choose to use drugs for non-FDA-approved indications, which is known as off-label prescribing, and previously off-label indications often become approved over time.","trap":"(A) reads the labeling restriction as a restriction on practice. What is regulated is what the manufacturer may claim in print, not what the prescriber may judge appropriate.","k":"pyhaericwg9t"},{"topic":"dosage forms and dissolution","subtopic":"oral absorption ranking","stem":"Four oral formulations of the same drug are stocked. Which will be absorbed most rapidly?","options":["Enteric-coated tablet","Oral soluble wafer","Suspension","Capsule"],"correct":[1],"sata":false,"why":"Table 2.1 ranks oral disintegration forms, buccal tablets, and oral soluble wafers as the fastest-absorbed oral preparations, ahead of liquids and elixirs, suspensions, powders, capsules, tablets, coated tablets, and enteric-coated tablets.","trap":"(C) is the strong second choice, because liquids are already dissolved and genuinely do beat every solid form. The wafer beats the liquid because nothing has to dissolve at all.","k":"1i5n6cxx69qvz"},{"topic":"dosage forms and dissolution","subtopic":"oral absorption ranking","stem":"Of those same four formulations, which will be absorbed most slowly?","options":["Enteric-coated tablet","Oral soluble wafer","Suspension","Capsule"],"correct":[0],"sata":false,"why":"An enteric coating prevents the tablet from being broken down in the acidic pH of the stomach, so the drug is not absorbed until it reaches the higher, more alkaline pH of the intestines. That property produces slower dissolution and therefore slower absorption.","trap":"(D) is the reflex pick for anyone ranking by how solid the form looks. A plain capsule sits in the middle of Table 2.1; the enteric-coated tablet is last because the delay is engineered, not incidental.","k":"1cq7ldv1aud5i1"},{"topic":"dosage forms and dissolution","subtopic":"crushing, chewing, and extended release","stem":"A patient who has trouble swallowing is prescribed a tablet whose name ends in XL. What is the nurse's best action?","options":["Crush the tablet and mix it into applesauce","Instruct the patient to chew the tablet thoroughly before swallowing","Consult the pharmacist about an alternative dosage form","Dissolve the tablet in 3 ounces of orange juice"],"correct":[2],"sata":false,"why":"SR, SA, CR, XL, and XT all mark extended-release formulations, which must not be crushed, because crushing could cause accelerated release of drug from the dosage form and possible toxicity. The chapter directs consultation with a pharmacist or other suitable source whenever a question exists.","trap":"(A) is the reflex answer because the chapter does endorse applesauce and pudding — but as a vehicle for capsule contents and granules that are sprinkled, not as permission to crush an extended-release tablet. The soft food is the delivery method, not the authorization.","k":"11lqyce5nycwk"},{"topic":"dosage forms and dissolution","subtopic":"crushing, chewing, and extended release","stem":"A patient asks why an enteric-coated tablet cannot be chewed. Which explanation is correct?","options":["Chewing releases the whole dose at once, which can cause toxicity","Chewing destroys a coating that protects the stomach lining from the drug and protects the drug from stomach acid","Chewing makes the drug dissolve too slowly to be absorbed at all","Chewing converts the drug into an inactive metabolite before absorption"],"correct":[1],"sata":false,"why":"The chapter names both purposes of an enteric coat in one sentence — protecting the stomach lining from the local effects of the drug, and protecting the drug from being prematurely disrupted by stomach acid. A stem may want either half.","trap":"(A) is the extended-release rationale attached to the wrong dosage form. One prohibited action, two different harms: crushing an extended-release form dumps the dose and risks toxicity, while destroying an enteric coat removes acid protection.","k":"9flzzs1g5v532"},{"topic":"absorption and bioavailability","subtopic":"first-pass versus non-first-pass routes","stem":"A patient with acute chest pain receives sublingual nitroglycerin rather than an oral tablet. Which statement best explains the choice?","options":["Sublingual tissue absorbs slowly, which prolongs the drug's duration of action","The area under the tongue is highly vascular, so absorption is rapid, and the drug bypasses the liver while remaining systemically bioavailable","Sublingual administration is a topical route and therefore produces only local effects","Sublingual drugs undergo a first-pass effect that converts them to their active form"],"correct":[1],"sata":false,"why":"Sublingual drugs are absorbed into the highly vascularized tissue under the tongue, absorbed rapidly because the area has a large blood supply, and bypass the liver while still being systemically bioavailable.","trap":"(D) turns the first-pass effect into an activation step. The first pass inactivates, which is why it reduces bioavailability to less than 100%. Metabolism that activates a drug is the separate case of a prodrug.","k":"hup25bnkvv79"},{"topic":"absorption and bioavailability","subtopic":"first-pass versus non-first-pass routes","stem":"Which routes deliver drug to the systemic circulation without a first pass through the liver? Select all that apply.","options":["Oral","Sublingual","Intravenous","Transdermal","Intramuscular"],"correct":[1,2,3,4],"sata":true,"why":"Box 2.2 lists hepatic arterial, oral, portal venous, and rectal as first-pass routes. Sublingual, buccal, intravenous, intramuscular, subcutaneous, transdermal, inhaled, intranasal, intraarterial, intraocular, intravaginal, and aural are all non-first-pass.","trap":"(A) is the single first-pass route in this list, and it is the one most often let through, because oral feels like the default rather than a special case. Anything draining into the portal circulation is first-passed.","k":"ea07vvyqsvw9"},{"topic":"absorption and bioavailability","subtopic":"first-pass versus non-first-pass routes","stem":"A patient receives an acetaminophen suppository. Which statement about the rectal route is accurate?","options":["Rectal administration is topical and therefore completely avoids the first-pass effect","Rectal administration leads to both first-pass and non-first-pass effects, because some drug reaches the portal vein while some is absorbed into perirectal tissue","Rectal administration is handled identically to oral administration","Rectal administration produces 100% bioavailability"],"correct":[1],"sata":false,"why":"All topical routes avoid first-pass effects with the exception of rectal administration. Because the rectum is part of the GI tract, some drug is absorbed into capillaries feeding the portal vein, while some is absorbed locally into perirectal tissues. Box 2.2 footnotes rectal on both lists.","trap":"(A) states the general topical rule and stops one clause early. The chapter names the exception in the same sentence as the rule, and rectal is the one route that appears on both sides of Box 2.2.","k":"s4m8d7qd3l9x"},{"topic":"absorption and bioavailability","subtopic":"route choice and conditions that alter absorption","stem":"A trauma patient is in shock with decreased cardiac output and urine output under 30 mL/hr, and needs a drug to take effect immediately. Which route should the nurse anticipate?","options":["Intramuscular","Subcutaneous","Intravenous","Oral"],"correct":[2],"sata":false,"why":"The parenteral route is the fastest route by which a drug can be absorbed, and drugs injected intravenously are immediately placed into solution in the bloodstream, so 100% absorption is assumed to occur immediately. Intramuscular and subcutaneous doses are absorbed over a period of several hours.","trap":"(A) is the common miss, because intramuscular is also parenteral and feels fast. Intramuscular and subcutaneous absorption both depend on blood flow to the tissue, and perfusion is precisely what has failed in this patient — decreased blood flow decreases absorption.","k":"13tirsm1buyqys"},{"topic":"absorption and bioavailability","subtopic":"route choice and conditions that alter absorption","stem":"A nurse reviews the timing of a patient's medications with respect to food. Which statements are accurate? Select all that apply.","options":["Alendronate is taken on an empty stomach with at least 6 ounces of water","Taking an enteric-coated medication with a large amount of food may cause it to be dissolved by acidic stomach contents","The presence of food may enhance the absorption of some fat-soluble drugs","Macrolides and oral opioids are often taken with food to minimize gastrointestinal irritation, even though they are specified for an empty stomach","Anticholinergic drugs speed gastrointestinal transit time and increase the absorption of acid-susceptible drugs"],"correct":[0,1,2,3],"sata":true,"why":"Box 2.1 places alendronate and risedronate on an empty stomach with at least 6 ounces of water, and carbamazepine, iron, hydralazine, lithium, propranolol, spironolactone, NSAIDs, and theophylline with food. Macrolides and oral opioids are its third category — specified for an empty stomach but often given with food for tolerability.","trap":"(E) reverses the anticholinergic effect in both halves of the sentence. Anticholinergic drugs slow GI transit time, which may reduce the amount absorbed for acid-susceptible drugs.","k":"1drsrzzm3nm8p"},{"topic":"absorption and bioavailability","subtopic":"route choice and conditions that alter absorption","stem":"A patient has had a large portion of the small intestine resected and now has short bowel syndrome. Which effect on oral drug therapy should the nurse anticipate?","options":["Increased absorption, because transit time is shortened","Decreased absorption, because the surface available for absorption is reduced","No change, because absorption occurs primarily in the stomach","Increased first-pass effect, because the liver receives more drug"],"correct":[1],"sata":false,"why":"The chapter lists surgical alteration of GI anatomy among the factors that alter absorption, naming short bowel syndrome from small-intestine resection and bariatric surgery, where stomach contents are delivered to the intestines more rapidly than usual in what is called gastric dumping.","trap":"(C) mislocates absorption. Orally administered drugs are absorbed through the mucosa of the stomach and the small or large intestine, and the small intestine is the highly vascularized surface that resection removes.","k":"1tg6bcsuzlhji"},{"topic":"distribution and protein binding","subtopic":"free versus bound drug","stem":"A patient with extensive burns and a low serum albumin is receiving a highly protein-bound drug at a standard dose and develops signs of toxicity. Which explanation is correct?","options":["Low albumin leaves a larger fraction of free, pharmacologically active drug","Low albumin leaves more drug bound to protein and therefore more active","Low albumin slows hepatic metabolism of the drug","Low albumin increases the drug's distribution into adipose tissue"],"correct":[0],"sata":false,"why":"Only drug molecules not bound to plasma proteins can freely distribute to extravascular tissue and reach the site of action, and the unbound portion is the pharmacologically active one. Conditions causing low albumin, such as extensive burns and malnourished states, result in a larger fraction of free drug and raise the risk for toxicity.","trap":"(B) inverts the rule, and it is the intuitive inversion, because \"bound to a carrier\" sounds like \"being delivered.\" Bound drug is stuck in the bloodstream in a complex too large to cross the capillary wall, and it is doing nothing.","k":"lcgp7ccz2kc6"},{"topic":"distribution and protein binding","subtopic":"free versus bound drug","stem":"A patient stabilized on warfarin, which is highly protein bound, is started on amiodarone, which is also highly protein bound. Which effect should the nurse anticipate, and in which pharmacokinetic phase does it occur?","options":["Decreased effect of both drugs, in the absorption phase","Higher levels of free warfarin and amiodarone with increased actions of both, in the distribution phase","Decreased metabolism of warfarin with toxic accumulation, in the metabolism phase","Prolonged plasma levels of both drugs, in the excretion phase"],"correct":[1],"sata":false,"why":"Table 2.10 gives warfarin with amiodarone as its distribution-phase example: both drugs compete for protein-binding sites, producing higher levels of free, unbound drug and increasing the actions of both, which is harmful.","trap":"(C) names a plausible outcome with the wrong mechanism, and it is the reflex answer because most interactions in this chapter turn out to be enzyme interactions. Competition for albumin is displacement, not enzyme competition, and the phase label is what this item is testing.","k":"sa4baaxi3r7o"},{"topic":"distribution and protein binding","subtopic":"volume of distribution","stem":"A drug is described as highly water-soluble, or hydrophilic. What should the nurse expect?","options":["A large volume of distribution and low blood concentrations","A small volume of distribution and high blood concentrations","A large volume of distribution and high blood concentrations","Extensive distribution into adipose tissue"],"correct":[1],"sata":false,"why":"Highly water-soluble drugs have a smaller volume of distribution and high blood concentrations. Volume of distribution is a theoretical volume describing the compartments — blood, total body water, body fat, other tissues and organs — into which a drug may distribute.","trap":"(A) is the lipophilic pattern, and it is the more commonly chosen inversion, because \"distributes widely\" sounds like it should mean higher levels. Water-soluble drugs stay in the water compartment, which is small, so the concentration there is high.","k":"19b58kfs033th"},{"topic":"distribution and protein binding","subtopic":"volume of distribution","stem":"A drug is described as highly fat-soluble, or lipophilic. What should the nurse expect?","options":["A small volume of distribution and high blood concentrations","A large volume of distribution and low blood concentrations","A small volume of distribution and low blood concentrations","Distribution confined to the intravascular space"],"correct":[1],"sata":false,"why":"Fat-soluble drugs have a larger volume of distribution and low blood concentrations, because they disperse out of the blood into fat and other tissues.","trap":"(A) is the mirror error of the previous item. The relationship is inverse in both directions, and the practical danger is reading a low blood level on a lipophilic drug as \"not enough drug on board.\"","k":"1bc6a2z87qllh"},{"topic":"distribution and protein binding","subtopic":"sites that are hard to reach","stem":"An antibiotic reaches therapeutic serum concentrations but fails to clear an infection in bone. Which explanation does the chapter give?","options":["Bone is protected by a physiologic barrier similar to the blood-brain barrier","Bone has a poor blood supply, which makes drug distribution to it difficult","Bone tissue metabolizes drugs faster than other tissues","Bone binds drug to albumin more tightly than plasma does"],"correct":[1],"sata":false,"why":"The chapter names two kinds of hard-to-reach site and gives one example of each: sites with a poor blood supply, such as bone, and sites with physiologic barriers, such as the brain with its blood-brain barrier. Heart, liver, kidneys, and brain receive drug rapidly, while muscle, skin, and fat receive it more slowly.","trap":"(A) transfers the brain's reason onto bone. There is no bone-blood barrier in this chapter; the obstacle is perfusion, which is a different problem with a different set of solutions.","k":"1t5bccaahkfa0"},{"topic":"metabolism","subtopic":"enzyme inducers versus inhibitors","stem":"A patient stable on a maintenance drug is started on rifampin, and within two weeks the original drug is no longer controlling their symptoms. What has most likely happened?","options":["Rifampin inhibited the cytochrome P-450 enzymes, so the drug accumulated","Rifampin induced the cytochrome P-450 enzymes, speeding metabolism and lowering drug levels","Rifampin displaced the drug from albumin, increasing the free fraction","Rifampin blocked renal tubular secretion of the drug"],"correct":[1],"sata":false,"why":"Rifampin and phenytoin are the chapter's named P-450 inducers, and barbiturates also increase metabolism. Enzyme inducers stimulate drug metabolism, often by stimulating the formation of new microsomal enzymes, which causes decreased pharmacologic effects.","trap":"(A) is the reflex answer for anyone who hears \"enzyme interaction\" and reaches for accumulation. An inducer speeds metabolism, so there is less drug present and the failure is therapeutic, not toxic.","k":"11fgnl9xfmacn"},{"topic":"metabolism","subtopic":"enzyme inducers versus inhibitors","stem":"A patient stable on a maintenance drug is started on ketoconazole, and within a week shows signs of toxicity from the original drug. What has most likely happened?","options":["Ketoconazole induced the cytochrome P-450 enzymes, speeding metabolism","Ketoconazole inhibited the cytochrome P-450 enzymes, so the drug accumulated and its effects were prolonged","Ketoconazole increased the drug's volume of distribution","Ketoconazole increased renal excretion of the drug"],"correct":[1],"sata":false,"why":"Ketoconazole is the chapter's named P-450 inhibitor. Decreases in drug metabolism result in accumulation of the drug and prolongation of its effects, which can lead to drug toxicity.","trap":"(A) is the mirror error of the previous item. The word \"inhibitor\" misleads because it sounds like it should reduce the drug's effect — it reduces enzyme activity, which raises drug levels.","k":"1u99ces5f2bt2"},{"topic":"metabolism","subtopic":"what alters metabolism","stem":"Which conditions and drugs decrease drug metabolism? Select all that apply.","options":["Renal insufficiency","Slow acetylator status","Barbiturates","Obstructive jaundice","Starvation"],"correct":[0,1,3,4],"sata":true,"why":"Table 2.6 sorts in two directions. Cardiovascular dysfunction, renal insufficiency, starvation, obstructive jaundice, slow acetylator status, and ketoconazole all decrease metabolism; only fast acetylator status, barbiturates, rifampin, and phenytoin increase it.","trap":"(C) is the one entry here from the increased side, and it slips through because barbiturates are sedatives and sedation reads as \"slowing.\" Barbiturates belong with rifampin and phenytoin as agents that stimulate metabolism, not with the disease states that impair it.","k":"ny83xt4vsrdn"},{"topic":"metabolism","subtopic":"what alters metabolism","stem":"A patient is described as a slow acetylator. What is the clinical consequence?","options":["Metabolism of certain drugs is increased, risking therapeutic failure","Metabolism of certain drugs is reduced, so the drug accumulates and toxicity is more likely","Red blood cells hemolyze when the patient is exposed to oxidizing drugs","Renal excretion of the drug is accelerated"],"correct":[1],"sata":false,"why":"Table 2.6 lists slow acetylator status under genetic constitution with decreased metabolism, and fast acetylator status with increased metabolism. Reduced metabolism means the drug accumulates.","trap":"(C) is the other genetic host factor this course teaches, and it is the substitution students make under time pressure. G6PD deficiency makes red cells break down; slow acetylation makes drug pile up. They are not interchangeable.","k":"pzzsy31eb86sp"},{"topic":"metabolism","subtopic":"prodrugs and active metabolites","stem":"A prodrug is ordered for a patient with severe hepatic impairment. Why is the nurse concerned?","options":["The prodrug is already active and will accumulate to toxic levels","The prodrug is inactive until biochemical reactions convert it to an active metabolite, and impaired metabolism may leave it ineffective","The prodrug will bypass the first-pass effect entirely","The prodrug will be excreted unchanged by the kidney before it can act"],"correct":[1],"sata":false,"why":"A prodrug is an inactive drug dosage form that is converted to an active metabolite by various biochemical reactions once it is inside the body, and the liver is the organ most responsible for drug metabolism. Cefuroxime axetil is the course's worked example, hydrolyzed in the liver to its active cefuroxime form.","trap":"(A) treats every metabolic problem as an accumulation problem, which is the correct instinct for most drugs and exactly backwards here. With a prodrug the failure runs the other way: no metabolism means no active drug.","k":"1cp4nyskhpmy2"},{"topic":"excretion and half-life","subtopic":"half-life and steady state","stem":"A drug's peak level is 100 mg/L, and the level measured 8 hours later is 50 mg/L. Approximately how long after the peak will this drug be considered effectively removed from the body?","options":["16 hours","24 hours","40 hours","80 hours"],"correct":[2],"sata":false,"why":"A fall from 100 to 50 mg/L over 8 hours makes the half-life 8 hours. After about five half-lives most drugs are considered effectively removed, with approximately 97% eliminated — five times 8 hours is 40 hours.","trap":"(B) is what you get by stopping at three half-lives, where Table 2.7 shows 88% removed. Eighty-eight percent feels like \"most of it is gone,\" but the chapter's threshold is five half-lives and 97%.","k":"1a23l5s1vffxli"},{"topic":"excretion and half-life","subtopic":"half-life and steady state","stem":"A drug with a half-life of 24 hours is started at a fixed dose on a fixed schedule. When should the nurse expect steady-state blood levels?","options":["After the first dose, once absorption is complete","After about four to five half-lives, so roughly 4 to 5 days","After one half-life, so roughly 24 hours","Never, because drugs with long half-lives do not reach steady state"],"correct":[1],"sata":false,"why":"Steady state is the physiologic state in which the amount of drug removed via elimination equals the amount absorbed with each dose, and this plateau typically occurs after four to five half-lives. A drug with an extremely long half-life takes much longer to reach steady-state blood levels.","trap":"(C) collapses the plateau into a single half-life. Both of this chapter's milestones are counted in half-lives — about five to clear a drug out, four to five to build up to steady state — and the shared unit is what makes them swappable.","k":"1ei1ct3luq9d1"},{"topic":"excretion and half-life","subtopic":"peak and trough","stem":"A patient's therapeutic drug monitoring returns a peak level above the reference range and a trough level below it. Which interpretation is correct?","options":["The high peak risks toxicity and the low trough risks a period below therapeutic levels","The high peak risks a period below therapeutic levels and the low trough risks toxicity","Both values indicate toxicity","Peak and trough describe drug effects only, never drug concentrations"],"correct":[0],"sata":false,"why":"If the peak blood level is too high, drug toxicity may occur, ranging from intensified drug effects such as excessive sedation to damage to vital organs. If the trough blood level is too low, the drug may not be at therapeutic levels to produce a response.","trap":"(B) inverts the two ends of the same curve, which is the whole reason monitoring measures both. (D) is half true and therefore tempting: onset, peak, duration, and trough all describe drug effects, but peak and trough are also used for concentrations measured from blood samples.","k":"19ub8jxlg16jz"},{"topic":"excretion and half-life","subtopic":"renal handling and recirculation","stem":"A drug undergoes active tubular reabsorption in the nephron. What is the effect on that drug?","options":["It is taken back up into the systemic circulation rather than eliminated","It is moved from the surrounding vasculature into the nephron for elimination","It is passively filtered at the glomerulus","It is conjugated into a more water-soluble metabolite"],"correct":[0],"sata":false,"why":"In active tubular reabsorption, substances present in the nephron are taken back up into the systemic circulation and transported away from the kidney, in what the chapter calls an attempt by the body to retain needed substances.","trap":"(B) is the definition of active tubular secretion, and the two are swapped constantly because both are \"active tubular\" processes. Reabsorption returns drug to the body; secretion pushes more into the nephron. This is the transporter probenecid blocks, which is why it keeps penicillin in the blood.","k":"jr1swj52eqj9"},{"topic":"excretion and half-life","subtopic":"renal handling and recirculation","stem":"A fat-soluble drug persists in a patient far longer than its elimination rate alone would predict. It is taken up by the liver, released into bile, reabsorbed from the intestine, returned to the liver, and secreted into bile again. Which process is this?","options":["First-pass effect","Enterohepatic recirculation","Active tubular reabsorption","Protein binding"],"correct":[1],"sata":false,"why":"Drugs eliminated by biliary excretion are taken up by the liver, released into the bile, and eliminated in the feces, but fat-soluble drugs in the bile may be reabsorbed into the bloodstream, returned to the liver, and again secreted into the bile. Enterohepatically recirculated drugs persist in the body for much longer periods.","trap":"(A) is chosen because both processes involve the liver and the gut. The first-pass effect happens once, on the way in, and reduces bioavailability; recirculation happens repeatedly, on the way out, and prolongs the drug.","k":"45pwdindznyo"},{"topic":"pharmacodynamics","subtopic":"agonists and antagonists","stem":"A patient receives naloxone after an opioid overdose. Naloxone binds the opioid receptor, produces no response, and prevents the opioid from binding. How is naloxone classified?","options":["Agonist","Partial agonist","Antagonist","Substrate"],"correct":[2],"sata":false,"why":"Table 2.8 defines an antagonist as a drug that binds to the receptor with no response and prevents the binding of agonists. Antagonists are also called inhibitors.","trap":"(B) is picked by students who reason that some effect must be occurring, since the patient visibly improves. A partial agonist binds and produces a diminished response; naloxone's benefit comes from producing no response at all while blocking the opioid.","k":"bycq5s84nhom"},{"topic":"pharmacodynamics","subtopic":"agonists and antagonists","stem":"A drug binds its receptor and produces the full expected cellular response. How is it classified?","options":["Antagonist","Agonist","Competitive antagonist","Noncompetitive antagonist"],"correct":[1],"sata":false,"why":"An agonist binds to and stimulates the activity of one or more receptors in the body, and Table 2.8 states simply that the drug binds the receptor and there is a response.","trap":"(A) is the inversion this chapter warns about most directly, because both agonists and antagonists bind. Fig. 2.7 makes the point visually: the antagonist occupies the site and produces a blocked response. The distinction is what happens after binding, not whether attachment occurs.","k":"1680v2b1h158mp"},{"topic":"pharmacodynamics","subtopic":"agonists and antagonists","stem":"A patient who took a long-acting opioid is given naloxone, improves, then deteriorates again 45 minutes later. Which property of naloxone explains why repeat dosing is required?","options":["It is a noncompetitive antagonist and permanently inactivates the receptor","It is a competitive antagonist, so the remaining opioid can reoccupy the receptor as naloxone's level falls","It is a partial agonist whose diminished response wears off","It induces the P-450 enzymes that metabolize the opioid"],"correct":[1],"sata":false,"why":"A competitive antagonist competes with the agonist for binding to the receptor, and if it binds there is no response. Because the competition is for the same site, the balance shifts back as the antagonist is cleared. Naloxone and naltrexone are competitive antagonists with strong affinity for the opioid receptors.","trap":"(A) describes the noncompetitive pattern, in which the drug combines with a different part of the receptor and inactivates it, so more agonist does not help. If naloxone worked that way, redosing would be unnecessary — which is exactly the clinical error this distinction prevents.","k":"5y3ks929in6"},{"topic":"pharmacodynamics","subtopic":"affinity and mechanism of action","stem":"A drug is described as having very high affinity for its receptor. What does this tell the nurse?","options":["The drug will produce a strong therapeutic response","The drug attaches to and binds the receptor strongly; among agonists that predicts a greater response, but an antagonist with high affinity produces no response at all","The drug must be an agonist, since only agonists bind receptors","The drug has a high therapeutic index"],"correct":[1],"sata":false,"why":"Affinity is the degree to which a drug attaches to and binds with a receptor, and the drug with the best fit and strongest affinity elicits the greatest response. Affinity describes the strength of attachment; whether a response follows is a separate question, which is why naloxone can be a strong-affinity antagonist.","trap":"(A) conflates affinity with intrinsic activity, and the lock-and-key figure invites it by pairing \"the better the fit\" with \"the better the response.\" Binding strongly and producing an effect are two different claims.","k":"1lt2nct12onc5b"},{"topic":"pharmacodynamics","subtopic":"affinity and mechanism of action","stem":"An antibiotic kills bacteria by causing formation of a defective cell wall that ruptures the cell. Which mechanism of action is this?","options":["Receptor interaction","Enzyme interaction","Nonselective interaction with cellular processes","Competitive antagonism"],"correct":[2],"sata":false,"why":"Drugs with nonspecific mechanisms of action do not interact with receptors or enzymes; their main targets are cell membranes and cellular processes such as metabolic activities. By incorporating into a normal metabolic process they cause a defect in the final product — an improperly formed cell wall that results in cell death through cell lysis, or the lack of a necessary energy substrate leading to cell starvation. Some cancer drugs and antibiotics work this way.","trap":"(B) is the chapter's other non-receptor mechanism and the closer distractor: in a selective enzyme interaction the drug inhibits, more commonly, or enhances, less commonly, a specific enzyme. The clue is the target — a defective structural product rather than a catalyzed reaction.","k":"vjjkrg1o489u2"},{"topic":"types of drug therapy","subtopic":"maintenance, supplemental, and supportive","stem":"A patient takes a beta blocker daily to keep blood pressure within a target range and prevent end-organ damage. Which type of therapy is this?","options":["Palliative","Maintenance","Supportive","Supplemental"],"correct":[1],"sata":false,"why":"Maintenance therapy does not eradicate preexisting problems but prevents progression of a disease or condition, and it is used for chronic illnesses. Hypertension is the chapter's own example: maintenance therapy keeps blood pressure within given limits, which prevents certain end-organ damage.","trap":"(D) is the closest miss, because a daily drug feels like something the body is being supplied with. Supplemental, or replacement, therapy supplies a substance the body cannot make or does not make in sufficient quantity — insulin, or iron in iron-deficiency anemia. A beta blocker replaces nothing.","k":"1ua0tm5zr3cin"},{"topic":"types of drug therapy","subtopic":"maintenance, supplemental, and supportive","stem":"A patient who is vomiting and has diarrhea receives intravenous fluids and electrolytes to prevent dehydration while the illness resolves. Which type of therapy is this?","options":["Supportive","Supplemental","Maintenance","Prophylactic"],"correct":[0],"sata":false,"why":"Supportive therapy maintains the integrity of body functions while the patient is recovering from illness or trauma. The chapter's examples are fluids and electrolytes for a vomiting patient with diarrhea, and fluids, volume expanders, or blood products for a patient who has lost blood during surgery.","trap":"(B) is the reflex answer because fluid is being supplied, and supplemental therapy also supplies something. Supplemental therapy replaces a substance the body cannot produce in adequate quantity as an ongoing deficit; supportive therapy holds body functions steady through a temporary insult.","k":"kbq9um1b3cu0"},{"topic":"types of drug therapy","subtopic":"maintenance, supplemental, and supportive","stem":"A patient in the final stages of cancer receives high-dose opioid analgesics. The family asks whether starting these means treatment has been abandoned. Which response reflects the chapter?","options":["Palliative therapy is begun only after all curative treatment has been stopped","Palliative therapy focuses on relief from symptoms, pain, and stress, and can be provided along with curative treatment","Palliative therapy is a form of maintenance therapy that prevents disease progression","Palliative therapy is limited to the last 48 hours of life"],"correct":[1],"sata":false,"why":"Palliative therapy makes the patient as comfortable as possible and focuses on providing relief from the symptoms, pain, and stress of a serious illness, with the goal of improving quality of life for both patient and family. It is typically used in the end stages of an illness when attempts at curative therapy have failed, but it can be provided along with curative treatment.","trap":"(A) is the widespread assumption the chapter explicitly contradicts in the same paragraph where it names the typical timing. \"Typically used at the end stages\" is not the same claim as \"only after curative therapy stops.\"","k":"1t09wj1183agz3"},{"topic":"types of drug therapy","subtopic":"prophylactic versus empiric","stem":"A patient is given an antibiotic before the surgical incision is made, to prevent a postoperative infection. Which type of therapy is this?","options":["Empiric","Prophylactic","Supportive","Maintenance"],"correct":[1],"sata":false,"why":"Prophylactic therapy is provided to prevent illness or another undesirable outcome during a planned event. The chapter's examples are preoperative antibiotic therapy, with the antibiotic given before the incision is made, and disease-specific vaccines for travel to areas where a disease is endemic.","trap":"(A) is the reflex answer, because both types start before any organism has been identified. The deciding fact is that this patient has no infection — prophylaxis prevents, while empiric therapy treats something already present.","k":"14y4lyp11enohv"},{"topic":"types of drug therapy","subtopic":"prophylactic versus empiric","stem":"A patient arrives with signs of pneumonia. Cultures are drawn, and an antibiotic active against the organism most commonly associated with that infection is started before results return. Which type of therapy is this?","options":["Prophylactic","Empiric","Palliative","Supplemental"],"correct":[1],"sata":false,"why":"Empiric therapy is based on clinical probabilities and involves drug administration when a pathologic condition has a high likelihood of occurrence based on the patient's initial presenting symptoms — the chapter's example is an antibiotic active against the most commonly associated organism, started before culture and sensitivity reports are available.","trap":"(A) is the mirror error of the previous item, and the culture is what gives it away. You do not draw cultures on a patient who has no infection; the pending culture means illness is present and the choice is a probability judgment, not prevention.","k":"1ilkgzn1honqlt"},{"topic":"therapeutic index, tolerance, and dependence","subtopic":"therapeutic index","stem":"A patient is started on warfarin, and the nurse notes that it has a low therapeutic index. What does this mean for the plan of care?","options":["The drug is unusually safe and rarely associated with overdose","The difference between a therapeutically active dose and a toxic dose is small, so closer monitoring is required","The drug requires a loading dose to reach steady state","The drug has low bioavailability by the oral route"],"correct":[1],"sata":false,"why":"The therapeutic index is the ratio of a drug's toxic level to the level that provides therapeutic benefits, and it determines the safety of the therapy. With a low therapeutic index the difference between an active dose and a toxic dose is small, which brings a greater likelihood of an adverse reaction and requires closer monitoring. Warfarin and digoxin are the chapter's examples.","trap":"(A) inverts the scale, and the inversion is built into the wording — \"low\" sounds like low risk. The index is a ratio, so a small ratio means the therapeutic and toxic doses sit close together.","k":"1i5dv1njiyd61"},{"topic":"therapeutic index, tolerance, and dependence","subtopic":"therapeutic index","stem":"A different drug is described as having a high therapeutic index. What does this indicate?","options":["The drug is more dangerous and needs frequent serum levels","The drug has a wide margin between therapeutic and toxic levels and is rarely associated with overdose events","The drug reaches toxic levels after a single dose","The drug must be given intravenously to be safe"],"correct":[1],"sata":false,"why":"Drugs with a high therapeutic index are rarely associated with overdose events, and the chapter's example is amoxicillin.","trap":"(A) is the mirror error. Consistent monitoring belongs to the low-index drugs — warfarin, digoxin, and the aminoglycosides and vancomycin taken up in Chapter 39 — precisely because their margin is narrow.","k":"dquk961wzwcro"},{"topic":"therapeutic index, tolerance, and dependence","subtopic":"tolerance versus dependence","stem":"A patient has needed steadily larger doses of an analgesic over several months to obtain the same relief, and reports no craving and no withdrawal when a dose is late. Which term describes this?","options":["Psychological dependence","Physical dependence","Tolerance","Idiosyncratic reaction"],"correct":[2],"sata":false,"why":"Tolerance is a decreasing response to repeated drug doses, or reduced response to a drug after prolonged use. Dependence, by contrast, is a physiologic or psychological need for a drug.","trap":"(B) is the standing confusion in this course, and it is not the student's fault: Chapter 10's key terms call tolerance the same thing as physical dependence, while this chapter keeps them separate. When a stem turns on the distinction, this chapter's version is the more precise one — tolerance is a decreasing response, dependence is a need.","k":"fgnzlx4a79p7"},{"topic":"therapeutic index, tolerance, and dependence","subtopic":"tolerance versus dependence","stem":"A patient with an opioid use disorder develops tachycardia and other physical symptoms when the drug is withheld, and describes an obsessive desire for its euphoric effects. Which terms apply? Select all that apply.","options":["Physical dependence, shown by withdrawal symptoms when the drug is withheld","Psychological dependence, also known as addiction","Tolerance, defined as a physiologic need to avoid withdrawal","An idiosyncratic reaction to the opioid","Dependence, defined as a physiologic or psychological need for a drug"],"correct":[0,1,4],"sata":true,"why":"Physical dependence is the physiologic need for a drug to avoid physical withdrawal symptoms, with tachycardia in an opioid-addicted patient as the chapter's example. Psychological dependence, also known as addiction, is the obsessive desire for a drug's euphoric effects and typically involves recreational use of drugs such as benzodiazepines, opioids, and amphetamines.","trap":"(C) attaches the definition of physical dependence to the word tolerance, which is the substitution this chapter exists to prevent. Tolerance is a decreasing response to repeated doses, not a need to avoid withdrawal.","k":"3rswnpzeu3pr"},{"topic":"drug interaction principles","subtopic":"additive, synergistic, and antagonistic","stem":"Two antibiotics with similar actions are given together, and the combined effect is greater than the sum of their individual effects. Which term names this?","options":["Additive effects","Synergistic effects","Antagonistic effects","Incompatibility"],"correct":[1],"sata":false,"why":"Synergistic effects are drug interactions in which the effect of a combination of two or more drugs with similar actions is greater than the sum of the individual effects — the chapter's arithmetic is 1 + 1 is greater than 2. Sulfamethoxazole-trimethoprim and an aminoglycoside plus a beta-lactam are the course's worked examples.","trap":"(A) is the reflex answer for any beneficial combination. Additive means the combination equals the sum, 1 + 1 = 2. The word \"greater\" in the stem is doing all the work.","k":"gwd8xtznyq7v"},{"topic":"drug interaction principles","subtopic":"additive, synergistic, and antagonistic","stem":"A tetracycline is given together with a bactericidal antibiotic, and the combined effect is less than the sum of the individual effects. Which term names this?","options":["Additive effects","Synergistic effects","Antagonistic effects","Incompatibility"],"correct":[2],"sata":false,"why":"Antagonistic effects are interactions in which the effect of a combination is less than the sum of the individual effects, 1 + 1 equals less than 2, usually caused by an antagonizing, blocking, or reducing effect of one drug on another.","trap":"(D) is chosen because both terms sound like drugs working against each other. Incompatibility is a physical or chemical event between two parenteral drugs mixed together — a precipitate, haziness, or color change — not a diminished pharmacologic effect in the patient.","k":"19agfh2d14a2o"},{"topic":"drug interaction principles","subtopic":"food and drug interactions","stem":"A patient taking simvastatin asks whether grapefruit juice is a problem. Which response is accurate, and why?","options":["Grapefruit juice increases metabolism of the drug, so the drug becomes less effective","Grapefruit juice decreases metabolism of the drug, so drug levels and effects increase","Grapefruit juice binds the drug in the gut, so less is absorbed","Grapefruit juice has no effect on statins"],"correct":[1],"sata":false,"why":"Table 2.9 gives grapefruit juice with amiodarone, buspirone, carbamazepine, cyclosporine, tacrolimus, several calcium channel blockers, simvastatin, and atorvastatin, with the result listed as decreased metabolism of drugs and increased effects.","trap":"(A) reads \"decreased\" as \"less drug effect,\" which is the direction most students assume, because the word sits right next to the juice. What is decreased is the enzyme activity, so the drug accumulates and the effect is stronger.","k":"197cxz3lx84z1"},{"topic":"drug interaction principles","subtopic":"food and drug interactions","stem":"A patient on warfarin begins eating large servings of leafy green vegetables daily. Which effect should the nurse anticipate?","options":["Increased anticoagulant effect and bleeding risk","Decreased anticoagulant effect","Chemical binding of warfarin, preventing absorption","Hypertensive crisis"],"correct":[1],"sata":false,"why":"Table 2.9 lists leafy green vegetables with warfarin and gives the result as a decreased anticoagulant effect from warfarin.","trap":"(A) is the reflex answer because bleeding is the outcome students associate with warfarin teaching, so any change gets read as more bleeding. (D) belongs to aged cheese and wine with monoamine oxidase inhibitors, the other food row in the same table.","k":"1m7tqdx1jtd4u7"},{"topic":"drug interaction principles","subtopic":"interactions by pharmacokinetic phase","stem":"Match each drug interaction to the pharmacokinetic phase in which it occurs. Which pairings are correct? Select all that apply.","options":["Antacid with levofloxacin — absorption, because the antacid binds the drug in the gut","Warfarin with amiodarone — distribution, because the drugs compete for protein-binding sites","Erythromycin with cyclosporine — metabolism, because the drugs compete for the same hepatic enzymes","Amoxicillin with probenecid — excretion, because probenecid inhibits secretion of amoxicillin into the kidneys","Antacid with levofloxacin — metabolism, because the antacid inhibits P-450 enzymes"],"correct":[0,1,2,3],"sata":true,"why":"Table 2.10 gives exactly one example per phase, and marks the first three harmful and the probenecid pairing as potentially beneficial, since it elevates and prolongs plasma levels of amoxicillin.","trap":"(E) reassigns the antacid interaction to the metabolism phase, and it is tempting because the chapter states that most drug interactions involve competition for metabolizing enzymes. This one is the exception the table uses to teach the absorption phase — binding in the gut, before anything is absorbed.","k":"1xupxfg1xx569q"},{"topic":"adverse drug events","subtopic":"classifying adverse drug events","stem":"A patient took a sleep medication and reports feeling restless and being unable to sleep at all that night. There is no rash, swelling, or respiratory involvement. How should this reaction be classified?","options":["Allergic reaction","Idiosyncratic reaction","Pharmacologic reaction","Synergistic effect"],"correct":[1],"sata":false,"why":"An idiosyncratic reaction is an abnormal and unexpected response to a medication, other than an allergic reaction, that is peculiar to an individual patient. A response opposite to the drug's intended effect in one individual fits that definition.","trap":"(A) is the default label students apply to any unexpected reaction. An allergic reaction is an immunologic hypersensitivity reaction involving immunoglobulins, and nothing in this stem points to the immune system. (C) would require an extension of the drug's normal effect — excessive sedation, not the reverse.","k":"1f6z3wqakbk8"},{"topic":"adverse drug events","subtopic":"classifying adverse drug events","stem":"A nurse omits a scheduled dose of a patient's antihypertensive, and the patient's blood pressure rises. Which term best describes what has occurred?","options":["An adverse drug reaction, because the outcome occurred at a therapeutic dose","An adverse drug event, because it is an undesirable occurrence related to failing to administer a prescribed medication","An idiosyncratic reaction, because the response was peculiar to this patient","Neither, because no drug was given"],"correct":[1],"sata":false,"why":"An adverse drug event is any undesirable occurrence related to administering or failing to administer a prescribed medication, and it is the broadest of the chapter's four overlapping terms. A medication error is any preventable adverse drug event, and it may or may not cause patient harm.","trap":"(D) is the intuitive answer, since nothing entered the patient. The definition of an adverse drug event explicitly includes failing to administer, which is what separates it from an adverse drug reaction — the narrower term, restricted to responses at therapeutic dosages.","k":"c8wetz1dwpfcx"},{"topic":"adverse drug events","subtopic":"teratogenesis and genetic host factors","stem":"A patient asks during which part of pregnancy the fetus is most vulnerable to a drug's teratogenic effects. Which response is accurate?","options":["From conception through delivery, with equal risk throughout","From the third week of development until the end of the third month","Only during the third trimester","Only in the 48 hours before delivery"],"correct":[1],"sata":false,"why":"The period during which the fetus is most vulnerable to teratogenic effects begins with the third week of development and usually ends after the third month. Teratogenic effects are structural defects in the fetus, caused by drugs capable of crossing the placenta.","trap":"(A) is the cautious-sounding answer and is wrong in a way that matters, because it treats every trimester alike. Late-pregnancy drug risks are real but work by different mechanisms — the NSAID risk in Chapter 44 is bleeding and neonatal toxicity, not teratogenesis.","k":"1xm71p1xtlwa3"},{"topic":"adverse drug events","subtopic":"teratogenesis and genetic host factors","stem":"A patient of Mediterranean descent with G6PD deficiency is prescribed a sulfonamide antibiotic. Which statements are accurate? Select all that apply.","options":["The patient may suffer life-threatening hemolysis of red blood cells","Manifestations may include pallor, jaundice, dark urine, shortness of breath, and tachycardia","The deficiency is sex-linked and carried on the X chromosome","Aspirin and nitrate derivatives are also oxidizing drugs that can trigger the reaction","The reaction is an immunoglobulin-mediated hypersensitivity response"],"correct":[0,1,2,3],"sata":true,"why":"G6PD is an enzyme that reduces the risk for hemolysis in red blood cells exposed to oxidizing drugs such as aspirin, nitrate derivatives, and sulfonamides. Patients deficient in it may suffer life-threatening hemolysis, with red blood cells destroyed faster than they can be replaced. The deficit is sex-linked, carried on the X chromosome, and transmitted from a healthy carrier mother to a son or daughter.","trap":"(E) files a hereditary enzyme deficiency under allergy, which is the reflex for any drug reaction involving a rash-free systemic response. Nothing immunologic is involved; the red cells lack the enzyme that would have protected them from oxidation.","k":"1199mzvvemus1"},{"topic":"toxicology and antidotes","subtopic":"priorities in the poisoned patient","stem":"A patient arrives unresponsive with shallow respirations after an overdose of an unknown substance. Which action is the priority?","options":["Administer the appropriate antidote as soon as the substance is identified","Maintain the airway, ventilation, and circulation","Give activated charcoal to prevent further absorption","Obtain a serum drug level to guide dosing"],"correct":[1],"sata":false,"why":"The chapter numbers its two priorities in treating the poisoned patient: first, preserve the patient's vital functions by maintaining the airway, ventilation, and circulation; second, prevent absorption of the toxic substance and speed its elimination from the body.","trap":"(A) is the answer the antidote table trains you toward, and it skips priority one. Chapter 10 runs the same ladder for opioid-induced respiratory depression — stimulate, ventilate, and only then naloxone.","k":"1s8316n1me6bzh"},{"topic":"toxicology and antidotes","subtopic":"poisons and their antidotes","stem":"Which poison-antidote pairings are correct? Select all that apply.","options":["Acetaminophen — acetylcysteine","Calcium channel blocker overdose — intravenous calcium","Beta blocker overdose — glucagon","Ethylene glycol or methanol — ethanol given intravenously","Benzodiazepines — naloxone"],"correct":[0,1,2,3],"sata":true,"why":"Table 2.11 pairs acetaminophen with acetylcysteine, organophosphates with atropine, tricyclic antidepressants and quinidine with sodium bicarbonate, calcium channel blockers with intravenous calcium, iron salts with deferoxamine, digoxin with digoxin antibodies, ethylene glycol and methanol with intravenous ethanol, benzodiazepines with flumazenil, beta blockers with glucagon, opioids with naloxone, and carbon monoxide with high-concentration oxygen.","trap":"(E) swaps the two reversal agents that both treat sedated, hypoventilating patients. Flumazenil reverses benzodiazepines; naloxone reverses opioids. The three counterintuitive pairings worth memorizing outright are the other way around: calcium for calcium channel blockers, glucagon for beta blockers, ethanol for antifreeze.","k":"1aeurn519dvhf"},{"topic":"toxicology and antidotes","subtopic":"poisons and their antidotes","stem":"A nurse notes that a patient's toxic reaction to an antihypertensive is profound hypotension. Which statement reflects the chapter's principle about toxicity?","options":["Toxic effects are usually idiosyncratic and cannot be predicted","Toxic effects are often an extension of a drug's therapeutic action","Toxic effects occur only when the drug is taken above the prescribed dose","Toxic effects always involve an immune mechanism"],"correct":[1],"sata":false,"why":"The chapter states that toxic effects are often an extension of a drug's therapeutic action, which is the same idea as the pharmacologic category of adverse drug reaction — predictable, well known, dose related, and usually resolving on discontinuation. A blood pressure drug that lowers pressure to the point of unconsciousness is the chapter's own example.","trap":"(A) contradicts two separate statements in the chapter and is chosen because \"toxic\" sounds unpredictable. Most toxicity is the drug doing exactly what it does, too much.","k":"2dtlq41y7fvwi"}];
+const TITLE = "Chapter 2 — NUR 3420/1 — Pharmacology I & II";
+const SUBTITLE = "Chapter 2";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur3420-3421-pharm";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

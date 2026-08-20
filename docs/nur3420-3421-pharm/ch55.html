@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 55 — NUR 3420/1 — Pharmacology I &amp; II</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 55</div><h1>Chapter 55 — NUR 3420/1 — Pharmacology I &amp; II</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral versus parenteral nutritional support</span><span class="chip t2">does the gastrointestinal tract work</span></div>
+<div class="stem">1. A patient three days after an ischemic stroke has an intact and fully functioning gastrointestinal tract but fails a swallow screen and cannot safely take food by mouth. Which form of nutritional support does the chapter identify as preferred for this patient?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Enteral nutrition delivered through a feeding tube</li><li class="fopt"><span class="mk">B</span>Peripheral parenteral nutrition, because it avoids the risk of aspiration</li><li class="fopt"><span class="mk">C</span>Central total parenteral nutrition through a subclavian catheter</li><li class="fopt"><span class="mk">D</span>No nutritional support until the swallow study is repeated</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Enteral nutrition is &quot;the preferred route of administration of nutritional supplements&quot; and is used &quot;when the patient has a functioning gastrointestinal tract&quot;; tube delivery exists precisely for patients with depressed consciousness, altered anatomy, or abnormal peristalsis who cannot eat. A working gut plus an inability to eat is the definition case for tube feeding.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) pulls because the stem names a swallowing problem and a vein seems to route around it, but parenteral nutrition is reserved for when oral or enteral support is impossible or when absorptive capacity is insufficient. Neither is true here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral versus parenteral nutritional support</span><span class="chip t2">does the gastrointestinal tract work</span></div>
+<div class="stem">2. A patient with short bowel syndrome has been on an elemental formula for two weeks and continues to lose weight, and the team documents that the remaining absorptive capacity is not sufficient to meet nutrient needs. Which form of support is now indicated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Add a modular protein product to the elemental formula</li><li class="fopt"><span class="mk">B</span>Change to a polymeric formula to reduce osmolarity</li><li class="fopt right"><span class="mk">&#10003;</span>Parenteral nutrition, which bypasses the gastrointestinal system entirely</li><li class="fopt"><span class="mk">D</span>Continue enteral feeding, because enteral is always preferred</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Parenteral nutrition is used &quot;only when oral or enteral support is impossible or when the gastrointestinal absorptive or functional capacity is not sufficient,&quot; and it &quot;bypasses the entire gastrointestinal system, which eliminates the need for absorption, metabolism, and excretion.&quot; Documented insufficient absorptive capacity is the stated trigger.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the mirror error of the previous item — the enteral preference is conditional on a gut that can absorb, not absolute, and treating it as absolute is what keeps a malabsorbing patient undernourished.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral versus parenteral nutritional support</span><span class="chip t2">naming and scope of support</span></div>
+<div class="stem">3. A nursing student charts that a patient on total parenteral nutrition &quot;developed hyperalimentation&quot; after two days of therapy. Which correction should the nurse make?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hyperalimentation is an older term for parenteral nutrition itself, not a complication of it</li><li class="fopt"><span class="mk">B</span>Hyperalimentation means overfeeding and should be documented as a caloric excess</li><li class="fopt"><span class="mk">C</span>Hyperalimentation refers to enteral feeding delivered faster than the ordered rate</li><li class="fopt"><span class="mk">D</span>Hyperalimentation is the correct term for the metabolic response to a high dextrose load</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The key terms box defines hyperalimentation as &quot;an older term for parenteral nutrition; its use is now discouraged because it may be misinterpreted to mean overfeeding,&quot; and states that the process is now referred to as total parenteral nutrition.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because the prefix hyper- reads as excess, which is exactly the misreading the book says caused the term to be retired. The word never named a complication; it named the therapy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral versus parenteral nutritional support</span><span class="chip t2">naming and scope of support</span></div>
+<div class="stem">4. A patient who eats poorly is started on an oral polymeric supplement between meals, and a student concludes that the patient is now on enteral nutrition and therefore no longer needs to be assessed for oral intake. Which statement corrects the student?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Oral supplements are not enteral nutrition, because no feeding tube is involved</li><li class="fopt right"><span class="mk">&#10003;</span>Enteral nutrition may supplement an oral diet or be used alone to meet all nutrient needs, so how much of the need it covers is a separate question from the route</li><li class="fopt"><span class="mk">C</span>Any enteral formulation by definition supplies the patient's total nutrient requirement</li><li class="fopt"><span class="mk">D</span>Once a supplement is ordered, oral intake no longer contributes to the nutritional plan</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Enteral nutrition can &quot;supplement an oral diet ... or be used alone to meet all of the patient's nutrient needs,&quot; and the oral route is itself one of the six enteral routes and the most common and least invasive. Route and completeness are independent axes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the swap distractors are built on — students trade where the nutrition goes for how much of the need it covers. The same swap runs through Table 55.2, where peripheral parenteral nutrition is supplemental and central is total, even though both are parenteral.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral versus parenteral nutritional support</span><span class="chip t2">naming and scope of support</span></div>
+<div class="stem">5. A nurse is reviewing the complications the chapter attributes to enteral feeding. Which of the following belong to enteral nutrition rather than to parenteral nutrition? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gastrointestinal intolerance manifesting as diarrhea</li><li class="fopt right"><span class="mk">&#10003;</span>Aspiration</li><li class="fopt"><span class="mk">C</span>Air embolism</li><li class="fopt right"><span class="mk">&#10003;</span>Dumping syndrome</li><li class="fopt"><span class="mk">E</span>Rebound hypoglycemia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The key points list the enteral complications as &quot;hyperglycemia, dumping syndrome, and aspiration,&quot; and diarrhea is named as the most common adverse effect of enteral feeding. Air embolism and rebound hypoglycemia appear on the parenteral list.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the option that trips people, because hypoglycemia sounds like a feeding problem in general; the chapter attaches it specifically to abrupt discontinuation of parenteral nutrition. (C) is the giveaway parenteral option, since an air embolism requires a vascular line.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube routes and formula selection</span><span class="chip t2">nasal routes versus surgical ostomies</span></div>
+<div class="stem">6. An order reads &quot;insert nasogastric tube for feeding.&quot; A new nurse asks whether the surgical team needs to be notified. Which description of the tube is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A feeding tube placed from the nose to the stomach, requiring no surgery</li><li class="fopt"><span class="mk">B</span>A feeding tube surgically inserted directly into the stomach</li><li class="fopt"><span class="mk">C</span>A feeding tube placed from the nose to the duodenum</li><li class="fopt"><span class="mk">D</span>A feeding tube surgically inserted into the esophagus</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 55.1 defines the nasogastric route as a &quot;feeding tube placed from the nose to the stomach,&quot; and a feeding tube is used in five of the six enteral routes. Only the ostomy routes are surgically created.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because both names end in the same organ and the word &quot;gastric&quot; carries all the attention; the prefix is what decides whether a surgeon is involved. Naso- means through the nose with no surgery, and -ostomy means a surgically created opening.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube routes and formula selection</span><span class="chip t2">nasal routes versus surgical ostomies</span></div>
+<div class="stem">7. A patient with a history of gastric outlet obstruction is scheduled for placement of a feeding tube that will require an operative procedure and will deliver formula directly into the jejunum. Which route is being described?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Nasojejunal</li><li class="fopt right"><span class="mk">&#10003;</span>Jejunostomy</li><li class="fopt"><span class="mk">C</span>Nasoduodenal</li><li class="fopt"><span class="mk">D</span>Esophagostomy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 55.1 defines jejunostomy as a &quot;feeding tube surgically inserted into the jejunum,&quot; while the nasojejunal route reaches the same organ from the nose without surgery. The second half of each name gives the destination organ and the first half gives the method.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — it names the right organ by the wrong method. Reading only the organ half of these words is what makes all four cells of Table 55.1 interchangeable to a student.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube routes and formula selection</span><span class="chip t2">choosing among the formula groups</span></div>
+<div class="stem">8. A postoperative patient with a fully functional gastrointestinal tract and no specialized nutrient requirements needs tube feeding for a few weeks. Which formulation does the chapter state is preferred, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An elemental formula, because predigested nutrients are gentler on the gut</li><li class="fopt right"><span class="mk">&#10003;</span>A polymeric formula, because it most closely resembles normal dietary intake and is less hyperosmolar than elemental formulas</li><li class="fopt"><span class="mk">C</span>A modular formula, because single nutrients can be titrated individually</li><li class="fopt"><span class="mk">D</span>An altered amino acid formula, because surgery raises amino acid requirements</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Polymeric formulations contain complex nutrients — proteins, carbohydrates, and fat — and are &quot;preferred over elemental formulations for patients with a fully functional gastrointestinal tract and few specialized nutrient requirements&quot; because they most closely resemble normal dietary intake and are &quot;less hyperosmolar than elemental formulations and therefore cause fewer gastrointestinal problems.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the intuitive inversion: predigested sounds gentler, so students reach for elemental whenever the gut is mentioned at all. The chapter puts elemental where digestion is impaired and polymeric where it is intact, and the hyperosmolarity runs the other way from the intuition.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube routes and formula selection</span><span class="chip t2">choosing among the formula groups</span></div>
+<div class="stem">9. A patient with radiation enteritis and documented malabsorption cannot tolerate a standard tube feeding. Which formulation matches this patient's problem?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Polymeric, containing complex proteins, carbohydrates, and fat</li><li class="fopt"><span class="mk">B</span>Impaired glucose tolerance formula, containing protein, carbohydrate, fat, sodium, and potassium</li><li class="fopt right"><span class="mk">&#10003;</span>Elemental, containing dipeptides, tripeptides, or crystalline amino acids and requiring minimal digestion with minimal residue</li><li class="fopt"><span class="mk">D</span>Infant formulation used as sole or supplemental intake</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 55.1 lists elemental formulations as requiring &quot;minimal digestion&quot; and leaving &quot;minimal residue,&quot; indicated for malabsorption, partial bowel obstruction, irritable bowel disease, radiation enteritis, bowel fistula, and short bowel syndrome.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — polymeric is correct only when digestion is intact, and a stem naming malabsorption has already ruled that out. Matching the formula to the gut's remaining capacity is the whole decision.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube routes and formula selection</span><span class="chip t2">choosing among the formula groups</span></div>
+<div class="stem">10. A family member asks whether the patient could be maintained entirely on the protein supplement listed on the plan of care as a modular product. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Modular products are single-nutrient formulas added to an elemental or polymeric formulation, not a complete feeding</li><li class="fopt"><span class="mk">B</span>Modular products contain all required macronutrients and can serve as sole nutrition</li><li class="fopt"><span class="mk">C</span>Modular products are indicated only for genetic metabolic enzyme deficiencies</li><li class="fopt"><span class="mk">D</span>Modular products must be given intravenously to be complete</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 55.1 describes modular formulations as &quot;single-nutrient formulas&quot; of protein, carbohydrate, or fat that are &quot;added to a monomeric or polymeric formulation to provide a more individualized nutrient formulation.&quot; Carbohydrate, fat, and protein modulars are all named as additives.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is a true statement about complete formulations attached to the wrong product. A modular is real nutrition, which is what makes the option feel defensible, but by itself it supplies one macronutrient and leaves the rest of the requirement unmet.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral versus central parenteral nutrition</span><span class="chip t2">matching the patient to the vein</span></div>
+<div class="stem">11. A patient is expected to need parenteral support for about 10 days after abdominal surgery, has modest nutritional needs of roughly 1600 kcal per day, and tolerates large fluid volumes without difficulty. Which form of parenteral nutrition fits the chapter's criteria?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Peripheral parenteral nutrition, using a dextrose concentration below 10%</li><li class="fopt"><span class="mk">B</span>Central total parenteral nutrition, using a dextrose concentration of 25%</li><li class="fopt"><span class="mk">C</span>Peripheral parenteral nutrition, using a dextrose concentration of 20%</li><li class="fopt"><span class="mk">D</span>Central total parenteral nutrition, because any therapy beyond 7 days must be central</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 55.2 sets peripheral parenteral nutrition at fewer than 14 days, dextrose less than 10%, and fewer than 2000 kcal per day, and requires that fluid tolerance &quot;must be high.&quot; The chapter also describes it as &quot;a temporary means (less than 2 weeks)&quot; for patients without large nutritional needs.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) pairs the right vein with a central-line dextrose concentration, and it pulls because the stem's duration and calories both fit peripherally, so students stop reading before the concentration. Dextrose above 10% in a peripheral vein scleroses the vein and is the setup for phlebitis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral versus central parenteral nutrition</span><span class="chip t2">matching the patient to the vein</span></div>
+<div class="stem">12. A patient with severe burns requires about 3000 kcal per day, a dextrose concentration of 25%, and support expected to last several weeks, possibly continuing at home. Which route is indicated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Peripheral parenteral nutrition, because the therapy can be started immediately</li><li class="fopt right"><span class="mk">&#10003;</span>Central total parenteral nutrition through a large central vein such as the subclavian or internal jugular</li><li class="fopt"><span class="mk">C</span>Peripheral parenteral nutrition, because burns raise fluid tolerance</li><li class="fopt"><span class="mk">D</span>Enteral feeding by nasogastric tube regardless of gastrointestinal status</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Central total parenteral nutrition uses &quot;a large central vein ... usually the subclavian or internal jugular&quot; for a &quot;prolonged period, usually longer than 7 to 10 days,&quot; carries dextrose of 10% to 35% and more than 2000 kcal per day, and can be continued at home. Large nutritional requirements from metabolic stress or hypermetabolism are a stated indication.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — every one of the three numbers in this stem violates a peripheral limit, and picking the peripheral route because it is quicker to start is the reflex when a patient looks unstable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral versus central parenteral nutrition</span><span class="chip t2">matching the patient to the vein</span></div>
+<div class="stem">13. A student states that the way to tell peripheral parenteral nutrition from central total parenteral nutrition is that only the central solution is hyperosmolar. Which correction is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Only the peripheral solution is hyperosmolar, which is why it causes phlebitis</li><li class="fopt right"><span class="mk">&#10003;</span>Both are hyperosmolar at 600 to 900 mOsm/L, so osmolarity does not distinguish them</li><li class="fopt"><span class="mk">C</span>Neither solution is hyperosmolar once lipids are added</li><li class="fopt"><span class="mk">D</span>Osmolarity is not reported for parenteral solutions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 55.2 gives the identical osmolarity range, hyperosmolar at 600 to 900 mOsm/L, in both columns. The chapter also notes that the components of the two solutions &quot;are the same. The difference lies in the concentrations and amounts.&quot; The reason central access is used is &quot;the hyperosmolarity of the substances used and the need for dilution provided by a larger-diameter vein.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts a row that is not a difference at all, and it pulls because phlebitis really is a peripheral problem, so students reason backwards from the complication to a difference the table does not state. Osmolarity is the one row of Table 55.2 that cannot discriminate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral versus central parenteral nutrition</span><span class="chip t2">matching the patient to the vein</span></div>
+<div class="stem">14. A patient with heart failure who cannot tolerate large fluid volumes needs parenteral nutrition. A new nurse suggests the peripheral route because it is less invasive. Which reasoning should the nurse apply instead?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Peripheral is correct, because peripheral solutions are given in smaller volumes</li><li class="fopt"><span class="mk">B</span>Peripheral is correct, because a central line would worsen fluid overload</li><li class="fopt right"><span class="mk">&#10003;</span>Central is correct, because peripheral dextrose is capped below 10% to avoid sclerosing the vein, so large fluid volumes are required to deliver the calories</li><li class="fopt"><span class="mk">D</span>Either route is acceptable, because fluid volume is determined only by the prescriber's order</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 55.2 states that peripheral fluid tolerance &quot;must be high&quot; while central &quot;can be fluid-restricted,&quot; and the chapter explains why: peripheral dextrose is &quot;generally less than 10%, to avoid sclerosing the vein. Thus large volumes are needed,&quot; and patients &quot;with renal failure or heart failure, cannot tolerate large fluid volumes.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the classic miss, because the smaller vein suggests smaller volumes and the fluid rule actually runs the opposite way. Heart failure and renal failure push a patient toward central access, not away from it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral versus central parenteral nutrition</span><span class="chip t2">matching the patient to the vein</span></div>
+<div class="stem">15. A patient receiving peripheral parenteral nutrition reports increasing pain at the infusion site. The site looks unremarkable, vital signs are stable, and the hanging bag reads 20% dextrose. What is the nurse's priority action?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stop the infusion</li><li class="fopt"><span class="mk">B</span>Apply a warm compress and continue the infusion at a slower rate</li><li class="fopt"><span class="mk">C</span>Document the finding and reassess at the end of the shift</li><li class="fopt"><span class="mk">D</span>Draw a blood glucose level before taking any other action</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;the most devastating adverse effect of PPN is phlebitis,&quot; which &quot;can lead to the loss of a limb, although this is rare,&quot; and peripheral dextrose is held below 10% precisely to prevent it. A 20% concentration is a central-line strength running in a peripheral vein, so the solution is causing the injury and comes off first.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) pulls because a stable patient with a normal-looking site does not feel like an emergency, and slowing an infusion feels like a reasonable middle step. When the infusing solution is itself the cause, slowing it continues the injury; the only situation that outranks stopping the line is hemodynamic instability, which this stem rules out.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parenteral nutrition components and amino acid classes</span><span class="chip t2">essential, semiessential, and nonessential</span></div>
+<div class="stem">16. A parenteral formulation for an infant is being reviewed, and the pharmacist notes that arginine and histidine must be supplied even though an adult would not require them from the diet. How should the nurse classify these two amino acids?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Essential, because the body cannot manufacture them at all</li><li class="fopt right"><span class="mk">&#10003;</span>Semiessential, because the body produces them but not in sufficient amounts during rapid growth in infancy and childhood</li><li class="fopt"><span class="mk">C</span>Nonessential, because the body produces them without dietary help at every age</li><li class="fopt"><span class="mk">D</span>Conditionally toxic, because they accumulate in infants</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 55.3 lists arginine and histidine as the two semiessential amino acids, and the chapter states they &quot;are not manufactured by the body in large enough quantities during rapid growth periods such as infancy or childhood.&quot; Semiessential amino acids are defined as those the body can produce but that infants and children cannot produce in sufficient amounts.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the promotion error, and it pulls because the stem says the infant must be supplied with them, which sounds like the definition of essential. The distinction is that the body makes these two at all, just not fast enough during growth.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parenteral nutrition components and amino acid classes</span><span class="chip t2">essential, semiessential, and nonessential</span></div>
+<div class="stem">17. A nurse is teaching about the eight amino acids listed as essential, including leucine and tryptophan. Which statement correctly explains what makes them essential?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They cannot be manufactured by the body and must come from intake</li><li class="fopt"><span class="mk">B</span>They are produced by the body but not in sufficient amounts during infancy</li><li class="fopt"><span class="mk">C</span>They are the amino acids the body produces without extracting them from dietary intake</li><li class="fopt"><span class="mk">D</span>They are the only amino acids that participate in protein synthesis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Essential amino acids are defined as &quot;those amino acids that cannot be manufactured by the body,&quot; and Box 55.3 lists eight of them: isoleucine, leucine, lysine, methionine, phenylalanine, threonine, tryptophan, and valine. The body is able to manufacture &quot;all but eight.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the mirror error of the previous item, stating the nonessential definition under the essential label; the two definitions differ only in whether the body can make the compound. Nonessential also does not mean unnecessary, only that it is not dietarily required.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parenteral nutrition components and amino acid classes</span><span class="chip t2">what the components are for</span></div>
+<div class="stem">18. A patient with severe trauma is receiving amino acids as part of total parenteral nutrition. Which statement describes the intended metabolic effect?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They promote catabolism, liberating energy by breaking down complex substances</li><li class="fopt right"><span class="mk">&#10003;</span>They promote anabolism, supporting protein synthesis and reducing the breakdown of proteins</li><li class="fopt"><span class="mk">C</span>They replace dextrose as the greatest source of calories in the solution</li><li class="fopt"><span class="mk">D</span>They eliminate the need for lipid emulsion in the solution</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that the primary role of amino acids is &quot;protein synthesis, or anabolism,&quot; and that they &quot;reduce the breakdown of proteins (catabolism).&quot; Anabolism is defined as the conversion of simple substances into more complex compounds, or tissue building.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts the pair, and it pulls because an &quot;accelerated catabolic status&quot; is one of the chapter's own indications for supplementation, so the word appears in the same context. Catabolism is the problem being treated, not the goal of the therapy; ana- builds up and cata- tears down.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parenteral nutrition components and amino acid classes</span><span class="chip t2">what the components are for</span></div>
+<div class="stem">19. A nurse is explaining the purpose of the intravenous fat emulsion hanging alongside a patient's total parenteral nutrition. Which functions does the chapter assign to lipid emulsions? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Supplying essential fatty acids the body cannot synthesize</li><li class="fopt right"><span class="mk">&#10003;</span>Serving as a source of energy or calories</li><li class="fopt"><span class="mk">C</span>Supplying the amino acids needed for protein synthesis</li><li class="fopt"><span class="mk">D</span>Supplying trace minerals such as zinc and selenium</li><li class="fopt"><span class="mk">E</span>Supplying immunoglobulins for infection resistance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Lipid emulsions &quot;serve two functions: they supply essential fatty acids and are a source of energy or calories.&quot; Linoleic acid cannot be synthesized by the body and is needed to produce linolenic and arachidonic acid. Covering part of the caloric load with fat prevents hyperglycemia, hyperinsulinemia, and hyperosmolarity that occur when the entire caloric need is met by dextrose alone.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) are each true of a different component of the same bag — amino acid solutions and trace element additives — which is what makes them feel correct when the question is read as &quot;what is in parenteral nutrition&quot; instead of &quot;what do the lipids do.&quot; (E) is not a component of parenteral nutrition at all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">glucose complications of parenteral nutrition</span><span class="chip t2">hyperglycemia versus rebound hypoglycemia</span></div>
+<div class="stem">20. A total parenteral nutrition infusion has fallen behind schedule, and a nurse considers increasing the rate to deliver the ordered volume by the end of the shift. What is the concern with this action?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Accelerating the rate risks hyperglycemia, and the chapter directs that these infusion rates never be accelerated</li><li class="fopt"><span class="mk">B</span>Accelerating the rate risks rebound hypoglycemia from pancreatic overshoot</li><li class="fopt"><span class="mk">C</span>Accelerating the rate risks air embolism from turbulent flow</li><li class="fopt"><span class="mk">D</span>There is no concern, because the total daily volume is what matters</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter instructs, &quot;Never accelerate these infusion rates to increase plasma volume,&quot; and lists a high dextrose load and an accelerated rate as the causes of hyperglycemia. Because dextrose is a sugar, supplemental insulin may be given simultaneously with the infusion.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the right chapter and the wrong direction, and it pulls because both glucose complications belong to parenteral nutrition and students memorize the pair without the causes. Sort by cause first: too much sugar too fast raises glucose, and stopping abruptly drops it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">glucose complications of parenteral nutrition</span><span class="chip t2">hyperglycemia versus rebound hypoglycemia</span></div>
+<div class="stem">21. A patient's total parenteral nutrition bag runs dry and the replacement bag will not arrive from pharmacy for two hours. What is the nurse's priority concern and action?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hyperglycemia; hold all glucose sources until the new bag arrives</li><li class="fopt right"><span class="mk">&#10003;</span>Rebound hypoglycemia; check the blood glucose and infuse 5% to 10% glucose in the interim</li><li class="fopt"><span class="mk">C</span>Fluid volume overload; restrict oral intake until the infusion resumes</li><li class="fopt"><span class="mk">D</span>Phlebitis; discontinue the line and restart it at a new site</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If parenteral nutrition &quot;is discontinued abruptly, rebound hypoglycemia may result.&quot; The chapter's prevention rules are a gradual reduction of the intravenous feeding rate to allow the pancreas time to adapt, and, when the feeding must stop immediately, &quot;providing infusions of 5% to 10% glucose.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — a bag that has stopped is the opposite problem from a bag running too fast, yet hyperglycemia is the complication students associate with the therapy. Hanging plain saline or simply waiting for pharmacy is the same error in a different form: neither bridges the glucose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">glucose complications of parenteral nutrition</span><span class="chip t2">sorting the signs</span></div>
+<div class="stem">22. Shortly after a total parenteral nutrition infusion is interrupted, a patient becomes symptomatic. Which findings does the chapter attribute to hypoglycemia? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cold clammy skin</li><li class="fopt right"><span class="mk">&#10003;</span>Dizziness</li><li class="fopt right"><span class="mk">&#10003;</span>Tachycardia</li><li class="fopt"><span class="mk">D</span>Polyuria</li><li class="fopt"><span class="mk">E</span>Polydipsia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists hypoglycemia as &quot;cold clammy skin, dizziness, tachycardia, and tingling of the extremities,&quot; with the patient teaching section adding restlessness, nervousness, and fainting. Polyuria and polydipsia appear on the hyperglycemia list.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) and (E) are the directional inversions this pair generates — both are glucose symptoms in this chapter, just from the opposite complication, and the shared &quot;poly-&quot; prefix makes them read as generic glucose findings rather than as hyperglycemia findings.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">glucose complications of parenteral nutrition</span><span class="chip t2">sorting the signs</span></div>
+<div class="stem">23. A patient receiving total parenteral nutrition with a high dextrose concentration reports headache and excessive thirst, is voiding large volumes, and appears dehydrated. Which complication do these findings indicate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rebound hypoglycemia from a slowed infusion</li><li class="fopt right"><span class="mk">&#10003;</span>Hyperglycemia from the dextrose load</li><li class="fopt"><span class="mk">C</span>Fluid volume overload from the infusion volume</li><li class="fopt"><span class="mk">D</span>Essential fatty acid deficiency</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hyperglycemia in parenteral nutrition presents as &quot;polydipsia, polyuria, polyphagia, headache, dehydration, nausea, vomiting, and weakness,&quot; and its causes in this chapter are a high dextrose concentration and an accelerated infusion rate.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) pulls because a large-volume infusion is running and the patient's fluid status is abnormal, but fluid overload presents as weak pulse, tachycardia, confusion, decreased urine output, and pitting edema. Urine output is the discriminator: it rises with hyperglycemia and falls with overload.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tube feeding administration and nutrient-drug interactions</span><span class="chip t2">verifying placement and residual</span></div>
+<div class="stem">24. Before administering a scheduled tube feeding, a nurse aspirates gastric contents and tests the pH, which reads 5.0. What does this finding indicate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The tube is correctly positioned within the stomach</li><li class="fopt"><span class="mk">B</span>The tube has migrated into the respiratory tract</li><li class="fopt"><span class="mk">C</span>The tube tip has advanced into the jejunum</li><li class="fopt"><span class="mk">D</span>The reading is inconclusive and the feeding may proceed regardless</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs the nurse to test the pH of the aspirate: &quot;With a pH of 5.5 or lower, the tube is in the correct position (within the stomach).&quot; Placement may also be confirmed by x-ray. Newer small-bore tubes of 5 to 10 French make checking for gastric aspiration more difficult.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) pulls when a student remembers only that x-ray is the definitive check and treats every bedside method as unusable. The chapter gives an explicit numeric threshold, and a reading below it is an actionable confirmation, not a guess.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tube feeding administration and nutrient-drug interactions</span><span class="chip t2">verifying placement and residual</span></div>
+<div class="stem">25. A patient is receiving continuous tube feedings at 50 mL per hour. The nurse checks the gastric residual and obtains 140 mL. What is the correct action?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Discard the aspirate and continue the feeding at the ordered rate</li><li class="fopt right"><span class="mk">&#10003;</span>Return the aspirate, hold the feeding, contact the prescriber, and keep the head of the bed elevated</li><li class="fopt"><span class="mk">C</span>Return the aspirate and increase the rate to compensate for the delay</li><li class="fopt"><span class="mk">D</span>Discard the aspirate and lower the head of the bed to promote gastric emptying</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>For continuous feedings, a residual of &quot;more than the volume delivered over the previous 2 hours&quot; calls for returning the aspirate, holding the feeding, contacting the prescriber, and keeping the head of the bed elevated at least 30 to 45 degrees. At 50 mL per hour the two-hour volume is 100 mL, so 140 mL exceeds the threshold. For intermittent bolus feedings the threshold is instead more than 50% of the volume previously infused.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the positioning rule, and it pulls because lying flat sounds like it would help a stomach empty; head-of-bed elevation is what protects against aspiration and it matters more with nasogastric than with gastrostomy feedings. Discarding the aspirate also discards the patient's own electrolytes and feeding.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tube feeding administration and nutrient-drug interactions</span><span class="chip t2">separating drugs from feedings</span></div>
+<div class="stem">26. A patient on continuous nasogastric feedings of a polymeric formula is ordered phenytoin. Which action reflects the chapter's interaction rule?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hold the tube feeding for at least 2 hours before and after the phenytoin dose</li><li class="fopt"><span class="mk">B</span>Give the phenytoin 2 hours before or after the feeding, but do not interrupt the feeding</li><li class="fopt"><span class="mk">C</span>Mix the phenytoin directly into the feeding bag for even delivery</li><li class="fopt"><span class="mk">D</span>No separation is needed, because feedings affect only antibiotic absorption</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Tube feedings &quot;can also reduce the absorption of phenytoin ... which may result in seizures,&quot; and the chapter recommends that &quot;tube feedings be held for at least 2 hours before and after&quot; the dose. The chapter also notes that the interaction is considered &quot;more theoretical than actual&quot; by some, so some institutions ignore it while others continue to hold the feedings, and intravenous phenytoin is often required when continuous feedings are necessary.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) uses the right interval on the wrong object. Two separation rules in this chapter share the same two hours, and the thing being moved is what differs: for phenytoin, the feeding is held around the dose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tube feeding administration and nutrient-drug interactions</span><span class="chip t2">separating drugs from feedings</span></div>
+<div class="stem">27. A patient receiving intermittent tube feedings is ordered oral ciprofloxacin and doxycycline. How should these doses be timed relative to the feedings?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hold the feeding for 2 hours before and after each dose, as with phenytoin</li><li class="fopt right"><span class="mk">&#10003;</span>Give each drug at least 2 hours before or after the tube feedings</li><li class="fopt"><span class="mk">C</span>Give each drug with the feeding to reduce gastric irritation</li><li class="fopt"><span class="mk">D</span>No separation is needed, because chemical inactivation affects only intravenous drugs</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The absorption of &quot;tetracyclines and quinolones is decreased, as a result of chemical inactivation,&quot; and these drugs &quot;must be given at least 2 hours before or after tube feedings.&quot; The Clinical Pearl states that enteral feedings interact with quinolone and tetracycline antibiotics and phenytoin and need to be separated by 2 hours.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — same interval, wrong object moved. For these antibiotics the drug is scheduled around the feeding, while for phenytoin the feeding is held around the drug.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tube feeding administration and nutrient-drug interactions</span><span class="chip t2">delivery problems</span></div>
+<div class="stem">28. A patient receiving intermittent bolus gastric feedings develops nausea, sweating, palpitations, and diarrhea shortly after a bolus is delivered quickly. Which complication does this presentation indicate, and what change is needed?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Aspiration; raise the head of the bed and suction the airway</li><li class="fopt right"><span class="mk">&#10003;</span>Dumping syndrome; slow the rate of delivery</li><li class="fopt"><span class="mk">C</span>Hypoglycemia; infuse 5% to 10% glucose</li><li class="fopt"><span class="mk">D</span>Fluid volume overload; restrict fluids and notify the prescriber</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Dumping syndrome is &quot;a complex reaction to the rapid entry of concentrated nutrients into the jejunum,&quot; producing &quot;nausea, weakness, sweating, palpitations, syncope, sensations of warmth, and diarrhea,&quot; and it occurs with enteral feedings administered too rapidly as well as after partial gastrectomy. The chapter states that rapid feeding or bolus doses can result in dumping syndrome.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) pulls because both complications come from how the feeding is delivered rather than what is in it, so students pick the more feared one. Sort by the trigger: too fast produces dumping, while a high residual, a flat bed, or a compromised gag reflex produces aspiration.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"enteral versus parenteral nutritional support","subtopic":"does the gastrointestinal tract work","stem":"A patient three days after an ischemic stroke has an intact and fully functioning gastrointestinal tract but fails a swallow screen and cannot safely take food by mouth. Which form of nutritional support does the chapter identify as preferred for this patient?","options":["Enteral nutrition delivered through a feeding tube","Peripheral parenteral nutrition, because it avoids the risk of aspiration","Central total parenteral nutrition through a subclavian catheter","No nutritional support until the swallow study is repeated"],"correct":[0],"sata":false,"why":"Enteral nutrition is \"the preferred route of administration of nutritional supplements\" and is used \"when the patient has a functioning gastrointestinal tract\"; tube delivery exists precisely for patients with depressed consciousness, altered anatomy, or abnormal peristalsis who cannot eat. A working gut plus an inability to eat is the definition case for tube feeding.","trap":"(B) pulls because the stem names a swallowing problem and a vein seems to route around it, but parenteral nutrition is reserved for when oral or enteral support is impossible or when absorptive capacity is insufficient. Neither is true here.","k":"1xaxs6b1m8dqul"},{"topic":"enteral versus parenteral nutritional support","subtopic":"does the gastrointestinal tract work","stem":"A patient with short bowel syndrome has been on an elemental formula for two weeks and continues to lose weight, and the team documents that the remaining absorptive capacity is not sufficient to meet nutrient needs. Which form of support is now indicated?","options":["Add a modular protein product to the elemental formula","Change to a polymeric formula to reduce osmolarity","Parenteral nutrition, which bypasses the gastrointestinal system entirely","Continue enteral feeding, because enteral is always preferred"],"correct":[2],"sata":false,"why":"Parenteral nutrition is used \"only when oral or enteral support is impossible or when the gastrointestinal absorptive or functional capacity is not sufficient,\" and it \"bypasses the entire gastrointestinal system, which eliminates the need for absorption, metabolism, and excretion.\" Documented insufficient absorptive capacity is the stated trigger.","trap":"(D) is the mirror error of the previous item — the enteral preference is conditional on a gut that can absorb, not absolute, and treating it as absolute is what keeps a malabsorbing patient undernourished.","k":"1hfg4fenvbzqw"},{"topic":"enteral versus parenteral nutritional support","subtopic":"naming and scope of support","stem":"A nursing student charts that a patient on total parenteral nutrition \"developed hyperalimentation\" after two days of therapy. Which correction should the nurse make?","options":["Hyperalimentation is an older term for parenteral nutrition itself, not a complication of it","Hyperalimentation means overfeeding and should be documented as a caloric excess","Hyperalimentation refers to enteral feeding delivered faster than the ordered rate","Hyperalimentation is the correct term for the metabolic response to a high dextrose load"],"correct":[0],"sata":false,"why":"The key terms box defines hyperalimentation as \"an older term for parenteral nutrition; its use is now discouraged because it may be misinterpreted to mean overfeeding,\" and states that the process is now referred to as total parenteral nutrition.","trap":"(B) is the reflex pick because the prefix hyper- reads as excess, which is exactly the misreading the book says caused the term to be retired. The word never named a complication; it named the therapy.","k":"1auqwdaa47d30"},{"topic":"enteral versus parenteral nutritional support","subtopic":"naming and scope of support","stem":"A patient who eats poorly is started on an oral polymeric supplement between meals, and a student concludes that the patient is now on enteral nutrition and therefore no longer needs to be assessed for oral intake. Which statement corrects the student?","options":["Oral supplements are not enteral nutrition, because no feeding tube is involved","Enteral nutrition may supplement an oral diet or be used alone to meet all nutrient needs, so how much of the need it covers is a separate question from the route","Any enteral formulation by definition supplies the patient's total nutrient requirement","Once a supplement is ordered, oral intake no longer contributes to the nutritional plan"],"correct":[1],"sata":false,"why":"Enteral nutrition can \"supplement an oral diet ... or be used alone to meet all of the patient's nutrient needs,\" and the oral route is itself one of the six enteral routes and the most common and least invasive. Route and completeness are independent axes.","trap":"(C) is the swap distractors are built on — students trade where the nutrition goes for how much of the need it covers. The same swap runs through Table 55.2, where peripheral parenteral nutrition is supplemental and central is total, even though both are parenteral.","k":"ig056anvxwgg"},{"topic":"enteral versus parenteral nutritional support","subtopic":"naming and scope of support","stem":"A nurse is reviewing the complications the chapter attributes to enteral feeding. Which of the following belong to enteral nutrition rather than to parenteral nutrition? Select all that apply.","options":["Gastrointestinal intolerance manifesting as diarrhea","Aspiration","Air embolism","Dumping syndrome","Rebound hypoglycemia"],"correct":[0,1,3],"sata":true,"why":"The key points list the enteral complications as \"hyperglycemia, dumping syndrome, and aspiration,\" and diarrhea is named as the most common adverse effect of enteral feeding. Air embolism and rebound hypoglycemia appear on the parenteral list.","trap":"(E) is the option that trips people, because hypoglycemia sounds like a feeding problem in general; the chapter attaches it specifically to abrupt discontinuation of parenteral nutrition. (C) is the giveaway parenteral option, since an air embolism requires a vascular line.","k":"xx49r5wfoxr7"},{"topic":"enteral tube routes and formula selection","subtopic":"nasal routes versus surgical ostomies","stem":"An order reads \"insert nasogastric tube for feeding.\" A new nurse asks whether the surgical team needs to be notified. Which description of the tube is accurate?","options":["A feeding tube placed from the nose to the stomach, requiring no surgery","A feeding tube surgically inserted directly into the stomach","A feeding tube placed from the nose to the duodenum","A feeding tube surgically inserted into the esophagus"],"correct":[0],"sata":false,"why":"Table 55.1 defines the nasogastric route as a \"feeding tube placed from the nose to the stomach,\" and a feeding tube is used in five of the six enteral routes. Only the ostomy routes are surgically created.","trap":"(B) is the reflex pick because both names end in the same organ and the word \"gastric\" carries all the attention; the prefix is what decides whether a surgeon is involved. Naso- means through the nose with no surgery, and -ostomy means a surgically created opening.","k":"5mor0i1omohp4"},{"topic":"enteral tube routes and formula selection","subtopic":"nasal routes versus surgical ostomies","stem":"A patient with a history of gastric outlet obstruction is scheduled for placement of a feeding tube that will require an operative procedure and will deliver formula directly into the jejunum. Which route is being described?","options":["Nasojejunal","Jejunostomy","Nasoduodenal","Esophagostomy"],"correct":[1],"sata":false,"why":"Table 55.1 defines jejunostomy as a \"feeding tube surgically inserted into the jejunum,\" while the nasojejunal route reaches the same organ from the nose without surgery. The second half of each name gives the destination organ and the first half gives the method.","trap":"(A) is the mirror error of the previous item — it names the right organ by the wrong method. Reading only the organ half of these words is what makes all four cells of Table 55.1 interchangeable to a student.","k":"w0xs1evo1yew"},{"topic":"enteral tube routes and formula selection","subtopic":"choosing among the formula groups","stem":"A postoperative patient with a fully functional gastrointestinal tract and no specialized nutrient requirements needs tube feeding for a few weeks. Which formulation does the chapter state is preferred, and why?","options":["An elemental formula, because predigested nutrients are gentler on the gut","A polymeric formula, because it most closely resembles normal dietary intake and is less hyperosmolar than elemental formulas","A modular formula, because single nutrients can be titrated individually","An altered amino acid formula, because surgery raises amino acid requirements"],"correct":[1],"sata":false,"why":"Polymeric formulations contain complex nutrients — proteins, carbohydrates, and fat — and are \"preferred over elemental formulations for patients with a fully functional gastrointestinal tract and few specialized nutrient requirements\" because they most closely resemble normal dietary intake and are \"less hyperosmolar than elemental formulations and therefore cause fewer gastrointestinal problems.\"","trap":"(A) is the intuitive inversion: predigested sounds gentler, so students reach for elemental whenever the gut is mentioned at all. The chapter puts elemental where digestion is impaired and polymeric where it is intact, and the hyperosmolarity runs the other way from the intuition.","k":"1jdd9se1jnf8bo"},{"topic":"enteral tube routes and formula selection","subtopic":"choosing among the formula groups","stem":"A patient with radiation enteritis and documented malabsorption cannot tolerate a standard tube feeding. Which formulation matches this patient's problem?","options":["Polymeric, containing complex proteins, carbohydrates, and fat","Impaired glucose tolerance formula, containing protein, carbohydrate, fat, sodium, and potassium","Elemental, containing dipeptides, tripeptides, or crystalline amino acids and requiring minimal digestion with minimal residue","Infant formulation used as sole or supplemental intake"],"correct":[2],"sata":false,"why":"Box 55.1 lists elemental formulations as requiring \"minimal digestion\" and leaving \"minimal residue,\" indicated for malabsorption, partial bowel obstruction, irritable bowel disease, radiation enteritis, bowel fistula, and short bowel syndrome.","trap":"(A) is the mirror error of the previous item — polymeric is correct only when digestion is intact, and a stem naming malabsorption has already ruled that out. Matching the formula to the gut's remaining capacity is the whole decision.","k":"1kvk25r4r6ud5"},{"topic":"enteral tube routes and formula selection","subtopic":"choosing among the formula groups","stem":"A family member asks whether the patient could be maintained entirely on the protein supplement listed on the plan of care as a modular product. Which response is accurate?","options":["Modular products are single-nutrient formulas added to an elemental or polymeric formulation, not a complete feeding","Modular products contain all required macronutrients and can serve as sole nutrition","Modular products are indicated only for genetic metabolic enzyme deficiencies","Modular products must be given intravenously to be complete"],"correct":[0],"sata":false,"why":"Box 55.1 describes modular formulations as \"single-nutrient formulas\" of protein, carbohydrate, or fat that are \"added to a monomeric or polymeric formulation to provide a more individualized nutrient formulation.\" Carbohydrate, fat, and protein modulars are all named as additives.","trap":"(B) is a true statement about complete formulations attached to the wrong product. A modular is real nutrition, which is what makes the option feel defensible, but by itself it supplies one macronutrient and leaves the rest of the requirement unmet.","k":"1jnk3h8w646j"},{"topic":"peripheral versus central parenteral nutrition","subtopic":"matching the patient to the vein","stem":"A patient is expected to need parenteral support for about 10 days after abdominal surgery, has modest nutritional needs of roughly 1600 kcal per day, and tolerates large fluid volumes without difficulty. Which form of parenteral nutrition fits the chapter's criteria?","options":["Peripheral parenteral nutrition, using a dextrose concentration below 10%","Central total parenteral nutrition, using a dextrose concentration of 25%","Peripheral parenteral nutrition, using a dextrose concentration of 20%","Central total parenteral nutrition, because any therapy beyond 7 days must be central"],"correct":[0],"sata":false,"why":"Table 55.2 sets peripheral parenteral nutrition at fewer than 14 days, dextrose less than 10%, and fewer than 2000 kcal per day, and requires that fluid tolerance \"must be high.\" The chapter also describes it as \"a temporary means (less than 2 weeks)\" for patients without large nutritional needs.","trap":"(C) pairs the right vein with a central-line dextrose concentration, and it pulls because the stem's duration and calories both fit peripherally, so students stop reading before the concentration. Dextrose above 10% in a peripheral vein scleroses the vein and is the setup for phlebitis.","k":"san8ek4hux9m"},{"topic":"peripheral versus central parenteral nutrition","subtopic":"matching the patient to the vein","stem":"A patient with severe burns requires about 3000 kcal per day, a dextrose concentration of 25%, and support expected to last several weeks, possibly continuing at home. Which route is indicated?","options":["Peripheral parenteral nutrition, because the therapy can be started immediately","Central total parenteral nutrition through a large central vein such as the subclavian or internal jugular","Peripheral parenteral nutrition, because burns raise fluid tolerance","Enteral feeding by nasogastric tube regardless of gastrointestinal status"],"correct":[1],"sata":false,"why":"Central total parenteral nutrition uses \"a large central vein ... usually the subclavian or internal jugular\" for a \"prolonged period, usually longer than 7 to 10 days,\" carries dextrose of 10% to 35% and more than 2000 kcal per day, and can be continued at home. Large nutritional requirements from metabolic stress or hypermetabolism are a stated indication.","trap":"(A) is the mirror error of the previous item — every one of the three numbers in this stem violates a peripheral limit, and picking the peripheral route because it is quicker to start is the reflex when a patient looks unstable.","k":"10qpyifntlcgd"},{"topic":"peripheral versus central parenteral nutrition","subtopic":"matching the patient to the vein","stem":"A student states that the way to tell peripheral parenteral nutrition from central total parenteral nutrition is that only the central solution is hyperosmolar. Which correction is accurate?","options":["Only the peripheral solution is hyperosmolar, which is why it causes phlebitis","Both are hyperosmolar at 600 to 900 mOsm/L, so osmolarity does not distinguish them","Neither solution is hyperosmolar once lipids are added","Osmolarity is not reported for parenteral solutions"],"correct":[1],"sata":false,"why":"Table 55.2 gives the identical osmolarity range, hyperosmolar at 600 to 900 mOsm/L, in both columns. The chapter also notes that the components of the two solutions \"are the same. The difference lies in the concentrations and amounts.\" The reason central access is used is \"the hyperosmolarity of the substances used and the need for dilution provided by a larger-diameter vein.\"","trap":"(A) inverts a row that is not a difference at all, and it pulls because phlebitis really is a peripheral problem, so students reason backwards from the complication to a difference the table does not state. Osmolarity is the one row of Table 55.2 that cannot discriminate.","k":"q9457d11dozwv"},{"topic":"peripheral versus central parenteral nutrition","subtopic":"matching the patient to the vein","stem":"A patient with heart failure who cannot tolerate large fluid volumes needs parenteral nutrition. A new nurse suggests the peripheral route because it is less invasive. Which reasoning should the nurse apply instead?","options":["Peripheral is correct, because peripheral solutions are given in smaller volumes","Peripheral is correct, because a central line would worsen fluid overload","Central is correct, because peripheral dextrose is capped below 10% to avoid sclerosing the vein, so large fluid volumes are required to deliver the calories","Either route is acceptable, because fluid volume is determined only by the prescriber's order"],"correct":[2],"sata":false,"why":"Table 55.2 states that peripheral fluid tolerance \"must be high\" while central \"can be fluid-restricted,\" and the chapter explains why: peripheral dextrose is \"generally less than 10%, to avoid sclerosing the vein. Thus large volumes are needed,\" and patients \"with renal failure or heart failure, cannot tolerate large fluid volumes.\"","trap":"(A) is the classic miss, because the smaller vein suggests smaller volumes and the fluid rule actually runs the opposite way. Heart failure and renal failure push a patient toward central access, not away from it.","k":"1mhd4fx6ufldz"},{"topic":"peripheral versus central parenteral nutrition","subtopic":"matching the patient to the vein","stem":"A patient receiving peripheral parenteral nutrition reports increasing pain at the infusion site. The site looks unremarkable, vital signs are stable, and the hanging bag reads 20% dextrose. What is the nurse's priority action?","options":["Stop the infusion","Apply a warm compress and continue the infusion at a slower rate","Document the finding and reassess at the end of the shift","Draw a blood glucose level before taking any other action"],"correct":[0],"sata":false,"why":"The chapter states that \"the most devastating adverse effect of PPN is phlebitis,\" which \"can lead to the loss of a limb, although this is rare,\" and peripheral dextrose is held below 10% precisely to prevent it. A 20% concentration is a central-line strength running in a peripheral vein, so the solution is causing the injury and comes off first.","trap":"(B) pulls because a stable patient with a normal-looking site does not feel like an emergency, and slowing an infusion feels like a reasonable middle step. When the infusing solution is itself the cause, slowing it continues the injury; the only situation that outranks stopping the line is hemodynamic instability, which this stem rules out.","k":"1ahl6oh14hvsuz"},{"topic":"parenteral nutrition components and amino acid classes","subtopic":"essential, semiessential, and nonessential","stem":"A parenteral formulation for an infant is being reviewed, and the pharmacist notes that arginine and histidine must be supplied even though an adult would not require them from the diet. How should the nurse classify these two amino acids?","options":["Essential, because the body cannot manufacture them at all","Semiessential, because the body produces them but not in sufficient amounts during rapid growth in infancy and childhood","Nonessential, because the body produces them without dietary help at every age","Conditionally toxic, because they accumulate in infants"],"correct":[1],"sata":false,"why":"Box 55.3 lists arginine and histidine as the two semiessential amino acids, and the chapter states they \"are not manufactured by the body in large enough quantities during rapid growth periods such as infancy or childhood.\" Semiessential amino acids are defined as those the body can produce but that infants and children cannot produce in sufficient amounts.","trap":"(A) is the promotion error, and it pulls because the stem says the infant must be supplied with them, which sounds like the definition of essential. The distinction is that the body makes these two at all, just not fast enough during growth.","k":"17ed0j7fgee2t"},{"topic":"parenteral nutrition components and amino acid classes","subtopic":"essential, semiessential, and nonessential","stem":"A nurse is teaching about the eight amino acids listed as essential, including leucine and tryptophan. Which statement correctly explains what makes them essential?","options":["They cannot be manufactured by the body and must come from intake","They are produced by the body but not in sufficient amounts during infancy","They are the amino acids the body produces without extracting them from dietary intake","They are the only amino acids that participate in protein synthesis"],"correct":[0],"sata":false,"why":"Essential amino acids are defined as \"those amino acids that cannot be manufactured by the body,\" and Box 55.3 lists eight of them: isoleucine, leucine, lysine, methionine, phenylalanine, threonine, tryptophan, and valine. The body is able to manufacture \"all but eight.\"","trap":"(C) is the mirror error of the previous item, stating the nonessential definition under the essential label; the two definitions differ only in whether the body can make the compound. Nonessential also does not mean unnecessary, only that it is not dietarily required.","k":"1tr625g1uvetn2"},{"topic":"parenteral nutrition components and amino acid classes","subtopic":"what the components are for","stem":"A patient with severe trauma is receiving amino acids as part of total parenteral nutrition. Which statement describes the intended metabolic effect?","options":["They promote catabolism, liberating energy by breaking down complex substances","They promote anabolism, supporting protein synthesis and reducing the breakdown of proteins","They replace dextrose as the greatest source of calories in the solution","They eliminate the need for lipid emulsion in the solution"],"correct":[1],"sata":false,"why":"The chapter states that the primary role of amino acids is \"protein synthesis, or anabolism,\" and that they \"reduce the breakdown of proteins (catabolism).\" Anabolism is defined as the conversion of simple substances into more complex compounds, or tissue building.","trap":"(A) inverts the pair, and it pulls because an \"accelerated catabolic status\" is one of the chapter's own indications for supplementation, so the word appears in the same context. Catabolism is the problem being treated, not the goal of the therapy; ana- builds up and cata- tears down.","k":"1gi9ndwru83h6"},{"topic":"parenteral nutrition components and amino acid classes","subtopic":"what the components are for","stem":"A nurse is explaining the purpose of the intravenous fat emulsion hanging alongside a patient's total parenteral nutrition. Which functions does the chapter assign to lipid emulsions? Select all that apply.","options":["Supplying essential fatty acids the body cannot synthesize","Serving as a source of energy or calories","Supplying the amino acids needed for protein synthesis","Supplying trace minerals such as zinc and selenium","Supplying immunoglobulins for infection resistance"],"correct":[0,1],"sata":true,"why":"Lipid emulsions \"serve two functions: they supply essential fatty acids and are a source of energy or calories.\" Linoleic acid cannot be synthesized by the body and is needed to produce linolenic and arachidonic acid. Covering part of the caloric load with fat prevents hyperglycemia, hyperinsulinemia, and hyperosmolarity that occur when the entire caloric need is met by dextrose alone.","trap":"(C) and (D) are each true of a different component of the same bag — amino acid solutions and trace element additives — which is what makes them feel correct when the question is read as \"what is in parenteral nutrition\" instead of \"what do the lipids do.\" (E) is not a component of parenteral nutrition at all.","k":"1tnpo591y15dh3"},{"topic":"glucose complications of parenteral nutrition","subtopic":"hyperglycemia versus rebound hypoglycemia","stem":"A total parenteral nutrition infusion has fallen behind schedule, and a nurse considers increasing the rate to deliver the ordered volume by the end of the shift. What is the concern with this action?","options":["Accelerating the rate risks hyperglycemia, and the chapter directs that these infusion rates never be accelerated","Accelerating the rate risks rebound hypoglycemia from pancreatic overshoot","Accelerating the rate risks air embolism from turbulent flow","There is no concern, because the total daily volume is what matters"],"correct":[0],"sata":false,"why":"The chapter instructs, \"Never accelerate these infusion rates to increase plasma volume,\" and lists a high dextrose load and an accelerated rate as the causes of hyperglycemia. Because dextrose is a sugar, supplemental insulin may be given simultaneously with the infusion.","trap":"(B) names the right chapter and the wrong direction, and it pulls because both glucose complications belong to parenteral nutrition and students memorize the pair without the causes. Sort by cause first: too much sugar too fast raises glucose, and stopping abruptly drops it.","k":"rf5j3hk4vyrz"},{"topic":"glucose complications of parenteral nutrition","subtopic":"hyperglycemia versus rebound hypoglycemia","stem":"A patient's total parenteral nutrition bag runs dry and the replacement bag will not arrive from pharmacy for two hours. What is the nurse's priority concern and action?","options":["Hyperglycemia; hold all glucose sources until the new bag arrives","Rebound hypoglycemia; check the blood glucose and infuse 5% to 10% glucose in the interim","Fluid volume overload; restrict oral intake until the infusion resumes","Phlebitis; discontinue the line and restart it at a new site"],"correct":[1],"sata":false,"why":"If parenteral nutrition \"is discontinued abruptly, rebound hypoglycemia may result.\" The chapter's prevention rules are a gradual reduction of the intravenous feeding rate to allow the pancreas time to adapt, and, when the feeding must stop immediately, \"providing infusions of 5% to 10% glucose.\"","trap":"(A) is the mirror error of the previous item — a bag that has stopped is the opposite problem from a bag running too fast, yet hyperglycemia is the complication students associate with the therapy. Hanging plain saline or simply waiting for pharmacy is the same error in a different form: neither bridges the glucose.","k":"igxit8j0b3ry"},{"topic":"glucose complications of parenteral nutrition","subtopic":"sorting the signs","stem":"Shortly after a total parenteral nutrition infusion is interrupted, a patient becomes symptomatic. Which findings does the chapter attribute to hypoglycemia? Select all that apply.","options":["Cold clammy skin","Dizziness","Tachycardia","Polyuria","Polydipsia"],"correct":[0,1,2],"sata":true,"why":"The chapter lists hypoglycemia as \"cold clammy skin, dizziness, tachycardia, and tingling of the extremities,\" with the patient teaching section adding restlessness, nervousness, and fainting. Polyuria and polydipsia appear on the hyperglycemia list.","trap":"(D) and (E) are the directional inversions this pair generates — both are glucose symptoms in this chapter, just from the opposite complication, and the shared \"poly-\" prefix makes them read as generic glucose findings rather than as hyperglycemia findings.","k":"1sqhxmuarex8g"},{"topic":"glucose complications of parenteral nutrition","subtopic":"sorting the signs","stem":"A patient receiving total parenteral nutrition with a high dextrose concentration reports headache and excessive thirst, is voiding large volumes, and appears dehydrated. Which complication do these findings indicate?","options":["Rebound hypoglycemia from a slowed infusion","Hyperglycemia from the dextrose load","Fluid volume overload from the infusion volume","Essential fatty acid deficiency"],"correct":[1],"sata":false,"why":"Hyperglycemia in parenteral nutrition presents as \"polydipsia, polyuria, polyphagia, headache, dehydration, nausea, vomiting, and weakness,\" and its causes in this chapter are a high dextrose concentration and an accelerated infusion rate.","trap":"(C) pulls because a large-volume infusion is running and the patient's fluid status is abnormal, but fluid overload presents as weak pulse, tachycardia, confusion, decreased urine output, and pitting edema. Urine output is the discriminator: it rises with hyperglycemia and falls with overload.","k":"q3x2qm17pc178"},{"topic":"tube feeding administration and nutrient-drug interactions","subtopic":"verifying placement and residual","stem":"Before administering a scheduled tube feeding, a nurse aspirates gastric contents and tests the pH, which reads 5.0. What does this finding indicate?","options":["The tube is correctly positioned within the stomach","The tube has migrated into the respiratory tract","The tube tip has advanced into the jejunum","The reading is inconclusive and the feeding may proceed regardless"],"correct":[0],"sata":false,"why":"The chapter directs the nurse to test the pH of the aspirate: \"With a pH of 5.5 or lower, the tube is in the correct position (within the stomach).\" Placement may also be confirmed by x-ray. Newer small-bore tubes of 5 to 10 French make checking for gastric aspiration more difficult.","trap":"(D) pulls when a student remembers only that x-ray is the definitive check and treats every bedside method as unusable. The chapter gives an explicit numeric threshold, and a reading below it is an actionable confirmation, not a guess.","k":"1lq6xrc17nk1ay"},{"topic":"tube feeding administration and nutrient-drug interactions","subtopic":"verifying placement and residual","stem":"A patient is receiving continuous tube feedings at 50 mL per hour. The nurse checks the gastric residual and obtains 140 mL. What is the correct action?","options":["Discard the aspirate and continue the feeding at the ordered rate","Return the aspirate, hold the feeding, contact the prescriber, and keep the head of the bed elevated","Return the aspirate and increase the rate to compensate for the delay","Discard the aspirate and lower the head of the bed to promote gastric emptying"],"correct":[1],"sata":false,"why":"For continuous feedings, a residual of \"more than the volume delivered over the previous 2 hours\" calls for returning the aspirate, holding the feeding, contacting the prescriber, and keeping the head of the bed elevated at least 30 to 45 degrees. At 50 mL per hour the two-hour volume is 100 mL, so 140 mL exceeds the threshold. For intermittent bolus feedings the threshold is instead more than 50% of the volume previously infused.","trap":"(D) inverts the positioning rule, and it pulls because lying flat sounds like it would help a stomach empty; head-of-bed elevation is what protects against aspiration and it matters more with nasogastric than with gastrostomy feedings. Discarding the aspirate also discards the patient's own electrolytes and feeding.","k":"wi0h835dsk0p"},{"topic":"tube feeding administration and nutrient-drug interactions","subtopic":"separating drugs from feedings","stem":"A patient on continuous nasogastric feedings of a polymeric formula is ordered phenytoin. Which action reflects the chapter's interaction rule?","options":["Hold the tube feeding for at least 2 hours before and after the phenytoin dose","Give the phenytoin 2 hours before or after the feeding, but do not interrupt the feeding","Mix the phenytoin directly into the feeding bag for even delivery","No separation is needed, because feedings affect only antibiotic absorption"],"correct":[0],"sata":false,"why":"Tube feedings \"can also reduce the absorption of phenytoin ... which may result in seizures,\" and the chapter recommends that \"tube feedings be held for at least 2 hours before and after\" the dose. The chapter also notes that the interaction is considered \"more theoretical than actual\" by some, so some institutions ignore it while others continue to hold the feedings, and intravenous phenytoin is often required when continuous feedings are necessary.","trap":"(B) uses the right interval on the wrong object. Two separation rules in this chapter share the same two hours, and the thing being moved is what differs: for phenytoin, the feeding is held around the dose.","k":"abljv1182rvan"},{"topic":"tube feeding administration and nutrient-drug interactions","subtopic":"separating drugs from feedings","stem":"A patient receiving intermittent tube feedings is ordered oral ciprofloxacin and doxycycline. How should these doses be timed relative to the feedings?","options":["Hold the feeding for 2 hours before and after each dose, as with phenytoin","Give each drug at least 2 hours before or after the tube feedings","Give each drug with the feeding to reduce gastric irritation","No separation is needed, because chemical inactivation affects only intravenous drugs"],"correct":[1],"sata":false,"why":"The absorption of \"tetracyclines and quinolones is decreased, as a result of chemical inactivation,\" and these drugs \"must be given at least 2 hours before or after tube feedings.\" The Clinical Pearl states that enteral feedings interact with quinolone and tetracycline antibiotics and phenytoin and need to be separated by 2 hours.","trap":"(A) is the mirror error of the previous item — same interval, wrong object moved. For these antibiotics the drug is scheduled around the feeding, while for phenytoin the feeding is held around the drug.","k":"exxyn2eu1100"},{"topic":"tube feeding administration and nutrient-drug interactions","subtopic":"delivery problems","stem":"A patient receiving intermittent bolus gastric feedings develops nausea, sweating, palpitations, and diarrhea shortly after a bolus is delivered quickly. Which complication does this presentation indicate, and what change is needed?","options":["Aspiration; raise the head of the bed and suction the airway","Dumping syndrome; slow the rate of delivery","Hypoglycemia; infuse 5% to 10% glucose","Fluid volume overload; restrict fluids and notify the prescriber"],"correct":[1],"sata":false,"why":"Dumping syndrome is \"a complex reaction to the rapid entry of concentrated nutrients into the jejunum,\" producing \"nausea, weakness, sweating, palpitations, syncope, sensations of warmth, and diarrhea,\" and it occurs with enteral feedings administered too rapidly as well as after partial gastrectomy. The chapter states that rapid feeding or bolus doses can result in dumping syndrome.","trap":"(A) pulls because both complications come from how the feeding is delivered rather than what is in it, so students pick the more feared one. Sort by the trigger: too fast produces dumping, while a high residual, a flat bed, or a compromised gag reflex produces aspiration.","k":"5bvgmnnxq2l9"}];
+const TITLE = "Chapter 55 — NUR 3420/1 — Pharmacology I & II";
+const SUBTITLE = "Chapter 55";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur3420-3421-pharm";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

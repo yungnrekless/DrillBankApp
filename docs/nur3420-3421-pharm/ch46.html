@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 46 — NUR 3420/1 — Pharmacology I &amp; II</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 46</div><h1>Chapter 46 — NUR 3420/1 — Pharmacology I &amp; II</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">cell cycle-nonspecific antineoplastic classification</span><span class="chip t2">specific versus nonspecific action</span></div>
+<div class="stem">1. A patient starting cyclophosphamide says her sister's chemotherapy was described as working only while the cancer cells were in one particular part of their growth cycle, and asks how her own drug differs. Which explanation is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It has antineoplastic activity regardless of the phase of the cell cycle</li><li class="fopt"><span class="mk">B</span>It is active only during specific phases of the cell growth cycle</li><li class="fopt"><span class="mk">C</span>It is effective against any type of cancer rather than against one tumor type</li><li class="fopt"><span class="mk">D</span>It damages cancer cells while sparing normal cells</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Chapter 45 describes the antineoplastic drugs effective against cancer cells during specific phases in the cell growth cycle; in contrast, this chapter focuses on drugs that have antineoplastic activity regardless of the phase of the cell cycle (p. 726). Cyclophosphamide is one of the classic alkylating drugs in that second group.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) are the axis swaps that make &quot;nonspecific&quot; sound like breadth or safety, and they pull because both are things a patient would want to hear. The word describes the phase of the cell cycle only - not the tumor type, and not any selectivity for cancer cells over normal cells.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cell cycle-nonspecific antineoplastic classification</span><span class="chip t2">specific versus nonspecific action</span></div>
+<div class="stem">2. The same patient's sister is receiving a drug her oncologist called cell cycle-specific. What does that label establish about the sister's drug?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It acts only while cells are in particular phases of the cell growth cycle</li><li class="fopt"><span class="mk">B</span>It acts on cancer cells no matter which phase of the cycle they are in</li><li class="fopt"><span class="mk">C</span>It is specific to her tumor type and would not be used for a different cancer</li><li class="fopt"><span class="mk">D</span>It targets only cancer cells and leaves normal dividing cells untouched</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The specific/nonspecific split is what divides these two chapters: Chapter 45's drugs are effective during specific phases in the cell growth cycle, while this chapter's drugs work regardless of phase (p. 726).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error of the previous item, and it is easy to slide into right after &quot;nonspecific&quot; has just been explained. (C) repeats the tumor-type swap in the opposite direction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cell cycle-nonspecific antineoplastic classification</span><span class="chip t2">specific versus nonspecific action</span></div>
+<div class="stem">3. A student concludes that every drug discussed in the chapter on cell cycle-nonspecific drugs must itself be cell cycle-nonspecific. Which drug shows that conclusion to be wrong?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bleomycin, which the chapter flags as actually being a cell cycle-specific drug</li><li class="fopt"><span class="mk">B</span>Doxorubicin, which acts by intercalating into DNA</li><li class="fopt"><span class="mk">C</span>Cisplatin, which is a bifunctional alkylating drug</li><li class="fopt"><span class="mk">D</span>Busulfan, which is grouped with the miscellaneous alkylating drugs</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names &quot;bleomycin (which is actually a cell cycle-specific drug)&quot; (p. 729), and hydroxyurea likewise works in the S and G1 phases and appears here only because it is included as a miscellaneous drug. Chapter membership is not classification.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex pick, because &quot;miscellaneous&quot; reads as &quot;the exception&quot; - but busulfan is an alkylating drug and nonspecific like the rest of its group; miscellaneous is only a subcategory heading. The chapter marks its real exception in a parenthesis around bleomycin.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cell cycle-nonspecific antineoplastic classification</span><span class="chip t2">specific versus nonspecific action</span></div>
+<div class="stem">4. A nurse is grouping the drug classes covered in the chapter on cell cycle-nonspecific antineoplastics. Which classes does the chapter name as the two broad classes of cell cycle-nonspecific cancer drugs? (Select all that apply.)</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Alkylating drugs</li><li class="fopt right"><span class="mk">&#10003;</span>Cytotoxic antibiotics</li><li class="fopt"><span class="mk">C</span>Antimetabolites</li><li class="fopt"><span class="mk">D</span>Mitotic inhibitors</li><li class="fopt"><span class="mk">E</span>Topoisomerase inhibitors</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;There are two broad classes of cell cycle-nonspecific cancer drugs: alkylating drugs and cytotoxic antibiotics&quot; (p. 726). The chapter's two other groupings, miscellaneous and hormonal drugs, are not cell-cycle-based classifications at all.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the strongest pull, because cytotoxic antibiotics genuinely do inhibit topoisomerase II - but &quot;topoisomerase inhibitors&quot; is a class heading from the cell cycle-specific chapter and appears nowhere here. (C) and (D) are the same borrowing from the previous chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">alkylating and cytotoxic antibiotic mechanisms</span><span class="chip t2">how each class damages DNA</span></div>
+<div class="stem">5. A patient receiving mechlorethamine asks how the drug actually kills the cancer cells. Which description matches the mechanism of an alkylating drug?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It alters the chemical structure of the cell's DNA so that abnormal chemical bonds form between adjacent DNA strands</li><li class="fopt"><span class="mk">B</span>It is inserted between the two strands of the DNA molecule and blocks DNA synthesis</li><li class="fopt"><span class="mk">C</span>It inhibits topoisomerase II and generates free radicals</li><li class="fopt"><span class="mk">D</span>It is inactive until enzymes in the liver convert it to an active form</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Alkylating drugs alter the chemical structure of the cells' DNA, so abnormal chemical bonds form between adjacent DNA strands, yielding defective nucleic acids and cell death (p. 727); alkylation itself is a chemical reaction in which an alkyl group is transferred from one molecule to another.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) both describe the cytotoxic antibiotics, and they pull because the two classes are cell cycle-nonspecific and are presented side by side. (D) is the prodrug fact, which is true of cyclophosphamide but is not a mechanism of cell kill.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">alkylating and cytotoxic antibiotic mechanisms</span><span class="chip t2">how each class damages DNA</span></div>
+<div class="stem">6. The same patient is later switched to doxorubicin and asks whether the new drug works the same way. Which mechanism belongs to the cytotoxic antibiotics?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Intercalation, in which the drug is inserted between the two strands of a DNA molecule and ultimately blocks DNA synthesis</li><li class="fopt"><span class="mk">B</span>Alkylation, in which alkyl groups are transferred to DNA so that abnormal bonds form between adjacent strands</li><li class="fopt"><span class="mk">C</span>Transfer of two reactive alkyl groups to two separate sites on the DNA molecule</li><li class="fopt"><span class="mk">D</span>Inhibition of the bcr-abl tyrosine kinase</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Cytotoxic antibiotics work by intercalation, &quot;inserted between the two strands of a DNA molecule, ultimately blocking DNA synthesis&quot;; they also inhibit the enzyme topoisomerase II, and many generate free radicals (p. 729).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error of the previous item and (C) restates it in bifunctional terms. The word &quot;antibiotic&quot; is the other pull here: these are natural substances produced by the mold Streptomyces that kill cancer cells, not anti-infectives, and inhibiting topoisomerase II does not make them topoisomerase inhibitors.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">alkylating and cytotoxic antibiotic mechanisms</span><span class="chip t2">bifunctional versus polyfunctional</span></div>
+<div class="stem">7. A drug reference describes mechlorethamine as a bifunctional alkylating drug. What does the nurse understand about the molecule?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It has two reactive alkyl groups and can therefore alkylate at two sites on the DNA molecule</li><li class="fopt"><span class="mk">B</span>It can engage in several alkylation reactions per single molecule of drug</li><li class="fopt"><span class="mk">C</span>It must be activated in the body before it can alkylate anything</li><li class="fopt"><span class="mk">D</span>It is active during two different phases of the cell cycle</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Bifunctional refers to alkylating drugs composed of molecules that have two reactive alkyl groups and that are therefore able to alkylate at two sites on the DNA molecule (p. 726). Mechlorethamine and cisplatin are the chapter's bifunctional examples.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the polyfunctional definition, one prefix away. (D) is the level swap that reads &quot;functional&quot; as a cell-cycle claim; neither bifunctional nor polyfunctional says anything about phase, and these drugs are nonspecific.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">alkylating and cytotoxic antibiotic mechanisms</span><span class="chip t2">bifunctional versus polyfunctional</span></div>
+<div class="stem">8. Cyclophosphamide is ordered, and the reference describes it as a polyfunctional alkylating drug and a prodrug. Which statement reflects both of those descriptions?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It can engage in several alkylation reactions per single molecule of drug, and it requires in vivo activation before it acts</li><li class="fopt"><span class="mk">B</span>It has two reactive alkyl groups that alkylate at two sites on DNA, and it is fully active as given</li><li class="fopt"><span class="mk">C</span>It alkylates at several sites, and the liver inactivates most of the dose before it reaches the tumor</li><li class="fopt"><span class="mk">D</span>It alkylates at several sites, and it acts during several phases of the cell cycle</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Cyclophosphamide is &quot;a polyfunctional alkylating drug and is a prodrug requiring in vivo activation&quot; (pp. 728-729), and polyfunctional means several alkylation reactions with cancer cell DNA per single molecule of drug.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error, applying mechlorethamine's bifunctional definition to cyclophosphamide. (C) inverts the prodrug relationship, which is the reflex error whenever the liver is mentioned: the liver activates this drug rather than destroying it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">antineoplastic drug-specific toxicities</span><span class="chip t2">doxorubicin versus bleomycin</span></div>
+<div class="stem">9. A patient is starting doxorubicin. Which assessment does the nurse prioritize for this drug's characteristic severe toxicity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cardiac function, since severe cases of cardiomyopathy are associated with large cumulative doses</li><li class="fopt"><span class="mk">B</span>Respiratory function, since the drug causes pulmonary fibrosis and pneumonitis</li><li class="fopt"><span class="mk">C</span>Renal function and hearing, since the drug is nephrotoxic and ototoxic</li><li class="fopt"><span class="mk">D</span>Bone marrow suppression only, since that is the dose-limiting effect the whole class shares</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 46.5 lists liver and cardiovascular toxicities for doxorubicin and idarubicin, and severe cases of cardiomyopathy are associated with large cumulative doses, which is why total dose is capped and dexrazoxane is used for protection (pp. 729-730).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is cisplatin's profile in disguise, and it pulls because nephrotoxicity and ototoxicity are the most memorable toxicities on the sheet. (B) belongs to bleomycin, the other half of this pair.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">antineoplastic drug-specific toxicities</span><span class="chip t2">doxorubicin versus bleomycin</span></div>
+<div class="stem">10. Another patient on the unit is receiving bleomycin. Which assessment is the priority for this drug?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Respiratory function, since bleomycin causes pulmonary fibrosis and pneumonitis</li><li class="fopt"><span class="mk">B</span>Cardiac function, since bleomycin causes cardiomyopathy at large cumulative doses</li><li class="fopt"><span class="mk">C</span>Hearing and renal function, since bleomycin is ototoxic and nephrotoxic</li><li class="fopt"><span class="mk">D</span>Bone marrow suppression, which is the dose-limiting toxicity bleomycin shares with the rest of its class</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 46.5 gives pulmonary fibrosis and pneumonitis for bleomycin, and the chapter states that cytotoxic antibiotics generally cause bone marrow suppression, with &quot;the one exception is bleomycin, which instead causes pulmonary toxicity&quot; (pp. 729-730).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error of the previous item; the cue is that &quot;doxo&quot; hits the cardiac muscle while &quot;bleo&quot; blows out the lungs. (D) is the class rule that hides this drug - it is true of the cytotoxic antibiotics generally, and bleomycin is the stated exception to it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">antineoplastic drug-specific toxicities</span><span class="chip t2">platinum drugs and urinary toxicities</span></div>
+<div class="stem">11. An order is changed from cisplatin to carboplatin. According to Table 46.2 and its footnote, which statements about carboplatin compared with cisplatin are accurate? (Select all that apply.)</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Carboplatin causes less nephrotoxicity</li><li class="fopt right"><span class="mk">&#10003;</span>Carboplatin causes less neurotoxicity</li><li class="fopt right"><span class="mk">&#10003;</span>Carboplatin causes more bone marrow suppression</li><li class="fopt"><span class="mk">D</span>Carboplatin is the one of the two listed as causing ototoxicity</li><li class="fopt"><span class="mk">E</span>Carboplatin is classified as a cytotoxic antibiotic rather than an alkylating drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 46.2 gives nephrotoxicity, peripheral neuropathy, and ototoxicity for cisplatin and nephrotoxicity, neurotoxicity, and bone marrow suppression for carboplatin, with the footnote that carboplatin has less nephrotoxicity and neurotoxicity but more bone marrow suppression; ototoxicity is listed for cisplatin only. Both are miscellaneous alkylating drugs, and the chapter warns that medication errors, resulting in deaths, have occurred when cisplatin was confused for carboplatin (p. 728).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex miss, because the two platinum drugs get filed as one profile and ototoxicity is the most memorable item in it; hearing loss belongs to cisplatin alone. (E) pulls only if the platinum drugs have been sorted into the wrong class, which is worth catching now, since this is the pair the chapter says has killed patients.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">antineoplastic drug-specific toxicities</span><span class="chip t2">platinum drugs and urinary toxicities</span></div>
+<div class="stem">12. A patient receiving cyclophosphamide reports the sudden onset of hematuria with bladder pain and discomfort. Which adverse effect does the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hemorrhagic cystitis, cyclophosphamide's characteristic severe adverse effect</li><li class="fopt"><span class="mk">B</span>Nephrotoxicity, the severe adverse effect of the platinum alkylating drugs</li><li class="fopt"><span class="mk">C</span>Tissue injury from extravasation at the infusion site</li><li class="fopt"><span class="mk">D</span>Bone marrow suppression approaching its lowest point</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 46.2 lists hemorrhagic cystitis as cyclophosphamide's severe adverse effect, and the chapter describes it as the sudden onset of hematuria with bladder pain and discomfort (p. 735); forcing fluids is the stated prevention.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the confusion this pair produces, and it is a fair one: both drugs are alkylators, both declare themselves through the urinary tract, and hydration is the stated prevention for both. Cisplatin injures the kidney, which shows up as rising creatinine and falling urine output; cyclophosphamide injures the bladder wall, which shows up as blood and pain.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">antineoplastic drug-specific toxicities</span><span class="chip t2">overlapping toxicity in combined therapy</span></div>
+<div class="stem">13. A patient receiving cisplatin develops pneumonia, and the prescriber asks which class of antibiotic should be avoided. Which class does the nurse identify?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Aminoglycosides</li><li class="fopt"><span class="mk">B</span>Penicillins</li><li class="fopt"><span class="mk">C</span>Sulfonamides</li><li class="fopt"><span class="mk">D</span>Fluoroquinolones</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The stated rule is to avoid administering an alkylating drug with any other drug capable of causing similar toxicities, and the chapter's worked example is cisplatin plus an aminoglycoside, which produces additive nephrotoxic effects and can lead to renal failure (p. 728).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick for pneumonia because it is the first antibiotic most students reach for, and the question feels like an antibiotic-selection item. It is not: the rule turns on which antibiotic shares cisplatin's toxicity, and the shared toxicity that matters is renal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">chemotherapy extravasation and vesicant safety</span><span class="chip t2">irritant versus vesicant</span></div>
+<div class="stem">14. A drug reference describes doxorubicin as a strong vesicant. What does that tell the nurse about the consequence if the drug leaks into the tissue surrounding the vein?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It causes cell death with necrosis and ulcerative properties, so massive tissue injury may result</li><li class="fopt"><span class="mk">B</span>It irritates the vein, and leakage results in significantly less damage than a vesicant would cause</li><li class="fopt"><span class="mk">C</span>The risk disappears once the drug is given through a central venous access device</li><li class="fopt"><span class="mk">D</span>The risk applies only to peripheral sites, because infiltration cannot occur with a central catheter</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A vesicant causes cell death with extravasation and necrosis with ulcerative properties and may lead to massive tissue injury, whereas extravasation of an irritant results in significantly less damage (p. 728). Doxorubicin is the chapter's named strong vesicant, and central venous access is needed for administration of vesicants.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the irritant definition, and it gets picked because both words describe something unpleasant happening at the site; the cue is that an irritant irritates the vein while a vesicant kills the tissue. (C) and (D) are the central-line swap: Box 46.1 states that infiltration may occur with any intravenous catheter, and it is the specific drug and its characteristics that pose the concern.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">chemotherapy extravasation and vesicant safety</span><span class="chip t2">responding to extravasation</span></div>
+<div class="stem">15. Midway through an infusion of a vesicant antineoplastic, the nurse finds swelling and no blood return at the site. What is the first action?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stop the infusion immediately and contact the prescriber, leaving the intravenous catheter in place</li><li class="fopt"><span class="mk">B</span>Remove the catheter at once so that no further drug leaks into the tissue</li><li class="fopt"><span class="mk">C</span>Apply cold compresses and elevate the extremity per institutional policy</li><li class="fopt"><span class="mk">D</span>Aspirate any residual drug and blood from the catheter before doing anything else</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The protocol is to stop the infusion immediately and contact the prescriber, leaving the intravenous catheter in place; aspirating residual drug and blood follows, then institutional policy on antidote, compresses, and elevation (p. 728).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex error, since pulling out the source of harm feels like the fastest way to stop it - but the catheter is the route by which an antidote reaches the extravasated drug, so removing it forfeits the treatment. (D) is a genuine step in the sequence, just not the first one, which is what makes it the harder distractor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">chemotherapy extravasation and vesicant safety</span><span class="chip t2">responding to extravasation</span></div>
+<div class="stem">16. Carmustine has extravasated at a peripheral site. Which antidote does Table 46.3 pair with this drug?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Sodium bicarbonate, along with cold compresses</li><li class="fopt"><span class="mk">B</span>Sodium thiosulfate, along with cold compresses</li><li class="fopt"><span class="mk">C</span>Dexrazoxane, which protects against anthracycline cardiotoxicity</li><li class="fopt"><span class="mk">D</span>Amifostine, which reduces the renal toxicity associated with cisplatin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 46.3 pairs carmustine with sodium bicarbonate and mechlorethamine with sodium thiosulfate, with cold compresses used for both (p. 728).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the pair swap, and it is the whole difficulty of this item: the two sodium antidotes are listed adjacently, both are given with cold compresses, and only the drug each belongs to distinguishes them. (C) and (D) are protective drugs given systemically against cardiac and renal toxicity, not extravasation antidotes.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"cell cycle-nonspecific antineoplastic classification","subtopic":"specific versus nonspecific action","stem":"A patient starting cyclophosphamide says her sister's chemotherapy was described as working only while the cancer cells were in one particular part of their growth cycle, and asks how her own drug differs. Which explanation is accurate?","options":["It has antineoplastic activity regardless of the phase of the cell cycle","It is active only during specific phases of the cell growth cycle","It is effective against any type of cancer rather than against one tumor type","It damages cancer cells while sparing normal cells"],"correct":[0],"sata":false,"why":"Chapter 45 describes the antineoplastic drugs effective against cancer cells during specific phases in the cell growth cycle; in contrast, this chapter focuses on drugs that have antineoplastic activity regardless of the phase of the cell cycle (p. 726). Cyclophosphamide is one of the classic alkylating drugs in that second group.","trap":"(C) and (D) are the axis swaps that make \"nonspecific\" sound like breadth or safety, and they pull because both are things a patient would want to hear. The word describes the phase of the cell cycle only - not the tumor type, and not any selectivity for cancer cells over normal cells.","k":"a85udpb5txnr"},{"topic":"cell cycle-nonspecific antineoplastic classification","subtopic":"specific versus nonspecific action","stem":"The same patient's sister is receiving a drug her oncologist called cell cycle-specific. What does that label establish about the sister's drug?","options":["It acts only while cells are in particular phases of the cell growth cycle","It acts on cancer cells no matter which phase of the cycle they are in","It is specific to her tumor type and would not be used for a different cancer","It targets only cancer cells and leaves normal dividing cells untouched"],"correct":[0],"sata":false,"why":"The specific/nonspecific split is what divides these two chapters: Chapter 45's drugs are effective during specific phases in the cell growth cycle, while this chapter's drugs work regardless of phase (p. 726).","trap":"(B) is the mirror error of the previous item, and it is easy to slide into right after \"nonspecific\" has just been explained. (C) repeats the tumor-type swap in the opposite direction.","k":"o25zo21ctso5k"},{"topic":"cell cycle-nonspecific antineoplastic classification","subtopic":"specific versus nonspecific action","stem":"A student concludes that every drug discussed in the chapter on cell cycle-nonspecific drugs must itself be cell cycle-nonspecific. Which drug shows that conclusion to be wrong?","options":["Bleomycin, which the chapter flags as actually being a cell cycle-specific drug","Doxorubicin, which acts by intercalating into DNA","Cisplatin, which is a bifunctional alkylating drug","Busulfan, which is grouped with the miscellaneous alkylating drugs"],"correct":[0],"sata":false,"why":"The chapter names \"bleomycin (which is actually a cell cycle-specific drug)\" (p. 729), and hydroxyurea likewise works in the S and G1 phases and appears here only because it is included as a miscellaneous drug. Chapter membership is not classification.","trap":"(D) is the reflex pick, because \"miscellaneous\" reads as \"the exception\" - but busulfan is an alkylating drug and nonspecific like the rest of its group; miscellaneous is only a subcategory heading. The chapter marks its real exception in a parenthesis around bleomycin.","k":"5x2uj21rajyek"},{"topic":"cell cycle-nonspecific antineoplastic classification","subtopic":"specific versus nonspecific action","stem":"A nurse is grouping the drug classes covered in the chapter on cell cycle-nonspecific antineoplastics. Which classes does the chapter name as the two broad classes of cell cycle-nonspecific cancer drugs? (Select all that apply.)","options":["Alkylating drugs","Cytotoxic antibiotics","Antimetabolites","Mitotic inhibitors","Topoisomerase inhibitors"],"correct":[0,1],"sata":true,"why":"\"There are two broad classes of cell cycle-nonspecific cancer drugs: alkylating drugs and cytotoxic antibiotics\" (p. 726). The chapter's two other groupings, miscellaneous and hormonal drugs, are not cell-cycle-based classifications at all.","trap":"(E) is the strongest pull, because cytotoxic antibiotics genuinely do inhibit topoisomerase II - but \"topoisomerase inhibitors\" is a class heading from the cell cycle-specific chapter and appears nowhere here. (C) and (D) are the same borrowing from the previous chapter.","k":"1179wtc1d2qddu"},{"topic":"alkylating and cytotoxic antibiotic mechanisms","subtopic":"how each class damages DNA","stem":"A patient receiving mechlorethamine asks how the drug actually kills the cancer cells. Which description matches the mechanism of an alkylating drug?","options":["It alters the chemical structure of the cell's DNA so that abnormal chemical bonds form between adjacent DNA strands","It is inserted between the two strands of the DNA molecule and blocks DNA synthesis","It inhibits topoisomerase II and generates free radicals","It is inactive until enzymes in the liver convert it to an active form"],"correct":[0],"sata":false,"why":"Alkylating drugs alter the chemical structure of the cells' DNA, so abnormal chemical bonds form between adjacent DNA strands, yielding defective nucleic acids and cell death (p. 727); alkylation itself is a chemical reaction in which an alkyl group is transferred from one molecule to another.","trap":"(B) and (C) both describe the cytotoxic antibiotics, and they pull because the two classes are cell cycle-nonspecific and are presented side by side. (D) is the prodrug fact, which is true of cyclophosphamide but is not a mechanism of cell kill.","k":"1l4ek4f197db5d"},{"topic":"alkylating and cytotoxic antibiotic mechanisms","subtopic":"how each class damages DNA","stem":"The same patient is later switched to doxorubicin and asks whether the new drug works the same way. Which mechanism belongs to the cytotoxic antibiotics?","options":["Intercalation, in which the drug is inserted between the two strands of a DNA molecule and ultimately blocks DNA synthesis","Alkylation, in which alkyl groups are transferred to DNA so that abnormal bonds form between adjacent strands","Transfer of two reactive alkyl groups to two separate sites on the DNA molecule","Inhibition of the bcr-abl tyrosine kinase"],"correct":[0],"sata":false,"why":"Cytotoxic antibiotics work by intercalation, \"inserted between the two strands of a DNA molecule, ultimately blocking DNA synthesis\"; they also inhibit the enzyme topoisomerase II, and many generate free radicals (p. 729).","trap":"(B) is the mirror error of the previous item and (C) restates it in bifunctional terms. The word \"antibiotic\" is the other pull here: these are natural substances produced by the mold Streptomyces that kill cancer cells, not anti-infectives, and inhibiting topoisomerase II does not make them topoisomerase inhibitors.","k":"zcw6wx13wkmt3"},{"topic":"alkylating and cytotoxic antibiotic mechanisms","subtopic":"bifunctional versus polyfunctional","stem":"A drug reference describes mechlorethamine as a bifunctional alkylating drug. What does the nurse understand about the molecule?","options":["It has two reactive alkyl groups and can therefore alkylate at two sites on the DNA molecule","It can engage in several alkylation reactions per single molecule of drug","It must be activated in the body before it can alkylate anything","It is active during two different phases of the cell cycle"],"correct":[0],"sata":false,"why":"Bifunctional refers to alkylating drugs composed of molecules that have two reactive alkyl groups and that are therefore able to alkylate at two sites on the DNA molecule (p. 726). Mechlorethamine and cisplatin are the chapter's bifunctional examples.","trap":"(B) is the polyfunctional definition, one prefix away. (D) is the level swap that reads \"functional\" as a cell-cycle claim; neither bifunctional nor polyfunctional says anything about phase, and these drugs are nonspecific.","k":"11dch0yetp3tc"},{"topic":"alkylating and cytotoxic antibiotic mechanisms","subtopic":"bifunctional versus polyfunctional","stem":"Cyclophosphamide is ordered, and the reference describes it as a polyfunctional alkylating drug and a prodrug. Which statement reflects both of those descriptions?","options":["It can engage in several alkylation reactions per single molecule of drug, and it requires in vivo activation before it acts","It has two reactive alkyl groups that alkylate at two sites on DNA, and it is fully active as given","It alkylates at several sites, and the liver inactivates most of the dose before it reaches the tumor","It alkylates at several sites, and it acts during several phases of the cell cycle"],"correct":[0],"sata":false,"why":"Cyclophosphamide is \"a polyfunctional alkylating drug and is a prodrug requiring in vivo activation\" (pp. 728-729), and polyfunctional means several alkylation reactions with cancer cell DNA per single molecule of drug.","trap":"(B) is the mirror error, applying mechlorethamine's bifunctional definition to cyclophosphamide. (C) inverts the prodrug relationship, which is the reflex error whenever the liver is mentioned: the liver activates this drug rather than destroying it.","k":"ib75cb94248l"},{"topic":"antineoplastic drug-specific toxicities","subtopic":"doxorubicin versus bleomycin","stem":"A patient is starting doxorubicin. Which assessment does the nurse prioritize for this drug's characteristic severe toxicity?","options":["Cardiac function, since severe cases of cardiomyopathy are associated with large cumulative doses","Respiratory function, since the drug causes pulmonary fibrosis and pneumonitis","Renal function and hearing, since the drug is nephrotoxic and ototoxic","Bone marrow suppression only, since that is the dose-limiting effect the whole class shares"],"correct":[0],"sata":false,"why":"Table 46.5 lists liver and cardiovascular toxicities for doxorubicin and idarubicin, and severe cases of cardiomyopathy are associated with large cumulative doses, which is why total dose is capped and dexrazoxane is used for protection (pp. 729-730).","trap":"(C) is cisplatin's profile in disguise, and it pulls because nephrotoxicity and ototoxicity are the most memorable toxicities on the sheet. (B) belongs to bleomycin, the other half of this pair.","k":"rviaayjpaq8g"},{"topic":"antineoplastic drug-specific toxicities","subtopic":"doxorubicin versus bleomycin","stem":"Another patient on the unit is receiving bleomycin. Which assessment is the priority for this drug?","options":["Respiratory function, since bleomycin causes pulmonary fibrosis and pneumonitis","Cardiac function, since bleomycin causes cardiomyopathy at large cumulative doses","Hearing and renal function, since bleomycin is ototoxic and nephrotoxic","Bone marrow suppression, which is the dose-limiting toxicity bleomycin shares with the rest of its class"],"correct":[0],"sata":false,"why":"Table 46.5 gives pulmonary fibrosis and pneumonitis for bleomycin, and the chapter states that cytotoxic antibiotics generally cause bone marrow suppression, with \"the one exception is bleomycin, which instead causes pulmonary toxicity\" (pp. 729-730).","trap":"(B) is the mirror error of the previous item; the cue is that \"doxo\" hits the cardiac muscle while \"bleo\" blows out the lungs. (D) is the class rule that hides this drug - it is true of the cytotoxic antibiotics generally, and bleomycin is the stated exception to it.","k":"2rojp01c4b9ry"},{"topic":"antineoplastic drug-specific toxicities","subtopic":"platinum drugs and urinary toxicities","stem":"An order is changed from cisplatin to carboplatin. According to Table 46.2 and its footnote, which statements about carboplatin compared with cisplatin are accurate? (Select all that apply.)","options":["Carboplatin causes less nephrotoxicity","Carboplatin causes less neurotoxicity","Carboplatin causes more bone marrow suppression","Carboplatin is the one of the two listed as causing ototoxicity","Carboplatin is classified as a cytotoxic antibiotic rather than an alkylating drug"],"correct":[0,1,2],"sata":true,"why":"Table 46.2 gives nephrotoxicity, peripheral neuropathy, and ototoxicity for cisplatin and nephrotoxicity, neurotoxicity, and bone marrow suppression for carboplatin, with the footnote that carboplatin has less nephrotoxicity and neurotoxicity but more bone marrow suppression; ototoxicity is listed for cisplatin only. Both are miscellaneous alkylating drugs, and the chapter warns that medication errors, resulting in deaths, have occurred when cisplatin was confused for carboplatin (p. 728).","trap":"(D) is the reflex miss, because the two platinum drugs get filed as one profile and ototoxicity is the most memorable item in it; hearing loss belongs to cisplatin alone. (E) pulls only if the platinum drugs have been sorted into the wrong class, which is worth catching now, since this is the pair the chapter says has killed patients.","k":"g6c8jm1bgh1m4"},{"topic":"antineoplastic drug-specific toxicities","subtopic":"platinum drugs and urinary toxicities","stem":"A patient receiving cyclophosphamide reports the sudden onset of hematuria with bladder pain and discomfort. Which adverse effect does the nurse suspect?","options":["Hemorrhagic cystitis, cyclophosphamide's characteristic severe adverse effect","Nephrotoxicity, the severe adverse effect of the platinum alkylating drugs","Tissue injury from extravasation at the infusion site","Bone marrow suppression approaching its lowest point"],"correct":[0],"sata":false,"why":"Table 46.2 lists hemorrhagic cystitis as cyclophosphamide's severe adverse effect, and the chapter describes it as the sudden onset of hematuria with bladder pain and discomfort (p. 735); forcing fluids is the stated prevention.","trap":"(B) is the confusion this pair produces, and it is a fair one: both drugs are alkylators, both declare themselves through the urinary tract, and hydration is the stated prevention for both. Cisplatin injures the kidney, which shows up as rising creatinine and falling urine output; cyclophosphamide injures the bladder wall, which shows up as blood and pain.","k":"bbctjh5f3ben"},{"topic":"antineoplastic drug-specific toxicities","subtopic":"overlapping toxicity in combined therapy","stem":"A patient receiving cisplatin develops pneumonia, and the prescriber asks which class of antibiotic should be avoided. Which class does the nurse identify?","options":["Aminoglycosides","Penicillins","Sulfonamides","Fluoroquinolones"],"correct":[0],"sata":false,"why":"The stated rule is to avoid administering an alkylating drug with any other drug capable of causing similar toxicities, and the chapter's worked example is cisplatin plus an aminoglycoside, which produces additive nephrotoxic effects and can lead to renal failure (p. 728).","trap":"(B) is the reflex pick for pneumonia because it is the first antibiotic most students reach for, and the question feels like an antibiotic-selection item. It is not: the rule turns on which antibiotic shares cisplatin's toxicity, and the shared toxicity that matters is renal.","k":"ermfxf1a3mb9h"},{"topic":"chemotherapy extravasation and vesicant safety","subtopic":"irritant versus vesicant","stem":"A drug reference describes doxorubicin as a strong vesicant. What does that tell the nurse about the consequence if the drug leaks into the tissue surrounding the vein?","options":["It causes cell death with necrosis and ulcerative properties, so massive tissue injury may result","It irritates the vein, and leakage results in significantly less damage than a vesicant would cause","The risk disappears once the drug is given through a central venous access device","The risk applies only to peripheral sites, because infiltration cannot occur with a central catheter"],"correct":[0],"sata":false,"why":"A vesicant causes cell death with extravasation and necrosis with ulcerative properties and may lead to massive tissue injury, whereas extravasation of an irritant results in significantly less damage (p. 728). Doxorubicin is the chapter's named strong vesicant, and central venous access is needed for administration of vesicants.","trap":"(B) is the irritant definition, and it gets picked because both words describe something unpleasant happening at the site; the cue is that an irritant irritates the vein while a vesicant kills the tissue. (C) and (D) are the central-line swap: Box 46.1 states that infiltration may occur with any intravenous catheter, and it is the specific drug and its characteristics that pose the concern.","k":"14yqsz92udvxn"},{"topic":"chemotherapy extravasation and vesicant safety","subtopic":"responding to extravasation","stem":"Midway through an infusion of a vesicant antineoplastic, the nurse finds swelling and no blood return at the site. What is the first action?","options":["Stop the infusion immediately and contact the prescriber, leaving the intravenous catheter in place","Remove the catheter at once so that no further drug leaks into the tissue","Apply cold compresses and elevate the extremity per institutional policy","Aspirate any residual drug and blood from the catheter before doing anything else"],"correct":[0],"sata":false,"why":"The protocol is to stop the infusion immediately and contact the prescriber, leaving the intravenous catheter in place; aspirating residual drug and blood follows, then institutional policy on antidote, compresses, and elevation (p. 728).","trap":"(B) is the reflex error, since pulling out the source of harm feels like the fastest way to stop it - but the catheter is the route by which an antidote reaches the extravasated drug, so removing it forfeits the treatment. (D) is a genuine step in the sequence, just not the first one, which is what makes it the harder distractor.","k":"1azra252vzphn"},{"topic":"chemotherapy extravasation and vesicant safety","subtopic":"responding to extravasation","stem":"Carmustine has extravasated at a peripheral site. Which antidote does Table 46.3 pair with this drug?","options":["Sodium bicarbonate, along with cold compresses","Sodium thiosulfate, along with cold compresses","Dexrazoxane, which protects against anthracycline cardiotoxicity","Amifostine, which reduces the renal toxicity associated with cisplatin"],"correct":[0],"sata":false,"why":"Table 46.3 pairs carmustine with sodium bicarbonate and mechlorethamine with sodium thiosulfate, with cold compresses used for both (p. 728).","trap":"(B) is the pair swap, and it is the whole difficulty of this item: the two sodium antidotes are listed adjacently, both are given with cold compresses, and only the drug each belongs to distinguishes them. (C) and (D) are protective drugs given systemically against cardiac and renal toxicity, not extravasation antidotes.","k":"ausks01ujeij6"}];
+const TITLE = "Chapter 46 — NUR 3420/1 — Pharmacology I & II";
+const SUBTITLE = "Chapter 46";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur3420-3421-pharm";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

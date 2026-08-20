@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 3 — NUR 3420/1 — Pharmacology I &amp; II</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 3</div><h1>Chapter 3 — NUR 3420/1 — Pharmacology I &amp; II</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">pregnancy drug transfer and trimester risk</span><span class="chip t2">how drugs reach the fetus</span></div>
+<div class="stem">1. A pregnant patient asks the nurse how the medication she swallows could possibly reach her baby. Which explanation correctly describes the principal mechanism?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Substances move passively across the placenta from an area of higher concentration to an area of lower concentration</li><li class="fopt"><span class="mk">B</span>Substances are pumped across the placenta by energy-requiring carriers in the cell membrane</li><li class="fopt"><span class="mk">C</span>The placenta filters out all drug molecules and admits only nutrients</li><li class="fopt"><span class="mk">D</span>Substances cross the placenta only after the membranes rupture in labor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that transfer of both drugs and nutrients to the fetus occurs primarily by diffusion across the placenta, although not all drugs cross the placenta. Diffusion is defined in the key terms box as the passive movement of a substance between different tissues from areas of higher concentration to areas of lower concentration.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) describes active transport, which the key terms box defines directly against diffusion — the tell that the two will be swapped on an exam. Diffusion is passive and needs no energy; active transport requires energy and uses a pump.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pregnancy drug transfer and trimester risk</span><span class="chip t2">how drugs reach the fetus</span></div>
+<div class="stem">2. A drug is moved across a cell membrane against its concentration gradient by a carrier protein that consumes cellular energy to do it. Which key term names this process?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Diffusion, because the substance is moving between two different tissues</li><li class="fopt right"><span class="mk">&#10003;</span>Active transport, because the movement requires energy and uses a pumping mechanism within the cell membrane</li><li class="fopt"><span class="mk">C</span>First-pass elimination, because a carrier protein is involved</li><li class="fopt"><span class="mk">D</span>Protein binding, because the drug is attached to a protein</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The key terms box defines active transport as the active, energy-requiring movement of a substance between different tissues via pumping mechanisms contained within cell membranes. The energy requirement and the pump are what separate it from diffusion.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. Diffusion also moves a substance between tissues, so the phrase in that option is true but does not discriminate; the discriminator is energy, and diffusion needs none.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pregnancy drug transfer and trimester risk</span><span class="chip t2">which trimester carries which risk</span></div>
+<div class="stem">3. A patient at 8 weeks' gestation tells the nurse she has been taking an over-the-counter remedy she bought herself. Why is the nurse most concerned about the timing of this exposure?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The first trimester is the period of greatest danger of drug-induced developmental defects</li><li class="fopt"><span class="mk">B</span>The first trimester is when the greatest percentage of maternally absorbed drug reaches the fetus</li><li class="fopt"><span class="mk">C</span>The third trimester is when developmental defects are most likely, so the timing is reassuring</li><li class="fopt"><span class="mk">D</span>Drug exposure is equally hazardous at every point in pregnancy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter identifies the first trimester as the period of greatest danger of drug-induced developmental defects, because during this period the fetus undergoes rapid cell proliferation and the skeleton, muscles, limbs, and visceral organs are developing at their most rapid rate. Self-treatment is strongly discouraged at any time during pregnancy but especially during the first trimester.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) fuses the chapter's two superlatives into one trimester. Greatest danger and greatest transfer belong to opposite ends of the pregnancy, which is exactly why the chapter states both in a single sentence.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pregnancy drug transfer and trimester risk</span><span class="chip t2">which trimester carries which risk</span></div>
+<div class="stem">4. A patient at 34 weeks' gestation receives a drug that has been safely used earlier in her pregnancy, and the nurse notes that fetal exposure is now higher than it was before. What accounts for the increase?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The first trimester is when drug transfer to the fetus peaks, and residual drug is still circulating</li><li class="fopt right"><span class="mk">&#10003;</span>Enhanced blood flow to the fetus, increased fetal surface area, and increased free drug in the maternal circulation</li><li class="fopt"><span class="mk">C</span>The placenta has begun to actively pump drug toward the fetus</li><li class="fopt"><span class="mk">D</span>The fetal liver now metabolizes drug faster than the mother's</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>During the last trimester the greatest percentage of maternally absorbed drug gets to the fetus, and the chapter attributes this to enhanced blood flow to the fetus, increased fetal surface area, and an increased amount of free drug in the mother's circulation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. The first trimester is when exposure is most damaging, not when the most drug arrives — early damage is structural because organs are being built, while late transfer is quantitative because blood flow and surface area are maximal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pregnancy drug transfer and trimester risk</span><span class="chip t2">when drug therapy must continue anyway</span></div>
+<div class="stem">5. A newly pregnant patient with epilepsy tells the nurse she plans to stop all of her medications until after delivery so the baby is not exposed to anything. Which response reflects the chapter's position?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Stopping all medications is the safest course for any pregnancy</li><li class="fopt right"><span class="mk">&#10003;</span>Without drug therapy, maternal conditions such as hypertension, epilepsy, diabetes, and infection could seriously endanger both her and the fetus</li><li class="fopt"><span class="mk">C</span>She should halve every dose rather than stop, since dose is the only variable that matters</li><li class="fopt"><span class="mk">D</span>The decision depends only on the drug's molecular weight</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that certain situations require the use of drugs during pregnancy, because without drug therapy maternal conditions such as hypertension, epilepsy, diabetes, and infection could seriously endanger both the mother and the fetus, and the potential for harm far outweighs the risks of appropriate drug therapy.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because the whole section is about fetal hazard, and stopping everything looks like the maximally cautious answer. The chapter's caution is aimed at self-treatment, not at treatment of a maternal condition that itself threatens the pregnancy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fda pregnancy safety categories</span><span class="chip t2">distinguishing the five letters</span></div>
+<div class="stem">6. A patient at 32 weeks' gestation asks whether an over-the-counter product rated pregnancy category A is safe to take. Which statement accurately conveys what that rating means?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Studies indicate no risk to the human fetus</li><li class="fopt"><span class="mk">B</span>The product has not caused problems in animals, but no human testing has been done</li><li class="fopt"><span class="mk">C</span>Adverse effects have been reported in the animal fetus, and human information is unavailable</li><li class="fopt"><span class="mk">D</span>Possible fetal risk in humans has been reported, but benefit may still justify use</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 3.1 defines category A as studies indicating no risk to the human fetus. It is the only category in the table backed by human evidence of safety.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the strongest distractor because it also sounds reassuring, but it is the definition of category B — no risk to the animal fetus with human information unavailable. The discriminator between the two top categories is which species was studied.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fda pregnancy safety categories</span><span class="chip t2">distinguishing the five letters</span></div>
+<div class="stem">7. A drug's label states that adverse effects have been reported in the animal fetus and that information for humans is not available. Which pregnancy safety category does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Category A</li><li class="fopt"><span class="mk">B</span>Category B</li><li class="fopt right"><span class="mk">&#10003;</span>Category C</li><li class="fopt"><span class="mk">D</span>Category D</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 3.1 assigns category C to drugs for which adverse effects were reported in the animal fetus and information for humans is not available.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the classic swap, because categories B and C share the identical phrase about human information being unavailable. Category B is the good news about animals, meaning no risk; category C is the bad news about animals, meaning adverse effects were reported.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fda pregnancy safety categories</span><span class="chip t2">distinguishing the five letters</span></div>
+<div class="stem">8. A second drug's label states that studies indicate no risk to the animal fetus and that information for humans is not available. Which category is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Category A</li><li class="fopt right"><span class="mk">&#10003;</span>Category B</li><li class="fopt"><span class="mk">C</span>Category C</li><li class="fopt"><span class="mk">D</span>Category X</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 3.1 defines category B as studies indicating no risk to the animal fetus, with information for humans not available. The animal finding is favorable and the human data are simply missing.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the mirror error of the previous item. Both categories say human information is unavailable, so the shared clause cannot discriminate; the direction of the animal finding is what does.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fda pregnancy safety categories</span><span class="chip t2">distinguishing the five letters</span></div>
+<div class="stem">9. A pregnant patient with a serious infection is prescribed a drug for which possible fetal risk in humans has been reported. The patient asks whether this means the drug is forbidden in pregnancy. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is forbidden, since human fetal risk has been reported</li><li class="fopt right"><span class="mk">&#10003;</span>In selected cases, consideration of the potential benefit versus risk may warrant use of the drug in a pregnant patient</li><li class="fopt"><span class="mk">C</span>It may be used freely, since only possible risk was reported</li><li class="fopt"><span class="mk">D</span>The rating applies only after delivery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 3.1 states that for category D drugs, possible fetal risk in humans has been reported; however, in selected cases consideration of the potential benefit versus risk may warrant use of these drugs in pregnant women. Only category X carries the flat prohibition, where fetal abnormalities have been reported and positive evidence of fetal risk in humans is available, and those drugs are not to be used in pregnant women.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) collapses category D into category X, which is the reflex response to any mention of human fetal risk. The discriminator between the last two categories is not whether harm is documented but whether benefit can ever justify the drug anyway. Several drugs in this course sit at C or D, so a letter alone does not mean do not give.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fda pregnancy safety categories</span><span class="chip t2">the 2015 rule replacing the letters</span></div>
+<div class="stem">10. A nurse reviews a newer drug label that carries no letter category and instead has three narrative subsections. Which subsection contains information about contraception, pregnancy testing, and infertility?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Pregnancy</li><li class="fopt"><span class="mk">B</span>Lactation</li><li class="fopt right"><span class="mk">&#10003;</span>Females and Males of Reproductive Potential</li><li class="fopt"><span class="mk">D</span>Warnings and Precautions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Under the FDA rule of June 2015, prescribing information uses three subsections. The Females and Males of Reproductive Potential subsection carries information about contraception, pregnancy testing, and infertility, while Pregnancy carries dosing and potential risks to the developing fetus, and Lactation carries the amount of drug in breast milk and the potential effect on the child.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) pulls because contraception and pregnancy testing both contain the word pregnancy, but that subsection is about dosing and fetal risk once a pregnancy exists. The textbook continues to use the letter categories because drugs are still being phased in and the transition is not complete, so the student will likely encounter both systems.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug therapy during breastfeeding</span><span class="chip t2">the 2015 rule replacing the letters</span></div>
+<div class="stem">11. A breastfeeding mother must begin a new medication. Which drug characteristics increase the likelihood that it will be transferred to the infant through breast milk? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fat solubility</li><li class="fopt right"><span class="mk">&#10003;</span>Low molecular weight</li><li class="fopt"><span class="mk">C</span>High molecular weight</li><li class="fopt right"><span class="mk">&#10003;</span>High concentration of the drug</li><li class="fopt"><span class="mk">E</span>High water solubility</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names the primary drug characteristics that increase the likelihood of drug transfer via breastfeeding as fat solubility, low molecular weight, and high concentration.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (E) are the reversals of two of the three listed properties, and they pull because a large, water-soluble molecule intuitively sounds harder for the body to handle. Lipophilic means the drug goes everywhere and stays, whether that destination is breast milk, adipose tissue, or the brain.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug therapy during breastfeeding</span><span class="chip t2">the 2015 rule replacing the letters</span></div>
+<div class="stem">12. A breastfeeding mother taking a prescribed medication asks whether nursing more often will help clear the drug out of her own system faster. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Yes, breastfeeding is a significant route of maternal drug excretion</li><li class="fopt right"><span class="mk">&#10003;</span>No, breast milk is not the primary route for maternal drug excretion, and drug levels in milk are usually lower than those in the maternal circulation</li><li class="fopt"><span class="mk">C</span>Yes, but only for fat-soluble drugs</li><li class="fopt"><span class="mk">D</span>No, because drugs do not enter breast milk at all</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that breast milk is not the primary route for maternal drug excretion and that drug levels in breast milk are usually lower than those in the maternal circulation. The amount of infant exposure depends largely on the volume of milk consumed.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) has the physiology running backwards. The concern in breastfeeding runs one direction only, toward the infant; nothing about nursing meaningfully clears drug from the mother. (D) overcorrects in the opposite direction, and the chapter is explicit that a wide variety of drugs easily cross into breast milk.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">drug therapy during breastfeeding</span><span class="chip t2">the 2015 rule replacing the letters</span></div>
+<div class="stem">13. A prescriber and a breastfeeding mother are deciding whether she should take a particular drug. On what basis does the chapter say this decision should be made?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>On the risk/benefit ratio, considered on a case-by-case basis</li><li class="fopt"><span class="mk">B</span>On a standing rule that no drug may be taken while breastfeeding</li><li class="fopt"><span class="mk">C</span>On the drug's pregnancy letter category alone</li><li class="fopt"><span class="mk">D</span>On whether the infant is older than 1 month</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that the ultimate decision as to whether a breastfeeding mother takes a particular drug depends on the risk/benefit ratio and must be considered on a case-by-case basis.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is tempting because the same chapter supplies the letter categories a few paragraphs earlier, but those categories address fetal exposure in pregnancy. The 2015 rule created a separate Lactation subsection precisely because breastfeeding needs its own information.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric age classification and developmental approach</span><span class="chip t2">the four age bands</span></div>
+<div class="stem">14. A nurse is documenting on a 3-week-old admitted for antibiotic therapy. Which classification does Table 3.2 assign to this patient?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Premature infant</li><li class="fopt right"><span class="mk">&#10003;</span>Neonate</li><li class="fopt"><span class="mk">C</span>Infant</li><li class="fopt"><span class="mk">D</span>Child</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 3.2 classifies a patient younger than 1 month as a neonate or newborn infant. The key terms box gives the same boundary, defining neonate as pertaining to a person younger than 1 month of age.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex pick because casual usage treats neonate and infant as interchangeable, and a 3-week-old is unmistakably an infant in ordinary speech. Table 3.2 reserves infant for 1 month up to 1 year, so the neonate label covers only the first month.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric age classification and developmental approach</span><span class="chip t2">the four age bands</span></div>
+<div class="stem">15. A nurse reviews four young patients. Which one does Table 3.2 classify as a child?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A patient born at 35 weeks' gestation</li><li class="fopt"><span class="mk">B</span>A 3-month-old</li><li class="fopt right"><span class="mk">&#10003;</span>A 4-year-old</li><li class="fopt"><span class="mk">D</span>A 14-year-old</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 3.2 assigns 1 year up to 12 years to the classification child. A patient younger than 38 weeks' gestation is a premature or preterm infant, and 1 month up to 1 year is an infant.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) pulls because a 14-year-old is still a minor and is treated on a pediatric unit, but the key terms box defines pediatric as 12 years of age or younger, and the child band stops at 12.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric age classification and developmental approach</span><span class="chip t2">the four age bands</span></div>
+<div class="stem">16. A nurse notices that a manufacturer's guideline for a drug describes dosing for pediatric patients up to 16 years of age, while the textbook defines pediatric as 12 years of age or younger. What is the correct interpretation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The manufacturer is in error and the textbook definition governs</li><li class="fopt right"><span class="mk">&#10003;</span>The meaning of pediatric may vary with the individual drug and clinical situation, and the manufacturer's guidelines should be consulted for specific dosing</li><li class="fopt"><span class="mk">C</span>The drug should not be given to anyone older than 12</li><li class="fopt"><span class="mk">D</span>The two ages refer to different drug routes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The note to Table 3.2 states that the meaning of the term pediatric may vary with the individual drug and clinical situation, that the maximum age for a pediatric patient is often identified as 16 years of age, and that the nurse should consult the manufacturer's guidelines for specific dosing information.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats the headline number as a hard boundary, and it is not. Both of this chapter's age definitions carry a footnote that softens them — older adult is 65 or older but some sources say 55 or older, and pediatric is 12 or younger but often 16 in practice. An item that hinges on a hard cutoff is testing the headline number; one that hinges on judgment is testing the footnote.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric age classification and developmental approach</span><span class="chip t2">matching the approach to the developmental stage</span></div>
+<div class="stem">17. A nurse is preparing to give an injection to a 4-year-old. Which approach matches the chapter's guidance for this developmental stage?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Give a brief, concrete explanation at the patient's level with the parent or caregiver present, and make use of magical thinking such as a special medicine to make the discomfort go away</li><li class="fopt"><span class="mk">B</span>Prepare the patient well in advance with a detailed physiologic rationale, without scare tactics</li><li class="fopt"><span class="mk">C</span>Encourage self-expression, individuality, and self-care, and invite full participation in the procedure</li><li class="fopt"><span class="mk">D</span>Withhold any explanation, since a preschooler cannot understand one</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's preschool guidance calls for a brief, concrete explanation at the patient's level with the parent or caregiver present, and for making use of magical thinking, giving ointments or special medicines to make discomfort go away as its example.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is drawn word for word from the adolescent bullet, and it pulls because encouraging participation sounds like good practice at any age. The chapter matches the approach to the stage: magical thinking works on a preschooler and would insult a teenager.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric weight-based dose calculation</span><span class="chip t2">units before arithmetic</span></div>
+<div class="stem">18. A drug is ordered at 15 mg/kg/day for a child whose chart records a weight of 22 lb. What is the nurse's first step?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Multiply 22 by 15, since the order is already weight-based</li><li class="fopt right"><span class="mk">&#10003;</span>Convert the weight to kilograms by dividing the pounds by 2.2, giving 10 kg</li><li class="fopt"><span class="mk">C</span>Convert the weight by multiplying the pounds by 2.2, giving 48.4 kg</li><li class="fopt"><span class="mk">D</span>Ask the pharmacy to convert the order to a milligram-per-pound basis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's Clinical Pearl states that pediatric doses use kilograms, not pounds, and that the nurse takes the weight in pounds and divides by 2.2 to get kilograms. The chapter's worked example is a 10-lb baby weighing 4.5 kg.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the named error. The chapter states outright that a common source of medication error and potential toxicity is confusing pounds with kilograms, and using 22 as though it were kilograms would deliver more than twice the intended dose. (C) inverts the conversion and makes the child heavier than an adult, which is the arithmetic tell.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric weight-based dose calculation</span><span class="chip t2">units before arithmetic</span></div>
+<div class="stem">19. A drug reference lists a pediatric dose as 30 mg/kg/day divided every 8 hours. A nurse gives 30 mg/kg at each of the three scheduled times. What error has occurred?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>None, because mg/kg/day and mg/kg/dose mean the same thing</li><li class="fopt right"><span class="mk">&#10003;</span>The nurse administered three times the intended daily dose by treating a per-day figure as a per-dose figure</li><li class="fopt"><span class="mk">C</span>The nurse administered one-third of the intended daily dose</li><li class="fopt"><span class="mk">D</span>The nurse should have divided the daily dose by the child's weight</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives this its own Clinical Pearl, noting that most pediatric doses are in mg/kg/day but some are in mg/kg/dose. A per-day figure is divided among the day's doses; reading it as a per-dose figure multiplies the total by the number of doses given.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because the two labels differ by one short word and are easy to read past. The size of the error is however many doses per day the schedule contains, which is a factor of three or four in most regimens.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric weight-based dose calculation</span><span class="chip t2">units before arithmetic</span></div>
+<div class="stem">20. A nurse is given a drug reference that lists a usual dosage range per 24 hours in milligrams per kilogram. How does the nurse determine the safe range for a particular child?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>By multiplying the child's weight in kilograms by the minimum and by the maximum daily doses of the drug</li><li class="fopt"><span class="mk">B</span>By dividing the child's weight in kilograms by the maximum daily dose</li><li class="fopt"><span class="mk">C</span>By comparing the child's weight with the average weight for the child's age</li><li class="fopt"><span class="mk">D</span>By using the adult dose and reducing it to one-half to two-thirds</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's procedure directs the nurse to determine the dose parameters by multiplying the weight by the minimum and maximum daily doses of the drug, which produces the safe range, and then to compare the prescribed dosage with that calculated safe range.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) borrows the older adult rule of one-half to two-thirds of the standard adult dose and applies it to a child. Both ends of the lifespan need reduced doses, but children are dosed by mg/kg against a calculated safe range, not as a fraction of the adult dose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric weight-based dose calculation</span><span class="chip t2">units before arithmetic</span></div>
+<div class="stem">21. A nurse calculates the safe range for a prescribed pediatric drug and finds that the ordered dose falls well above it. What is the nurse's priority action?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Give the dose as ordered and document the discrepancy for the next shift</li><li class="fopt"><span class="mk">B</span>Give the highest dose within the calculated safe range instead</li><li class="fopt right"><span class="mk">&#10003;</span>Hold the drug and contact the health care provider or prescriber immediately</li><li class="fopt"><span class="mk">D</span>Give half the ordered dose and reassess in an hour</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states without qualification that if the drug dosage raises any concerns or varies from the safe range, the nurse is to contact the health care provider or prescriber immediately and not give the drug.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the administer-then-notify pattern, which fails because the harm has already been delivered by the time anyone is told. (B) and (D) both have the nurse adjusting the dose independently, which is prescribing, not administering.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric weight-based dose calculation</span><span class="chip t2">units before arithmetic</span></div>
+<div class="stem">22. Beyond age and weight, what additional factor does the chapter say must always be considered when calculating a pediatric dosage?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The child's body surface area, calculated from a standard nomogram</li><li class="fopt right"><span class="mk">&#10003;</span>Organ maturity</li><li class="fopt"><span class="mk">C</span>The parent's weight</li><li class="fopt"><span class="mk">D</span>The number of previous doses the child has received</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that in calculating pediatric dosages the factor of organ maturity always must be considered along with age and weight, because pediatric patients handle drugs differently based primarily on the immaturity of vital organs.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the most plausible distractor because body surface area really is a recognized pediatric dosing method, but this chapter never mentions it. Calculating the dosage according to body weight is described as the most commonly used method today, and the chapter says only that many formulas have been used over the years without naming a second one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric pharmacokinetics and growth contraindications</span><span class="chip t2">the neonatal pharmacokinetic profile</span></div>
+<div class="stem">23. Which findings place a neonate at increased risk for drug toxicity compared with an adult? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gastric pH that is less acidic</li><li class="fopt"><span class="mk">B</span>Increased peristalsis in the gastrointestinal tract</li><li class="fopt right"><span class="mk">&#10003;</span>Immature renal function</li><li class="fopt right"><span class="mk">&#10003;</span>Reduced first-pass elimination in the liver</li><li class="fopt right"><span class="mk">&#10003;</span>Decreased protein binding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The pediatric pharmacokinetics box lists less acidic gastric pH because acid-producing cells are immature until approximately 1 to 2 years of age, decreased glomerular filtration rate with decreased tubular secretion and resorption from kidney immaturity, reduced first-pass elimination from the immature liver and reduced microsomal enzymes, and decreased protein binding because the immature liver produces less protein.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reversal and the only false option. The box states that gastric emptying is slowed because of a slow or irregular peristalsis, so peristalsis in the neonate is decreased, not increased.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric pharmacokinetics and growth contraindications</span><span class="chip t2">the neonatal pharmacokinetic profile</span></div>
+<div class="stem">24. A neonate receives a drug that produces far more sedation than the same weight-adjusted dose produces in an adult. Which pharmacokinetic difference best explains this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The blood-brain barrier is immature, so more drug enters the brain</li><li class="fopt"><span class="mk">B</span>The blood-brain barrier is more selective in neonates than in adults</li><li class="fopt"><span class="mk">C</span>Fat content is higher in neonates, so more drug is stored centrally</li><li class="fopt"><span class="mk">D</span>Microsomal enzyme levels are elevated in neonates</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The pediatric distribution findings state that more drugs enter the brain because of an immature blood-brain barrier. The chapter pairs this with the observation that rapidly developing tissues may be more sensitive to certain drugs, so smaller dosages may be required.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the body-composition rule. Fat content is lower in young patients precisely because total body water is greater, so a neonate has less adipose tissue, not more. (D) reverses the metabolism finding, since levels of microsomal enzymes are decreased in the immature liver.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric pharmacokinetics and growth contraindications</span><span class="chip t2">the neonatal pharmacokinetic profile</span></div>
+<div class="stem">25. A 7-year-old requires a milligram-per-kilogram dose of a drug that is proportionally larger than the adult dose. Which statement explains this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Children always require smaller weight-adjusted doses than adults</li><li class="fopt right"><span class="mk">&#10003;</span>Older children may have increased metabolism and require higher dosages once hepatic enzymes are produced</li><li class="fopt"><span class="mk">C</span>The child's protein binding is higher than an adult's</li><li class="fopt"><span class="mk">D</span>Renal excretion is faster in every pediatric patient than in any adult</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The pediatric metabolism findings state that levels of microsomal enzymes are decreased in the neonate because the immature liver has not yet started producing enough, but that older children may have increased metabolism and require higher dosages once hepatic enzymes are produced.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex assumption that the pediatric column is uniformly less than the adult column, and metabolism is the one row where it is not. A neonate under-metabolizes; a school-age child may over-metabolize.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric pharmacokinetics and growth contraindications</span><span class="chip t2">drugs contraindicated during the growth years</span></div>
+<div class="stem">26. A prescriber is choosing an antibiotic for a young child. Which pairing of drug and growth-related hazard is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Tetracycline may permanently discolor a young person's teeth, and quinolone antibiotics may damage cartilage</li><li class="fopt"><span class="mk">B</span>Tetracycline may damage cartilage, and quinolone antibiotics may permanently discolor the teeth</li><li class="fopt"><span class="mk">C</span>Both tetracycline and quinolones cause permanent tooth discoloration</li><li class="fopt"><span class="mk">D</span>Neither drug class carries a growth-specific hazard</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names three drugs contraindicated during the growth years in one sentence: tetracycline may permanently discolor a young person's teeth, corticosteroids may suppress growth when given systemically, and quinolone antibiotics may damage cartilage.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the straight swap of the two hazards, and it pulls because both drugs are antibiotics prohibited in the same population for reasons that both sound skeletal. Tetracycline goes to teeth and quinolones go to cartilage. Chapter 38 puts a number on the tetracycline rule, contraindicating it under 8 years of age.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric pharmacokinetics and growth contraindications</span><span class="chip t2">drugs contraindicated during the growth years</span></div>
+<div class="stem">27. The parent of a child with asthma has read that corticosteroids suppress growth and asks whether the prescribed inhaler will stunt the child. Which response reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Any corticosteroid in any form will suppress growth and the inhaler should be stopped</li><li class="fopt right"><span class="mk">&#10003;</span>Corticosteroids may suppress growth when given systemically, but not when delivered via asthma inhalers</li><li class="fopt"><span class="mk">C</span>Corticosteroids suppress growth only in children older than 12</li><li class="fopt"><span class="mk">D</span>Growth suppression from corticosteroids occurs only with a single high dose</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's phrasing is that corticosteroids may suppress growth when given systemically, and it names asthma inhalers as its own parenthetical exception to that rule.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) generalizes a systemic effect to every route, which is the reflex error whenever a drug class carries a serious warning. The route is the discriminator here, and the chapter supplies the exception in the same sentence as the hazard.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">older adult pharmacokinetics and physiologic change</span><span class="chip t2">absorption and excretion</span></div>
+<div class="stem">28. A nurse notes that an older adult absorbs an oral drug more slowly and less completely than a younger patient. Which changes account for this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increased gastric acid production and accelerated gastric emptying</li><li class="fopt right"><span class="mk">&#10003;</span>Less acidic gastric pH from reduced hydrochloric acid production, slowed gastric emptying, reduced blood flow to the gastrointestinal tract, and a decreased absorptive surface area from blunted and flattened villi</li><li class="fopt"><span class="mk">C</span>An increase in absorptive surface area as villi lengthen with age</li><li class="fopt"><span class="mk">D</span>Increased cardiac output driving more drug into the portal circulation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The older adult pharmacokinetics box lists all four findings: gastric pH is less acidic because of a gradual reduction in the production of hydrochloric acid, gastric emptying is slowed because of a decline in smooth muscle tone and motor activity, blood flow to the GI tract is reduced by 40% to 50%, and the absorptive surface area is decreased because the aging process blunts and flattens villi.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reverses two findings at once, and it pulls because heartburn is common in older adults and suggests too much acid rather than too little. Table 3.3 records the gastrointestinal change as increased pH from alkaline gastric secretions, which is the same finding stated on the pH scale instead of the acid scale.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">older adult pharmacokinetics and physiologic change</span><span class="chip t2">absorption and excretion</span></div>
+<div class="stem">29. An older adult's glomerular filtration rate is reduced by 40% to 50%. Which pharmacokinetic phase does this change primarily affect?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Absorption</li><li class="fopt"><span class="mk">B</span>Distribution</li><li class="fopt"><span class="mk">C</span>Metabolism</li><li class="fopt right"><span class="mk">&#10003;</span>Excretion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The older adult excretion findings state that glomerular filtration rate is decreased by 40% to 50%, primarily because of decreased blood flow, and that the number of intact nephrons is decreased. Table 3.3 records each renal change as a decrease in excretion.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) pulls because the chapter attaches the identical 40% to 50% figure to blood flow to the gastrointestinal tract, which is an absorption finding. Same number, different organ, different phase — a third figure, roughly 1.5% per year after age 25, belongs to liver blood flow and drives metabolism.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">older adult pharmacokinetics and physiologic change</span><span class="chip t2">absorption and excretion</span></div>
+<div class="stem">30. A nurse reads that an older adult's blood flow to the gastrointestinal tract is reduced by 40% to 50%. Which pharmacokinetic phase does this change primarily affect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Absorption</li><li class="fopt"><span class="mk">B</span>Distribution</li><li class="fopt"><span class="mk">C</span>Metabolism</li><li class="fopt"><span class="mk">D</span>Excretion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The older adult absorption findings state that blood flow to the GI tract is reduced by 40% to 50% because of decreased cardiac output and decreased perfusion, and the body text adds that by 65 years of age there is an approximately 50% reduction in blood flow to the gastrointestinal tract.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the mirror error of the previous item. The two 40% to 50% figures in this chapter describe different organs in different phases, and the only way to keep them apart is to attach each number to its organ rather than to the number itself.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">older adult pharmacokinetics and physiologic change</span><span class="chip t2">metabolism and the aging brain</span></div>
+<div class="stem">31. An older adult accumulates a hepatically metabolized drug to toxic levels on a standard adult dose. Which changes explain the accumulation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increased microsomal enzyme levels and increased liver blood flow</li><li class="fopt right"><span class="mk">&#10003;</span>Decreased levels of microsomal enzymes and liver blood flow reduced by approximately 1.5% per year after 25 years of age</li><li class="fopt"><span class="mk">C</span>Increased first-pass effect removing more drug before it reaches the circulation</li><li class="fopt"><span class="mk">D</span>Increased albumin production binding more of the drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The older adult metabolism findings state that levels of microsomal enzymes are decreased, that liver blood flow is reduced by approximately 1.5% per year after 25 years of age, and that decreased metabolism leads to the potential for drug toxicity. Table 3.3 records both decreased enzyme production and decreased hepatic blood flow as decreases in metabolism.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) points in exactly the wrong direction. Protein binding sites, specifically albumin, are reduced in the older adult, which leaves greater amounts of free drug and adds to the toxicity risk rather than offsetting it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">older adult pharmacokinetics and physiologic change</span><span class="chip t2">metabolism and the aging brain</span></div>
+<div class="stem">32. An older adult receiving a routine dose of an anxiolytic becomes markedly more sedated than expected. Which change best explains this heightened sensitivity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reduced integrity of the blood-brain barrier</li><li class="fopt"><span class="mk">B</span>Increased total body water diluting the drug</li><li class="fopt"><span class="mk">C</span>Increased renal clearance concentrating the drug centrally</li><li class="fopt"><span class="mk">D</span>An increase in receptor number in the peripheral nervous system</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that older adults commonly have increased sensitivity to central nervous system depressant medications, naming anxiolytics and tricyclic antidepressants, because of reduced integrity of the blood-brain barrier.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the body-water finding, which is a decrease in the older adult, and it pulls because dilution sounds protective. Note that the blood-brain barrier is a problem at both ends of the lifespan, immature in the neonate and reduced in integrity in the older adult, with the same consequence of more drug reaching the brain.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">polypharmacy and prescribing in the older adult</span><span class="chip t2">polypharmacy versus the prescribing cascade</span></div>
+<div class="stem">33. An older adult taking a diuretic is started on a potassium supplement specifically to counteract the potassium loss the diuretic causes. Which phenomenon does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Polypharmacy</li><li class="fopt right"><span class="mk">&#10003;</span>The prescribing cascade</li><li class="fopt"><span class="mk">C</span>Nonadherence</li><li class="fopt"><span class="mk">D</span>The Beers Criteria</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter defines the prescribing cascade as drugs given specifically to counteract the adverse effects of other drugs, and its own example is a potassium supplement to counteract the potassium loss caused by certain diuretic medications.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because adding a second drug does increase the count, and the cascade is one route into polypharmacy. The discriminator is causality: polypharmacy is a count of concurrent drugs, while a cascade is a chain in which one drug is added to treat another drug's adverse effect.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">polypharmacy and prescribing in the older adult</span><span class="chip t2">polypharmacy versus the prescribing cascade</span></div>
+<div class="stem">34. An older adult with hypertension, diabetes, arthritis, and insomnia takes nine medications prescribed by three different providers, none of them added to treat another drug's adverse effect. Which term describes this situation?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Polypharmacy</li><li class="fopt"><span class="mk">B</span>The prescribing cascade</li><li class="fopt"><span class="mk">C</span>A therapeutic duplication</li><li class="fopt"><span class="mk">D</span>An adverse drug withdrawal event</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The key terms box defines polypharmacy as the use of many different drugs concurrently in treating a patient who often has several health problems, and the chapter attributes it to the more frequent occurrence of chronic diseases together with the multiple drug options available. As the number of medications increases, so does the risk for drug interaction and adverse drug reactions.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error of the previous item. Nothing in this stem describes a drug added to counteract another drug's effect, and the stem says so explicitly; without that causal link the situation is a count, not a cascade. The chapter also recommends using only one pharmacy so that monitoring for drug interactions and duplicate therapy can occur.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">polypharmacy and prescribing in the older adult</span><span class="chip t2">dosing and prescribing safeguards</span></div>
+<div class="stem">35. A prescriber is starting a new medication for a 79-year-old. Which approach does the chapter recommend?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Begin at the standard adult dose and reduce only if adverse effects appear</li><li class="fopt right"><span class="mk">&#10003;</span>Begin at the lowest possible dose, often less than an average adult dose, and increase slowly based on patient response</li><li class="fopt"><span class="mk">C</span>Begin at twice the adult dose to overcome reduced absorption</li><li class="fopt"><span class="mk">D</span>Calculate the dose in milligrams per kilogram of body weight</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that appropriate drug doses for older adults may sometimes be one-half to two-thirds of the standard adult dose, and that dosing should follow the admonition to start low and go slow, meaning to start with the lowest possible dose and increase the dose slowly based on patient response.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because starting at the standard dose and titrating downward feels like the same destination reached from the other side, but the adverse effect is the harm the rule exists to prevent. (D) applies the pediatric method, which belongs to the other end of the lifespan.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">polypharmacy and prescribing in the older adult</span><span class="chip t2">dosing and prescribing safeguards</span></div>
+<div class="stem">36. A nurse is reviewing a medication list for a 78-year-old living at home and wants a tool that identifies drugs likely to be inappropriately prescribed, ineffective, or a cause of adverse drug reactions in older adults. Which tool applies?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The Beers Criteria, stewarded by the American Geriatric Society and updated on a 3-year cycle</li><li class="fopt"><span class="mk">B</span>Table 3.1, the pregnancy and lactation safety categories</li><li class="fopt"><span class="mk">C</span>A 24-hour urine collection</li><li class="fopt"><span class="mk">D</span>The five-step pediatric dosage procedure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes the Beers Criteria as a very effective tool used since the 1990s to identify drugs that may be inappropriately prescribed, ineffective, or cause adverse drug reactions in older adult patients. The American Geriatric Society is the steward and produces updates on a 3-year cycle, with the most recent update in 2019.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names a real assessment from this same section, but a 24-hour urine collection measures creatinine clearance in one patient rather than screening a medication list. The Beers Criteria are intended for adults 65 years and older in all ambulatory, acute, and institutionalized settings of care, except hospice and palliative care settings.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">renal function assessment in the older adult</span><span class="chip t2">dosing and prescribing safeguards</span></div>
+<div class="stem">37. A frail 84-year-old woman has a serum creatinine of 0.3 mg/dL, and a clinician cites this value as evidence that her kidneys are handling her medications well. What is wrong with this reasoning?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Nothing, since a low serum creatinine reliably indicates good renal function</li><li class="fopt right"><span class="mk">&#10003;</span>Creatinine is a byproduct of muscle mass, so a patient with limited muscle cannot produce much creatinine, and the low value may mask renal dysfunction</li><li class="fopt"><span class="mk">C</span>Serum creatinine rises with renal impairment only in men</li><li class="fopt"><span class="mk">D</span>Serum creatinine measures hepatic rather than renal function</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives this its own Clinical Pearl, stating that a low serum creatinine does not mean good renal function in the elderly, that creatinine is a byproduct of muscle mass, and that a patient with a creatinine of 0.3 mg/dL may have a creatinine clearance indicative of renal dysfunction. Because muscle mass declines with age, serum creatinine may provide a misleading index of renal function.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick and it is exactly the error the chapter warns against, because a below-normal laboratory value normally reads as reassuring. The chapter's own example is a frail older woman whose low creatinine leads a clinician to falsely think her renal function is normal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">renal function assessment in the older adult</span><span class="chip t2">dosing and prescribing safeguards</span></div>
+<div class="stem">38. A prescriber wants the most accurate determination of an older adult's creatinine clearance. Which method does the chapter identify, and what limits its use?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Collecting the patient's urine for 24 hours, which is accurate but quite cumbersome and therefore not used very often</li><li class="fopt"><span class="mk">B</span>A single random serum creatinine, which is accurate but expensive</li><li class="fopt"><span class="mk">C</span>Blood urea nitrogen alone, which is accurate but affected by diet</li><li class="fopt"><span class="mk">D</span>Aspartate aminotransferase and alanine aminotransferase levels</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that the most accurate way to determine creatinine clearance is by collecting a patient's urine for 24 hours, but that this test is quite cumbersome and is not used very often.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names the correct laboratory pair for the wrong organ. Aspartate aminotransferase and alanine aminotransferase assess liver function, while serum creatinine and blood urea nitrogen assess kidney function.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">renal function assessment in the older adult</span><span class="chip t2">dosing and prescribing safeguards</span></div>
+<div class="stem">39. An older adult is taking digoxin, and renal function has declined. Why does the chapter single out this situation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because digoxin is not excreted renally</li><li class="fopt right"><span class="mk">&#10003;</span>Because reduced renal function is especially consequential for drugs with a low therapeutic index, such as digoxin, and renal function declines in roughly two-thirds of older adults</li><li class="fopt"><span class="mk">C</span>Because digoxin is on the pregnancy category X list</li><li class="fopt"><span class="mk">D</span>Because digoxin absorption increases with age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that renal function declines in roughly two-thirds of older adults and that this is especially true for drugs with a low therapeutic index such as digoxin. It adds that creatinine clearance is an important indicator of renal functioning and that if abnormal, drug dosages may need to be adjusted.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) removes the very property that creates the hazard. A drug with a low therapeutic index has a narrow gap between the therapeutic dose and the toxic one, so a modest fall in excretion is enough to cross it. Laboratory assessments are recommended at least annually and more frequently for higher-risk drug regimens.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lifespan pharmacokinetic comparison</span><span class="chip t2">total body water and fat content</span></div>
+<div class="stem">40. A water-soluble antibiotic is dosed by weight in a full-term newborn and in an 80-year-old man. How does total body water differ between them, and what follows?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Total body water is 70% to 80% in the full-term infant and about 52% in the man older than 60, so the same weight-adjusted dose is more diluted in the infant and more concentrated in the older adult</li><li class="fopt"><span class="mk">B</span>Total body water is higher in the older adult, so the drug is more diluted in him</li><li class="fopt"><span class="mk">C</span>Total body water is identical across the lifespan and does not affect distribution</li><li class="fopt"><span class="mk">D</span>Total body water rises steadily with age from infancy onward</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The pediatric distribution findings give total body water as 70% to 80% in full-term infants, 85% in premature newborns, and 64% in children 1 to 12 years of age, while the older adult box gives 52% in males and 46% in females older than 60. The chapter states that the decrease in total body water leads to decreased distribution of some drugs, such as antibiotics, creating a risk for toxicity because of greater concentrations of drug in the bloodstream.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the whole gradient, and it is the intuitive inversion because older adults are often described as retaining fluid. Total body water falls monotonically across the entire lifespan, from 85% in a premature newborn to 46% in a woman older than 60.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lifespan pharmacokinetic comparison</span><span class="chip t2">total body water and fat content</span></div>
+<div class="stem">41. A highly fat-soluble drug is given to an infant and to an older adult. How does fat content differ between them?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Fat content is higher in the infant because of lower total body water, and lower in the older adult because of increased lean body mass</li><li class="fopt right"><span class="mk">&#10003;</span>Fat content is lower in the infant because of greater total body water, and increased in the older adult because of decreased lean body mass</li><li class="fopt"><span class="mk">C</span>Fat content is identical at both ends of the lifespan</li><li class="fopt"><span class="mk">D</span>Fat content is lower at both ends of the lifespan</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The pediatric box states that fat content is lower in young patients because of greater total body water, and the older adult box states that fat content is increased because of decreased lean body mass. The body text adds an approximately 20% reduction in muscle mass between 25 and 65 years of age with a corresponding 20% increase in body fat.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, reversing both halves at once. Fat and water move in opposite directions to each other and in opposite directions at the two ends of life, so a fat-soluble drug behaves in an older adult the way a water-soluble drug behaves in an infant.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lifespan pharmacokinetic comparison</span><span class="chip t2">what the two ends share</span></div>
+<div class="stem">42. Which pharmacokinetic changes are found in both the neonate and the older adult, even though the underlying reasons differ? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Less acidic gastric pH</li><li class="fopt right"><span class="mk">&#10003;</span>Slowed gastric emptying</li><li class="fopt right"><span class="mk">&#10003;</span>Decreased protein binding</li><li class="fopt"><span class="mk">D</span>Increased total body water</li><li class="fopt right"><span class="mk">&#10003;</span>Decreased levels of microsomal enzymes</li><li class="fopt"><span class="mk">F</span>Increased fat content</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Both pharmacokinetic boxes list less acidic gastric pH, slowed gastric emptying, decreased protein binding, decreased microsomal enzyme levels, and reduced renal function. The reasons differ, immaturity in the young and decline in the old, but the directions match.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) and (F) are the two rows where the ends genuinely diverge, which is what makes them the best distractors in the chapter. Total body water is high in the neonate and low in the older adult, and fat content does the reverse. If a stem describes a change that could fit either end, the discriminator is total body water or fat content, not the gastrointestinal or hepatic findings.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lifespan pharmacokinetic comparison</span><span class="chip t2">what the two ends share</span></div>
+<div class="stem">43. A neonate and an 80-year-old are each started on warfarin, a highly protein-bound drug. What risk do they share, and why?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Both have decreased protein binding, so a greater fraction of the drug remains free and pharmacologically active, raising toxicity risk at the same nominal dose</li><li class="fopt"><span class="mk">B</span>Both have increased protein binding, so more drug is held inactive and doses must be raised</li><li class="fopt"><span class="mk">C</span>Only the neonate is at risk, since albumin is normal in older adults</li><li class="fopt"><span class="mk">D</span>Only the older adult is at risk, since neonates do not bind drugs to protein at all</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The pediatric box states that protein binding is decreased because of decreased production of protein by the immature liver, and the older adult box states that protein albumin binding sites are reduced, leading to greater amounts of free drug. Chapter 2 supplies the principle that only drug molecules not bound to plasma proteins can freely distribute and that bound drug is pharmacologically inactive.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts both the direction of the change and its consequence, and it is the reflex inversion because bound drug intuitively sounds like the active form. Chapter 2 names warfarin and phenytoin as its highly protein-bound examples, so both of these patients carry a higher toxicity risk on the same dose an adult would tolerate.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"pregnancy drug transfer and trimester risk","subtopic":"how drugs reach the fetus","stem":"A pregnant patient asks the nurse how the medication she swallows could possibly reach her baby. Which explanation correctly describes the principal mechanism?","options":["Substances move passively across the placenta from an area of higher concentration to an area of lower concentration","Substances are pumped across the placenta by energy-requiring carriers in the cell membrane","The placenta filters out all drug molecules and admits only nutrients","Substances cross the placenta only after the membranes rupture in labor"],"correct":[0],"sata":false,"why":"The chapter states that transfer of both drugs and nutrients to the fetus occurs primarily by diffusion across the placenta, although not all drugs cross the placenta. Diffusion is defined in the key terms box as the passive movement of a substance between different tissues from areas of higher concentration to areas of lower concentration.","trap":"(B) describes active transport, which the key terms box defines directly against diffusion — the tell that the two will be swapped on an exam. Diffusion is passive and needs no energy; active transport requires energy and uses a pump.","k":"ffan231k3hjs5"},{"topic":"pregnancy drug transfer and trimester risk","subtopic":"how drugs reach the fetus","stem":"A drug is moved across a cell membrane against its concentration gradient by a carrier protein that consumes cellular energy to do it. Which key term names this process?","options":["Diffusion, because the substance is moving between two different tissues","Active transport, because the movement requires energy and uses a pumping mechanism within the cell membrane","First-pass elimination, because a carrier protein is involved","Protein binding, because the drug is attached to a protein"],"correct":[1],"sata":false,"why":"The key terms box defines active transport as the active, energy-requiring movement of a substance between different tissues via pumping mechanisms contained within cell membranes. The energy requirement and the pump are what separate it from diffusion.","trap":"(A) is the mirror error of the previous item. Diffusion also moves a substance between tissues, so the phrase in that option is true but does not discriminate; the discriminator is energy, and diffusion needs none.","k":"1muph8z1mf36o1"},{"topic":"pregnancy drug transfer and trimester risk","subtopic":"which trimester carries which risk","stem":"A patient at 8 weeks' gestation tells the nurse she has been taking an over-the-counter remedy she bought herself. Why is the nurse most concerned about the timing of this exposure?","options":["The first trimester is the period of greatest danger of drug-induced developmental defects","The first trimester is when the greatest percentage of maternally absorbed drug reaches the fetus","The third trimester is when developmental defects are most likely, so the timing is reassuring","Drug exposure is equally hazardous at every point in pregnancy"],"correct":[0],"sata":false,"why":"The chapter identifies the first trimester as the period of greatest danger of drug-induced developmental defects, because during this period the fetus undergoes rapid cell proliferation and the skeleton, muscles, limbs, and visceral organs are developing at their most rapid rate. Self-treatment is strongly discouraged at any time during pregnancy but especially during the first trimester.","trap":"(B) fuses the chapter's two superlatives into one trimester. Greatest danger and greatest transfer belong to opposite ends of the pregnancy, which is exactly why the chapter states both in a single sentence.","k":"nsh5jxi1vp5v"},{"topic":"pregnancy drug transfer and trimester risk","subtopic":"which trimester carries which risk","stem":"A patient at 34 weeks' gestation receives a drug that has been safely used earlier in her pregnancy, and the nurse notes that fetal exposure is now higher than it was before. What accounts for the increase?","options":["The first trimester is when drug transfer to the fetus peaks, and residual drug is still circulating","Enhanced blood flow to the fetus, increased fetal surface area, and increased free drug in the maternal circulation","The placenta has begun to actively pump drug toward the fetus","The fetal liver now metabolizes drug faster than the mother's"],"correct":[1],"sata":false,"why":"During the last trimester the greatest percentage of maternally absorbed drug gets to the fetus, and the chapter attributes this to enhanced blood flow to the fetus, increased fetal surface area, and an increased amount of free drug in the mother's circulation.","trap":"(A) is the mirror error of the previous item. The first trimester is when exposure is most damaging, not when the most drug arrives — early damage is structural because organs are being built, while late transfer is quantitative because blood flow and surface area are maximal.","k":"13bq4g110v1dsb"},{"topic":"pregnancy drug transfer and trimester risk","subtopic":"when drug therapy must continue anyway","stem":"A newly pregnant patient with epilepsy tells the nurse she plans to stop all of her medications until after delivery so the baby is not exposed to anything. Which response reflects the chapter's position?","options":["Stopping all medications is the safest course for any pregnancy","Without drug therapy, maternal conditions such as hypertension, epilepsy, diabetes, and infection could seriously endanger both her and the fetus","She should halve every dose rather than stop, since dose is the only variable that matters","The decision depends only on the drug's molecular weight"],"correct":[1],"sata":false,"why":"The chapter states that certain situations require the use of drugs during pregnancy, because without drug therapy maternal conditions such as hypertension, epilepsy, diabetes, and infection could seriously endanger both the mother and the fetus, and the potential for harm far outweighs the risks of appropriate drug therapy.","trap":"(A) is the reflex pick because the whole section is about fetal hazard, and stopping everything looks like the maximally cautious answer. The chapter's caution is aimed at self-treatment, not at treatment of a maternal condition that itself threatens the pregnancy.","k":"1l5soeb1eycvil"},{"topic":"fda pregnancy safety categories","subtopic":"distinguishing the five letters","stem":"A patient at 32 weeks' gestation asks whether an over-the-counter product rated pregnancy category A is safe to take. Which statement accurately conveys what that rating means?","options":["Studies indicate no risk to the human fetus","The product has not caused problems in animals, but no human testing has been done","Adverse effects have been reported in the animal fetus, and human information is unavailable","Possible fetal risk in humans has been reported, but benefit may still justify use"],"correct":[0],"sata":false,"why":"Table 3.1 defines category A as studies indicating no risk to the human fetus. It is the only category in the table backed by human evidence of safety.","trap":"(B) is the strongest distractor because it also sounds reassuring, but it is the definition of category B — no risk to the animal fetus with human information unavailable. The discriminator between the two top categories is which species was studied.","k":"10xu16rf1m895"},{"topic":"fda pregnancy safety categories","subtopic":"distinguishing the five letters","stem":"A drug's label states that adverse effects have been reported in the animal fetus and that information for humans is not available. Which pregnancy safety category does this describe?","options":["Category A","Category B","Category C","Category D"],"correct":[2],"sata":false,"why":"Table 3.1 assigns category C to drugs for which adverse effects were reported in the animal fetus and information for humans is not available.","trap":"(B) is the classic swap, because categories B and C share the identical phrase about human information being unavailable. Category B is the good news about animals, meaning no risk; category C is the bad news about animals, meaning adverse effects were reported.","k":"5t7wq31s2hf09"},{"topic":"fda pregnancy safety categories","subtopic":"distinguishing the five letters","stem":"A second drug's label states that studies indicate no risk to the animal fetus and that information for humans is not available. Which category is this?","options":["Category A","Category B","Category C","Category X"],"correct":[1],"sata":false,"why":"Table 3.1 defines category B as studies indicating no risk to the animal fetus, with information for humans not available. The animal finding is favorable and the human data are simply missing.","trap":"(C) is the mirror error of the previous item. Both categories say human information is unavailable, so the shared clause cannot discriminate; the direction of the animal finding is what does.","k":"1einhar3ck14l"},{"topic":"fda pregnancy safety categories","subtopic":"distinguishing the five letters","stem":"A pregnant patient with a serious infection is prescribed a drug for which possible fetal risk in humans has been reported. The patient asks whether this means the drug is forbidden in pregnancy. Which response is correct?","options":["It is forbidden, since human fetal risk has been reported","In selected cases, consideration of the potential benefit versus risk may warrant use of the drug in a pregnant patient","It may be used freely, since only possible risk was reported","The rating applies only after delivery"],"correct":[1],"sata":false,"why":"Table 3.1 states that for category D drugs, possible fetal risk in humans has been reported; however, in selected cases consideration of the potential benefit versus risk may warrant use of these drugs in pregnant women. Only category X carries the flat prohibition, where fetal abnormalities have been reported and positive evidence of fetal risk in humans is available, and those drugs are not to be used in pregnant women.","trap":"(A) collapses category D into category X, which is the reflex response to any mention of human fetal risk. The discriminator between the last two categories is not whether harm is documented but whether benefit can ever justify the drug anyway. Several drugs in this course sit at C or D, so a letter alone does not mean do not give.","k":"ksmslp1l2cm2z"},{"topic":"fda pregnancy safety categories","subtopic":"the 2015 rule replacing the letters","stem":"A nurse reviews a newer drug label that carries no letter category and instead has three narrative subsections. Which subsection contains information about contraception, pregnancy testing, and infertility?","options":["Pregnancy","Lactation","Females and Males of Reproductive Potential","Warnings and Precautions"],"correct":[2],"sata":false,"why":"Under the FDA rule of June 2015, prescribing information uses three subsections. The Females and Males of Reproductive Potential subsection carries information about contraception, pregnancy testing, and infertility, while Pregnancy carries dosing and potential risks to the developing fetus, and Lactation carries the amount of drug in breast milk and the potential effect on the child.","trap":"(A) pulls because contraception and pregnancy testing both contain the word pregnancy, but that subsection is about dosing and fetal risk once a pregnancy exists. The textbook continues to use the letter categories because drugs are still being phased in and the transition is not complete, so the student will likely encounter both systems.","k":"14s1y1w16kq2ca"},{"topic":"drug therapy during breastfeeding","subtopic":"the 2015 rule replacing the letters","stem":"A breastfeeding mother must begin a new medication. Which drug characteristics increase the likelihood that it will be transferred to the infant through breast milk? Select all that apply.","options":["Fat solubility","Low molecular weight","High molecular weight","High concentration of the drug","High water solubility"],"correct":[0,1,3],"sata":true,"why":"The chapter names the primary drug characteristics that increase the likelihood of drug transfer via breastfeeding as fat solubility, low molecular weight, and high concentration.","trap":"(C) and (E) are the reversals of two of the three listed properties, and they pull because a large, water-soluble molecule intuitively sounds harder for the body to handle. Lipophilic means the drug goes everywhere and stays, whether that destination is breast milk, adipose tissue, or the brain.","k":"1jq6hnshyp84y"},{"topic":"drug therapy during breastfeeding","subtopic":"the 2015 rule replacing the letters","stem":"A breastfeeding mother taking a prescribed medication asks whether nursing more often will help clear the drug out of her own system faster. Which response is correct?","options":["Yes, breastfeeding is a significant route of maternal drug excretion","No, breast milk is not the primary route for maternal drug excretion, and drug levels in milk are usually lower than those in the maternal circulation","Yes, but only for fat-soluble drugs","No, because drugs do not enter breast milk at all"],"correct":[1],"sata":false,"why":"The chapter states that breast milk is not the primary route for maternal drug excretion and that drug levels in breast milk are usually lower than those in the maternal circulation. The amount of infant exposure depends largely on the volume of milk consumed.","trap":"(A) has the physiology running backwards. The concern in breastfeeding runs one direction only, toward the infant; nothing about nursing meaningfully clears drug from the mother. (D) overcorrects in the opposite direction, and the chapter is explicit that a wide variety of drugs easily cross into breast milk.","k":"4ycohy14ut5qo"},{"topic":"drug therapy during breastfeeding","subtopic":"the 2015 rule replacing the letters","stem":"A prescriber and a breastfeeding mother are deciding whether she should take a particular drug. On what basis does the chapter say this decision should be made?","options":["On the risk/benefit ratio, considered on a case-by-case basis","On a standing rule that no drug may be taken while breastfeeding","On the drug's pregnancy letter category alone","On whether the infant is older than 1 month"],"correct":[0],"sata":false,"why":"The chapter states that the ultimate decision as to whether a breastfeeding mother takes a particular drug depends on the risk/benefit ratio and must be considered on a case-by-case basis.","trap":"(C) is tempting because the same chapter supplies the letter categories a few paragraphs earlier, but those categories address fetal exposure in pregnancy. The 2015 rule created a separate Lactation subsection precisely because breastfeeding needs its own information.","k":"1q4janrboj90p"},{"topic":"pediatric age classification and developmental approach","subtopic":"the four age bands","stem":"A nurse is documenting on a 3-week-old admitted for antibiotic therapy. Which classification does Table 3.2 assign to this patient?","options":["Premature infant","Neonate","Infant","Child"],"correct":[1],"sata":false,"why":"Table 3.2 classifies a patient younger than 1 month as a neonate or newborn infant. The key terms box gives the same boundary, defining neonate as pertaining to a person younger than 1 month of age.","trap":"(C) is the reflex pick because casual usage treats neonate and infant as interchangeable, and a 3-week-old is unmistakably an infant in ordinary speech. Table 3.2 reserves infant for 1 month up to 1 year, so the neonate label covers only the first month.","k":"1hniwvc5tdxme"},{"topic":"pediatric age classification and developmental approach","subtopic":"the four age bands","stem":"A nurse reviews four young patients. Which one does Table 3.2 classify as a child?","options":["A patient born at 35 weeks' gestation","A 3-month-old","A 4-year-old","A 14-year-old"],"correct":[2],"sata":false,"why":"Table 3.2 assigns 1 year up to 12 years to the classification child. A patient younger than 38 weeks' gestation is a premature or preterm infant, and 1 month up to 1 year is an infant.","trap":"(D) pulls because a 14-year-old is still a minor and is treated on a pediatric unit, but the key terms box defines pediatric as 12 years of age or younger, and the child band stops at 12.","k":"1d2fyqm9f355k"},{"topic":"pediatric age classification and developmental approach","subtopic":"the four age bands","stem":"A nurse notices that a manufacturer's guideline for a drug describes dosing for pediatric patients up to 16 years of age, while the textbook defines pediatric as 12 years of age or younger. What is the correct interpretation?","options":["The manufacturer is in error and the textbook definition governs","The meaning of pediatric may vary with the individual drug and clinical situation, and the manufacturer's guidelines should be consulted for specific dosing","The drug should not be given to anyone older than 12","The two ages refer to different drug routes"],"correct":[1],"sata":false,"why":"The note to Table 3.2 states that the meaning of the term pediatric may vary with the individual drug and clinical situation, that the maximum age for a pediatric patient is often identified as 16 years of age, and that the nurse should consult the manufacturer's guidelines for specific dosing information.","trap":"(A) treats the headline number as a hard boundary, and it is not. Both of this chapter's age definitions carry a footnote that softens them — older adult is 65 or older but some sources say 55 or older, and pediatric is 12 or younger but often 16 in practice. An item that hinges on a hard cutoff is testing the headline number; one that hinges on judgment is testing the footnote.","k":"1emuwrg11ecdoe"},{"topic":"pediatric age classification and developmental approach","subtopic":"matching the approach to the developmental stage","stem":"A nurse is preparing to give an injection to a 4-year-old. Which approach matches the chapter's guidance for this developmental stage?","options":["Give a brief, concrete explanation at the patient's level with the parent or caregiver present, and make use of magical thinking such as a special medicine to make the discomfort go away","Prepare the patient well in advance with a detailed physiologic rationale, without scare tactics","Encourage self-expression, individuality, and self-care, and invite full participation in the procedure","Withhold any explanation, since a preschooler cannot understand one"],"correct":[0],"sata":false,"why":"The chapter's preschool guidance calls for a brief, concrete explanation at the patient's level with the parent or caregiver present, and for making use of magical thinking, giving ointments or special medicines to make discomfort go away as its example.","trap":"(C) is drawn word for word from the adolescent bullet, and it pulls because encouraging participation sounds like good practice at any age. The chapter matches the approach to the stage: magical thinking works on a preschooler and would insult a teenager.","k":"1hhnwgp12p6f7"},{"topic":"pediatric weight-based dose calculation","subtopic":"units before arithmetic","stem":"A drug is ordered at 15 mg/kg/day for a child whose chart records a weight of 22 lb. What is the nurse's first step?","options":["Multiply 22 by 15, since the order is already weight-based","Convert the weight to kilograms by dividing the pounds by 2.2, giving 10 kg","Convert the weight by multiplying the pounds by 2.2, giving 48.4 kg","Ask the pharmacy to convert the order to a milligram-per-pound basis"],"correct":[1],"sata":false,"why":"The chapter's Clinical Pearl states that pediatric doses use kilograms, not pounds, and that the nurse takes the weight in pounds and divides by 2.2 to get kilograms. The chapter's worked example is a 10-lb baby weighing 4.5 kg.","trap":"(A) is the named error. The chapter states outright that a common source of medication error and potential toxicity is confusing pounds with kilograms, and using 22 as though it were kilograms would deliver more than twice the intended dose. (C) inverts the conversion and makes the child heavier than an adult, which is the arithmetic tell.","k":"1at0nux1rnsf0z"},{"topic":"pediatric weight-based dose calculation","subtopic":"units before arithmetic","stem":"A drug reference lists a pediatric dose as 30 mg/kg/day divided every 8 hours. A nurse gives 30 mg/kg at each of the three scheduled times. What error has occurred?","options":["None, because mg/kg/day and mg/kg/dose mean the same thing","The nurse administered three times the intended daily dose by treating a per-day figure as a per-dose figure","The nurse administered one-third of the intended daily dose","The nurse should have divided the daily dose by the child's weight"],"correct":[1],"sata":false,"why":"The chapter gives this its own Clinical Pearl, noting that most pediatric doses are in mg/kg/day but some are in mg/kg/dose. A per-day figure is divided among the day's doses; reading it as a per-dose figure multiplies the total by the number of doses given.","trap":"(A) is the reflex pick because the two labels differ by one short word and are easy to read past. The size of the error is however many doses per day the schedule contains, which is a factor of three or four in most regimens.","k":"1qcuxrk1o4m2ny"},{"topic":"pediatric weight-based dose calculation","subtopic":"units before arithmetic","stem":"A nurse is given a drug reference that lists a usual dosage range per 24 hours in milligrams per kilogram. How does the nurse determine the safe range for a particular child?","options":["By multiplying the child's weight in kilograms by the minimum and by the maximum daily doses of the drug","By dividing the child's weight in kilograms by the maximum daily dose","By comparing the child's weight with the average weight for the child's age","By using the adult dose and reducing it to one-half to two-thirds"],"correct":[0],"sata":false,"why":"The chapter's procedure directs the nurse to determine the dose parameters by multiplying the weight by the minimum and maximum daily doses of the drug, which produces the safe range, and then to compare the prescribed dosage with that calculated safe range.","trap":"(D) borrows the older adult rule of one-half to two-thirds of the standard adult dose and applies it to a child. Both ends of the lifespan need reduced doses, but children are dosed by mg/kg against a calculated safe range, not as a fraction of the adult dose.","k":"d8f18w10zccqm"},{"topic":"pediatric weight-based dose calculation","subtopic":"units before arithmetic","stem":"A nurse calculates the safe range for a prescribed pediatric drug and finds that the ordered dose falls well above it. What is the nurse's priority action?","options":["Give the dose as ordered and document the discrepancy for the next shift","Give the highest dose within the calculated safe range instead","Hold the drug and contact the health care provider or prescriber immediately","Give half the ordered dose and reassess in an hour"],"correct":[2],"sata":false,"why":"The chapter states without qualification that if the drug dosage raises any concerns or varies from the safe range, the nurse is to contact the health care provider or prescriber immediately and not give the drug.","trap":"(A) is the administer-then-notify pattern, which fails because the harm has already been delivered by the time anyone is told. (B) and (D) both have the nurse adjusting the dose independently, which is prescribing, not administering.","k":"1jvnjhj16mjgbx"},{"topic":"pediatric weight-based dose calculation","subtopic":"units before arithmetic","stem":"Beyond age and weight, what additional factor does the chapter say must always be considered when calculating a pediatric dosage?","options":["The child's body surface area, calculated from a standard nomogram","Organ maturity","The parent's weight","The number of previous doses the child has received"],"correct":[1],"sata":false,"why":"The chapter states that in calculating pediatric dosages the factor of organ maturity always must be considered along with age and weight, because pediatric patients handle drugs differently based primarily on the immaturity of vital organs.","trap":"(A) is the most plausible distractor because body surface area really is a recognized pediatric dosing method, but this chapter never mentions it. Calculating the dosage according to body weight is described as the most commonly used method today, and the chapter says only that many formulas have been used over the years without naming a second one.","k":"11snhtb1c5yrs5"},{"topic":"pediatric pharmacokinetics and growth contraindications","subtopic":"the neonatal pharmacokinetic profile","stem":"Which findings place a neonate at increased risk for drug toxicity compared with an adult? Select all that apply.","options":["Gastric pH that is less acidic","Increased peristalsis in the gastrointestinal tract","Immature renal function","Reduced first-pass elimination in the liver","Decreased protein binding"],"correct":[0,2,3,4],"sata":true,"why":"The pediatric pharmacokinetics box lists less acidic gastric pH because acid-producing cells are immature until approximately 1 to 2 years of age, decreased glomerular filtration rate with decreased tubular secretion and resorption from kidney immaturity, reduced first-pass elimination from the immature liver and reduced microsomal enzymes, and decreased protein binding because the immature liver produces less protein.","trap":"(B) is the reversal and the only false option. The box states that gastric emptying is slowed because of a slow or irregular peristalsis, so peristalsis in the neonate is decreased, not increased.","k":"dzy9c61awq61k"},{"topic":"pediatric pharmacokinetics and growth contraindications","subtopic":"the neonatal pharmacokinetic profile","stem":"A neonate receives a drug that produces far more sedation than the same weight-adjusted dose produces in an adult. Which pharmacokinetic difference best explains this?","options":["The blood-brain barrier is immature, so more drug enters the brain","The blood-brain barrier is more selective in neonates than in adults","Fat content is higher in neonates, so more drug is stored centrally","Microsomal enzyme levels are elevated in neonates"],"correct":[0],"sata":false,"why":"The pediatric distribution findings state that more drugs enter the brain because of an immature blood-brain barrier. The chapter pairs this with the observation that rapidly developing tissues may be more sensitive to certain drugs, so smaller dosages may be required.","trap":"(C) inverts the body-composition rule. Fat content is lower in young patients precisely because total body water is greater, so a neonate has less adipose tissue, not more. (D) reverses the metabolism finding, since levels of microsomal enzymes are decreased in the immature liver.","k":"1dfm6801r62rm6"},{"topic":"pediatric pharmacokinetics and growth contraindications","subtopic":"the neonatal pharmacokinetic profile","stem":"A 7-year-old requires a milligram-per-kilogram dose of a drug that is proportionally larger than the adult dose. Which statement explains this?","options":["Children always require smaller weight-adjusted doses than adults","Older children may have increased metabolism and require higher dosages once hepatic enzymes are produced","The child's protein binding is higher than an adult's","Renal excretion is faster in every pediatric patient than in any adult"],"correct":[1],"sata":false,"why":"The pediatric metabolism findings state that levels of microsomal enzymes are decreased in the neonate because the immature liver has not yet started producing enough, but that older children may have increased metabolism and require higher dosages once hepatic enzymes are produced.","trap":"(A) is the reflex assumption that the pediatric column is uniformly less than the adult column, and metabolism is the one row where it is not. A neonate under-metabolizes; a school-age child may over-metabolize.","k":"dqz6e11r2hzu7"},{"topic":"pediatric pharmacokinetics and growth contraindications","subtopic":"drugs contraindicated during the growth years","stem":"A prescriber is choosing an antibiotic for a young child. Which pairing of drug and growth-related hazard is correct?","options":["Tetracycline may permanently discolor a young person's teeth, and quinolone antibiotics may damage cartilage","Tetracycline may damage cartilage, and quinolone antibiotics may permanently discolor the teeth","Both tetracycline and quinolones cause permanent tooth discoloration","Neither drug class carries a growth-specific hazard"],"correct":[0],"sata":false,"why":"The chapter names three drugs contraindicated during the growth years in one sentence: tetracycline may permanently discolor a young person's teeth, corticosteroids may suppress growth when given systemically, and quinolone antibiotics may damage cartilage.","trap":"(B) is the straight swap of the two hazards, and it pulls because both drugs are antibiotics prohibited in the same population for reasons that both sound skeletal. Tetracycline goes to teeth and quinolones go to cartilage. Chapter 38 puts a number on the tetracycline rule, contraindicating it under 8 years of age.","k":"137146xfusx67"},{"topic":"pediatric pharmacokinetics and growth contraindications","subtopic":"drugs contraindicated during the growth years","stem":"The parent of a child with asthma has read that corticosteroids suppress growth and asks whether the prescribed inhaler will stunt the child. Which response reflects the chapter?","options":["Any corticosteroid in any form will suppress growth and the inhaler should be stopped","Corticosteroids may suppress growth when given systemically, but not when delivered via asthma inhalers","Corticosteroids suppress growth only in children older than 12","Growth suppression from corticosteroids occurs only with a single high dose"],"correct":[1],"sata":false,"why":"The chapter's phrasing is that corticosteroids may suppress growth when given systemically, and it names asthma inhalers as its own parenthetical exception to that rule.","trap":"(A) generalizes a systemic effect to every route, which is the reflex error whenever a drug class carries a serious warning. The route is the discriminator here, and the chapter supplies the exception in the same sentence as the hazard.","k":"6z4ksj9ai281"},{"topic":"older adult pharmacokinetics and physiologic change","subtopic":"absorption and excretion","stem":"A nurse notes that an older adult absorbs an oral drug more slowly and less completely than a younger patient. Which changes account for this?","options":["Increased gastric acid production and accelerated gastric emptying","Less acidic gastric pH from reduced hydrochloric acid production, slowed gastric emptying, reduced blood flow to the gastrointestinal tract, and a decreased absorptive surface area from blunted and flattened villi","An increase in absorptive surface area as villi lengthen with age","Increased cardiac output driving more drug into the portal circulation"],"correct":[1],"sata":false,"why":"The older adult pharmacokinetics box lists all four findings: gastric pH is less acidic because of a gradual reduction in the production of hydrochloric acid, gastric emptying is slowed because of a decline in smooth muscle tone and motor activity, blood flow to the GI tract is reduced by 40% to 50%, and the absorptive surface area is decreased because the aging process blunts and flattens villi.","trap":"(A) reverses two findings at once, and it pulls because heartburn is common in older adults and suggests too much acid rather than too little. Table 3.3 records the gastrointestinal change as increased pH from alkaline gastric secretions, which is the same finding stated on the pH scale instead of the acid scale.","k":"1fcz67g17a89be"},{"topic":"older adult pharmacokinetics and physiologic change","subtopic":"absorption and excretion","stem":"An older adult's glomerular filtration rate is reduced by 40% to 50%. Which pharmacokinetic phase does this change primarily affect?","options":["Absorption","Distribution","Metabolism","Excretion"],"correct":[3],"sata":false,"why":"The older adult excretion findings state that glomerular filtration rate is decreased by 40% to 50%, primarily because of decreased blood flow, and that the number of intact nephrons is decreased. Table 3.3 records each renal change as a decrease in excretion.","trap":"(A) pulls because the chapter attaches the identical 40% to 50% figure to blood flow to the gastrointestinal tract, which is an absorption finding. Same number, different organ, different phase — a third figure, roughly 1.5% per year after age 25, belongs to liver blood flow and drives metabolism.","k":"16q4kn512ppalv"},{"topic":"older adult pharmacokinetics and physiologic change","subtopic":"absorption and excretion","stem":"A nurse reads that an older adult's blood flow to the gastrointestinal tract is reduced by 40% to 50%. Which pharmacokinetic phase does this change primarily affect?","options":["Absorption","Distribution","Metabolism","Excretion"],"correct":[0],"sata":false,"why":"The older adult absorption findings state that blood flow to the GI tract is reduced by 40% to 50% because of decreased cardiac output and decreased perfusion, and the body text adds that by 65 years of age there is an approximately 50% reduction in blood flow to the gastrointestinal tract.","trap":"(D) is the mirror error of the previous item. The two 40% to 50% figures in this chapter describe different organs in different phases, and the only way to keep them apart is to attach each number to its organ rather than to the number itself.","k":"1kbte7a1tesnac"},{"topic":"older adult pharmacokinetics and physiologic change","subtopic":"metabolism and the aging brain","stem":"An older adult accumulates a hepatically metabolized drug to toxic levels on a standard adult dose. Which changes explain the accumulation?","options":["Increased microsomal enzyme levels and increased liver blood flow","Decreased levels of microsomal enzymes and liver blood flow reduced by approximately 1.5% per year after 25 years of age","Increased first-pass effect removing more drug before it reaches the circulation","Increased albumin production binding more of the drug"],"correct":[1],"sata":false,"why":"The older adult metabolism findings state that levels of microsomal enzymes are decreased, that liver blood flow is reduced by approximately 1.5% per year after 25 years of age, and that decreased metabolism leads to the potential for drug toxicity. Table 3.3 records both decreased enzyme production and decreased hepatic blood flow as decreases in metabolism.","trap":"(D) points in exactly the wrong direction. Protein binding sites, specifically albumin, are reduced in the older adult, which leaves greater amounts of free drug and adds to the toxicity risk rather than offsetting it.","k":"epzjha1vz5mv8"},{"topic":"older adult pharmacokinetics and physiologic change","subtopic":"metabolism and the aging brain","stem":"An older adult receiving a routine dose of an anxiolytic becomes markedly more sedated than expected. Which change best explains this heightened sensitivity?","options":["Reduced integrity of the blood-brain barrier","Increased total body water diluting the drug","Increased renal clearance concentrating the drug centrally","An increase in receptor number in the peripheral nervous system"],"correct":[0],"sata":false,"why":"The chapter states that older adults commonly have increased sensitivity to central nervous system depressant medications, naming anxiolytics and tricyclic antidepressants, because of reduced integrity of the blood-brain barrier.","trap":"(B) reverses the body-water finding, which is a decrease in the older adult, and it pulls because dilution sounds protective. Note that the blood-brain barrier is a problem at both ends of the lifespan, immature in the neonate and reduced in integrity in the older adult, with the same consequence of more drug reaching the brain.","k":"dgnr9mzyyxgc"},{"topic":"polypharmacy and prescribing in the older adult","subtopic":"polypharmacy versus the prescribing cascade","stem":"An older adult taking a diuretic is started on a potassium supplement specifically to counteract the potassium loss the diuretic causes. Which phenomenon does this illustrate?","options":["Polypharmacy","The prescribing cascade","Nonadherence","The Beers Criteria"],"correct":[1],"sata":false,"why":"The chapter defines the prescribing cascade as drugs given specifically to counteract the adverse effects of other drugs, and its own example is a potassium supplement to counteract the potassium loss caused by certain diuretic medications.","trap":"(A) is the reflex pick because adding a second drug does increase the count, and the cascade is one route into polypharmacy. The discriminator is causality: polypharmacy is a count of concurrent drugs, while a cascade is a chain in which one drug is added to treat another drug's adverse effect.","k":"3naaad1dtfscz"},{"topic":"polypharmacy and prescribing in the older adult","subtopic":"polypharmacy versus the prescribing cascade","stem":"An older adult with hypertension, diabetes, arthritis, and insomnia takes nine medications prescribed by three different providers, none of them added to treat another drug's adverse effect. Which term describes this situation?","options":["Polypharmacy","The prescribing cascade","A therapeutic duplication","An adverse drug withdrawal event"],"correct":[0],"sata":false,"why":"The key terms box defines polypharmacy as the use of many different drugs concurrently in treating a patient who often has several health problems, and the chapter attributes it to the more frequent occurrence of chronic diseases together with the multiple drug options available. As the number of medications increases, so does the risk for drug interaction and adverse drug reactions.","trap":"(B) is the mirror error of the previous item. Nothing in this stem describes a drug added to counteract another drug's effect, and the stem says so explicitly; without that causal link the situation is a count, not a cascade. The chapter also recommends using only one pharmacy so that monitoring for drug interactions and duplicate therapy can occur.","k":"14a5xtd1xagdb3"},{"topic":"polypharmacy and prescribing in the older adult","subtopic":"dosing and prescribing safeguards","stem":"A prescriber is starting a new medication for a 79-year-old. Which approach does the chapter recommend?","options":["Begin at the standard adult dose and reduce only if adverse effects appear","Begin at the lowest possible dose, often less than an average adult dose, and increase slowly based on patient response","Begin at twice the adult dose to overcome reduced absorption","Calculate the dose in milligrams per kilogram of body weight"],"correct":[1],"sata":false,"why":"The chapter states that appropriate drug doses for older adults may sometimes be one-half to two-thirds of the standard adult dose, and that dosing should follow the admonition to start low and go slow, meaning to start with the lowest possible dose and increase the dose slowly based on patient response.","trap":"(A) is the reflex pick because starting at the standard dose and titrating downward feels like the same destination reached from the other side, but the adverse effect is the harm the rule exists to prevent. (D) applies the pediatric method, which belongs to the other end of the lifespan.","k":"6g8i8z1sqqwjd"},{"topic":"polypharmacy and prescribing in the older adult","subtopic":"dosing and prescribing safeguards","stem":"A nurse is reviewing a medication list for a 78-year-old living at home and wants a tool that identifies drugs likely to be inappropriately prescribed, ineffective, or a cause of adverse drug reactions in older adults. Which tool applies?","options":["The Beers Criteria, stewarded by the American Geriatric Society and updated on a 3-year cycle","Table 3.1, the pregnancy and lactation safety categories","A 24-hour urine collection","The five-step pediatric dosage procedure"],"correct":[0],"sata":false,"why":"The chapter describes the Beers Criteria as a very effective tool used since the 1990s to identify drugs that may be inappropriately prescribed, ineffective, or cause adverse drug reactions in older adult patients. The American Geriatric Society is the steward and produces updates on a 3-year cycle, with the most recent update in 2019.","trap":"(C) names a real assessment from this same section, but a 24-hour urine collection measures creatinine clearance in one patient rather than screening a medication list. The Beers Criteria are intended for adults 65 years and older in all ambulatory, acute, and institutionalized settings of care, except hospice and palliative care settings.","k":"goslxl1ykoij"},{"topic":"renal function assessment in the older adult","subtopic":"dosing and prescribing safeguards","stem":"A frail 84-year-old woman has a serum creatinine of 0.3 mg/dL, and a clinician cites this value as evidence that her kidneys are handling her medications well. What is wrong with this reasoning?","options":["Nothing, since a low serum creatinine reliably indicates good renal function","Creatinine is a byproduct of muscle mass, so a patient with limited muscle cannot produce much creatinine, and the low value may mask renal dysfunction","Serum creatinine rises with renal impairment only in men","Serum creatinine measures hepatic rather than renal function"],"correct":[1],"sata":false,"why":"The chapter gives this its own Clinical Pearl, stating that a low serum creatinine does not mean good renal function in the elderly, that creatinine is a byproduct of muscle mass, and that a patient with a creatinine of 0.3 mg/dL may have a creatinine clearance indicative of renal dysfunction. Because muscle mass declines with age, serum creatinine may provide a misleading index of renal function.","trap":"(A) is the reflex pick and it is exactly the error the chapter warns against, because a below-normal laboratory value normally reads as reassuring. The chapter's own example is a frail older woman whose low creatinine leads a clinician to falsely think her renal function is normal.","k":"a7vbj1k7tdlb"},{"topic":"renal function assessment in the older adult","subtopic":"dosing and prescribing safeguards","stem":"A prescriber wants the most accurate determination of an older adult's creatinine clearance. Which method does the chapter identify, and what limits its use?","options":["Collecting the patient's urine for 24 hours, which is accurate but quite cumbersome and therefore not used very often","A single random serum creatinine, which is accurate but expensive","Blood urea nitrogen alone, which is accurate but affected by diet","Aspartate aminotransferase and alanine aminotransferase levels"],"correct":[0],"sata":false,"why":"The chapter states that the most accurate way to determine creatinine clearance is by collecting a patient's urine for 24 hours, but that this test is quite cumbersome and is not used very often.","trap":"(D) names the correct laboratory pair for the wrong organ. Aspartate aminotransferase and alanine aminotransferase assess liver function, while serum creatinine and blood urea nitrogen assess kidney function.","k":"11x0a0p83cjmj"},{"topic":"renal function assessment in the older adult","subtopic":"dosing and prescribing safeguards","stem":"An older adult is taking digoxin, and renal function has declined. Why does the chapter single out this situation?","options":["Because digoxin is not excreted renally","Because reduced renal function is especially consequential for drugs with a low therapeutic index, such as digoxin, and renal function declines in roughly two-thirds of older adults","Because digoxin is on the pregnancy category X list","Because digoxin absorption increases with age"],"correct":[1],"sata":false,"why":"The chapter states that renal function declines in roughly two-thirds of older adults and that this is especially true for drugs with a low therapeutic index such as digoxin. It adds that creatinine clearance is an important indicator of renal functioning and that if abnormal, drug dosages may need to be adjusted.","trap":"(A) removes the very property that creates the hazard. A drug with a low therapeutic index has a narrow gap between the therapeutic dose and the toxic one, so a modest fall in excretion is enough to cross it. Laboratory assessments are recommended at least annually and more frequently for higher-risk drug regimens.","k":"1f59vqkgyx9j2"},{"topic":"lifespan pharmacokinetic comparison","subtopic":"total body water and fat content","stem":"A water-soluble antibiotic is dosed by weight in a full-term newborn and in an 80-year-old man. How does total body water differ between them, and what follows?","options":["Total body water is 70% to 80% in the full-term infant and about 52% in the man older than 60, so the same weight-adjusted dose is more diluted in the infant and more concentrated in the older adult","Total body water is higher in the older adult, so the drug is more diluted in him","Total body water is identical across the lifespan and does not affect distribution","Total body water rises steadily with age from infancy onward"],"correct":[0],"sata":false,"why":"The pediatric distribution findings give total body water as 70% to 80% in full-term infants, 85% in premature newborns, and 64% in children 1 to 12 years of age, while the older adult box gives 52% in males and 46% in females older than 60. The chapter states that the decrease in total body water leads to decreased distribution of some drugs, such as antibiotics, creating a risk for toxicity because of greater concentrations of drug in the bloodstream.","trap":"(B) inverts the whole gradient, and it is the intuitive inversion because older adults are often described as retaining fluid. Total body water falls monotonically across the entire lifespan, from 85% in a premature newborn to 46% in a woman older than 60.","k":"gfx39r1wmpp6h"},{"topic":"lifespan pharmacokinetic comparison","subtopic":"total body water and fat content","stem":"A highly fat-soluble drug is given to an infant and to an older adult. How does fat content differ between them?","options":["Fat content is higher in the infant because of lower total body water, and lower in the older adult because of increased lean body mass","Fat content is lower in the infant because of greater total body water, and increased in the older adult because of decreased lean body mass","Fat content is identical at both ends of the lifespan","Fat content is lower at both ends of the lifespan"],"correct":[1],"sata":false,"why":"The pediatric box states that fat content is lower in young patients because of greater total body water, and the older adult box states that fat content is increased because of decreased lean body mass. The body text adds an approximately 20% reduction in muscle mass between 25 and 65 years of age with a corresponding 20% increase in body fat.","trap":"(A) is the mirror error of the previous item, reversing both halves at once. Fat and water move in opposite directions to each other and in opposite directions at the two ends of life, so a fat-soluble drug behaves in an older adult the way a water-soluble drug behaves in an infant.","k":"1bd8ntfep5unp"},{"topic":"lifespan pharmacokinetic comparison","subtopic":"what the two ends share","stem":"Which pharmacokinetic changes are found in both the neonate and the older adult, even though the underlying reasons differ? Select all that apply.","options":["Less acidic gastric pH","Slowed gastric emptying","Decreased protein binding","Increased total body water","Decreased levels of microsomal enzymes","Increased fat content"],"correct":[0,1,2,4],"sata":true,"why":"Both pharmacokinetic boxes list less acidic gastric pH, slowed gastric emptying, decreased protein binding, decreased microsomal enzyme levels, and reduced renal function. The reasons differ, immaturity in the young and decline in the old, but the directions match.","trap":"(D) and (F) are the two rows where the ends genuinely diverge, which is what makes them the best distractors in the chapter. Total body water is high in the neonate and low in the older adult, and fat content does the reverse. If a stem describes a change that could fit either end, the discriminator is total body water or fat content, not the gastrointestinal or hepatic findings.","k":"fcl3kg1dd6f7q"},{"topic":"lifespan pharmacokinetic comparison","subtopic":"what the two ends share","stem":"A neonate and an 80-year-old are each started on warfarin, a highly protein-bound drug. What risk do they share, and why?","options":["Both have decreased protein binding, so a greater fraction of the drug remains free and pharmacologically active, raising toxicity risk at the same nominal dose","Both have increased protein binding, so more drug is held inactive and doses must be raised","Only the neonate is at risk, since albumin is normal in older adults","Only the older adult is at risk, since neonates do not bind drugs to protein at all"],"correct":[0],"sata":false,"why":"The pediatric box states that protein binding is decreased because of decreased production of protein by the immature liver, and the older adult box states that protein albumin binding sites are reduced, leading to greater amounts of free drug. Chapter 2 supplies the principle that only drug molecules not bound to plasma proteins can freely distribute and that bound drug is pharmacologically inactive.","trap":"(B) inverts both the direction of the change and its consequence, and it is the reflex inversion because bound drug intuitively sounds like the active form. Chapter 2 names warfarin and phenytoin as its highly protein-bound examples, so both of these patients carry a higher toxicity risk on the same dose an adult would tolerate.","k":"6qg42uuqqtwk"}];
+const TITLE = "Chapter 3 — NUR 3420/1 — Pharmacology I & II";
+const SUBTITLE = "Chapter 3";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur3420-3421-pharm";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>
