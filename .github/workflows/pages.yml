@@ -10,6 +10,12 @@
 # configure-pages runs with enablement: true so it can switch the repository
 # from branch-based Pages to workflow-based on the first run, rather than
 # needing the source changed by hand first.
+#
+# Every action here must be on a major version whose runtime is node24. GitHub
+# deprecated Node 20 on 2025-09-19 and now force-runs node20 actions on node24,
+# which works but is a warning today and a hard failure whenever the shim is
+# withdrawn. Before bumping any of these, check `runs.using` in the action's
+# own action.yml at the tag rather than assuming the newest release qualifies.
 name: Deploy drills to Pages
 
 on:
@@ -43,18 +49,22 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
         with:
           enablement: true
 
+      # v5 is the first release whose bundled actions/upload-artifact is v7.
+      # The older v3 pinned upload-artifact@v4, which is what put the fourth
+      # Node 20 entry in the deprecation annotation even though this workflow
+      # never referenced upload-artifact directly.
       - name: Upload docs/
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: docs
 
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
