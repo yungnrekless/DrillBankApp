@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 6 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 6</div><h1>Chapter 6 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">standard and transmission-based precautions</span><span class="chip t2">general</span></div>
+<div class="stem">1. Which precautions are designed for the care of all pediatric patients to reduce the risk of transmission of microorganisms from both recognized and unrecognized sources of infection?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Transmission-Based Precautions</li><li class="fopt"><span class="mk">B</span>Airborne Precautions</li><li class="fopt right"><span class="mk">&#10003;</span>Standard Precautions</li><li class="fopt"><span class="mk">D</span>Droplet Precautions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the chapter's own NCLEX question 1, and the stem quotes p. 169 almost verbatim: Standard Precautions &quot;are designed for the care of all patients to reduce the risk of transmission of microorganisms from both recognized and unrecognized sources of infection.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because the phrase sounds comprehensive, and it is exactly backwards — Transmission-Based Precautions are &quot;designed for patients with documented or suspected infection or colonization&quot; with specific pathogens. The two phrases that identify Standard Precautions in a stem are all patients and recognized and unrecognized.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">standard and transmission-based precautions</span><span class="chip t2">general</span></div>
+<div class="stem">2. A nurse lists the substances Standard Precautions are designed to protect against. Which are included? (Select all that apply.)</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Blood</li><li class="fopt right"><span class="mk">&#10003;</span>All body fluids, secretions, and excretions, whether or not they contain visible blood</li><li class="fopt right"><span class="mk">&#10003;</span>Nonintact skin</li><li class="fopt right"><span class="mk">&#10003;</span>Mucous membranes</li><li class="fopt"><span class="mk">E</span>Sweat</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Standard Precautions use &quot;barrier protection (personal protective equipment [PPE]), such as gloves, goggles, gowns, and masks, to prevent contamination from blood; all body fluids, secretions, and excretions, except sweat, regardless of whether they contain visible blood; nonintact skin; and mucous membranes&quot; (p. 169).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one to reject, and it is the single exclusion in an otherwise universal list — which is precisely why it is the detail an item tests. Note also the 2007 additions to Standard Precautions: Respiratory Hygiene/Cough Etiquette and safe injection practices.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">standard and transmission-based precautions</span><span class="chip t2">general</span></div>
+<div class="stem">3. A child is placed on Droplet Precautions. What is the nurse's responsibility regarding Standard Precautions?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Standard Precautions are replaced by Droplet Precautions for the duration</li><li class="fopt right"><span class="mk">&#10003;</span>Transmission-Based Precautions are used in addition to Standard Precautions, and may be combined for diseases with multiple routes of transmission</li><li class="fopt"><span class="mk">C</span>Standard Precautions resume once the droplet order is discontinued</li><li class="fopt"><span class="mk">D</span>Standard Precautions apply only to the patient's roommate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Two rules govern their use: &quot;They may be combined for diseases that have multiple routes of transmission,&quot; and &quot;They are to be used in addition to Standard Precautions&quot; (p. 169). Box 6.1 repeats &quot;In addition to Standard Precautions&quot; at the head of every category.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the distractor the fact bank flags — replacing Standard Precautions with a transmission-based type. They are additive, never a substitute, which is also why varicella carries three precaution types at once rather than one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">standard and transmission-based precautions</span><span class="chip t2">general</span></div>
+<div class="stem">4. A nurse must explain why measles requires a negative-pressure room but pertussis does not. What is the mechanism?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Measles droplets are larger and therefore travel further</li><li class="fopt right"><span class="mk">&#10003;</span>Airborne transmission involves droplet nuclei of 5 mm or less that remain suspended and can be dispersed widely by air currents, so special air handling and ventilation are required; droplet transmission involves particles larger than 5 mm that do not remain suspended and generally travel 3 feet or less, so special ventilation is not required</li><li class="fopt"><span class="mk">C</span>Measles is bacterial and pertussis is viral</li><li class="fopt"><span class="mk">D</span>The distinction is based on the severity of the disease, not the particle</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Airborne transmission is by &quot;small-particle residue [≤5 mm] of evaporated droplets that may remain suspended in the air for long periods&quot; which &quot;can be dispersed widely by air currents&quot;; droplets are &quot;large-particle droplets (&gt;5 mm)&quot; that &quot;generally travel only short distances, usually 3 feet or less&quot; (p. 169).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts the size relationship, which is the whole mechanism — the smaller particle is the one that stays airborne and needs ventilation. Note that 3 feet appears twice in this chapter: as droplet travel distance and as the cough-etiquette spacing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">standard and transmission-based precautions</span><span class="chip t2">general</span></div>
+<div class="stem">5. A nurse is asked to name the single most important practice for reducing transmission of infectious disease in a health care setting. What is it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Wearing gloves for all patient contact</li><li class="fopt right"><span class="mk">&#10003;</span>Hand hygiene, including hand washing with soap and water and the use of alcohol-based products for hand disinfection</li><li class="fopt"><span class="mk">C</span>Placing all children with fever in isolation</li><li class="fopt"><span class="mk">D</span>Routine environmental disinfection</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Hand hygiene continues to be the single most important practice to reduce the transmission of infectious diseases in health care settings,&quot; and it is restated for resistant organisms: &quot;Hand washing is the most critical infection control practice&quot; (pp. 169–170). Approximately 2 million patients each year develop hospital-acquired infections, which &quot;are preventable if caregivers practice meticulous hand washing, cleaning, and disposal techniques.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the visible intervention and it is not the ranked one. The fact bank's rule is worth carrying into any priority item in this chapter: hand hygiene is the default answer, and the chapter names it as most important twice.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">precautions by communicable disease</span><span class="chip t2">general</span></div>
+<div class="stem">6. A child is admitted with an undiagnosed rash. Which precautions should be instituted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Standard Precautions alone until the rash is identified</li><li class="fopt right"><span class="mk">&#10003;</span>Contact, airborne, and droplet precautions plus Standard Precautions, until a diagnosis is confirmed</li><li class="fopt"><span class="mk">C</span>Airborne Precautions alone, since most exanthems are airborne</li><li class="fopt"><span class="mk">D</span>Droplet Precautions alone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Nursing Alert states: &quot;If a child is admitted to the hospital with an undiagnosed exanthema, institute strict Transmission-Based Precautions (contact, airborne, and droplet) and Standard Precautions until a diagnosis is confirmed&quot; (p. 187).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) applies the precaution for the most feared possibility instead of covering all of them, and the fact bank calls this the single most likely precautions item in the chapter because it inverts the usual logic: you cannot pick the precaution until you know the disease, so you use all three.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">precautions by communicable disease</span><span class="chip t2">general</span></div>
+<div class="stem">7. A child with chickenpox is admitted. Which precautions are required, and when may they be discontinued?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Standard and Droplet, until the fever resolves</li><li class="fopt right"><span class="mk">&#10003;</span>Standard, Airborne, and Contact, until all lesions are crusted — or for breakthrough varicella, until no new lesions are seen</li><li class="fopt"><span class="mk">C</span>Contact alone, until the rash fades</li><li class="fopt"><span class="mk">D</span>Airborne alone, until the fifth day of rash</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Varicella requires Standard plus Airborne plus Contact precautions &quot;until all lesions are crusted&quot;; for breakthrough varicella, &quot;until no new lesions are seen&quot; (p. 179). Scabs are not infectious, which is why crusting ends isolation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) attaches the measles endpoint to varicella — measles requires Airborne Precautions &quot;until fifth day of rash.&quot; The fact bank warns that a distractor gives the right precaution type with the wrong endpoint, and the &quot;until&quot; column is the second half of every precautions item.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">precautions by communicable disease</span><span class="chip t2">general</span></div>
+<div class="stem">8. A school-age child is diagnosed with scarlet fever and started on antibiotics. When may precautions be discontinued?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Immediately, since treatment has begun</li><li class="fopt right"><span class="mk">&#10003;</span>24 hours after initiation of treatment</li><li class="fopt"><span class="mk">C</span>After two negative throat cultures</li><li class="fopt"><span class="mk">D</span>When the rash has fully desquamated</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Scarlet fever requires Standard plus Droplet precautions &quot;until 24 hours after initiation of treatment&quot; (p. 185).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the endpoint for pharyngeal diphtheria, which requires Standard plus Droplet &quot;until two cultures are negative&quot; (p. 179). Both are droplet-spread bacterial throat infections treated with antibiotics, so the endpoint is the only thing separating them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">precautions by communicable disease</span><span class="chip t2">general</span></div>
+<div class="stem">9. A nurse reviews Table 6.2 and is asked which diseases in it require Airborne Precautions. What is the answer?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>All of the viral exanthems</li><li class="fopt right"><span class="mk">&#10003;</span>Only varicella and measles</li><li class="fopt"><span class="mk">C</span>Measles, rubella, and mumps</li><li class="fopt"><span class="mk">D</span>Pertussis and diphtheria</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Of the diseases in Table 6.2, only varicella and measles require Airborne Precautions; Box 6.1 names the same two plus tuberculosis (pp. 169, 179, 182). Everything else in the table is Droplet, Contact, or Standard.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) groups the three classic childhood viral exanthems together, and two of them are wrong — rubella is Droplet and mumps is Droplet plus Contact. Being viral and rash-producing does not determine the route.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">precautions by communicable disease</span><span class="chip t2">general</span></div>
+<div class="stem">10. A hospitalized child with sickle cell disease develops an aplastic crisis attributed to parvovirus B19. A well sibling at home also has fifth disease. What precautions apply to each?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both require Droplet Precautions</li><li class="fopt right"><span class="mk">&#10003;</span>The hospitalized child with aplastic crisis requires Standard plus Droplet Precautions; the well child at home requires none</li><li class="fopt"><span class="mk">C</span>Neither requires precautions, since fifth disease is benign</li><li class="fopt"><span class="mk">D</span>Both require Airborne Precautions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Erythema infectiosum requires no precautions for the well child; the hospitalized immunosuppressed child or the child in aplastic crisis gets Standard plus Droplet Precautions (p. 181). Its period of communicability is &quot;Uncertain but before onset of symptoms in children with aplastic crisis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies one rule to both children, and the chapter deliberately splits them. The reason is timing: a well child with the classic rash is past the contagious period, while the child in aplastic crisis is not — so the same diagnosis carries different precautions depending on the presentation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incubation and communicability periods</span><span class="chip t2">general</span></div>
+<div class="stem">11. A child was exposed to measles 12 days ago and is now well. What should the nurse tell the family about the incubation period?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The child is past the incubation period and cannot develop measles</li><li class="fopt right"><span class="mk">&#10003;</span>The incubation period for measles is 10 to 20 days, so the child remains within it</li><li class="fopt"><span class="mk">C</span>The incubation period is 2 to 5 days, so the child is clear</li><li class="fopt"><span class="mk">D</span>The incubation period is 14 to 21 days, so the child is clear</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Measles has an incubation of 10 to 20 days, with a period of communicability &quot;From 4 days before to 5 days after rash appears&quot; (p. 182).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the incubation for mumps and rubella, both 14 to 21 days, and chickenpox overlaps at 14 to 16 days — the three are not separable by incubation alone. Only measles runs from 10 days.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incubation and communicability periods</span><span class="chip t2">general</span></div>
+<div class="stem">12. A parent asks when a child with measles was most contagious. What is the accurate answer?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Only while the rash is visible</li><li class="fopt right"><span class="mk">&#10003;</span>From 4 days before the rash appears to 5 days after — so the child was contagious before any rash was seen</li><li class="fopt"><span class="mk">C</span>Beginning 24 hours after the rash appears</li><li class="fopt"><span class="mk">D</span>Only after the fever resolves</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Measles is communicable &quot;From 4 days before to 5 days after rash appears&quot; (p. 182). Koplik spots appear on the buccal mucosa opposite the molars 2 days before the rash, while the child is most infectious.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the intuition the fact bank names as an inversion — isolate a rash once it appears. Five diseases in this chapter are contagious before any sign shows: chickenpox 1 day before, measles 4 days before, rubella 7 days before, mumps immediately before swelling, and pertussis during the catarrhal stage. Rubella has the longest presymptomatic contagious window.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incubation and communicability periods</span><span class="chip t2">general</span></div>
+<div class="stem">13. A 6-year-old develops a sore throat and fever with an incubation history of about 3 days since exposure. Which two diseases in this chapter have the shortest incubation periods, and what is the nursing priority?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Measles and rubella; begin airborne precautions</li><li class="fopt right"><span class="mk">&#10003;</span>Diphtheria and scarlet fever, both 2 to 5 days — and the priority is a throat culture, since a sore throat with fever may be diphtheria or streptococcal</li><li class="fopt"><span class="mk">C</span>Mumps and chickenpox; observe at home</li><li class="fopt"><span class="mk">D</span>Pertussis and polio; begin droplet precautions only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Diphtheria incubates in &quot;Usually 2-5 days, possibly longer&quot; and scarlet fever in &quot;2-5 days, with range of 1-7 days&quot; (pp. 179, 185) — the two bacterial diseases in the table, and the two shortest incubations. The chapter's priority default for a sore throat with fever is a culture, because it may be diphtheria or streptococcal (p. 186).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names diseases whose incubations run two to three weeks, which does not fit a 3-day history. The general pattern is worth holding: the viral exanthems in this chapter all run a week or more, so a short incubation points bacterial.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">incubation and communicability periods</span><span class="chip t2">general</span></div>
+<div class="stem">14. A child with pertussis is admitted during the paroxysmal stage. When was the period of greatest communicability, and what is the immediate nursing priority during a paroxysm?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Communicability is greatest during the paroxysmal stage; the priority is to sit the child upright</li><li class="fopt right"><span class="mk">&#10003;</span>Communicability is greatest during the catarrhal stage, before the onset of paroxysms; during a paroxysm, position the child on the side, ensure oxygenation, and suction</li><li class="fopt"><span class="mk">C</span>Communicability is greatest during convalescence; the priority is fluid replacement</li><li class="fopt"><span class="mk">D</span>Pertussis is not communicable once coughing begins</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pertussis communicability is &quot;Greatest during catarrhal stage before onset of paroxysms,&quot; and Droplet Precautions are maintained &quot;during catarrhal stage&quot; (p. 182). The chapter's priority default for an infant with pertussis paroxysms is to position on the side, ensure oxygenation, and suction.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) assumes the loudest phase is the most infectious phase, which is the reverse of the truth and is why pertussis spreads before anyone suspects it — during the catarrhal stage it looks like a cold. For scale, adolescents cough at least 21 days and up to half cough for 10 weeks.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunity terminology and vaccine types</span><span class="chip t2">general</span></div>
+<div class="stem">15. A newborn is protected from several infections by antibodies received across the placenta. What type of immunity is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Natural active immunity</li><li class="fopt right"><span class="mk">&#10003;</span>Natural passive immunity</li><li class="fopt"><span class="mk">C</span>Artificial active immunity</li><li class="fopt"><span class="mk">D</span>Herd immunity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Active immunity is formed by the person's own immune bodies; passive immunity is &quot;Temporary immunity obtained by transfusing immunoglobulins or antitoxins,&quot; and it can be acquired naturally from the mother to the fetus via the placenta or artificially by transfusion (p. 171).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because the antibody arrived by a natural route, and &quot;natural&quot; gets attached to the wrong axis. The two axes are independent: natural versus artificial describes how it was acquired, active versus passive describes who made the antibodies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunity terminology and vaccine types</span><span class="chip t2">general</span></div>
+<div class="stem">16. A nurse must distinguish a vaccine, a toxoid, and an antitoxin. Which set of definitions is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Vaccine: a modified bacterial toxin; toxoid: live or inactivated organisms; antitoxin: a conjugated polysaccharide</li><li class="fopt right"><span class="mk">&#10003;</span>Vaccine: a suspension of live or inactivated organisms; toxoid: a modified bacterial toxin made nontoxic; antitoxin: ready-made antibodies from the serum of an immunized animal, conferring passive immunity</li><li class="fopt"><span class="mk">C</span>All three produce active immunity</li><li class="fopt"><span class="mk">D</span>Vaccine and toxoid both confer passive immunity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 6.2 defines each of these on p. 171. An antitoxin confers passive immunity because the antibodies are transferred rather than formed, while vaccines and toxoids produce active immunity.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex assumption that anything given to prevent disease works the same way. It matters clinically: a child receiving equine antitoxin needs a sensitivity test first with epinephrine available, a precaution that has no counterpart for a vaccine.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunity terminology and vaccine types</span><span class="chip t2">general</span></div>
+<div class="stem">17. An unvaccinated child in a highly vaccinated community is protected from a disease he was never immunized against. What concept describes this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Active immunity</li><li class="fopt right"><span class="mk">&#10003;</span>Herd immunity — the population that has been vaccinated protects those in the same population who are unvaccinated</li><li class="fopt"><span class="mk">C</span>Cocooning</li><li class="fopt"><span class="mk">D</span>Conjugate protection</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The definition names the unvaccinated explicitly: &quot;the population that has been vaccinated protects those in the same population who are unvaccinated&quot; (p. 171).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the nearest relative and is narrower and deliberate. Cocooning means &quot;protecting infants from pertussis by vaccinating all persons who come in close contact with the infant, including the mother, grandparents, and health care workers&quot; — a targeted ring around one infant, not a population effect, and pertussis-specific.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunity terminology and vaccine types</span><span class="chip t2">general</span></div>
+<div class="stem">18. A nurse documents that a child was &quot;immunized&quot; after administering a vaccine. What distinction does the chapter draw?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The terms are synonymous in all contexts</li><li class="fopt right"><span class="mk">&#10003;</span>They are not synonymous: vaccination is the physical act of administering, while immunization is the process of inducing or providing immunity — the administration of a vaccine cannot automatically be equated with the development of adequate immunity</li><li class="fopt"><span class="mk">C</span>Immunization refers only to live vaccines</li><li class="fopt"><span class="mk">D</span>Vaccination refers only to inactivated vaccines</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Although in this discussion the terms vaccination and immunization are used interchangeably in reference to active immunization, they are not synonymous because the administration of an immunobiologic such as a vaccine cannot automatically be equated with the development of adequate immunity&quot; (p. 171).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is what the chapter itself does in casual use and then explicitly disavows, which is what makes this testable. Giving the vaccine is an act; producing immunity is an outcome, and the two can come apart.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vaccine contraindications and precautions</span><span class="chip t2">general</span></div>
+<div class="stem">19. A nurse is deciding whether to withhold a vaccine. What is the difference between a contraindication and a precaution?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They are equivalent; both bar administration</li><li class="fopt right"><span class="mk">&#10003;</span>A contraindication is a condition that increases the risk for a serious adverse reaction, and the vaccine is not given; a precaution might increase that risk or compromise the vaccine's ability to produce immunity, and the vaccine is given if the benefit outweighs the risk</li><li class="fopt"><span class="mk">C</span>A precaution bars administration and a contraindication permits it</li><li class="fopt"><span class="mk">D</span>A precaution applies only to live vaccines</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A contraindication is &quot;a condition in an individual that increases the risk for a serious adverse reaction,&quot; and &quot;one would not administer a vaccine when a contraindication is present.&quot; A precaution &quot;might increase the risk... or that might compromise the ability of the vaccine to produce immunity,&quot; and &quot;If conditions are such that the benefit of receiving the vaccine would outweigh the risk of an adverse event or incomplete response, a precaution would not prevent vaccine administration&quot; (p. 177).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats both as absolute bars, and the chapter warns what that costs: &quot;Unfounded fears and lack of knowledge regarding contraindications can needlessly prevent a child from having protection from life-threatening diseases.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vaccine contraindications and precautions</span><span class="chip t2">general</span></div>
+<div class="stem">20. Which of the following are contraindications to immunization? (Select all that apply.)</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Severe febrile illness</li><li class="fopt right"><span class="mk">&#10003;</span>Altered immune function, for live virus vaccines</li><li class="fopt right"><span class="mk">&#10003;</span>Recently acquired passive immunity through blood transfusion or immunoglobulin, for live virus vaccines</li><li class="fopt right"><span class="mk">&#10003;</span>Anaphylactic reaction to a previously administered vaccine or one of its components</li><li class="fopt"><span class="mk">E</span>A family history of seizures</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists severe febrile illness as the general contraindication for all immunizations, altered immunity and recent passive immunity as contraindications to live virus vaccines, and a known allergic response — specifically anaphylaxis to the vaccine or a component — as the fourth. Pregnancy is a contraindication to MMR (p. 177).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one to reject and it appears on the chapter's explicit list of things &quot;not considered contraindications.&quot; A distractor defers a pertussis-containing vaccine for a family seizure history; the chapter permits deferral only for a neurologic contraindication in the child.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vaccine contraindications and precautions</span><span class="chip t2">general</span></div>
+<div class="stem">21. A parent reports that her child had contact dermatitis after neomycin-containing ointment and asks whether MMR can be given. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Withhold MMR permanently</li><li class="fopt right"><span class="mk">&#10003;</span>Administer MMR — contact dermatitis in reaction to neomycin is not a contraindication; only a history of anaphylactic reaction to neomycin, gelatin, or the vaccine itself is</li><li class="fopt"><span class="mk">C</span>Administer half the dose and observe</li><li class="fopt"><span class="mk">D</span>Substitute individual measles, mumps, and rubella vaccines</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Contact dermatitis in reaction to neomycin is not considered a contraindication to immunization,&quot; while &quot;only a history of anaphylactic reaction to neomycin, gelatin, or the vaccine itself is considered a contraindication to their use&quot; (p. 177).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the cautious-sounding answer and it withholds protection on the basis of a reaction type the chapter specifically clears. The fact bank calls this the sharpest pair in the section: anaphylaxis to neomycin is a contraindication, contact dermatitis to neomycin is not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vaccine contraindications and precautions</span><span class="chip t2">general</span></div>
+<div class="stem">22. A 4-year-old received immunoglobulin two weeks ago and is due for MMR and varicella vaccines. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Give both vaccines today</li><li class="fopt right"><span class="mk">&#10003;</span>Postpone MMR and varicella for a minimum of 3 months after passive immunization with immunoglobulin or blood transfusion — except after washed red blood cells, which do not interfere with the immune response</li><li class="fopt"><span class="mk">C</span>Postpone for 1 month</li><li class="fopt"><span class="mk">D</span>Postpone for 28 days</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Administration of MMR and varicella should be postponed for a minimum of 3 months after passive immunization with immunoglobulins and blood transfusions (except washed red blood cells, which do not interfere with the immune response)&quot; (p. 177).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) are two other real intervals from this chapter attached to the wrong situation — 1 month is the minimum between two live vaccines not given on the same day, and 28 days is the pregnancy-avoidance interval after rubella vaccine. Three intervals, three situations; match the interval to the situation rather than to a general rule.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vaccine contraindications and precautions</span><span class="chip t2">general</span></div>
+<div class="stem">23. A child arrives for a well visit with a runny nose and a temperature of 37.4° C, and is breastfeeding. Which of these is a reason to withhold today's vaccines?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The minor upper respiratory infection</li><li class="fopt"><span class="mk">B</span>Breastfeeding</li><li class="fopt right"><span class="mk">&#10003;</span>Neither; minor illnesses such as the common cold are not a contraindication, and breastfeeding is not a contraindication for any vaccine</li><li class="fopt"><span class="mk">D</span>Both, until the child is well and weaned</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The presence of minor illnesses, such as the common cold, is not a contraindication,&quot; and &quot;Breastfeeding is not a contraindication for any vaccine&quot; (p. 177). The general contraindication is a severe febrile illness, which avoids &quot;adding the risk of adverse side effects from the vaccine to an already ill child or mistakenly identifying a symptom of the disease as having been caused by the vaccine.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the most common real-world deferral and it is one of the nine non-contraindications the chapter lists — alongside contact dermatitis to neomycin, egg sensitivity for MMR, family history of seizures, family history of a vaccine adverse event, penicillin allergy, duck allergy, and family history of sudden infant death syndrome.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pertussis diphtheria and tetanus vaccines</span><span class="chip t2">general</span></div>
+<div class="stem">24. A 4-year-old needs a vaccine containing diphtheria, tetanus, and pertussis components. Which preparation is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Tdap</li><li class="fopt right"><span class="mk">&#10003;</span>DTaP</li><li class="fopt"><span class="mk">C</span>Td</li><li class="fopt"><span class="mk">D</span>DT</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>DTaP is the pediatric formulation for children 6 weeks through 6 years; Tdap is for those 11 and older; Td contains tetanus and diphtheria only; and DT is for a child under 7 who has a contraindication to the pertussis component (pp. 172–173).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the correct choice only when pertussis is contraindicated, and the stem specifies that the pertussis component is wanted. The capitalization convention carries the meaning: uppercase letters are full-strength antigens and lowercase are reduced, so DTaP and Tdap differ by which components are reduced, not by which diseases they cover.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pertussis diphtheria and tetanus vaccines</span><span class="chip t2">general</span></div>
+<div class="stem">25. A pregnant adolescent who is not protected against pertussis asks which vaccine she should receive and when. What is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Td, at any point in pregnancy</li><li class="fopt right"><span class="mk">&#10003;</span>Tdap, optimally between 27 and 36 weeks of gestation, or postpartum before discharge from the hospital</li><li class="fopt"><span class="mk">C</span>DTaP, in the first trimester</li><li class="fopt"><span class="mk">D</span>No pertussis-containing vaccine is given during pregnancy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the chapter's own NCLEX question 3, and the stem quotes p. 173 almost verbatim: the CDC and the American College of Obstetricians and Gynecologists recommend Tdap between 27 and 36 weeks of gestation or postpartum before discharge.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the whole question, and the discriminator is one lowercase letter — Td contains tetanus and diphtheria only, with no pertussis component, so it cannot protect against the disease the stem names.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pertussis diphtheria and tetanus vaccines</span><span class="chip t2">general</span></div>
+<div class="stem">26. The parents of a 2-week-old ask how to protect their newborn from pertussis before the infant can be vaccinated. What strategy does the chapter describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Give the infant a dose of DTaP now</li><li class="fopt right"><span class="mk">&#10003;</span>Cocooning — vaccinating all persons who come in close contact with the infant, including the mother, grandparents, and health care workers</li><li class="fopt"><span class="mk">C</span>Give the infant immunoglobulin monthly</li><li class="fopt"><span class="mk">D</span>Isolate the infant at home for 6 months</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Cocooning is &quot;protecting infants from pertussis by vaccinating all persons who come in close contact with the infant, including the mother, grandparents, and health care workers&quot; (p. 171).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) misses the reason the strategy exists — the infant is not the one vaccinated, because the vaccine cannot be given early enough to protect during the period of highest risk. Cocooning transfers the protection to the people around the infant, which is what makes it conceptually different from every other item in this chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pertussis diphtheria and tetanus vaccines</span><span class="chip t2">general</span></div>
+<div class="stem">27. A nurse reviews a child's record to determine whether he is fully vaccinated against pertussis. What constitutes a complete series?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Three doses of DTaP</li><li class="fopt right"><span class="mk">&#10003;</span>Five doses of DTaP, or four doses with the fourth given on or after the fourth birthday</li><li class="fopt"><span class="mk">C</span>Four doses of DTaP regardless of timing</li><li class="fopt"><span class="mk">D</span>Two doses of Tdap</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A child is considered fully vaccinated for pertussis with &quot;5 doses of DTaP, or 4 with the fourth on or after the fourth birthday&quot; (p. 173). Diphtheria and tetanus protection lasts approximately 10 years.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) drops the timing condition, which is what makes the four-dose route valid — a fourth dose given before the fourth birthday does not complete the series. The count alone is not the answer.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specific vaccines and their target diseases</span><span class="chip t2">general</span></div>
+<div class="stem">28. Which childhood vaccine provides some protection against bacterial meningitis, epiglottitis, and bacterial pneumonia?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hib vaccine</li><li class="fopt"><span class="mk">B</span>Hepatitis B vaccine</li><li class="fopt"><span class="mk">C</span>Varicella vaccine</li><li class="fopt"><span class="mk">D</span>Influenza vaccine</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the chapter's own NCLEX question 2. Hib conjugate vaccines &quot;protect against a number of serious infections caused by H. influenzae type b, especially bacterial meningitis, epiglottitis, bacterial pneumonia, septic arthritis, and sepsis&quot; (p. 174).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) exists because of the name similarity, and the chapter pre-empts it directly: &quot;Hib is not associated with the viruses that cause influenza.&quot; Epiglottitis is the giveaway in the stem — it appears in the Hib list and nowhere else in the chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specific vaccines and their target diseases</span><span class="chip t2">general</span></div>
+<div class="stem">29. Which childhood vaccine provides protection against streptococcal infections such as otitis media, sinusitis, and pneumonia?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rotavirus</li><li class="fopt"><span class="mk">B</span>Hib</li><li class="fopt right"><span class="mk">&#10003;</span>Pneumococcal</li><li class="fopt"><span class="mk">D</span>MMR</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the chapter's own NCLEX question 4. Page 175 names &quot;localized infections, such as otitis media, sinusitis, and pneumonia&quot; among those caused by &quot;Streptococcal pneumococci.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the strongest distractor and is the previous item's answer — both vaccines prevent otitis media and pneumonia, so the overlap does not discriminate. The tells are epiglottitis and meningitis for Hib and sinusitis plus the word streptococcal for pneumococcal. Read the organism named in the stem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specific vaccines and their target diseases</span><span class="chip t2">general</span></div>
+<div class="stem">30. An infant is born to a mother who is hepatitis B surface antigen positive. What is required, and in what time frame?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hepatitis B vaccine alone, within 24 hours</li><li class="fopt right"><span class="mk">&#10003;</span>Hepatitis B vaccine plus hepatitis B immune globulin 0.5 ml within 12 hours of birth, given at two separate sites</li><li class="fopt"><span class="mk">C</span>Hepatitis B immune globulin alone, at 1 month</li><li class="fopt"><span class="mk">D</span>Hepatitis B vaccine at 2 months with the routine series</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The newborn of an HBsAg-positive mother receives HepB vaccine plus HBIG 0.5 ml within 12 hours of birth, at two sites (p. 172). The stakes are in the epidemiology: perinatal infection becomes chronic in up to 90% of cases, compared with 25% to 50% for infection acquired before age 5.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) gives half the regimen. Passive and active immunization are both required here and do different jobs — the immune globulin provides antibodies now, the vaccine provokes the infant's own. Note the separate weight rule for the routine series: HepB is deferred below 2000 g (4.4 lb).</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specific vaccines and their target diseases</span><span class="chip t2">general</span></div>
+<div class="stem">31. A 4-month-old has not yet received any rotavirus vaccine. What limits the nurse's ability to start the series now, and what is the general rule for a lapsed series?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The series may not be started after 32 weeks of age; and a lapsed series of any vaccine must be restarted from the beginning</li><li class="fopt right"><span class="mk">&#10003;</span>The rotavirus series may not be given after 32 weeks of age; and for a lapsed series, only the missed doses are given rather than restarting</li><li class="fopt"><span class="mk">C</span>There is no upper age limit for rotavirus; a lapsed series is restarted</li><li class="fopt"><span class="mk">D</span>Rotavirus may be given at any age, and a lapsed series continues where it left off</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The rotavirus vaccine is &quot;not [given] after 32 weeks&quot; (p. 176), and the chapter's catch-up rule is that a lapsed series is not restarted — only the missed doses are given (p. 172).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) pairs the correct age limit with the wrong catch-up rule, which is the fact bank's flagged inversion: &quot;A lapsed vaccine series must be restarted&quot; is the intuition, and the chapter says give only the missed doses. Note the related preterm rule that runs the same way: preterm infants receive the full dose at the appropriate chronologic age, not a delayed or reduced one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunization administration technique</span><span class="chip t2">general</span></div>
+<div class="stem">32. A nurse is preparing an intramuscular immunization for a 3-day-old newborn. What needle size and site are recommended?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>1 inch, 22 to 25 gauge, deltoid</li><li class="fopt right"><span class="mk">&#10003;</span>⅝ inch, 22 to 25 gauge, vastus lateralis</li><li class="fopt"><span class="mk">C</span>1.5 inch, 20 gauge, dorsogluteal</li><li class="fopt"><span class="mk">D</span>⅝ inch, 22 to 25 gauge, deltoid</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>For newborns 0 to 28 days old, &quot;recommended needle size is [⅝] inch, 22 to 25 gauge, recommended injection site: vastus lateralis&quot; (p. 176). The value was recovered by reading the printed artwork, since the fraction is typeset as an inline image and does not reach the text layer.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) keeps the right needle and moves to a site with inadequate muscle mass at this age — the deltoid is an option only from 1 month &quot;if muscle mass is adequately developed.&quot; (C) names the dorsogluteal site, which &quot;is not recommended as an injection site for children because of the potential for sciatic nerve damage.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunization administration technique</span><span class="chip t2">general</span></div>
+<div class="stem">33. A nurse is giving an intramuscular vaccine to a toddler. Which actions are correct? (Select all that apply.)</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Give the vaccine deep into the muscle rather than into subcutaneous tissue</li><li class="fopt right"><span class="mk">&#10003;</span>Do not aspirate for blood before injecting</li><li class="fopt right"><span class="mk">&#10003;</span>Do not manually stimulate the site by rubbing or applying pressure afterward</li><li class="fopt right"><span class="mk">&#10003;</span>Have the parent hold the child during the injection</li><li class="fopt"><span class="mk">E</span>Aspirate slowly for 5 seconds to confirm placement before injecting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Fewer reactions to immunizations are observed when the vaccine is given deep into the muscle rather than into subcutaneous tissue.&quot; Aspiration &quot;is no longer recommended for an intramuscular injection because large blood vessels are not present at recommended injection sites and slow aspiration causes more pain than injection without aspiration.&quot; Beneficial positioning means &quot;being held by a parent or caregiver for infants and young children, and sitting upright for older children and adolescents,&quot; and item 7 directs: &quot;Do not manually stimulate (i.e., rubbing or applying pressure) the injection site&quot; (p. 176).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one to reject, and it is what many nurses were originally taught — which is exactly why the chapter states both the new rule and its two reasons. Aspiration is not merely unnecessary here; slow aspiration actively hurts more.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunization administration technique</span><span class="chip t2">general</span></div>
+<div class="stem">34. A topical anesthetic is planned before an immunization. How long must each product remain in place?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>EMLA for 30 minutes; LMX4 for at least 1 hour</li><li class="fopt right"><span class="mk">&#10003;</span>EMLA for at least 1 hour; LMX4 for 30 minutes</li><li class="fopt"><span class="mk">C</span>Both for 30 minutes</li><li class="fopt"><span class="mk">D</span>Both for at least 1 hour</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Apply &quot;the topical anesthetic EMLA (lidocaine-prilocaine) to the injection site and cover with an occlusive dressing for at least 1 hour or apply the topical anesthetic LMX4 (4% lidocaine) to the injection site and cover with an occlusive dressing for 30 minutes before the injection&quot; (p. 176).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) swaps them, which is the only way this pair is tested. Note the reassurance that goes with EMLA use before vaccines: it &quot;did not decrease antibody titers in immunized infants and was effective in reducing pain in 6-month-old children,&quot; so the anesthetic does not compromise the immune response.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunization administration technique</span><span class="chip t2">general</span></div>
+<div class="stem">35. A nurse plans to use distraction during immunizations for a 4-year-old and for a 15-year-old. How should this plan be evaluated?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Appropriate for both, since distraction is universally effective</li><li class="fopt right"><span class="mk">&#10003;</span>Appropriate for the 4-year-old — distraction is recommended for children less than 6 years old — but evidence does not show any benefit in using distraction during injections with adolescents</li><li class="fopt"><span class="mk">C</span>Appropriate for the adolescent only</li><li class="fopt"><span class="mk">D</span>Inappropriate for both; distraction increases anxiety</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;For children less than 6 years old, use distraction,&quot; and &quot;Evidence does not show any benefit in using distraction during injections with adolescents&quot; (p. 176).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies distraction universally, which is the fact bank's flagged inversion. What the chapter does recommend at every age is the nurse's own language: &quot;Nurses administering the injections should remain calm and use neutral words such as here I go instead of here comes the sting.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immunization administration technique</span><span class="chip t2">general</span></div>
+<div class="stem">36. Two injections are to be given at separate sites. What does the chapter's research say about the order?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A single universal rule applies: always give the intramuscular injection first</li><li class="fopt right"><span class="mk">&#10003;</span>Two separate findings — infants given DTaP-Hib before PCV had significantly lower pain scores than those given PCV first, and pain was significantly lower when the subcutaneous injection was administered before the intramuscular injection</li><li class="fopt"><span class="mk">C</span>Order makes no measurable difference</li><li class="fopt"><span class="mk">D</span>The most painful injection should always be given first</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Research Focus reports both findings, from different studies addressing different comparisons (p. 178). The chapter's own framing before them: &quot;When two or more injections are given at separate sites, the order of injections is arbitrary. Some practitioners suggest injecting the less painful one first.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (D) each collapse two findings into one universal rule. (D) also inverts the practitioners' suggestion — the less painful one first.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exanthem recognition and disease-specific care</span><span class="chip t2">general</span></div>
+<div class="stem">37. A 5-year-old has fever, coryza, cough, and conjunctivitis. The nurse notes small, irregular red spots with a minute bluish-white center on the buccal mucosa opposite the molars. What is the finding, and what does it predict?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Strawberry tongue, predicting scarlet fever</li><li class="fopt right"><span class="mk">&#10003;</span>Koplik spots, which appear 2 days before the measles rash and are pathognomonic</li><li class="fopt"><span class="mk">C</span>Herpetic vesicles, predicting gingivostomatitis</li><li class="fopt"><span class="mk">D</span>Aphthous ulcers, requiring no follow-up</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The measles prodrome is &quot;Fever and malaise, followed in 24 hours by coryza, cough, conjunctivitis, Koplik spots (small, irregular red spots with a minute, bluish-white center first seen on buccal mucosa opposite molars 2 days before rash)&quot; (p. 182).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) treats an oral lesion as incidental, and the timing is what makes this urgent: Koplik spots appear while the child is most infectious and 2 days before anyone sees a rash. This is the window in which measles spreads through a waiting room.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exanthem recognition and disease-specific care</span><span class="chip t2">general</span></div>
+<div class="stem">38. Two children present with fever and a rash. One has had 3 days of high fever that broke as the rash appeared, and looks well. The other's fever peaked as the rash appeared, and the child looks ill. What is the likely diagnosis for each?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both have measles</li><li class="fopt right"><span class="mk">&#10003;</span>The first has roseola (exanthem subitum), the second has measles</li><li class="fopt"><span class="mk">C</span>The first has measles, the second has roseola</li><li class="fopt"><span class="mk">D</span>Both have rubella</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The discriminator is the relationship between fever and rash: in roseola the fever breaks as the rash appears and the child looks well; in measles the fever peaks with the rash and the child looks ill (pp. 181–182).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the pair, and the general appearance is as diagnostic as the timing here. The precautions differ accordingly — roseola requires Standard Precautions only, while measles requires Airborne Precautions until the fifth day of rash.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exanthem recognition and disease-specific care</span><span class="chip t2">general</span></div>
+<div class="stem">39. A nurse examines a child with scarlet fever on day 1 and again on day 4. What change in the tongue should be expected?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A red strawberry tongue on days 1 to 2, becoming a white strawberry tongue by days 4 to 5</li><li class="fopt right"><span class="mk">&#10003;</span>A white strawberry tongue on days 1 to 2 — coated, with red swollen papillae — becoming a red strawberry tongue by days 4 to 5, when the coat has sloughed and the papillae are prominent</li><li class="fopt"><span class="mk">C</span>The tongue remains unchanged throughout</li><li class="fopt"><span class="mk">D</span>The tongue becomes coated only after antibiotics are started</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The white strawberry tongue is coated with red swollen papillae on days 1 to 2; the red strawberry tongue follows on days 4 to 5, when the coat has sloughed and the papillae are prominent (p. 185).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reverses the sequence, which is the only way this pair is tested. The logic is in the word: the coating comes off, so the white stage is the earlier one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exanthem recognition and disease-specific care</span><span class="chip t2">general</span></div>
+<div class="stem">40. A child with chickenpox has a fever of 38.8° C. The parent asks about giving aspirin. What should the nurse teach?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Aspirin is acceptable for fever in chickenpox</li><li class="fopt right"><span class="mk">&#10003;</span>Avoid aspirin because of the possible association with Reye syndrome</li><li class="fopt"><span class="mk">C</span>Aspirin is acceptable if given with food</li><li class="fopt"><span class="mk">D</span>Aspirin should be alternated with acetaminophen</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The nursing care for varicella includes &quot;Avoid use of aspirin (possible association with Reye syndrome)&quot; (p. 179). The chapter repeats the prohibition for Zika: &quot;aspirin and other salicylates should not be administered to children to avoid Reye syndrome&quot; (p. 190) — the only drug prohibition it states twice.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) sounds like a familiar antipyretic strategy and keeps the contraindicated drug in the plan. Note the related teaching about what antipyretics can and cannot do in these illnesses: acetaminophen lowers fever only, not itching, anorexia, pain, fussiness, or vomiting, and bed rest &quot;should not be imposed unless specifically indicated.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">exanthem recognition and disease-specific care</span><span class="chip t2">general</span></div>
+<div class="stem">41. A pregnant staff nurse asks whether she can care for a child with fifth disease. What is the concern the chapter identifies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>There is no risk in pregnancy</li><li class="fopt right"><span class="mk">&#10003;</span>Human parvovirus B19 carries a fetal death rate of 2% to 6%, greatest in the first 20 weeks</li><li class="fopt"><span class="mk">C</span>The risk is limited to the third trimester</li><li class="fopt"><span class="mk">D</span>The concern is teratogenicity rather than fetal loss</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The fetal death rate from parvovirus B19 is &quot;2% to 6%, greatest in the first 20 weeks&quot; (p. 187). Certain groups &quot;are at risk for serious, even fatal, complications from communicable diseases, especially the viral diseases chickenpox and erythema infectiosum (fifth disease) caused by human parvovirus B19.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the gradient of risk — the danger is greatest early, not late, which is the opposite of the intuition that a larger fetus is more vulnerable. Compare rubella, which is likewise &quot;benign except in pregnancy.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intestinal parasites and other infections</span><span class="chip t2">general</span></div>
+<div class="stem">42. One of the most common intestinal parasitic pathogens in the United States, acquired from a contaminated water source such as a lake or swimming pool, is:</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Tinea capitis</li><li class="fopt right"><span class="mk">&#10003;</span>Giardia intestinalis</li><li class="fopt"><span class="mk">C</span>Pediculosis capitis</li><li class="fopt"><span class="mk">D</span>Enterobiasis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the chapter's own NCLEX question 5. Giardia is &quot;the most common intestinal parasitic pathogen in the United States,&quot; and &quot;Contaminated water, especially in lakes and streams, and swimming or wading pools frequented by diapered infants are common sources of transmission&quot; (pp. 190, 192).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the strongest distractor because pinworms are also described as the most common of their kind — &quot;the most common helminthic infection&quot; — so *most common* alone does not discriminate. The lake and pool detail is the deciding clue, because pinworms spread by ingesting or inhaling eggs rather than through water. Note that a chlorinated pool is not protective: &quot;Giardia organisms are resistant to chlorine,&quot; and a child should be excluded from swimming until 2 weeks infection-free.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intestinal parasites and other infections</span><span class="chip t2">general</span></div>
+<div class="stem">43. A parent reports that her 6-year-old has intense perianal itching, worse at night. How is the diagnosis confirmed?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A stool specimen collected at any time of day</li><li class="fopt right"><span class="mk">&#10003;</span>A tape test: transparent tape, sticky side out on a tongue depressor, pressed against the perianal area in the morning as soon as the child awakens, before a bowel movement or bathing, on 3 consecutive days</li><li class="fopt"><span class="mk">C</span>A serum antibody titer</li><li class="fopt"><span class="mk">D</span>A perianal swab collected in the evening</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A loop of transparent (not frosted or magic) tape, sticky side out, is placed around the end of a tongue depressor, which is then firmly pressed against the child's perianal area.&quot; Specimens &quot;are collected in the morning as soon as the child awakens and before the child has a bowel movement or bathes,&quot; and the procedure &quot;may need to be performed on 3 or more consecutive days&quot; (p. 193).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) breaks the timing conditions, and an evening or post-bath specimen is worthless — the eggs are laid overnight and are removed by washing or defecation. Note two further specifics: the tape must be transparent, not frosted, because frosted tape is opaque under a microscope; and it goes sticky side out on the depressor but sticky side down on the slide.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intestinal parasites and other infections</span><span class="chip t2">general</span></div>
+<div class="stem">44. Pinworm infection is confirmed in a 6-year-old. What does treatment involve?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Treat the child only, with a single dose</li><li class="fopt right"><span class="mk">&#10003;</span>Treat all household members, and repeat the dose in 2 weeks to eradicate the parasite and prevent reinfection</li><li class="fopt"><span class="mk">C</span>Treat the child and repeat daily for 2 weeks</li><li class="fopt"><span class="mk">D</span>No drug treatment; environmental measures alone are sufficient</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Because pinworms are easily transmitted, all household members should be treated,&quot; and &quot;The dose of antiparasitic medication should be repeated in 2 weeks to completely eradicate the parasite and prevent reinfection&quot; (p. 193). Mebendazole &quot;is not recommended for children younger than 2 years of age.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) relies on measures the chapter itself discounts: washing linens in hot water and vacuuming &quot;may be recommended. However, [there is] little documentation on the effectiveness of these measures.&quot; Note that eggs survive indoors for 2 to 3 weeks, which is what sets the repeat interval.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intestinal parasites and other infections</span><span class="chip t2">general</span></div>
+<div class="stem">45. A 4-year-old has bilateral eye redness with purulent drainage and lids crusted shut on waking. Another child has watery discharge with a concurrent upper respiratory infection. How should each be classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both are bacterial</li><li class="fopt right"><span class="mk">&#10003;</span>The first is bacterial conjunctivitis; the second is viral conjunctivitis</li><li class="fopt"><span class="mk">C</span>The first is allergic; the second is bacterial</li><li class="fopt"><span class="mk">D</span>Both are allergic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter separates the three by discharge: bacterial conjunctivitis is purulent with morning crusting, viral is watery and accompanies an upper respiratory infection, and allergic presents with itching and a stringy discharge (p. 188).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) attaches the allergic label to the most inflamed-looking presentation. Itching, not redness or drainage volume, is what points to allergy. Note the separate priority for a neonate: conjunctivitis in a newborn requires prompt reporting and comprehensive evaluation, with timing of onset as a diagnostic clue.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"standard and transmission-based precautions","subtopic":"general","stem":"Which precautions are designed for the care of all pediatric patients to reduce the risk of transmission of microorganisms from both recognized and unrecognized sources of infection?","options":["Transmission-Based Precautions","Airborne Precautions","Standard Precautions","Droplet Precautions"],"correct":[2],"sata":false,"why":"This is the chapter's own NCLEX question 1, and the stem quotes p. 169 almost verbatim: Standard Precautions \"are designed for the care of all patients to reduce the risk of transmission of microorganisms from both recognized and unrecognized sources of infection.\"","trap":"(A) is the reflex pick because the phrase sounds comprehensive, and it is exactly backwards — Transmission-Based Precautions are \"designed for patients with documented or suspected infection or colonization\" with specific pathogens. The two phrases that identify Standard Precautions in a stem are all patients and recognized and unrecognized.","k":"pybbgv76wo2l"},{"topic":"standard and transmission-based precautions","subtopic":"general","stem":"A nurse lists the substances Standard Precautions are designed to protect against. Which are included? (Select all that apply.)","options":["Blood","All body fluids, secretions, and excretions, whether or not they contain visible blood","Nonintact skin","Mucous membranes","Sweat"],"correct":[0,1,2,3],"sata":true,"why":"Standard Precautions use \"barrier protection (personal protective equipment [PPE]), such as gloves, goggles, gowns, and masks, to prevent contamination from blood; all body fluids, secretions, and excretions, except sweat, regardless of whether they contain visible blood; nonintact skin; and mucous membranes\" (p. 169).","trap":"(E) is the one to reject, and it is the single exclusion in an otherwise universal list — which is precisely why it is the detail an item tests. Note also the 2007 additions to Standard Precautions: Respiratory Hygiene/Cough Etiquette and safe injection practices.","k":"3ljy5318jh9d"},{"topic":"standard and transmission-based precautions","subtopic":"general","stem":"A child is placed on Droplet Precautions. What is the nurse's responsibility regarding Standard Precautions?","options":["Standard Precautions are replaced by Droplet Precautions for the duration","Transmission-Based Precautions are used in addition to Standard Precautions, and may be combined for diseases with multiple routes of transmission","Standard Precautions resume once the droplet order is discontinued","Standard Precautions apply only to the patient's roommate"],"correct":[1],"sata":false,"why":"Two rules govern their use: \"They may be combined for diseases that have multiple routes of transmission,\" and \"They are to be used in addition to Standard Precautions\" (p. 169). Box 6.1 repeats \"In addition to Standard Precautions\" at the head of every category.","trap":"(A) is the distractor the fact bank flags — replacing Standard Precautions with a transmission-based type. They are additive, never a substitute, which is also why varicella carries three precaution types at once rather than one.","k":"7mftwxdzc6tb"},{"topic":"standard and transmission-based precautions","subtopic":"general","stem":"A nurse must explain why measles requires a negative-pressure room but pertussis does not. What is the mechanism?","options":["Measles droplets are larger and therefore travel further","Airborne transmission involves droplet nuclei of 5 mm or less that remain suspended and can be dispersed widely by air currents, so special air handling and ventilation are required; droplet transmission involves particles larger than 5 mm that do not remain suspended and generally travel 3 feet or less, so special ventilation is not required","Measles is bacterial and pertussis is viral","The distinction is based on the severity of the disease, not the particle"],"correct":[1],"sata":false,"why":"Airborne transmission is by \"small-particle residue [≤5 mm] of evaporated droplets that may remain suspended in the air for long periods\" which \"can be dispersed widely by air currents\"; droplets are \"large-particle droplets (>5 mm)\" that \"generally travel only short distances, usually 3 feet or less\" (p. 169).","trap":"(A) inverts the size relationship, which is the whole mechanism — the smaller particle is the one that stays airborne and needs ventilation. Note that 3 feet appears twice in this chapter: as droplet travel distance and as the cough-etiquette spacing.","k":"1d484tufw5wrg"},{"topic":"standard and transmission-based precautions","subtopic":"general","stem":"A nurse is asked to name the single most important practice for reducing transmission of infectious disease in a health care setting. What is it?","options":["Wearing gloves for all patient contact","Hand hygiene, including hand washing with soap and water and the use of alcohol-based products for hand disinfection","Placing all children with fever in isolation","Routine environmental disinfection"],"correct":[1],"sata":false,"why":"\"Hand hygiene continues to be the single most important practice to reduce the transmission of infectious diseases in health care settings,\" and it is restated for resistant organisms: \"Hand washing is the most critical infection control practice\" (pp. 169–170). Approximately 2 million patients each year develop hospital-acquired infections, which \"are preventable if caregivers practice meticulous hand washing, cleaning, and disposal techniques.\"","trap":"(A) is the visible intervention and it is not the ranked one. The fact bank's rule is worth carrying into any priority item in this chapter: hand hygiene is the default answer, and the chapter names it as most important twice.","k":"1ja1hnsraurey"},{"topic":"precautions by communicable disease","subtopic":"general","stem":"A child is admitted with an undiagnosed rash. Which precautions should be instituted?","options":["Standard Precautions alone until the rash is identified","Contact, airborne, and droplet precautions plus Standard Precautions, until a diagnosis is confirmed","Airborne Precautions alone, since most exanthems are airborne","Droplet Precautions alone"],"correct":[1],"sata":false,"why":"The Nursing Alert states: \"If a child is admitted to the hospital with an undiagnosed exanthema, institute strict Transmission-Based Precautions (contact, airborne, and droplet) and Standard Precautions until a diagnosis is confirmed\" (p. 187).","trap":"(C) applies the precaution for the most feared possibility instead of covering all of them, and the fact bank calls this the single most likely precautions item in the chapter because it inverts the usual logic: you cannot pick the precaution until you know the disease, so you use all three.","k":"1t6klz35h0yu5"},{"topic":"precautions by communicable disease","subtopic":"general","stem":"A child with chickenpox is admitted. Which precautions are required, and when may they be discontinued?","options":["Standard and Droplet, until the fever resolves","Standard, Airborne, and Contact, until all lesions are crusted — or for breakthrough varicella, until no new lesions are seen","Contact alone, until the rash fades","Airborne alone, until the fifth day of rash"],"correct":[1],"sata":false,"why":"Varicella requires Standard plus Airborne plus Contact precautions \"until all lesions are crusted\"; for breakthrough varicella, \"until no new lesions are seen\" (p. 179). Scabs are not infectious, which is why crusting ends isolation.","trap":"(D) attaches the measles endpoint to varicella — measles requires Airborne Precautions \"until fifth day of rash.\" The fact bank warns that a distractor gives the right precaution type with the wrong endpoint, and the \"until\" column is the second half of every precautions item.","k":"o0l13fyp16yl"},{"topic":"precautions by communicable disease","subtopic":"general","stem":"A school-age child is diagnosed with scarlet fever and started on antibiotics. When may precautions be discontinued?","options":["Immediately, since treatment has begun","24 hours after initiation of treatment","After two negative throat cultures","When the rash has fully desquamated"],"correct":[1],"sata":false,"why":"Scarlet fever requires Standard plus Droplet precautions \"until 24 hours after initiation of treatment\" (p. 185).","trap":"(C) is the endpoint for pharyngeal diphtheria, which requires Standard plus Droplet \"until two cultures are negative\" (p. 179). Both are droplet-spread bacterial throat infections treated with antibiotics, so the endpoint is the only thing separating them.","k":"adbnmhqf5h3"},{"topic":"precautions by communicable disease","subtopic":"general","stem":"A nurse reviews Table 6.2 and is asked which diseases in it require Airborne Precautions. What is the answer?","options":["All of the viral exanthems","Only varicella and measles","Measles, rubella, and mumps","Pertussis and diphtheria"],"correct":[1],"sata":false,"why":"Of the diseases in Table 6.2, only varicella and measles require Airborne Precautions; Box 6.1 names the same two plus tuberculosis (pp. 169, 179, 182). Everything else in the table is Droplet, Contact, or Standard.","trap":"(C) groups the three classic childhood viral exanthems together, and two of them are wrong — rubella is Droplet and mumps is Droplet plus Contact. Being viral and rash-producing does not determine the route.","k":"dy30nc1wwlxpq"},{"topic":"precautions by communicable disease","subtopic":"general","stem":"A hospitalized child with sickle cell disease develops an aplastic crisis attributed to parvovirus B19. A well sibling at home also has fifth disease. What precautions apply to each?","options":["Both require Droplet Precautions","The hospitalized child with aplastic crisis requires Standard plus Droplet Precautions; the well child at home requires none","Neither requires precautions, since fifth disease is benign","Both require Airborne Precautions"],"correct":[1],"sata":false,"why":"Erythema infectiosum requires no precautions for the well child; the hospitalized immunosuppressed child or the child in aplastic crisis gets Standard plus Droplet Precautions (p. 181). Its period of communicability is \"Uncertain but before onset of symptoms in children with aplastic crisis.\"","trap":"(A) applies one rule to both children, and the chapter deliberately splits them. The reason is timing: a well child with the classic rash is past the contagious period, while the child in aplastic crisis is not — so the same diagnosis carries different precautions depending on the presentation.","k":"747beumxmnk0"},{"topic":"incubation and communicability periods","subtopic":"general","stem":"A child was exposed to measles 12 days ago and is now well. What should the nurse tell the family about the incubation period?","options":["The child is past the incubation period and cannot develop measles","The incubation period for measles is 10 to 20 days, so the child remains within it","The incubation period is 2 to 5 days, so the child is clear","The incubation period is 14 to 21 days, so the child is clear"],"correct":[1],"sata":false,"why":"Measles has an incubation of 10 to 20 days, with a period of communicability \"From 4 days before to 5 days after rash appears\" (p. 182).","trap":"(D) is the incubation for mumps and rubella, both 14 to 21 days, and chickenpox overlaps at 14 to 16 days — the three are not separable by incubation alone. Only measles runs from 10 days.","k":"4fuuh01a73kfe"},{"topic":"incubation and communicability periods","subtopic":"general","stem":"A parent asks when a child with measles was most contagious. What is the accurate answer?","options":["Only while the rash is visible","From 4 days before the rash appears to 5 days after — so the child was contagious before any rash was seen","Beginning 24 hours after the rash appears","Only after the fever resolves"],"correct":[1],"sata":false,"why":"Measles is communicable \"From 4 days before to 5 days after rash appears\" (p. 182). Koplik spots appear on the buccal mucosa opposite the molars 2 days before the rash, while the child is most infectious.","trap":"(A) is the intuition the fact bank names as an inversion — isolate a rash once it appears. Five diseases in this chapter are contagious before any sign shows: chickenpox 1 day before, measles 4 days before, rubella 7 days before, mumps immediately before swelling, and pertussis during the catarrhal stage. Rubella has the longest presymptomatic contagious window.","k":"5z5rz2ykc7pc"},{"topic":"incubation and communicability periods","subtopic":"general","stem":"A 6-year-old develops a sore throat and fever with an incubation history of about 3 days since exposure. Which two diseases in this chapter have the shortest incubation periods, and what is the nursing priority?","options":["Measles and rubella; begin airborne precautions","Diphtheria and scarlet fever, both 2 to 5 days — and the priority is a throat culture, since a sore throat with fever may be diphtheria or streptococcal","Mumps and chickenpox; observe at home","Pertussis and polio; begin droplet precautions only"],"correct":[1],"sata":false,"why":"Diphtheria incubates in \"Usually 2-5 days, possibly longer\" and scarlet fever in \"2-5 days, with range of 1-7 days\" (pp. 179, 185) — the two bacterial diseases in the table, and the two shortest incubations. The chapter's priority default for a sore throat with fever is a culture, because it may be diphtheria or streptococcal (p. 186).","trap":"(C) names diseases whose incubations run two to three weeks, which does not fit a 3-day history. The general pattern is worth holding: the viral exanthems in this chapter all run a week or more, so a short incubation points bacterial.","k":"p6oq4487c7gy"},{"topic":"incubation and communicability periods","subtopic":"general","stem":"A child with pertussis is admitted during the paroxysmal stage. When was the period of greatest communicability, and what is the immediate nursing priority during a paroxysm?","options":["Communicability is greatest during the paroxysmal stage; the priority is to sit the child upright","Communicability is greatest during the catarrhal stage, before the onset of paroxysms; during a paroxysm, position the child on the side, ensure oxygenation, and suction","Communicability is greatest during convalescence; the priority is fluid replacement","Pertussis is not communicable once coughing begins"],"correct":[1],"sata":false,"why":"Pertussis communicability is \"Greatest during catarrhal stage before onset of paroxysms,\" and Droplet Precautions are maintained \"during catarrhal stage\" (p. 182). The chapter's priority default for an infant with pertussis paroxysms is to position on the side, ensure oxygenation, and suction.","trap":"(A) assumes the loudest phase is the most infectious phase, which is the reverse of the truth and is why pertussis spreads before anyone suspects it — during the catarrhal stage it looks like a cold. For scale, adolescents cough at least 21 days and up to half cough for 10 weeks.","k":"11fbglg9htcou"},{"topic":"immunity terminology and vaccine types","subtopic":"general","stem":"A newborn is protected from several infections by antibodies received across the placenta. What type of immunity is this?","options":["Natural active immunity","Natural passive immunity","Artificial active immunity","Herd immunity"],"correct":[1],"sata":false,"why":"Active immunity is formed by the person's own immune bodies; passive immunity is \"Temporary immunity obtained by transfusing immunoglobulins or antitoxins,\" and it can be acquired naturally from the mother to the fetus via the placenta or artificially by transfusion (p. 171).","trap":"(A) is the reflex pick because the antibody arrived by a natural route, and \"natural\" gets attached to the wrong axis. The two axes are independent: natural versus artificial describes how it was acquired, active versus passive describes who made the antibodies.","k":"wbqio237t4zk"},{"topic":"immunity terminology and vaccine types","subtopic":"general","stem":"A nurse must distinguish a vaccine, a toxoid, and an antitoxin. Which set of definitions is correct?","options":["Vaccine: a modified bacterial toxin; toxoid: live or inactivated organisms; antitoxin: a conjugated polysaccharide","Vaccine: a suspension of live or inactivated organisms; toxoid: a modified bacterial toxin made nontoxic; antitoxin: ready-made antibodies from the serum of an immunized animal, conferring passive immunity","All three produce active immunity","Vaccine and toxoid both confer passive immunity"],"correct":[1],"sata":false,"why":"Box 6.2 defines each of these on p. 171. An antitoxin confers passive immunity because the antibodies are transferred rather than formed, while vaccines and toxoids produce active immunity.","trap":"(C) is the reflex assumption that anything given to prevent disease works the same way. It matters clinically: a child receiving equine antitoxin needs a sensitivity test first with epinephrine available, a precaution that has no counterpart for a vaccine.","k":"ynvsl11ojtipr"},{"topic":"immunity terminology and vaccine types","subtopic":"general","stem":"An unvaccinated child in a highly vaccinated community is protected from a disease he was never immunized against. What concept describes this?","options":["Active immunity","Herd immunity — the population that has been vaccinated protects those in the same population who are unvaccinated","Cocooning","Conjugate protection"],"correct":[1],"sata":false,"why":"The definition names the unvaccinated explicitly: \"the population that has been vaccinated protects those in the same population who are unvaccinated\" (p. 171).","trap":"(C) is the nearest relative and is narrower and deliberate. Cocooning means \"protecting infants from pertussis by vaccinating all persons who come in close contact with the infant, including the mother, grandparents, and health care workers\" — a targeted ring around one infant, not a population effect, and pertussis-specific.","k":"t3ol75116fccr"},{"topic":"immunity terminology and vaccine types","subtopic":"general","stem":"A nurse documents that a child was \"immunized\" after administering a vaccine. What distinction does the chapter draw?","options":["The terms are synonymous in all contexts","They are not synonymous: vaccination is the physical act of administering, while immunization is the process of inducing or providing immunity — the administration of a vaccine cannot automatically be equated with the development of adequate immunity","Immunization refers only to live vaccines","Vaccination refers only to inactivated vaccines"],"correct":[1],"sata":false,"why":"\"Although in this discussion the terms vaccination and immunization are used interchangeably in reference to active immunization, they are not synonymous because the administration of an immunobiologic such as a vaccine cannot automatically be equated with the development of adequate immunity\" (p. 171).","trap":"(A) is what the chapter itself does in casual use and then explicitly disavows, which is what makes this testable. Giving the vaccine is an act; producing immunity is an outcome, and the two can come apart.","k":"5cualb1ufgyf1"},{"topic":"vaccine contraindications and precautions","subtopic":"general","stem":"A nurse is deciding whether to withhold a vaccine. What is the difference between a contraindication and a precaution?","options":["They are equivalent; both bar administration","A contraindication is a condition that increases the risk for a serious adverse reaction, and the vaccine is not given; a precaution might increase that risk or compromise the vaccine's ability to produce immunity, and the vaccine is given if the benefit outweighs the risk","A precaution bars administration and a contraindication permits it","A precaution applies only to live vaccines"],"correct":[1],"sata":false,"why":"A contraindication is \"a condition in an individual that increases the risk for a serious adverse reaction,\" and \"one would not administer a vaccine when a contraindication is present.\" A precaution \"might increase the risk... or that might compromise the ability of the vaccine to produce immunity,\" and \"If conditions are such that the benefit of receiving the vaccine would outweigh the risk of an adverse event or incomplete response, a precaution would not prevent vaccine administration\" (p. 177).","trap":"(A) treats both as absolute bars, and the chapter warns what that costs: \"Unfounded fears and lack of knowledge regarding contraindications can needlessly prevent a child from having protection from life-threatening diseases.\"","k":"zucl0trsgo1b"},{"topic":"vaccine contraindications and precautions","subtopic":"general","stem":"Which of the following are contraindications to immunization? (Select all that apply.)","options":["Severe febrile illness","Altered immune function, for live virus vaccines","Recently acquired passive immunity through blood transfusion or immunoglobulin, for live virus vaccines","Anaphylactic reaction to a previously administered vaccine or one of its components","A family history of seizures"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists severe febrile illness as the general contraindication for all immunizations, altered immunity and recent passive immunity as contraindications to live virus vaccines, and a known allergic response — specifically anaphylaxis to the vaccine or a component — as the fourth. Pregnancy is a contraindication to MMR (p. 177).","trap":"(E) is the one to reject and it appears on the chapter's explicit list of things \"not considered contraindications.\" A distractor defers a pertussis-containing vaccine for a family seizure history; the chapter permits deferral only for a neurologic contraindication in the child.","k":"1ggpon4a42vpe"},{"topic":"vaccine contraindications and precautions","subtopic":"general","stem":"A parent reports that her child had contact dermatitis after neomycin-containing ointment and asks whether MMR can be given. What should the nurse do?","options":["Withhold MMR permanently","Administer MMR — contact dermatitis in reaction to neomycin is not a contraindication; only a history of anaphylactic reaction to neomycin, gelatin, or the vaccine itself is","Administer half the dose and observe","Substitute individual measles, mumps, and rubella vaccines"],"correct":[1],"sata":false,"why":"\"Contact dermatitis in reaction to neomycin is not considered a contraindication to immunization,\" while \"only a history of anaphylactic reaction to neomycin, gelatin, or the vaccine itself is considered a contraindication to their use\" (p. 177).","trap":"(A) is the cautious-sounding answer and it withholds protection on the basis of a reaction type the chapter specifically clears. The fact bank calls this the sharpest pair in the section: anaphylaxis to neomycin is a contraindication, contact dermatitis to neomycin is not.","k":"1do3pkq1dzkodc"},{"topic":"vaccine contraindications and precautions","subtopic":"general","stem":"A 4-year-old received immunoglobulin two weeks ago and is due for MMR and varicella vaccines. What should the nurse do?","options":["Give both vaccines today","Postpone MMR and varicella for a minimum of 3 months after passive immunization with immunoglobulin or blood transfusion — except after washed red blood cells, which do not interfere with the immune response","Postpone for 1 month","Postpone for 28 days"],"correct":[1],"sata":false,"why":"\"Administration of MMR and varicella should be postponed for a minimum of 3 months after passive immunization with immunoglobulins and blood transfusions (except washed red blood cells, which do not interfere with the immune response)\" (p. 177).","trap":"(C) and (D) are two other real intervals from this chapter attached to the wrong situation — 1 month is the minimum between two live vaccines not given on the same day, and 28 days is the pregnancy-avoidance interval after rubella vaccine. Three intervals, three situations; match the interval to the situation rather than to a general rule.","k":"1hw96taev11bc"},{"topic":"vaccine contraindications and precautions","subtopic":"general","stem":"A child arrives for a well visit with a runny nose and a temperature of 37.4° C, and is breastfeeding. Which of these is a reason to withhold today's vaccines?","options":["The minor upper respiratory infection","Breastfeeding","Neither; minor illnesses such as the common cold are not a contraindication, and breastfeeding is not a contraindication for any vaccine","Both, until the child is well and weaned"],"correct":[2],"sata":false,"why":"\"The presence of minor illnesses, such as the common cold, is not a contraindication,\" and \"Breastfeeding is not a contraindication for any vaccine\" (p. 177). The general contraindication is a severe febrile illness, which avoids \"adding the risk of adverse side effects from the vaccine to an already ill child or mistakenly identifying a symptom of the disease as having been caused by the vaccine.\"","trap":"(A) is the most common real-world deferral and it is one of the nine non-contraindications the chapter lists — alongside contact dermatitis to neomycin, egg sensitivity for MMR, family history of seizures, family history of a vaccine adverse event, penicillin allergy, duck allergy, and family history of sudden infant death syndrome.","k":"7zz5an166m4g9"},{"topic":"pertussis diphtheria and tetanus vaccines","subtopic":"general","stem":"A 4-year-old needs a vaccine containing diphtheria, tetanus, and pertussis components. Which preparation is correct?","options":["Tdap","DTaP","Td","DT"],"correct":[1],"sata":false,"why":"DTaP is the pediatric formulation for children 6 weeks through 6 years; Tdap is for those 11 and older; Td contains tetanus and diphtheria only; and DT is for a child under 7 who has a contraindication to the pertussis component (pp. 172–173).","trap":"(D) is the correct choice only when pertussis is contraindicated, and the stem specifies that the pertussis component is wanted. The capitalization convention carries the meaning: uppercase letters are full-strength antigens and lowercase are reduced, so DTaP and Tdap differ by which components are reduced, not by which diseases they cover.","k":"yxiu4ii6p5ww"},{"topic":"pertussis diphtheria and tetanus vaccines","subtopic":"general","stem":"A pregnant adolescent who is not protected against pertussis asks which vaccine she should receive and when. What is correct?","options":["Td, at any point in pregnancy","Tdap, optimally between 27 and 36 weeks of gestation, or postpartum before discharge from the hospital","DTaP, in the first trimester","No pertussis-containing vaccine is given during pregnancy"],"correct":[1],"sata":false,"why":"This is the chapter's own NCLEX question 3, and the stem quotes p. 173 almost verbatim: the CDC and the American College of Obstetricians and Gynecologists recommend Tdap between 27 and 36 weeks of gestation or postpartum before discharge.","trap":"(A) is the whole question, and the discriminator is one lowercase letter — Td contains tetanus and diphtheria only, with no pertussis component, so it cannot protect against the disease the stem names.","k":"qygy3a84yvxc"},{"topic":"pertussis diphtheria and tetanus vaccines","subtopic":"general","stem":"The parents of a 2-week-old ask how to protect their newborn from pertussis before the infant can be vaccinated. What strategy does the chapter describe?","options":["Give the infant a dose of DTaP now","Cocooning — vaccinating all persons who come in close contact with the infant, including the mother, grandparents, and health care workers","Give the infant immunoglobulin monthly","Isolate the infant at home for 6 months"],"correct":[1],"sata":false,"why":"Cocooning is \"protecting infants from pertussis by vaccinating all persons who come in close contact with the infant, including the mother, grandparents, and health care workers\" (p. 171).","trap":"(A) misses the reason the strategy exists — the infant is not the one vaccinated, because the vaccine cannot be given early enough to protect during the period of highest risk. Cocooning transfers the protection to the people around the infant, which is what makes it conceptually different from every other item in this chapter.","k":"1la4gieohvsdo"},{"topic":"pertussis diphtheria and tetanus vaccines","subtopic":"general","stem":"A nurse reviews a child's record to determine whether he is fully vaccinated against pertussis. What constitutes a complete series?","options":["Three doses of DTaP","Five doses of DTaP, or four doses with the fourth given on or after the fourth birthday","Four doses of DTaP regardless of timing","Two doses of Tdap"],"correct":[1],"sata":false,"why":"A child is considered fully vaccinated for pertussis with \"5 doses of DTaP, or 4 with the fourth on or after the fourth birthday\" (p. 173). Diphtheria and tetanus protection lasts approximately 10 years.","trap":"(C) drops the timing condition, which is what makes the four-dose route valid — a fourth dose given before the fourth birthday does not complete the series. The count alone is not the answer.","k":"1n8x0ak1sy4cru"},{"topic":"specific vaccines and their target diseases","subtopic":"general","stem":"Which childhood vaccine provides some protection against bacterial meningitis, epiglottitis, and bacterial pneumonia?","options":["Hib vaccine","Hepatitis B vaccine","Varicella vaccine","Influenza vaccine"],"correct":[0],"sata":false,"why":"This is the chapter's own NCLEX question 2. Hib conjugate vaccines \"protect against a number of serious infections caused by H. influenzae type b, especially bacterial meningitis, epiglottitis, bacterial pneumonia, septic arthritis, and sepsis\" (p. 174).","trap":"(D) exists because of the name similarity, and the chapter pre-empts it directly: \"Hib is not associated with the viruses that cause influenza.\" Epiglottitis is the giveaway in the stem — it appears in the Hib list and nowhere else in the chapter.","k":"1i0lny21t26y3s"},{"topic":"specific vaccines and their target diseases","subtopic":"general","stem":"Which childhood vaccine provides protection against streptococcal infections such as otitis media, sinusitis, and pneumonia?","options":["Rotavirus","Hib","Pneumococcal","MMR"],"correct":[2],"sata":false,"why":"This is the chapter's own NCLEX question 4. Page 175 names \"localized infections, such as otitis media, sinusitis, and pneumonia\" among those caused by \"Streptococcal pneumococci.\"","trap":"(B) is the strongest distractor and is the previous item's answer — both vaccines prevent otitis media and pneumonia, so the overlap does not discriminate. The tells are epiglottitis and meningitis for Hib and sinusitis plus the word streptococcal for pneumococcal. Read the organism named in the stem.","k":"1d5iuskji18fu"},{"topic":"specific vaccines and their target diseases","subtopic":"general","stem":"An infant is born to a mother who is hepatitis B surface antigen positive. What is required, and in what time frame?","options":["Hepatitis B vaccine alone, within 24 hours","Hepatitis B vaccine plus hepatitis B immune globulin 0.5 ml within 12 hours of birth, given at two separate sites","Hepatitis B immune globulin alone, at 1 month","Hepatitis B vaccine at 2 months with the routine series"],"correct":[1],"sata":false,"why":"The newborn of an HBsAg-positive mother receives HepB vaccine plus HBIG 0.5 ml within 12 hours of birth, at two sites (p. 172). The stakes are in the epidemiology: perinatal infection becomes chronic in up to 90% of cases, compared with 25% to 50% for infection acquired before age 5.","trap":"(A) gives half the regimen. Passive and active immunization are both required here and do different jobs — the immune globulin provides antibodies now, the vaccine provokes the infant's own. Note the separate weight rule for the routine series: HepB is deferred below 2000 g (4.4 lb).","k":"dt370i1ak6blg"},{"topic":"specific vaccines and their target diseases","subtopic":"general","stem":"A 4-month-old has not yet received any rotavirus vaccine. What limits the nurse's ability to start the series now, and what is the general rule for a lapsed series?","options":["The series may not be started after 32 weeks of age; and a lapsed series of any vaccine must be restarted from the beginning","The rotavirus series may not be given after 32 weeks of age; and for a lapsed series, only the missed doses are given rather than restarting","There is no upper age limit for rotavirus; a lapsed series is restarted","Rotavirus may be given at any age, and a lapsed series continues where it left off"],"correct":[1],"sata":false,"why":"The rotavirus vaccine is \"not [given] after 32 weeks\" (p. 176), and the chapter's catch-up rule is that a lapsed series is not restarted — only the missed doses are given (p. 172).","trap":"(A) pairs the correct age limit with the wrong catch-up rule, which is the fact bank's flagged inversion: \"A lapsed vaccine series must be restarted\" is the intuition, and the chapter says give only the missed doses. Note the related preterm rule that runs the same way: preterm infants receive the full dose at the appropriate chronologic age, not a delayed or reduced one.","k":"ua09bh11msk53"},{"topic":"immunization administration technique","subtopic":"general","stem":"A nurse is preparing an intramuscular immunization for a 3-day-old newborn. What needle size and site are recommended?","options":["1 inch, 22 to 25 gauge, deltoid","⅝ inch, 22 to 25 gauge, vastus lateralis","1.5 inch, 20 gauge, dorsogluteal","⅝ inch, 22 to 25 gauge, deltoid"],"correct":[1],"sata":false,"why":"For newborns 0 to 28 days old, \"recommended needle size is [⅝] inch, 22 to 25 gauge, recommended injection site: vastus lateralis\" (p. 176). The value was recovered by reading the printed artwork, since the fraction is typeset as an inline image and does not reach the text layer.","trap":"(D) keeps the right needle and moves to a site with inadequate muscle mass at this age — the deltoid is an option only from 1 month \"if muscle mass is adequately developed.\" (C) names the dorsogluteal site, which \"is not recommended as an injection site for children because of the potential for sciatic nerve damage.\"","k":"q54hfeizmaeg"},{"topic":"immunization administration technique","subtopic":"general","stem":"A nurse is giving an intramuscular vaccine to a toddler. Which actions are correct? (Select all that apply.)","options":["Give the vaccine deep into the muscle rather than into subcutaneous tissue","Do not aspirate for blood before injecting","Do not manually stimulate the site by rubbing or applying pressure afterward","Have the parent hold the child during the injection","Aspirate slowly for 5 seconds to confirm placement before injecting"],"correct":[0,1,2,3],"sata":true,"why":"\"Fewer reactions to immunizations are observed when the vaccine is given deep into the muscle rather than into subcutaneous tissue.\" Aspiration \"is no longer recommended for an intramuscular injection because large blood vessels are not present at recommended injection sites and slow aspiration causes more pain than injection without aspiration.\" Beneficial positioning means \"being held by a parent or caregiver for infants and young children, and sitting upright for older children and adolescents,\" and item 7 directs: \"Do not manually stimulate (i.e., rubbing or applying pressure) the injection site\" (p. 176).","trap":"(E) is the one to reject, and it is what many nurses were originally taught — which is exactly why the chapter states both the new rule and its two reasons. Aspiration is not merely unnecessary here; slow aspiration actively hurts more.","k":"1abn5jh10peix7"},{"topic":"immunization administration technique","subtopic":"general","stem":"A topical anesthetic is planned before an immunization. How long must each product remain in place?","options":["EMLA for 30 minutes; LMX4 for at least 1 hour","EMLA for at least 1 hour; LMX4 for 30 minutes","Both for 30 minutes","Both for at least 1 hour"],"correct":[1],"sata":false,"why":"Apply \"the topical anesthetic EMLA (lidocaine-prilocaine) to the injection site and cover with an occlusive dressing for at least 1 hour or apply the topical anesthetic LMX4 (4% lidocaine) to the injection site and cover with an occlusive dressing for 30 minutes before the injection\" (p. 176).","trap":"(A) swaps them, which is the only way this pair is tested. Note the reassurance that goes with EMLA use before vaccines: it \"did not decrease antibody titers in immunized infants and was effective in reducing pain in 6-month-old children,\" so the anesthetic does not compromise the immune response.","k":"1ar8jq7i23z1p"},{"topic":"immunization administration technique","subtopic":"general","stem":"A nurse plans to use distraction during immunizations for a 4-year-old and for a 15-year-old. How should this plan be evaluated?","options":["Appropriate for both, since distraction is universally effective","Appropriate for the 4-year-old — distraction is recommended for children less than 6 years old — but evidence does not show any benefit in using distraction during injections with adolescents","Appropriate for the adolescent only","Inappropriate for both; distraction increases anxiety"],"correct":[1],"sata":false,"why":"\"For children less than 6 years old, use distraction,\" and \"Evidence does not show any benefit in using distraction during injections with adolescents\" (p. 176).","trap":"(A) applies distraction universally, which is the fact bank's flagged inversion. What the chapter does recommend at every age is the nurse's own language: \"Nurses administering the injections should remain calm and use neutral words such as here I go instead of here comes the sting.\"","k":"1cqj5zi1bz2l5k"},{"topic":"immunization administration technique","subtopic":"general","stem":"Two injections are to be given at separate sites. What does the chapter's research say about the order?","options":["A single universal rule applies: always give the intramuscular injection first","Two separate findings — infants given DTaP-Hib before PCV had significantly lower pain scores than those given PCV first, and pain was significantly lower when the subcutaneous injection was administered before the intramuscular injection","Order makes no measurable difference","The most painful injection should always be given first"],"correct":[1],"sata":false,"why":"The Research Focus reports both findings, from different studies addressing different comparisons (p. 178). The chapter's own framing before them: \"When two or more injections are given at separate sites, the order of injections is arbitrary. Some practitioners suggest injecting the less painful one first.\"","trap":"(A) and (D) each collapse two findings into one universal rule. (D) also inverts the practitioners' suggestion — the less painful one first.","k":"19kuh3c1w8lyfi"},{"topic":"exanthem recognition and disease-specific care","subtopic":"general","stem":"A 5-year-old has fever, coryza, cough, and conjunctivitis. The nurse notes small, irregular red spots with a minute bluish-white center on the buccal mucosa opposite the molars. What is the finding, and what does it predict?","options":["Strawberry tongue, predicting scarlet fever","Koplik spots, which appear 2 days before the measles rash and are pathognomonic","Herpetic vesicles, predicting gingivostomatitis","Aphthous ulcers, requiring no follow-up"],"correct":[1],"sata":false,"why":"The measles prodrome is \"Fever and malaise, followed in 24 hours by coryza, cough, conjunctivitis, Koplik spots (small, irregular red spots with a minute, bluish-white center first seen on buccal mucosa opposite molars 2 days before rash)\" (p. 182).","trap":"(D) treats an oral lesion as incidental, and the timing is what makes this urgent: Koplik spots appear while the child is most infectious and 2 days before anyone sees a rash. This is the window in which measles spreads through a waiting room.","k":"1iy5tr1phys1f"},{"topic":"exanthem recognition and disease-specific care","subtopic":"general","stem":"Two children present with fever and a rash. One has had 3 days of high fever that broke as the rash appeared, and looks well. The other's fever peaked as the rash appeared, and the child looks ill. What is the likely diagnosis for each?","options":["Both have measles","The first has roseola (exanthem subitum), the second has measles","The first has measles, the second has roseola","Both have rubella"],"correct":[1],"sata":false,"why":"The discriminator is the relationship between fever and rash: in roseola the fever breaks as the rash appears and the child looks well; in measles the fever peaks with the rash and the child looks ill (pp. 181–182).","trap":"(C) reverses the pair, and the general appearance is as diagnostic as the timing here. The precautions differ accordingly — roseola requires Standard Precautions only, while measles requires Airborne Precautions until the fifth day of rash.","k":"1bp8n9v555hsp"},{"topic":"exanthem recognition and disease-specific care","subtopic":"general","stem":"A nurse examines a child with scarlet fever on day 1 and again on day 4. What change in the tongue should be expected?","options":["A red strawberry tongue on days 1 to 2, becoming a white strawberry tongue by days 4 to 5","A white strawberry tongue on days 1 to 2 — coated, with red swollen papillae — becoming a red strawberry tongue by days 4 to 5, when the coat has sloughed and the papillae are prominent","The tongue remains unchanged throughout","The tongue becomes coated only after antibiotics are started"],"correct":[1],"sata":false,"why":"The white strawberry tongue is coated with red swollen papillae on days 1 to 2; the red strawberry tongue follows on days 4 to 5, when the coat has sloughed and the papillae are prominent (p. 185).","trap":"(A) reverses the sequence, which is the only way this pair is tested. The logic is in the word: the coating comes off, so the white stage is the earlier one.","k":"e7vo7w1t69ufe"},{"topic":"exanthem recognition and disease-specific care","subtopic":"general","stem":"A child with chickenpox has a fever of 38.8° C. The parent asks about giving aspirin. What should the nurse teach?","options":["Aspirin is acceptable for fever in chickenpox","Avoid aspirin because of the possible association with Reye syndrome","Aspirin is acceptable if given with food","Aspirin should be alternated with acetaminophen"],"correct":[1],"sata":false,"why":"The nursing care for varicella includes \"Avoid use of aspirin (possible association with Reye syndrome)\" (p. 179). The chapter repeats the prohibition for Zika: \"aspirin and other salicylates should not be administered to children to avoid Reye syndrome\" (p. 190) — the only drug prohibition it states twice.","trap":"(D) sounds like a familiar antipyretic strategy and keeps the contraindicated drug in the plan. Note the related teaching about what antipyretics can and cannot do in these illnesses: acetaminophen lowers fever only, not itching, anorexia, pain, fussiness, or vomiting, and bed rest \"should not be imposed unless specifically indicated.\"","k":"khkh1y1vd4zao"},{"topic":"exanthem recognition and disease-specific care","subtopic":"general","stem":"A pregnant staff nurse asks whether she can care for a child with fifth disease. What is the concern the chapter identifies?","options":["There is no risk in pregnancy","Human parvovirus B19 carries a fetal death rate of 2% to 6%, greatest in the first 20 weeks","The risk is limited to the third trimester","The concern is teratogenicity rather than fetal loss"],"correct":[1],"sata":false,"why":"The fetal death rate from parvovirus B19 is \"2% to 6%, greatest in the first 20 weeks\" (p. 187). Certain groups \"are at risk for serious, even fatal, complications from communicable diseases, especially the viral diseases chickenpox and erythema infectiosum (fifth disease) caused by human parvovirus B19.\"","trap":"(C) inverts the gradient of risk — the danger is greatest early, not late, which is the opposite of the intuition that a larger fetus is more vulnerable. Compare rubella, which is likewise \"benign except in pregnancy.\"","k":"1rifmror3xcii"},{"topic":"intestinal parasites and other infections","subtopic":"general","stem":"One of the most common intestinal parasitic pathogens in the United States, acquired from a contaminated water source such as a lake or swimming pool, is:","options":["Tinea capitis","Giardia intestinalis","Pediculosis capitis","Enterobiasis"],"correct":[1],"sata":false,"why":"This is the chapter's own NCLEX question 5. Giardia is \"the most common intestinal parasitic pathogen in the United States,\" and \"Contaminated water, especially in lakes and streams, and swimming or wading pools frequented by diapered infants are common sources of transmission\" (pp. 190, 192).","trap":"(D) is the strongest distractor because pinworms are also described as the most common of their kind — \"the most common helminthic infection\" — so *most common* alone does not discriminate. The lake and pool detail is the deciding clue, because pinworms spread by ingesting or inhaling eggs rather than through water. Note that a chlorinated pool is not protective: \"Giardia organisms are resistant to chlorine,\" and a child should be excluded from swimming until 2 weeks infection-free.","k":"bsxhdd1iei2cj"},{"topic":"intestinal parasites and other infections","subtopic":"general","stem":"A parent reports that her 6-year-old has intense perianal itching, worse at night. How is the diagnosis confirmed?","options":["A stool specimen collected at any time of day","A tape test: transparent tape, sticky side out on a tongue depressor, pressed against the perianal area in the morning as soon as the child awakens, before a bowel movement or bathing, on 3 consecutive days","A serum antibody titer","A perianal swab collected in the evening"],"correct":[1],"sata":false,"why":"\"A loop of transparent (not frosted or magic) tape, sticky side out, is placed around the end of a tongue depressor, which is then firmly pressed against the child's perianal area.\" Specimens \"are collected in the morning as soon as the child awakens and before the child has a bowel movement or bathes,\" and the procedure \"may need to be performed on 3 or more consecutive days\" (p. 193).","trap":"(D) breaks the timing conditions, and an evening or post-bath specimen is worthless — the eggs are laid overnight and are removed by washing or defecation. Note two further specifics: the tape must be transparent, not frosted, because frosted tape is opaque under a microscope; and it goes sticky side out on the depressor but sticky side down on the slide.","k":"1c7bv0btkdmth"},{"topic":"intestinal parasites and other infections","subtopic":"general","stem":"Pinworm infection is confirmed in a 6-year-old. What does treatment involve?","options":["Treat the child only, with a single dose","Treat all household members, and repeat the dose in 2 weeks to eradicate the parasite and prevent reinfection","Treat the child and repeat daily for 2 weeks","No drug treatment; environmental measures alone are sufficient"],"correct":[1],"sata":false,"why":"\"Because pinworms are easily transmitted, all household members should be treated,\" and \"The dose of antiparasitic medication should be repeated in 2 weeks to completely eradicate the parasite and prevent reinfection\" (p. 193). Mebendazole \"is not recommended for children younger than 2 years of age.\"","trap":"(D) relies on measures the chapter itself discounts: washing linens in hot water and vacuuming \"may be recommended. However, [there is] little documentation on the effectiveness of these measures.\" Note that eggs survive indoors for 2 to 3 weeks, which is what sets the repeat interval.","k":"1u40fv113mn5ir"},{"topic":"intestinal parasites and other infections","subtopic":"general","stem":"A 4-year-old has bilateral eye redness with purulent drainage and lids crusted shut on waking. Another child has watery discharge with a concurrent upper respiratory infection. How should each be classified?","options":["Both are bacterial","The first is bacterial conjunctivitis; the second is viral conjunctivitis","The first is allergic; the second is bacterial","Both are allergic"],"correct":[1],"sata":false,"why":"The chapter separates the three by discharge: bacterial conjunctivitis is purulent with morning crusting, viral is watery and accompanies an upper respiratory infection, and allergic presents with itching and a stringy discharge (p. 188).","trap":"(C) attaches the allergic label to the most inflamed-looking presentation. Itching, not redness or drainage volume, is what points to allergy. Note the separate priority for a neonate: conjunctivitis in a newborn requires prompt reporting and comprehensive evaluation, with timing of onset as a diagnostic clue.","k":"1xyk2z8sk2dna"}];
+const TITLE = "Chapter 6 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 6";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

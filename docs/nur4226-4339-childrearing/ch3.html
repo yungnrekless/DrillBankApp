@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 3 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 3</div><h1>Chapter 3 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomaly classification</span><span class="chip t2">general</span></div>
+<div class="stem">1. A newborn has a congenital amputation of two fingers caused by amniotic bands that wrapped around the developing hand. How is this anomaly classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Deformation</li><li class="fopt right"><span class="mk">&#10003;</span>Disruption</li><li class="fopt"><span class="mk">C</span>Dysplasia</li><li class="fopt"><span class="mk">D</span>Malformation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Disruptions result from the breakdown of previously normal tissue,&quot; and the chapter's own example is &quot;Congenital amputations caused by amniotic bands (fibrous strands of amnion that wrap around different body parts during development)&quot; (p. 42).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because both involve an outside force acting on the fetus. A deformation is &quot;caused by extrinsic mechanical forces on normally developing tissue&quot; — the tissue is pushed out of shape but intact, as in club foot from uterine constraint. A disruption destroys tissue that had formed normally.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomaly classification</span><span class="chip t2">general</span></div>
+<div class="stem">2. The parents of a newborn with cleft lip ask whether they caused it. Which response reflects the chapter's account?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Cleft lip is a disruption, caused by tissue that broke down during development</li><li class="fopt right"><span class="mk">&#10003;</span>Cleft lip is a malformation: at about 5 weeks the embryo normally has two clefts in that area, and cells divide and migrate between 5 and 7 weeks to fill them in; when that process is abnormal, a cleft remains, and the cause is often unknown</li><li class="fopt"><span class="mk">C</span>Cleft lip results from something the mother ate or was exposed to during the first trimester</li><li class="fopt"><span class="mk">D</span>Nothing the parents did caused it, and there is no known mechanism</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the chapter's own NCLEX question 1, keyed to the response that gives the mechanism without blaming. Cleft lip is given as the example of a malformation — &quot;abnormal formations of organs or body parts resulting from an abnormal developmental process&quot; — and most malformations occur before 12 weeks of gestation (p. 42).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the classification trap the book's own item offers, and it is wrong on the definitions: nothing broke down, the tissue never came together. (C) assigns blame, which the chapter's guidance directly opposes — parents' guilt must be &quot;assessed and addressed&quot; and their invented explanations &quot;assessed and dispelled.&quot; (D) is a bare denial that gives the family no mechanism, where the chapter asks for &quot;simple and truthful explanations.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomaly classification</span><span class="chip t2">general</span></div>
+<div class="stem">3. An infant is born with a recessed mandible; the tongue is abnormally placed, blocking the palatal shelves from meeting, and a cleft palate results. The infant is at risk for obstructive apnea. What is this pattern called, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A syndrome, because the anomalies occur together</li><li class="fopt"><span class="mk">B</span>An association, because no cause has been determined</li><li class="fopt right"><span class="mk">&#10003;</span>A sequence, because a single anomaly led to a cascade of additional anomalies</li><li class="fopt"><span class="mk">D</span>A dysplasia, because the tissues are abnormally organized</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;When a single anomaly leads to a cascade of additional anomalies, the pattern of defects is referred to as a sequence&quot; (p. 45). Pierre Robin sequence &quot;begins with the abnormal development of the mandible, resulting in abnormal placement of the tongue,&quot; which obstructs &quot;the migration of the palatal shelves toward the midline, and a cleft palate remains.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because any set of anomalies occurring together looks like a syndrome. A syndrome is &quot;a recognized pattern of anomalies resulting from a single specific *cause*&quot;; a sequence has a single first *defect* that produces the rest. The nursing point here is the airway: recessed mandible plus displaced tongue equals obstructive apnea.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomaly classification</span><span class="chip t2">general</span></div>
+<div class="stem">4. A nurse examines a newborn and finds a sacral dimple, an extra nipple, and a café-au-lait spot. How should these be characterized, and what do they mean together?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Three major anomalies, requiring immediate genetic referral</li><li class="fopt right"><span class="mk">&#10003;</span>Minor anomalies or normal variants with no serious consequences — but three or more minor anomalies should raise suspicion of an underlying syndrome</li><li class="fopt"><span class="mk">C</span>Minor anomalies, which never warrant further evaluation</li><li class="fopt"><span class="mk">D</span>Major anomalies, since any structural finding is major by definition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter contrasts &quot;major structural abnormalities with serious medical, surgical, or quality-of-life consequences&quot; against &quot;minor anomalies or normal variants with no serious consequences, such as a sacral dimple, an extra nipple, or a café-au-lait spot&quot; (p. 45). The dysmorphology guidance adds: &quot;When three or more minor anomalies are identified, nurses should suspect the possibility of an underlying syndrome&quot; (p. 76).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex pick once the findings are correctly labeled minor, and it drops the counting rule that makes the classification useful. The parallel rule for major anomalies runs the other way: one major anomaly means look for more.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetics vocabulary and chromosome number</span><span class="chip t2">general</span></div>
+<div class="stem">5. A nurse explains the difference between genetics and genomics to a student. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Genetics studies all of a person's genes and their interactions; genomics studies a single gene</li><li class="fopt right"><span class="mk">&#10003;</span>Genetics studies single genes and their effect on relatively rare disorders; genomics studies all the genes in the genome and their interactions with each other and the environment</li><li class="fopt"><span class="mk">C</span>The two terms are interchangeable</li><li class="fopt"><span class="mk">D</span>Genetics applies to inherited disease and genomics only to cancer</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The same one-gene-versus-all-of-them split separates the two terms, and it repeats for pharmacogenetics versus pharmacogenomics (pp. 41–43).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error — a straight swap of the two definitions, which is the only way this pair is ever tested.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetics vocabulary and chromosome number</span><span class="chip t2">general</span></div>
+<div class="stem">6. A parent says her child's heart defect &quot;must be genetic because he was born with it.&quot; How should the nurse respond?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>She is correct; present at birth means inherited</li><li class="fopt right"><span class="mk">&#10003;</span>A congenital disease may or may not be genetic, and a genetic disease may or may not be congenital, although the causative genes are present at birth</li><li class="fopt"><span class="mk">C</span>She is incorrect; congenital defects are never genetic</li><li class="fopt"><span class="mk">D</span>The distinction has no clinical significance</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A congenital disease may or may not be genetic. Likewise, a genetic disease may or may not be congenital, although the causative genes are present at birth&quot; (p. 41).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) collapses two different claims — present at birth, and inherited — into one. The related error the chapter names is assuming a genetic disorder always shows a positive family history: &quot;It is therefore erroneous to consider all genetic disorders as having a positive family history.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetics vocabulary and chromosome number</span><span class="chip t2">general</span></div>
+<div class="stem">7. A karyotype shows 69 chromosomes — three complete sets. How is this classified, and what does it mean for viability?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Aneuploid, and lethal</li><li class="fopt right"><span class="mk">&#10003;</span>Euploid, because 69 is a multiple of 23 — and still lethal</li><li class="fopt"><span class="mk">C</span>Euploid, and therefore compatible with normal development</li><li class="fopt"><span class="mk">D</span>Trisomic, because there are three of each chromosome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Euploidy means a multiple of 23; aneuploidy means a chromosome number that is not a multiple of 23 (p. 45). Triploidy is euploid and still lethal.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex inference that a &quot;balanced&quot; multiple must be viable, and it is exactly why this pair is tested — euploid describes the arithmetic, not the outcome. Note the related severity rule: &quot;The loss of a chromosome and its related complement of genes is overall more detrimental than the addition of a chromosome,&quot; so a monosomy (45) is worse than a trisomy (47).</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetics vocabulary and chromosome number</span><span class="chip t2">general</span></div>
+<div class="stem">8. A child has a karyotype of 46,XX/47,XX+21 — two cell lines. When did the error occur, and what is this called?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Meiotic nondisjunction before fertilization, producing whole-body aneuploidy</li><li class="fopt right"><span class="mk">&#10003;</span>Mitotic nondisjunction after fertilization during early embryonic development of a normal zygote, producing mosaicism</li><li class="fopt"><span class="mk">C</span>A robertsonian translocation inherited from a carrier parent</li><li class="fopt"><span class="mk">D</span>A structural deletion arising during gametogenesis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mosaic Down syndrome &quot;results from mitotic nondisjunction during early embryonic development of a normal zygote&quot; (p. 48). The two mechanisms differ by timing: meiotic nondisjunction happens before fertilization and every cell carries the abnormality; mitotic nondisjunction happens after, so only a subset does (p. 46).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of this pair, and the tell is in the karyotype itself — two cell lines separated by a slash cannot come from an error that preceded fertilization.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetics vocabulary and chromosome number</span><span class="chip t2">general</span></div>
+<div class="stem">9. The parents of a child with mosaic Down syndrome are told by a relative that the mosaic form is &quot;the mild kind.&quot; How should the nurse respond?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The relative is correct; mosaicism always produces milder disease</li><li class="fopt right"><span class="mk">&#10003;</span>Children with mosaic Down syndrome do not necessarily have a better developmental outcome than those with free trisomy; the proportion of trisomic cells in various tissues and organs plays a role</li><li class="fopt"><span class="mk">C</span>Mosaic Down syndrome is more severe than free trisomy</li><li class="fopt"><span class="mk">D</span>The distinction cannot be made until the child is school age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Contrary to what one might expect, children with mosaic Down syndrome do not necessarily have a better developmental outcome than those with free trisomy type. The proportion of trisomic cells in various tissues and organs play a role in the child's developmental potential and syndrome-associated potential health problems&quot; (p. 48).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is a true statement about the wrong condition, which is what makes it dangerous. The chapter does say mosaicism produces milder expression in Klinefelter and Turner syndromes, one page away. Generalizing that to Down syndrome is contradicted by the text, and it is a false reassurance given to a family.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">down syndrome configurations and recurrence risk</span><span class="chip t2">general</span></div>
+<div class="stem">10. A newborn has Down syndrome. Which chromosomal configuration is most likely, and what proportion of cases does it account for?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Free trisomy 21, about 92% of cases</li><li class="fopt"><span class="mk">B</span>Translocation, about 92% of cases</li><li class="fopt"><span class="mk">C</span>Mosaicism, about 60% of cases</li><li class="fopt"><span class="mk">D</span>Free trisomy 21, about 50% of cases</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Trisomy encompasses 92% of all cases of Down syndrome,&quot; with the extra chromosome 21 unattached and segregating freely during meiosis; translocation &quot;accounts for approximately 4% of all male and female Down syndrome cases,&quot; and the mosaic form is rarer still (pp. 46–48).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) swaps the two proportions, and the consequence matters: free trisomy is not inherited and its risk rises with maternal age, while translocation may come from a balanced carrier parent and is not age related.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">down syndrome configurations and recurrence risk</span><span class="chip t2">general</span></div>
+<div class="stem">11. A 38-year-old woman is told her risk of having a baby with Down syndrome is higher than a 25-year-old's, but she has read that most babies with Down syndrome are born to younger mothers. How should the nurse explain this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The published age-risk figures are outdated</li><li class="fopt right"><span class="mk">&#10003;</span>Both are true: the risk per pregnancy increases linearly with maternal age, but because young women have more babies, about 75% of babies with trisomy 21 are born to younger mothers</li><li class="fopt"><span class="mk">C</span>Maternal age affects only the translocation form</li><li class="fopt"><span class="mk">D</span>The 75% figure applies only to mosaic Down syndrome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The risk for this type of Down syndrome increases linearly with increasing maternal age,&quot; and &quot;however, because young women have more babies, about 75% of babies with trisomy 21 are born to younger mothers&quot; (p. 47).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats an apparent contradiction as an error in the data. Both statements are true at once — one is a rate, the other a count — and a distractor is built by presenting either one alone.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">down syndrome configurations and recurrence risk</span><span class="chip t2">general</span></div>
+<div class="stem">12. A woman is found to be a balanced translocation carrier after the birth of a child with Down syndrome. Which recurrence figure should be used in counseling her?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>33%, the theoretic risk</li><li class="fopt right"><span class="mk">&#10003;</span>Approximately 15%, the observed risk when the mother is the carrier</li><li class="fopt"><span class="mk">C</span>Less than 10%, the observed risk when the father is the carrier</li><li class="fopt"><span class="mk">D</span>100%, since she is a known carrier</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The theoretic chance for a carrier parent with a normal partner is 33%, but the observed risks are lower and differ by which parent carries it: approximately 15% when the mother is the carrier and less than 10% when the father is (pp. 47–48). The chance of producing another balanced carrier &quot;approaches 50%.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the wrong number for counseling and the most likely one to be offered, because it is the figure the genetics reasoning produces. Observation gives a lower number, and (C) is the correct observed figure for the *other* parent — sex of the carrier changes the answer.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">down syndrome configurations and recurrence risk</span><span class="chip t2">general</span></div>
+<div class="stem">13. A father is found to carry a 21;21 translocation. What is his chance of producing a pregnancy with Down syndrome?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>About 15%</li><li class="fopt"><span class="mk">B</span>33%</li><li class="fopt right"><span class="mk">&#10003;</span>100%</li><li class="fopt"><span class="mk">D</span>Less than 10%</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A carrier mother [45,XX,t(21;21)] or father [45,XY,t(21;21)] of the translocation would have a 100% chance of producing a pregnancy with Down syndrome because the other parent normally would contribute one chromosome 21.&quot; The chapter calls this &quot;one of the rare examples in genetics where an abnormality is passed on to all living progeny&quot; (p. 48).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) applies the ordinary paternal-carrier figure, which is correct for every translocation except this one. The 21;21 case is a named exception, and it is one of only two 100% situations in the chapter — the other is the affected homozygote in autosomal dominant disease.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sex chromosome aneuploidies</span><span class="chip t2">general</span></div>
+<div class="stem">14. A nurse is asked which sex chromosome aneuploidy is most common and what cognitive outcome to expect. What is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Turner syndrome is most common, and moderate cognitive impairment is typical</li><li class="fopt right"><span class="mk">&#10003;</span>Klinefelter syndrome is the most common of all sex chromosome aneuploidies, and mental development is normal in most cases, with a mean full-scale IQ between 85 and 90</li><li class="fopt"><span class="mk">C</span>Triple-X is most common, and cognitive impairment is severe</li><li class="fopt"><span class="mk">D</span>XYY is most common, and cognitive development is normal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>This is the keyed option in the chapter's own NCLEX question 2. &quot;Klinefelter syndrome is the most common of all sex chromosome aneuploidies,&quot; and &quot;Mental development is normal in most cases, with a mean full-scale IQ between 85 and 90,&quot; with specific deficits in &quot;expressive language, auditory processing, and auditory memory&quot; (p. 48). More generally, sex chromosome number changes usually do &quot;not produce the profound effects that are associated with the autosomal trisomies.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) attaches autosomal-trisomy expectations to a sex chromosome aneuploidy, which is the comparison the chapter's general rule is written to settle.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sex chromosome aneuploidies</span><span class="chip t2">general</span></div>
+<div class="stem">15. A girl with Turner syndrome is 11 years old. Her growth was normal until age 3 and then gradually drifted away from the curve. Her parents ask whether she will have a growth spurt at puberty. What is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>She will have a prepubertal growth spurt and then mostly stop growing</li><li class="fopt right"><span class="mk">&#10003;</span>There is no prepubertal growth spurt; treatment for decreased growth velocity includes growth hormone and anabolic steroids, and the female hormones given around the time puberty would occur may further stunt growth and must be used judiciously</li><li class="fopt"><span class="mk">C</span>Growth will normalize once estrogen therapy begins</li><li class="fopt"><span class="mk">D</span>Growth hormone is contraindicated in Turner syndrome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;There is no prepubertal growth spurt&quot;; &quot;The child's growth is usually normal until 3 years of age and then slows, gradually drifting away from the normal growth curve&quot;; and &quot;It is common practice to administer female hormones around the time that puberty would occur to provide the girl with Turner syndrome some secondary sex characteristics; however, the female hormones may further stunt growth and must be used judiciously&quot; (p. 48).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the chapter's own NCLEX question 2 distractor and it reverses the text. (C) misses the trade-off that defines this condition's management: the hormones that give secondary sex characteristics cost height.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sex chromosome aneuploidies</span><span class="chip t2">general</span></div>
+<div class="stem">16. A nurse is asked about gynecologic findings in triple-X. Which is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Premature menarche and delayed menopause</li><li class="fopt right"><span class="mk">&#10003;</span>Delayed menarche and premature menopause</li><li class="fopt"><span class="mk">C</span>Normal menarche with infertility</li><li class="fopt"><span class="mk">D</span>Primary amenorrhea</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;females with triple-X display a normal phenotype, with an increased risk of learning disabilities compared with their euploid sisters. Gynecologic complications include delayed menarche and premature menopause&quot; (p. 49). The offspring of triple-X women are largely normal.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the chapter's own NCLEX question 2 distractor and reverses both halves of the text — which is why holding the order matters rather than just the two words.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sex chromosome aneuploidies</span><span class="chip t2">general</span></div>
+<div class="stem">17. A student states that the XYY karyotype is associated with criminal behavior. How should this be corrected?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The association is well established and should be included in counseling</li><li class="fopt right"><span class="mk">&#10003;</span>The early studies linking this karyotype with criminal behavior were significantly flawed by selection bias, having been conducted among inmates of penal institutions; the association the chapter names now is increased risk for autism spectrum disorder</li><li class="fopt"><span class="mk">C</span>XYY is not associated with any clinical finding</li><li class="fopt"><span class="mk">D</span>The association applies only to mosaic XYY</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The genotype &quot;was reported in the early 1960s by Patricia Jacobs, a Scottish cytogeneticist who detected an increased frequency of double-Y men among inmates of penal institutions in Great Britain. This and subsequent early studies that linked this karyotype with criminal behavior were significantly flawed by selection bias.&quot; The chapter names autism spectrum disorder risk as the current association (p. 48).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) repeats a retracted claim, and the chapter includes the history precisely so a nurse can recognize it. (C) overcorrects — there is a named association; it is simply not the one folklore supplies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">autosomal inheritance patterns</span><span class="chip t2">autosomal dominant</span></div>
+<div class="stem">18. A man with achondroplasia and his genotypically normal partner ask about the risk to each pregnancy. What should the nurse tell them, and on what assumption does the figure rest?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>25%, assuming he is heterozygous</li><li class="fopt right"><span class="mk">&#10003;</span>50%, assuming he is heterozygous — which the chapter says is much more likely than homozygous</li><li class="fopt"><span class="mk">C</span>100%, because achondroplasia is 100% penetrant</li><li class="fopt"><span class="mk">D</span>The risk cannot be estimated without testing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Children of an affected parent have a 50% chance of inheriting the mutant allele and being affected&quot; (Box 3.2, p. 44). The chapter states the assumption before giving the number: &quot;if one parent is affected, he or she is much more likely to be heterozygous (have one mutant allele) than homozygous,&quot; and an individual with two dominant mutant alleles &quot;will experience physical or cognitive abnormalities at a much more severe level&quot; (p. 50).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) confuses penetrance with transmission. The achondroplasia mutation is 100% penetrant, meaning anyone who inherits it will show it — not that everyone inherits it. Only the rare affected-homozygote mating gives 100% affected offspring.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">autosomal inheritance patterns</span><span class="chip t2">autosomal dominant</span></div>
+<div class="stem">19. The same couple has three children, all affected, and asks whether the fourth is therefore safe. What is the accurate response?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The fourth child is very unlikely to be affected, since three of four already are</li><li class="fopt right"><span class="mk">&#10003;</span>Each pregnancy carries the same 50% chance; 50% of offspring do not necessarily inherit the gene mutation, and chance has no memory</li><li class="fopt"><span class="mk">C</span>The risk rises with each affected child</li><li class="fopt"><span class="mk">D</span>After three affected children the couple should be retested for homozygosity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The achondroplasia pedigree in the chapter &quot;demonstrates that although an affected parent has a 50% chance with each pregnancy of transmitting the gene mutation associated with achondroplasia, 50% of offspring do not necessarily inherit the gene mutation&quot; (p. 52). The Nursing Alert states it for recessive disease in the same words: &quot;Chance has no memory&quot; (p. 72).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the gambler's-fallacy answer and the most common misconception families bring. Fifty percent is a per-pregnancy probability, not a quota — four children of an affected parent can all be affected or all be unaffected.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">autosomal inheritance patterns</span><span class="chip t2">autosomal dominant</span></div>
+<div class="stem">20. Two unaffected parents have a second child with the same autosomal dominant disorder. What does the second affected child indicate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A new de novo mutation occurred twice by coincidence</li><li class="fopt right"><span class="mk">&#10003;</span>The mutation is present in a subset of the germ cells of one healthy parent — germline mosaicism — since &quot;the birth of other affected children indicates the second possibility&quot;</li><li class="fopt"><span class="mk">C</span>Misattributed paternity</li><li class="fopt"><span class="mk">D</span>The disorder must actually be autosomal recessive</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A first occurrence in a family &quot;may be due to a new mutation (de novo mutation) in that child or to the presence of the mutation only in a subset of the germ cells of a healthy parent,&quot; and &quot;The birth of other affected children indicates the second possibility&quot; (p. 44).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex explanation and it changes the counseling completely — a de novo mutation carries essentially no recurrence risk, while germline mosaicism carries a real one. One affected child is ambiguous; two is not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">autosomal inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">21. Two carrier parents ask about the risk in each pregnancy. What are the figures?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>50% affected, 25% carrier</li><li class="fopt right"><span class="mk">&#10003;</span>25% affected, 50% carrier, 25% unaffected noncarrier, in each and every pregnancy</li><li class="fopt"><span class="mk">C</span>25% affected, 25% carrier</li><li class="fopt"><span class="mk">D</span>100% carrier</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Carrier parents have a 25% chance of producing an affected child and a 50% chance of producing a carrier child in each and every pregnancy&quot; (Box 3.3, p. 53); the remaining 25% follows. Both males and females can be carriers, and males and females are equally likely to be affected.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) swaps the two figures. The 50% number appears in three different places in this chapter attached to three different things — the dominant transmission risk, the recessive carrier fraction, and the X-linked recessive son's risk — so pairing the number with its pattern is the actual skill.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">autosomal inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">22. A man with an autosomal recessive disorder and a partner who is not a carrier ask about their children. What is the answer?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>25% of children will be affected</li><li class="fopt"><span class="mk">B</span>50% of children will be affected</li><li class="fopt right"><span class="mk">&#10003;</span>No children will be affected, and 100% will be carriers</li><li class="fopt"><span class="mk">D</span>All children will be affected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The mating of an affected parent with a genotypically normal partner is one &quot;in which 100% of the offspring will be carriers&quot; (p. 57). The affected parent contributes a mutant allele to every child; the noncarrier partner contributes a normal allele to every child.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) imports the autosomal *dominant* figure, which is the reflex whenever a stem says one parent is affected. The result here is counterintuitive and clean: zero affected, all carriers.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">autosomal inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">23. An unaffected couple has a child with cystic fibrosis. The mother asks how the genetics laboratory can be sure they are both carriers when neither was tested. What is the basis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They are obligate carriers, because each must have contributed a mutant allele — assuming lack of misattributed paternity</li><li class="fopt"><span class="mk">B</span>Carrier status is assumed from ethnicity rather than from the child's diagnosis</li><li class="fopt"><span class="mk">C</span>Only the mother can be presumed a carrier</li><li class="fopt"><span class="mk">D</span>Nothing can be concluded without testing both parents</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In the case of an unaffected couple who produce a child with a recessive disease, identification is straightforward, assuming lack of misattributed paternity; because they each must contribute a mutant allele, they are considered obligate carriers, even in the absence of specific carrier testing for that gene&quot; (p. 53). For scale, &quot;1 in 25 persons in the United States and Northern European populations carries a recessive gene mutation for CF.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is defensible caution and is not what the chapter says. Note also that the chapter names one alternative explanation for an apparently impossible pedigree: uniparental disomy can produce a recessive disease when only one parent is a carrier, so a single-carrier finding is not proof of misattributed paternity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">autosomal inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">24. A couple who are first cousins ask how much their relationship raises the risk of birth defects, and whether more distant relatives should worry. What should the nurse say?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The first-cousin risk is about 5% compared with a general population risk of 2% to 3%, and this is usually a concern only for first cousins or closer relatives</li><li class="fopt"><span class="mk">B</span>The first-cousin risk is about 25%, and any blood relationship is a concern</li><li class="fopt"><span class="mk">C</span>Consanguinity raises the risk only for autosomal dominant disorders</li><li class="fopt"><span class="mk">D</span>There is no measurable increase in risk for first cousins</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The first-cousin risk for birth defects is about 5% compared with the general population risk of 2% to 3%. The primary risk increase is for autosomal recessive disorders, in which the chance that two individuals carry the same rare mutation is increased if they are related,&quot; and &quot;contrary to popular belief, this is usually a concern only for first cousins or closer relatives&quot; (p. 74).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) overstates a real but modest increase — roughly double, not catastrophic — and both halves of that are worth saying to a family. (C) inverts the mechanism: relatedness raises the chance that two people carry the same rare recessive mutation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">x-linked inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">25. A pedigree shows an affected father and an affected son. What does this observation establish?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The disorder is X-linked recessive</li><li class="fopt"><span class="mk">B</span>The disorder is X-linked dominant</li><li class="fopt right"><span class="mk">&#10003;</span>Male-to-male transmission rules out X-linked inheritance, because men give their X chromosome to their daughters and their Y to their sons</li><li class="fopt"><span class="mk">D</span>The disorder must be mitochondrial</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;It is important to remember that men give their X chromosomes to their daughters (and their Y to their sons), so in analyzing a family pedigree, male-to-male transmission of a gene rules out X-linked inheritance&quot; (p. 57). The bank calls this the single most useful pedigree rule in the chapter.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is wrong for the opposite reason and is worth holding alongside: mitochondrial inheritance is maternal only, because &quot;Mitochondria are not contained within the sperm head,&quot; so a father transmits neither an X-linked nor a mitochondrial disorder to his son.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">x-linked inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">26. A man with hemophilia A and a genotypically normal partner ask about their children. What is the risk?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>50% of sons affected, 50% of daughters carriers</li><li class="fopt right"><span class="mk">&#10003;</span>All daughters are carriers and none is affected; no sons are affected</li><li class="fopt"><span class="mk">C</span>All daughters are affected and no sons are affected</li><li class="fopt"><span class="mk">D</span>25% of all children affected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 3.4 states: &quot;All daughters of an affected male are (heterozygous) carriers; none is affected (homozygous),&quot; and father-to-son transmission of X-linked traits is not possible (p. 58).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the carrier-mother pedigree, not the affected-father one, and it is the most common substitution. The affected-father pattern is defined by two absolutes: he cannot have an affected son and cannot have a noncarrier daughter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">x-linked inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">27. A woman who carries the Duchenne muscular dystrophy mutation and her genotypically normal partner ask about their children. What is the risk?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>All daughters are carriers and no sons are affected</li><li class="fopt right"><span class="mk">&#10003;</span>Sons have a 50% chance of being affected, and daughters have a 50% chance of being carriers</li><li class="fopt"><span class="mk">C</span>25% of sons are affected</li><li class="fopt"><span class="mk">D</span>All sons are affected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Sons of carrier females have a 50% chance of inheriting the mutant allele and being affected (hemizygous). Daughters have a 50% risk of inheriting the mutant allele and being (heterozygous) carriers&quot; (Box 3.4, p. 58).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item — the affected-father pattern applied to a carrier mother. Holding the two matings as a pair is what makes an X-linked recessive pedigree readable at a glance.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">x-linked inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">28. A man has an X-linked dominant disorder. What is the risk to his daughters?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>All are carriers and none is affected</li><li class="fopt"><span class="mk">B</span>50% are affected</li><li class="fopt right"><span class="mk">&#10003;</span>All daughters of an affected man are affected, and each has a 50% chance of passing the mutant allele to her own sons and daughters</li><li class="fopt"><span class="mk">D</span>None is affected, because he transmits his Y to his daughters</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;all daughters of an affected man are affected and have a 50% chance of passing on the mutant allele to their sons and daughters&quot; (p. 59). Affected men do not transmit the mutant allele to their sons, and females &quot;because of the random nature of X inactivation, are usually less severely affected than males.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the X-linked recessive answer for the same mating, and this pair is the sharpest discrimination in the section: an affected father gives carrier daughters in recessive disease and affected daughters in dominant disease.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">x-linked inheritance patterns</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">29. A girl is a known carrier of an X-linked recessive disorder but has mild symptoms. Her parents were told carriers are unaffected. What explains her symptoms?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>She must actually be homozygous for the mutation</li><li class="fopt right"><span class="mk">&#10003;</span>X inactivation is random in each cell, and a female who expresses a phenotype may have a greater proportion of the X chromosome carrying the normal allele inactivated within the tissues associated with the disorder</li><li class="fopt"><span class="mk">C</span>Carriers of X-linked disorders are always symptomatic</li><li class="fopt"><span class="mk">D</span>She has a new mutation on her second X chromosome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Soon after fertilization one X in each female cell is inactivated by methylation, &quot;whether the paternal or maternally inherited X is inactivated is random in each cell,&quot; and once inactivated it stays so through all subsequent divisions. &quot;Females who express a phenotype may have a greater proportion of X chromosome with the normal allele inactivated within the tissues or organs associated with the disorder&quot; (p. 58).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is possible but rare, and it is not the explanation the chapter gives for the usual case. This is a mechanism, not an exception to the rule — and note the parallel fact for males: there are no carrier males, because &quot;Hemizygous males are either normal or affected,&quot; so on the X chromosome dominant and recessive stop mattering for a man.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonmendelian inheritance and cancer genes</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">30. Two children have deletions of the same region of chromosome 15 but entirely different syndromes. What accounts for this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Genomic imprinting — which parent's copy is expressed differs, so losing the paternal copy gives Prader-Willi syndrome and losing the maternal copy gives Angelman syndrome</li><li class="fopt"><span class="mk">B</span>Variable expressivity of the same disorder</li><li class="fopt"><span class="mk">C</span>One child has a deletion and the other a duplication</li><li class="fopt"><span class="mk">D</span>Uniparental disomy in one child only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Prader-Willi and Angelman syndromes are the chapter's headline imprinting pair: a paternal deletion versus a maternal deletion of the same chromosome 15 region (p. 60). Lose the father's copy and you get Prader-Willi.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a real and related phenomenon on the same page, and the two are a flagged pair: imprinting is about which parent's copy is expressed; uniparental disomy is about both copies coming from one parent. Uniparental disomy is also the chapter's explanation for a recessive disease appearing when only one parent is a carrier.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonmendelian inheritance and cancer genes</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">31. A family history shows a disorder that appears at progressively earlier ages and greater severity in each successive generation. What is this called, and what is its molecular basis?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Reduced penetrance</li><li class="fopt right"><span class="mk">&#10003;</span>Anticipation, produced by expansion mutations in which a repeated sequence lengthens across generations</li><li class="fopt"><span class="mk">C</span>Locus heterogeneity</li><li class="fopt"><span class="mk">D</span>Germline mosaicism</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Expansion mutations produce anticipation (p. 59). Fragile X gives the repeat ranges: about 5 to 40 repeats is normal, 59 to 200 is a premutation, and hundreds to thousands is a full mutation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the other half of a flagged pair and describes something different — penetrance is whether a trait shows at all, while expressivity is how much it shows. Neither produces a generation-by-generation shift in age of onset.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonmendelian inheritance and cancer genes</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">32. A student describes an oncogene as a foreign or viral gene introduced into a cell. How should this be corrected?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The description is accurate</li><li class="fopt right"><span class="mk">&#10003;</span>Oncogenes are normally involved in cell growth and division; the three gene classes in hereditary cancer are oncogenes that drive growth, tumor suppressor genes that inhibit growth, and mismatch repair genes that repair errors</li><li class="fopt"><span class="mk">C</span>Oncogenes are inherited only in the germline</li><li class="fopt"><span class="mk">D</span>Oncogenes and tumor suppressor genes are the same class</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In reality, oncogenes are normally involved in cell growth and division&quot; (p. 60), and the chapter separates the three classes by function: drives growth, inhibits growth, repairs errors.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is folklore reinforced by the word itself. Worth holding alongside: a germline p53 mutation gives Li-Fraumeni syndrome while a somatic p53 mutation gives sporadic cancers such as bladder cancer, and BRCA1 is associated with female breast and ovarian cancer while BRCA2 adds male breast and prostate cancer.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nonmendelian inheritance and cancer genes</span><span class="chip t2">autosomal recessive</span></div>
+<div class="stem">33. A child has a mitochondrial disorder. Which statement about its inheritance and prenatal testing is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both parents contribute mitochondrial DNA, so either may be the source</li><li class="fopt right"><span class="mk">&#10003;</span>It is inherited from the mother only, because mitochondria are not contained within the sperm head; and because of heteroplasmy it is not possible to predict the unborn child's phenotype based on prenatal test results</li><li class="fopt"><span class="mk">C</span>It follows an autosomal recessive pattern</li><li class="fopt"><span class="mk">D</span>Prenatal testing reliably predicts severity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mitochondrial inheritance is maternal, &quot;Mitochondria are not contained within the sperm head,&quot; and &quot;it is not possible to predict the unborn child's phenotype based on prenatal test results&quot; (p. 60).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the assumption families bring to any prenatal test and is specifically wrong here. Heteroplasmy — a mixture of normal and mutant mitochondria whose proportions vary by tissue — is why a positive result cannot be graded into a prognosis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">phenylketonuria and galactosemia</span><span class="chip t2">phenylketonuria</span></div>
+<div class="stem">34. An infant with PKU has blond hair, blue eyes, and fair skin prone to eczema, although both parents are dark haired. What explains this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Coincidental inheritance of recessive pigmentation alleles</li><li class="fopt right"><span class="mk">&#10003;</span>The blocked pathway prevents formation of tyrosine, which is needed to make the pigment melanin, so decreased melanin production gives most children with PKU this phenotype</li><li class="fopt"><span class="mk">C</span>The low-phenylalanine diet causes depigmentation</li><li class="fopt"><span class="mk">D</span>Accumulated phenylpyruvic acid bleaches the hair and skin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In PKU the enzyme phenylalanine hydroxylase, &quot;which controls the conversion of phenylalanine to tyrosine, is absent.&quot; Tyrosine &quot;is needed to form the pigment melanin and the hormones epinephrine and thyroxine,&quot; and &quot;Decreased melanin production results in similar phenotypes of most children with PKU: blond hair, blue eyes, and fair skin that is particularly susceptible to eczema&quot; (p. 63). Children with genetically darker skin &quot;may be red haired or brunette.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses cause and treatment — the phenotype is present before any diet begins. The phenylpyruvic acid that accumulates is what gives urine &quot;the characteristic musty odor&quot; and names the disease; it does not cause the pigmentation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">phenylketonuria and galactosemia</span><span class="chip t2">phenylketonuria</span></div>
+<div class="stem">35. An infant's initial newborn screening specimen was collected at 18 hours of age. The parents say they will return for a repeat sample by 4 weeks. What should the nurse teach?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>No repeat is needed, since the initial specimen was obtained</li><li class="fopt right"><span class="mk">&#10003;</span>The repeat sample is due by 2 weeks of age, because the initial specimen was collected before the newborn was 24 hours old</li><li class="fopt"><span class="mk">C</span>The repeat is due by 7 days of age</li><li class="fopt"><span class="mk">D</span>The repeat should be done at 6 weeks, with the first immunizations</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three timing recommendations are &quot;(1) collecting the initial specimen as close as possible to discharge and no later than 7 days after birth, (2) obtaining a subsequent sample by 2 weeks of age if the initial specimen is collected before the newborn is 24 hours old, and (3) designating a primary care provider to all newborns before discharge&quot; (p. 63). This is the chapter's own NCLEX question 4.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) borrows the deadline attached to the initial specimen and applies it to the repeat. Two different deadlines, two different specimens.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">phenylketonuria and galactosemia</span><span class="chip t2">phenylketonuria</span></div>
+<div class="stem">36. A nurse is collecting a newborn screening specimen for PKU. Which actions are correct? (Select all that apply.)</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Use fresh heel blood rather than cord blood</li><li class="fopt right"><span class="mk">&#10003;</span>Collect the specimen after the infant has ingested a source of protein</li><li class="fopt right"><span class="mk">&#10003;</span>Spread the blood uniformly over the blot paper with a pipette</li><li class="fopt right"><span class="mk">&#10003;</span>Document a primary care provider, current address, and phone number</li><li class="fopt"><span class="mk">E</span>Layer additional drops of blood over the first to ensure an adequate sample</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Only fresh heel blood, not cord blood, can be used for the test,&quot; and &quot;The screening test is most reliable if the blood sample is taken after the infant has ingested a source of protein&quot; (p. 63). On technique: &quot;avoid layering the blood specimen... Best results are obtained by collecting the specimen with a pipette from the heel stick and spreading the blood uniformly over the blot paper&quot; (p. 64).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one to reject, and it is the specific technique error the chapter names — layering is &quot;placing one drop of blood on top of the other or overlapping the specimen.&quot; Note why the first two rules exist: the test measures a substance that only accumulates once the baby eats, which is also why cord blood is useless.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">phenylketonuria and galactosemia</span><span class="chip t2">phenylketonuria</span></div>
+<div class="stem">37. Parents of an infant with PKU make several statements. Which one is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Once his levels are stable we can stop the diet, since the enzyme matures with age</li><li class="fopt right"><span class="mk">&#10003;</span>Because of the low phenylalanine content of breast milk, total or partial breastfeeding may be possible with close monitoring of phenylalanine levels</li><li class="fopt"><span class="mk">C</span>Phenylalanine should be eliminated from his diet entirely</li><li class="fopt"><span class="mk">D</span>The special diet has no drawbacks, so we can be as strict as we like</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Because of the low phenylalanine content of breast milk, total or partial breastfeeding may be possible with close monitoring of phenylalanine levels&quot; (p. 64). The diet begins no later than 3 weeks of age, allows 20 to 30 mg of phenylalanine per kilogram per day, and is monitored closely &quot;throughout the first 12 years of age.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reflex pick and would starve the child: phenylalanine &quot;cannot be totally eliminated because it is an essential amino acid in tissue growth.&quot; (A) is wrong because treatment does not cure — treated children &quot;remain unable to metabolize the amino acid and will always exhibit phenylalaninemia&quot; — and (D) ignores a named cost: &quot;Total bone mineral density is considerably lower in children who are on a low-phenylalanine diet.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">phenylketonuria and galactosemia</span><span class="chip t2">galactosemia</span></div>
+<div class="stem">38. A 10-day-old formula-fed infant who appeared normal at birth now has vomiting, diarrhea, weight loss, and jaundice. Galactosemia is suspected. What is the immediate management?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Switch to a lactose-reduced cow's milk formula and continue partial breastfeeding</li><li class="fopt right"><span class="mk">&#10003;</span>Eliminate all milk and lactose-containing formula including breast milk, use soy-protein formula, and monitor for hypoglycemia, liver failure, bleeding disorders, and E. coli sepsis</li><li class="fopt"><span class="mk">C</span>Continue current feedings and repeat the newborn screen</li><li class="fopt"><span class="mk">D</span>Begin a low-phenylalanine formula</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Treatment &quot;consists of eliminating all milk and lactose-containing formula, including breast milk,&quot; with soy-protein formula the feeding of choice, and &quot;If galactosemia is suspected, implement supportive treatment and care, including monitoring for hypoglycemia, liver failure, bleeding disorders, and Escherichia coli sepsis&quot; (p. 66). The timeline fits: infants &quot;appear normal at birth&quot; and become symptomatic on milk, with jaundice &quot;by the second week of life&quot; and cataracts &quot;usually recognizable by 1 or 2 months of age.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the single most likely swap between these two disorders — breastfeeding is possible in PKU with monitoring and contraindicated in galactosemia. Both are autosomal recessive, both are triggered by milk, and both are on newborn screening, which is exactly why the two get confused.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">phenylketonuria and galactosemia</span><span class="chip t2">galactosemia</span></div>
+<div class="stem">39. The parents of a child with galactosemia ask whether a strict galactose-free diet will prevent long-term problems. What is the honest answer?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Yes; strict dietary elimination produces normal outcomes, as it does in PKU</li><li class="fopt right"><span class="mk">&#10003;</span>Long-term complications such as ovarian dysfunction, cataracts, abnormal speech, cognitive impairment, growth restriction, and motor delay still occur, and eliminating sources of galactose does not significantly improve the outcome</li><li class="fopt"><span class="mk">C</span>The diet is unnecessary once the infant survives the newborn period</li><li class="fopt"><span class="mk">D</span>Outcomes cannot be predicted because the disorder is too rare to study</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Follow-up of children treated from birth or within the first 2 months &quot;found long-term complications, such as ovarian dysfunction, cataracts, abnormal speech, cognitive impairment, growth restriction, and motor delay,&quot; and &quot;These findings have revealed that eliminating sources of galactose does not significantly improve the outcome&quot; (p. 66).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) imports the PKU result, where &quot;early childhood treatment with a reduced phenylalanine diet is highly successful at removing the possibility of cognitive impairment.&quot; The chapter places these two disorders together precisely so the contrast is visible: diet largely works for PKU and does not fully work for galactosemia.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">phenylketonuria and galactosemia</span><span class="chip t2">galactosemia</span></div>
+<div class="stem">40. A child with galactosemia is prescribed an oral antibiotic. What is the nurse's specific responsibility?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>No special precaution is needed for medications</li><li class="fopt right"><span class="mk">&#10003;</span>Instruct the parents to ask their pharmacist about the galactose content of any over-the-counter or prescription medication, because lactose is used as a filler and is an unlabeled ingredient in many pharmaceuticals</li><li class="fopt"><span class="mk">C</span>Substitute an intravenous route for all medications</li><li class="fopt"><span class="mk">D</span>Give the antibiotic only with soy formula</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Many drugs, such as some of the penicillin preparations, contain lactose as filler and also must be avoided. Unfortunately, lactose is an unlabeled ingredient in many pharmaceuticals,&quot; so the instruction is to &quot;ask their local pharmacist about galactose content of any over-the-counter or prescription medication&quot; (p. 66).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the default assumption once the family has learned to read food labels, and it misses the hidden exposure. This is the one instruction unique to galactosemia — reading food labels is not sufficient, because the drug label may not carry the ingredient at all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetic screening testing and counseling</span><span class="chip t2">galactosemia</span></div>
+<div class="stem">41. A nurse explains the difference between genetic screening and genetic diagnostic testing. What distinguishes them?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Screening uses blood and diagnostic testing uses tissue</li><li class="fopt right"><span class="mk">&#10003;</span>In general, genetic screening targets populations, whereas genetic diagnostic testing targets individuals — and a positive screen is not a diagnosis</li><li class="fopt"><span class="mk">C</span>Screening is performed prenatally and diagnostic testing after birth</li><li class="fopt"><span class="mk">D</span>Screening is voluntary and diagnostic testing is mandatory</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In general, genetic screening targets populations, whereas genetic diagnostic testing targets individuals&quot; (p. 68). Screen-positive infants are &quot;immediately referred to a medical center,&quot; and &quot;After a positive screen, diagnostic testing must be performed promptly&quot; (pp. 63, 69).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts a real principle. Voluntary participation is named as one of the first corollaries of any genetic screening program, along with equal access to all, confidentiality, and education and counseling as an integral part.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetic screening testing and counseling</span><span class="chip t2">galactosemia</span></div>
+<div class="stem">42. A family is considering genetic testing and asks what screening is for. Which are among the three stated purposes of genetic screening? (Select all that apply.)</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Early recognition of a disease before signs and symptoms occur, for which effective intervention and therapy exist</li><li class="fopt right"><span class="mk">&#10003;</span>Identifying carriers of a genetic disease to maximize parenthood planning options</li><li class="fopt right"><span class="mk">&#10003;</span>Obtaining population data on frequency, spectrum, and natural history of genetic variations not currently known to be associated with disease</li><li class="fopt"><span class="mk">D</span>Determining which family members should be excluded from insurance coverage</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>These are the three purposes as printed (p. 69), and this list is the chapter's own NCLEX question 3. Screening can occur at four times: preconception screening of selected populations for carriers, screening of relatives of known carriers or affected individuals, postconceptional prenatal screening, and newborn screening.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the one to reject. Purposes 1 and 2 benefit the individual and purpose 3 benefits knowledge — none of the three is about restricting access, and the chapter names confidentiality as a precondition of any screening program.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetic screening testing and counseling</span><span class="chip t2">galactosemia</span></div>
+<div class="stem">43. Parents of a healthy 6-year-old whose grandmother has a BRCA mutation ask for their daughter to be tested now. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Predisposition testing for adult-onset cancer is discouraged in at-risk children, and carrier testing for children is generally not recommended because the information is for reproductive purposes</li><li class="fopt"><span class="mk">B</span>Testing should be done immediately so screening can begin</li><li class="fopt"><span class="mk">C</span>Predisposition genetic testing in children is never performed under any circumstances</li><li class="fopt"><span class="mk">D</span>The child should be tested but not told the result</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Carrier testing for children is generally not recommended because the information is for reproductive purposes&quot; (p. 69), and predisposition testing for adult-onset cancer &quot;is discouraged in at-risk children&quot; (p. 67).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overcorrects into an absolute the chapter does not make. APC testing is done in at-risk children, because a positive result changes their screening now rather than in adulthood. The rule turns on whether the result changes management during childhood — which is also the distinction between presymptomatic testing, at near-100% penetrance, and susceptibility testing, at partial penetrance.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetic screening testing and counseling</span><span class="chip t2">galactosemia</span></div>
+<div class="stem">44. A couple asks the genetic counselor what they should do about a future pregnancy given their 25% recurrence risk. How does the chapter describe the counselor's role?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Counselors recommend the option with the lowest risk of an affected child</li><li class="fopt right"><span class="mk">&#10003;</span>Counselors &quot;do not attempt to make recommendations or decisions for patients when discussing reproductive risks,&quot; although they do recommend screening for treatable conditions</li><li class="fopt"><span class="mk">C</span>Counselors defer entirely to the referring physician</li><li class="fopt"><span class="mk">D</span>Counselors provide numbers only and do not discuss options</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Genetic counselors &quot;do not attempt to make recommendations or decisions for patients when discussing reproductive risks,&quot; though they do recommend screening for treatable conditions (p. 72). The nurse also teaches that each pregnancy is an independent event.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the expectation families arrive with, and it is what makes the non-directive stance worth stating out loud. Note the boundary: non-directiveness applies to reproductive decisions, not to recommending screening for a condition that can be treated.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">genetic screening testing and counseling</span><span class="chip t2">galactosemia</span></div>
+<div class="stem">45. Which assessment findings should alert the nurse to a possible need for further genetic evaluation? (Select all that apply.)</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Limb abnormalities, asymmetry, and hyperextensible joints</li><li class="fopt right"><span class="mk">&#10003;</span>Recurrent ear infection, pneumonia, and poor healing of the umbilicus</li><li class="fopt right"><span class="mk">&#10003;</span>Developmental and speech delays or loss of developmental milestones</li><li class="fopt"><span class="mk">D</span>Recurrent digestive difficulties</li><li class="fopt"><span class="mk">E</span>Recurrent urinary tract problems</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>These are three of Box 3.7's eleven categories — skeletal abnormalities, recurrent infection or immunodeficiency, and development and speech delays (p. 72). This is the chapter's own NCLEX question 5. The footnote is the rule that makes the box usable: &quot;Increased concern for genetic etiology if two or more findings are present.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) and (E) are the two to reject, and neither appears anywhere in the box. Both sound like plausible pediatric concerns, which is exactly the tactic — a distractor drawn from general pediatrics rather than from the printed list.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"congenital anomaly classification","subtopic":"general","stem":"A newborn has a congenital amputation of two fingers caused by amniotic bands that wrapped around the developing hand. How is this anomaly classified?","options":["Deformation","Disruption","Dysplasia","Malformation"],"correct":[1],"sata":false,"why":"\"Disruptions result from the breakdown of previously normal tissue,\" and the chapter's own example is \"Congenital amputations caused by amniotic bands (fibrous strands of amnion that wrap around different body parts during development)\" (p. 42).","trap":"(A) is the reflex pick because both involve an outside force acting on the fetus. A deformation is \"caused by extrinsic mechanical forces on normally developing tissue\" — the tissue is pushed out of shape but intact, as in club foot from uterine constraint. A disruption destroys tissue that had formed normally.","k":"1403b0f1rrayol"},{"topic":"congenital anomaly classification","subtopic":"general","stem":"The parents of a newborn with cleft lip ask whether they caused it. Which response reflects the chapter's account?","options":["Cleft lip is a disruption, caused by tissue that broke down during development","Cleft lip is a malformation: at about 5 weeks the embryo normally has two clefts in that area, and cells divide and migrate between 5 and 7 weeks to fill them in; when that process is abnormal, a cleft remains, and the cause is often unknown","Cleft lip results from something the mother ate or was exposed to during the first trimester","Nothing the parents did caused it, and there is no known mechanism"],"correct":[1],"sata":false,"why":"This is the chapter's own NCLEX question 1, keyed to the response that gives the mechanism without blaming. Cleft lip is given as the example of a malformation — \"abnormal formations of organs or body parts resulting from an abnormal developmental process\" — and most malformations occur before 12 weeks of gestation (p. 42).","trap":"(A) is the classification trap the book's own item offers, and it is wrong on the definitions: nothing broke down, the tissue never came together. (C) assigns blame, which the chapter's guidance directly opposes — parents' guilt must be \"assessed and addressed\" and their invented explanations \"assessed and dispelled.\" (D) is a bare denial that gives the family no mechanism, where the chapter asks for \"simple and truthful explanations.\"","k":"1ohbm71aw2hll"},{"topic":"congenital anomaly classification","subtopic":"general","stem":"An infant is born with a recessed mandible; the tongue is abnormally placed, blocking the palatal shelves from meeting, and a cleft palate results. The infant is at risk for obstructive apnea. What is this pattern called, and why?","options":["A syndrome, because the anomalies occur together","An association, because no cause has been determined","A sequence, because a single anomaly led to a cascade of additional anomalies","A dysplasia, because the tissues are abnormally organized"],"correct":[2],"sata":false,"why":"\"When a single anomaly leads to a cascade of additional anomalies, the pattern of defects is referred to as a sequence\" (p. 45). Pierre Robin sequence \"begins with the abnormal development of the mandible, resulting in abnormal placement of the tongue,\" which obstructs \"the migration of the palatal shelves toward the midline, and a cleft palate remains.\"","trap":"(A) is the reflex pick because any set of anomalies occurring together looks like a syndrome. A syndrome is \"a recognized pattern of anomalies resulting from a single specific *cause*\"; a sequence has a single first *defect* that produces the rest. The nursing point here is the airway: recessed mandible plus displaced tongue equals obstructive apnea.","k":"13jlgzx17w3yqn"},{"topic":"congenital anomaly classification","subtopic":"general","stem":"A nurse examines a newborn and finds a sacral dimple, an extra nipple, and a café-au-lait spot. How should these be characterized, and what do they mean together?","options":["Three major anomalies, requiring immediate genetic referral","Minor anomalies or normal variants with no serious consequences — but three or more minor anomalies should raise suspicion of an underlying syndrome","Minor anomalies, which never warrant further evaluation","Major anomalies, since any structural finding is major by definition"],"correct":[1],"sata":false,"why":"The chapter contrasts \"major structural abnormalities with serious medical, surgical, or quality-of-life consequences\" against \"minor anomalies or normal variants with no serious consequences, such as a sacral dimple, an extra nipple, or a café-au-lait spot\" (p. 45). The dysmorphology guidance adds: \"When three or more minor anomalies are identified, nurses should suspect the possibility of an underlying syndrome\" (p. 76).","trap":"(C) is the reflex pick once the findings are correctly labeled minor, and it drops the counting rule that makes the classification useful. The parallel rule for major anomalies runs the other way: one major anomaly means look for more.","k":"1ov2z1k1480pmm"},{"topic":"genetics vocabulary and chromosome number","subtopic":"general","stem":"A nurse explains the difference between genetics and genomics to a student. Which statement is accurate?","options":["Genetics studies all of a person's genes and their interactions; genomics studies a single gene","Genetics studies single genes and their effect on relatively rare disorders; genomics studies all the genes in the genome and their interactions with each other and the environment","The two terms are interchangeable","Genetics applies to inherited disease and genomics only to cancer"],"correct":[1],"sata":false,"why":"The same one-gene-versus-all-of-them split separates the two terms, and it repeats for pharmacogenetics versus pharmacogenomics (pp. 41–43).","trap":"(A) is the mirror error — a straight swap of the two definitions, which is the only way this pair is ever tested.","k":"ezhoa61klu1is"},{"topic":"genetics vocabulary and chromosome number","subtopic":"general","stem":"A parent says her child's heart defect \"must be genetic because he was born with it.\" How should the nurse respond?","options":["She is correct; present at birth means inherited","A congenital disease may or may not be genetic, and a genetic disease may or may not be congenital, although the causative genes are present at birth","She is incorrect; congenital defects are never genetic","The distinction has no clinical significance"],"correct":[1],"sata":false,"why":"\"A congenital disease may or may not be genetic. Likewise, a genetic disease may or may not be congenital, although the causative genes are present at birth\" (p. 41).","trap":"(A) collapses two different claims — present at birth, and inherited — into one. The related error the chapter names is assuming a genetic disorder always shows a positive family history: \"It is therefore erroneous to consider all genetic disorders as having a positive family history.\"","k":"n7md0c1h0mvbm"},{"topic":"genetics vocabulary and chromosome number","subtopic":"general","stem":"A karyotype shows 69 chromosomes — three complete sets. How is this classified, and what does it mean for viability?","options":["Aneuploid, and lethal","Euploid, because 69 is a multiple of 23 — and still lethal","Euploid, and therefore compatible with normal development","Trisomic, because there are three of each chromosome"],"correct":[1],"sata":false,"why":"Euploidy means a multiple of 23; aneuploidy means a chromosome number that is not a multiple of 23 (p. 45). Triploidy is euploid and still lethal.","trap":"(C) is the reflex inference that a \"balanced\" multiple must be viable, and it is exactly why this pair is tested — euploid describes the arithmetic, not the outcome. Note the related severity rule: \"The loss of a chromosome and its related complement of genes is overall more detrimental than the addition of a chromosome,\" so a monosomy (45) is worse than a trisomy (47).","k":"7r00rnxs9zlt"},{"topic":"genetics vocabulary and chromosome number","subtopic":"general","stem":"A child has a karyotype of 46,XX/47,XX+21 — two cell lines. When did the error occur, and what is this called?","options":["Meiotic nondisjunction before fertilization, producing whole-body aneuploidy","Mitotic nondisjunction after fertilization during early embryonic development of a normal zygote, producing mosaicism","A robertsonian translocation inherited from a carrier parent","A structural deletion arising during gametogenesis"],"correct":[1],"sata":false,"why":"Mosaic Down syndrome \"results from mitotic nondisjunction during early embryonic development of a normal zygote\" (p. 48). The two mechanisms differ by timing: meiotic nondisjunction happens before fertilization and every cell carries the abnormality; mitotic nondisjunction happens after, so only a subset does (p. 46).","trap":"(A) is the mirror error of this pair, and the tell is in the karyotype itself — two cell lines separated by a slash cannot come from an error that preceded fertilization.","k":"iwwebf1j1w2vd"},{"topic":"genetics vocabulary and chromosome number","subtopic":"general","stem":"The parents of a child with mosaic Down syndrome are told by a relative that the mosaic form is \"the mild kind.\" How should the nurse respond?","options":["The relative is correct; mosaicism always produces milder disease","Children with mosaic Down syndrome do not necessarily have a better developmental outcome than those with free trisomy; the proportion of trisomic cells in various tissues and organs plays a role","Mosaic Down syndrome is more severe than free trisomy","The distinction cannot be made until the child is school age"],"correct":[1],"sata":false,"why":"\"Contrary to what one might expect, children with mosaic Down syndrome do not necessarily have a better developmental outcome than those with free trisomy type. The proportion of trisomic cells in various tissues and organs play a role in the child's developmental potential and syndrome-associated potential health problems\" (p. 48).","trap":"(A) is a true statement about the wrong condition, which is what makes it dangerous. The chapter does say mosaicism produces milder expression in Klinefelter and Turner syndromes, one page away. Generalizing that to Down syndrome is contradicted by the text, and it is a false reassurance given to a family.","k":"1m61pik2wtl2y"},{"topic":"down syndrome configurations and recurrence risk","subtopic":"general","stem":"A newborn has Down syndrome. Which chromosomal configuration is most likely, and what proportion of cases does it account for?","options":["Free trisomy 21, about 92% of cases","Translocation, about 92% of cases","Mosaicism, about 60% of cases","Free trisomy 21, about 50% of cases"],"correct":[0],"sata":false,"why":"\"Trisomy encompasses 92% of all cases of Down syndrome,\" with the extra chromosome 21 unattached and segregating freely during meiosis; translocation \"accounts for approximately 4% of all male and female Down syndrome cases,\" and the mosaic form is rarer still (pp. 46–48).","trap":"(B) swaps the two proportions, and the consequence matters: free trisomy is not inherited and its risk rises with maternal age, while translocation may come from a balanced carrier parent and is not age related.","k":"l6p1pjhie1bd"},{"topic":"down syndrome configurations and recurrence risk","subtopic":"general","stem":"A 38-year-old woman is told her risk of having a baby with Down syndrome is higher than a 25-year-old's, but she has read that most babies with Down syndrome are born to younger mothers. How should the nurse explain this?","options":["The published age-risk figures are outdated","Both are true: the risk per pregnancy increases linearly with maternal age, but because young women have more babies, about 75% of babies with trisomy 21 are born to younger mothers","Maternal age affects only the translocation form","The 75% figure applies only to mosaic Down syndrome"],"correct":[1],"sata":false,"why":"\"The risk for this type of Down syndrome increases linearly with increasing maternal age,\" and \"however, because young women have more babies, about 75% of babies with trisomy 21 are born to younger mothers\" (p. 47).","trap":"(A) treats an apparent contradiction as an error in the data. Both statements are true at once — one is a rate, the other a count — and a distractor is built by presenting either one alone.","k":"lqr6la1saxgkw"},{"topic":"down syndrome configurations and recurrence risk","subtopic":"general","stem":"A woman is found to be a balanced translocation carrier after the birth of a child with Down syndrome. Which recurrence figure should be used in counseling her?","options":["33%, the theoretic risk","Approximately 15%, the observed risk when the mother is the carrier","Less than 10%, the observed risk when the father is the carrier","100%, since she is a known carrier"],"correct":[1],"sata":false,"why":"The theoretic chance for a carrier parent with a normal partner is 33%, but the observed risks are lower and differ by which parent carries it: approximately 15% when the mother is the carrier and less than 10% when the father is (pp. 47–48). The chance of producing another balanced carrier \"approaches 50%.\"","trap":"(A) is the wrong number for counseling and the most likely one to be offered, because it is the figure the genetics reasoning produces. Observation gives a lower number, and (C) is the correct observed figure for the *other* parent — sex of the carrier changes the answer.","k":"10ahlsi6i1cyk"},{"topic":"down syndrome configurations and recurrence risk","subtopic":"general","stem":"A father is found to carry a 21;21 translocation. What is his chance of producing a pregnancy with Down syndrome?","options":["About 15%","33%","100%","Less than 10%"],"correct":[2],"sata":false,"why":"\"A carrier mother [45,XX,t(21;21)] or father [45,XY,t(21;21)] of the translocation would have a 100% chance of producing a pregnancy with Down syndrome because the other parent normally would contribute one chromosome 21.\" The chapter calls this \"one of the rare examples in genetics where an abnormality is passed on to all living progeny\" (p. 48).","trap":"(D) applies the ordinary paternal-carrier figure, which is correct for every translocation except this one. The 21;21 case is a named exception, and it is one of only two 100% situations in the chapter — the other is the affected homozygote in autosomal dominant disease.","k":"1dr87pv1tiodkt"},{"topic":"sex chromosome aneuploidies","subtopic":"general","stem":"A nurse is asked which sex chromosome aneuploidy is most common and what cognitive outcome to expect. What is accurate?","options":["Turner syndrome is most common, and moderate cognitive impairment is typical","Klinefelter syndrome is the most common of all sex chromosome aneuploidies, and mental development is normal in most cases, with a mean full-scale IQ between 85 and 90","Triple-X is most common, and cognitive impairment is severe","XYY is most common, and cognitive development is normal"],"correct":[1],"sata":false,"why":"This is the keyed option in the chapter's own NCLEX question 2. \"Klinefelter syndrome is the most common of all sex chromosome aneuploidies,\" and \"Mental development is normal in most cases, with a mean full-scale IQ between 85 and 90,\" with specific deficits in \"expressive language, auditory processing, and auditory memory\" (p. 48). More generally, sex chromosome number changes usually do \"not produce the profound effects that are associated with the autosomal trisomies.\"","trap":"(A) attaches autosomal-trisomy expectations to a sex chromosome aneuploidy, which is the comparison the chapter's general rule is written to settle.","k":"155b3tlivjrj"},{"topic":"sex chromosome aneuploidies","subtopic":"general","stem":"A girl with Turner syndrome is 11 years old. Her growth was normal until age 3 and then gradually drifted away from the curve. Her parents ask whether she will have a growth spurt at puberty. What is accurate?","options":["She will have a prepubertal growth spurt and then mostly stop growing","There is no prepubertal growth spurt; treatment for decreased growth velocity includes growth hormone and anabolic steroids, and the female hormones given around the time puberty would occur may further stunt growth and must be used judiciously","Growth will normalize once estrogen therapy begins","Growth hormone is contraindicated in Turner syndrome"],"correct":[1],"sata":false,"why":"\"There is no prepubertal growth spurt\"; \"The child's growth is usually normal until 3 years of age and then slows, gradually drifting away from the normal growth curve\"; and \"It is common practice to administer female hormones around the time that puberty would occur to provide the girl with Turner syndrome some secondary sex characteristics; however, the female hormones may further stunt growth and must be used judiciously\" (p. 48).","trap":"(A) is the chapter's own NCLEX question 2 distractor and it reverses the text. (C) misses the trade-off that defines this condition's management: the hormones that give secondary sex characteristics cost height.","k":"1cbwba1yktz0j"},{"topic":"sex chromosome aneuploidies","subtopic":"general","stem":"A nurse is asked about gynecologic findings in triple-X. Which is accurate?","options":["Premature menarche and delayed menopause","Delayed menarche and premature menopause","Normal menarche with infertility","Primary amenorrhea"],"correct":[1],"sata":false,"why":"\"females with triple-X display a normal phenotype, with an increased risk of learning disabilities compared with their euploid sisters. Gynecologic complications include delayed menarche and premature menopause\" (p. 49). The offspring of triple-X women are largely normal.","trap":"(A) is the chapter's own NCLEX question 2 distractor and reverses both halves of the text — which is why holding the order matters rather than just the two words.","k":"1ymgnkz1m4vgop"},{"topic":"sex chromosome aneuploidies","subtopic":"general","stem":"A student states that the XYY karyotype is associated with criminal behavior. How should this be corrected?","options":["The association is well established and should be included in counseling","The early studies linking this karyotype with criminal behavior were significantly flawed by selection bias, having been conducted among inmates of penal institutions; the association the chapter names now is increased risk for autism spectrum disorder","XYY is not associated with any clinical finding","The association applies only to mosaic XYY"],"correct":[1],"sata":false,"why":"The genotype \"was reported in the early 1960s by Patricia Jacobs, a Scottish cytogeneticist who detected an increased frequency of double-Y men among inmates of penal institutions in Great Britain. This and subsequent early studies that linked this karyotype with criminal behavior were significantly flawed by selection bias.\" The chapter names autism spectrum disorder risk as the current association (p. 48).","trap":"(A) repeats a retracted claim, and the chapter includes the history precisely so a nurse can recognize it. (C) overcorrects — there is a named association; it is simply not the one folklore supplies.","k":"1ff6d651ucu8u3"},{"topic":"autosomal inheritance patterns","subtopic":"autosomal dominant","stem":"A man with achondroplasia and his genotypically normal partner ask about the risk to each pregnancy. What should the nurse tell them, and on what assumption does the figure rest?","options":["25%, assuming he is heterozygous","50%, assuming he is heterozygous — which the chapter says is much more likely than homozygous","100%, because achondroplasia is 100% penetrant","The risk cannot be estimated without testing"],"correct":[1],"sata":false,"why":"\"Children of an affected parent have a 50% chance of inheriting the mutant allele and being affected\" (Box 3.2, p. 44). The chapter states the assumption before giving the number: \"if one parent is affected, he or she is much more likely to be heterozygous (have one mutant allele) than homozygous,\" and an individual with two dominant mutant alleles \"will experience physical or cognitive abnormalities at a much more severe level\" (p. 50).","trap":"(C) confuses penetrance with transmission. The achondroplasia mutation is 100% penetrant, meaning anyone who inherits it will show it — not that everyone inherits it. Only the rare affected-homozygote mating gives 100% affected offspring.","k":"ylul2g4p54fi"},{"topic":"autosomal inheritance patterns","subtopic":"autosomal dominant","stem":"The same couple has three children, all affected, and asks whether the fourth is therefore safe. What is the accurate response?","options":["The fourth child is very unlikely to be affected, since three of four already are","Each pregnancy carries the same 50% chance; 50% of offspring do not necessarily inherit the gene mutation, and chance has no memory","The risk rises with each affected child","After three affected children the couple should be retested for homozygosity"],"correct":[1],"sata":false,"why":"The achondroplasia pedigree in the chapter \"demonstrates that although an affected parent has a 50% chance with each pregnancy of transmitting the gene mutation associated with achondroplasia, 50% of offspring do not necessarily inherit the gene mutation\" (p. 52). The Nursing Alert states it for recessive disease in the same words: \"Chance has no memory\" (p. 72).","trap":"(A) is the gambler's-fallacy answer and the most common misconception families bring. Fifty percent is a per-pregnancy probability, not a quota — four children of an affected parent can all be affected or all be unaffected.","k":"l3ig6y1pq9zzc"},{"topic":"autosomal inheritance patterns","subtopic":"autosomal dominant","stem":"Two unaffected parents have a second child with the same autosomal dominant disorder. What does the second affected child indicate?","options":["A new de novo mutation occurred twice by coincidence","The mutation is present in a subset of the germ cells of one healthy parent — germline mosaicism — since \"the birth of other affected children indicates the second possibility\"","Misattributed paternity","The disorder must actually be autosomal recessive"],"correct":[1],"sata":false,"why":"A first occurrence in a family \"may be due to a new mutation (de novo mutation) in that child or to the presence of the mutation only in a subset of the germ cells of a healthy parent,\" and \"The birth of other affected children indicates the second possibility\" (p. 44).","trap":"(A) is the reflex explanation and it changes the counseling completely — a de novo mutation carries essentially no recurrence risk, while germline mosaicism carries a real one. One affected child is ambiguous; two is not.","k":"13s3jnz1ymyq7l"},{"topic":"autosomal inheritance patterns","subtopic":"autosomal recessive","stem":"Two carrier parents ask about the risk in each pregnancy. What are the figures?","options":["50% affected, 25% carrier","25% affected, 50% carrier, 25% unaffected noncarrier, in each and every pregnancy","25% affected, 25% carrier","100% carrier"],"correct":[1],"sata":false,"why":"\"Carrier parents have a 25% chance of producing an affected child and a 50% chance of producing a carrier child in each and every pregnancy\" (Box 3.3, p. 53); the remaining 25% follows. Both males and females can be carriers, and males and females are equally likely to be affected.","trap":"(A) swaps the two figures. The 50% number appears in three different places in this chapter attached to three different things — the dominant transmission risk, the recessive carrier fraction, and the X-linked recessive son's risk — so pairing the number with its pattern is the actual skill.","k":"6fezytgb5oqz"},{"topic":"autosomal inheritance patterns","subtopic":"autosomal recessive","stem":"A man with an autosomal recessive disorder and a partner who is not a carrier ask about their children. What is the answer?","options":["25% of children will be affected","50% of children will be affected","No children will be affected, and 100% will be carriers","All children will be affected"],"correct":[2],"sata":false,"why":"The mating of an affected parent with a genotypically normal partner is one \"in which 100% of the offspring will be carriers\" (p. 57). The affected parent contributes a mutant allele to every child; the noncarrier partner contributes a normal allele to every child.","trap":"(B) imports the autosomal *dominant* figure, which is the reflex whenever a stem says one parent is affected. The result here is counterintuitive and clean: zero affected, all carriers.","k":"1xptdfv1pzcc0l"},{"topic":"autosomal inheritance patterns","subtopic":"autosomal recessive","stem":"An unaffected couple has a child with cystic fibrosis. The mother asks how the genetics laboratory can be sure they are both carriers when neither was tested. What is the basis?","options":["They are obligate carriers, because each must have contributed a mutant allele — assuming lack of misattributed paternity","Carrier status is assumed from ethnicity rather than from the child's diagnosis","Only the mother can be presumed a carrier","Nothing can be concluded without testing both parents"],"correct":[0],"sata":false,"why":"\"In the case of an unaffected couple who produce a child with a recessive disease, identification is straightforward, assuming lack of misattributed paternity; because they each must contribute a mutant allele, they are considered obligate carriers, even in the absence of specific carrier testing for that gene\" (p. 53). For scale, \"1 in 25 persons in the United States and Northern European populations carries a recessive gene mutation for CF.\"","trap":"(D) is defensible caution and is not what the chapter says. Note also that the chapter names one alternative explanation for an apparently impossible pedigree: uniparental disomy can produce a recessive disease when only one parent is a carrier, so a single-carrier finding is not proof of misattributed paternity.","k":"1ugx6z414ob3hy"},{"topic":"autosomal inheritance patterns","subtopic":"autosomal recessive","stem":"A couple who are first cousins ask how much their relationship raises the risk of birth defects, and whether more distant relatives should worry. What should the nurse say?","options":["The first-cousin risk is about 5% compared with a general population risk of 2% to 3%, and this is usually a concern only for first cousins or closer relatives","The first-cousin risk is about 25%, and any blood relationship is a concern","Consanguinity raises the risk only for autosomal dominant disorders","There is no measurable increase in risk for first cousins"],"correct":[0],"sata":false,"why":"\"The first-cousin risk for birth defects is about 5% compared with the general population risk of 2% to 3%. The primary risk increase is for autosomal recessive disorders, in which the chance that two individuals carry the same rare mutation is increased if they are related,\" and \"contrary to popular belief, this is usually a concern only for first cousins or closer relatives\" (p. 74).","trap":"(B) overstates a real but modest increase — roughly double, not catastrophic — and both halves of that are worth saying to a family. (C) inverts the mechanism: relatedness raises the chance that two people carry the same rare recessive mutation.","k":"134k574xh68vi"},{"topic":"x-linked inheritance patterns","subtopic":"autosomal recessive","stem":"A pedigree shows an affected father and an affected son. What does this observation establish?","options":["The disorder is X-linked recessive","The disorder is X-linked dominant","Male-to-male transmission rules out X-linked inheritance, because men give their X chromosome to their daughters and their Y to their sons","The disorder must be mitochondrial"],"correct":[2],"sata":false,"why":"\"It is important to remember that men give their X chromosomes to their daughters (and their Y to their sons), so in analyzing a family pedigree, male-to-male transmission of a gene rules out X-linked inheritance\" (p. 57). The bank calls this the single most useful pedigree rule in the chapter.","trap":"(D) is wrong for the opposite reason and is worth holding alongside: mitochondrial inheritance is maternal only, because \"Mitochondria are not contained within the sperm head,\" so a father transmits neither an X-linked nor a mitochondrial disorder to his son.","k":"bqgciq1o0ak5c"},{"topic":"x-linked inheritance patterns","subtopic":"autosomal recessive","stem":"A man with hemophilia A and a genotypically normal partner ask about their children. What is the risk?","options":["50% of sons affected, 50% of daughters carriers","All daughters are carriers and none is affected; no sons are affected","All daughters are affected and no sons are affected","25% of all children affected"],"correct":[1],"sata":false,"why":"Box 3.4 states: \"All daughters of an affected male are (heterozygous) carriers; none is affected (homozygous),\" and father-to-son transmission of X-linked traits is not possible (p. 58).","trap":"(A) is the carrier-mother pedigree, not the affected-father one, and it is the most common substitution. The affected-father pattern is defined by two absolutes: he cannot have an affected son and cannot have a noncarrier daughter.","k":"19xbzd51lxilgb"},{"topic":"x-linked inheritance patterns","subtopic":"autosomal recessive","stem":"A woman who carries the Duchenne muscular dystrophy mutation and her genotypically normal partner ask about their children. What is the risk?","options":["All daughters are carriers and no sons are affected","Sons have a 50% chance of being affected, and daughters have a 50% chance of being carriers","25% of sons are affected","All sons are affected"],"correct":[1],"sata":false,"why":"\"Sons of carrier females have a 50% chance of inheriting the mutant allele and being affected (hemizygous). Daughters have a 50% risk of inheriting the mutant allele and being (heterozygous) carriers\" (Box 3.4, p. 58).","trap":"(A) is the mirror error of the previous item — the affected-father pattern applied to a carrier mother. Holding the two matings as a pair is what makes an X-linked recessive pedigree readable at a glance.","k":"1o93olxks13z7"},{"topic":"x-linked inheritance patterns","subtopic":"autosomal recessive","stem":"A man has an X-linked dominant disorder. What is the risk to his daughters?","options":["All are carriers and none is affected","50% are affected","All daughters of an affected man are affected, and each has a 50% chance of passing the mutant allele to her own sons and daughters","None is affected, because he transmits his Y to his daughters"],"correct":[2],"sata":false,"why":"\"all daughters of an affected man are affected and have a 50% chance of passing on the mutant allele to their sons and daughters\" (p. 59). Affected men do not transmit the mutant allele to their sons, and females \"because of the random nature of X inactivation, are usually less severely affected than males.\"","trap":"(A) is the X-linked recessive answer for the same mating, and this pair is the sharpest discrimination in the section: an affected father gives carrier daughters in recessive disease and affected daughters in dominant disease.","k":"1l7xxyq115s22w"},{"topic":"x-linked inheritance patterns","subtopic":"autosomal recessive","stem":"A girl is a known carrier of an X-linked recessive disorder but has mild symptoms. Her parents were told carriers are unaffected. What explains her symptoms?","options":["She must actually be homozygous for the mutation","X inactivation is random in each cell, and a female who expresses a phenotype may have a greater proportion of the X chromosome carrying the normal allele inactivated within the tissues associated with the disorder","Carriers of X-linked disorders are always symptomatic","She has a new mutation on her second X chromosome"],"correct":[1],"sata":false,"why":"Soon after fertilization one X in each female cell is inactivated by methylation, \"whether the paternal or maternally inherited X is inactivated is random in each cell,\" and once inactivated it stays so through all subsequent divisions. \"Females who express a phenotype may have a greater proportion of X chromosome with the normal allele inactivated within the tissues or organs associated with the disorder\" (p. 58).","trap":"(A) is possible but rare, and it is not the explanation the chapter gives for the usual case. This is a mechanism, not an exception to the rule — and note the parallel fact for males: there are no carrier males, because \"Hemizygous males are either normal or affected,\" so on the X chromosome dominant and recessive stop mattering for a man.","k":"1lkmpz63lkffc"},{"topic":"nonmendelian inheritance and cancer genes","subtopic":"autosomal recessive","stem":"Two children have deletions of the same region of chromosome 15 but entirely different syndromes. What accounts for this?","options":["Genomic imprinting — which parent's copy is expressed differs, so losing the paternal copy gives Prader-Willi syndrome and losing the maternal copy gives Angelman syndrome","Variable expressivity of the same disorder","One child has a deletion and the other a duplication","Uniparental disomy in one child only"],"correct":[0],"sata":false,"why":"Prader-Willi and Angelman syndromes are the chapter's headline imprinting pair: a paternal deletion versus a maternal deletion of the same chromosome 15 region (p. 60). Lose the father's copy and you get Prader-Willi.","trap":"(D) names a real and related phenomenon on the same page, and the two are a flagged pair: imprinting is about which parent's copy is expressed; uniparental disomy is about both copies coming from one parent. Uniparental disomy is also the chapter's explanation for a recessive disease appearing when only one parent is a carrier.","k":"9c7guz1xgbvud"},{"topic":"nonmendelian inheritance and cancer genes","subtopic":"autosomal recessive","stem":"A family history shows a disorder that appears at progressively earlier ages and greater severity in each successive generation. What is this called, and what is its molecular basis?","options":["Reduced penetrance","Anticipation, produced by expansion mutations in which a repeated sequence lengthens across generations","Locus heterogeneity","Germline mosaicism"],"correct":[1],"sata":false,"why":"Expansion mutations produce anticipation (p. 59). Fragile X gives the repeat ranges: about 5 to 40 repeats is normal, 59 to 200 is a premutation, and hundreds to thousands is a full mutation.","trap":"(A) is the other half of a flagged pair and describes something different — penetrance is whether a trait shows at all, while expressivity is how much it shows. Neither produces a generation-by-generation shift in age of onset.","k":"17ipx6ogh1vty"},{"topic":"nonmendelian inheritance and cancer genes","subtopic":"autosomal recessive","stem":"A student describes an oncogene as a foreign or viral gene introduced into a cell. How should this be corrected?","options":["The description is accurate","Oncogenes are normally involved in cell growth and division; the three gene classes in hereditary cancer are oncogenes that drive growth, tumor suppressor genes that inhibit growth, and mismatch repair genes that repair errors","Oncogenes are inherited only in the germline","Oncogenes and tumor suppressor genes are the same class"],"correct":[1],"sata":false,"why":"\"In reality, oncogenes are normally involved in cell growth and division\" (p. 60), and the chapter separates the three classes by function: drives growth, inhibits growth, repairs errors.","trap":"(A) is folklore reinforced by the word itself. Worth holding alongside: a germline p53 mutation gives Li-Fraumeni syndrome while a somatic p53 mutation gives sporadic cancers such as bladder cancer, and BRCA1 is associated with female breast and ovarian cancer while BRCA2 adds male breast and prostate cancer.","k":"12jqvwcn98xbm"},{"topic":"nonmendelian inheritance and cancer genes","subtopic":"autosomal recessive","stem":"A child has a mitochondrial disorder. Which statement about its inheritance and prenatal testing is accurate?","options":["Both parents contribute mitochondrial DNA, so either may be the source","It is inherited from the mother only, because mitochondria are not contained within the sperm head; and because of heteroplasmy it is not possible to predict the unborn child's phenotype based on prenatal test results","It follows an autosomal recessive pattern","Prenatal testing reliably predicts severity"],"correct":[1],"sata":false,"why":"Mitochondrial inheritance is maternal, \"Mitochondria are not contained within the sperm head,\" and \"it is not possible to predict the unborn child's phenotype based on prenatal test results\" (p. 60).","trap":"(D) is the assumption families bring to any prenatal test and is specifically wrong here. Heteroplasmy — a mixture of normal and mutant mitochondria whose proportions vary by tissue — is why a positive result cannot be graded into a prognosis.","k":"1j4khfwv3q65"},{"topic":"phenylketonuria and galactosemia","subtopic":"phenylketonuria","stem":"An infant with PKU has blond hair, blue eyes, and fair skin prone to eczema, although both parents are dark haired. What explains this?","options":["Coincidental inheritance of recessive pigmentation alleles","The blocked pathway prevents formation of tyrosine, which is needed to make the pigment melanin, so decreased melanin production gives most children with PKU this phenotype","The low-phenylalanine diet causes depigmentation","Accumulated phenylpyruvic acid bleaches the hair and skin"],"correct":[1],"sata":false,"why":"In PKU the enzyme phenylalanine hydroxylase, \"which controls the conversion of phenylalanine to tyrosine, is absent.\" Tyrosine \"is needed to form the pigment melanin and the hormones epinephrine and thyroxine,\" and \"Decreased melanin production results in similar phenotypes of most children with PKU: blond hair, blue eyes, and fair skin that is particularly susceptible to eczema\" (p. 63). Children with genetically darker skin \"may be red haired or brunette.\"","trap":"(C) reverses cause and treatment — the phenotype is present before any diet begins. The phenylpyruvic acid that accumulates is what gives urine \"the characteristic musty odor\" and names the disease; it does not cause the pigmentation.","k":"1sbxdsmfuejcs"},{"topic":"phenylketonuria and galactosemia","subtopic":"phenylketonuria","stem":"An infant's initial newborn screening specimen was collected at 18 hours of age. The parents say they will return for a repeat sample by 4 weeks. What should the nurse teach?","options":["No repeat is needed, since the initial specimen was obtained","The repeat sample is due by 2 weeks of age, because the initial specimen was collected before the newborn was 24 hours old","The repeat is due by 7 days of age","The repeat should be done at 6 weeks, with the first immunizations"],"correct":[1],"sata":false,"why":"The three timing recommendations are \"(1) collecting the initial specimen as close as possible to discharge and no later than 7 days after birth, (2) obtaining a subsequent sample by 2 weeks of age if the initial specimen is collected before the newborn is 24 hours old, and (3) designating a primary care provider to all newborns before discharge\" (p. 63). This is the chapter's own NCLEX question 4.","trap":"(C) borrows the deadline attached to the initial specimen and applies it to the repeat. Two different deadlines, two different specimens.","k":"1wdps9t1a52tfb"},{"topic":"phenylketonuria and galactosemia","subtopic":"phenylketonuria","stem":"A nurse is collecting a newborn screening specimen for PKU. Which actions are correct? (Select all that apply.)","options":["Use fresh heel blood rather than cord blood","Collect the specimen after the infant has ingested a source of protein","Spread the blood uniformly over the blot paper with a pipette","Document a primary care provider, current address, and phone number","Layer additional drops of blood over the first to ensure an adequate sample"],"correct":[0,1,2,3],"sata":true,"why":"\"Only fresh heel blood, not cord blood, can be used for the test,\" and \"The screening test is most reliable if the blood sample is taken after the infant has ingested a source of protein\" (p. 63). On technique: \"avoid layering the blood specimen... Best results are obtained by collecting the specimen with a pipette from the heel stick and spreading the blood uniformly over the blot paper\" (p. 64).","trap":"(E) is the one to reject, and it is the specific technique error the chapter names — layering is \"placing one drop of blood on top of the other or overlapping the specimen.\" Note why the first two rules exist: the test measures a substance that only accumulates once the baby eats, which is also why cord blood is useless.","k":"153avqwtqsw86"},{"topic":"phenylketonuria and galactosemia","subtopic":"phenylketonuria","stem":"Parents of an infant with PKU make several statements. Which one is accurate?","options":["Once his levels are stable we can stop the diet, since the enzyme matures with age","Because of the low phenylalanine content of breast milk, total or partial breastfeeding may be possible with close monitoring of phenylalanine levels","Phenylalanine should be eliminated from his diet entirely","The special diet has no drawbacks, so we can be as strict as we like"],"correct":[1],"sata":false,"why":"\"Because of the low phenylalanine content of breast milk, total or partial breastfeeding may be possible with close monitoring of phenylalanine levels\" (p. 64). The diet begins no later than 3 weeks of age, allows 20 to 30 mg of phenylalanine per kilogram per day, and is monitored closely \"throughout the first 12 years of age.\"","trap":"(C) is the reflex pick and would starve the child: phenylalanine \"cannot be totally eliminated because it is an essential amino acid in tissue growth.\" (A) is wrong because treatment does not cure — treated children \"remain unable to metabolize the amino acid and will always exhibit phenylalaninemia\" — and (D) ignores a named cost: \"Total bone mineral density is considerably lower in children who are on a low-phenylalanine diet.\"","k":"d7a2tl8z070b"},{"topic":"phenylketonuria and galactosemia","subtopic":"galactosemia","stem":"A 10-day-old formula-fed infant who appeared normal at birth now has vomiting, diarrhea, weight loss, and jaundice. Galactosemia is suspected. What is the immediate management?","options":["Switch to a lactose-reduced cow's milk formula and continue partial breastfeeding","Eliminate all milk and lactose-containing formula including breast milk, use soy-protein formula, and monitor for hypoglycemia, liver failure, bleeding disorders, and E. coli sepsis","Continue current feedings and repeat the newborn screen","Begin a low-phenylalanine formula"],"correct":[1],"sata":false,"why":"Treatment \"consists of eliminating all milk and lactose-containing formula, including breast milk,\" with soy-protein formula the feeding of choice, and \"If galactosemia is suspected, implement supportive treatment and care, including monitoring for hypoglycemia, liver failure, bleeding disorders, and Escherichia coli sepsis\" (p. 66). The timeline fits: infants \"appear normal at birth\" and become symptomatic on milk, with jaundice \"by the second week of life\" and cataracts \"usually recognizable by 1 or 2 months of age.\"","trap":"(A) is the single most likely swap between these two disorders — breastfeeding is possible in PKU with monitoring and contraindicated in galactosemia. Both are autosomal recessive, both are triggered by milk, and both are on newborn screening, which is exactly why the two get confused.","k":"r6e6ctg2zndj"},{"topic":"phenylketonuria and galactosemia","subtopic":"galactosemia","stem":"The parents of a child with galactosemia ask whether a strict galactose-free diet will prevent long-term problems. What is the honest answer?","options":["Yes; strict dietary elimination produces normal outcomes, as it does in PKU","Long-term complications such as ovarian dysfunction, cataracts, abnormal speech, cognitive impairment, growth restriction, and motor delay still occur, and eliminating sources of galactose does not significantly improve the outcome","The diet is unnecessary once the infant survives the newborn period","Outcomes cannot be predicted because the disorder is too rare to study"],"correct":[1],"sata":false,"why":"Follow-up of children treated from birth or within the first 2 months \"found long-term complications, such as ovarian dysfunction, cataracts, abnormal speech, cognitive impairment, growth restriction, and motor delay,\" and \"These findings have revealed that eliminating sources of galactose does not significantly improve the outcome\" (p. 66).","trap":"(A) imports the PKU result, where \"early childhood treatment with a reduced phenylalanine diet is highly successful at removing the possibility of cognitive impairment.\" The chapter places these two disorders together precisely so the contrast is visible: diet largely works for PKU and does not fully work for galactosemia.","k":"jleqaq142rzmg"},{"topic":"phenylketonuria and galactosemia","subtopic":"galactosemia","stem":"A child with galactosemia is prescribed an oral antibiotic. What is the nurse's specific responsibility?","options":["No special precaution is needed for medications","Instruct the parents to ask their pharmacist about the galactose content of any over-the-counter or prescription medication, because lactose is used as a filler and is an unlabeled ingredient in many pharmaceuticals","Substitute an intravenous route for all medications","Give the antibiotic only with soy formula"],"correct":[1],"sata":false,"why":"\"Many drugs, such as some of the penicillin preparations, contain lactose as filler and also must be avoided. Unfortunately, lactose is an unlabeled ingredient in many pharmaceuticals,\" so the instruction is to \"ask their local pharmacist about galactose content of any over-the-counter or prescription medication\" (p. 66).","trap":"(A) is the default assumption once the family has learned to read food labels, and it misses the hidden exposure. This is the one instruction unique to galactosemia — reading food labels is not sufficient, because the drug label may not carry the ingredient at all.","k":"zn8qglxs5rwb"},{"topic":"genetic screening testing and counseling","subtopic":"galactosemia","stem":"A nurse explains the difference between genetic screening and genetic diagnostic testing. What distinguishes them?","options":["Screening uses blood and diagnostic testing uses tissue","In general, genetic screening targets populations, whereas genetic diagnostic testing targets individuals — and a positive screen is not a diagnosis","Screening is performed prenatally and diagnostic testing after birth","Screening is voluntary and diagnostic testing is mandatory"],"correct":[1],"sata":false,"why":"\"In general, genetic screening targets populations, whereas genetic diagnostic testing targets individuals\" (p. 68). Screen-positive infants are \"immediately referred to a medical center,\" and \"After a positive screen, diagnostic testing must be performed promptly\" (pp. 63, 69).","trap":"(D) inverts a real principle. Voluntary participation is named as one of the first corollaries of any genetic screening program, along with equal access to all, confidentiality, and education and counseling as an integral part.","k":"8h8evuuhc47k"},{"topic":"genetic screening testing and counseling","subtopic":"galactosemia","stem":"A family is considering genetic testing and asks what screening is for. Which are among the three stated purposes of genetic screening? (Select all that apply.)","options":["Early recognition of a disease before signs and symptoms occur, for which effective intervention and therapy exist","Identifying carriers of a genetic disease to maximize parenthood planning options","Obtaining population data on frequency, spectrum, and natural history of genetic variations not currently known to be associated with disease","Determining which family members should be excluded from insurance coverage"],"correct":[0,1,2],"sata":true,"why":"These are the three purposes as printed (p. 69), and this list is the chapter's own NCLEX question 3. Screening can occur at four times: preconception screening of selected populations for carriers, screening of relatives of known carriers or affected individuals, postconceptional prenatal screening, and newborn screening.","trap":"(D) is the one to reject. Purposes 1 and 2 benefit the individual and purpose 3 benefits knowledge — none of the three is about restricting access, and the chapter names confidentiality as a precondition of any screening program.","k":"1w9p8oq1o675y0"},{"topic":"genetic screening testing and counseling","subtopic":"galactosemia","stem":"Parents of a healthy 6-year-old whose grandmother has a BRCA mutation ask for their daughter to be tested now. What should the nurse explain?","options":["Predisposition testing for adult-onset cancer is discouraged in at-risk children, and carrier testing for children is generally not recommended because the information is for reproductive purposes","Testing should be done immediately so screening can begin","Predisposition genetic testing in children is never performed under any circumstances","The child should be tested but not told the result"],"correct":[0],"sata":false,"why":"\"Carrier testing for children is generally not recommended because the information is for reproductive purposes\" (p. 69), and predisposition testing for adult-onset cancer \"is discouraged in at-risk children\" (p. 67).","trap":"(C) overcorrects into an absolute the chapter does not make. APC testing is done in at-risk children, because a positive result changes their screening now rather than in adulthood. The rule turns on whether the result changes management during childhood — which is also the distinction between presymptomatic testing, at near-100% penetrance, and susceptibility testing, at partial penetrance.","k":"406jhz1sd1lg5"},{"topic":"genetic screening testing and counseling","subtopic":"galactosemia","stem":"A couple asks the genetic counselor what they should do about a future pregnancy given their 25% recurrence risk. How does the chapter describe the counselor's role?","options":["Counselors recommend the option with the lowest risk of an affected child","Counselors \"do not attempt to make recommendations or decisions for patients when discussing reproductive risks,\" although they do recommend screening for treatable conditions","Counselors defer entirely to the referring physician","Counselors provide numbers only and do not discuss options"],"correct":[1],"sata":false,"why":"Genetic counselors \"do not attempt to make recommendations or decisions for patients when discussing reproductive risks,\" though they do recommend screening for treatable conditions (p. 72). The nurse also teaches that each pregnancy is an independent event.","trap":"(A) is the expectation families arrive with, and it is what makes the non-directive stance worth stating out loud. Note the boundary: non-directiveness applies to reproductive decisions, not to recommending screening for a condition that can be treated.","k":"c3mm9hcrdm7"},{"topic":"genetic screening testing and counseling","subtopic":"galactosemia","stem":"Which assessment findings should alert the nurse to a possible need for further genetic evaluation? (Select all that apply.)","options":["Limb abnormalities, asymmetry, and hyperextensible joints","Recurrent ear infection, pneumonia, and poor healing of the umbilicus","Developmental and speech delays or loss of developmental milestones","Recurrent digestive difficulties","Recurrent urinary tract problems"],"correct":[0,1,2],"sata":true,"why":"These are three of Box 3.7's eleven categories — skeletal abnormalities, recurrent infection or immunodeficiency, and development and speech delays (p. 72). This is the chapter's own NCLEX question 5. The footnote is the rule that makes the box usable: \"Increased concern for genetic etiology if two or more findings are present.\"","trap":"(D) and (E) are the two to reject, and neither appears anywhere in the box. Both sound like plausible pediatric concerns, which is exactly the tactic — a distractor drawn from general pediatrics rather than from the printed list.","k":"1at6tbkcvvg6e"}];
+const TITLE = "Chapter 3 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 3";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>
