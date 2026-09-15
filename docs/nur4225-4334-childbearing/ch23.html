@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 23 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 23</div><h1>Chapter 23 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn transition and behavioral states</span><span class="chip t2">the three periods of transition</span></div>
+<div class="stem">1. A newborn 20 minutes old has a heart rate of 172, respirations of 74, audible fine crackles, and intermittent grunting. The infant is alert with spontaneous tremors. How should the nurse interpret these findings?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>These are signs of respiratory distress syndrome requiring immediate escalation</li><li class="fopt right"><span class="mk">&#10003;</span>These are expected findings of the first period of reactivity, though grunting should cease within the first hour</li><li class="fopt"><span class="mk">C</span>These indicate transient tachypnea of the newborn and warrant a chest radiograph</li><li class="fopt"><span class="mk">D</span>These indicate the period of decreased responsiveness</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The first period of reactivity &quot;lasts up to 30 minutes after birth.&quot; Heart rate rises rapidly to 160 to 180 beats/min before falling toward 100 to 120, respirations are irregular at 60 to 80 breaths/min, fine crackles can be heard, and &quot;audible grunting, nasal flaring, and retractions can be present&quot; but &quot;these should cease within the first hour after birth.&quot; The infant is alert with spontaneous startles, tremors, and crying.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because grunting and flaring are genuine distress signs at any other moment. What makes them expected here is the clock, not the signs. The same picture at 3 hours of age is a problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn transition and behavioral states</span><span class="chip t2">the three periods of transition</span></div>
+<div class="stem">2. Ninety minutes after birth a newborn is sleeping, has markedly decreased motor activity, is pink, and has rapid but shallow and unlabored respirations. Which period does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The first period of reactivity</li><li class="fopt right"><span class="mk">&#10003;</span>The period of decreased responsiveness, which lasts 60 to 100 minutes</li><li class="fopt"><span class="mk">C</span>The second period of reactivity</li><li class="fopt"><span class="mk">D</span>An abnormal depression of consciousness requiring stimulation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;After the first period of reactivity, the newborn either sleeps or has a marked decrease in motor activity. This period of decreased responsiveness lasts 60 to 100 minutes.&quot; The infant is pink, with respirations rapid up to 60 breaths/min, shallow but unlabored, and bowel sounds audible.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex pick for a nurse who expects a newborn to be increasingly alert as it recovers from birth. This sleep period is a normal stage of transition, and rousing the infant to feed during it is a common misreading of it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn transition and behavioral states</span><span class="chip t2">the three periods of transition</span></div>
+<div class="stem">3. At 4 hours of age a newborn has brief episodes of tachycardia and tachypnea with increased muscle tone, color changes, and increased mucus production, and passes meconium. Which period is this, and what is the nursing priority?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The first period of reactivity; prepare for the first feeding</li><li class="fopt right"><span class="mk">&#10003;</span>The second period of reactivity, occurring between 2 and 8 hours after birth; observe for the increased mucus, which is expected in this period</li><li class="fopt"><span class="mk">C</span>An abnormal cardiorespiratory event requiring notification</li><li class="fopt"><span class="mk">D</span>The period of decreased responsiveness ending</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The second period of reactivity occurs approximately between 2 and 8 hours after birth and lasts from 10 minutes to several hours. Brief periods of tachycardia and tachypnea occur, associated with increased muscle tone, changes in skin color, and mucus production. Meconium is commonly passed at this time.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) pulls because tachycardia, tachypnea, and color change are the vocabulary of deterioration everywhere else. The whole reason the chapter names these three periods is so a normal transitional event is not treated as a new problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn transition and behavioral states</span><span class="chip t2">the three periods of transition</span></div>
+<div class="stem">4. Which statement about the transition to extrauterine life is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The major adaptations occur during the first 24 hours and are mediated by the parasympathetic nervous system</li><li class="fopt right"><span class="mk">&#10003;</span>The major adaptations occur during the first 6 to 8 hours, are mediated by the sympathetic nervous system, and most healthy newborns experience them regardless of gestational age or type of birth</li><li class="fopt"><span class="mk">C</span>Only newborns delivered vaginally experience the transition periods</li><li class="fopt"><span class="mk">D</span>Very preterm infants experience an accelerated version of the transition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The major adaptations associated with transition from intrauterine to extrauterine life occur during the first 6 to 8 hours after birth,&quot; are &quot;mediated by the sympathetic nervous system,&quot; and involve heart rate, respirations, temperature, and gastrointestinal function. &quot;Most healthy newborns experience this transition, regardless of gestational age or type of birth; very preterm infants do not because of physiologic immaturity.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the one stated exception. Very preterm infants do not show the transition periods at all, because of physiologic immaturity, rather than showing them faster.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn transition and behavioral states</span><span class="chip t2">sleep-wake states</span></div>
+<div class="stem">5. A nurse wants to teach new parents how to engage with their newborn. Which of the six sleep-wake states is the optimal one for this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Light sleep, because the infant is easily roused</li><li class="fopt"><span class="mk">B</span>Drowsy, because the infant is transitioning toward alertness</li><li class="fopt right"><span class="mk">&#10003;</span>Quiet alert, in which infants smile, vocalize, move in synchrony with speech, and watch their parents' faces</li><li class="fopt"><span class="mk">D</span>Active alert, because motor activity indicates readiness to interact</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The six states form a continuum from deep sleep to extreme irritability: two sleep states, deep and light, and four wake states, drowsy, quiet alert, active alert, and crying. &quot;The optimal state of arousal is the quiet alert state. During this state, infants smile, vocalize, move in synchrony with speech, watch their parents' faces, and respond to people talking to them.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reflex pick because active alert sounds like the most engaged of the wake states, and its motor activity reads as responsiveness. The alertness that supports interaction is the quiet kind. The ability to make smooth transitions between states is called state modulation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn transition and behavioral states</span><span class="chip t2">sleep-wake states</span></div>
+<div class="stem">6. A newborn breaks eye contact by turning the head away and begins to fuss during a prolonged interaction with a visitor. Which interpretation is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>These are signs of neurologic immaturity and should be reported</li><li class="fopt right"><span class="mk">&#10003;</span>These are purposeful behaviors the infant uses to control arousal, alongside withdrawing, pushing away, and falling asleep</li><li class="fopt"><span class="mk">C</span>These indicate hunger</li><li class="fopt"><span class="mk">D</span>These are engagement cues indicating readiness for more stimulation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names four purposeful behaviors infants use to maintain arousal: &quot;actively withdrawing by increasing physical distance,&quot; &quot;rejecting by pushing away with hands and feet,&quot; &quot;decreasing sensitivity by falling asleep or breaking eye contact by turning the head,&quot; and &quot;signaling behaviors such as fussing and crying.&quot; Distress or disengagement cues include facial grimace, splaying of fingers, gaze aversion, staring, regurgitation, and jitteriness.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reads the cue backwards, and it is the intuitive error because a caregiver enjoying the interaction wants to continue it. Engagement cues are alertness, eye-to-eye contact, facial gaze, smiling, vocalization, smooth movements, and flexion of the arms and legs.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn respiratory adaptation</span><span class="chip t2">general</span></div>
+<div class="stem">7. A student asks what triggers the newborn's first breath. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The thoracic squeeze during vaginal birth is the single trigger</li><li class="fopt right"><span class="mk">&#10003;</span>There is no single trigger; breathing results from a combination of chemical, mechanical, thermal, and sensory factors</li><li class="fopt"><span class="mk">C</span>Clamping the cord is the sole trigger, by raising carbon dioxide levels</li><li class="fopt"><span class="mk">D</span>Cold exposure alone stimulates the medullary respiratory center</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;There is no single trigger for newborn respiratory function. The initiation of respirations in the neonate is the result of a combination of chemical, mechanical, thermal, and sensory factors.&quot; Chemical factors include chemoreceptor activation from the relative hypoxia of labor, producing declining oxygen tension, rising carbon dioxide, and lowered pH that stimulate the medullary respiratory center. Clamping the cord also drops levels of a prostaglandin that can inhibit respirations, and raises blood pressure, which increases circulation and lung perfusion.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (D) each promote one real contributor to sole cause, and (A) additionally uses a mechanism the chapter has demoted. Any answer naming one trigger is wrong on the chapter's own framing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn respiratory adaptation</span><span class="chip t2">general</span></div>
+<div class="stem">8. An infant is born by scheduled cesarean birth before labor began. Which respiratory consideration applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The absence of labor eliminates the risk of retained lung fluid</li><li class="fopt"><span class="mk">B</span>Lung fluid clearance depends mainly on the thoracic squeeze, so this infant will have significant retained fluid</li><li class="fopt right"><span class="mk">&#10003;</span>Infants born by cesarean without labor can retain lung fluid and are more likely to develop transient tachypnea of the newborn</li><li class="fopt"><span class="mk">D</span>The infant will require surfactant administration</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Infants born by cesarean birth in which labor did not occur before birth can experience some lung fluid retention ... These infants are also more likely to develop transient tachypnea of the newborn (TTN).&quot; Clearance depends on reduced fluid production in the days before labor and a catecholamine surge that promotes clearance during labor, with movement &quot;through active transport into the interstitium.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) uses the retired explanation. Traditionally the thoracic squeeze was credited with significant clearance, but &quot;it appears that this event plays a minor role.&quot; The reason cesarean without labor matters is the missing catecholamine surge, not the missing squeeze.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn respiratory adaptation</span><span class="chip t2">general</span></div>
+<div class="stem">9. Which description of surfactant's function is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It raises surface tension so the alveoli recoil more completely on exhalation</li><li class="fopt right"><span class="mk">&#10003;</span>It lowers surface tension, reducing the pressure required to keep alveoli open with inspiration and preventing total alveolar collapse on exhalation</li><li class="fopt"><span class="mk">C</span>It clears fluid from the alveoli by active transport</li><li class="fopt"><span class="mk">D</span>It is manufactured in the type I lung cells during the first hours after birth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Surfactant is &quot;a lipoprotein manufactured in type II lung cells.&quot; It &quot;lowers surface tension, therefore reducing the pressure required to keep the alveoli open with inspiration, and prevents total alveolar collapse on exhalation, thereby maintaining alveolar stability,&quot; producing increased lung compliance and helping establish functional residual capacity. Without it, &quot;more pressure must be generated for inspiration, which can soon tire or exhaust preterm or sick term infants.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) inverts the direction, and it is the intuitive inversion because higher tension sounds like it would help a lung empty. Lowering tension is what keeps the alveolus from collapsing shut and needing to be reinflated from nothing with each breath.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn respiratory adaptation</span><span class="chip t2">general</span></div>
+<div class="stem">10. A sleeping newborn has a respiratory pause of 14 seconds, then resumes breathing. How should the nurse document this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Apnea, which requires evaluation</li><li class="fopt right"><span class="mk">&#10003;</span>Periodic breathing, which is normal and occurs most often during active rapid eye movement sleep</li><li class="fopt"><span class="mk">C</span>An apparent life-threatening event</li><li class="fopt"><span class="mk">D</span>Bradypnea, which requires stimulation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Newborn breaths are &quot;shallow and irregular, ranging from 30 to 60 breaths/min, with periods of breathing that include pauses in respirations lasting less than 20 seconds,&quot; occurring &quot;most often during the active (rapid eye movement [REM]) sleep cycle.&quot; However, &quot;apneic periods longer than 20 seconds are abnormal and should be evaluated.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick for anyone who treats any pause as apnea. The line is 20 seconds, and this pause falls below it. A distractor that calls a 15-second pause pathologic and one that dismisses a 25-second pause both fail on the same threshold.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn respiratory adaptation</span><span class="chip t2">general</span></div>
+<div class="stem">11. A 1-week-old has significant nasal congestion. Why is this a greater concern in a newborn than in an older infant?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Newborns have smaller nasal passages that occlude with minimal secretions</li><li class="fopt right"><span class="mk">&#10003;</span>Newborns are by preference nose breathers, and the reflex to open the mouth when the nose is obstructed is not present in most infants until 3 weeks after birth, so cyanosis or asphyxia can occur</li><li class="fopt"><span class="mk">C</span>Newborns cannot cough effectively to clear secretions</li><li class="fopt"><span class="mk">D</span>Nasal congestion in newborns always indicates infection</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Newborn infants are by preference nose breathers, which enhances the ability to coordinate sucking, swallowing, and breathing. The reflex response to nasal obstruction is to open the mouth to maintain an airway. This response is not present in most infants until 3 weeks after birth; therefore cyanosis or asphyxia can occur with nasal blockage.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is anatomically plausible and is not the chapter's reason. The danger is the missing rescue reflex, which makes nasal obstruction an airway problem rather than a comfort problem. Note separately that a sneeze &quot;is usually a response to mucus in the nose and not an indicator of upper respiratory infection.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">signs of newborn respiratory distress</span><span class="chip t2">general</span></div>
+<div class="stem">12. A newborn 6 hours old has bluish hands and feet. The trunk, lips, and mucous membranes are pink. How should the nurse document and act on this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Central cyanosis; administer oxygen and notify the provider</li><li class="fopt right"><span class="mk">&#10003;</span>Acrocyanosis, a normal finding in the first 24 hours after birth</li><li class="fopt"><span class="mk">C</span>Mottling secondary to cold stress; place under a radiant warmer immediately</li><li class="fopt"><span class="mk">D</span>Peripheral vasoconstriction indicating sepsis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Acrocyanosis, the bluish discoloration of hands and feet, is a normal finding in the first 24 hours after birth.&quot; Normally the newborn's color changes from blue to pink within the first 3 to 5 minutes after birth.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the single most swapped newborn finding. What makes cyanosis significant is its location: hands and feet is peripheral and expected early, while lips and mucous membranes is central.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">signs of newborn respiratory distress</span><span class="chip t2">general</span></div>
+<div class="stem">13. A different newborn has bluish lips and oral mucous membranes. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Acrocyanosis, expected in the first 24 hours</li><li class="fopt right"><span class="mk">&#10003;</span>Central cyanosis, which is abnormal and signifies hypoxemia</li><li class="fopt"><span class="mk">C</span>A normal variant if the infant is crying</li><li class="fopt"><span class="mk">D</span>Circumoral pallor secondary to vasoconstriction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Central cyanosis is abnormal and signifies hypoxemia. With central cyanosis, the lips and mucous membranes are bluish (circumoral cyanosis).&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. There is a second reasoning trap embedded here: &quot;Because central cyanosis is a late sign of distress, newborns usually have significant hypoxemia when cyanosis appears,&quot; so its absence does not establish adequate oxygenation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">signs of newborn respiratory distress</span><span class="chip t2">general</span></div>
+<div class="stem">14. A newborn 90 minutes old has a respiratory rate of 92, intermittent grunting, nasal flaring, and mild retractions. Which condition does this most likely represent?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Mild transient tachypnea of the newborn, which usually resolves in 48 to 72 hours</li><li class="fopt"><span class="mk">B</span>Respiratory distress syndrome requiring surfactant</li><li class="fopt"><span class="mk">C</span>A pneumothorax</li><li class="fopt"><span class="mk">D</span>Congenital heart disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mild transient tachypnea presents &quot;during the first 1 to 2 hours after birth&quot; with tachypnea &quot;up to 100 breaths/min&quot; and &quot;intermittent grunting, nasal flaring, and mild retractions,&quot; usually resolving in 48 to 72 hours. More serious problems &quot;tend to last beyond the first 2 hours after birth,&quot; with rates that &quot;can exceed 120 breaths/min&quot; and &quot;moderate to severe retractions, grunting, pallor, and central cyanosis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex pick because tachypnea with grunting is the classic distress picture. Three things separate this from serious disease: the rate stays under 100, the timing is within the first 2 hours, and the retractions are mild.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">signs of newborn respiratory distress</span><span class="chip t2">general</span></div>
+<div class="stem">15. The nurse observes that a newborn's abdomen rises exaggeratedly with inspiration while the chest falls. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Normal abdominal breathing, which is characteristic of newborns</li><li class="fopt right"><span class="mk">&#10003;</span>Seesaw or paradoxic respirations, which are abnormal and should be reported</li><li class="fopt"><span class="mk">C</span>Normal for the first few hours only</li><li class="fopt"><span class="mk">D</span>Evidence of an upper airway obstruction</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Abdominal breathing is normal in newborns because respiratory function is largely diaphragmatic, and &quot;the chest and abdomen of the newborn rise simultaneously with inspiration.&quot; By contrast, &quot;seesaw or paradoxic respirations (exaggerated rise in abdomen with respiration as the chest falls) instead of abdominal respirations are abnormal and should be reported.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because abdominal breathing genuinely is normal, and one word separates the two findings. Simultaneous rise is normal; the chest falling as the abdomen rises is not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">signs of newborn respiratory distress</span><span class="chip t2">general</span></div>
+<div class="stem">16. Select all findings that the chapter identifies as requiring evaluation in a newborn.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A respiratory rate of 26 with the infant at rest</li><li class="fopt right"><span class="mk">&#10003;</span>A respiratory rate of 72 with the infant at rest</li><li class="fopt right"><span class="mk">&#10003;</span>Suprasternal retractions with stridor</li><li class="fopt"><span class="mk">D</span>Fine rales heard in the first few hours after birth</li><li class="fopt right"><span class="mk">&#10003;</span>Intercostal and subcostal retractions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A rate &quot;less than 30 or greater than 60 breaths/min with the infant at rest must be evaluated.&quot; Distress signs include intercostal or subcostal retractions, nasal flaring, and grunting, while &quot;suprasternal or subclavicular retractions with stridor or gasping most often represent an upper airway obstruction.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the one wrong option, because &quot;fine rales for the first few hours are not unusual,&quot; and crackles are explicitly listed among the first period of reactivity's normal findings. Note the qualifier attached to the rate rule: it applies at rest, so a crying newborn breathing above 60 is not the situation the rule addresses.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn cardiovascular adaptation and vital signs</span><span class="chip t2">general</span></div>
+<div class="stem">17. What causes functional closure of the foramen ovale after birth?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rising pulmonary vascular resistance raises right atrial pressure</li><li class="fopt right"><span class="mk">&#10003;</span>Falling pulmonary vascular resistance lowers right atrial pressure while increased pulmonary blood flow raises left atrial pressure</li><li class="fopt"><span class="mk">C</span>The rise in arterial oxygen tension to about 50 mm Hg</li><li class="fopt"><span class="mk">D</span>Clamping the umbilical vein</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The first breaths reduce pulmonary vascular resistance, so &quot;pressure in the right atrium declines. Increased pulmonary blood flow from the left side of the heart increases pressure in the left atrium, which causes a functional closure of the foramen ovale.&quot; The chapter adds a caveat worth holding: &quot;During the first few days of life, crying can temporarily reverse the flow through the foramen ovale and lead to mild cyanosis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the mechanism for the other shunt. In utero fetal oxygen tension is 20 to 30 mm Hg; after birth, when arterial oxygen tension approximates 50 mm Hg, &quot;the ductus arteriosus constricts in response to increased oxygenation,&quot; closing functionally within the first 24 hours and anatomically within 2 to 3 months.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn cardiovascular adaptation and vital signs</span><span class="chip t2">general</span></div>
+<div class="stem">18. A term newborn in deep sleep has an apical heart rate of 92. What is the nurse's interpretation?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Bradycardia requiring immediate notification</li><li class="fopt right"><span class="mk">&#10003;</span>Within the expected range for deep sleep, which is approximately 80 to 100 beats/min</li><li class="fopt"><span class="mk">C</span>Bradycardia suggesting congenital heart block</li><li class="fopt"><span class="mk">D</span>An artifact of counting for less than one full minute</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The term newborn's heart rate is 120 to 160 beats/min, dropping to approximately 80 to 100 in deep sleep and rising to 180 or higher with crying. A rate over 160 or under 100 &quot;should be reevaluated within 30 minutes to 1 hour or when the activity of the infant changes.&quot; Persistent bradycardia is defined lower, at &quot;less than 80 beats/min,&quot; and can signal congenital heart block or hypoxemia.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies the awake range to a sleeping infant, and it is the most available error because 92 falls below the number most students memorized. The activity state changes the expected range, and even a rate under 100 prompts reevaluation within 30 minutes to an hour rather than immediate escalation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn cardiovascular adaptation and vital signs</span><span class="chip t2">general</span></div>
+<div class="stem">19. A newborn's systolic blood pressure at 1 hour of age is about 15 mm Hg lower than the value recorded at birth. What does this represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hypovolemia requiring a fluid bolus</li><li class="fopt right"><span class="mk">&#10003;</span>A common expected drop in the first hour of life, after which blood pressure increases predictably over the first 5 days</li><li class="fopt"><span class="mk">C</span>Evidence of a patent ductus arteriosus</li><li class="fopt"><span class="mk">D</span>An error in cuff size</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A drop in systolic BP (approximately 15 mm Hg) in the first hour of life is common,&quot; and blood pressure then &quot;increases predictably over the first 5 days of life and then levels off.&quot; The bedside shortcut the chapter gives is that &quot;the mean arterial pressure (MAP) should be nearly equivalent to the weeks of gestation,&quot; so a 40-week infant should have a mean arterial pressure of at least 40 mm Hg.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats a normal early dip as shock. Blood pressure at birth runs 75 to 95 systolic, falls to 50 to 70 by 12 hours, and rises to 60 to 90 by 96 hours, so comparing a 12-hour value against the birth value produces a false alarm.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn cardiovascular adaptation and vital signs</span><span class="chip t2">general</span></div>
+<div class="stem">20. A soft systolic murmur is heard in a newborn who is feeding well, is pink, and has normal vital signs. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Most murmurs in the neonatal period have no pathologic significance, and more than half disappear by 6 months of age</li><li class="fopt"><span class="mk">B</span>Any murmur in a newborn indicates a structural defect</li><li class="fopt"><span class="mk">C</span>The absence of accompanying symptoms rules out a cardiac defect</li><li class="fopt"><span class="mk">D</span>Murmurs in newborns always resolve by 6 months</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Most heart murmurs heard during the neonatal period have no pathologic significance, and more than one-half of the murmurs disappear by 6 months of age.&quot; A murmur &quot;and accompanying signs such as poor feeding, apnea, cyanosis, or pallor is considered abnormal.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the reassuring conclusion the chapter explicitly blocks: &quot;There can be significant cardiac defects without a murmur or other symptoms.&quot; Neither the presence nor the absence of a murmur settles a cardiac question, which is what makes both directions testable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn cardiovascular adaptation and vital signs</span><span class="chip t2">general</span></div>
+<div class="stem">21. A nursing student reports hearing a third heart sound in a term newborn. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A third heart sound is a normal finding in newborns</li><li class="fopt right"><span class="mk">&#10003;</span>The third and fourth heart sounds are not audible in newborns, so this finding should be re-evaluated</li><li class="fopt"><span class="mk">C</span>A third heart sound is normal only during the first hour of life</li><li class="fopt"><span class="mk">D</span>A third heart sound confirms a patent ductus arteriosus</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Newborn heart sounds are &quot;of higher pitch, shorter duration, and greater intensity than during adult life. The first sound is typically louder and duller than the second sound, which is sharp. The third and fourth heart sounds are not audible in newborns.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the trap for a student carrying a rule across chapters. A third heart sound in the pregnant woman after midpregnancy is a normal finding described elsewhere in this text; the same sound is not audible in her newborn. The apical impulse in the newborn is found at the fourth intercostal space left of the midclavicular line and is often visible and easily palpable through the thin chest wall.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn heat loss and thermoregulation</span><span class="chip t2">general</span></div>
+<div class="stem">22. A newborn is placed on a cold, uncovered scale for weighing. Which mode of heat loss does this represent?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Convection</li><li class="fopt"><span class="mk">B</span>Radiation</li><li class="fopt right"><span class="mk">&#10003;</span>Conduction</li><li class="fopt"><span class="mk">D</span>Evaporation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Conduction is &quot;the loss of heat from the body surface to cooler surfaces in direct contact.&quot; The intervention the chapter derives from it is that &quot;the scales used for weighing the newborn should have a protective cover,&quot; and that the newborn is placed on &quot;a prewarmed bed&quot; under a radiant warmer.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the classic swap. Radiation is &quot;the loss of heat from the body surface to a cooler solid surface not in direct contact but in relative proximity.&quot; The cue that separates them is touch: direct contact is conduction, proximity without contact is radiation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn heat loss and thermoregulation</span><span class="chip t2">general</span></div>
+<div class="stem">23. A newborn's bassinet is positioned next to an exterior window on a cold night. Which mode of heat loss is the primary concern, and what is the intervention?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Conduction; place a warm blanket under the infant</li><li class="fopt right"><span class="mk">&#10003;</span>Radiation; move bassinets and examining tables away from outside windows</li><li class="fopt"><span class="mk">C</span>Convection; raise the room humidity</li><li class="fopt"><span class="mk">D</span>Evaporation; dry the infant thoroughly</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Radiation is heat lost to a cooler solid surface &quot;not in direct contact but in relative proximity,&quot; which is why &quot;bassinets and examining tables are placed away from outside windows, and care is taken to avoid direct air drafts.&quot; Convection, the flow of heat to cooler ambient air, is addressed by keeping newborn care areas between 22°C and 26°C with humidity between 30% and 60%, wrapping infants, and using a cap.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. The infant is not touching the window, so proximity rather than contact is doing the work.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn heat loss and thermoregulation</span><span class="chip t2">general</span></div>
+<div class="stem">24. Which mode of heat loss does the chapter identify as the most significant cause of heat loss in the first few days of life, and what is the corresponding first intervention after birth?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Convection; place a cap on the head</li><li class="fopt"><span class="mk">B</span>Radiation; move the bassinet from the window</li><li class="fopt right"><span class="mk">&#10003;</span>Evaporation; dry the newborn thoroughly and completely</li><li class="fopt"><span class="mk">D</span>Conduction; use a prewarmed bed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Evaporation is &quot;the loss of heat that occurs when a liquid is converted to a vapor. In the newborn, heat loss by evaporation occurs as a result of moisture vaporization from the skin,&quot; intensified &quot;by failing to completely dry the newborn after birth or with bathing.&quot; It is &quot;the most significant cause of heat loss in the first few days of life.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (D) are both real interventions and neither addresses the largest early loss. On a priority stem about the newly born infant, the answer is dry and cover, with the radiant warmer offered as the less optimal alternative to skin-to-skin contact, which reduces conductive and radiant loss while supporting maternal-infant interaction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn heat loss and thermoregulation</span><span class="chip t2">general</span></div>
+<div class="stem">25. A cold-stressed newborn does not shiver. Which mechanism generates heat instead, and what triggers it?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Shivering thermogenesis, triggered by a core temperature below 36.5°C</li><li class="fopt right"><span class="mk">&#10003;</span>Nonshivering thermogenesis by brown fat metabolism, triggered when skin temperature falls below 35°C to 36°C</li><li class="fopt"><span class="mk">C</span>Increased thyroid hormone release, triggered by cord clamping</li><li class="fopt"><span class="mk">D</span>Glycogenolysis in skeletal muscle, triggered by hypoglycemia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The shivering mechanism of heat production is rarely operable in the newborn unless there is prolonged cold exposure.&quot; Newborns produce heat through nonshivering thermogenesis, &quot;triggered when the skin temperature decreases to less than 35°C to 36°C (95°F to 96.8°F). This is accomplished primarily by metabolism of brown fat, which is unique to the newborn,&quot; and secondarily by increased metabolic activity in the brain, heart, and liver. Brown fat sits in superficial deposits in the interscapular region and axillae and deep deposits at the thoracic inlet, along the vertebral column, and around the kidneys.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies the adult mechanism, and it pulls because shivering is what every other patient does. Note also that brown fat reserves are finite: present for several weeks, &quot;rapidly depleted with cold stress,&quot; and greater in a term newborn than in a preterm one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn heat loss and thermoregulation</span><span class="chip t2">general</span></div>
+<div class="stem">26. Select all metabolic and physiologic consequences the chapter attributes to cold stress in the newborn.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hypoglycemia, which can be asymptomatic</li><li class="fopt right"><span class="mk">&#10003;</span>Metabolic acidosis from anaerobic glycolysis</li><li class="fopt right"><span class="mk">&#10003;</span>Hyperbilirubinemia, because excessive fatty acids displace bilirubin from albumin-binding sites</li><li class="fopt right"><span class="mk">&#10003;</span>Decreased oxygen tension, as pulmonary vasoconstriction jeopardizes pulmonary perfusion</li><li class="fopt"><span class="mk">E</span>Polycythemia from hemoconcentration</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's chain runs from norepinephrine-mediated vasoconstriction through increased respiratory rate and oxygen consumption, to pulmonary vasoconstriction with falling oxygen tension and pH and altered surfactant synthesis, to a rising basal metabolic rate with anaerobic glycolysis and metabolic acidosis, then to displaced bilirubin and hypoglycemia. Cold stress can also reopen the right-to-left shunt across the ductus arteriosus.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one wrong option and it is not in the chapter's chain. It pulls because polycythemia is a real newborn problem discussed nearby, in the context of delayed cord clamping, where it is &quot;usually not harmful&quot; though it can raise the risk of hyperbilirubinemia requiring phototherapy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn heat loss and thermoregulation</span><span class="chip t2">general</span></div>
+<div class="stem">27. Two newborns each have a temperature of 38.1°C. The first is flushed, warm to the touch in the hands and feet, and lying in extension. The second is pale, cool in the hands and feet, and appears stressed. What do these pictures suggest?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both indicate environmental overheating</li><li class="fopt right"><span class="mk">&#10003;</span>The first suggests environmental overheating; the second suggests sepsis, in which skin vessels are constricted</li><li class="fopt"><span class="mk">C</span>The first suggests sepsis; the second suggests overbundling</li><li class="fopt"><span class="mk">D</span>Neither is abnormal, since 38.1°C is within the normal newborn range</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A temperature above 37.5°C is abnormally high. In environmental overheating the skin vessels dilate, the skin appears flushed, the hands and feet are warm, and the infant &quot;assumes a posture of extension.&quot; In sepsis the vessels are constricted, the color is pale, the hands and feet are cool, and the infant appears stressed.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because overbundling is the common cause and the easy fix, and it is precisely how a septic newborn gets missed. The peripheral perfusion is the discriminator, not the temperature. Hyperthermia develops faster in a newborn than in an adult because of the larger relative surface area and poorly functioning sweat glands, and it can cause neurologic injury and seizures.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice</span><span class="chip t2">general</span></div>
+<div class="stem">28. A newborn is visibly jaundiced at 14 hours of age. How should this be classified and acted on?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Physiologic jaundice; reassure the parents and reassess in the morning</li><li class="fopt right"><span class="mk">&#10003;</span>Pathologic jaundice, because jaundice appearing within 24 hours of birth indicates a potential pathologic process requiring investigation</li><li class="fopt"><span class="mk">C</span>Breast milk jaundice, which typically appears in the first day</li><li class="fopt"><span class="mk">D</span>Normal, since jaundice occurs in about 60% of term newborns</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The SAFETY ALERT states that &quot;the appearance of jaundice during the first 24 hours of life or persistence beyond the ages previously delineated usually indicates a potential pathologic process that requires investigation.&quot; Physiologic jaundice &quot;appears after 24 hours of age.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) uses a true statistic to reach the wrong conclusion. Physiologic jaundice does occur in approximately 60% of term newborns and usually resolves without treatment, but the timing is what makes it physiologic, and this infant is inside the 24-hour window.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice</span><span class="chip t2">general</span></div>
+<div class="stem">29. A term newborn's total serum bilirubin is 6.5 mg/dL at 60 hours of age, with no jaundice noted before 36 hours. Which classification applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Pathologic, because the level exceeds 6 mg/dL</li><li class="fopt right"><span class="mk">&#10003;</span>Physiologic, since levels progressively increase to an average peak of 5 to 6 mg/dL by 72 to 96 hours and jaundice appeared after 24 hours</li><li class="fopt"><span class="mk">C</span>Pathologic, because visible jaundice is always abnormal</li><li class="fopt"><span class="mk">D</span>Cannot be classified without a direct bilirubin level</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In physiologic jaundice, levels &quot;progressively increase from 2 mg/dL in cord blood to an average peak of 5 to 6 mg/dL by 72 to 96 hours,&quot; plateau near 3 mg/dL by one week, and reach adult levels of 2 mg/dL or less by two weeks. Jaundice becomes visible when the total serum bilirubin exceeds 6 to 7 mg/dL. The pathologic criteria are a rise of more than 0.2 mg/dL per hour, a level above the 95th percentile for age in hours, a direct bilirubin above 1.5 to 2 mg/dL, or jaundice lasting more than 2 weeks.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, answering with the number instead of the timing. A total serum bilirubin means nothing without the infant's age in hours, which is what the 95th-percentile criterion formalizes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice</span><span class="chip t2">general</span></div>
+<div class="stem">30. A nurse notes yellowing of a newborn's sclera and face but not the abdomen or legs. What does this pattern indicate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An atypical distribution suggesting a hemolytic process</li><li class="fopt right"><span class="mk">&#10003;</span>The expected cephalocaudal progression, since jaundice appears first in the head, especially the sclera and mucous membranes</li><li class="fopt"><span class="mk">C</span>Carotenemia rather than jaundice</li><li class="fopt"><span class="mk">D</span>Phototherapy has been effective on the lower body</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Jaundice is &quot;generally noticeable first in the head, especially in the sclera and mucous membranes, and progresses gradually to the thorax, abdomen, and extremities.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats the normal progression as an unusual pattern, and it pulls because &quot;sclera only&quot; sounds like a localized finding rather than the earliest stage of a generalized one. A distractor describing jaundice appearing first on the extremities reverses the direction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice</span><span class="chip t2">general</span></div>
+<div class="stem">31. A mother whose 3-day-old is jaundiced asks whether she should stop breastfeeding and switch to formula. The infant has lost 9% of birth weight and is latching poorly. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Stopping breastfeeding for 48 hours will resolve the jaundice</li><li class="fopt right"><span class="mk">&#10003;</span>Breastfeeding does not cause the jaundice; ineffective breastfeeding contributes to it, so the priority is improving the effectiveness and frequency of feeding</li><li class="fopt"><span class="mk">C</span>Supplementing with water between feedings will help clear the bilirubin</li><li class="fopt"><span class="mk">D</span>This is breast milk jaundice caused by factors in the milk, so temporary interruption is indicated</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Breastfeeding-associated jaundice, also called suboptimal intake or starvation jaundice, occurs &quot;during the first week of life&quot; when the infant is &quot;not feeding effectively,&quot; with less caloric and fluid intake, ongoing weight loss, and possible dehydration. &quot;Breastfeeding does not cause the jaundice; rather lack of effective breastfeeding contributes to the hyperbilirubinemia.&quot; Feeding reduces bilirubin because it &quot;stimulates peristalsis and produces more rapid passage of meconium, thus diminishing the amount of reabsorption of unconjugated bilirubin,&quot; and colostrum is &quot;a natural laxative.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) prescribes the opposite of the treatment, and it is the intuitive answer because the jaundice carries breastfeeding's name. (C) fails on the mechanism: water does not stimulate stooling, which is how feeding lowers bilirubin.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice</span><span class="chip t2">general</span></div>
+<div class="stem">32. A 7-day-old is jaundiced, feeding well, gaining weight appropriately, and has no signs of hemolysis or liver dysfunction. Which condition does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Breastfeeding-associated jaundice, requiring feeding support</li><li class="fopt right"><span class="mk">&#10003;</span>Breast milk jaundice, or late-onset jaundice, typically occurring at 5 to 10 days of age</li><li class="fopt"><span class="mk">C</span>Pathologic jaundice from ABO incompatibility</li><li class="fopt"><span class="mk">D</span>Acute bilirubin encephalopathy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Breast milk jaundice &quot;usually occurs at 5 to 10 days of age. Infants are typically feeding well and gaining weight appropriately,&quot; and it is attributed to &quot;factors in the breast milk (e.g., pregnanediol, fatty acids, and β-glucuronidase) that either inhibit the conjugation of bilirubin or decrease the excretion.&quot; It peaks in the second week and can persist for 3 to 12 weeks, with no signs of hemolysis or liver dysfunction.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, and the discriminator is how the baby is feeding, not what the baby is being fed. Poor feeding with weight loss in the first week is the early-onset form; feeding well and gaining at 5 to 10 days is the late-onset form.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice</span><span class="chip t2">general</span></div>
+<div class="stem">33. Select all factors that the chapter lists as risk factors for severe hyperbilirubinemia.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Preterm birth</li><li class="fopt right"><span class="mk">&#10003;</span>Rh or ABO incompatibility or other known hemolytic disease</li><li class="fopt right"><span class="mk">&#10003;</span>Bruising related to birth trauma</li><li class="fopt right"><span class="mk">&#10003;</span>A previous sibling who received phototherapy</li><li class="fopt"><span class="mk">E</span>Post-term birth beyond 42 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The risk factors listed are preterm birth, breastfeeding especially if exclusive with excessive weight loss, Rh or ABO incompatibility or other hemolytic disease such as G6PD deficiency, polycythemia, Asian or Native American race, bruising related to birth trauma, and a previous sibling who received phototherapy. The chapter adds that &quot;among the factors that increase the risk for hyperbilirubinemia, preterm birth is the most significant.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one wrong option and it inverts the gestational-age direction on the list. Prematurity is the single most significant risk factor, and a post-term infant carries no listed risk on this basis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vitamin K and newborn coagulation</span><span class="chip t2">general</span></div>
+<div class="stem">34. Why does the newborn develop a transient coagulation deficiency, and when does it occur?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Liver immaturity alone, occurring throughout the first month</li><li class="fopt right"><span class="mk">&#10003;</span>The lack of intestinal bacteria needed to synthesize vitamin K, producing a transient deficiency between the second and fifth days of life</li><li class="fopt"><span class="mk">C</span>Consumption of clotting factors during birth, occurring in the first 24 hours</li><li class="fopt"><span class="mk">D</span>Maternal antibody transfer, occurring in the first week</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Coagulation factors, which are synthesized in the liver, are activated by vitamin K. The lack of intestinal bacteria needed to synthesize vitamin K results in transient blood coagulation deficiency between the second and fifth days of life.&quot; Levels of coagulation factors &quot;reach adult levels by 9 months of age.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) breaks the chain at a checkable link. Liver immaturity is real and explains slower drug clearance elsewhere in the chapter, but the coagulation problem is specifically about a sterile gut that cannot yet make the vitamin the liver's factors need to be activated.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vitamin K and newborn coagulation</span><span class="chip t2">general</span></div>
+<div class="stem">35. Which clotting factors are reduced at birth as a consequence of this mechanism?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Factors V, VIII, and XIII, at about 50% of adult levels</li><li class="fopt right"><span class="mk">&#10003;</span>Factors II, VII, IX, and X, at about 50% of adult levels, while factors V, VIII, and XIII resemble adult ranges</li><li class="fopt"><span class="mk">C</span>All clotting factors uniformly, at about 25% of adult levels</li><li class="fopt"><span class="mk">D</span>Only factor VIII, which explains the bleeding risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Levels of vitamin K-dependent clotting factors II, VII, IX, and X at birth are about 50% of adult levels and increase slowly after birth. Levels of factors V, VIII, and XIII at birth resemble adult ranges.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) swaps the two groups, and (D) names the hemophilia factor, which is the one most students recognize and the one this mechanism does not touch. Only the vitamin K-dependent factors are affected, which is why the vitamin is what gets replaced.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">vitamin K and newborn coagulation</span><span class="chip t2">general</span></div>
+<div class="stem">36. What does intramuscular vitamin K given shortly after birth accomplish?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It corrects physiologic anemia of infancy</li><li class="fopt right"><span class="mk">&#10003;</span>It helps prevent vitamin K deficiency bleeding, which can occur suddenly and can be catastrophic</li><li class="fopt"><span class="mk">C</span>It accelerates conjugation of bilirubin in the liver</li><li class="fopt"><span class="mk">D</span>It establishes intestinal flora</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The administration of intramuscular vitamin K shortly after birth helps to prevent vitamin K deficiency bleeding, which can occur suddenly and can be catastrophic.&quot; The dose, route detail, site, and timing of the prophylaxis itself belong to Chapter 24, where the injection is administered.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) confuses the prophylaxis with the underlying problem. Vitamin K is given because the gut flora that would make it are not yet established; giving the vitamin does not establish them, it substitutes for what they would produce.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn reflexes</span><span class="chip t2">general</span></div>
+<div class="stem">37. The nurse holds a newborn in a semisitting position and allows the head and trunk to fall backward about 30 degrees with support. The infant symmetrically abducts and extends both arms, the fingers fan out forming a C between thumb and forefinger, and the arms then adduct in an embracing motion. How should this be documented?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An abnormal startle requiring neurologic evaluation</li><li class="fopt right"><span class="mk">&#10003;</span>A normal Moro reflex</li><li class="fopt"><span class="mk">C</span>A tonic neck reflex</li><li class="fopt"><span class="mk">D</span>A crossed extension reflex</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Moro reflex produces &quot;symmetric abduction and extension of arms; fingers fan out and form a C with thumb and forefinger,&quot; after which the arms are &quot;adducted in embracing motion and return to relaxed flexion. A cry may accompany or follow.&quot; It is present at birth, complete until about 8 weeks, and should be absent by 6 months.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats a normal reflex as pathology. What would be abnormal is an asymmetric response, which &quot;can indicate injury to brachial plexus, clavicle, or humerus,&quot; or persistence past 6 months. A response that is incomplete in an infant in deep sleep is not automatically pathologic, and a preterm infant's arms &quot;fall backward&quot; instead of completing the embrace.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn reflexes</span><span class="chip t2">general</span></div>
+<div class="stem">38. The nurse strokes upward along the lateral aspect of a newborn's sole from the heel, then across the ball of the foot. All the toes hyperextend with dorsiflexion of the great toe. What does this indicate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An abnormal finding suggesting an upper motor neuron lesion, as it would in an adult</li><li class="fopt right"><span class="mk">&#10003;</span>A positive Babinski sign, which is the normal expected response in a newborn</li><li class="fopt"><span class="mk">C</span>A plantar grasp reflex</li><li class="fopt"><span class="mk">D</span>A magnet reflex</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Babinski reflex is elicited exactly as described, and the expected response is that &quot;all toes hyperextend, with dorsiflexion of big toe — recorded as a positive sign.&quot; It &quot;should disappear after 1 year,&quot; and &quot;absence requires neurologic evaluation.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies the adult rule, which is exactly the inversion this reflex is asked about. In the newborn the positive sign is normal and its absence is the concerning finding. Note the contrast with the plantar grasp, in which a finger placed at the base of the toes makes the toes curl downward.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn reflexes</span><span class="chip t2">general</span></div>
+<div class="stem">39. A 10-week-old still shows a complete tonic neck response, with the arm and leg extending on the side the head is turned toward. Which statement applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>This is expected until 3 to 4 years of age</li><li class="fopt right"><span class="mk">&#10003;</span>The complete response disappears by 3 to 4 months, but a persistent response after 6 weeks is a sign of possible cerebral palsy</li><li class="fopt"><span class="mk">C</span>This confirms a brachial plexus injury</li><li class="fopt"><span class="mk">D</span>This is a normal Moro variant</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The tonic neck or fencing reflex is elicited by turning the supine infant's head quickly to one side, and the arm and leg on that side extend while the opposite arm and leg flex. &quot;Complete response disappears by 3–4 months; incomplete response may be seen until 3–4 years. After 6 weeks, persistent response is sign of possible cerebral palsy.&quot; Responses in the leg are more consistent.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) uses one of the reflex's three real numbers against the wrong response type. The 3-to-4-year figure applies to an incomplete response, not a complete one, and the 6-week clause is the clinically significant threshold.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn reflexes</span><span class="chip t2">general</span></div>
+<div class="stem">40. A nurse elicits the stepping reflex in two newborns. One simulates walking on the soles of the feet; the other walks on the toes. What does this difference indicate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The toe-walker has a neurologic abnormality requiring evaluation</li><li class="fopt right"><span class="mk">&#10003;</span>Term infants walk on the soles of their feet, and preterm infants walk on their toes</li><li class="fopt"><span class="mk">C</span>The sole-walker is preterm</li><li class="fopt"><span class="mk">D</span>The difference reflects examiner technique rather than the infant</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The stepping or walking reflex is elicited by holding the infant vertically under the arms or on the trunk and allowing one foot to touch a surface. &quot;Term infants walk on soles of their feet, and preterm infants walk on their toes.&quot; The reflex is normally present for 3 to 4 weeks.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because toe-walking in an older child is a red flag. Here it is a maturity marker, and (C) simply reverses the pairing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn reflexes</span><span class="chip t2">general</span></div>
+<div class="stem">41. A newborn born at 35 weeks of gestation still shows a reflex at an age past its listed disappearance date. Which principle applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The finding is abnormal regardless of gestational age</li><li class="fopt right"><span class="mk">&#10003;</span>All durations for persistence of reflexes are based on time elapsed after 40 weeks of gestation, so time is added for infants born earlier</li><li class="fopt"><span class="mk">C</span>Reflex timelines apply only to term infants and have no equivalent for preterm infants</li><li class="fopt"><span class="mk">D</span>Preterm infants lose reflexes earlier than term infants</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The table's footnote states it directly: &quot;All durations for persistence of reflexes are based on time elapsed after 40 weeks of gestation (i.e., if newborn was born at 36 weeks of gestation, add 1 month to all time limits given).&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because a reflex outlasting its window looks like a deviation, and it is the error the footnote exists to prevent. Note the reflex that does not vary this way: truncal incurvation &quot;should be exhibited in all infants, including preterm,&quot; and its absence &quot;suggests general depression of nervous system.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn elimination and weight loss</span><span class="chip t2">general</span></div>
+<div class="stem">42. A newborn is now 25 hours old and has not voided. What does the chapter direct the nurse to do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Continue to observe, since the first void may normally occur up to 48 hours</li><li class="fopt right"><span class="mk">&#10003;</span>Assess for adequacy of fluid intake, bladder distention, restlessness, and signs of discomfort, and notify the neonatal health care provider</li><li class="fopt"><span class="mk">C</span>Catheterize the infant for a specimen</li><li class="fopt"><span class="mk">D</span>Restrict feeding until the infant voids</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The NURSING ALERT states: &quot;Noting and recording the first voiding are important. An infant who has not voided by 24 hours should be assessed for adequacy of fluid intake, bladder distention, restlessness, and signs of discomfort. The neonatal health care provider should be notified.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) borrows meconium's window and applies it to voiding. Most infants pass meconium within the first 12 to 24 hours and almost all by 48 hours, while the voiding alarm is set at 24 hours. Swapping the two windows is the available error.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn elimination and weight loss</span><span class="chip t2">general</span></div>
+<div class="stem">43. A breastfed newborn is now 5 days old. How many voids per day indicate adequate fluid intake?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Two to three</li><li class="fopt"><span class="mk">B</span>Four to five</li><li class="fopt right"><span class="mk">&#10003;</span>Six to eight voidings per day of pale straw-colored urine</li><li class="fopt"><span class="mk">D</span>Ten to twelve</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Frequency is two to six times per day during the first and second days, and &quot;after day 4, approximately six to eight voidings per day of pale straw-colored urine indicate adequate fluid intake.&quot; Term infants excrete 15 to 60 mL/kg per day, with a specific gravity of 1.008 to 1.012.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the newborn's own earlier pattern rather than the day-5 expectation, and it pulls because the first days' figures are the ones documented most often. The count rises as intake establishes, which is what makes it a feeding-adequacy indicator.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn elimination and weight loss</span><span class="chip t2">general</span></div>
+<div class="stem">44. A newborn's stool on day 3 is greenish brown, thin, less sticky than the previous stools, and contains some milk curds. How should the nurse describe this to the parents?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Diarrhea, which requires evaluation</li><li class="fopt right"><span class="mk">&#10003;</span>A transitional stool, which usually appears by the third day after feeding is initiated</li><li class="fopt"><span class="mk">C</span>Persistent meconium, indicating delayed gut transit</li><li class="fopt"><span class="mk">D</span>A normal breast-milk stool</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Transitional stools &quot;usually appear by third day after initiation of feeding&quot; and are &quot;greenish brown to yellowish brown; thin and less sticky than meconium; can contain some milk curds.&quot; Meconium is &quot;dark, olive green in color; viscous and sticky (like tar), almost odorless.&quot; Breast-milk stools appear by the fourth day and are &quot;yellow to golden, pasty,&quot; resembling &quot;a mixture of mustard and cottage cheese.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the specific misreading the chapter warns against: &quot;Care must be taken to avoid misinterpreting transitional stools for diarrhea.&quot; Thin and greenish is exactly what a transitional stool looks like, and it is the expected middle stage.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn elimination and weight loss</span><span class="chip t2">general</span></div>
+<div class="stem">45. A term newborn weighed 3400 g at birth. On day 4 the weight is 3145 g. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Excessive weight loss requiring formula supplementation</li><li class="fopt right"><span class="mk">&#10003;</span>A normal loss of about 7.5%, within the expected 5% to 10% over the first 3 to 5 days, with birth weight regained within 10 to 14 days</li><li class="fopt"><span class="mk">C</span>Failure to thrive</li><li class="fopt"><span class="mk">D</span>Normal, but the birth weight should be regained by day 7</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Loss of fluid through urine, feces, lungs, increased metabolic rate, and limited fluid intake can result in a 5% to 10% loss of the birth weight over the first 3 to 5 days,&quot; primarily &quot;extracellular water loss.&quot; The neonate &quot;should regain the birth weight within 10 to 14 days.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats a normal transitional loss as a feeding failure, which is the error that leads to unnecessary supplementation. Weight loss becomes clinically meaningful when it is excessive, which is the link the chapter draws to breastfeeding-associated jaundice. (D) shortens the regain deadline by a week.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"newborn transition and behavioral states","subtopic":"the three periods of transition","stem":"A newborn 20 minutes old has a heart rate of 172, respirations of 74, audible fine crackles, and intermittent grunting. The infant is alert with spontaneous tremors. How should the nurse interpret these findings?","options":["These are signs of respiratory distress syndrome requiring immediate escalation","These are expected findings of the first period of reactivity, though grunting should cease within the first hour","These indicate transient tachypnea of the newborn and warrant a chest radiograph","These indicate the period of decreased responsiveness"],"correct":[1],"sata":false,"why":"The first period of reactivity \"lasts up to 30 minutes after birth.\" Heart rate rises rapidly to 160 to 180 beats/min before falling toward 100 to 120, respirations are irregular at 60 to 80 breaths/min, fine crackles can be heard, and \"audible grunting, nasal flaring, and retractions can be present\" but \"these should cease within the first hour after birth.\" The infant is alert with spontaneous startles, tremors, and crying.","trap":"(A) is the reflex pick because grunting and flaring are genuine distress signs at any other moment. What makes them expected here is the clock, not the signs. The same picture at 3 hours of age is a problem.","k":"1wick2vtxh1ll"},{"topic":"newborn transition and behavioral states","subtopic":"the three periods of transition","stem":"Ninety minutes after birth a newborn is sleeping, has markedly decreased motor activity, is pink, and has rapid but shallow and unlabored respirations. Which period does this describe?","options":["The first period of reactivity","The period of decreased responsiveness, which lasts 60 to 100 minutes","The second period of reactivity","An abnormal depression of consciousness requiring stimulation"],"correct":[1],"sata":false,"why":"\"After the first period of reactivity, the newborn either sleeps or has a marked decrease in motor activity. This period of decreased responsiveness lasts 60 to 100 minutes.\" The infant is pink, with respirations rapid up to 60 breaths/min, shallow but unlabored, and bowel sounds audible.","trap":"(D) is the reflex pick for a nurse who expects a newborn to be increasingly alert as it recovers from birth. This sleep period is a normal stage of transition, and rousing the infant to feed during it is a common misreading of it.","k":"1vaprys1n0xf1e"},{"topic":"newborn transition and behavioral states","subtopic":"the three periods of transition","stem":"At 4 hours of age a newborn has brief episodes of tachycardia and tachypnea with increased muscle tone, color changes, and increased mucus production, and passes meconium. Which period is this, and what is the nursing priority?","options":["The first period of reactivity; prepare for the first feeding","The second period of reactivity, occurring between 2 and 8 hours after birth; observe for the increased mucus, which is expected in this period","An abnormal cardiorespiratory event requiring notification","The period of decreased responsiveness ending"],"correct":[1],"sata":false,"why":"\"The second period of reactivity occurs approximately between 2 and 8 hours after birth and lasts from 10 minutes to several hours. Brief periods of tachycardia and tachypnea occur, associated with increased muscle tone, changes in skin color, and mucus production. Meconium is commonly passed at this time.\"","trap":"(C) pulls because tachycardia, tachypnea, and color change are the vocabulary of deterioration everywhere else. The whole reason the chapter names these three periods is so a normal transitional event is not treated as a new problem.","k":"1s6382m4yei3k"},{"topic":"newborn transition and behavioral states","subtopic":"the three periods of transition","stem":"Which statement about the transition to extrauterine life is accurate?","options":["The major adaptations occur during the first 24 hours and are mediated by the parasympathetic nervous system","The major adaptations occur during the first 6 to 8 hours, are mediated by the sympathetic nervous system, and most healthy newborns experience them regardless of gestational age or type of birth","Only newborns delivered vaginally experience the transition periods","Very preterm infants experience an accelerated version of the transition"],"correct":[1],"sata":false,"why":"\"The major adaptations associated with transition from intrauterine to extrauterine life occur during the first 6 to 8 hours after birth,\" are \"mediated by the sympathetic nervous system,\" and involve heart rate, respirations, temperature, and gastrointestinal function. \"Most healthy newborns experience this transition, regardless of gestational age or type of birth; very preterm infants do not because of physiologic immaturity.\"","trap":"(D) inverts the one stated exception. Very preterm infants do not show the transition periods at all, because of physiologic immaturity, rather than showing them faster.","k":"1yovz131izuogh"},{"topic":"newborn transition and behavioral states","subtopic":"sleep-wake states","stem":"A nurse wants to teach new parents how to engage with their newborn. Which of the six sleep-wake states is the optimal one for this?","options":["Light sleep, because the infant is easily roused","Drowsy, because the infant is transitioning toward alertness","Quiet alert, in which infants smile, vocalize, move in synchrony with speech, and watch their parents' faces","Active alert, because motor activity indicates readiness to interact"],"correct":[2],"sata":false,"why":"The six states form a continuum from deep sleep to extreme irritability: two sleep states, deep and light, and four wake states, drowsy, quiet alert, active alert, and crying. \"The optimal state of arousal is the quiet alert state. During this state, infants smile, vocalize, move in synchrony with speech, watch their parents' faces, and respond to people talking to them.\"","trap":"(D) is the reflex pick because active alert sounds like the most engaged of the wake states, and its motor activity reads as responsiveness. The alertness that supports interaction is the quiet kind. The ability to make smooth transitions between states is called state modulation.","k":"1hwxanu1snwhbc"},{"topic":"newborn transition and behavioral states","subtopic":"sleep-wake states","stem":"A newborn breaks eye contact by turning the head away and begins to fuss during a prolonged interaction with a visitor. Which interpretation is correct?","options":["These are signs of neurologic immaturity and should be reported","These are purposeful behaviors the infant uses to control arousal, alongside withdrawing, pushing away, and falling asleep","These indicate hunger","These are engagement cues indicating readiness for more stimulation"],"correct":[1],"sata":false,"why":"The chapter names four purposeful behaviors infants use to maintain arousal: \"actively withdrawing by increasing physical distance,\" \"rejecting by pushing away with hands and feet,\" \"decreasing sensitivity by falling asleep or breaking eye contact by turning the head,\" and \"signaling behaviors such as fussing and crying.\" Distress or disengagement cues include facial grimace, splaying of fingers, gaze aversion, staring, regurgitation, and jitteriness.","trap":"(D) reads the cue backwards, and it is the intuitive error because a caregiver enjoying the interaction wants to continue it. Engagement cues are alertness, eye-to-eye contact, facial gaze, smiling, vocalization, smooth movements, and flexion of the arms and legs.","k":"1qein6o8a2xba"},{"topic":"newborn respiratory adaptation","subtopic":"general","stem":"A student asks what triggers the newborn's first breath. Which response is accurate?","options":["The thoracic squeeze during vaginal birth is the single trigger","There is no single trigger; breathing results from a combination of chemical, mechanical, thermal, and sensory factors","Clamping the cord is the sole trigger, by raising carbon dioxide levels","Cold exposure alone stimulates the medullary respiratory center"],"correct":[1],"sata":false,"why":"\"There is no single trigger for newborn respiratory function. The initiation of respirations in the neonate is the result of a combination of chemical, mechanical, thermal, and sensory factors.\" Chemical factors include chemoreceptor activation from the relative hypoxia of labor, producing declining oxygen tension, rising carbon dioxide, and lowered pH that stimulate the medullary respiratory center. Clamping the cord also drops levels of a prostaglandin that can inhibit respirations, and raises blood pressure, which increases circulation and lung perfusion.","trap":"(A) and (D) each promote one real contributor to sole cause, and (A) additionally uses a mechanism the chapter has demoted. Any answer naming one trigger is wrong on the chapter's own framing.","k":"1ybj3v51ys86df"},{"topic":"newborn respiratory adaptation","subtopic":"general","stem":"An infant is born by scheduled cesarean birth before labor began. Which respiratory consideration applies?","options":["The absence of labor eliminates the risk of retained lung fluid","Lung fluid clearance depends mainly on the thoracic squeeze, so this infant will have significant retained fluid","Infants born by cesarean without labor can retain lung fluid and are more likely to develop transient tachypnea of the newborn","The infant will require surfactant administration"],"correct":[2],"sata":false,"why":"\"Infants born by cesarean birth in which labor did not occur before birth can experience some lung fluid retention ... These infants are also more likely to develop transient tachypnea of the newborn (TTN).\" Clearance depends on reduced fluid production in the days before labor and a catecholamine surge that promotes clearance during labor, with movement \"through active transport into the interstitium.\"","trap":"(B) uses the retired explanation. Traditionally the thoracic squeeze was credited with significant clearance, but \"it appears that this event plays a minor role.\" The reason cesarean without labor matters is the missing catecholamine surge, not the missing squeeze.","k":"1ugrkcp1isemhf"},{"topic":"newborn respiratory adaptation","subtopic":"general","stem":"Which description of surfactant's function is accurate?","options":["It raises surface tension so the alveoli recoil more completely on exhalation","It lowers surface tension, reducing the pressure required to keep alveoli open with inspiration and preventing total alveolar collapse on exhalation","It clears fluid from the alveoli by active transport","It is manufactured in the type I lung cells during the first hours after birth"],"correct":[1],"sata":false,"why":"Surfactant is \"a lipoprotein manufactured in type II lung cells.\" It \"lowers surface tension, therefore reducing the pressure required to keep the alveoli open with inspiration, and prevents total alveolar collapse on exhalation, thereby maintaining alveolar stability,\" producing increased lung compliance and helping establish functional residual capacity. Without it, \"more pressure must be generated for inspiration, which can soon tire or exhaust preterm or sick term infants.\"","trap":"(A) inverts the direction, and it is the intuitive inversion because higher tension sounds like it would help a lung empty. Lowering tension is what keeps the alveolus from collapsing shut and needing to be reinflated from nothing with each breath.","k":"p3mo8z2t3m59"},{"topic":"newborn respiratory adaptation","subtopic":"general","stem":"A sleeping newborn has a respiratory pause of 14 seconds, then resumes breathing. How should the nurse document this?","options":["Apnea, which requires evaluation","Periodic breathing, which is normal and occurs most often during active rapid eye movement sleep","An apparent life-threatening event","Bradypnea, which requires stimulation"],"correct":[1],"sata":false,"why":"Newborn breaths are \"shallow and irregular, ranging from 30 to 60 breaths/min, with periods of breathing that include pauses in respirations lasting less than 20 seconds,\" occurring \"most often during the active (rapid eye movement [REM]) sleep cycle.\" However, \"apneic periods longer than 20 seconds are abnormal and should be evaluated.\"","trap":"(A) is the reflex pick for anyone who treats any pause as apnea. The line is 20 seconds, and this pause falls below it. A distractor that calls a 15-second pause pathologic and one that dismisses a 25-second pause both fail on the same threshold.","k":"1ozn1218mf4xb"},{"topic":"newborn respiratory adaptation","subtopic":"general","stem":"A 1-week-old has significant nasal congestion. Why is this a greater concern in a newborn than in an older infant?","options":["Newborns have smaller nasal passages that occlude with minimal secretions","Newborns are by preference nose breathers, and the reflex to open the mouth when the nose is obstructed is not present in most infants until 3 weeks after birth, so cyanosis or asphyxia can occur","Newborns cannot cough effectively to clear secretions","Nasal congestion in newborns always indicates infection"],"correct":[1],"sata":false,"why":"\"Newborn infants are by preference nose breathers, which enhances the ability to coordinate sucking, swallowing, and breathing. The reflex response to nasal obstruction is to open the mouth to maintain an airway. This response is not present in most infants until 3 weeks after birth; therefore cyanosis or asphyxia can occur with nasal blockage.\"","trap":"(A) is anatomically plausible and is not the chapter's reason. The danger is the missing rescue reflex, which makes nasal obstruction an airway problem rather than a comfort problem. Note separately that a sneeze \"is usually a response to mucus in the nose and not an indicator of upper respiratory infection.\"","k":"1cf8zv4efhpau"},{"topic":"signs of newborn respiratory distress","subtopic":"general","stem":"A newborn 6 hours old has bluish hands and feet. The trunk, lips, and mucous membranes are pink. How should the nurse document and act on this?","options":["Central cyanosis; administer oxygen and notify the provider","Acrocyanosis, a normal finding in the first 24 hours after birth","Mottling secondary to cold stress; place under a radiant warmer immediately","Peripheral vasoconstriction indicating sepsis"],"correct":[1],"sata":false,"why":"\"Acrocyanosis, the bluish discoloration of hands and feet, is a normal finding in the first 24 hours after birth.\" Normally the newborn's color changes from blue to pink within the first 3 to 5 minutes after birth.","trap":"(A) is the single most swapped newborn finding. What makes cyanosis significant is its location: hands and feet is peripheral and expected early, while lips and mucous membranes is central.","k":"11nzorltd6mpr"},{"topic":"signs of newborn respiratory distress","subtopic":"general","stem":"A different newborn has bluish lips and oral mucous membranes. How should the nurse interpret this?","options":["Acrocyanosis, expected in the first 24 hours","Central cyanosis, which is abnormal and signifies hypoxemia","A normal variant if the infant is crying","Circumoral pallor secondary to vasoconstriction"],"correct":[1],"sata":false,"why":"\"Central cyanosis is abnormal and signifies hypoxemia. With central cyanosis, the lips and mucous membranes are bluish (circumoral cyanosis).\"","trap":"(A) is the mirror error of the previous item. There is a second reasoning trap embedded here: \"Because central cyanosis is a late sign of distress, newborns usually have significant hypoxemia when cyanosis appears,\" so its absence does not establish adequate oxygenation.","k":"pmrocacqzbug"},{"topic":"signs of newborn respiratory distress","subtopic":"general","stem":"A newborn 90 minutes old has a respiratory rate of 92, intermittent grunting, nasal flaring, and mild retractions. Which condition does this most likely represent?","options":["Mild transient tachypnea of the newborn, which usually resolves in 48 to 72 hours","Respiratory distress syndrome requiring surfactant","A pneumothorax","Congenital heart disease"],"correct":[0],"sata":false,"why":"Mild transient tachypnea presents \"during the first 1 to 2 hours after birth\" with tachypnea \"up to 100 breaths/min\" and \"intermittent grunting, nasal flaring, and mild retractions,\" usually resolving in 48 to 72 hours. More serious problems \"tend to last beyond the first 2 hours after birth,\" with rates that \"can exceed 120 breaths/min\" and \"moderate to severe retractions, grunting, pallor, and central cyanosis.\"","trap":"(B) is the reflex pick because tachypnea with grunting is the classic distress picture. Three things separate this from serious disease: the rate stays under 100, the timing is within the first 2 hours, and the retractions are mild.","k":"b7fs451cycpq7"},{"topic":"signs of newborn respiratory distress","subtopic":"general","stem":"The nurse observes that a newborn's abdomen rises exaggeratedly with inspiration while the chest falls. How should this be interpreted?","options":["Normal abdominal breathing, which is characteristic of newborns","Seesaw or paradoxic respirations, which are abnormal and should be reported","Normal for the first few hours only","Evidence of an upper airway obstruction"],"correct":[1],"sata":false,"why":"Abdominal breathing is normal in newborns because respiratory function is largely diaphragmatic, and \"the chest and abdomen of the newborn rise simultaneously with inspiration.\" By contrast, \"seesaw or paradoxic respirations (exaggerated rise in abdomen with respiration as the chest falls) instead of abdominal respirations are abnormal and should be reported.\"","trap":"(A) is the reflex pick because abdominal breathing genuinely is normal, and one word separates the two findings. Simultaneous rise is normal; the chest falling as the abdomen rises is not.","k":"1lhadpz10grys1"},{"topic":"signs of newborn respiratory distress","subtopic":"general","stem":"Select all findings that the chapter identifies as requiring evaluation in a newborn.","options":["A respiratory rate of 26 with the infant at rest","A respiratory rate of 72 with the infant at rest","Suprasternal retractions with stridor","Fine rales heard in the first few hours after birth","Intercostal and subcostal retractions"],"correct":[0,1,2,4],"sata":true,"why":"A rate \"less than 30 or greater than 60 breaths/min with the infant at rest must be evaluated.\" Distress signs include intercostal or subcostal retractions, nasal flaring, and grunting, while \"suprasternal or subclavicular retractions with stridor or gasping most often represent an upper airway obstruction.\"","trap":"(D) is the one wrong option, because \"fine rales for the first few hours are not unusual,\" and crackles are explicitly listed among the first period of reactivity's normal findings. Note the qualifier attached to the rate rule: it applies at rest, so a crying newborn breathing above 60 is not the situation the rule addresses.","k":"j74fy41j3jh8u"},{"topic":"newborn cardiovascular adaptation and vital signs","subtopic":"general","stem":"What causes functional closure of the foramen ovale after birth?","options":["Rising pulmonary vascular resistance raises right atrial pressure","Falling pulmonary vascular resistance lowers right atrial pressure while increased pulmonary blood flow raises left atrial pressure","The rise in arterial oxygen tension to about 50 mm Hg","Clamping the umbilical vein"],"correct":[1],"sata":false,"why":"The first breaths reduce pulmonary vascular resistance, so \"pressure in the right atrium declines. Increased pulmonary blood flow from the left side of the heart increases pressure in the left atrium, which causes a functional closure of the foramen ovale.\" The chapter adds a caveat worth holding: \"During the first few days of life, crying can temporarily reverse the flow through the foramen ovale and lead to mild cyanosis.\"","trap":"(C) is the mechanism for the other shunt. In utero fetal oxygen tension is 20 to 30 mm Hg; after birth, when arterial oxygen tension approximates 50 mm Hg, \"the ductus arteriosus constricts in response to increased oxygenation,\" closing functionally within the first 24 hours and anatomically within 2 to 3 months.","k":"1hknrcliwj1wb"},{"topic":"newborn cardiovascular adaptation and vital signs","subtopic":"general","stem":"A term newborn in deep sleep has an apical heart rate of 92. What is the nurse's interpretation?","options":["Bradycardia requiring immediate notification","Within the expected range for deep sleep, which is approximately 80 to 100 beats/min","Bradycardia suggesting congenital heart block","An artifact of counting for less than one full minute"],"correct":[1],"sata":false,"why":"The term newborn's heart rate is 120 to 160 beats/min, dropping to approximately 80 to 100 in deep sleep and rising to 180 or higher with crying. A rate over 160 or under 100 \"should be reevaluated within 30 minutes to 1 hour or when the activity of the infant changes.\" Persistent bradycardia is defined lower, at \"less than 80 beats/min,\" and can signal congenital heart block or hypoxemia.","trap":"(A) applies the awake range to a sleeping infant, and it is the most available error because 92 falls below the number most students memorized. The activity state changes the expected range, and even a rate under 100 prompts reevaluation within 30 minutes to an hour rather than immediate escalation.","k":"67b15hzjenu7"},{"topic":"newborn cardiovascular adaptation and vital signs","subtopic":"general","stem":"A newborn's systolic blood pressure at 1 hour of age is about 15 mm Hg lower than the value recorded at birth. What does this represent?","options":["Hypovolemia requiring a fluid bolus","A common expected drop in the first hour of life, after which blood pressure increases predictably over the first 5 days","Evidence of a patent ductus arteriosus","An error in cuff size"],"correct":[1],"sata":false,"why":"\"A drop in systolic BP (approximately 15 mm Hg) in the first hour of life is common,\" and blood pressure then \"increases predictably over the first 5 days of life and then levels off.\" The bedside shortcut the chapter gives is that \"the mean arterial pressure (MAP) should be nearly equivalent to the weeks of gestation,\" so a 40-week infant should have a mean arterial pressure of at least 40 mm Hg.","trap":"(A) treats a normal early dip as shock. Blood pressure at birth runs 75 to 95 systolic, falls to 50 to 70 by 12 hours, and rises to 60 to 90 by 96 hours, so comparing a 12-hour value against the birth value produces a false alarm.","k":"1kabmrc1qx7a6q"},{"topic":"newborn cardiovascular adaptation and vital signs","subtopic":"general","stem":"A soft systolic murmur is heard in a newborn who is feeding well, is pink, and has normal vital signs. Which statement is accurate?","options":["Most murmurs in the neonatal period have no pathologic significance, and more than half disappear by 6 months of age","Any murmur in a newborn indicates a structural defect","The absence of accompanying symptoms rules out a cardiac defect","Murmurs in newborns always resolve by 6 months"],"correct":[0],"sata":false,"why":"\"Most heart murmurs heard during the neonatal period have no pathologic significance, and more than one-half of the murmurs disappear by 6 months of age.\" A murmur \"and accompanying signs such as poor feeding, apnea, cyanosis, or pallor is considered abnormal.\"","trap":"(C) is the reassuring conclusion the chapter explicitly blocks: \"There can be significant cardiac defects without a murmur or other symptoms.\" Neither the presence nor the absence of a murmur settles a cardiac question, which is what makes both directions testable.","k":"1ynb2bteu17ib"},{"topic":"newborn cardiovascular adaptation and vital signs","subtopic":"general","stem":"A nursing student reports hearing a third heart sound in a term newborn. Which response is correct?","options":["A third heart sound is a normal finding in newborns","The third and fourth heart sounds are not audible in newborns, so this finding should be re-evaluated","A third heart sound is normal only during the first hour of life","A third heart sound confirms a patent ductus arteriosus"],"correct":[1],"sata":false,"why":"Newborn heart sounds are \"of higher pitch, shorter duration, and greater intensity than during adult life. The first sound is typically louder and duller than the second sound, which is sharp. The third and fourth heart sounds are not audible in newborns.\"","trap":"(A) is the trap for a student carrying a rule across chapters. A third heart sound in the pregnant woman after midpregnancy is a normal finding described elsewhere in this text; the same sound is not audible in her newborn. The apical impulse in the newborn is found at the fourth intercostal space left of the midclavicular line and is often visible and easily palpable through the thin chest wall.","k":"1u11xx2nkqjyg"},{"topic":"newborn heat loss and thermoregulation","subtopic":"general","stem":"A newborn is placed on a cold, uncovered scale for weighing. Which mode of heat loss does this represent?","options":["Convection","Radiation","Conduction","Evaporation"],"correct":[2],"sata":false,"why":"Conduction is \"the loss of heat from the body surface to cooler surfaces in direct contact.\" The intervention the chapter derives from it is that \"the scales used for weighing the newborn should have a protective cover,\" and that the newborn is placed on \"a prewarmed bed\" under a radiant warmer.","trap":"(B) is the classic swap. Radiation is \"the loss of heat from the body surface to a cooler solid surface not in direct contact but in relative proximity.\" The cue that separates them is touch: direct contact is conduction, proximity without contact is radiation.","k":"a0xrpx64czbb"},{"topic":"newborn heat loss and thermoregulation","subtopic":"general","stem":"A newborn's bassinet is positioned next to an exterior window on a cold night. Which mode of heat loss is the primary concern, and what is the intervention?","options":["Conduction; place a warm blanket under the infant","Radiation; move bassinets and examining tables away from outside windows","Convection; raise the room humidity","Evaporation; dry the infant thoroughly"],"correct":[1],"sata":false,"why":"Radiation is heat lost to a cooler solid surface \"not in direct contact but in relative proximity,\" which is why \"bassinets and examining tables are placed away from outside windows, and care is taken to avoid direct air drafts.\" Convection, the flow of heat to cooler ambient air, is addressed by keeping newborn care areas between 22°C and 26°C with humidity between 30% and 60%, wrapping infants, and using a cap.","trap":"(A) is the mirror error of the previous item. The infant is not touching the window, so proximity rather than contact is doing the work.","k":"1n2lgos14ttb5u"},{"topic":"newborn heat loss and thermoregulation","subtopic":"general","stem":"Which mode of heat loss does the chapter identify as the most significant cause of heat loss in the first few days of life, and what is the corresponding first intervention after birth?","options":["Convection; place a cap on the head","Radiation; move the bassinet from the window","Evaporation; dry the newborn thoroughly and completely","Conduction; use a prewarmed bed"],"correct":[2],"sata":false,"why":"Evaporation is \"the loss of heat that occurs when a liquid is converted to a vapor. In the newborn, heat loss by evaporation occurs as a result of moisture vaporization from the skin,\" intensified \"by failing to completely dry the newborn after birth or with bathing.\" It is \"the most significant cause of heat loss in the first few days of life.\"","trap":"(A) and (D) are both real interventions and neither addresses the largest early loss. On a priority stem about the newly born infant, the answer is dry and cover, with the radiant warmer offered as the less optimal alternative to skin-to-skin contact, which reduces conductive and radiant loss while supporting maternal-infant interaction.","k":"kcp4g78pmjx9"},{"topic":"newborn heat loss and thermoregulation","subtopic":"general","stem":"A cold-stressed newborn does not shiver. Which mechanism generates heat instead, and what triggers it?","options":["Shivering thermogenesis, triggered by a core temperature below 36.5°C","Nonshivering thermogenesis by brown fat metabolism, triggered when skin temperature falls below 35°C to 36°C","Increased thyroid hormone release, triggered by cord clamping","Glycogenolysis in skeletal muscle, triggered by hypoglycemia"],"correct":[1],"sata":false,"why":"\"The shivering mechanism of heat production is rarely operable in the newborn unless there is prolonged cold exposure.\" Newborns produce heat through nonshivering thermogenesis, \"triggered when the skin temperature decreases to less than 35°C to 36°C (95°F to 96.8°F). This is accomplished primarily by metabolism of brown fat, which is unique to the newborn,\" and secondarily by increased metabolic activity in the brain, heart, and liver. Brown fat sits in superficial deposits in the interscapular region and axillae and deep deposits at the thoracic inlet, along the vertebral column, and around the kidneys.","trap":"(A) applies the adult mechanism, and it pulls because shivering is what every other patient does. Note also that brown fat reserves are finite: present for several weeks, \"rapidly depleted with cold stress,\" and greater in a term newborn than in a preterm one.","k":"d21c2i145jicc"},{"topic":"newborn heat loss and thermoregulation","subtopic":"general","stem":"Select all metabolic and physiologic consequences the chapter attributes to cold stress in the newborn.","options":["Hypoglycemia, which can be asymptomatic","Metabolic acidosis from anaerobic glycolysis","Hyperbilirubinemia, because excessive fatty acids displace bilirubin from albumin-binding sites","Decreased oxygen tension, as pulmonary vasoconstriction jeopardizes pulmonary perfusion","Polycythemia from hemoconcentration"],"correct":[0,1,2,3],"sata":true,"why":"The chapter's chain runs from norepinephrine-mediated vasoconstriction through increased respiratory rate and oxygen consumption, to pulmonary vasoconstriction with falling oxygen tension and pH and altered surfactant synthesis, to a rising basal metabolic rate with anaerobic glycolysis and metabolic acidosis, then to displaced bilirubin and hypoglycemia. Cold stress can also reopen the right-to-left shunt across the ductus arteriosus.","trap":"(E) is the one wrong option and it is not in the chapter's chain. It pulls because polycythemia is a real newborn problem discussed nearby, in the context of delayed cord clamping, where it is \"usually not harmful\" though it can raise the risk of hyperbilirubinemia requiring phototherapy.","k":"wa3zle11z6u8c"},{"topic":"newborn heat loss and thermoregulation","subtopic":"general","stem":"Two newborns each have a temperature of 38.1°C. The first is flushed, warm to the touch in the hands and feet, and lying in extension. The second is pale, cool in the hands and feet, and appears stressed. What do these pictures suggest?","options":["Both indicate environmental overheating","The first suggests environmental overheating; the second suggests sepsis, in which skin vessels are constricted","The first suggests sepsis; the second suggests overbundling","Neither is abnormal, since 38.1°C is within the normal newborn range"],"correct":[1],"sata":false,"why":"A temperature above 37.5°C is abnormally high. In environmental overheating the skin vessels dilate, the skin appears flushed, the hands and feet are warm, and the infant \"assumes a posture of extension.\" In sepsis the vessels are constricted, the color is pale, the hands and feet are cool, and the infant appears stressed.","trap":"(A) is the reflex pick because overbundling is the common cause and the easy fix, and it is precisely how a septic newborn gets missed. The peripheral perfusion is the discriminator, not the temperature. Hyperthermia develops faster in a newborn than in an adult because of the larger relative surface area and poorly functioning sweat glands, and it can cause neurologic injury and seizures.","k":"12dna8g1a35rcq"},{"topic":"newborn jaundice","subtopic":"general","stem":"A newborn is visibly jaundiced at 14 hours of age. How should this be classified and acted on?","options":["Physiologic jaundice; reassure the parents and reassess in the morning","Pathologic jaundice, because jaundice appearing within 24 hours of birth indicates a potential pathologic process requiring investigation","Breast milk jaundice, which typically appears in the first day","Normal, since jaundice occurs in about 60% of term newborns"],"correct":[1],"sata":false,"why":"The SAFETY ALERT states that \"the appearance of jaundice during the first 24 hours of life or persistence beyond the ages previously delineated usually indicates a potential pathologic process that requires investigation.\" Physiologic jaundice \"appears after 24 hours of age.\"","trap":"(D) uses a true statistic to reach the wrong conclusion. Physiologic jaundice does occur in approximately 60% of term newborns and usually resolves without treatment, but the timing is what makes it physiologic, and this infant is inside the 24-hour window.","k":"wvpoyl27poef"},{"topic":"newborn jaundice","subtopic":"general","stem":"A term newborn's total serum bilirubin is 6.5 mg/dL at 60 hours of age, with no jaundice noted before 36 hours. Which classification applies?","options":["Pathologic, because the level exceeds 6 mg/dL","Physiologic, since levels progressively increase to an average peak of 5 to 6 mg/dL by 72 to 96 hours and jaundice appeared after 24 hours","Pathologic, because visible jaundice is always abnormal","Cannot be classified without a direct bilirubin level"],"correct":[1],"sata":false,"why":"In physiologic jaundice, levels \"progressively increase from 2 mg/dL in cord blood to an average peak of 5 to 6 mg/dL by 72 to 96 hours,\" plateau near 3 mg/dL by one week, and reach adult levels of 2 mg/dL or less by two weeks. Jaundice becomes visible when the total serum bilirubin exceeds 6 to 7 mg/dL. The pathologic criteria are a rise of more than 0.2 mg/dL per hour, a level above the 95th percentile for age in hours, a direct bilirubin above 1.5 to 2 mg/dL, or jaundice lasting more than 2 weeks.","trap":"(A) is the mirror error of the previous item, answering with the number instead of the timing. A total serum bilirubin means nothing without the infant's age in hours, which is what the 95th-percentile criterion formalizes.","k":"nwm0g51ctw0g7"},{"topic":"newborn jaundice","subtopic":"general","stem":"A nurse notes yellowing of a newborn's sclera and face but not the abdomen or legs. What does this pattern indicate?","options":["An atypical distribution suggesting a hemolytic process","The expected cephalocaudal progression, since jaundice appears first in the head, especially the sclera and mucous membranes","Carotenemia rather than jaundice","Phototherapy has been effective on the lower body"],"correct":[1],"sata":false,"why":"Jaundice is \"generally noticeable first in the head, especially in the sclera and mucous membranes, and progresses gradually to the thorax, abdomen, and extremities.\"","trap":"(A) treats the normal progression as an unusual pattern, and it pulls because \"sclera only\" sounds like a localized finding rather than the earliest stage of a generalized one. A distractor describing jaundice appearing first on the extremities reverses the direction.","k":"1esruntxqe7pr"},{"topic":"newborn jaundice","subtopic":"general","stem":"A mother whose 3-day-old is jaundiced asks whether she should stop breastfeeding and switch to formula. The infant has lost 9% of birth weight and is latching poorly. Which response is correct?","options":["Stopping breastfeeding for 48 hours will resolve the jaundice","Breastfeeding does not cause the jaundice; ineffective breastfeeding contributes to it, so the priority is improving the effectiveness and frequency of feeding","Supplementing with water between feedings will help clear the bilirubin","This is breast milk jaundice caused by factors in the milk, so temporary interruption is indicated"],"correct":[1],"sata":false,"why":"Breastfeeding-associated jaundice, also called suboptimal intake or starvation jaundice, occurs \"during the first week of life\" when the infant is \"not feeding effectively,\" with less caloric and fluid intake, ongoing weight loss, and possible dehydration. \"Breastfeeding does not cause the jaundice; rather lack of effective breastfeeding contributes to the hyperbilirubinemia.\" Feeding reduces bilirubin because it \"stimulates peristalsis and produces more rapid passage of meconium, thus diminishing the amount of reabsorption of unconjugated bilirubin,\" and colostrum is \"a natural laxative.\"","trap":"(A) prescribes the opposite of the treatment, and it is the intuitive answer because the jaundice carries breastfeeding's name. (C) fails on the mechanism: water does not stimulate stooling, which is how feeding lowers bilirubin.","k":"1vsr7qhmp9c2j"},{"topic":"newborn jaundice","subtopic":"general","stem":"A 7-day-old is jaundiced, feeding well, gaining weight appropriately, and has no signs of hemolysis or liver dysfunction. Which condition does this describe?","options":["Breastfeeding-associated jaundice, requiring feeding support","Breast milk jaundice, or late-onset jaundice, typically occurring at 5 to 10 days of age","Pathologic jaundice from ABO incompatibility","Acute bilirubin encephalopathy"],"correct":[1],"sata":false,"why":"Breast milk jaundice \"usually occurs at 5 to 10 days of age. Infants are typically feeding well and gaining weight appropriately,\" and it is attributed to \"factors in the breast milk (e.g., pregnanediol, fatty acids, and β-glucuronidase) that either inhibit the conjugation of bilirubin or decrease the excretion.\" It peaks in the second week and can persist for 3 to 12 weeks, with no signs of hemolysis or liver dysfunction.","trap":"(A) is the mirror error of the previous item, and the discriminator is how the baby is feeding, not what the baby is being fed. Poor feeding with weight loss in the first week is the early-onset form; feeding well and gaining at 5 to 10 days is the late-onset form.","k":"13s5u4z331555"},{"topic":"newborn jaundice","subtopic":"general","stem":"Select all factors that the chapter lists as risk factors for severe hyperbilirubinemia.","options":["Preterm birth","Rh or ABO incompatibility or other known hemolytic disease","Bruising related to birth trauma","A previous sibling who received phototherapy","Post-term birth beyond 42 weeks"],"correct":[0,1,2,3],"sata":true,"why":"The risk factors listed are preterm birth, breastfeeding especially if exclusive with excessive weight loss, Rh or ABO incompatibility or other hemolytic disease such as G6PD deficiency, polycythemia, Asian or Native American race, bruising related to birth trauma, and a previous sibling who received phototherapy. The chapter adds that \"among the factors that increase the risk for hyperbilirubinemia, preterm birth is the most significant.\"","trap":"(E) is the one wrong option and it inverts the gestational-age direction on the list. Prematurity is the single most significant risk factor, and a post-term infant carries no listed risk on this basis.","k":"13bcwzq1trtp1w"},{"topic":"vitamin K and newborn coagulation","subtopic":"general","stem":"Why does the newborn develop a transient coagulation deficiency, and when does it occur?","options":["Liver immaturity alone, occurring throughout the first month","The lack of intestinal bacteria needed to synthesize vitamin K, producing a transient deficiency between the second and fifth days of life","Consumption of clotting factors during birth, occurring in the first 24 hours","Maternal antibody transfer, occurring in the first week"],"correct":[1],"sata":false,"why":"\"Coagulation factors, which are synthesized in the liver, are activated by vitamin K. The lack of intestinal bacteria needed to synthesize vitamin K results in transient blood coagulation deficiency between the second and fifth days of life.\" Levels of coagulation factors \"reach adult levels by 9 months of age.\"","trap":"(A) breaks the chain at a checkable link. Liver immaturity is real and explains slower drug clearance elsewhere in the chapter, but the coagulation problem is specifically about a sterile gut that cannot yet make the vitamin the liver's factors need to be activated.","k":"73xu5ywbrm0w"},{"topic":"vitamin K and newborn coagulation","subtopic":"general","stem":"Which clotting factors are reduced at birth as a consequence of this mechanism?","options":["Factors V, VIII, and XIII, at about 50% of adult levels","Factors II, VII, IX, and X, at about 50% of adult levels, while factors V, VIII, and XIII resemble adult ranges","All clotting factors uniformly, at about 25% of adult levels","Only factor VIII, which explains the bleeding risk"],"correct":[1],"sata":false,"why":"\"Levels of vitamin K-dependent clotting factors II, VII, IX, and X at birth are about 50% of adult levels and increase slowly after birth. Levels of factors V, VIII, and XIII at birth resemble adult ranges.\"","trap":"(A) swaps the two groups, and (D) names the hemophilia factor, which is the one most students recognize and the one this mechanism does not touch. Only the vitamin K-dependent factors are affected, which is why the vitamin is what gets replaced.","k":"8tpmems6t734"},{"topic":"vitamin K and newborn coagulation","subtopic":"general","stem":"What does intramuscular vitamin K given shortly after birth accomplish?","options":["It corrects physiologic anemia of infancy","It helps prevent vitamin K deficiency bleeding, which can occur suddenly and can be catastrophic","It accelerates conjugation of bilirubin in the liver","It establishes intestinal flora"],"correct":[1],"sata":false,"why":"\"The administration of intramuscular vitamin K shortly after birth helps to prevent vitamin K deficiency bleeding, which can occur suddenly and can be catastrophic.\" The dose, route detail, site, and timing of the prophylaxis itself belong to Chapter 24, where the injection is administered.","trap":"(D) confuses the prophylaxis with the underlying problem. Vitamin K is given because the gut flora that would make it are not yet established; giving the vitamin does not establish them, it substitutes for what they would produce.","k":"wupqo5jtae7r"},{"topic":"newborn reflexes","subtopic":"general","stem":"The nurse holds a newborn in a semisitting position and allows the head and trunk to fall backward about 30 degrees with support. The infant symmetrically abducts and extends both arms, the fingers fan out forming a C between thumb and forefinger, and the arms then adduct in an embracing motion. How should this be documented?","options":["An abnormal startle requiring neurologic evaluation","A normal Moro reflex","A tonic neck reflex","A crossed extension reflex"],"correct":[1],"sata":false,"why":"The Moro reflex produces \"symmetric abduction and extension of arms; fingers fan out and form a C with thumb and forefinger,\" after which the arms are \"adducted in embracing motion and return to relaxed flexion. A cry may accompany or follow.\" It is present at birth, complete until about 8 weeks, and should be absent by 6 months.","trap":"(A) treats a normal reflex as pathology. What would be abnormal is an asymmetric response, which \"can indicate injury to brachial plexus, clavicle, or humerus,\" or persistence past 6 months. A response that is incomplete in an infant in deep sleep is not automatically pathologic, and a preterm infant's arms \"fall backward\" instead of completing the embrace.","k":"10ysbvl13fobm3"},{"topic":"newborn reflexes","subtopic":"general","stem":"The nurse strokes upward along the lateral aspect of a newborn's sole from the heel, then across the ball of the foot. All the toes hyperextend with dorsiflexion of the great toe. What does this indicate?","options":["An abnormal finding suggesting an upper motor neuron lesion, as it would in an adult","A positive Babinski sign, which is the normal expected response in a newborn","A plantar grasp reflex","A magnet reflex"],"correct":[1],"sata":false,"why":"The Babinski reflex is elicited exactly as described, and the expected response is that \"all toes hyperextend, with dorsiflexion of big toe — recorded as a positive sign.\" It \"should disappear after 1 year,\" and \"absence requires neurologic evaluation.\"","trap":"(A) applies the adult rule, which is exactly the inversion this reflex is asked about. In the newborn the positive sign is normal and its absence is the concerning finding. Note the contrast with the plantar grasp, in which a finger placed at the base of the toes makes the toes curl downward.","k":"1l2me0cfiq0a6"},{"topic":"newborn reflexes","subtopic":"general","stem":"A 10-week-old still shows a complete tonic neck response, with the arm and leg extending on the side the head is turned toward. Which statement applies?","options":["This is expected until 3 to 4 years of age","The complete response disappears by 3 to 4 months, but a persistent response after 6 weeks is a sign of possible cerebral palsy","This confirms a brachial plexus injury","This is a normal Moro variant"],"correct":[1],"sata":false,"why":"The tonic neck or fencing reflex is elicited by turning the supine infant's head quickly to one side, and the arm and leg on that side extend while the opposite arm and leg flex. \"Complete response disappears by 3–4 months; incomplete response may be seen until 3–4 years. After 6 weeks, persistent response is sign of possible cerebral palsy.\" Responses in the leg are more consistent.","trap":"(A) uses one of the reflex's three real numbers against the wrong response type. The 3-to-4-year figure applies to an incomplete response, not a complete one, and the 6-week clause is the clinically significant threshold.","k":"4flt9ou64fse"},{"topic":"newborn reflexes","subtopic":"general","stem":"A nurse elicits the stepping reflex in two newborns. One simulates walking on the soles of the feet; the other walks on the toes. What does this difference indicate?","options":["The toe-walker has a neurologic abnormality requiring evaluation","Term infants walk on the soles of their feet, and preterm infants walk on their toes","The sole-walker is preterm","The difference reflects examiner technique rather than the infant"],"correct":[1],"sata":false,"why":"The stepping or walking reflex is elicited by holding the infant vertically under the arms or on the trunk and allowing one foot to touch a surface. \"Term infants walk on soles of their feet, and preterm infants walk on their toes.\" The reflex is normally present for 3 to 4 weeks.","trap":"(A) is the reflex pick because toe-walking in an older child is a red flag. Here it is a maturity marker, and (C) simply reverses the pairing.","k":"oi41s312tzf11"},{"topic":"newborn reflexes","subtopic":"general","stem":"A newborn born at 35 weeks of gestation still shows a reflex at an age past its listed disappearance date. Which principle applies?","options":["The finding is abnormal regardless of gestational age","All durations for persistence of reflexes are based on time elapsed after 40 weeks of gestation, so time is added for infants born earlier","Reflex timelines apply only to term infants and have no equivalent for preterm infants","Preterm infants lose reflexes earlier than term infants"],"correct":[1],"sata":false,"why":"The table's footnote states it directly: \"All durations for persistence of reflexes are based on time elapsed after 40 weeks of gestation (i.e., if newborn was born at 36 weeks of gestation, add 1 month to all time limits given).\"","trap":"(A) is the reflex pick because a reflex outlasting its window looks like a deviation, and it is the error the footnote exists to prevent. Note the reflex that does not vary this way: truncal incurvation \"should be exhibited in all infants, including preterm,\" and its absence \"suggests general depression of nervous system.\"","k":"1ofnh6hcs9b6r"},{"topic":"newborn elimination and weight loss","subtopic":"general","stem":"A newborn is now 25 hours old and has not voided. What does the chapter direct the nurse to do?","options":["Continue to observe, since the first void may normally occur up to 48 hours","Assess for adequacy of fluid intake, bladder distention, restlessness, and signs of discomfort, and notify the neonatal health care provider","Catheterize the infant for a specimen","Restrict feeding until the infant voids"],"correct":[1],"sata":false,"why":"The NURSING ALERT states: \"Noting and recording the first voiding are important. An infant who has not voided by 24 hours should be assessed for adequacy of fluid intake, bladder distention, restlessness, and signs of discomfort. The neonatal health care provider should be notified.\"","trap":"(A) borrows meconium's window and applies it to voiding. Most infants pass meconium within the first 12 to 24 hours and almost all by 48 hours, while the voiding alarm is set at 24 hours. Swapping the two windows is the available error.","k":"1qcxgu12vr3t3"},{"topic":"newborn elimination and weight loss","subtopic":"general","stem":"A breastfed newborn is now 5 days old. How many voids per day indicate adequate fluid intake?","options":["Two to three","Four to five","Six to eight voidings per day of pale straw-colored urine","Ten to twelve"],"correct":[2],"sata":false,"why":"Frequency is two to six times per day during the first and second days, and \"after day 4, approximately six to eight voidings per day of pale straw-colored urine indicate adequate fluid intake.\" Term infants excrete 15 to 60 mL/kg per day, with a specific gravity of 1.008 to 1.012.","trap":"(A) is the newborn's own earlier pattern rather than the day-5 expectation, and it pulls because the first days' figures are the ones documented most often. The count rises as intake establishes, which is what makes it a feeding-adequacy indicator.","k":"6jec8y1h5cd98"},{"topic":"newborn elimination and weight loss","subtopic":"general","stem":"A newborn's stool on day 3 is greenish brown, thin, less sticky than the previous stools, and contains some milk curds. How should the nurse describe this to the parents?","options":["Diarrhea, which requires evaluation","A transitional stool, which usually appears by the third day after feeding is initiated","Persistent meconium, indicating delayed gut transit","A normal breast-milk stool"],"correct":[1],"sata":false,"why":"Transitional stools \"usually appear by third day after initiation of feeding\" and are \"greenish brown to yellowish brown; thin and less sticky than meconium; can contain some milk curds.\" Meconium is \"dark, olive green in color; viscous and sticky (like tar), almost odorless.\" Breast-milk stools appear by the fourth day and are \"yellow to golden, pasty,\" resembling \"a mixture of mustard and cottage cheese.\"","trap":"(A) is the specific misreading the chapter warns against: \"Care must be taken to avoid misinterpreting transitional stools for diarrhea.\" Thin and greenish is exactly what a transitional stool looks like, and it is the expected middle stage.","k":"gim0jr1ht4u65"},{"topic":"newborn elimination and weight loss","subtopic":"general","stem":"A term newborn weighed 3400 g at birth. On day 4 the weight is 3145 g. How should the nurse interpret this?","options":["Excessive weight loss requiring formula supplementation","A normal loss of about 7.5%, within the expected 5% to 10% over the first 3 to 5 days, with birth weight regained within 10 to 14 days","Failure to thrive","Normal, but the birth weight should be regained by day 7"],"correct":[1],"sata":false,"why":"\"Loss of fluid through urine, feces, lungs, increased metabolic rate, and limited fluid intake can result in a 5% to 10% loss of the birth weight over the first 3 to 5 days,\" primarily \"extracellular water loss.\" The neonate \"should regain the birth weight within 10 to 14 days.\"","trap":"(A) treats a normal transitional loss as a feeding failure, which is the error that leads to unnecessary supplementation. Weight loss becomes clinically meaningful when it is excessive, which is the link the chapter draws to breastfeeding-associated jaundice. (D) shortens the regain deadline by a week.","k":"1jheo5s1lvhwq"}];
+const TITLE = "Chapter 23 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 23";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

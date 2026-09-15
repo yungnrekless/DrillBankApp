@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 24 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 24</div><h1>Chapter 24 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">apgar scoring</span><span class="chip t2">general</span></div>
+<div class="stem">1. A newborn is limp and apneic at birth with a heart rate of 60. What is the nurse's priority?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Assign the 1-minute Apgar score, then begin resuscitation based on the result</li><li class="fopt right"><span class="mk">&#10003;</span>Initiate resuscitation before the 1-minute Apgar score is determined</li><li class="fopt"><span class="mk">C</span>Wait until 1 minute has elapsed to allow spontaneous recovery</li><li class="fopt"><span class="mk">D</span>Assign the 1-minute and 5-minute scores, then notify the provider</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states the ordering rule explicitly: &quot;If resuscitation is required, it should be initiated before the 1-minute Apgar score is determined.&quot; The score describes the newborn's transition and response to resuscitative efforts; it does not gate the decision to resuscitate.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because the score is scheduled at 1 minute and reads like a trigger for action. Scoring first costs the infant a minute of ventilation, which is why the chapter puts the priority in writing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">apgar scoring</span><span class="chip t2">general</span></div>
+<div class="stem">2. A newborn grimaces when the soles are stimulated, has some flexion of the extremities, a heart rate of 118, a weak cry, and a pink body with blue extremities. What is the Apgar score?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>5</li><li class="fopt right"><span class="mk">&#10003;</span>6</li><li class="fopt"><span class="mk">C</span>7</li><li class="fopt"><span class="mk">D</span>8</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Heart rate at or above 100 scores 2; a slow, weak cry scores 1; some flexion of the extremities scores 1; a grimace scores 1; body pink with blue extremities scores 1. The total is 6, which falls in the 4-to-6 band indicating moderate difficulty.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) results from crediting the pink body as &quot;completely pink&quot; and the flexion as &quot;well flexed,&quot; which is the most common inflation — both of those signs have a middle value, and acrocyanosis scores 1 rather than 2.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">apgar scoring</span><span class="chip t2">general</span></div>
+<div class="stem">3. A newborn's 5-minute Apgar score is 6. How should the nurse proceed?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>No further scoring is required; document and continue routine care</li><li class="fopt right"><span class="mk">&#10003;</span>Repeat the assessment every 5 minutes for up to 20 minutes</li><li class="fopt"><span class="mk">C</span>Repeat the assessment at 10 minutes only</li><li class="fopt"><span class="mk">D</span>Repeat the assessment every minute until the score reaches 7</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;An Apgar score is assigned at 1 and 5 minutes after birth.&quot; The repeat rule keys to the 5-minute score: &quot;For scores less than 7 at 5 minutes, the assessment should be repeated every 5 minutes for up to 20 minutes.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats 6 as adequate because it is above the severe-distress band, and it stops the monitoring the chapter requires. Note that a low 1-minute score does not by itself trigger the repeat schedule — the 5-minute score is what does.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">apgar scoring</span><span class="chip t2">general</span></div>
+<div class="stem">4. Parents whose newborn had a 1-minute Apgar score of 4 ask whether this means their baby will have brain damage. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A low score at 1 minute is strongly predictive of later neurologic impairment</li><li class="fopt right"><span class="mk">&#10003;</span>Apgar scores do not predict future neurologic outcome; they describe the newborn's transition and response to resuscitative efforts</li><li class="fopt"><span class="mk">C</span>The 1-minute score predicts outcome, but the 5-minute score does not</li><li class="fopt"><span class="mk">D</span>Only scores of 0 to 3 predict neurologic outcome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Apgar scores do not predict future neurologic outcome for the newborn but are useful in describing the newborn's transition to the extrauterine environment and response to resuscitative efforts.&quot; The bands describe the present moment: 0 to 3 severe distress, 4 to 6 moderate difficulty, 7 to 10 minimal or no difficulty adjusting to extrauterine life.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is what parents fear and what a nurse may unintentionally confirm by hedging. The score is a description of a transition, not a prognosis, and saying so plainly is the teaching the chapter supports.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">apgar scoring</span><span class="chip t2">general</span></div>
+<div class="stem">5. The nurse is assessing color in a newborn with darkly pigmented skin during Apgar scoring. Which technique does the chapter specify?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Assess the color of the trunk and compare it with the extremities</li><li class="fopt right"><span class="mk">&#10003;</span>Visualize the buccal mucosa, conjunctiva, nail beds, lips, earlobes, and soles of the feet, using the buccal mucosa until a pulse oximeter can be applied</li><li class="fopt"><span class="mk">C</span>Assess color only after the infant has been dried and warmed</li><li class="fopt"><span class="mk">D</span>Defer color scoring and assign a score of 2 by default</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The NURSING ALERT states that &quot;color can be evaluated most accurately by visualization of the buccal mucosa (oral mucous membranes), conjunctiva, nail beds, lips, earlobes, and soles of the feet. Evaluation of skin color in newborns with darker skin is best accomplished by visualizing the buccal mucosa until a pulse oximeter can be applied.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) uses the site that produces the least reliable reading in exactly the infants for whom accuracy matters most. Note also that heart rate for the Apgar may be assessed &quot;by palpation of the umbilical cord,&quot; not only by stethoscope, and that reflex irritability is scored on a response to stimulus while muscle tone is scored on resting flexion.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eye prophylaxis</span><span class="chip t2">general</span></div>
+<div class="stem">6. A mother whose prenatal testing showed a chlamydial infection asks whether the newborn's eye ointment will protect the baby. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Erythromycin ointment prevents both gonococcal and chlamydial conjunctivitis</li><li class="fopt right"><span class="mk">&#10003;</span>Erythromycin ointment is bactericidal for gonorrhea but is not effective in preventing chlamydial conjunctivitis, which is treated with oral erythromycin or azithromycin</li><li class="fopt"><span class="mk">C</span>Erythromycin ointment prevents chlamydial but not gonococcal infection</li><li class="fopt"><span class="mk">D</span>No eye prophylaxis is needed when the maternal organism is chlamydia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Erythromycin ophthalmic ointment is &quot;bacteriostatic and bactericidal for N. gonorrhoeae,&quot; and eye prophylaxis exists to prevent ophthalmia neonatorum, which &quot;without prompt treatment ... can lead to blindness.&quot; But &quot;topical antibiotics such as erythromycin are not effective in preventing chlamydial conjunctivitis. Oral erythromycin or azithromycin is used to treat chlamydial conjunctivitis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex pick because the ointment is given to every newborn regardless of maternal history, which reads as broad coverage. Its target organism is named in the medication guide, and chlamydia is outside it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eye prophylaxis</span><span class="chip t2">general</span></div>
+<div class="stem">7. Which technique correctly describes administration of erythromycin ophthalmic ointment?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Apply a 1-cm ribbon to the upper conjunctival sac, spreading from outer to inner canthus</li><li class="fopt right"><span class="mk">&#10003;</span>Apply a 1-cm ribbon to the lower conjunctival sac of each eye, spreading from the inner canthus to the outer canthus, and wipe away excess after 1 minute</li><li class="fopt"><span class="mk">C</span>Apply a 2-cm ribbon directly onto the cornea and wipe immediately</li><li class="fopt"><span class="mk">D</span>Apply the ointment and irrigate the eyes with sterile saline after 30 seconds</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The medication guide directs applying &quot;a 1-cm ribbon of ointment to the lower conjunctival sac of each eye,&quot; spreading &quot;from the inner canthus of the eye to the outer canthus,&quot; not touching the tube to the eye, gently massaging the closed eyelids, and after 1 minute wiping away excess. A sterile cotton ball wipes each eyelid beforehand, and the unused ointment is discarded.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reverses both the sac and the direction, and the direction reversal is the more available error because inner-to-outer is the opposite of how many students learned to clean an eye. (D) removes the medication before it can act.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eye prophylaxis</span><span class="chip t2">general</span></div>
+<div class="stem">8. A newborn's eyes appear reddened and slightly swollen 12 hours after erythromycin ointment was given. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An allergic reaction requiring the provider's immediate attention</li><li class="fopt right"><span class="mk">&#10003;</span>A chemical conjunctivitis that lasts 24 to 48 hours, with temporarily blurred vision, which is an expected adverse effect</li><li class="fopt"><span class="mk">C</span>Early ophthalmia neonatorum, meaning the prophylaxis failed</li><li class="fopt"><span class="mk">D</span>Evidence the ointment was administered incorrectly</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The medication guide lists the adverse reaction directly: the ointment &quot;can cause chemical conjunctivitis that lasts 24–48 h; vision can be blurred temporarily.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reads the expected reaction as the disease it was given to prevent, and it pulls because the two look alike. The time course is the discriminator: a chemical response appears within hours of the dose and resolves inside two days.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eye prophylaxis</span><span class="chip t2">general</span></div>
+<div class="stem">9. Parents ask whether eye prophylaxis can wait until after the first breastfeeding. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It must be given immediately at birth with no delay permitted</li><li class="fopt right"><span class="mk">&#10003;</span>It is usually given within the first hour and may be delayed up to 2 hours until after the first breastfeeding, to facilitate eye contact and bonding</li><li class="fopt"><span class="mk">C</span>It may be delayed until discharge if the parents prefer</li><li class="fopt"><span class="mk">D</span>It is optional and is given only on parental request</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Prophylaxis is &quot;usually administered within the first hour after birth ... It may be delayed up to 2 hours until after the first breastfeeding so that eye contact and parent-infant attachment and bonding are facilitated.&quot; The medication guide specifies administering the ointment within 1 to 2 hours of birth.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) turns a bounded delay into an open one. Eye prophylaxis &quot;is mandated by law in most U.S. states without regard to the mode of birth&quot;; where refusal is permitted, &quot;parents may refuse eye prophylaxis by signing a form that becomes part of the newborn record.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn intramuscular prophylaxis</span><span class="chip t2">vitamin K</span></div>
+<div class="stem">10. A newborn weighs 1400 g. Which dose of phytonadione is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>1 mg, or 0.5 mL, intramuscularly</li><li class="fopt right"><span class="mk">&#10003;</span>0.5 mg, or 0.25 mL, intramuscularly</li><li class="fopt"><span class="mk">C</span>2 mg orally</li><li class="fopt"><span class="mk">D</span>1 mg intravenously over 1 minute</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The recommendation is a single dose of phytonadione 0.5 to 1 mg, split by weight: &quot;a 0.5-mg (0.25-mL) dose to newborns weighing ≤1500 g and a 1-mg (0.5-mL) dose to newborns weighing &gt;1500 g.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the correct dose for the more common patient and ignores the weight split, which is why it is the reflex pick. The cut point is 1500 g, and this infant falls below it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn intramuscular prophylaxis</span><span class="chip t2">vitamin K</span></div>
+<div class="stem">11. Parents refusing the vitamin K injection ask whether an oral form could be given instead. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Oral vitamin K is equivalent and is an acceptable alternative</li><li class="fopt right"><span class="mk">&#10003;</span>Oral administration of vitamin K is not as effective in preventing late hemorrhagic disease</li><li class="fopt"><span class="mk">C</span>Oral vitamin K is preferred but is not stocked in most facilities</li><li class="fopt"><span class="mk">D</span>Vitamin K may be given intravenously instead, as a rapid push</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The route is intramuscular, because &quot;oral administration of vitamin K is not as effective in the prevention of late hemorrhagic disease.&quot; The intravenous route is reserved for a preterm infant with little to no muscle mass, where the medication is &quot;diluted and given over 10–15 min&quot; with cardiorespiratory monitoring, because &quot;rapid IV administration of vitamin K can cause cardiac arrest.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) offers an inferior option the chapter names as inferior, and it is tempting because it appears to meet the family halfway. (D) describes the route that can kill the infant if it is given the way the option states.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn intramuscular prophylaxis</span><span class="chip t2">vitamin K</span></div>
+<div class="stem">12. Which consequence does the chapter specifically attach to parental refusal of vitamin K in a male newborn?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An increased risk of jaundice requiring phototherapy</li><li class="fopt right"><span class="mk">&#10003;</span>A significantly greater likelihood of bleeding after circumcision, with many providers declining to perform the procedure</li><li class="fopt"><span class="mk">C</span>A delay in newborn metabolic screening</li><li class="fopt"><span class="mk">D</span>A contraindication to hepatitis B vaccination</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Male infants who do not receive the vitamin K injection are significantly more likely to bleed after circumcision, and many providers will decline performing this procedure when vitamin K has been refused.&quot; The chapter also notes that parents who refuse vitamin K &quot;are more likely to refuse immunizations.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) attaches a real adverse effect of the drug to its refusal, which is backwards. Hemolysis, jaundice, and hyperbilirubinemia &quot;have been reported&quot; as adverse reactions to phytonadione itself, &quot;particularly in preterm infants,&quot; so a preterm infant who becomes jaundiced after the injection is not necessarily having an unrelated problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn intramuscular prophylaxis</span><span class="chip t2">hepatitis B immunization</span></div>
+<div class="stem">13. A newborn weighing 3200 g is born to a mother whose hepatitis B surface antigen test is positive. What does the chapter direct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hepatitis B vaccine within 24 hours; immune globulin is not needed if the mother received antiviral therapy in pregnancy</li><li class="fopt right"><span class="mk">&#10003;</span>Hepatitis B vaccine and hepatitis B immune globulin within 12 hours after birth, regardless of any previous antiviral therapy during pregnancy, in separate sites with one in each vastus lateralis</li><li class="fopt"><span class="mk">C</span>Hepatitis B immune globulin only, within 12 hours</li><li class="fopt"><span class="mk">D</span>Hepatitis B vaccine at 1 month of age or at discharge, whichever comes first</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>For an antigen-positive mother, the direction is to &quot;administer HepB vaccine AND HBIG within 12 h after birth, regardless of any previous antiviral therapy during pregnancy,&quot; given &quot;in separate sites (one in each vastus lateralis).&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) uses the correct interval for the wrong maternal status and adds an exemption the chapter explicitly forecloses. The exam's move on this table is to keep a number and change whose status it belongs to.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn intramuscular prophylaxis</span><span class="chip t2">hepatitis B immunization</span></div>
+<div class="stem">14. A newborn weighing 3400 g is born to a mother who tested negative for hepatitis B. When should the vaccine be given?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Within 12 hours after birth</li><li class="fopt right"><span class="mk">&#10003;</span>Within the first 24 hours</li><li class="fopt"><span class="mk">C</span>At 1 month of age or at hospital discharge, whichever comes first</li><li class="fopt"><span class="mk">D</span>At the 2-month well-child visit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>For a mother who is negative with an infant of 2000 g or more who is medically stable, the direction is to &quot;administer HepB vaccine within first 24 h.&quot; An infant under 2000 g born to a negative mother waits until &quot;1 month of age or at hospital discharge, whichever comes first.&quot; When maternal status is unknown, the vaccine goes within 12 hours.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the correct answer for a low-birth-weight infant of a negative mother, and (A) is the correct interval when the status is positive or unknown. Two variables set the timing — maternal status and infant weight — and dropping either produces a plausible wrong answer.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice screening</span><span class="chip t2">general</span></div>
+<div class="stem">15. A newborn appears jaundiced at 18 hours of age. What does the chapter direct the nurse to do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Document the finding and reassess in the morning, since jaundice is common</li><li class="fopt right"><span class="mk">&#10003;</span>Measure a transcutaneous or total serum bilirubin level, because jaundice before 24 hours is likely due to a hemolytic process and is called pathologic jaundice</li><li class="fopt"><span class="mk">C</span>Initiate phototherapy without measuring a level</li><li class="fopt"><span class="mk">D</span>Increase feeding frequency and recheck the skin in 12 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;If a newborn appears jaundiced in the first 24 hours, a transcutaneous bilirubin (TcB) or total serum bilirubin (TSB) level should be measured. Jaundice before 24 hours is likely due to a hemolytic process and is called pathologic jaundice.&quot; Table 24.3 lists &quot;none in the first 24 h of life&quot; as the expected skin finding and jaundice within the first 24 hours as the deviation, associated with increased hemolysis, Rh isoimmunization, and ABO incompatibility.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies the reassurance appropriate to physiologic jaundice to an infant inside the window that defines pathologic jaundice. The action here is to measure, which is what distinguishes this chapter's handling from Chapter 23's physiology.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice screening</span><span class="chip t2">general</span></div>
+<div class="stem">16. A nurse assesses a dark-skinned newborn for jaundice under the fluorescent lights of the nursery and documents no jaundice. Which critique applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The assessment is adequate as long as the skin was blanched</li><li class="fopt right"><span class="mk">&#10003;</span>Visual assessment alone does not accurately assess hyperbilirubinemia, especially in dark-skinned newborns, and assessment in natural light is recommended because artificial lighting distorts skin color</li><li class="fopt"><span class="mk">C</span>Jaundice cannot be assessed in dark-skinned newborns at all</li><li class="fopt"><span class="mk">D</span>Only a total serum bilirubin can be used at any age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Visual assessment of jaundice alone does not provide an accurate assessment of hyperbilirubinemia, especially in dark-skinned newborns.&quot; The technique is to blanch the skin and to assess &quot;the conjunctival sacs and buccal mucosa ... especially in darker-skinned infants. Assessing for jaundice in natural light is recommended because artificial lighting and reflection from walls can distort the actual skin color.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) credits a partial technique, and it pulls because blanching is the step students remember. Two things are wrong here: the light source and the reliance on inspection as a substitute for measurement.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice screening</span><span class="chip t2">general</span></div>
+<div class="stem">17. When does the professional recommendation place universal predischarge bilirubin screening?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>At 12 hours of age for all newborns</li><li class="fopt right"><span class="mk">&#10003;</span>Between 24 and 48 hours after birth, or prior to discharge if discharged earlier</li><li class="fopt"><span class="mk">C</span>At 72 hours, when physiologic jaundice peaks</li><li class="fopt"><span class="mk">D</span>Only for infants with visible jaundice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The recommendation is &quot;universal predischarge bilirubin screening between 24 and 48 hours after birth or prior to discharge, if discharged earlier, to prevent severe hyperbilirubinemia and the neurologic complications of acute bilirubin encephalopathy and kernicterus.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) restricts a universal screen to symptomatic infants, which defeats its purpose given that visual assessment is unreliable. (C) picks the physiologic peak at 72 to 96 hours, which is after most newborns have gone home.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice screening</span><span class="chip t2">general</span></div>
+<div class="stem">18. A newborn's transcutaneous bilirubin is 11 mg/dL. The phototherapy treatment threshold for this infant's age in hours is 13 mg/dL. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>No further testing is needed, since the level is below 15 mg/dL</li><li class="fopt right"><span class="mk">&#10003;</span>Obtain a total serum bilirubin, because the transcutaneous level is within 3 mg/dL of the phototherapy threshold</li><li class="fopt"><span class="mk">C</span>Begin phototherapy based on the transcutaneous value</li><li class="fopt"><span class="mk">D</span>Repeat the transcutaneous measurement in 12 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A serum level is checked &quot;if the TcB level is greater than 15 mg/dL or if the TcB level is higher than or within 3 mg/dL of the phototherapy treatment threshold.&quot; At 11 against a threshold of 13, the gap is 2 mg/dL, so the relative trigger fires.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies only the absolute trigger, which is the half of the rule that distractors keep and the reason a level as low as 11 can still require a serum draw. The relative trigger is what makes the threshold matter rather than the number alone.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn jaundice screening</span><span class="chip t2">general</span></div>
+<div class="stem">19. Which statement about interpreting a total serum bilirubin level is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A fixed cutoff of 12 mg/dL defines hyperbilirubinemia at any age</li><li class="fopt right"><span class="mk">&#10003;</span>Levels are interpreted using an hour-specific nomogram, and if more than one measurement was done, the rate of increase can identify infants at risk</li><li class="fopt"><span class="mk">C</span>Interpretation depends only on whether the infant is breastfed</li><li class="fopt"><span class="mk">D</span>The direct fraction alone determines whether treatment is needed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;TSB levels are interpreted using an hour-specific nomogram,&quot; and &quot;if more than one TcB or TSB measure was done, the rate of increase can be used to identify infants at risk.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the intuitive model — one number, one cutoff — and it is exactly what an hour-specific nomogram replaces. A bilirubin value carries no meaning without the infant's age in hours, which is the same principle behind Chapter 23's pathologic criterion of a rise greater than 0.2 mg/dL per hour.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn metabolic and hearing screening</span><span class="chip t2">general</span></div>
+<div class="stem">20. When are specimens for universal newborn metabolic screening usually collected, and why is the screen performed on every newborn?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Within the first 6 hours, because early detection improves outcomes</li><li class="fopt right"><span class="mk">&#10003;</span>After 24 hours of age and before discharge, because the majority of the disorders screened do not produce symptoms at birth</li><li class="fopt"><span class="mk">C</span>At the 2-week visit, once feeding is established</li><li class="fopt"><span class="mk">D</span>Only when a family history suggests a genetic disorder</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Samples are usually collected in the hospital after 24 hours of age and before discharge.&quot; The rationale for universality is that &quot;the majority of disorders included in the screening do not produce symptoms at birth.&quot; Screening covers 36 core disorders and 26 secondary disorders using tandem mass spectrometry, with capillary blood obtained by heelstick and collected on special filter paper.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) makes a universal public health program selective, which the asymptomatic-at-birth rationale rules out. Note that &quot;in the majority of states informed consent is not required for newborn screening.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn metabolic and hearing screening</span><span class="chip t2">general</span></div>
+<div class="stem">21. Select all circumstances in which the newborn metabolic screening test may need to be repeated.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The initial specimen was obtained before 24 hours of age</li><li class="fopt right"><span class="mk">&#10003;</span>The infant received a blood transfusion before the specimen was collected</li><li class="fopt right"><span class="mk">&#10003;</span>The infant's birth weight was less than 1500 g</li><li class="fopt"><span class="mk">D</span>The infant is exclusively breastfed</li><li class="fopt"><span class="mk">E</span>The infant was born by cesarean birth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The screening test may need to be repeated if the initial specimen was obtained before 24 hours of age, or after a blood transfusion was given, or if the infant's birth weight was less than 1500 g.&quot; Core disorders include hemoglobinopathies such as sickle cell disease, inborn errors of metabolism such as phenylalanine hydroxylase deficiency and galactosemia, severe combined immunodeficiency, hearing loss, and critical congenital heart disease.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) and (E) are the two wrong options, and (D) pulls because feeding method genuinely does affect some metabolic screens in students' memory of older teaching. The three stated triggers are about specimen timing, transfused blood, and prematurity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn metabolic and hearing screening</span><span class="chip t2">general</span></div>
+<div class="stem">22. A newborn does not pass the hearing screen before discharge. What follow-up does the chapter specify?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The screen is definitive, so audiologic treatment should begin immediately</li><li class="fopt right"><span class="mk">&#10003;</span>The screen is typically repeated before discharge; if the infant still does not pass, a comprehensive audiologic evaluation should be done by 3 months of age</li><li class="fopt"><span class="mk">C</span>Rescreening should occur at the 1-year visit</li><li class="fopt"><span class="mk">D</span>No follow-up is needed, since most infants pass on repeat testing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>If the infant does not pass, &quot;it is typically repeated before discharge,&quot; and if still not passing, &quot;a comprehensive audiologic evaluation should be done by 3 months of age.&quot; Routine screening is recommended for all newborns &quot;before hospital discharge or no later than 1 month of age.&quot; Approximately 3 out of every 1000 infants born each year have hearing loss.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats a screening result as a diagnosis, which the chapter blocks: &quot;Neither test is definitive in diagnosing hearing loss; they are used to determine whether further, more accurate hearing testing is needed.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn metabolic and hearing screening</span><span class="chip t2">general</span></div>
+<div class="stem">23. A parent asks how the hearing screen works. The nurse explains that a soft rubber earpiece emitting a clicking noise is placed in the outer ear and a healthy ear echoes the sound back to a microphone. Which test is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The auditory brainstem response</li><li class="fopt right"><span class="mk">&#10003;</span>The evoked otoacoustic emissions test</li><li class="fopt"><span class="mk">C</span>Tympanometry</li><li class="fopt"><span class="mk">D</span>Pure-tone audiometry</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In the evoked otoacoustic emissions test, &quot;a soft rubber earpiece that makes a soft clicking noise is placed in the baby's outer ear. A healthy ear will echo the click sound back to a microphone.&quot; The auditory brainstem response instead involves &quot;attaching sensors to the baby's forehead and behind each ear,&quot; and the sensors &quot;measure the responses of the baby's acoustic nerve.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the other method named, and the discriminator is what is being measured: an echo returning from the ear versus a nerve response recorded from scalp sensors. Either method, or a combination, may be used.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">critical congenital heart disease screening</span><span class="chip t2">general</span></div>
+<div class="stem">24. At what age is screening for critical congenital heart disease performed, and at which sites?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Within 6 hours of birth, in both hands</li><li class="fopt right"><span class="mk">&#10003;</span>At 24 to 48 hours of age, in the right hand and one foot</li><li class="fopt"><span class="mk">C</span>At 24 to 48 hours of age, in the left hand and one foot</li><li class="fopt"><span class="mk">D</span>Immediately before discharge, in either extremity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Screening is performed at 24 to 48 hours of age,&quot; and &quot;oxygen saturation is measured in the right hand and one foot.&quot; The site logic follows the ductus arteriosus: the right hand is preductal and the foot is postductal, which is why a difference between them is meaningful.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) uses both hands, which measures the same side of the circulation twice and cannot detect a preductal-to-postductal gradient. (C) picks the wrong hand, and the left hand is not reliably preductal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">critical congenital heart disease screening</span><span class="chip t2">general</span></div>
+<div class="stem">25. A newborn's screening oxygen saturation is 96% in the right hand and 93% in the foot. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Passing, because a saturation above 95% was recorded in one extremity</li><li class="fopt right"><span class="mk">&#10003;</span>Not passing, because the absolute difference between the upper and lower extremity readings is 3% or more</li><li class="fopt"><span class="mk">C</span>Not passing, because a saturation below 95% requires immediate evaluation</li><li class="fopt"><span class="mk">D</span>Passing, because neither value is below 90%</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A passing result requires &quot;oxygen saturation of greater than 95% in either extremity, with a less than 3% absolute difference between the upper and lower extremity readings.&quot; Here the upper value passes but the difference is exactly 3%, which is not less than 3%.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies only the first half of the criterion, and it is the most available error because 96% looks reassuring on its own. The screen has two conditions and both must be met, which is what makes the gradient testable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">critical congenital heart disease screening</span><span class="chip t2">general</span></div>
+<div class="stem">26. A newborn's screening oxygen saturation is 88%. What does the chapter direct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Repeat the screen in one hour</li><li class="fopt right"><span class="mk">&#10003;</span>Immediate evaluation for hemodynamic stability and hypoxemia, with an echocardiogram usually performed</li><li class="fopt"><span class="mk">C</span>Discharge with outpatient cardiology follow-up</li><li class="fopt"><span class="mk">D</span>Repeat the measurement in the opposite foot</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Immediate evaluation is required &quot;if the oxygen saturation is less than 90%. The baby is evaluated for hemodynamic stability and hypoxemia; an echocardiogram is usually performed.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) defers action at the value the chapter marks as the immediate-evaluation threshold, and repeat measurement is the correct move for intermediate results rather than for a saturation below 90%.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">critical congenital heart disease screening</span><span class="chip t2">general</span></div>
+<div class="stem">27. A parent asks why an apparently healthy newborn needs a pulse oximetry screen. Which explanation reflects the chapter's rationale?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Pulse oximetry diagnoses congenital heart defects noninvasively</li><li class="fopt right"><span class="mk">&#10003;</span>Hypoxemia can be the first sign a defect is present, and other symptoms can develop only after the newborn has been discharged</li><li class="fopt"><span class="mk">C</span>The screen replaces the newborn cardiac physical examination</li><li class="fopt"><span class="mk">D</span>All newborns have transient hypoxemia that must be documented</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The screen uses &quot;pulse oximetry to measure oxygen saturation for the purpose of detecting hypoxemia,&quot; because &quot;hypoxemia can be the first sign that a congenital heart defect is present, and other symptoms can develop once the newborn has been discharged.&quot; It detects defects &quot;that manifest with hypoxemia in the absence of other physical symptoms.&quot; About 6 in 10,000 apparently healthy term or late-preterm infants will have critical congenital heart disease.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) overstates what the screen does. It identifies infants who need the confirmatory test, which the chapter names as an echocardiogram, and it is a screen rather than a diagnostic study.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heelstick and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">28. Before performing a heelstick for a glucose level, the nurse notes the infant's foot is cool. Why does this matter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It only makes the specimen harder to obtain</li><li class="fopt right"><span class="mk">&#10003;</span>Diminished blood flow makes the specimen harder to obtain and can cause the test result to be falsely low</li><li class="fopt"><span class="mk">C</span>It causes the result to be falsely high</li><li class="fopt"><span class="mk">D</span>It has no effect on the result if enough blood is collected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The NURSING ALERT states: &quot;A heel warmer should be applied before every glucose assessment via heelstick. If the extremity is cool, blood flow is diminished making it harder to obtain the needed specimen and potentially causing the test result to be falsely low.&quot; Warming for 5 to 10 minutes dilates the vessels, and disposable heel warmers &quot;should be used with care to prevent burns.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the direction of the artifact. This matters clinically because a falsely low glucose triggers an intervention the infant may not need, so a low value drawn from a cool foot deserves a procedural explanation before a physiologic one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heelstick and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">29. Where is a heelstick puncture correctly performed, and how deep?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The center of the heel, no deeper than 2.4 mm</li><li class="fopt right"><span class="mk">&#10003;</span>The outer aspect of the heel, no deeper than 2.4 mm in a term infant</li><li class="fopt"><span class="mk">C</span>The walking surface of the heel, no deeper than 4 mm</li><li class="fopt"><span class="mk">D</span>The great toe pad, at any depth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The puncture is made at the outer aspect of the heel,&quot; located by drawing an imaginary line &quot;from between the fourth and fifth toes and parallel to the lateral aspect of the foot to the heel,&quot; with a second line from the great toe to the medial aspect of the heel. The lancet &quot;penetrates no deeper than 2.4 mm in a term infant.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (C) both target areas the chapter tells you to avoid, and both dangers are named. The most serious complication is &quot;necrotizing osteochondritis resulting from lancet penetration of the bone,&quot; and repeated trauma to the walking surface &quot;can cause fibrosis and scarring that can lead to problems with walking later in life.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heelstick and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">30. Which sequence correctly describes heelstick technique?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Cleanse with antiseptic, puncture, then offer oral sucrose for comfort</li><li class="fopt right"><span class="mk">&#10003;</span>Warm the heel, offer oral sucrose, cleanse with antiseptic, then puncture with a spring-loaded automatic device</li><li class="fopt"><span class="mk">C</span>Puncture with a manual lance blade, then warm the heel to improve flow</li><li class="fopt"><span class="mk">D</span>Cleanse with alcohol, puncture, and cleanse with alcohol again afterward</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The order the chapter gives is to warm the heel, then &quot;after providing the infant with an oral sucrose solution, the area is cleansed with an appropriate skin antiseptic.&quot; A spring-loaded automatic puncture device &quot;causes less pain and requires fewer punctures than a manual lance blade.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) moves the comfort measure after the painful stimulus, which is the most common sequencing error and defeats the point of a pre-procedure intervention. Evidence-based measures named include a pacifier with sucrose, swaddling, containment, facilitated tucking, breastfeeding, and skin-to-skin contact with the mother, and the infant should also be cuddled and comforted after the procedure.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heelstick and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">31. After a heelstick, what does the chapter direct the nurse to apply to the site?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An alcohol swab, followed by a bandage</li><li class="fopt right"><span class="mk">&#10003;</span>Gentle pressure with a dry gauze pad, with no further skin cleanser or alcohol</li><li class="fopt"><span class="mk">C</span>A pressure dressing left in place for 4 hours</li><li class="fopt"><span class="mk">D</span>Antibiotic ointment and a gauze wrap</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Gentle pressure is applied with a dry gauze pad. No further skin cleanser or alcohol should be applied because it will cause the site to continue to bleed.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the adult reflex — clean the site again after the stick — and here it prolongs bleeding, which the chapter states as the reason. The chapter also notes the behavioral cost of repetition: &quot;after several heelsticks, infants have been observed to withdraw their feet when they are touched.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heelstick and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">32. A larger blood volume is required than a heelstick can provide. Which statement about venipuncture in the newborn is accurate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A heelstick is appropriate for any volume up to 5 mL</li><li class="fopt right"><span class="mk">&#10003;</span>A heelstick is appropriate when the volume required is less than 1 mL; venipuncture sites include the antecubital, saphenous, superficial wrist, and rarely scalp veins, and a tourniquet is optional</li><li class="fopt"><span class="mk">C</span>Only scalp veins may be used in newborns</li><li class="fopt"><span class="mk">D</span>A tourniquet is required for all newborn venipuncture</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A heelstick is usually considered appropriate when the volume of blood required is less than 1 mL.&quot; Venipuncture is used for larger samples, at the &quot;antecubital, saphenous, superficial wrist, and, rarely, scalp veins,&quot; using a 23- or 25-gauge butterfly or hypodermic needle with a syringe. &quot;A tourniquet is optional but can help increase blood flow.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) stretches the heelstick well past its stated volume limit, and it pulls because a heelstick feels less invasive and therefore preferable at any size. The volume, not the perceived invasiveness, decides the method.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn thermoregulation at the bedside</span><span class="chip t2">general</span></div>
+<div class="stem">33. A newborn is under a radiant warmer. Which practice does the chapter require, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Manual control mode, so the nurse can adjust the output as needed</li><li class="fopt right"><span class="mk">&#10003;</span>Servo-controlled setting only, because a detached probe or manual mode will make the warmer increase heat output and potentially overheat the newborn</li><li class="fopt"><span class="mk">C</span>Manual mode with hourly temperature checks</li><li class="fopt"><span class="mk">D</span>Either mode, as long as the probe is checked once per shift</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The SAFETY ALERT states that the thermistor probe must be checked periodically for secure attachment, because &quot;if it becomes loose, the radiant heating device will increase heat output, potentially overheating the newborn. Using the manual control mode ... can have the same effect ... Therefore radiant warmers should be used only in the servo-controlled setting.&quot; The desired abdominal skin temperature is approximately 36.5° to 37°C.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (C) both put a person in the feedback loop, which is what the alert identifies as the failure mode. A servo-controlled warmer reads the infant's own skin and stops; a manual one heats until someone notices.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn thermoregulation at the bedside</span><span class="chip t2">general</span></div>
+<div class="stem">34. When may a healthy term newborn have the first bath, and how long should it last?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>At 2 hours of age, limited to 10 minutes</li><li class="fopt right"><span class="mk">&#10003;</span>Postponed at least 6 hours and until two consecutive axillary temperatures are at or above 36.8°C, limited to 5 minutes</li><li class="fopt"><span class="mk">C</span>At 6 hours of age regardless of temperature, limited to 15 minutes</li><li class="fopt"><span class="mk">D</span>After the first feeding, with no time limit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The initial bath for an uncompromised term infant should be postponed for at least 6 hours and until the newborn's skin temperature is stable as indicated by two consecutive axillary temperatures at or above 36.8°C (98.2 °F). The bath time should be limited to 5 minutes.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) satisfies only half the rule. Both conditions must be met, and the temperature condition is the one that gets dropped, because the 6-hour figure is the memorable one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn thermoregulation at the bedside</span><span class="chip t2">general</span></div>
+<div class="stem">35. A newborn is hypothermic. How should rewarming be carried out?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rapidly, using maximum radiant heat, to shorten the period of cold stress</li><li class="fopt right"><span class="mk">&#10003;</span>Gradually, because rapid warming can cause apneic spells, hypovolemia, and acidosis</li><li class="fopt"><span class="mk">C</span>By immersion in a warm bath</li><li class="fopt"><span class="mk">D</span>By increasing the room temperature only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The hypothermic infant should be warmed gradually because rapid warming can cause apneic spells, hypovolemia, and acidosis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the intuitive response to a cold infant and produces the exact harms the chapter names. Note the causes of hypothermia the chapter lists for a healthy term infant: inadequate drying and wrapping after birth, being left on wet linens, a cold birthing room, or birth outside the labor and birth unit.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn thermoregulation at the bedside</span><span class="chip t2">general</span></div>
+<div class="stem">36. How often should the nurse assess a newborn's temperature after birth, and by which route?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Rectal, every 4 hours</li><li class="fopt right"><span class="mk">&#10003;</span>Axillary, every hour or more often as needed until the temperature stabilizes</li><li class="fopt"><span class="mk">C</span>Temporal, once per shift</li><li class="fopt"><span class="mk">D</span>Axillary, every 8 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The nurse assesses the axillary temperature of the newborn every hour (or more often as needed) until the newborn's temperature stabilizes.&quot; Table 24.3 gives the expected axillary temperature as 37°C with a normal range of 36.5° to 37.5°C, and notes that temperature is &quot;stabilized by 8–10 h of age,&quot; with failure to stabilize by 6 to 8 hours listed as a deviation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) applies a routine well-baby interval to the transition period. The frequency is tied to a state — until stability — rather than to a fixed schedule, which is what makes the 8-to-10-hour stabilization expectation the relevant endpoint. If the mother received magnesium sulfate, the newborn is &quot;less able to conserve heat by vasoconstriction,&quot; which supplies a maternal explanation for poor thermal stability.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">safe sleep and infant positioning</span><span class="chip t2">general</span></div>
+<div class="stem">37. Parents ask where their newborn should sleep at home. Which teaching reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>In the parents' bed, so long as no one smokes and the mother is breastfeeding</li><li class="fopt right"><span class="mk">&#10003;</span>In the parents' room on a separate sleep surface designed for infants, for at least the first 6 months; bed-sharing is not recommended in any circumstance</li><li class="fopt"><span class="mk">C</span>In a separate room from the start, to establish independent sleep</li><li class="fopt"><span class="mk">D</span>In a bassinet in the parents' room for the first month, then bed-sharing is acceptable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;For at least the first 6 months, babies should sleep in the parents' room, but on a separate sleep surface designed for infants. Bed-sharing is not recommended in any circumstance.&quot; Infants are placed supine &quot;for sleep during the first year of life to reduce the incidence of sudden infant death syndrome,&quot; on a firm, noninclined surface with a tight-fitting sheet.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) attaches conditions to a categorical prohibition, and it is the most persuasive wrong answer because both conditions named are genuine risk reducers elsewhere in the box. (C) drops the room-sharing half, which is itself protective.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">safe sleep and infant positioning</span><span class="chip t2">general</span></div>
+<div class="stem">38. Select all measures the safe sleep teaching identifies as reducing risk.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Breastfeeding or feeding expressed breast milk</li><li class="fopt right"><span class="mk">&#10003;</span>Offering a pacifier at nap and bedtime</li><li class="fopt"><span class="mk">C</span>Using a home monitor or wedge marketed to decrease the risk of sudden infant death syndrome</li><li class="fopt right"><span class="mk">&#10003;</span>Avoiding exposure to cigarette, e-cigarette, and cigar smoke</li><li class="fopt right"><span class="mk">&#10003;</span>Placing the infant supine on a firm, noninclined sleep surface</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The box names breastfeeding, a pacifier at nap and bedtime with pacifier use delayed until breastfeeding is well established, avoiding tobacco and vape exposure, avoiding alcohol, marijuana, opioids and illicit drugs, the supine position, a firm noninclined surface, and room-sharing without bed-sharing.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the one wrong option and the box addresses it by name: &quot;Do not rely on home monitors or devices that are marketed to decrease the risk of SIDS (e.g., wedges or positioners).&quot; Weighted sleepers or blankets &quot;should never be used.&quot; A device marketed for the purpose is not evidence it works.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">safe sleep and infant positioning</span><span class="chip t2">general</span></div>
+<div class="stem">39. A parent plans to place a bumper pad and a quilt in the crib. Which teaching applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Bumper pads are acceptable if firmly tied; quilts should be tucked below the shoulders</li><li class="fopt right"><span class="mk">&#10003;</span>Do not place soft bedding including bumper pads, blankets, and pillows, stuffed toys, or other soft objects in the crib, because of the risk for suffocation; dress the baby in light sleep clothing such as a sleep sack or one-piece sleeper</li><li class="fopt"><span class="mk">C</span>Blankets are acceptable once the infant can lift the head</li><li class="fopt"><span class="mk">D</span>Soft bedding is acceptable during supervised naps</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The box directs that soft bedding &quot;including bumper pads, blankets, and pillows; stuffed toys; or other soft objects&quot; not be placed in the crib, and that the baby not be covered with blankets or quilts but dressed in light sleep clothing. A safe sleep sack has &quot;fitted neck and arm openings and no hood,&quot; prevents the infant rolling prone, and keeps the legs from going through the crib rails.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) offers a technique-based workaround for items the box excludes outright. Crib specifications are equally concrete: slats no more than 2.25 inches apart, a mattress-to-side gap under two finger widths, no decorative knobs on bedposts, and no drop rails.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">safe sleep and infant positioning</span><span class="chip t2">general</span></div>
+<div class="stem">40. A nurse swaddles a newborn with the arms extended, legs flexed, and hips in neutral position without rotation. A student asks why the legs are not wrapped straight. Which explanation is correct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Straight legs make the swaddle come undone more easily</li><li class="fopt right"><span class="mk">&#10003;</span>Swaddling tightly with the legs extended is associated with increased risk for developmental dysplasia of the hip; the hips should be in slight flexion and abducted with the knees free to move</li><li class="fopt"><span class="mk">C</span>Straight legs increase the risk of sudden infant death syndrome</li><li class="fopt"><span class="mk">D</span>There is no difference; either position is acceptable</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The SAFETY ALERT states that &quot;swaddling an infant tightly with legs extended is associated with increased risk for hip dislocation (developmental dysplasia of the hip [DDH]). The correct way to swaddle an infant is with the hips in slight flexion and abducted, allowing freedom of movement of the knees.&quot; The blanket must not be too tight, as that can cause overheating or respiratory compromise, and there should be &quot;space for two to three adult fingers between the infant's chest and the swaddle.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) treats a stated hazard as a matter of preference, and it pulls because a tightly wrapped infant looks well cared for. A swaddled infant lies on the back, and swaddling stops by about 2 months of age, when the infant can roll over.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">safe sleep and infant positioning</span><span class="chip t2">general</span></div>
+<div class="stem">41. During skin-to-skin contact 45 minutes after birth, the nurse observes that the mother has dozed off and the newborn is prone on her chest with the face partly covered. What does the chapter identify as the concern and the response?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>No concern; skin-to-skin contact is protective and should not be interrupted</li><li class="fopt right"><span class="mk">&#10003;</span>Sudden unexpected postnatal collapse, most of which occurs in the first 2 hours after birth and appears related to suffocation or entrapment, so the nurse repositions the newborn and continues vigilant monitoring</li><li class="fopt"><span class="mk">C</span>Cold stress; the newborn should be moved to a radiant warmer</li><li class="fopt"><span class="mk">D</span>A feeding problem; the nurse should wake the mother to breastfeed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The vast majority of cases of SUPC occur during the first 2 hours after birth and appear to be related to suffocation or entrapment,&quot; and it &quot;has occurred when newborns are held prone on the mother's chest or abdomen during SSC, and when mothers are not paying close attention.&quot; Risk factors include maternal fatigue, sedating medications, caregiver distraction, and primiparous status. Box 24.4 requires that the face be visible, the nose and mouth uncovered, the neck straight with the head turned to one side in sniffing position, the chest and shoulders facing the mother, the legs flexed, and the back covered.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) protects a beneficial practice by declining to supervise it, which is the exact failure the chapter describes. Note the risk factor that reads like a reassurance: primiparous status raises the risk rather than lowering it. When the mother is finished, &quot;a staff member or support person who is awake and alert places the newborn in the bassinet.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn vital signs and measurements</span><span class="chip t2">general</span></div>
+<div class="stem">42. A newborn's respiratory rate is 64 at 30 minutes of age. At 2 days the rate is 38. How should each be interpreted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The first is tachypnea requiring evaluation; the second is bradypnea</li><li class="fopt right"><span class="mk">&#10003;</span>Both are within expected ranges for their respective ages, since the first period of reactivity runs 50 to 60 per minute, the second period 50 to 70, and stabilization at 1 to 2 days runs 30 to 40</li><li class="fopt"><span class="mk">C</span>Both are abnormal, since the overall normal range is 30 to 60</li><li class="fopt"><span class="mk">D</span>The first is normal and the second requires evaluation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 24.3 gives an overall expected range of 30 to 60 per minute with normal variations by age: 50 to 60 in the first period of reactivity, 50 to 70 in the second period, and 30 to 40 once stabilized at 1 to 2 days. Respirations are counted for a full minute and tend to be shallow and irregular when the newborn is awake, and crackles may be heard after birth.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) applies the single overall band to every age, which is the most available error because that range is the one most students memorize. Deviations are apneic episodes over 20 seconds, bradypnea under 30, and tachypnea over 60 sustained at rest.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn vital signs and measurements</span><span class="chip t2">general</span></div>
+<div class="stem">43. A term newborn's head circumference is 35 cm and chest circumference is 32 cm. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Hydrocephalus should be suspected, since the head exceeds the chest</li><li class="fopt right"><span class="mk">&#10003;</span>Expected, since the chest is normally 2 to 3 cm less than the head circumference and both are within term ranges</li><li class="fopt"><span class="mk">C</span>Microcephaly, since the head is under 36 cm</li><li class="fopt"><span class="mk">D</span>The measurements should be repeated because the difference is too small</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Term head circumference is 32 to 36 cm measured at the occipitofrontal circumference, and term chest circumference is 30 to 33 cm measured at the nipple line, &quot;2–3 cm (0.8–1.2 in.) less than head circumference.&quot; The two are &quot;approximately the same for first 1 or 2 days after birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats the normal relationship as pathology. The diagnostic cue is the size of the difference, not its direction: hydrocephaly is flagged when the head is 4 cm or more greater than the chest, with widely separated sutures. Head circumference &quot;may need to be remeasured on the second or third day&quot; after molding and caput succedaneum resolve.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn vital signs and measurements</span><span class="chip t2">general</span></div>
+<div class="stem">44. A 4-day-old term newborn's platelet count is 96,000/mm³ and the white blood cell count is 26,000/mcL. How should the nurse interpret these?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Both are abnormal and suggest sepsis</li><li class="fopt right"><span class="mk">&#10003;</span>Both are within the standard term neonatal ranges, since platelets at 1 week or less run 84,000 to 478,000 and white cells run 9000 to 30,000</li><li class="fopt"><span class="mk">C</span>The platelet count is abnormal; the white cell count is normal</li><li class="fopt"><span class="mk">D</span>The white cell count is abnormal; the platelet count is normal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 24.4 gives platelets of 84,000 to 478,000/mm³ at one week or less, rising to the adult-like 150,000 to 300,000 after one week, and white cells of 9000 to 30,000/mcL. Other neonatal values that look abnormal by adult standards include hemoglobin 15 to 24 g/dL, hematocrit 44% to 70%, oxygen saturation 92% to 94%, and oxygen tension 60 to 80 mm Hg.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) applies the after-one-week platelet range to a 4-day-old, which is the specific error the two-row table exists to prevent. Serum glucose splits the same way by age: 40 to 60 mg/dL at one day or less, and 50 to 90 mg/dL after.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn vital signs and measurements</span><span class="chip t2">general</span></div>
+<div class="stem">45. A term newborn who appears well and is feeding without difficulty has a serum glucose of 42 mg/dL at 8 hours of age. Which management does the chapter support?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Immediate intravenous dextrose</li><li class="fopt right"><span class="mk">&#10003;</span>Early and frequent oral feedings, since the newborn is clinically stable and appears well</li><li class="fopt"><span class="mk">C</span>Withhold feeding and recheck in 2 hours</li><li class="fopt"><span class="mk">D</span>Transfer to the intensive care nursery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;For newborns who are clinically stable and appear well, early and frequent oral feedings are suggested.&quot; Intravenous fluids are reserved for infants &quot;at an increased risk for aspiration, have poor perfusion, or are thought to have a bowel obstruction,&quot; who &quot;are not enterally fed.&quot; A glucose of 42 also sits within the standard 40 to 60 mg/dL range for an infant one day old or less.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) escalates to an intravenous route in a stable feeding infant, and it pulls because the number looks low against adult expectations. (C) withholds the intervention the chapter recommends. Before drawing that glucose, recall that a cool extremity can make the heelstick result falsely low.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"apgar scoring","subtopic":"general","stem":"A newborn is limp and apneic at birth with a heart rate of 60. What is the nurse's priority?","options":["Assign the 1-minute Apgar score, then begin resuscitation based on the result","Initiate resuscitation before the 1-minute Apgar score is determined","Wait until 1 minute has elapsed to allow spontaneous recovery","Assign the 1-minute and 5-minute scores, then notify the provider"],"correct":[1],"sata":false,"why":"The chapter states the ordering rule explicitly: \"If resuscitation is required, it should be initiated before the 1-minute Apgar score is determined.\" The score describes the newborn's transition and response to resuscitative efforts; it does not gate the decision to resuscitate.","trap":"(A) is the reflex pick because the score is scheduled at 1 minute and reads like a trigger for action. Scoring first costs the infant a minute of ventilation, which is why the chapter puts the priority in writing.","k":"wcdpwr1hzw79t"},{"topic":"apgar scoring","subtopic":"general","stem":"A newborn grimaces when the soles are stimulated, has some flexion of the extremities, a heart rate of 118, a weak cry, and a pink body with blue extremities. What is the Apgar score?","options":["5","6","7","8"],"correct":[1],"sata":false,"why":"Heart rate at or above 100 scores 2; a slow, weak cry scores 1; some flexion of the extremities scores 1; a grimace scores 1; body pink with blue extremities scores 1. The total is 6, which falls in the 4-to-6 band indicating moderate difficulty.","trap":"(D) results from crediting the pink body as \"completely pink\" and the flexion as \"well flexed,\" which is the most common inflation — both of those signs have a middle value, and acrocyanosis scores 1 rather than 2.","k":"b3ulu31ikpafp"},{"topic":"apgar scoring","subtopic":"general","stem":"A newborn's 5-minute Apgar score is 6. How should the nurse proceed?","options":["No further scoring is required; document and continue routine care","Repeat the assessment every 5 minutes for up to 20 minutes","Repeat the assessment at 10 minutes only","Repeat the assessment every minute until the score reaches 7"],"correct":[1],"sata":false,"why":"\"An Apgar score is assigned at 1 and 5 minutes after birth.\" The repeat rule keys to the 5-minute score: \"For scores less than 7 at 5 minutes, the assessment should be repeated every 5 minutes for up to 20 minutes.\"","trap":"(A) treats 6 as adequate because it is above the severe-distress band, and it stops the monitoring the chapter requires. Note that a low 1-minute score does not by itself trigger the repeat schedule — the 5-minute score is what does.","k":"fw2h8xuv1gxz"},{"topic":"apgar scoring","subtopic":"general","stem":"Parents whose newborn had a 1-minute Apgar score of 4 ask whether this means their baby will have brain damage. Which response is accurate?","options":["A low score at 1 minute is strongly predictive of later neurologic impairment","Apgar scores do not predict future neurologic outcome; they describe the newborn's transition and response to resuscitative efforts","The 1-minute score predicts outcome, but the 5-minute score does not","Only scores of 0 to 3 predict neurologic outcome"],"correct":[1],"sata":false,"why":"\"Apgar scores do not predict future neurologic outcome for the newborn but are useful in describing the newborn's transition to the extrauterine environment and response to resuscitative efforts.\" The bands describe the present moment: 0 to 3 severe distress, 4 to 6 moderate difficulty, 7 to 10 minimal or no difficulty adjusting to extrauterine life.","trap":"(A) is what parents fear and what a nurse may unintentionally confirm by hedging. The score is a description of a transition, not a prognosis, and saying so plainly is the teaching the chapter supports.","k":"ib0prb1k449l1"},{"topic":"apgar scoring","subtopic":"general","stem":"The nurse is assessing color in a newborn with darkly pigmented skin during Apgar scoring. Which technique does the chapter specify?","options":["Assess the color of the trunk and compare it with the extremities","Visualize the buccal mucosa, conjunctiva, nail beds, lips, earlobes, and soles of the feet, using the buccal mucosa until a pulse oximeter can be applied","Assess color only after the infant has been dried and warmed","Defer color scoring and assign a score of 2 by default"],"correct":[1],"sata":false,"why":"The NURSING ALERT states that \"color can be evaluated most accurately by visualization of the buccal mucosa (oral mucous membranes), conjunctiva, nail beds, lips, earlobes, and soles of the feet. Evaluation of skin color in newborns with darker skin is best accomplished by visualizing the buccal mucosa until a pulse oximeter can be applied.\"","trap":"(A) uses the site that produces the least reliable reading in exactly the infants for whom accuracy matters most. Note also that heart rate for the Apgar may be assessed \"by palpation of the umbilical cord,\" not only by stethoscope, and that reflex irritability is scored on a response to stimulus while muscle tone is scored on resting flexion.","k":"1n6rabc1jjq556"},{"topic":"eye prophylaxis","subtopic":"general","stem":"A mother whose prenatal testing showed a chlamydial infection asks whether the newborn's eye ointment will protect the baby. Which response is accurate?","options":["Erythromycin ointment prevents both gonococcal and chlamydial conjunctivitis","Erythromycin ointment is bactericidal for gonorrhea but is not effective in preventing chlamydial conjunctivitis, which is treated with oral erythromycin or azithromycin","Erythromycin ointment prevents chlamydial but not gonococcal infection","No eye prophylaxis is needed when the maternal organism is chlamydia"],"correct":[1],"sata":false,"why":"Erythromycin ophthalmic ointment is \"bacteriostatic and bactericidal for N. gonorrhoeae,\" and eye prophylaxis exists to prevent ophthalmia neonatorum, which \"without prompt treatment ... can lead to blindness.\" But \"topical antibiotics such as erythromycin are not effective in preventing chlamydial conjunctivitis. Oral erythromycin or azithromycin is used to treat chlamydial conjunctivitis.\"","trap":"(A) is the reflex pick because the ointment is given to every newborn regardless of maternal history, which reads as broad coverage. Its target organism is named in the medication guide, and chlamydia is outside it.","k":"a1jyir1bxbcrd"},{"topic":"eye prophylaxis","subtopic":"general","stem":"Which technique correctly describes administration of erythromycin ophthalmic ointment?","options":["Apply a 1-cm ribbon to the upper conjunctival sac, spreading from outer to inner canthus","Apply a 1-cm ribbon to the lower conjunctival sac of each eye, spreading from the inner canthus to the outer canthus, and wipe away excess after 1 minute","Apply a 2-cm ribbon directly onto the cornea and wipe immediately","Apply the ointment and irrigate the eyes with sterile saline after 30 seconds"],"correct":[1],"sata":false,"why":"The medication guide directs applying \"a 1-cm ribbon of ointment to the lower conjunctival sac of each eye,\" spreading \"from the inner canthus of the eye to the outer canthus,\" not touching the tube to the eye, gently massaging the closed eyelids, and after 1 minute wiping away excess. A sterile cotton ball wipes each eyelid beforehand, and the unused ointment is discarded.","trap":"(A) reverses both the sac and the direction, and the direction reversal is the more available error because inner-to-outer is the opposite of how many students learned to clean an eye. (D) removes the medication before it can act.","k":"piblvs1ssbv7m"},{"topic":"eye prophylaxis","subtopic":"general","stem":"A newborn's eyes appear reddened and slightly swollen 12 hours after erythromycin ointment was given. How should the nurse interpret this?","options":["An allergic reaction requiring the provider's immediate attention","A chemical conjunctivitis that lasts 24 to 48 hours, with temporarily blurred vision, which is an expected adverse effect","Early ophthalmia neonatorum, meaning the prophylaxis failed","Evidence the ointment was administered incorrectly"],"correct":[1],"sata":false,"why":"The medication guide lists the adverse reaction directly: the ointment \"can cause chemical conjunctivitis that lasts 24–48 h; vision can be blurred temporarily.\"","trap":"(C) reads the expected reaction as the disease it was given to prevent, and it pulls because the two look alike. The time course is the discriminator: a chemical response appears within hours of the dose and resolves inside two days.","k":"jti6ieokw548"},{"topic":"eye prophylaxis","subtopic":"general","stem":"Parents ask whether eye prophylaxis can wait until after the first breastfeeding. Which response is correct?","options":["It must be given immediately at birth with no delay permitted","It is usually given within the first hour and may be delayed up to 2 hours until after the first breastfeeding, to facilitate eye contact and bonding","It may be delayed until discharge if the parents prefer","It is optional and is given only on parental request"],"correct":[1],"sata":false,"why":"Prophylaxis is \"usually administered within the first hour after birth ... It may be delayed up to 2 hours until after the first breastfeeding so that eye contact and parent-infant attachment and bonding are facilitated.\" The medication guide specifies administering the ointment within 1 to 2 hours of birth.","trap":"(C) turns a bounded delay into an open one. Eye prophylaxis \"is mandated by law in most U.S. states without regard to the mode of birth\"; where refusal is permitted, \"parents may refuse eye prophylaxis by signing a form that becomes part of the newborn record.\"","k":"1gx3d79rsqbi3"},{"topic":"newborn intramuscular prophylaxis","subtopic":"vitamin K","stem":"A newborn weighs 1400 g. Which dose of phytonadione is correct?","options":["1 mg, or 0.5 mL, intramuscularly","0.5 mg, or 0.25 mL, intramuscularly","2 mg orally","1 mg intravenously over 1 minute"],"correct":[1],"sata":false,"why":"The recommendation is a single dose of phytonadione 0.5 to 1 mg, split by weight: \"a 0.5-mg (0.25-mL) dose to newborns weighing ≤1500 g and a 1-mg (0.5-mL) dose to newborns weighing >1500 g.\"","trap":"(A) is the correct dose for the more common patient and ignores the weight split, which is why it is the reflex pick. The cut point is 1500 g, and this infant falls below it.","k":"154754vb3wx29"},{"topic":"newborn intramuscular prophylaxis","subtopic":"vitamin K","stem":"Parents refusing the vitamin K injection ask whether an oral form could be given instead. Which response is accurate?","options":["Oral vitamin K is equivalent and is an acceptable alternative","Oral administration of vitamin K is not as effective in preventing late hemorrhagic disease","Oral vitamin K is preferred but is not stocked in most facilities","Vitamin K may be given intravenously instead, as a rapid push"],"correct":[1],"sata":false,"why":"The route is intramuscular, because \"oral administration of vitamin K is not as effective in the prevention of late hemorrhagic disease.\" The intravenous route is reserved for a preterm infant with little to no muscle mass, where the medication is \"diluted and given over 10–15 min\" with cardiorespiratory monitoring, because \"rapid IV administration of vitamin K can cause cardiac arrest.\"","trap":"(A) offers an inferior option the chapter names as inferior, and it is tempting because it appears to meet the family halfway. (D) describes the route that can kill the infant if it is given the way the option states.","k":"1f4gilw17dlzdu"},{"topic":"newborn intramuscular prophylaxis","subtopic":"vitamin K","stem":"Which consequence does the chapter specifically attach to parental refusal of vitamin K in a male newborn?","options":["An increased risk of jaundice requiring phototherapy","A significantly greater likelihood of bleeding after circumcision, with many providers declining to perform the procedure","A delay in newborn metabolic screening","A contraindication to hepatitis B vaccination"],"correct":[1],"sata":false,"why":"\"Male infants who do not receive the vitamin K injection are significantly more likely to bleed after circumcision, and many providers will decline performing this procedure when vitamin K has been refused.\" The chapter also notes that parents who refuse vitamin K \"are more likely to refuse immunizations.\"","trap":"(A) attaches a real adverse effect of the drug to its refusal, which is backwards. Hemolysis, jaundice, and hyperbilirubinemia \"have been reported\" as adverse reactions to phytonadione itself, \"particularly in preterm infants,\" so a preterm infant who becomes jaundiced after the injection is not necessarily having an unrelated problem.","k":"ig5tgfi7rd1"},{"topic":"newborn intramuscular prophylaxis","subtopic":"hepatitis B immunization","stem":"A newborn weighing 3200 g is born to a mother whose hepatitis B surface antigen test is positive. What does the chapter direct?","options":["Hepatitis B vaccine within 24 hours; immune globulin is not needed if the mother received antiviral therapy in pregnancy","Hepatitis B vaccine and hepatitis B immune globulin within 12 hours after birth, regardless of any previous antiviral therapy during pregnancy, in separate sites with one in each vastus lateralis","Hepatitis B immune globulin only, within 12 hours","Hepatitis B vaccine at 1 month of age or at discharge, whichever comes first"],"correct":[1],"sata":false,"why":"For an antigen-positive mother, the direction is to \"administer HepB vaccine AND HBIG within 12 h after birth, regardless of any previous antiviral therapy during pregnancy,\" given \"in separate sites (one in each vastus lateralis).\"","trap":"(A) uses the correct interval for the wrong maternal status and adds an exemption the chapter explicitly forecloses. The exam's move on this table is to keep a number and change whose status it belongs to.","k":"y6081y1rbv4jw"},{"topic":"newborn intramuscular prophylaxis","subtopic":"hepatitis B immunization","stem":"A newborn weighing 3400 g is born to a mother who tested negative for hepatitis B. When should the vaccine be given?","options":["Within 12 hours after birth","Within the first 24 hours","At 1 month of age or at hospital discharge, whichever comes first","At the 2-month well-child visit"],"correct":[1],"sata":false,"why":"For a mother who is negative with an infant of 2000 g or more who is medically stable, the direction is to \"administer HepB vaccine within first 24 h.\" An infant under 2000 g born to a negative mother waits until \"1 month of age or at hospital discharge, whichever comes first.\" When maternal status is unknown, the vaccine goes within 12 hours.","trap":"(C) is the correct answer for a low-birth-weight infant of a negative mother, and (A) is the correct interval when the status is positive or unknown. Two variables set the timing — maternal status and infant weight — and dropping either produces a plausible wrong answer.","k":"1e5if4i14jgxn8"},{"topic":"newborn jaundice screening","subtopic":"general","stem":"A newborn appears jaundiced at 18 hours of age. What does the chapter direct the nurse to do?","options":["Document the finding and reassess in the morning, since jaundice is common","Measure a transcutaneous or total serum bilirubin level, because jaundice before 24 hours is likely due to a hemolytic process and is called pathologic jaundice","Initiate phototherapy without measuring a level","Increase feeding frequency and recheck the skin in 12 hours"],"correct":[1],"sata":false,"why":"\"If a newborn appears jaundiced in the first 24 hours, a transcutaneous bilirubin (TcB) or total serum bilirubin (TSB) level should be measured. Jaundice before 24 hours is likely due to a hemolytic process and is called pathologic jaundice.\" Table 24.3 lists \"none in the first 24 h of life\" as the expected skin finding and jaundice within the first 24 hours as the deviation, associated with increased hemolysis, Rh isoimmunization, and ABO incompatibility.","trap":"(A) applies the reassurance appropriate to physiologic jaundice to an infant inside the window that defines pathologic jaundice. The action here is to measure, which is what distinguishes this chapter's handling from Chapter 23's physiology.","k":"px2ktp12bc277"},{"topic":"newborn jaundice screening","subtopic":"general","stem":"A nurse assesses a dark-skinned newborn for jaundice under the fluorescent lights of the nursery and documents no jaundice. Which critique applies?","options":["The assessment is adequate as long as the skin was blanched","Visual assessment alone does not accurately assess hyperbilirubinemia, especially in dark-skinned newborns, and assessment in natural light is recommended because artificial lighting distorts skin color","Jaundice cannot be assessed in dark-skinned newborns at all","Only a total serum bilirubin can be used at any age"],"correct":[1],"sata":false,"why":"\"Visual assessment of jaundice alone does not provide an accurate assessment of hyperbilirubinemia, especially in dark-skinned newborns.\" The technique is to blanch the skin and to assess \"the conjunctival sacs and buccal mucosa ... especially in darker-skinned infants. Assessing for jaundice in natural light is recommended because artificial lighting and reflection from walls can distort the actual skin color.\"","trap":"(A) credits a partial technique, and it pulls because blanching is the step students remember. Two things are wrong here: the light source and the reliance on inspection as a substitute for measurement.","k":"1tjq953dduhi1"},{"topic":"newborn jaundice screening","subtopic":"general","stem":"When does the professional recommendation place universal predischarge bilirubin screening?","options":["At 12 hours of age for all newborns","Between 24 and 48 hours after birth, or prior to discharge if discharged earlier","At 72 hours, when physiologic jaundice peaks","Only for infants with visible jaundice"],"correct":[1],"sata":false,"why":"The recommendation is \"universal predischarge bilirubin screening between 24 and 48 hours after birth or prior to discharge, if discharged earlier, to prevent severe hyperbilirubinemia and the neurologic complications of acute bilirubin encephalopathy and kernicterus.\"","trap":"(D) restricts a universal screen to symptomatic infants, which defeats its purpose given that visual assessment is unreliable. (C) picks the physiologic peak at 72 to 96 hours, which is after most newborns have gone home.","k":"196ppro1tiv5xa"},{"topic":"newborn jaundice screening","subtopic":"general","stem":"A newborn's transcutaneous bilirubin is 11 mg/dL. The phototherapy treatment threshold for this infant's age in hours is 13 mg/dL. What should the nurse do?","options":["No further testing is needed, since the level is below 15 mg/dL","Obtain a total serum bilirubin, because the transcutaneous level is within 3 mg/dL of the phototherapy threshold","Begin phototherapy based on the transcutaneous value","Repeat the transcutaneous measurement in 12 hours"],"correct":[1],"sata":false,"why":"A serum level is checked \"if the TcB level is greater than 15 mg/dL or if the TcB level is higher than or within 3 mg/dL of the phototherapy treatment threshold.\" At 11 against a threshold of 13, the gap is 2 mg/dL, so the relative trigger fires.","trap":"(A) applies only the absolute trigger, which is the half of the rule that distractors keep and the reason a level as low as 11 can still require a serum draw. The relative trigger is what makes the threshold matter rather than the number alone.","k":"1acxmgr1hj4bf5"},{"topic":"newborn jaundice screening","subtopic":"general","stem":"Which statement about interpreting a total serum bilirubin level is accurate?","options":["A fixed cutoff of 12 mg/dL defines hyperbilirubinemia at any age","Levels are interpreted using an hour-specific nomogram, and if more than one measurement was done, the rate of increase can identify infants at risk","Interpretation depends only on whether the infant is breastfed","The direct fraction alone determines whether treatment is needed"],"correct":[1],"sata":false,"why":"\"TSB levels are interpreted using an hour-specific nomogram,\" and \"if more than one TcB or TSB measure was done, the rate of increase can be used to identify infants at risk.\"","trap":"(A) is the intuitive model — one number, one cutoff — and it is exactly what an hour-specific nomogram replaces. A bilirubin value carries no meaning without the infant's age in hours, which is the same principle behind Chapter 23's pathologic criterion of a rise greater than 0.2 mg/dL per hour.","k":"nshu28b7g0iy"},{"topic":"newborn metabolic and hearing screening","subtopic":"general","stem":"When are specimens for universal newborn metabolic screening usually collected, and why is the screen performed on every newborn?","options":["Within the first 6 hours, because early detection improves outcomes","After 24 hours of age and before discharge, because the majority of the disorders screened do not produce symptoms at birth","At the 2-week visit, once feeding is established","Only when a family history suggests a genetic disorder"],"correct":[1],"sata":false,"why":"\"Samples are usually collected in the hospital after 24 hours of age and before discharge.\" The rationale for universality is that \"the majority of disorders included in the screening do not produce symptoms at birth.\" Screening covers 36 core disorders and 26 secondary disorders using tandem mass spectrometry, with capillary blood obtained by heelstick and collected on special filter paper.","trap":"(D) makes a universal public health program selective, which the asymptomatic-at-birth rationale rules out. Note that \"in the majority of states informed consent is not required for newborn screening.\"","k":"z7ciakw7bzna"},{"topic":"newborn metabolic and hearing screening","subtopic":"general","stem":"Select all circumstances in which the newborn metabolic screening test may need to be repeated.","options":["The initial specimen was obtained before 24 hours of age","The infant received a blood transfusion before the specimen was collected","The infant's birth weight was less than 1500 g","The infant is exclusively breastfed","The infant was born by cesarean birth"],"correct":[0,1,2],"sata":true,"why":"\"The screening test may need to be repeated if the initial specimen was obtained before 24 hours of age, or after a blood transfusion was given, or if the infant's birth weight was less than 1500 g.\" Core disorders include hemoglobinopathies such as sickle cell disease, inborn errors of metabolism such as phenylalanine hydroxylase deficiency and galactosemia, severe combined immunodeficiency, hearing loss, and critical congenital heart disease.","trap":"(D) and (E) are the two wrong options, and (D) pulls because feeding method genuinely does affect some metabolic screens in students' memory of older teaching. The three stated triggers are about specimen timing, transfused blood, and prematurity.","k":"1rcsep31parejh"},{"topic":"newborn metabolic and hearing screening","subtopic":"general","stem":"A newborn does not pass the hearing screen before discharge. What follow-up does the chapter specify?","options":["The screen is definitive, so audiologic treatment should begin immediately","The screen is typically repeated before discharge; if the infant still does not pass, a comprehensive audiologic evaluation should be done by 3 months of age","Rescreening should occur at the 1-year visit","No follow-up is needed, since most infants pass on repeat testing"],"correct":[1],"sata":false,"why":"If the infant does not pass, \"it is typically repeated before discharge,\" and if still not passing, \"a comprehensive audiologic evaluation should be done by 3 months of age.\" Routine screening is recommended for all newborns \"before hospital discharge or no later than 1 month of age.\" Approximately 3 out of every 1000 infants born each year have hearing loss.","trap":"(A) treats a screening result as a diagnosis, which the chapter blocks: \"Neither test is definitive in diagnosing hearing loss; they are used to determine whether further, more accurate hearing testing is needed.\"","k":"147x9u25w9fas"},{"topic":"newborn metabolic and hearing screening","subtopic":"general","stem":"A parent asks how the hearing screen works. The nurse explains that a soft rubber earpiece emitting a clicking noise is placed in the outer ear and a healthy ear echoes the sound back to a microphone. Which test is this?","options":["The auditory brainstem response","The evoked otoacoustic emissions test","Tympanometry","Pure-tone audiometry"],"correct":[1],"sata":false,"why":"In the evoked otoacoustic emissions test, \"a soft rubber earpiece that makes a soft clicking noise is placed in the baby's outer ear. A healthy ear will echo the click sound back to a microphone.\" The auditory brainstem response instead involves \"attaching sensors to the baby's forehead and behind each ear,\" and the sensors \"measure the responses of the baby's acoustic nerve.\"","trap":"(A) is the other method named, and the discriminator is what is being measured: an echo returning from the ear versus a nerve response recorded from scalp sensors. Either method, or a combination, may be used.","k":"1wj12371lzv69"},{"topic":"critical congenital heart disease screening","subtopic":"general","stem":"At what age is screening for critical congenital heart disease performed, and at which sites?","options":["Within 6 hours of birth, in both hands","At 24 to 48 hours of age, in the right hand and one foot","At 24 to 48 hours of age, in the left hand and one foot","Immediately before discharge, in either extremity"],"correct":[1],"sata":false,"why":"\"Screening is performed at 24 to 48 hours of age,\" and \"oxygen saturation is measured in the right hand and one foot.\" The site logic follows the ductus arteriosus: the right hand is preductal and the foot is postductal, which is why a difference between them is meaningful.","trap":"(A) uses both hands, which measures the same side of the circulation twice and cannot detect a preductal-to-postductal gradient. (C) picks the wrong hand, and the left hand is not reliably preductal.","k":"1sx7q86rpexuw"},{"topic":"critical congenital heart disease screening","subtopic":"general","stem":"A newborn's screening oxygen saturation is 96% in the right hand and 93% in the foot. How should this be interpreted?","options":["Passing, because a saturation above 95% was recorded in one extremity","Not passing, because the absolute difference between the upper and lower extremity readings is 3% or more","Not passing, because a saturation below 95% requires immediate evaluation","Passing, because neither value is below 90%"],"correct":[1],"sata":false,"why":"A passing result requires \"oxygen saturation of greater than 95% in either extremity, with a less than 3% absolute difference between the upper and lower extremity readings.\" Here the upper value passes but the difference is exactly 3%, which is not less than 3%.","trap":"(A) applies only the first half of the criterion, and it is the most available error because 96% looks reassuring on its own. The screen has two conditions and both must be met, which is what makes the gradient testable.","k":"429f1z1yzokq9"},{"topic":"critical congenital heart disease screening","subtopic":"general","stem":"A newborn's screening oxygen saturation is 88%. What does the chapter direct?","options":["Repeat the screen in one hour","Immediate evaluation for hemodynamic stability and hypoxemia, with an echocardiogram usually performed","Discharge with outpatient cardiology follow-up","Repeat the measurement in the opposite foot"],"correct":[1],"sata":false,"why":"Immediate evaluation is required \"if the oxygen saturation is less than 90%. The baby is evaluated for hemodynamic stability and hypoxemia; an echocardiogram is usually performed.\"","trap":"(A) defers action at the value the chapter marks as the immediate-evaluation threshold, and repeat measurement is the correct move for intermediate results rather than for a saturation below 90%.","k":"rsq1psvixvsi"},{"topic":"critical congenital heart disease screening","subtopic":"general","stem":"A parent asks why an apparently healthy newborn needs a pulse oximetry screen. Which explanation reflects the chapter's rationale?","options":["Pulse oximetry diagnoses congenital heart defects noninvasively","Hypoxemia can be the first sign a defect is present, and other symptoms can develop only after the newborn has been discharged","The screen replaces the newborn cardiac physical examination","All newborns have transient hypoxemia that must be documented"],"correct":[1],"sata":false,"why":"The screen uses \"pulse oximetry to measure oxygen saturation for the purpose of detecting hypoxemia,\" because \"hypoxemia can be the first sign that a congenital heart defect is present, and other symptoms can develop once the newborn has been discharged.\" It detects defects \"that manifest with hypoxemia in the absence of other physical symptoms.\" About 6 in 10,000 apparently healthy term or late-preterm infants will have critical congenital heart disease.","trap":"(A) overstates what the screen does. It identifies infants who need the confirmatory test, which the chapter names as an echocardiogram, and it is a screen rather than a diagnostic study.","k":"305y4xt7e0lj"},{"topic":"heelstick and blood sampling","subtopic":"general","stem":"Before performing a heelstick for a glucose level, the nurse notes the infant's foot is cool. Why does this matter?","options":["It only makes the specimen harder to obtain","Diminished blood flow makes the specimen harder to obtain and can cause the test result to be falsely low","It causes the result to be falsely high","It has no effect on the result if enough blood is collected"],"correct":[1],"sata":false,"why":"The NURSING ALERT states: \"A heel warmer should be applied before every glucose assessment via heelstick. If the extremity is cool, blood flow is diminished making it harder to obtain the needed specimen and potentially causing the test result to be falsely low.\" Warming for 5 to 10 minutes dilates the vessels, and disposable heel warmers \"should be used with care to prevent burns.\"","trap":"(C) reverses the direction of the artifact. This matters clinically because a falsely low glucose triggers an intervention the infant may not need, so a low value drawn from a cool foot deserves a procedural explanation before a physiologic one.","k":"121fnsq1otw05c"},{"topic":"heelstick and blood sampling","subtopic":"general","stem":"Where is a heelstick puncture correctly performed, and how deep?","options":["The center of the heel, no deeper than 2.4 mm","The outer aspect of the heel, no deeper than 2.4 mm in a term infant","The walking surface of the heel, no deeper than 4 mm","The great toe pad, at any depth"],"correct":[1],"sata":false,"why":"\"The puncture is made at the outer aspect of the heel,\" located by drawing an imaginary line \"from between the fourth and fifth toes and parallel to the lateral aspect of the foot to the heel,\" with a second line from the great toe to the medial aspect of the heel. The lancet \"penetrates no deeper than 2.4 mm in a term infant.\"","trap":"(A) and (C) both target areas the chapter tells you to avoid, and both dangers are named. The most serious complication is \"necrotizing osteochondritis resulting from lancet penetration of the bone,\" and repeated trauma to the walking surface \"can cause fibrosis and scarring that can lead to problems with walking later in life.\"","k":"1j8tfur1gx8yr9"},{"topic":"heelstick and blood sampling","subtopic":"general","stem":"Which sequence correctly describes heelstick technique?","options":["Cleanse with antiseptic, puncture, then offer oral sucrose for comfort","Warm the heel, offer oral sucrose, cleanse with antiseptic, then puncture with a spring-loaded automatic device","Puncture with a manual lance blade, then warm the heel to improve flow","Cleanse with alcohol, puncture, and cleanse with alcohol again afterward"],"correct":[1],"sata":false,"why":"The order the chapter gives is to warm the heel, then \"after providing the infant with an oral sucrose solution, the area is cleansed with an appropriate skin antiseptic.\" A spring-loaded automatic puncture device \"causes less pain and requires fewer punctures than a manual lance blade.\"","trap":"(A) moves the comfort measure after the painful stimulus, which is the most common sequencing error and defeats the point of a pre-procedure intervention. Evidence-based measures named include a pacifier with sucrose, swaddling, containment, facilitated tucking, breastfeeding, and skin-to-skin contact with the mother, and the infant should also be cuddled and comforted after the procedure.","k":"15lcbfkuvptim"},{"topic":"heelstick and blood sampling","subtopic":"general","stem":"After a heelstick, what does the chapter direct the nurse to apply to the site?","options":["An alcohol swab, followed by a bandage","Gentle pressure with a dry gauze pad, with no further skin cleanser or alcohol","A pressure dressing left in place for 4 hours","Antibiotic ointment and a gauze wrap"],"correct":[1],"sata":false,"why":"\"Gentle pressure is applied with a dry gauze pad. No further skin cleanser or alcohol should be applied because it will cause the site to continue to bleed.\"","trap":"(A) is the adult reflex — clean the site again after the stick — and here it prolongs bleeding, which the chapter states as the reason. The chapter also notes the behavioral cost of repetition: \"after several heelsticks, infants have been observed to withdraw their feet when they are touched.\"","k":"1et3ph8kyn3em"},{"topic":"heelstick and blood sampling","subtopic":"general","stem":"A larger blood volume is required than a heelstick can provide. Which statement about venipuncture in the newborn is accurate?","options":["A heelstick is appropriate for any volume up to 5 mL","A heelstick is appropriate when the volume required is less than 1 mL; venipuncture sites include the antecubital, saphenous, superficial wrist, and rarely scalp veins, and a tourniquet is optional","Only scalp veins may be used in newborns","A tourniquet is required for all newborn venipuncture"],"correct":[1],"sata":false,"why":"\"A heelstick is usually considered appropriate when the volume of blood required is less than 1 mL.\" Venipuncture is used for larger samples, at the \"antecubital, saphenous, superficial wrist, and, rarely, scalp veins,\" using a 23- or 25-gauge butterfly or hypodermic needle with a syringe. \"A tourniquet is optional but can help increase blood flow.\"","trap":"(A) stretches the heelstick well past its stated volume limit, and it pulls because a heelstick feels less invasive and therefore preferable at any size. The volume, not the perceived invasiveness, decides the method.","k":"1mkml9fwec7i1"},{"topic":"newborn thermoregulation at the bedside","subtopic":"general","stem":"A newborn is under a radiant warmer. Which practice does the chapter require, and why?","options":["Manual control mode, so the nurse can adjust the output as needed","Servo-controlled setting only, because a detached probe or manual mode will make the warmer increase heat output and potentially overheat the newborn","Manual mode with hourly temperature checks","Either mode, as long as the probe is checked once per shift"],"correct":[1],"sata":false,"why":"The SAFETY ALERT states that the thermistor probe must be checked periodically for secure attachment, because \"if it becomes loose, the radiant heating device will increase heat output, potentially overheating the newborn. Using the manual control mode ... can have the same effect ... Therefore radiant warmers should be used only in the servo-controlled setting.\" The desired abdominal skin temperature is approximately 36.5° to 37°C.","trap":"(A) and (C) both put a person in the feedback loop, which is what the alert identifies as the failure mode. A servo-controlled warmer reads the infant's own skin and stops; a manual one heats until someone notices.","k":"hwxh2k1lv4syy"},{"topic":"newborn thermoregulation at the bedside","subtopic":"general","stem":"When may a healthy term newborn have the first bath, and how long should it last?","options":["At 2 hours of age, limited to 10 minutes","Postponed at least 6 hours and until two consecutive axillary temperatures are at or above 36.8°C, limited to 5 minutes","At 6 hours of age regardless of temperature, limited to 15 minutes","After the first feeding, with no time limit"],"correct":[1],"sata":false,"why":"\"The initial bath for an uncompromised term infant should be postponed for at least 6 hours and until the newborn's skin temperature is stable as indicated by two consecutive axillary temperatures at or above 36.8°C (98.2 °F). The bath time should be limited to 5 minutes.\"","trap":"(C) satisfies only half the rule. Both conditions must be met, and the temperature condition is the one that gets dropped, because the 6-hour figure is the memorable one.","k":"2hthdgvql9hm"},{"topic":"newborn thermoregulation at the bedside","subtopic":"general","stem":"A newborn is hypothermic. How should rewarming be carried out?","options":["Rapidly, using maximum radiant heat, to shorten the period of cold stress","Gradually, because rapid warming can cause apneic spells, hypovolemia, and acidosis","By immersion in a warm bath","By increasing the room temperature only"],"correct":[1],"sata":false,"why":"\"The hypothermic infant should be warmed gradually because rapid warming can cause apneic spells, hypovolemia, and acidosis.\"","trap":"(A) is the intuitive response to a cold infant and produces the exact harms the chapter names. Note the causes of hypothermia the chapter lists for a healthy term infant: inadequate drying and wrapping after birth, being left on wet linens, a cold birthing room, or birth outside the labor and birth unit.","k":"1bqaffz1jwaay5"},{"topic":"newborn thermoregulation at the bedside","subtopic":"general","stem":"How often should the nurse assess a newborn's temperature after birth, and by which route?","options":["Rectal, every 4 hours","Axillary, every hour or more often as needed until the temperature stabilizes","Temporal, once per shift","Axillary, every 8 hours"],"correct":[1],"sata":false,"why":"\"The nurse assesses the axillary temperature of the newborn every hour (or more often as needed) until the newborn's temperature stabilizes.\" Table 24.3 gives the expected axillary temperature as 37°C with a normal range of 36.5° to 37.5°C, and notes that temperature is \"stabilized by 8–10 h of age,\" with failure to stabilize by 6 to 8 hours listed as a deviation.","trap":"(D) applies a routine well-baby interval to the transition period. The frequency is tied to a state — until stability — rather than to a fixed schedule, which is what makes the 8-to-10-hour stabilization expectation the relevant endpoint. If the mother received magnesium sulfate, the newborn is \"less able to conserve heat by vasoconstriction,\" which supplies a maternal explanation for poor thermal stability.","k":"yjfm98ad4ria"},{"topic":"safe sleep and infant positioning","subtopic":"general","stem":"Parents ask where their newborn should sleep at home. Which teaching reflects the chapter?","options":["In the parents' bed, so long as no one smokes and the mother is breastfeeding","In the parents' room on a separate sleep surface designed for infants, for at least the first 6 months; bed-sharing is not recommended in any circumstance","In a separate room from the start, to establish independent sleep","In a bassinet in the parents' room for the first month, then bed-sharing is acceptable"],"correct":[1],"sata":false,"why":"\"For at least the first 6 months, babies should sleep in the parents' room, but on a separate sleep surface designed for infants. Bed-sharing is not recommended in any circumstance.\" Infants are placed supine \"for sleep during the first year of life to reduce the incidence of sudden infant death syndrome,\" on a firm, noninclined surface with a tight-fitting sheet.","trap":"(A) attaches conditions to a categorical prohibition, and it is the most persuasive wrong answer because both conditions named are genuine risk reducers elsewhere in the box. (C) drops the room-sharing half, which is itself protective.","k":"1a8ivgfpmjcft"},{"topic":"safe sleep and infant positioning","subtopic":"general","stem":"Select all measures the safe sleep teaching identifies as reducing risk.","options":["Breastfeeding or feeding expressed breast milk","Offering a pacifier at nap and bedtime","Using a home monitor or wedge marketed to decrease the risk of sudden infant death syndrome","Avoiding exposure to cigarette, e-cigarette, and cigar smoke","Placing the infant supine on a firm, noninclined sleep surface"],"correct":[0,1,3,4],"sata":true,"why":"The box names breastfeeding, a pacifier at nap and bedtime with pacifier use delayed until breastfeeding is well established, avoiding tobacco and vape exposure, avoiding alcohol, marijuana, opioids and illicit drugs, the supine position, a firm noninclined surface, and room-sharing without bed-sharing.","trap":"(C) is the one wrong option and the box addresses it by name: \"Do not rely on home monitors or devices that are marketed to decrease the risk of SIDS (e.g., wedges or positioners).\" Weighted sleepers or blankets \"should never be used.\" A device marketed for the purpose is not evidence it works.","k":"42s05mmrkn"},{"topic":"safe sleep and infant positioning","subtopic":"general","stem":"A parent plans to place a bumper pad and a quilt in the crib. Which teaching applies?","options":["Bumper pads are acceptable if firmly tied; quilts should be tucked below the shoulders","Do not place soft bedding including bumper pads, blankets, and pillows, stuffed toys, or other soft objects in the crib, because of the risk for suffocation; dress the baby in light sleep clothing such as a sleep sack or one-piece sleeper","Blankets are acceptable once the infant can lift the head","Soft bedding is acceptable during supervised naps"],"correct":[1],"sata":false,"why":"The box directs that soft bedding \"including bumper pads, blankets, and pillows; stuffed toys; or other soft objects\" not be placed in the crib, and that the baby not be covered with blankets or quilts but dressed in light sleep clothing. A safe sleep sack has \"fitted neck and arm openings and no hood,\" prevents the infant rolling prone, and keeps the legs from going through the crib rails.","trap":"(A) offers a technique-based workaround for items the box excludes outright. Crib specifications are equally concrete: slats no more than 2.25 inches apart, a mattress-to-side gap under two finger widths, no decorative knobs on bedposts, and no drop rails.","k":"lqrp7s1niefti"},{"topic":"safe sleep and infant positioning","subtopic":"general","stem":"A nurse swaddles a newborn with the arms extended, legs flexed, and hips in neutral position without rotation. A student asks why the legs are not wrapped straight. Which explanation is correct?","options":["Straight legs make the swaddle come undone more easily","Swaddling tightly with the legs extended is associated with increased risk for developmental dysplasia of the hip; the hips should be in slight flexion and abducted with the knees free to move","Straight legs increase the risk of sudden infant death syndrome","There is no difference; either position is acceptable"],"correct":[1],"sata":false,"why":"The SAFETY ALERT states that \"swaddling an infant tightly with legs extended is associated with increased risk for hip dislocation (developmental dysplasia of the hip [DDH]). The correct way to swaddle an infant is with the hips in slight flexion and abducted, allowing freedom of movement of the knees.\" The blanket must not be too tight, as that can cause overheating or respiratory compromise, and there should be \"space for two to three adult fingers between the infant's chest and the swaddle.\"","trap":"(D) treats a stated hazard as a matter of preference, and it pulls because a tightly wrapped infant looks well cared for. A swaddled infant lies on the back, and swaddling stops by about 2 months of age, when the infant can roll over.","k":"1t9kxt813x00tu"},{"topic":"safe sleep and infant positioning","subtopic":"general","stem":"During skin-to-skin contact 45 minutes after birth, the nurse observes that the mother has dozed off and the newborn is prone on her chest with the face partly covered. What does the chapter identify as the concern and the response?","options":["No concern; skin-to-skin contact is protective and should not be interrupted","Sudden unexpected postnatal collapse, most of which occurs in the first 2 hours after birth and appears related to suffocation or entrapment, so the nurse repositions the newborn and continues vigilant monitoring","Cold stress; the newborn should be moved to a radiant warmer","A feeding problem; the nurse should wake the mother to breastfeed"],"correct":[1],"sata":false,"why":"\"The vast majority of cases of SUPC occur during the first 2 hours after birth and appear to be related to suffocation or entrapment,\" and it \"has occurred when newborns are held prone on the mother's chest or abdomen during SSC, and when mothers are not paying close attention.\" Risk factors include maternal fatigue, sedating medications, caregiver distraction, and primiparous status. Box 24.4 requires that the face be visible, the nose and mouth uncovered, the neck straight with the head turned to one side in sniffing position, the chest and shoulders facing the mother, the legs flexed, and the back covered.","trap":"(A) protects a beneficial practice by declining to supervise it, which is the exact failure the chapter describes. Note the risk factor that reads like a reassurance: primiparous status raises the risk rather than lowering it. When the mother is finished, \"a staff member or support person who is awake and alert places the newborn in the bassinet.\"","k":"1esk45c1jsruby"},{"topic":"newborn vital signs and measurements","subtopic":"general","stem":"A newborn's respiratory rate is 64 at 30 minutes of age. At 2 days the rate is 38. How should each be interpreted?","options":["The first is tachypnea requiring evaluation; the second is bradypnea","Both are within expected ranges for their respective ages, since the first period of reactivity runs 50 to 60 per minute, the second period 50 to 70, and stabilization at 1 to 2 days runs 30 to 40","Both are abnormal, since the overall normal range is 30 to 60","The first is normal and the second requires evaluation"],"correct":[1],"sata":false,"why":"Table 24.3 gives an overall expected range of 30 to 60 per minute with normal variations by age: 50 to 60 in the first period of reactivity, 50 to 70 in the second period, and 30 to 40 once stabilized at 1 to 2 days. Respirations are counted for a full minute and tend to be shallow and irregular when the newborn is awake, and crackles may be heard after birth.","trap":"(C) applies the single overall band to every age, which is the most available error because that range is the one most students memorize. Deviations are apneic episodes over 20 seconds, bradypnea under 30, and tachypnea over 60 sustained at rest.","k":"967u2e2l5b20"},{"topic":"newborn vital signs and measurements","subtopic":"general","stem":"A term newborn's head circumference is 35 cm and chest circumference is 32 cm. How should the nurse interpret this?","options":["Hydrocephalus should be suspected, since the head exceeds the chest","Expected, since the chest is normally 2 to 3 cm less than the head circumference and both are within term ranges","Microcephaly, since the head is under 36 cm","The measurements should be repeated because the difference is too small"],"correct":[1],"sata":false,"why":"Term head circumference is 32 to 36 cm measured at the occipitofrontal circumference, and term chest circumference is 30 to 33 cm measured at the nipple line, \"2–3 cm (0.8–1.2 in.) less than head circumference.\" The two are \"approximately the same for first 1 or 2 days after birth.\"","trap":"(A) treats the normal relationship as pathology. The diagnostic cue is the size of the difference, not its direction: hydrocephaly is flagged when the head is 4 cm or more greater than the chest, with widely separated sutures. Head circumference \"may need to be remeasured on the second or third day\" after molding and caput succedaneum resolve.","k":"198sm9h1jpywvr"},{"topic":"newborn vital signs and measurements","subtopic":"general","stem":"A 4-day-old term newborn's platelet count is 96,000/mm³ and the white blood cell count is 26,000/mcL. How should the nurse interpret these?","options":["Both are abnormal and suggest sepsis","Both are within the standard term neonatal ranges, since platelets at 1 week or less run 84,000 to 478,000 and white cells run 9000 to 30,000","The platelet count is abnormal; the white cell count is normal","The white cell count is abnormal; the platelet count is normal"],"correct":[1],"sata":false,"why":"Table 24.4 gives platelets of 84,000 to 478,000/mm³ at one week or less, rising to the adult-like 150,000 to 300,000 after one week, and white cells of 9000 to 30,000/mcL. Other neonatal values that look abnormal by adult standards include hemoglobin 15 to 24 g/dL, hematocrit 44% to 70%, oxygen saturation 92% to 94%, and oxygen tension 60 to 80 mm Hg.","trap":"(C) applies the after-one-week platelet range to a 4-day-old, which is the specific error the two-row table exists to prevent. Serum glucose splits the same way by age: 40 to 60 mg/dL at one day or less, and 50 to 90 mg/dL after.","k":"ln2421w5njgz"},{"topic":"newborn vital signs and measurements","subtopic":"general","stem":"A term newborn who appears well and is feeding without difficulty has a serum glucose of 42 mg/dL at 8 hours of age. Which management does the chapter support?","options":["Immediate intravenous dextrose","Early and frequent oral feedings, since the newborn is clinically stable and appears well","Withhold feeding and recheck in 2 hours","Transfer to the intensive care nursery"],"correct":[1],"sata":false,"why":"\"For newborns who are clinically stable and appear well, early and frequent oral feedings are suggested.\" Intravenous fluids are reserved for infants \"at an increased risk for aspiration, have poor perfusion, or are thought to have a bowel obstruction,\" who \"are not enterally fed.\" A glucose of 42 also sits within the standard 40 to 60 mg/dL range for an infant one day old or less.","trap":"(A) escalates to an intravenous route in a stable feeding infant, and it pulls because the number looks low against adult expectations. (C) withholds the intervention the chapter recommends. Before drawing that glucose, recall that a cool extremity can make the heelstick result falsely low.","k":"n68qgf19tst29"}];
+const TITLE = "Chapter 24 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 24";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

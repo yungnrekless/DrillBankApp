@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 31 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 31</div><h1>Chapter 31 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blues versus depression</span><span class="chip t2">telling them apart</span></div>
+<div class="stem">1. A woman 4 days after birth has mood swings, tearfulness, difficulty sleeping, and loss of appetite, but is caring for her infant and herself without difficulty. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>As postpartum blues, a mild and transient depression occurring in 50% to 70% of women, in which functioning is not usually impaired and symptoms typically subside within a few days to 2 weeks; treatment is not needed</li><li class="fopt"><span class="mk">B</span>As postpartum depression requiring immediate medication</li><li class="fopt"><span class="mk">C</span>As postpartum psychosis</li><li class="fopt"><span class="mk">D</span>As a normal finding needing no follow-up at all</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Postpartum blues is &quot;characterized by mood swings, feelings of sadness and anxiety, crying, difficulty sleeping, and loss of appetite; the woman's functioning is not usually impaired.&quot; It occurs &quot;in 50% to 70% of women after birth,&quot; symptoms &quot;typically subside within a few days to 2 weeks,&quot; and &quot;treatment is not needed.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is close but drops the surveillance, and the whole chapter turns on the follow-up: symptoms that persist past 2 weeks or that impair functioning are a different diagnosis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blues versus depression</span><span class="chip t2">telling them apart</span></div>
+<div class="stem">2. What distinguishes postpartum depression from postpartum blues?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Depression involves an intense and pervasive sadness with labile mood swings that can be severe, is more serious and persistent, lasts more than 2 weeks, and impairs functioning, affecting approximately 9% to 24% of women</li><li class="fopt"><span class="mk">B</span>Depression is milder and shorter</li><li class="fopt"><span class="mk">C</span>Depression occurs only after the sixth week</li><li class="fopt"><span class="mk">D</span>They are the same condition with different names</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Postpartum depression is &quot;an intense and pervasive sadness with labile mood swings that can be severe,&quot; is &quot;more serious and persistent,&quot; lasts &quot;more than 2 weeks,&quot; and is &quot;experienced by approximately 9% to 24% of women,&quot; with a recent meta-analysis reporting &quot;a 12% incidence ... among healthy women who gave birth to healthy infants.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) collapses a distinction with different treatment implications — blues need nothing, depression needs support, psychotherapy, or medication by severity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blues versus depression</span><span class="chip t2">why it goes unreported</span></div>
+<div class="stem">3. Why does the chapter say a new mother's emotional distress often goes unaddressed by those around her?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because birth is usually thought to be a happy event, so a new mother's emotional distress can puzzle and immobilize family and friends — when she most needs caring attention, they may either criticize or withdraw</li><li class="fopt"><span class="mk">B</span>Because families are indifferent</li><li class="fopt"><span class="mk">C</span>Because women rarely have symptoms</li><li class="fopt"><span class="mk">D</span>Because symptoms are always obvious and acted on</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Because birth is usually thought to be a happy event, a new mother's emotional distress can puzzle and immobilize family and friends. When she most needs the caring attention of loved ones, they may either criticize or withdraw.&quot; The chapter states the stakes plainly: failure to assess, intervene, and refer &quot;can result in tragic consequences such as suicide or infanticide.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) attributes to indifference what the chapter attributes to confusion, and the difference matters for how the nurse involves the family.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blues versus depression</span><span class="chip t2">why it goes unreported</span></div>
+<div class="stem">4. What does the chapter say about partners and postpartum mood disorders?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fathers or partners can experience postpartum blues or depression, although there is a lack of research evidence surrounding these topics</li><li class="fopt"><span class="mk">B</span>Only birth mothers are affected</li><li class="fopt"><span class="mk">C</span>Partners are affected more often than mothers</li><li class="fopt"><span class="mk">D</span>Partner symptoms are always secondary to the mother's</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Fathers or partners can experience postpartum blues or depression, although there is a lack of research evidence surrounding these topics.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) excludes a population the chapter includes, and the conditions themselves &quot;can interfere with attachment to the newborn and family integration&quot; regardless of who has them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening tools for perinatal mood disorders</span><span class="chip t2">the edinburgh scale</span></div>
+<div class="stem">5. What is the most widely used screening tool in perinatal populations, and how is it structured and scored?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The Edinburgh Postnatal Depression Screen, comprising 10 statements about common symptoms of depression, with the woman choosing the response closest to how she has felt for the past week; the maximum score is 30, and women scoring 12 or higher may possibly have depression and need further assessment</li><li class="fopt"><span class="mk">B</span>The Patient Health Questionnaire–9, with a maximum score of 27 and a cutoff of 5</li><li class="fopt"><span class="mk">C</span>The Edinburgh scale, with 20 items and a cutoff of 20</li><li class="fopt"><span class="mk">D</span>A single question about mood</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In perinatal populations the most widely used screening tool is the Edinburgh Postnatal Depression Screen (EPDS).&quot; It &quot;comprises 10 statements about the common symptoms of depression. The woman is asked to choose the response that is closest to describing how she has felt for the past week.&quot; And: &quot;A maximum score on the EPDS is 30; women with scores of 12 or higher may possibly have depression and need further assessment.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inflates both the item count and the cutoff, and the cutoff is what determines who gets further assessment.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening tools for perinatal mood disorders</span><span class="chip t2">the edinburgh scale</span></div>
+<div class="stem">6. Which item on the Edinburgh scale requires special handling, and what else does the tool detect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>One item addresses suicidal thoughts, and responses to this item should be carefully examined, with positive responses warranting further assessment and prompt intervention; the tool is often used to screen for anxiety disorders because it includes three items specific to a woman's experience of anxiety</li><li class="fopt"><span class="mk">B</span>The sleep item, which must be scored twice</li><li class="fopt"><span class="mk">C</span>The appetite item, which is excluded from the total</li><li class="fopt"><span class="mk">D</span>No item requires special handling</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;One item on the tool addresses suicidal thoughts; responses to this item should be carefully examined. Positive responses warrant further assessment and prompt intervention.&quot; And: &quot;The EPDS is often used to screen for anxiety disorders: it includes three items that are specific to a woman's experience of anxiety.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) treats the total score as the only output, when a positive response to one item can require action regardless of the total.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening tools for perinatal mood disorders</span><span class="chip t2">when and how screening works</span></div>
+<div class="stem">7. When should screening for perinatal depression occur? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Before discharge from the birth setting, where postpartum nurses can screen for depression and anxiety disorders</li><li class="fopt right"><span class="mk">&#10003;</span>At routine follow-up visits</li><li class="fopt right"><span class="mk">&#10003;</span>By primary care providers during pediatric care visits for the infant</li><li class="fopt right"><span class="mk">&#10003;</span>At the infant's 1-, 2-, and 4-month visits, per the AAP recommendation</li><li class="fopt"><span class="mk">E</span>Only once, at the 6-week postpartum visit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Postpartum nurses can screen before discharge, &quot;although this screening identifies some who are at risk, it is important that follow-up screening is also done&quot; at routine follow-up visits and by primary care providers during pediatric visits. &quot;The AAP recommends maternal depression screening at the infant's 1-, 2-, and 4-month visits.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is a single point in a schedule the chapter deliberately spreads across months, because &quot;the onset of PPD most often occurs within the first few months after birth.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening tools for perinatal mood disorders</span><span class="chip t2">when and how screening works</span></div>
+<div class="stem">8. What does the chapter say determines whether screening is effective?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The effectiveness of screening is related to the follow-up for positive screening results; if results are positive or self-report shows signs of a psychiatric disorder, a formal screening is needed so that appropriate referrals can be made and treatment initiated promptly</li><li class="fopt"><span class="mk">B</span>The choice of tool determines effectiveness</li><li class="fopt"><span class="mk">C</span>The timing alone determines effectiveness</li><li class="fopt"><span class="mk">D</span>Screening is effective regardless of what follows</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The effectiveness of screening is related to the follow-up for positive screening results. If screening results are positive or if the woman's self-report shows signs that she might be experiencing symptoms of a psychiatric disorder, a formal screening is needed so that appropriate referrals can be made and treatment can be initiated promptly.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) makes screening a completed task rather than a first step, which is the specific failure the sentence is written against.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">screening tools for perinatal mood disorders</span><span class="chip t2">when and how screening works</span></div>
+<div class="stem">9. Which tools does the chapter name for anxiety and for posttraumatic stress disorder?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>For anxiety: the Perinatal Anxiety Screening Scale, the Generalized Anxiety Disorder Scale–7, and the Patient Health Questionnaire–9; for PTSD: interviews, the Edinburgh scale, and a targeted tool such as the Primary Care PTSD Screen</li><li class="fopt"><span class="mk">B</span>Only the Edinburgh scale for both</li><li class="fopt"><span class="mk">C</span>No specific tools exist for either</li><li class="fopt"><span class="mk">D</span>Only clinical judgment is used</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The anxiety tools named are &quot;the Perinatal Anxiety Screening Scale, the Generalized Anxiety Disorder Scale–7, and the Patient Health Questionnaire–9,&quot; and &quot;screening for posttraumatic stress disorder (PTSD) is accomplished through interviews, use of the EPDS, and a targeted screening tool such as the Primary Care PTSD Screen.&quot; Screening is recommended by ACOG, AWHONN, the American Psychiatric Association, and the US Preventive Services Task Force.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) relies on a depression tool alone for conditions that have their own instruments, though the Edinburgh scale does contribute to both.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum depression risk and etiology</span><span class="chip t2">what raises the risk</span></div>
+<div class="stem">10. What does the chapter identify as the most significant risk factor for postpartum depression?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>History of psychiatric disorders before or during pregnancy, with family history of psychiatric disorders also possibly increasing the risk</li><li class="fopt"><span class="mk">B</span>Cesarean birth</li><li class="fopt"><span class="mk">C</span>Maternal age over 35</li><li class="fopt"><span class="mk">D</span>Breastfeeding difficulty</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;History of psychiatric disorders before or during pregnancy is the most significant risk factor for PPD; family history of psychiatric disorders may also increase the risk.&quot; The chapter adds: &quot;While there is no single predictor of PPD, researchers have identified multiple risk factors.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is on the risk list — along with hyperemesis gravidarum, preeclampsia, gestational hypertension, and preterm birth — but it is not the strongest, and the history is what should prompt anticipatory screening.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum depression risk and etiology</span><span class="chip t2">what raises the risk</span></div>
+<div class="stem">11. A woman had postpartum depression after her first birth. What is her risk of recurrence?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Up to 70% of women with a history of postpartum depression will have a subsequent episode</li><li class="fopt"><span class="mk">B</span>About 10%</li><li class="fopt"><span class="mk">C</span>About 25%</li><li class="fopt"><span class="mk">D</span>Recurrence is no more likely than a first episode</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Up to 70% of women with a history of PPD will have a subsequent episode.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would remove the reason for identifying the history in prenatal care, and a 70% recurrence rate makes the next pregnancy a planned surveillance problem rather than a hopeful one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum depression risk and etiology</span><span class="chip t2">what raises the risk</span></div>
+<div class="stem">12. Which additional risk factors for postpartum depression does the chapter name? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Physical, psychological, or sexual abuse; intimate partner violence; and lack of social support</li><li class="fopt right"><span class="mk">&#10003;</span>Unmarried status, marital discord, divorce, low socioeconomic status, and financial hardship</li><li class="fopt right"><span class="mk">&#10003;</span>Age under 24 or over 35, and unintended pregnancy</li><li class="fopt right"><span class="mk">&#10003;</span>Personal history of severe premenstrual dysphoria, and complications of pregnancy and birth</li><li class="fopt"><span class="mk">E</span>Exclusive breastfeeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists abuse and intimate partner violence, lack of social support, unmarried status, marital discord, divorce, low socioeconomic status, financial hardship, death of a loved one, natural disasters, mass conflict, age under 24 or over 35, unintended pregnancy, severe premenstrual dysphoria, and pregnancy and birth complications.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is not among them, and the list's breadth is the point — it spans biology, relationships, and circumstance.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum depression risk and etiology</span><span class="chip t2">etiology</span></div>
+<div class="stem">13. What hormonal change does the chapter identify as an important etiologic factor in postpartum depression?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The change from the high levels of estrogen and progesterone at the end of pregnancy to the much lower levels of both after birth</li><li class="fopt"><span class="mk">B</span>Rising estrogen after birth</li><li class="fopt"><span class="mk">C</span>Rising progesterone after birth</li><li class="fopt"><span class="mk">D</span>Hormones play no role</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The change from the high levels of estrogen and progesterone at the end of pregnancy to the much lower levels of both hormones that are present after birth is an important etiologic factor.&quot; Other contributors named are &quot;changes in cortisol, oxytocin, melatonin, and thyroid hormone after birth; neuroinflammatory processes; and abnormal levels or activity of neurotransmitters (dopamine, norepinephrine, serotonin),&quot; plus possible deficiencies of vitamin D, vitamin B12, folate, and omega-3 fatty acids.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) reverse the direction of the postpartum hormone shift, which Chapter 20 establishes as a steep fall reaching its lowest point about a week after birth.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">recognizing postpartum depression</span><span class="chip t2">the symptoms</span></div>
+<div class="stem">14. Which symptoms are common in postpartum depression?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fatigue, sleep disturbance, appetite disturbance, and irritability, with anxiety often prominent — either as a symptom of the depression or as a sign of a comorbid anxiety disorder</li><li class="fopt"><span class="mk">B</span>Euphoria and increased energy</li><li class="fopt"><span class="mk">C</span>Hallucinations in most cases</li><li class="fopt"><span class="mk">D</span>Isolated physical complaints with no mood change</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Fatigue, sleep disturbance, appetite disturbance, and irritability are common. Anxiety is often a prominent symptom of PPD, or it can be a sign of a comorbid anxiety disorder.&quot; The chapter notes that &quot;a majority of women have comorbidities such as generalized anxiety disorder.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) describes mania, and the chapter requires that &quot;all women who present with depressive symptoms should be screened for bipolar disorder&quot; precisely so that this is not missed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">recognizing postpartum depression</span><span class="chip t2">the symptoms</span></div>
+<div class="stem">15. A woman with postpartum depression says she feels detached from her baby and does not feel love for him, and is ashamed to say so. How should the nurse understand this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>As a common symptom: feelings of detachment toward the newborn or not feeling love for the newborn are common symptoms of postpartum depression, and women feel guilt and shame for having these feelings and are not likely to verbalize or discuss them with anyone</li><li class="fopt"><span class="mk">B</span>As evidence that she should not care for the infant</li><li class="fopt"><span class="mk">C</span>As a rare finding indicating psychosis</li><li class="fopt"><span class="mk">D</span>As a sign she does not have depression</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Feelings of detachment toward the newborn or not feeling love for the newborn are common symptoms of PPD. Women feel guilt and shame for having these feelings and are not likely to verbalize or discuss this with anyone. Many women feel especially guilty about having depressive feelings at a time when they believe they should be happy.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) responds to a disclosure with a consequence, which is exactly what makes women withhold it — and the chapter also notes that some women with depression &quot;feel very emotionally attached and connected to their infants,&quot; and that connection &quot;can prevent them from experiencing total despair.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">recognizing postpartum depression</span><span class="chip t2">the symptoms</span></div>
+<div class="stem">16. What two things does the chapter require be ruled out in a woman presenting with depressive symptoms after birth?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bipolar disorder, since all women presenting with depressive symptoms should be screened for it, and medical causes such as thyroid disease</li><li class="fopt"><span class="mk">B</span>Anemia and infection</li><li class="fopt"><span class="mk">C</span>Substance use only</li><li class="fopt"><span class="mk">D</span>Nothing needs to be ruled out</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;All women who present with depressive symptoms should be screened for bipolar disorder,&quot; and &quot;medical causes (e.g., thyroid disease) of depressive symptoms should be ruled out.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would start an antidepressant in a woman whose symptoms might be thyroid disease or the depressed phase of bipolar disorder — two conditions for which that treatment is wrong.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ppd versus postpartum psychosis</span><span class="chip t2">thoughts of harm</span></div>
+<div class="stem">17. A woman with postpartum depression reports frightening obsessive thoughts about harming her infant. How does the chapter distinguish this from postpartum psychosis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A woman with postpartum depression may have obsessive thoughts about harming the infant that frighten her, but she does not act on those thoughts and is vigilant about preventing any action that would bring harm to her infant; women experiencing postpartum psychosis are likely to act on their thoughts</li><li class="fopt"><span class="mk">B</span>Any thought of harming the infant indicates psychosis</li><li class="fopt"><span class="mk">C</span>Women with depression act on their thoughts and women with psychosis do not</li><li class="fopt"><span class="mk">D</span>The two cannot be distinguished clinically</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A woman with PPD may have obsessive thoughts about harming the infant, and this can be very frightening to her. However, she does not act on those thoughts and is vigilant about preventing any action that would bring harm to her infant. In contrast, women experiencing postpartum psychosis are likely to act on their thoughts.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the response that punishes disclosure and drives the thoughts underground, and it is the reason the distinction is stated so explicitly.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ppd versus postpartum psychosis</span><span class="chip t2">thoughts of harm</span></div>
+<div class="stem">18. How is care for postpartum depression matched to severity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Women with mild symptoms may need only support and counseling; psychotherapy may be needed for moderate to severe symptoms; and when nonpharmacologic treatment alone is not effective, medications may be used, often in combination with psychotherapy</li><li class="fopt"><span class="mk">B</span>All women require medication</li><li class="fopt"><span class="mk">C</span>Medication is used first in every case</li><li class="fopt"><span class="mk">D</span>Psychotherapy is reserved for women who refuse medication</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Women with mild symptoms may need only support and counseling. Psychotherapy may be needed for moderate to severe symptoms, and in some cases, when nonpharmacological treatment alone is not effective, medications may be used, often in combination with psychotherapy.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the sequence, and the named psychotherapies — cognitive behavioral therapy and interpersonal psychotherapy — are increasingly delivered as internet-based programs and mobile applications, which widens access rather than narrowing it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anxiety disorders and ptsd</span><span class="chip t2">the anxiety disorders</span></div>
+<div class="stem">19. A postpartum woman worries constantly and excessively about her infant's well-being, with muscle tension, restlessness, insomnia, and difficulty concentrating. Which disorder does this describe?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Generalized anxiety disorder, characterized by excessive and pervasive worrying, restlessness, inability to relax, difficulty concentrating, distress about making decisions, and worry out of proportion to the impact of the event</li><li class="fopt"><span class="mk">B</span>Panic disorder</li><li class="fopt"><span class="mk">C</span>Obsessive-compulsive disorder</li><li class="fopt"><span class="mk">D</span>Posttraumatic stress disorder</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Generalized anxiety disorder is &quot;characterized by excessive and pervasive worrying, restlessness, inability to relax, difficulty concentrating, distress about making decisions, and obsession over things that are out of proportion to the impact of the event.&quot; The chapter adds: &quot;The issues of concern to people with GAD are realistic, but the level of worry is much more intense than appropriate. Postpartum women may worry excessively about the well-being of their infants.&quot; Physical symptoms include muscle tension, irritability, restlessness, insomnia, fatigue, headache, nausea, diarrhea, and abdominal pain.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is a different pattern entirely — episodic rather than continuous, with &quot;the rapid onset of intense fear (typically peaking at 10 minutes).&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anxiety disorders and ptsd</span><span class="chip t2">the anxiety disorders</span></div>
+<div class="stem">20. A woman has episodes of sudden intense fear with palpitations, sweating, shortness of breath, dizziness, and a fear of losing control or dying, and has begun staying home. What has developed?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Panic disorder, with agoraphobia — fear of certain places and situations — which develops when panic disorder is untreated, so that women tend to remain at home</li><li class="fopt"><span class="mk">B</span>Generalized anxiety disorder</li><li class="fopt"><span class="mk">C</span>Postpartum psychosis</li><li class="fopt"><span class="mk">D</span>Obsessive-compulsive disorder</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Panic symptoms are &quot;characterized by the rapid onset of intense fear (typically peaking at 10 minutes),&quot; with &quot;palpitations, sweating, shortness of breath, choking, nausea, abdominal discomfort, dizziness, unsteadiness, numbness or tingling, chills, or hot flashes,&quot; plus &quot;a fear of losing control or fear of dying. There may or may not be an identifiable trigger.&quot; Untreated, women &quot;may experience agoraphobia ..., and as a result, they tend to remain at home.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) escalates an anxiety disorder to a psychotic one, and the presence of an identifiable panic pattern with intact reality testing is what separates them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anxiety disorders and ptsd</span><span class="chip t2">the anxiety disorders</span></div>
+<div class="stem">21. A woman with obsessive-compulsive disorder has intrusive thoughts about harming her infant. What does the chapter say about the risk?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Although the thoughts are very disturbing, there is no increased risk of actual harm being inflicted</li><li class="fopt"><span class="mk">B</span>The risk of harm is high and the infant should be removed</li><li class="fopt"><span class="mk">C</span>These thoughts indicate psychosis</li><li class="fopt"><span class="mk">D</span>These thoughts indicate a need for immediate hospitalization in every case</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In obsessive-compulsive disorder women may have &quot;disturbing intrusive thoughts that are repetitive, unacceptable, and/or unwanted,&quot; themed around &quot;contamination, causing harm, urges for symmetry and order, religious preoccupations, or offensive violent or sexual images,&quot; and &quot;women may have obsessive thoughts about harming their infants; although the thoughts are very disturbing, there is no increased risk of actual harm being inflicted.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reaction that costs a mother her infant over a symptom that carries no added risk, and it parallels the depression-versus-psychosis distinction exactly.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anxiety disorders and ptsd</span><span class="chip t2">ptsd</span></div>
+<div class="stem">22. Which obstetric experiences does the chapter associate with a higher prevalence of posttraumatic stress disorder?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Preterm birth, preeclampsia with severe features, obstetric hemorrhage, emergency cesarean birth, stillbirth, or an infant in the neonatal intensive care unit</li><li class="fopt"><span class="mk">B</span>Only stillbirth</li><li class="fopt"><span class="mk">C</span>Only cesarean birth</li><li class="fopt"><span class="mk">D</span>No obstetric experiences are associated</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;PTSD has been found to be more prevalent in women who have experienced severe complications in pregnancy or during birth such as preterm birth, preeclampsia with severe features, obstetric hemorrhage, emergency cesarean birth, stillbirth, or an infant in the neonatal intensive care unit.&quot; It &quot;can be triggered by traumatic birth experiences, especially in women who have a history of trauma (e.g., childhood abuse, intimate partner violence, rape), although new-onset PTSD can occur after a difficult birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) narrows the list to the most obviously traumatic event, and the chapter's point is that a survived emergency can be traumatic too — which is why Chapter 33 makes debriefing after hemorrhage part of nursing care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anxiety disorders and ptsd</span><span class="chip t2">ptsd</span></div>
+<div class="stem">23. Which symptoms characterize posttraumatic stress disorder as the chapter describes it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reliving the traumatic event through involuntary memories, flashbacks, and recurrent nightmares, with persistent avoidance of stimuli associated with the event, plus difficulty sleeping, irritability, angry outbursts, difficulty concentrating, hypervigilance, and an exaggerated startle response</li><li class="fopt"><span class="mk">B</span>Euphoria and grandiosity</li><li class="fopt"><span class="mk">C</span>Compulsive rituals only</li><li class="fopt"><span class="mk">D</span>Panic attacks peaking at 10 minutes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists &quot;reliving the traumatic event through involuntary memories, flashbacks, recurrent nightmares, and persistent avoidance of stimuli associated with the event,&quot; along with &quot;difficulty sleeping, irritability, angry outbursts, difficulty concentrating, hypervigilance, and an exaggerated startle response.&quot; Depression &quot;is a common comorbidity of PTSD.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names panic disorder's signature, and the avoidance and re-experiencing pair is what makes the diagnosis PTSD.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anxiety disorders and ptsd</span><span class="chip t2">ptsd</span></div>
+<div class="stem">24. What is the first-line intervention for anxiety disorders in the perinatal period?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Psychotherapy, with common methods including trauma-focused cognitive behavioral therapy, exposure therapy, and eye movement desensitization and reprocessing; pharmacologic therapy may be used for women who prefer it or who face barriers to accessing psychotherapy, and the two are frequently combined</li><li class="fopt"><span class="mk">B</span>Benzodiazepines in all cases</li><li class="fopt"><span class="mk">C</span>Antidepressants alone</li><li class="fopt"><span class="mk">D</span>No treatment is recommended in the perinatal period</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Psychotherapy is usually the first-line intervention for anxiety disorders; common methods include trauma-focused CBT, exposure therapy, and eye movement desensitization and reprocessing.&quot; For women who prefer medication and those with barriers to accessing psychotherapy, &quot;pharmacologic therapy may be used. Psychotherapy and pharmacotherapy are frequently used in combination.&quot; SSRIs and SNRIs are often used, and benzodiazepines may treat short-term anxiety.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) starts with the class the chapter reserves for short-term use, and the nonpharmacologic strategies named — education, music therapy, breathing exercises, progressive muscle relaxation, guided imagery, and cognitive strategies — sit alongside all of it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">perinatal substance use disorder</span><span class="chip t2">recognition and screening</span></div>
+<div class="stem">25. Which warning signs in prenatal care may suggest a substance use disorder? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Receiving no prenatal care, late entry into care, or sporadic care with multiple missed appointments</li><li class="fopt right"><span class="mk">&#10003;</span>Keeping prenatal appointments but leaving without being seen</li><li class="fopt right"><span class="mk">&#10003;</span>Noncompliance with recommended treatment</li><li class="fopt right"><span class="mk">&#10003;</span>Evidence of poor nutrition, frequent encounters with law enforcement officials, or marital and family disputes</li><li class="fopt"><span class="mk">E</span>Attending every scheduled appointment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names no prenatal care, late entry, sporadic care with missed appointments, leaving without being seen, noncompliance with recommended treatment, evidence of poor nutrition, frequent encounters with law enforcement, and marital and family disputes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) would make attendance a rule-out, and the chapter's screening recommendation is universal for exactly that reason.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">perinatal substance use disorder</span><span class="chip t2">recognition and screening</span></div>
+<div class="stem">26. Why does the chapter recommend universal screening for substance use in pregnancy?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because substance use is prevalent in all populations, providers should never make assumptions based on age, race, or socioeconomic status, and universal screening is nonbiased and nonstigmatizing</li><li class="fopt"><span class="mk">B</span>Because it is legally required in all states</li><li class="fopt"><span class="mk">C</span>Because only high-risk women need screening</li><li class="fopt"><span class="mk">D</span>Because screening replaces the need for treatment referral</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Universal screening for substance use in pregnant women is recommended. Because substance use is prevalent in all populations, providers should never make assumptions based on age, race, or socioeconomic status. Universal screening is nonbiased and nonstigmatizing.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) states a legal uniformity the chapter contradicts: &quot;the legal implications of testing and the need for consent from the pregnant woman can vary among states,&quot; so providers &quot;should be aware of local laws and legislative changes.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">perinatal substance use disorder</span><span class="chip t2">how substances reach the fetus</span></div>
+<div class="stem">27. How does the chapter describe the direct effects of drugs on the fetus by timing?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Early in gestation, drugs can cause pregnancy loss or significant structural abnormalities; during the fetal period, after major structural development is complete, drugs can affect the developing central nervous system; and throughout pregnancy, maternal drug use may result in fetal death</li><li class="fopt"><span class="mk">B</span>Drugs affect only the first trimester</li><li class="fopt"><span class="mk">C</span>Drugs affect only the third trimester</li><li class="fopt"><span class="mk">D</span>Timing does not affect the outcome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Early in gestation, drugs can cause pregnancy loss (miscarriage) or significant structural abnormalities in the fetus. During the fetal period, after major structural development is complete, drugs can affect the developing CNS. Throughout pregnancy, maternal drug use may result in fetal death.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would make gestational age irrelevant, when the chapter uses it to explain why the same substance produces anomalies at one point and neurodevelopmental effects at another.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">perinatal substance use disorder</span><span class="chip t2">how substances reach the fetus</span></div>
+<div class="stem">28. What indirect effects on the fetus does the chapter name?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Altered delivery of nutrition to the fetus, from placental insufficiency or inadequate maternal diet, plus decreased access to and compliance with health care, increased exposure to violence, and increased risk for mental illness and infection</li><li class="fopt"><span class="mk">B</span>Only nutritional effects</li><li class="fopt"><span class="mk">C</span>There are no indirect effects</li><li class="fopt"><span class="mk">D</span>Only effects on the placenta</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The indirect effects are &quot;altered delivery of nutrition to the fetus, either because of placental insufficiency or inadequate maternal diet,&quot; plus &quot;decreased access to and/or compliance with health care, increased exposure to violence, and increased risk for mental illness and infection.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) would leave the nurse addressing only pharmacology, when several of the indirect effects are the ones nursing care can actually change.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">perinatal substance use disorder</span><span class="chip t2">how substances reach the fetus</span></div>
+<div class="stem">29. Which effects does the chapter attribute to specific substances? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Tobacco: ectopic pregnancy, orofacial clefts, growth restriction, placenta previa, placental abruption, low birth weight, preterm prelabor rupture of membranes, and increased perinatal mortality</li><li class="fopt right"><span class="mk">&#10003;</span>Alcohol: significantly increased risk for birth defects, with no amount at any time in pregnancy considered safe, plus increased risk for low birth weight and preterm birth</li><li class="fopt right"><span class="mk">&#10003;</span>Cocaine: increased incidence of preterm labor, prelabor rupture of membranes, placental abruption, and preeclampsia, with growth restriction and low birth weight</li><li class="fopt right"><span class="mk">&#10003;</span>Methamphetamines: low birth weight, microcephaly, decreased length, preterm birth, placental abruption, and congenital malformations of the brain and heart</li><li class="fopt"><span class="mk">E</span>Marijuana: an established safe threshold below which no effects occur</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists each of these. Marijuana is &quot;the most commonly used illicit drug in pregnancy,&quot; and &quot;no safe threshold limits for marijuana use have been determined,&quot; with use associated with intrauterine growth restriction.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) inverts the marijuana finding, and the legal status is a separate matter — it is legal in several states while remaining &quot;an illegal substance under federal law.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">perinatal substance use disorder</span><span class="chip t2">how substances reach the fetus</span></div>
+<div class="stem">30. A woman reports a small amount of alcohol use in early pregnancy before she knew she was pregnant. What counseling does the chapter support?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That low-level consumption of alcohol in early pregnancy is not an indication for pregnancy termination, but she should be advised to stop to minimize further risk</li><li class="fopt"><span class="mk">B</span>That termination should be considered</li><li class="fopt"><span class="mk">C</span>That continued light drinking is safe</li><li class="fopt"><span class="mk">D</span>That no counseling is needed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;no amount of alcohol use at any time during pregnancy is considered safe,&quot; and also that low-level consumption in early pregnancy &quot;is not an indication for pregnancy termination,&quot; though women &quot;should be advised to stop to minimize further risk.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is contradicted by the first half of that pair, and (B) by the second — the chapter holds both positions at once, and the counseling has to as well.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barriers and the nurse's stance</span><span class="chip t2">what keeps women from care</span></div>
+<div class="stem">31. Which barriers to substance use treatment does the chapter name? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Social stigma, labeling, and guilt</li><li class="fopt right"><span class="mk">&#10003;</span>Fear of losing custody of a child or children, or of criminal prosecution</li><li class="fopt right"><span class="mk">&#10003;</span>Negative feedback from society and health care providers, who may condemn women for endangering the fetus and withhold support</li><li class="fopt right"><span class="mk">&#10003;</span>Treatment programs that have not addressed the concurrent need for obstetric care and childcare for other children, plus long waiting lists and lack of health insurance</li><li class="fopt"><span class="mk">E</span>An excess of available treatment slots</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names stigma, labeling and guilt, fear of custody loss and prosecution, provider condemnation and withheld support, and system barriers including programs that do not address obstetric care or childcare, long waiting lists, and lack of insurance. Women with co-occurring disorders &quot;face unique barriers because of the social stigma attached to both conditions and insufficient knowledge and training for health care providers.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the access problem, and the chapter's inclusion of provider behavior among the barriers is the item most easily overlooked.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barriers and the nurse's stance</span><span class="chip t2">what keeps women from care</span></div>
+<div class="stem">32. Which laboratory work does the chapter anticipate for a pregnant woman with a substance use disorder, and why may an early ultrasound be needed?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Screening for syphilis, hepatitis B and C, and HIV, a complete blood count, a skin test for tuberculosis, and testing for gonorrhea and chlamydia; an early ultrasound may be needed to determine gestational age because she may have had amenorrhea from her substance use or no idea when her last menstrual period occurred</li><li class="fopt"><span class="mk">B</span>Only a urine drug screen</li><li class="fopt"><span class="mk">C</span>Only a complete blood count</li><li class="fopt"><span class="mk">D</span>No additional laboratory work is needed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Because these women &quot;are at risk for a variety of infections and medical conditions,&quot; the workup includes screening for &quot;syphilis, hepatitis B and C, and human immunodeficiency virus (HIV),&quot; plus &quot;a complete blood count and a skin test to screen for tuberculosis&quot; and testing for gonorrhea and chlamydia. An early ultrasound may be needed &quot;to determine gestational age because the woman may have had amenorrhea as a result of her substance use or have no idea when her last menstrual period occurred.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reduces the workup to the test that carries the legal risk and misses the infections that carry the clinical one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">barriers and the nurse's stance</span><span class="chip t2">what keeps women from care</span></div>
+<div class="stem">33. Which principles does Box 31.3 give for caring for pregnant women with substance use disorder? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Realize that the decision to become and remain sober can only be made by the individual with the disorder</li><li class="fopt right"><span class="mk">&#10003;</span>Understand that nurses do not have the power to cure anyone — they serve as educators, supporters, and advocates</li><li class="fopt right"><span class="mk">&#10003;</span>Treat women with substance use disorder with the same respect and consideration shown to other people, and become familiar with local treatment centers and which accept pregnant women</li><li class="fopt right"><span class="mk">&#10003;</span>Remember that there are no hopeless cases, practice patience and persistence, and recognize it may take months or years to see the effects of your work</li><li class="fopt"><span class="mk">E</span>Withhold care until the woman agrees to enter treatment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 31.3 gives each of these principles, and the chapter's framing sentence is that &quot;nurses must understand that SUD is an illness and that women with SUD deserve to be treated with patience, kindness, consistency, and firmness when necessary.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the withholding of support the chapter names as a barrier, and it is the behavior Box 31.3 is written to replace.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">smoking cessation and alcohol withdrawal</span><span class="chip t2">tobacco</span></div>
+<div class="stem">34. What does the chapter say about the timing and effectiveness of smoking cessation in pregnancy?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Women who quit smoking by the first trimester have infants whose growth is comparable to those born to nonsmokers, cessation programs during pregnancy are effective and should be offered to all pregnant smokers, and approximately 50% to 60% of women who quit during pregnancy tend to relapse within 1 year of giving birth</li><li class="fopt"><span class="mk">B</span>Quitting has no measurable benefit once pregnancy has begun</li><li class="fopt"><span class="mk">C</span>Quitting is beneficial only in the third trimester</li><li class="fopt"><span class="mk">D</span>Relapse after birth is rare</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Women who quit smoking by the first trimester have infants whose growth is comparable to those born to nonsmokers,&quot; &quot;smoking cessation programs during pregnancy are effective and should be offered to all pregnant smokers,&quot; and &quot;approximately 50% to 60% of women who quit smoking during pregnancy tend to relapse within 1 year of giving birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would end support at discharge, and the relapse figure is why cessation support has to continue into the postpartum year.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">smoking cessation and alcohol withdrawal</span><span class="chip t2">tobacco</span></div>
+<div class="stem">35. What does the US Preventive Services Task Force recommend for pregnant women who use tobacco?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That they be advised to quit and provided with only behavioral interventions to assist with cessation, because evidence on pharmacotherapy in pregnancy is insufficient; nicotine replacement therapy should be used only after discussion about the known risks of continued smoking and the possible risks of the therapy</li><li class="fopt"><span class="mk">B</span>That all pregnant smokers receive nicotine replacement therapy</li><li class="fopt"><span class="mk">C</span>That no intervention be offered</li><li class="fopt"><span class="mk">D</span>That varenicline be first-line</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The USPSTF recommends that pregnant women who use tobacco be advised to quit and provided with only behavioral interventions to assist with cessation,&quot; and &quot;nicotine replacement therapy should be used in pregnant women only after discussion about the known risks of continued smoking and the possible risks associated with nicotine replacement therapy.&quot; On the cessation drugs, &quot;neither medication has been associated with an increased risk for congenital anomalies, preterm birth, or low birth weight when taken during pregnancy,&quot; though data are limited. The quit line is 1-800-QUIT-NOW.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the recommendation, and the careful wording — a discussion weighing the risk of continued smoking against the risk of the therapy — is what makes nicotine replacement a shared decision rather than a default.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">smoking cessation and alcohol withdrawal</span><span class="chip t2">alcohol withdrawal</span></div>
+<div class="stem">36. A pregnant woman requires withdrawal from alcohol. What does the chapter specify about the setting, the timing of the greatest risk, and the drug class used?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Inpatient management; the peak time for withdrawal seizures in pregnant women is 24 hours after the last drink; and treatment consists of benzodiazepines such as chlordiazepoxide or diazepam</li><li class="fopt"><span class="mk">B</span>Outpatient management; seizures peak at 1 week; treatment is with antipsychotics</li><li class="fopt"><span class="mk">C</span>Inpatient management; seizures peak at 72 hours; treatment is with opioids</li><li class="fopt"><span class="mk">D</span>No specific management is described</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Pregnant women requiring withdrawal from alcohol should be admitted for inpatient management.&quot; And: &quot;In pregnant women, the peak time for withdrawal seizures is 24 hours after the last drink.&quot; Treatment &quot;consists of the administration of benzodiazepines,&quot; with chlordiazepoxide (Librium) and diazepam (Valium) often used.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) sends a woman home during the period the chapter identifies as highest risk, and the 24-hour figure is what makes the admission non-negotiable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">opioid use disorder in pregnancy</span><span class="chip t2">agonist therapy</span></div>
+<div class="stem">37. What is the standard of care for pregnant women with an opioid use disorder?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Opioid agonist therapy, also called medication-assisted treatment, which includes methadone and buprenorphine; neither is associated with an increased risk for birth defects</li><li class="fopt"><span class="mk">B</span>Medically supervised withdrawal</li><li class="fopt"><span class="mk">C</span>Abstinence without medication</li><li class="fopt"><span class="mk">D</span>Inpatient detoxification in all cases</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Since the 1970s, opioid agonist therapy (also referred to as medication-assisted treatment) has been considered the standard of care for pregnant women with an opioid use disorder. Opioid agonist therapy includes methadone and buprenorphine (Subutex or Suboxone),&quot; and &quot;neither buprenorphine nor methadone is associated with an increased risk for birth defects.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the recommendation for every other substance in this chapter and the one exception the text names: abstinence &quot;should be recommended as the safest course of action unless the woman is using opioids.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">opioid use disorder in pregnancy</span><span class="chip t2">agonist therapy</span></div>
+<div class="stem">38. Why is buprenorphine increasingly favored over methadone in pregnancy? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Women can be treated on an outpatient basis without the need for daily visits</li><li class="fopt right"><span class="mk">&#10003;</span>Women are less likely to overdose on buprenorphine</li><li class="fopt right"><span class="mk">&#10003;</span>Fewer adjustments in dosage are necessary as pregnancy progresses</li><li class="fopt right"><span class="mk">&#10003;</span>Buprenorphine causes less severe neonatal abstinence syndrome than methadone</li><li class="fopt"><span class="mk">E</span>Buprenorphine eliminates neonatal abstinence syndrome entirely</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives all four reasons: outpatient treatment without daily visits, lower overdose risk, fewer dosage adjustments across pregnancy, and less severe neonatal abstinence syndrome.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) overstates the last advantage — &quot;anywhere from 40% to 80% of infants exposed to opioids, including methadone or buprenorphine, in utero require treatment for NAS.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">opioid use disorder in pregnancy</span><span class="chip t2">agonist therapy</span></div>
+<div class="stem">39. Why is medically supervised withdrawal from opioids not recommended during pregnancy?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because agonist pharmacotherapy is preferred, since withdrawal is associated with high relapse rates and poorer outcomes, and because of a potential risk for fetal distress or fetal demise</li><li class="fopt"><span class="mk">B</span>Because withdrawal is always fatal to the fetus</li><li class="fopt"><span class="mk">C</span>Because withdrawal is illegal</li><li class="fopt"><span class="mk">D</span>Because withdrawal has been proven harmful in all studies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Opioid agonist pharmacotherapy is preferred over supervised medical withdrawal because withdrawal is associated with high relapse rates and poorer outcomes,&quot; and &quot;medical withdrawal from opioids during pregnancy is currently not recommended, in part because of a potential risk for fetal distress or fetal demise.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) overstates the evidence in a way the chapter itself corrects: a study of more than 600 women found no fetal harm, but &quot;because there is a high possibility of relapse associated with medical withdrawal from opioids during pregnancy, ... broad recommendations regarding this management strategy cannot be made at this time.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">opioid use disorder in pregnancy</span><span class="chip t2">agonist therapy</span></div>
+<div class="stem">40. A provider considers limiting a pregnant woman's methadone dose to reduce the severity of neonatal abstinence syndrome. What does the chapter say?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Neither the incidence nor the severity of neonatal abstinence syndrome correlates directly with the maternal methadone dose at birth, so limiting the methadone dose to minimize the risk for NAS is not warranted</li><li class="fopt"><span class="mk">B</span>Lower doses reliably produce milder withdrawal</li><li class="fopt"><span class="mk">C</span>The dose should be halved in the third trimester</li><li class="fopt"><span class="mk">D</span>Methadone should be stopped before birth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Neither the incidence nor the severity of NAS correlates directly with the maternal methadone dose at birth. Therefore limiting the methadone dose to minimize the risk for NAS is not warranted.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the intuition the sentence exists to correct, and acting on it would undertreat the mother without helping the infant.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">opioid use disorder in pregnancy</span><span class="chip t2">stimulants</span></div>
+<div class="stem">41. What treatment does the chapter describe for cocaine and methamphetamine use in pregnancy?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Both call for immediate cessation and referral; effective psychosocial and behavioral treatments have been developed for pregnant substance users because pharmacotherapy is not available for cocaine, and for methamphetamine the most effective treatments are behavioral therapies such as cognitive behavioral therapy and contingency management, with no medications that counteract its specific effects</li><li class="fopt"><span class="mk">B</span>Both are treated with agonist therapy like opioids</li><li class="fopt"><span class="mk">C</span>Both are treated with benzodiazepines</li><li class="fopt"><span class="mk">D</span>No treatment is available for either</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Women using cocaine &quot;should be advised to stop using immediately and be referred for substance abuse treatment. Effective psychosocial and behavioral treatments have been developed for pregnant substance abusers because pharmacotherapy is not available.&quot; Methamphetamine users &quot;are urged to immediately stop all use,&quot; and &quot;because methamphetamine users are extremely psychologically addicted, the rate of relapse is very high. The most effective treatments ... are behavioral therapies, such as CBT and contingency management interventions. There are currently no medications that counteract the specific effects of methamphetamine.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) extends the opioid model to stimulants, and the absence of an agonist is precisely why the behavioral treatments carry the whole load here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intrapartum and postpartum care in substance use disorder</span><span class="chip t2">the clinical picture and the pain rule</span></div>
+<div class="stem">42. A laboring woman with an active substance use disorder is demanding and difficult to manage, with a low threshold for pain. How should the nurse respond to her reports of pain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Recognize that even women who are actively abusing drugs experience pain during labor and after giving birth and may need both pharmacologic and nonpharmacologic interventions</li><li class="fopt"><span class="mk">B</span>Withhold analgesia because of the substance use</li><li class="fopt"><span class="mk">C</span>Provide only nonpharmacologic measures</li><li class="fopt"><span class="mk">D</span>Assume the reports are drug-seeking</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states it so it cannot be misread: &quot;Even women who are actively abusing drugs experience pain during labor and after giving birth and may need both pharmacologic and nonpharmacologic interventions.&quot; It acknowledges that these women &quot;are often particularly challenging during the intrapartum and postpartum periods because of manipulative and demanding behavior,&quot; with &quot;poor control over their behavior and a low threshold for pain.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) converts a described clinical picture into a reason to disbelieve the patient, and the sentence in the chapter is written specifically against that reasoning.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intrapartum and postpartum care in substance use disorder</span><span class="chip t2">the clinical picture and the pain rule</span></div>
+<div class="stem">43. What approach does the chapter recommend to reduce staff conflict in caring for these women, and what else does it specify?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Developing a standardized plan of care so that clients have limited opportunities to play staff members against one another, promoting mother-infant attachment by identifying the woman's strengths and reinforcing positive maternal feelings and behaviors, and ensuring sufficient staffing for strict surveillance of visitors to prevent unsupervised drug use</li><li class="fopt"><span class="mk">B</span>Assigning a different nurse each shift</li><li class="fopt"><span class="mk">C</span>Limiting all visitors permanently</li><li class="fopt"><span class="mk">D</span>Avoiding discussion of infant care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Developing a standardized plan of care so that clients have limited opportunities to play staff members against one another is helpful.&quot; And: &quot;Mother-infant attachment should be promoted by identifying the woman's strengths and reinforcing positive maternal feelings and behaviors,&quot; with staffing &quot;sufficient to ensure strict surveillance of visitors and prevent unsupervised drug use.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) removes the consistency the standardized plan is meant to create, and (D) abandons the attachment work the chapter names as a goal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intrapartum and postpartum care in substance use disorder</span><span class="chip t2">the clinical picture and the pain rule</span></div>
+<div class="stem">44. Where does intervention for perinatal substance use begin, and what does the chapter say about the timing of the opportunity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>With education about the specific effects on pregnancy, the fetus, and the newborn for each drug used, with consequences clearly communicated and abstinence recommended as the safest course unless the woman is using opioids; and women are often more receptive to making lifestyle changes during pregnancy than at any other time in their lives</li><li class="fopt"><span class="mk">B</span>With mandatory reporting to authorities</li><li class="fopt"><span class="mk">C</span>With immediate inpatient admission in all cases</li><li class="fopt"><span class="mk">D</span>With deferral of all discussion until after birth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Intervention ... begins with education about specific effects on pregnancy, the fetus, and the newborn for each drug used. Consequences of perinatal substance use should be clearly communicated, and abstinence should be recommended as the safest course of action unless the woman is using opioids.&quot; And: &quot;Women are often more receptive to making lifestyle changes during pregnancy than at any other time in their lives.&quot; The care team includes an obstetric care provider, mental health provider, substance abuse counselor, nurse, and social worker.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) postpones the conversation past the window the chapter identifies as the most receptive one a woman may ever have.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">intrapartum and postpartum care in substance use disorder</span><span class="chip t2">the clinical picture and the pain rule</span></div>
+<div class="stem">45. What does the chapter say about breastfeeding advice for a woman with a substance use disorder?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Advice must be individualized, because almost all abused substances appear in breast milk, some in greater amounts than others</li><li class="fopt"><span class="mk">B</span>Breastfeeding is contraindicated in all cases</li><li class="fopt"><span class="mk">C</span>Breastfeeding is always encouraged regardless of substance</li><li class="fopt"><span class="mk">D</span>No guidance is given</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Advice regarding breastfeeding must be individualized. Almost all abused substances appear in breast milk, some in greater amounts than others.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies a blanket prohibition that Chapter 25's contraindication table does not support either — illicit drug use is an absolute contraindication there, but a woman in a methadone program with negative screens is explicitly excepted.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"postpartum blues versus depression","subtopic":"telling them apart","stem":"A woman 4 days after birth has mood swings, tearfulness, difficulty sleeping, and loss of appetite, but is caring for her infant and herself without difficulty. How should the nurse interpret this?","options":["As postpartum blues, a mild and transient depression occurring in 50% to 70% of women, in which functioning is not usually impaired and symptoms typically subside within a few days to 2 weeks; treatment is not needed","As postpartum depression requiring immediate medication","As postpartum psychosis","As a normal finding needing no follow-up at all"],"correct":[0],"sata":false,"why":"Postpartum blues is \"characterized by mood swings, feelings of sadness and anxiety, crying, difficulty sleeping, and loss of appetite; the woman's functioning is not usually impaired.\" It occurs \"in 50% to 70% of women after birth,\" symptoms \"typically subside within a few days to 2 weeks,\" and \"treatment is not needed.\"","trap":"(D) is close but drops the surveillance, and the whole chapter turns on the follow-up: symptoms that persist past 2 weeks or that impair functioning are a different diagnosis.","k":"q5zdq5hzscn3"},{"topic":"postpartum blues versus depression","subtopic":"telling them apart","stem":"What distinguishes postpartum depression from postpartum blues?","options":["Depression involves an intense and pervasive sadness with labile mood swings that can be severe, is more serious and persistent, lasts more than 2 weeks, and impairs functioning, affecting approximately 9% to 24% of women","Depression is milder and shorter","Depression occurs only after the sixth week","They are the same condition with different names"],"correct":[0],"sata":false,"why":"Postpartum depression is \"an intense and pervasive sadness with labile mood swings that can be severe,\" is \"more serious and persistent,\" lasts \"more than 2 weeks,\" and is \"experienced by approximately 9% to 24% of women,\" with a recent meta-analysis reporting \"a 12% incidence ... among healthy women who gave birth to healthy infants.\"","trap":"(D) collapses a distinction with different treatment implications — blues need nothing, depression needs support, psychotherapy, or medication by severity.","k":"km82qh65j94f"},{"topic":"postpartum blues versus depression","subtopic":"why it goes unreported","stem":"Why does the chapter say a new mother's emotional distress often goes unaddressed by those around her?","options":["Because birth is usually thought to be a happy event, so a new mother's emotional distress can puzzle and immobilize family and friends — when she most needs caring attention, they may either criticize or withdraw","Because families are indifferent","Because women rarely have symptoms","Because symptoms are always obvious and acted on"],"correct":[0],"sata":false,"why":"\"Because birth is usually thought to be a happy event, a new mother's emotional distress can puzzle and immobilize family and friends. When she most needs the caring attention of loved ones, they may either criticize or withdraw.\" The chapter states the stakes plainly: failure to assess, intervene, and refer \"can result in tragic consequences such as suicide or infanticide.\"","trap":"(B) attributes to indifference what the chapter attributes to confusion, and the difference matters for how the nurse involves the family.","k":"73kgjvlr8j8d"},{"topic":"postpartum blues versus depression","subtopic":"why it goes unreported","stem":"What does the chapter say about partners and postpartum mood disorders?","options":["Fathers or partners can experience postpartum blues or depression, although there is a lack of research evidence surrounding these topics","Only birth mothers are affected","Partners are affected more often than mothers","Partner symptoms are always secondary to the mother's"],"correct":[0],"sata":false,"why":"\"Fathers or partners can experience postpartum blues or depression, although there is a lack of research evidence surrounding these topics.\"","trap":"(B) excludes a population the chapter includes, and the conditions themselves \"can interfere with attachment to the newborn and family integration\" regardless of who has them.","k":"1h0c7436y3dcl"},{"topic":"screening tools for perinatal mood disorders","subtopic":"the edinburgh scale","stem":"What is the most widely used screening tool in perinatal populations, and how is it structured and scored?","options":["The Edinburgh Postnatal Depression Screen, comprising 10 statements about common symptoms of depression, with the woman choosing the response closest to how she has felt for the past week; the maximum score is 30, and women scoring 12 or higher may possibly have depression and need further assessment","The Patient Health Questionnaire–9, with a maximum score of 27 and a cutoff of 5","The Edinburgh scale, with 20 items and a cutoff of 20","A single question about mood"],"correct":[0],"sata":false,"why":"\"In perinatal populations the most widely used screening tool is the Edinburgh Postnatal Depression Screen (EPDS).\" It \"comprises 10 statements about the common symptoms of depression. The woman is asked to choose the response that is closest to describing how she has felt for the past week.\" And: \"A maximum score on the EPDS is 30; women with scores of 12 or higher may possibly have depression and need further assessment.\"","trap":"(C) inflates both the item count and the cutoff, and the cutoff is what determines who gets further assessment.","k":"1j1de4v1pae8q5"},{"topic":"screening tools for perinatal mood disorders","subtopic":"the edinburgh scale","stem":"Which item on the Edinburgh scale requires special handling, and what else does the tool detect?","options":["One item addresses suicidal thoughts, and responses to this item should be carefully examined, with positive responses warranting further assessment and prompt intervention; the tool is often used to screen for anxiety disorders because it includes three items specific to a woman's experience of anxiety","The sleep item, which must be scored twice","The appetite item, which is excluded from the total","No item requires special handling"],"correct":[0],"sata":false,"why":"\"One item on the tool addresses suicidal thoughts; responses to this item should be carefully examined. Positive responses warrant further assessment and prompt intervention.\" And: \"The EPDS is often used to screen for anxiety disorders: it includes three items that are specific to a woman's experience of anxiety.\"","trap":"(D) treats the total score as the only output, when a positive response to one item can require action regardless of the total.","k":"ihb7w01my4ory"},{"topic":"screening tools for perinatal mood disorders","subtopic":"when and how screening works","stem":"When should screening for perinatal depression occur? Select all that apply.","options":["Before discharge from the birth setting, where postpartum nurses can screen for depression and anxiety disorders","At routine follow-up visits","By primary care providers during pediatric care visits for the infant","At the infant's 1-, 2-, and 4-month visits, per the AAP recommendation","Only once, at the 6-week postpartum visit"],"correct":[0,1,2,3],"sata":true,"why":"Postpartum nurses can screen before discharge, \"although this screening identifies some who are at risk, it is important that follow-up screening is also done\" at routine follow-up visits and by primary care providers during pediatric visits. \"The AAP recommends maternal depression screening at the infant's 1-, 2-, and 4-month visits.\"","trap":"(E) is a single point in a schedule the chapter deliberately spreads across months, because \"the onset of PPD most often occurs within the first few months after birth.\"","k":"5tp6951ocfi47"},{"topic":"screening tools for perinatal mood disorders","subtopic":"when and how screening works","stem":"What does the chapter say determines whether screening is effective?","options":["The effectiveness of screening is related to the follow-up for positive screening results; if results are positive or self-report shows signs of a psychiatric disorder, a formal screening is needed so that appropriate referrals can be made and treatment initiated promptly","The choice of tool determines effectiveness","The timing alone determines effectiveness","Screening is effective regardless of what follows"],"correct":[0],"sata":false,"why":"\"The effectiveness of screening is related to the follow-up for positive screening results. If screening results are positive or if the woman's self-report shows signs that she might be experiencing symptoms of a psychiatric disorder, a formal screening is needed so that appropriate referrals can be made and treatment can be initiated promptly.\"","trap":"(D) makes screening a completed task rather than a first step, which is the specific failure the sentence is written against.","k":"2764ptjlpvcb"},{"topic":"screening tools for perinatal mood disorders","subtopic":"when and how screening works","stem":"Which tools does the chapter name for anxiety and for posttraumatic stress disorder?","options":["For anxiety: the Perinatal Anxiety Screening Scale, the Generalized Anxiety Disorder Scale–7, and the Patient Health Questionnaire–9; for PTSD: interviews, the Edinburgh scale, and a targeted tool such as the Primary Care PTSD Screen","Only the Edinburgh scale for both","No specific tools exist for either","Only clinical judgment is used"],"correct":[0],"sata":false,"why":"The anxiety tools named are \"the Perinatal Anxiety Screening Scale, the Generalized Anxiety Disorder Scale–7, and the Patient Health Questionnaire–9,\" and \"screening for posttraumatic stress disorder (PTSD) is accomplished through interviews, use of the EPDS, and a targeted screening tool such as the Primary Care PTSD Screen.\" Screening is recommended by ACOG, AWHONN, the American Psychiatric Association, and the US Preventive Services Task Force.","trap":"(B) relies on a depression tool alone for conditions that have their own instruments, though the Edinburgh scale does contribute to both.","k":"1pc2f0y1ys3n1w"},{"topic":"postpartum depression risk and etiology","subtopic":"what raises the risk","stem":"What does the chapter identify as the most significant risk factor for postpartum depression?","options":["History of psychiatric disorders before or during pregnancy, with family history of psychiatric disorders also possibly increasing the risk","Cesarean birth","Maternal age over 35","Breastfeeding difficulty"],"correct":[0],"sata":false,"why":"\"History of psychiatric disorders before or during pregnancy is the most significant risk factor for PPD; family history of psychiatric disorders may also increase the risk.\" The chapter adds: \"While there is no single predictor of PPD, researchers have identified multiple risk factors.\"","trap":"(B) is on the risk list — along with hyperemesis gravidarum, preeclampsia, gestational hypertension, and preterm birth — but it is not the strongest, and the history is what should prompt anticipatory screening.","k":"1ctzi6t3m4y0z"},{"topic":"postpartum depression risk and etiology","subtopic":"what raises the risk","stem":"A woman had postpartum depression after her first birth. What is her risk of recurrence?","options":["Up to 70% of women with a history of postpartum depression will have a subsequent episode","About 10%","About 25%","Recurrence is no more likely than a first episode"],"correct":[0],"sata":false,"why":"\"Up to 70% of women with a history of PPD will have a subsequent episode.\"","trap":"(D) would remove the reason for identifying the history in prenatal care, and a 70% recurrence rate makes the next pregnancy a planned surveillance problem rather than a hopeful one.","k":"a13xxvejzznp"},{"topic":"postpartum depression risk and etiology","subtopic":"what raises the risk","stem":"Which additional risk factors for postpartum depression does the chapter name? Select all that apply.","options":["Physical, psychological, or sexual abuse; intimate partner violence; and lack of social support","Unmarried status, marital discord, divorce, low socioeconomic status, and financial hardship","Age under 24 or over 35, and unintended pregnancy","Personal history of severe premenstrual dysphoria, and complications of pregnancy and birth","Exclusive breastfeeding"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists abuse and intimate partner violence, lack of social support, unmarried status, marital discord, divorce, low socioeconomic status, financial hardship, death of a loved one, natural disasters, mass conflict, age under 24 or over 35, unintended pregnancy, severe premenstrual dysphoria, and pregnancy and birth complications.","trap":"(E) is not among them, and the list's breadth is the point — it spans biology, relationships, and circumstance.","k":"wgejo01jhxrfu"},{"topic":"postpartum depression risk and etiology","subtopic":"etiology","stem":"What hormonal change does the chapter identify as an important etiologic factor in postpartum depression?","options":["The change from the high levels of estrogen and progesterone at the end of pregnancy to the much lower levels of both after birth","Rising estrogen after birth","Rising progesterone after birth","Hormones play no role"],"correct":[0],"sata":false,"why":"\"The change from the high levels of estrogen and progesterone at the end of pregnancy to the much lower levels of both hormones that are present after birth is an important etiologic factor.\" Other contributors named are \"changes in cortisol, oxytocin, melatonin, and thyroid hormone after birth; neuroinflammatory processes; and abnormal levels or activity of neurotransmitters (dopamine, norepinephrine, serotonin),\" plus possible deficiencies of vitamin D, vitamin B12, folate, and omega-3 fatty acids.","trap":"(B) and (C) reverse the direction of the postpartum hormone shift, which Chapter 20 establishes as a steep fall reaching its lowest point about a week after birth.","k":"1bdixb7o6ggw1"},{"topic":"recognizing postpartum depression","subtopic":"the symptoms","stem":"Which symptoms are common in postpartum depression?","options":["Fatigue, sleep disturbance, appetite disturbance, and irritability, with anxiety often prominent — either as a symptom of the depression or as a sign of a comorbid anxiety disorder","Euphoria and increased energy","Hallucinations in most cases","Isolated physical complaints with no mood change"],"correct":[0],"sata":false,"why":"\"Fatigue, sleep disturbance, appetite disturbance, and irritability are common. Anxiety is often a prominent symptom of PPD, or it can be a sign of a comorbid anxiety disorder.\" The chapter notes that \"a majority of women have comorbidities such as generalized anxiety disorder.\"","trap":"(B) describes mania, and the chapter requires that \"all women who present with depressive symptoms should be screened for bipolar disorder\" precisely so that this is not missed.","k":"1dnc7rb12qvb4x"},{"topic":"recognizing postpartum depression","subtopic":"the symptoms","stem":"A woman with postpartum depression says she feels detached from her baby and does not feel love for him, and is ashamed to say so. How should the nurse understand this?","options":["As a common symptom: feelings of detachment toward the newborn or not feeling love for the newborn are common symptoms of postpartum depression, and women feel guilt and shame for having these feelings and are not likely to verbalize or discuss them with anyone","As evidence that she should not care for the infant","As a rare finding indicating psychosis","As a sign she does not have depression"],"correct":[0],"sata":false,"why":"\"Feelings of detachment toward the newborn or not feeling love for the newborn are common symptoms of PPD. Women feel guilt and shame for having these feelings and are not likely to verbalize or discuss this with anyone. Many women feel especially guilty about having depressive feelings at a time when they believe they should be happy.\"","trap":"(B) responds to a disclosure with a consequence, which is exactly what makes women withhold it — and the chapter also notes that some women with depression \"feel very emotionally attached and connected to their infants,\" and that connection \"can prevent them from experiencing total despair.\"","k":"1muh6ea1cge4pw"},{"topic":"recognizing postpartum depression","subtopic":"the symptoms","stem":"What two things does the chapter require be ruled out in a woman presenting with depressive symptoms after birth?","options":["Bipolar disorder, since all women presenting with depressive symptoms should be screened for it, and medical causes such as thyroid disease","Anemia and infection","Substance use only","Nothing needs to be ruled out"],"correct":[0],"sata":false,"why":"\"All women who present with depressive symptoms should be screened for bipolar disorder,\" and \"medical causes (e.g., thyroid disease) of depressive symptoms should be ruled out.\"","trap":"(D) would start an antidepressant in a woman whose symptoms might be thyroid disease or the depressed phase of bipolar disorder — two conditions for which that treatment is wrong.","k":"kvq74d167hqvn"},{"topic":"ppd versus postpartum psychosis","subtopic":"thoughts of harm","stem":"A woman with postpartum depression reports frightening obsessive thoughts about harming her infant. How does the chapter distinguish this from postpartum psychosis?","options":["A woman with postpartum depression may have obsessive thoughts about harming the infant that frighten her, but she does not act on those thoughts and is vigilant about preventing any action that would bring harm to her infant; women experiencing postpartum psychosis are likely to act on their thoughts","Any thought of harming the infant indicates psychosis","Women with depression act on their thoughts and women with psychosis do not","The two cannot be distinguished clinically"],"correct":[0],"sata":false,"why":"\"A woman with PPD may have obsessive thoughts about harming the infant, and this can be very frightening to her. However, she does not act on those thoughts and is vigilant about preventing any action that would bring harm to her infant. In contrast, women experiencing postpartum psychosis are likely to act on their thoughts.\"","trap":"(B) is the response that punishes disclosure and drives the thoughts underground, and it is the reason the distinction is stated so explicitly.","k":"t2b9raf2b9ro"},{"topic":"ppd versus postpartum psychosis","subtopic":"thoughts of harm","stem":"How is care for postpartum depression matched to severity?","options":["Women with mild symptoms may need only support and counseling; psychotherapy may be needed for moderate to severe symptoms; and when nonpharmacologic treatment alone is not effective, medications may be used, often in combination with psychotherapy","All women require medication","Medication is used first in every case","Psychotherapy is reserved for women who refuse medication"],"correct":[0],"sata":false,"why":"\"Women with mild symptoms may need only support and counseling. Psychotherapy may be needed for moderate to severe symptoms, and in some cases, when nonpharmacological treatment alone is not effective, medications may be used, often in combination with psychotherapy.\"","trap":"(C) inverts the sequence, and the named psychotherapies — cognitive behavioral therapy and interpersonal psychotherapy — are increasingly delivered as internet-based programs and mobile applications, which widens access rather than narrowing it.","k":"qynvgo15adefa"},{"topic":"anxiety disorders and ptsd","subtopic":"the anxiety disorders","stem":"A postpartum woman worries constantly and excessively about her infant's well-being, with muscle tension, restlessness, insomnia, and difficulty concentrating. Which disorder does this describe?","options":["Generalized anxiety disorder, characterized by excessive and pervasive worrying, restlessness, inability to relax, difficulty concentrating, distress about making decisions, and worry out of proportion to the impact of the event","Panic disorder","Obsessive-compulsive disorder","Posttraumatic stress disorder"],"correct":[0],"sata":false,"why":"Generalized anxiety disorder is \"characterized by excessive and pervasive worrying, restlessness, inability to relax, difficulty concentrating, distress about making decisions, and obsession over things that are out of proportion to the impact of the event.\" The chapter adds: \"The issues of concern to people with GAD are realistic, but the level of worry is much more intense than appropriate. Postpartum women may worry excessively about the well-being of their infants.\" Physical symptoms include muscle tension, irritability, restlessness, insomnia, fatigue, headache, nausea, diarrhea, and abdominal pain.","trap":"(B) is a different pattern entirely — episodic rather than continuous, with \"the rapid onset of intense fear (typically peaking at 10 minutes).\"","k":"9hyl3719umf4t"},{"topic":"anxiety disorders and ptsd","subtopic":"the anxiety disorders","stem":"A woman has episodes of sudden intense fear with palpitations, sweating, shortness of breath, dizziness, and a fear of losing control or dying, and has begun staying home. What has developed?","options":["Panic disorder, with agoraphobia — fear of certain places and situations — which develops when panic disorder is untreated, so that women tend to remain at home","Generalized anxiety disorder","Postpartum psychosis","Obsessive-compulsive disorder"],"correct":[0],"sata":false,"why":"Panic symptoms are \"characterized by the rapid onset of intense fear (typically peaking at 10 minutes),\" with \"palpitations, sweating, shortness of breath, choking, nausea, abdominal discomfort, dizziness, unsteadiness, numbness or tingling, chills, or hot flashes,\" plus \"a fear of losing control or fear of dying. There may or may not be an identifiable trigger.\" Untreated, women \"may experience agoraphobia ..., and as a result, they tend to remain at home.\"","trap":"(C) escalates an anxiety disorder to a psychotic one, and the presence of an identifiable panic pattern with intact reality testing is what separates them.","k":"yc3u9h12mzlv"},{"topic":"anxiety disorders and ptsd","subtopic":"the anxiety disorders","stem":"A woman with obsessive-compulsive disorder has intrusive thoughts about harming her infant. What does the chapter say about the risk?","options":["Although the thoughts are very disturbing, there is no increased risk of actual harm being inflicted","The risk of harm is high and the infant should be removed","These thoughts indicate psychosis","These thoughts indicate a need for immediate hospitalization in every case"],"correct":[0],"sata":false,"why":"In obsessive-compulsive disorder women may have \"disturbing intrusive thoughts that are repetitive, unacceptable, and/or unwanted,\" themed around \"contamination, causing harm, urges for symmetry and order, religious preoccupations, or offensive violent or sexual images,\" and \"women may have obsessive thoughts about harming their infants; although the thoughts are very disturbing, there is no increased risk of actual harm being inflicted.\"","trap":"(B) is the reaction that costs a mother her infant over a symptom that carries no added risk, and it parallels the depression-versus-psychosis distinction exactly.","k":"1687op0ey480i"},{"topic":"anxiety disorders and ptsd","subtopic":"ptsd","stem":"Which obstetric experiences does the chapter associate with a higher prevalence of posttraumatic stress disorder?","options":["Preterm birth, preeclampsia with severe features, obstetric hemorrhage, emergency cesarean birth, stillbirth, or an infant in the neonatal intensive care unit","Only stillbirth","Only cesarean birth","No obstetric experiences are associated"],"correct":[0],"sata":false,"why":"\"PTSD has been found to be more prevalent in women who have experienced severe complications in pregnancy or during birth such as preterm birth, preeclampsia with severe features, obstetric hemorrhage, emergency cesarean birth, stillbirth, or an infant in the neonatal intensive care unit.\" It \"can be triggered by traumatic birth experiences, especially in women who have a history of trauma (e.g., childhood abuse, intimate partner violence, rape), although new-onset PTSD can occur after a difficult birth.\"","trap":"(B) narrows the list to the most obviously traumatic event, and the chapter's point is that a survived emergency can be traumatic too — which is why Chapter 33 makes debriefing after hemorrhage part of nursing care.","k":"112rn9zn6ttil"},{"topic":"anxiety disorders and ptsd","subtopic":"ptsd","stem":"Which symptoms characterize posttraumatic stress disorder as the chapter describes it?","options":["Reliving the traumatic event through involuntary memories, flashbacks, and recurrent nightmares, with persistent avoidance of stimuli associated with the event, plus difficulty sleeping, irritability, angry outbursts, difficulty concentrating, hypervigilance, and an exaggerated startle response","Euphoria and grandiosity","Compulsive rituals only","Panic attacks peaking at 10 minutes"],"correct":[0],"sata":false,"why":"The chapter lists \"reliving the traumatic event through involuntary memories, flashbacks, recurrent nightmares, and persistent avoidance of stimuli associated with the event,\" along with \"difficulty sleeping, irritability, angry outbursts, difficulty concentrating, hypervigilance, and an exaggerated startle response.\" Depression \"is a common comorbidity of PTSD.\"","trap":"(D) names panic disorder's signature, and the avoidance and re-experiencing pair is what makes the diagnosis PTSD.","k":"1s46chw1e46kxq"},{"topic":"anxiety disorders and ptsd","subtopic":"ptsd","stem":"What is the first-line intervention for anxiety disorders in the perinatal period?","options":["Psychotherapy, with common methods including trauma-focused cognitive behavioral therapy, exposure therapy, and eye movement desensitization and reprocessing; pharmacologic therapy may be used for women who prefer it or who face barriers to accessing psychotherapy, and the two are frequently combined","Benzodiazepines in all cases","Antidepressants alone","No treatment is recommended in the perinatal period"],"correct":[0],"sata":false,"why":"\"Psychotherapy is usually the first-line intervention for anxiety disorders; common methods include trauma-focused CBT, exposure therapy, and eye movement desensitization and reprocessing.\" For women who prefer medication and those with barriers to accessing psychotherapy, \"pharmacologic therapy may be used. Psychotherapy and pharmacotherapy are frequently used in combination.\" SSRIs and SNRIs are often used, and benzodiazepines may treat short-term anxiety.","trap":"(B) starts with the class the chapter reserves for short-term use, and the nonpharmacologic strategies named — education, music therapy, breathing exercises, progressive muscle relaxation, guided imagery, and cognitive strategies — sit alongside all of it.","k":"5jjydc8w4gwm"},{"topic":"perinatal substance use disorder","subtopic":"recognition and screening","stem":"Which warning signs in prenatal care may suggest a substance use disorder? Select all that apply.","options":["Receiving no prenatal care, late entry into care, or sporadic care with multiple missed appointments","Keeping prenatal appointments but leaving without being seen","Noncompliance with recommended treatment","Evidence of poor nutrition, frequent encounters with law enforcement officials, or marital and family disputes","Attending every scheduled appointment"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names no prenatal care, late entry, sporadic care with missed appointments, leaving without being seen, noncompliance with recommended treatment, evidence of poor nutrition, frequent encounters with law enforcement, and marital and family disputes.","trap":"(E) would make attendance a rule-out, and the chapter's screening recommendation is universal for exactly that reason.","k":"zbfj24guja"},{"topic":"perinatal substance use disorder","subtopic":"recognition and screening","stem":"Why does the chapter recommend universal screening for substance use in pregnancy?","options":["Because substance use is prevalent in all populations, providers should never make assumptions based on age, race, or socioeconomic status, and universal screening is nonbiased and nonstigmatizing","Because it is legally required in all states","Because only high-risk women need screening","Because screening replaces the need for treatment referral"],"correct":[0],"sata":false,"why":"\"Universal screening for substance use in pregnant women is recommended. Because substance use is prevalent in all populations, providers should never make assumptions based on age, race, or socioeconomic status. Universal screening is nonbiased and nonstigmatizing.\"","trap":"(B) states a legal uniformity the chapter contradicts: \"the legal implications of testing and the need for consent from the pregnant woman can vary among states,\" so providers \"should be aware of local laws and legislative changes.\"","k":"bti3q7dfdj9t"},{"topic":"perinatal substance use disorder","subtopic":"how substances reach the fetus","stem":"How does the chapter describe the direct effects of drugs on the fetus by timing?","options":["Early in gestation, drugs can cause pregnancy loss or significant structural abnormalities; during the fetal period, after major structural development is complete, drugs can affect the developing central nervous system; and throughout pregnancy, maternal drug use may result in fetal death","Drugs affect only the first trimester","Drugs affect only the third trimester","Timing does not affect the outcome"],"correct":[0],"sata":false,"why":"\"Early in gestation, drugs can cause pregnancy loss (miscarriage) or significant structural abnormalities in the fetus. During the fetal period, after major structural development is complete, drugs can affect the developing CNS. Throughout pregnancy, maternal drug use may result in fetal death.\"","trap":"(D) would make gestational age irrelevant, when the chapter uses it to explain why the same substance produces anomalies at one point and neurodevelopmental effects at another.","k":"1oj75231t94pdl"},{"topic":"perinatal substance use disorder","subtopic":"how substances reach the fetus","stem":"What indirect effects on the fetus does the chapter name?","options":["Altered delivery of nutrition to the fetus, from placental insufficiency or inadequate maternal diet, plus decreased access to and compliance with health care, increased exposure to violence, and increased risk for mental illness and infection","Only nutritional effects","There are no indirect effects","Only effects on the placenta"],"correct":[0],"sata":false,"why":"The indirect effects are \"altered delivery of nutrition to the fetus, either because of placental insufficiency or inadequate maternal diet,\" plus \"decreased access to and/or compliance with health care, increased exposure to violence, and increased risk for mental illness and infection.\"","trap":"(C) would leave the nurse addressing only pharmacology, when several of the indirect effects are the ones nursing care can actually change.","k":"1knzbp814r2p0e"},{"topic":"perinatal substance use disorder","subtopic":"how substances reach the fetus","stem":"Which effects does the chapter attribute to specific substances? Select all that apply.","options":["Tobacco: ectopic pregnancy, orofacial clefts, growth restriction, placenta previa, placental abruption, low birth weight, preterm prelabor rupture of membranes, and increased perinatal mortality","Alcohol: significantly increased risk for birth defects, with no amount at any time in pregnancy considered safe, plus increased risk for low birth weight and preterm birth","Cocaine: increased incidence of preterm labor, prelabor rupture of membranes, placental abruption, and preeclampsia, with growth restriction and low birth weight","Methamphetamines: low birth weight, microcephaly, decreased length, preterm birth, placental abruption, and congenital malformations of the brain and heart","Marijuana: an established safe threshold below which no effects occur"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists each of these. Marijuana is \"the most commonly used illicit drug in pregnancy,\" and \"no safe threshold limits for marijuana use have been determined,\" with use associated with intrauterine growth restriction.","trap":"(E) inverts the marijuana finding, and the legal status is a separate matter — it is legal in several states while remaining \"an illegal substance under federal law.\"","k":"17ywjv31rcn75h"},{"topic":"perinatal substance use disorder","subtopic":"how substances reach the fetus","stem":"A woman reports a small amount of alcohol use in early pregnancy before she knew she was pregnant. What counseling does the chapter support?","options":["That low-level consumption of alcohol in early pregnancy is not an indication for pregnancy termination, but she should be advised to stop to minimize further risk","That termination should be considered","That continued light drinking is safe","That no counseling is needed"],"correct":[0],"sata":false,"why":"The chapter states that \"no amount of alcohol use at any time during pregnancy is considered safe,\" and also that low-level consumption in early pregnancy \"is not an indication for pregnancy termination,\" though women \"should be advised to stop to minimize further risk.\"","trap":"(C) is contradicted by the first half of that pair, and (B) by the second — the chapter holds both positions at once, and the counseling has to as well.","k":"wbtqon1hfv8et"},{"topic":"barriers and the nurse's stance","subtopic":"what keeps women from care","stem":"Which barriers to substance use treatment does the chapter name? Select all that apply.","options":["Social stigma, labeling, and guilt","Fear of losing custody of a child or children, or of criminal prosecution","Negative feedback from society and health care providers, who may condemn women for endangering the fetus and withhold support","Treatment programs that have not addressed the concurrent need for obstetric care and childcare for other children, plus long waiting lists and lack of health insurance","An excess of available treatment slots"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names stigma, labeling and guilt, fear of custody loss and prosecution, provider condemnation and withheld support, and system barriers including programs that do not address obstetric care or childcare, long waiting lists, and lack of insurance. Women with co-occurring disorders \"face unique barriers because of the social stigma attached to both conditions and insufficient knowledge and training for health care providers.\"","trap":"(E) reverses the access problem, and the chapter's inclusion of provider behavior among the barriers is the item most easily overlooked.","k":"cwfsnowarq6i"},{"topic":"barriers and the nurse's stance","subtopic":"what keeps women from care","stem":"Which laboratory work does the chapter anticipate for a pregnant woman with a substance use disorder, and why may an early ultrasound be needed?","options":["Screening for syphilis, hepatitis B and C, and HIV, a complete blood count, a skin test for tuberculosis, and testing for gonorrhea and chlamydia; an early ultrasound may be needed to determine gestational age because she may have had amenorrhea from her substance use or no idea when her last menstrual period occurred","Only a urine drug screen","Only a complete blood count","No additional laboratory work is needed"],"correct":[0],"sata":false,"why":"Because these women \"are at risk for a variety of infections and medical conditions,\" the workup includes screening for \"syphilis, hepatitis B and C, and human immunodeficiency virus (HIV),\" plus \"a complete blood count and a skin test to screen for tuberculosis\" and testing for gonorrhea and chlamydia. An early ultrasound may be needed \"to determine gestational age because the woman may have had amenorrhea as a result of her substance use or have no idea when her last menstrual period occurred.\"","trap":"(B) reduces the workup to the test that carries the legal risk and misses the infections that carry the clinical one.","k":"z6sl5n1xw3mr5"},{"topic":"barriers and the nurse's stance","subtopic":"what keeps women from care","stem":"Which principles does Box 31.3 give for caring for pregnant women with substance use disorder? Select all that apply.","options":["Realize that the decision to become and remain sober can only be made by the individual with the disorder","Understand that nurses do not have the power to cure anyone — they serve as educators, supporters, and advocates","Treat women with substance use disorder with the same respect and consideration shown to other people, and become familiar with local treatment centers and which accept pregnant women","Remember that there are no hopeless cases, practice patience and persistence, and recognize it may take months or years to see the effects of your work","Withhold care until the woman agrees to enter treatment"],"correct":[0,1,2,3],"sata":true,"why":"Box 31.3 gives each of these principles, and the chapter's framing sentence is that \"nurses must understand that SUD is an illness and that women with SUD deserve to be treated with patience, kindness, consistency, and firmness when necessary.\"","trap":"(E) is the withholding of support the chapter names as a barrier, and it is the behavior Box 31.3 is written to replace.","k":"15q06i11arpbfb"},{"topic":"smoking cessation and alcohol withdrawal","subtopic":"tobacco","stem":"What does the chapter say about the timing and effectiveness of smoking cessation in pregnancy?","options":["Women who quit smoking by the first trimester have infants whose growth is comparable to those born to nonsmokers, cessation programs during pregnancy are effective and should be offered to all pregnant smokers, and approximately 50% to 60% of women who quit during pregnancy tend to relapse within 1 year of giving birth","Quitting has no measurable benefit once pregnancy has begun","Quitting is beneficial only in the third trimester","Relapse after birth is rare"],"correct":[0],"sata":false,"why":"\"Women who quit smoking by the first trimester have infants whose growth is comparable to those born to nonsmokers,\" \"smoking cessation programs during pregnancy are effective and should be offered to all pregnant smokers,\" and \"approximately 50% to 60% of women who quit smoking during pregnancy tend to relapse within 1 year of giving birth.\"","trap":"(D) would end support at discharge, and the relapse figure is why cessation support has to continue into the postpartum year.","k":"1q16hc813193zi"},{"topic":"smoking cessation and alcohol withdrawal","subtopic":"tobacco","stem":"What does the US Preventive Services Task Force recommend for pregnant women who use tobacco?","options":["That they be advised to quit and provided with only behavioral interventions to assist with cessation, because evidence on pharmacotherapy in pregnancy is insufficient; nicotine replacement therapy should be used only after discussion about the known risks of continued smoking and the possible risks of the therapy","That all pregnant smokers receive nicotine replacement therapy","That no intervention be offered","That varenicline be first-line"],"correct":[0],"sata":false,"why":"\"The USPSTF recommends that pregnant women who use tobacco be advised to quit and provided with only behavioral interventions to assist with cessation,\" and \"nicotine replacement therapy should be used in pregnant women only after discussion about the known risks of continued smoking and the possible risks associated with nicotine replacement therapy.\" On the cessation drugs, \"neither medication has been associated with an increased risk for congenital anomalies, preterm birth, or low birth weight when taken during pregnancy,\" though data are limited. The quit line is 1-800-QUIT-NOW.","trap":"(B) reverses the recommendation, and the careful wording — a discussion weighing the risk of continued smoking against the risk of the therapy — is what makes nicotine replacement a shared decision rather than a default.","k":"143vn3r10i7f3t"},{"topic":"smoking cessation and alcohol withdrawal","subtopic":"alcohol withdrawal","stem":"A pregnant woman requires withdrawal from alcohol. What does the chapter specify about the setting, the timing of the greatest risk, and the drug class used?","options":["Inpatient management; the peak time for withdrawal seizures in pregnant women is 24 hours after the last drink; and treatment consists of benzodiazepines such as chlordiazepoxide or diazepam","Outpatient management; seizures peak at 1 week; treatment is with antipsychotics","Inpatient management; seizures peak at 72 hours; treatment is with opioids","No specific management is described"],"correct":[0],"sata":false,"why":"\"Pregnant women requiring withdrawal from alcohol should be admitted for inpatient management.\" And: \"In pregnant women, the peak time for withdrawal seizures is 24 hours after the last drink.\" Treatment \"consists of the administration of benzodiazepines,\" with chlordiazepoxide (Librium) and diazepam (Valium) often used.","trap":"(B) sends a woman home during the period the chapter identifies as highest risk, and the 24-hour figure is what makes the admission non-negotiable.","k":"7traxeekf57k"},{"topic":"opioid use disorder in pregnancy","subtopic":"agonist therapy","stem":"What is the standard of care for pregnant women with an opioid use disorder?","options":["Opioid agonist therapy, also called medication-assisted treatment, which includes methadone and buprenorphine; neither is associated with an increased risk for birth defects","Medically supervised withdrawal","Abstinence without medication","Inpatient detoxification in all cases"],"correct":[0],"sata":false,"why":"\"Since the 1970s, opioid agonist therapy (also referred to as medication-assisted treatment) has been considered the standard of care for pregnant women with an opioid use disorder. Opioid agonist therapy includes methadone and buprenorphine (Subutex or Suboxone),\" and \"neither buprenorphine nor methadone is associated with an increased risk for birth defects.\"","trap":"(C) is the recommendation for every other substance in this chapter and the one exception the text names: abstinence \"should be recommended as the safest course of action unless the woman is using opioids.\"","k":"92mifx1lkr9jz"},{"topic":"opioid use disorder in pregnancy","subtopic":"agonist therapy","stem":"Why is buprenorphine increasingly favored over methadone in pregnancy? Select all that apply.","options":["Women can be treated on an outpatient basis without the need for daily visits","Women are less likely to overdose on buprenorphine","Fewer adjustments in dosage are necessary as pregnancy progresses","Buprenorphine causes less severe neonatal abstinence syndrome than methadone","Buprenorphine eliminates neonatal abstinence syndrome entirely"],"correct":[0,1,2,3],"sata":true,"why":"The chapter gives all four reasons: outpatient treatment without daily visits, lower overdose risk, fewer dosage adjustments across pregnancy, and less severe neonatal abstinence syndrome.","trap":"(E) overstates the last advantage — \"anywhere from 40% to 80% of infants exposed to opioids, including methadone or buprenorphine, in utero require treatment for NAS.\"","k":"7wf3ki1oaa9xs"},{"topic":"opioid use disorder in pregnancy","subtopic":"agonist therapy","stem":"Why is medically supervised withdrawal from opioids not recommended during pregnancy?","options":["Because agonist pharmacotherapy is preferred, since withdrawal is associated with high relapse rates and poorer outcomes, and because of a potential risk for fetal distress or fetal demise","Because withdrawal is always fatal to the fetus","Because withdrawal is illegal","Because withdrawal has been proven harmful in all studies"],"correct":[0],"sata":false,"why":"\"Opioid agonist pharmacotherapy is preferred over supervised medical withdrawal because withdrawal is associated with high relapse rates and poorer outcomes,\" and \"medical withdrawal from opioids during pregnancy is currently not recommended, in part because of a potential risk for fetal distress or fetal demise.\"","trap":"(D) overstates the evidence in a way the chapter itself corrects: a study of more than 600 women found no fetal harm, but \"because there is a high possibility of relapse associated with medical withdrawal from opioids during pregnancy, ... broad recommendations regarding this management strategy cannot be made at this time.\"","k":"6xu57f10mzryx"},{"topic":"opioid use disorder in pregnancy","subtopic":"agonist therapy","stem":"A provider considers limiting a pregnant woman's methadone dose to reduce the severity of neonatal abstinence syndrome. What does the chapter say?","options":["Neither the incidence nor the severity of neonatal abstinence syndrome correlates directly with the maternal methadone dose at birth, so limiting the methadone dose to minimize the risk for NAS is not warranted","Lower doses reliably produce milder withdrawal","The dose should be halved in the third trimester","Methadone should be stopped before birth"],"correct":[0],"sata":false,"why":"\"Neither the incidence nor the severity of NAS correlates directly with the maternal methadone dose at birth. Therefore limiting the methadone dose to minimize the risk for NAS is not warranted.\"","trap":"(B) is the intuition the sentence exists to correct, and acting on it would undertreat the mother without helping the infant.","k":"1tuqpcciyg6km"},{"topic":"opioid use disorder in pregnancy","subtopic":"stimulants","stem":"What treatment does the chapter describe for cocaine and methamphetamine use in pregnancy?","options":["Both call for immediate cessation and referral; effective psychosocial and behavioral treatments have been developed for pregnant substance users because pharmacotherapy is not available for cocaine, and for methamphetamine the most effective treatments are behavioral therapies such as cognitive behavioral therapy and contingency management, with no medications that counteract its specific effects","Both are treated with agonist therapy like opioids","Both are treated with benzodiazepines","No treatment is available for either"],"correct":[0],"sata":false,"why":"Women using cocaine \"should be advised to stop using immediately and be referred for substance abuse treatment. Effective psychosocial and behavioral treatments have been developed for pregnant substance abusers because pharmacotherapy is not available.\" Methamphetamine users \"are urged to immediately stop all use,\" and \"because methamphetamine users are extremely psychologically addicted, the rate of relapse is very high. The most effective treatments ... are behavioral therapies, such as CBT and contingency management interventions. There are currently no medications that counteract the specific effects of methamphetamine.\"","trap":"(B) extends the opioid model to stimulants, and the absence of an agonist is precisely why the behavioral treatments carry the whole load here.","k":"cm6nvv1gv920p"},{"topic":"intrapartum and postpartum care in substance use disorder","subtopic":"the clinical picture and the pain rule","stem":"A laboring woman with an active substance use disorder is demanding and difficult to manage, with a low threshold for pain. How should the nurse respond to her reports of pain?","options":["Recognize that even women who are actively abusing drugs experience pain during labor and after giving birth and may need both pharmacologic and nonpharmacologic interventions","Withhold analgesia because of the substance use","Provide only nonpharmacologic measures","Assume the reports are drug-seeking"],"correct":[0],"sata":false,"why":"The chapter states it so it cannot be misread: \"Even women who are actively abusing drugs experience pain during labor and after giving birth and may need both pharmacologic and nonpharmacologic interventions.\" It acknowledges that these women \"are often particularly challenging during the intrapartum and postpartum periods because of manipulative and demanding behavior,\" with \"poor control over their behavior and a low threshold for pain.\"","trap":"(D) converts a described clinical picture into a reason to disbelieve the patient, and the sentence in the chapter is written specifically against that reasoning.","k":"d539ozczho3t"},{"topic":"intrapartum and postpartum care in substance use disorder","subtopic":"the clinical picture and the pain rule","stem":"What approach does the chapter recommend to reduce staff conflict in caring for these women, and what else does it specify?","options":["Developing a standardized plan of care so that clients have limited opportunities to play staff members against one another, promoting mother-infant attachment by identifying the woman's strengths and reinforcing positive maternal feelings and behaviors, and ensuring sufficient staffing for strict surveillance of visitors to prevent unsupervised drug use","Assigning a different nurse each shift","Limiting all visitors permanently","Avoiding discussion of infant care"],"correct":[0],"sata":false,"why":"\"Developing a standardized plan of care so that clients have limited opportunities to play staff members against one another is helpful.\" And: \"Mother-infant attachment should be promoted by identifying the woman's strengths and reinforcing positive maternal feelings and behaviors,\" with staffing \"sufficient to ensure strict surveillance of visitors and prevent unsupervised drug use.\"","trap":"(B) removes the consistency the standardized plan is meant to create, and (D) abandons the attachment work the chapter names as a goal.","k":"1kfbzrn1gq1rkx"},{"topic":"intrapartum and postpartum care in substance use disorder","subtopic":"the clinical picture and the pain rule","stem":"Where does intervention for perinatal substance use begin, and what does the chapter say about the timing of the opportunity?","options":["With education about the specific effects on pregnancy, the fetus, and the newborn for each drug used, with consequences clearly communicated and abstinence recommended as the safest course unless the woman is using opioids; and women are often more receptive to making lifestyle changes during pregnancy than at any other time in their lives","With mandatory reporting to authorities","With immediate inpatient admission in all cases","With deferral of all discussion until after birth"],"correct":[0],"sata":false,"why":"\"Intervention ... begins with education about specific effects on pregnancy, the fetus, and the newborn for each drug used. Consequences of perinatal substance use should be clearly communicated, and abstinence should be recommended as the safest course of action unless the woman is using opioids.\" And: \"Women are often more receptive to making lifestyle changes during pregnancy than at any other time in their lives.\" The care team includes an obstetric care provider, mental health provider, substance abuse counselor, nurse, and social worker.","trap":"(D) postpones the conversation past the window the chapter identifies as the most receptive one a woman may ever have.","k":"1bajgc11nihbvr"},{"topic":"intrapartum and postpartum care in substance use disorder","subtopic":"the clinical picture and the pain rule","stem":"What does the chapter say about breastfeeding advice for a woman with a substance use disorder?","options":["Advice must be individualized, because almost all abused substances appear in breast milk, some in greater amounts than others","Breastfeeding is contraindicated in all cases","Breastfeeding is always encouraged regardless of substance","No guidance is given"],"correct":[0],"sata":false,"why":"\"Advice regarding breastfeeding must be individualized. Almost all abused substances appear in breast milk, some in greater amounts than others.\"","trap":"(B) applies a blanket prohibition that Chapter 25's contraindication table does not support either — illicit drug use is an absolute contraindication there, but a woman in a methadone program with negative screens is explicitly excepted.","k":"n797vx3uxo4v"}];
+const TITLE = "Chapter 31 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 31";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

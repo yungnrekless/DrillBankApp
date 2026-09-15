@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 25 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 25</div><h1>Chapter 25 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">breastfeeding rates and benefits</span><span class="chip t2">the numbers</span></div>
+<div class="stem">1. Which breastfeeding rates does the chapter report for infants born in 2019?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>83.2% ever breastfed, 55.8% receiving any breast milk at 6 months, and 24.9% exclusively breastfed through 6 months</li><li class="fopt"><span class="mk">B</span>50% ever breastfed and 10% at 6 months</li><li class="fopt"><span class="mk">C</span>95% ever breastfed and 60% exclusively at 6 months</li><li class="fopt"><span class="mk">D</span>83.2% ever breastfed and 83.2% still breastfeeding at 1 year</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives 83.2% ever breastfed, 78.6% receiving some breast milk at 1 month, 55.8% at 6 months, 35.3% at 12 months, 45.3% exclusive through 3 months, and 24.9% exclusive through 6 months. Commercial infant formula was fed to 19.2% of breastfed newborns during the first 2 days of life.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) holds the initiation rate steady through a year, and the gap between initiation and duration is the whole reason the Healthy People 2030 targets exist — 42.4% exclusive through 6 months and 54.1% breastfed at 1 year.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">breastfeeding rates and benefits</span><span class="chip t2">the numbers</span></div>
+<div class="stem">2. Which groups does the chapter identify as having the lowest breastfeeding rates?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Non-Hispanic Blacks, lower income families, families living in rural areas, women 20 to 29 years of age, and women participating in the WIC program</li><li class="fopt"><span class="mk">B</span>Women over 30 in urban areas</li><li class="fopt"><span class="mk">C</span>Women with previous breastfeeding experience</li><li class="fopt"><span class="mk">D</span>No disparities are identified</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The lowest breastfeeding rates continue to be among non-Hispanic Blacks, lower income families, and families living in rural areas. Younger women (20 to 29 years of age) are less likely to breastfeed than women who are 30 years of age or older. Women participating in the Special Supplemental Nutrition Program for Women, Infants and Children (WIC) have lower breastfeeding rates than women who were eligible but did not participate and women who were ineligible.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) erases a set of disparities the chapter names precisely, and those groups are where support changes outcomes most.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">breastfeeding rates and benefits</span><span class="chip t2">what breastfeeding protects against</span></div>
+<div class="stem">3. Which infant and child outcomes does Table 25.1 associate with breastfeeding? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reduced risk for sudden infant death syndrome and reduced infant and child mortality</li><li class="fopt right"><span class="mk">&#10003;</span>Reduced risk for necrotizing enterocolitis in preterm infants, gastrointestinal infections, and lower respiratory tract infections</li><li class="fopt right"><span class="mk">&#10003;</span>Reduced risk for obesity in childhood, adolescence, and adulthood, and for type 1 and type 2 diabetes</li><li class="fopt right"><span class="mk">&#10003;</span>Enhanced neurodevelopmental outcomes, including higher intelligence</li><li class="fopt"><span class="mk">E</span>Reduced risk for congenital anomalies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 25.1's infant column includes reduced risk for SIDS, reduced infant and child mortality, reduced gastrointestinal infections, necrotizing enterocolitis in preterm infants, Crohn disease, ulcerative colitis, lower respiratory tract infections, asthma, acute otitis media, obesity across the lifespan, type 1 and type 2 diabetes, and leukemia, plus enhanced neurodevelopmental outcomes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) claims a benefit for something determined before birth. Breastfeeding cannot prevent an anomaly that formed during organogenesis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">breastfeeding rates and benefits</span><span class="chip t2">what breastfeeding protects against</span></div>
+<div class="stem">4. Which maternal benefits does Table 25.1 name, and how do they relate to duration?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reduced risk for endometrial, ovarian, breast, and thyroid cancer, type 2 diabetes, and hypertension, plus enhanced maternal-infant bonding; benefits increase with the number of children breastfed and the total length of lactation</li><li class="fopt"><span class="mk">B</span>Reduced risk for osteoporosis only, with no relationship to duration</li><li class="fopt"><span class="mk">C</span>Benefits are the same regardless of how long she breastfeeds</li><li class="fopt"><span class="mk">D</span>No maternal benefits are described</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The maternal column lists reduced risk for endometrial, ovarian, breast, and thyroid cancer, type 2 diabetes, and hypertension, plus enhanced bonding. &quot;The benefits are increased with the number of children who were breastfed and the total length of time of lactation,&quot; and on the infant side, &quot;benefits are optimized when infants are breastfed exclusively and when the duration of breastfeeding is increased.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) drops the dose-response relationship, which is what makes duration worth supporting rather than treating initiation as the finish line.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">breastfeeding rates and benefits</span><span class="chip t2">what breastfeeding protects against</span></div>
+<div class="stem">5. Which benefits does Table 25.1 list for families and society?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Convenience and readiness to feed, cost-effectiveness compared with formula feeding including bottles and supplies, reduced health care costs, less parental absence from work because of an ill infant, and a reduced environmental burden from disposal of formula packaging and equipment</li><li class="fopt"><span class="mk">B</span>Only cost savings</li><li class="fopt"><span class="mk">C</span>Only reduced health care costs</li><li class="fopt"><span class="mk">D</span>No societal benefits are described</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The third column lists each of these.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) narrows a list whose breadth is the point — the work-absence and environmental entries are the ones most often forgotten, and they are what make this a public health argument rather than only a family one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">uniqueness of human milk</span><span class="chip t2">why formula is not equivalent</span></div>
+<div class="stem">6. A parent says formula is basically the same as breast milk. How should the nurse respond, based on the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Agree, since formulas are nutritionally complete</li><li class="fopt right"><span class="mk">&#10003;</span>Explain that although many consider commercial formula equivalent, this belief is erroneous: human milk is the gold standard for infant nutrition and is nutritionally superior to infant formula</li><li class="fopt"><span class="mk">C</span>Explain that formula is superior for weight gain</li><li class="fopt"><span class="mk">D</span>Avoid the topic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Although many consider commercial infant formula to be equivalent to breast milk, this belief is erroneous. Human milk is the gold standard for infant nutrition; it is nutritionally superior to infant formula.&quot; Formulas &quot;are usually adequate in providing nutrition to maintain infant growth and development within normal limits, but they are not equivalent to human milk.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) accepts a premise the chapter states plainly as wrong, and the qualifier matters: formula is adequate, not equivalent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">uniqueness of human milk</span><span class="chip t2">why formula is not equivalent</span></div>
+<div class="stem">7. What does the chapter mean by saying human milk is species specific and dynamic?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That it is a dynamic substance whose composition changes to meet the changing nutritional and immunologic needs of the growing infant, and that milk produced by mothers of preterm infants differs in composition from that of mothers who give birth at term</li><li class="fopt"><span class="mk">B</span>That its composition is fixed from birth</li><li class="fopt"><span class="mk">C</span>That it varies only by maternal diet</li><li class="fopt"><span class="mk">D</span>That it is identical across all mammals</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Human milk is species specific,&quot; &quot;it is a dynamic substance with composition that changes to meet the changing nutritional and immunologic needs of the growing infant,&quot; and &quot;the milk produced by mothers of preterm infants differs in composition from that of mothers who give birth at term.&quot; It is also &quot;more easily digested&quot; and has &quot;greater bioavailability of vitamins, minerals, active enzymes, and hormones.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats milk as a fixed formulation, which is exactly the property that formula has and milk does not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">uniqueness of human milk</span><span class="chip t2">immune and microbiome components</span></div>
+<div class="stem">8. Which immune components does the chapter name in human milk?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Secretory IgA as the major immunoglobulin, with IgG, IgM, IgD, and IgE also present, plus T and B lymphocytes, epidermal growth factor, cytokines, interleukins, bifidus factor, complement, and lactoferrin</li><li class="fopt"><span class="mk">B</span>IgG as the major immunoglobulin, with no cellular components</li><li class="fopt"><span class="mk">C</span>Only antibodies, with no cells or growth factors</li><li class="fopt"><span class="mk">D</span>No immune components</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The major immunoglobulin (Ig) in human milk is secretory IgA; IgG, IgM, IgD, and IgE are also present. Human milk also contains T lymphocytes and B lymphocytes, epidermal growth factor, cytokines, interleukins, bifidus factor, complement (C3 and C4), and lactoferrin.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the major immunoglobulin of the placental transfer rather than of milk, and it drops the living cells that no formula contains.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">uniqueness of human milk</span><span class="chip t2">immune and microbiome components</span></div>
+<div class="stem">9. What does the chapter say about breast milk and the infant's gut?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Breast milk is the most important factor in infant gut colonization at birth, promoting colonization and maturation of the intestinal microbiome, which is essential to development of the immune system and establishes a baseline pattern for life</li><li class="fopt"><span class="mk">B</span>Breast milk has no effect on gut bacteria</li><li class="fopt"><span class="mk">C</span>Formula colonizes the gut identically</li><li class="fopt"><span class="mk">D</span>Gut colonization is determined entirely by birth route</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Breast milk is the most important factor in infant gut colonization at birth. Breast milk promotes colonization and maturation of the infant's intestinal microbiome, which is essential to development of the immune system and establishes a baseline pattern for life.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a real influence and makes it the only one, which would make feeding choice irrelevant to a system the chapter says milk shapes for life.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contraindications to breastfeeding</span><span class="chip t2">the three categories</span></div>
+<div class="stem">10. An infant is diagnosed with galactosemia. What does Table 25.2 direct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Breastfeeding may continue with supplementation</li><li class="fopt right"><span class="mk">&#10003;</span>Absolutely no breastfeeding and no expressed milk</li><li class="fopt"><span class="mk">C</span>No breastfeeding, but expressed milk may be given</li><li class="fopt"><span class="mk">D</span>Temporary interruption only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 25.2 places infant galactosemia in the absolute category — no breastfeeding and no expressed milk — along with maternal HIV infection, T-cell lymphotropic virus type 1 or 2, suspected or confirmed Ebola infection, and illicit drug use such as PCP or cocaine.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) belongs to a different category entirely. The table has three categories, not two, and knowing which one a condition falls into is what the questions turn on.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contraindications to breastfeeding</span><span class="chip t2">the three categories</span></div>
+<div class="stem">11. A mother has untreated active tuberculosis. What does Table 25.2 permit?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Breastfeeding may continue as usual</li><li class="fopt right"><span class="mk">&#10003;</span>No breastfeeding, but expressed milk may be fed; she can resume breastfeeding 2 weeks after treatment was begun and she is no longer contagious</li><li class="fopt"><span class="mk">C</span>Absolutely no breastfeeding and no expressed milk, permanently</li><li class="fopt"><span class="mk">D</span>Temporary interruption of both for 24 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 25.2's third category — no breastfeeding but expressed milk permitted — includes untreated active tuberculosis, with breastfeeding resuming &quot;2 weeks after treatment was begun and she is no longer contagious.&quot; The same category includes active varicella that developed between 5 days before and 2 days after birth.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) treats a transmissible respiratory infection as a permanent bar when the milk itself is safe — the separation is about airborne contact, not about the milk.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contraindications to breastfeeding</span><span class="chip t2">the three categories</span></div>
+<div class="stem">12. A mother has herpes simplex lesions confined to one breast. What does the chapter's footnote permit?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>She must stop breastfeeding entirely</li><li class="fopt right"><span class="mk">&#10003;</span>She may cover the lesions and breastfeed on the opposite breast</li><li class="fopt"><span class="mk">C</span>She may breastfeed on the affected breast if she covers the lesions</li><li class="fopt"><span class="mk">D</span>She may pump from both breasts and feed the milk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Active herpes lesions on the breasts place a mother in the temporary category — no breastfeeding or expressed milk — but the table's footnote gives a partial exception: &quot;If HSV lesions are confined to one breast, the mother may cover the lesions and breastfeed on the opposite breast.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses which breast is available, and (D) ignores that expressed milk is also withheld in the temporary category.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contraindications to breastfeeding</span><span class="chip t2">the three categories</span></div>
+<div class="stem">13. Which conditions call for a temporary interruption of both breastfeeding and expressed milk? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Untreated brucellosis</li><li class="fopt right"><span class="mk">&#10003;</span>Diagnostic imaging that uses radiopharmaceuticals</li><li class="fopt right"><span class="mk">&#10003;</span>Active herpes lesions on the breasts</li><li class="fopt right"><span class="mk">&#10003;</span>Certain maternal medications</li><li class="fopt"><span class="mk">E</span>Maternal HIV infection</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 25.2's temporary category lists untreated brucellosis, diagnostic imaging with radiopharmaceuticals, active herpes lesions on the breasts, and certain medications. LactMed is the named reference for medication safety in lactation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is in the absolute category in the United States, where &quot;maternal human immunodeficiency virus (HIV) infection is considered a contraindication for breastfeeding and for feeding expressed breast milk&quot; — though &quot;in other countries, national or subnational health authorities make recommendations&quot; of their own.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">contraindications to breastfeeding</span><span class="chip t2">the three categories</span></div>
+<div class="stem">14. A mother is enrolled in a methadone treatment program with negative screens for HIV and illicit drug use. What does Table 25.2 say about breastfeeding?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It is absolutely contraindicated because methadone is an opioid</li><li class="fopt right"><span class="mk">&#10003;</span>It is permitted — the exception to the illicit drug contraindication is a mother enrolled in a methadone treatment program with a negative screen for HIV and illicit drug use</li><li class="fopt"><span class="mk">C</span>It is permitted only with donor milk supplementation</li><li class="fopt"><span class="mk">D</span>It requires a 2-week interruption</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The absolute category includes &quot;mother is using illicit drugs (e.g., PCP, cocaine); exception is if she is enrolled in methadone treatment program and has negative screen for HIV and illicit drug use.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies the drug contraindication to the treatment for it, which would remove both the milk and one of the strongest incentives for staying in treatment.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">feeding readiness cues</span><span class="chip t2">recognizing hunger early</span></div>
+<div class="stem">15. Which feeding-readiness cues should prompt a mother to offer the breast? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Sucking or mouthing motions</li><li class="fopt right"><span class="mk">&#10003;</span>Hand-to-mouth or hand-to-hand movements</li><li class="fopt right"><span class="mk">&#10003;</span>The rooting reflex, in which the infant moves toward whatever touches the area around the mouth and attempts to suck</li><li class="fopt right"><span class="mk">&#10003;</span>Becoming more alert and active and turning the head to look for the breast</li><li class="fopt"><span class="mk">E</span>Crying in a distraught manner</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists sucking or mouthing motions, hand-to-mouth or hand-to-hand movements, and the rooting reflex at initiation, and expands the list under cue-based feeding: &quot;becoming more alert and active, turning the head to look for the breast, opening the mouth, fists moving to the mouth, and sucking on hands.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the sign to feed before: &quot;crying is a late sign of hunger; the goal is to offer the breast before the infant is crying.&quot; The chapter also warns against waiting until the infant is &quot;withdrawing into sleep.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">feeding readiness cues</span><span class="chip t2">recognizing hunger early</span></div>
+<div class="stem">16. How should the mother and infant be positioned during the hospital stay to support cue-based feeding?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The infant in the nursery, brought to the mother on a schedule</li><li class="fopt right"><span class="mk">&#10003;</span>Keeping the baby close, with newborns remaining with mothers during the recovery period and rooming-in during the stay; the mother and breastfeeding infant should sleep in proximity — in the same room but not in the same bed</li><li class="fopt"><span class="mk">C</span>The infant in the mother's bed at all times</li><li class="fopt"><span class="mk">D</span>The infant in the nursery at night so the mother can rest</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Keeping the baby close is the best way to observe and respond to these cues. Newborns should remain with mothers during the recovery period after birth and room-in during the stay in the birth facility.&quot; And: &quot;The mother and breastfeeding infant should sleep in proximity (in the same room but not in the same bed) to promote breastfeeding.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) crosses the line the parenthesis draws. Same room supports feeding; same bed is the arrangement safe-sleep guidance excludes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">feeding readiness cues</span><span class="chip t2">the first hour</span></div>
+<div class="stem">17. When is the ideal time to begin breastfeeding, and what happens to routine newborn procedures?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Within the first hour after birth, with the newborn remaining in direct skin-to-skin contact until able to breastfeed for the first time; routine procedures such as vitamin K injection, eye prophylaxis, and bathing should be delayed until the neonate has completed the first feeding</li><li class="fopt"><span class="mk">B</span>After the newborn's first bath and vitamin K injection</li><li class="fopt"><span class="mk">C</span>After the first 4 hours of transition</li><li class="fopt"><span class="mk">D</span>Only after the mother has rested</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The ideal time to begin breastfeeding is within the first hour after birth,&quot; and &quot;a newborn without complications should be allowed to remain in direct skin-to-skin contact with the mother until he or she is able to breastfeed for the first time. This is true both for mothers who gave birth by cesarean and for mothers who gave birth vaginally.&quot; Routine procedures &quot;should be delayed until the neonate has completed the first feeding.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the order and is the traditional sequence, which is why the delay has to be stated as an instruction rather than assumed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">feeding readiness cues</span><span class="chip t2">the first hour</span></div>
+<div class="stem">18. A mother worries that her newborn is taking very little at each feeding on day 1. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That babies normally consume small amounts during the first 3 days of life, with intake increasing from 5 to 15 mL per feeding in the first 24 hours to 60 to 90 mL by the end of the first week</li><li class="fopt"><span class="mk">B</span>That the infant should be taking 60 mL per feeding from the first day</li><li class="fopt"><span class="mk">C</span>That supplementation is needed immediately</li><li class="fopt"><span class="mk">D</span>That small intake indicates poor latch in every case</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Babies normally consume small amounts of milk with feedings during the first 3 days of life,&quot; and as the digestive tract clears of meconium, &quot;milk intake increases from 5 to 15 mL per feeding in the first 24 hours to 60 to 90 mL by the end of the first week.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the response that undermines a mother's confidence in the exact window when confidence matters most, and the chapter warns that early supplementation by staff &quot;models behavior that is counterproductive to establishing breastfeeding.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">frequency and duration of feedings</span><span class="chip t2">how often</span></div>
+<div class="stem">19. How often should a newborn breastfeed, and how is feeding frequency counted?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>At least 8 to 10 times in a 24-hour period, around the clock, with frequency determined by counting from the beginning of one feeding to the beginning of the next</li><li class="fopt"><span class="mk">B</span>Every 4 hours, counting from the end of one feeding to the beginning of the next</li><li class="fopt"><span class="mk">C</span>Six times a day on a fixed schedule</li><li class="fopt"><span class="mk">D</span>Only when the infant cries</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Newborns need to breastfeed at least 8 to 10 times in a 24-hour period, around the clock,&quot; and &quot;feeding frequency is determined by counting from the beginning of one feeding to the beginning of the next.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) counts from the end, which stretches the interval and produces fewer feedings than the infant needs — the same counting rule appears with uterine contractions in labor, and it is easy to reverse in both places.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">frequency and duration of feedings</span><span class="chip t2">how often</span></div>
+<div class="stem">20. A mother is told to feed her newborn strictly every 3 hours. What does the Safety Alert say?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>That strict scheduling ensures adequate intake</li><li class="fopt right"><span class="mk">&#10003;</span>That nurses should caution parents against strict feeding schedules, because forcing the baby to wait for a set amount of time before feeding can result in failure to meet the nutritional needs of the infant</li><li class="fopt"><span class="mk">C</span>That scheduling is required until milk comes in</li><li class="fopt"><span class="mk">D</span>That scheduling applies only to formula-fed infants</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Safety Alert states: &quot;Nurses should caution parents against attempting to place newborn infants on strict feeding schedules. Strict scheduling of feedings (forcing the baby to wait for a set amount of time before feeding) can result in failure to meet the nutritional needs of the infant.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) treats the first days as an exception when they are the period of greatest risk — and cluster feeding is normal: &quot;some cluster feed every hour or so for three to five feedings and then sleep for a longer period.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">frequency and duration of feedings</span><span class="chip t2">how often</span></div>
+<div class="stem">21. During the first 24 to 48 hours, a newborn sleeps through feeding times. What should parents be taught?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>To let the baby sleep and feed when he wakes</li><li class="fopt right"><span class="mk">&#10003;</span>That some babies do not awaken often enough to feed, and parents may need to awaken the baby for feedings</li><li class="fopt"><span class="mk">C</span>To supplement with formula while the baby sleeps</li><li class="fopt"><span class="mk">D</span>To wait 6 hours between feedings</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;During the first 24 to 48 hours after birth, some babies do not awaken often enough to feed. Parents need to understand that they may need to awaken the baby for feedings.&quot; Once the infant is feeding well and gaining, demand feeding is appropriate, and even then &quot;the infant should still receive at least eight feedings in 24 hours.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies cue-based feeding to an infant whose cues are absent, which is how a sleepy newborn becomes a dehydrated one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">frequency and duration of feedings</span><span class="chip t2">how long, and why minutes mislead</span></div>
+<div class="stem">22. A mother asks how many minutes she should feed on each side. What should the nurse teach?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Exactly 10 minutes per side</li><li class="fopt right"><span class="mk">&#10003;</span>To look for signs that the baby has finished — the sucking and swallowing pattern has slowed, the breast is softened, the baby appears content and may fall asleep or release the nipple — rather than feeding for a set number of minutes, since time at the breast is not a reliable indicator of the amount of milk consumed</li><li class="fopt"><span class="mk">C</span>To feed for 5 minutes on each side to prevent nipple soreness</li><li class="fopt"><span class="mk">D</span>To feed until exactly 30 minutes have passed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Instead of instructing parents to feed for a set number of minutes, nurses should teach them to look for signs that the baby has finished feeding (e.g., the baby's sucking and swallowing pattern has slowed, the breast is softened, the baby appears content and may fall asleep or release the nipple).&quot; And: &quot;The amount of time an infant spends breastfeeding is not a reliable indicator of the amount of milk the infant consumes because some of the time at the breast is spent in nonnutritive sucking.&quot; The average early feeding is 30 to 40 minutes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the old advice for preventing soreness, and it is the shortest route to the hindmilk problem in the next item.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">frequency and duration of feedings</span><span class="chip t2">how long, and why minutes mislead</span></div>
+<div class="stem">23. A baby feeds effectively with adequate urine output and bowel movements, but weight gain is not satisfactory. What does the chapter suggest, and why?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That the mother may be switching to the second breast too soon; feeding on the first breast until it softens ensures the baby triggers multiple milk ejection reflexes to provide the higher-fat hindmilk, which usually results in increased weight gain</li><li class="fopt"><span class="mk">B</span>That formula supplementation should begin immediately</li><li class="fopt"><span class="mk">C</span>That the infant needs a pacifier between feedings</li><li class="fopt"><span class="mk">D</span>That feedings should be shortened</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;If a baby seems to be feeding effectively and urine output and bowel movements are adequate, but the weight gain is not satisfactory, the mother may be switching to the second breast too soon. Feeding on the first breast until it softens ensures that the baby triggers multiple milk ejection reflexes to provide the higher-fat hindmilk, which usually results in increased weight gain.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) adds formula to a problem that is a technique issue, and the chapter's alternating rule is the other half of the answer: &quot;the first breast offered should be alternated at each feeding to ensure that each breast receives equal stimulation and emptying.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">indicators of effective breastfeeding</span><span class="chip t2">signs in mother and infant</span></div>
+<div class="stem">24. Which maternal signs of effective breastfeeding appear in Box 25.3? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Onset of copious milk production by day 3 or 4</li><li class="fopt right"><span class="mk">&#10003;</span>A firm tugging sensation on the nipple as the infant sucks, but no pain</li><li class="fopt right"><span class="mk">&#10003;</span>Uterine contractions and increased vaginal bleeding while feeding during the first week</li><li class="fopt right"><span class="mk">&#10003;</span>With milk ejection, a warm rush or tingling in both breasts and leaking of milk from the opposite breast</li><li class="fopt"><span class="mk">E</span>Sharp nipple pain throughout each feeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 25.3's maternal signs are copious milk production by day 3 or 4, a firm tugging sensation without pain, uterine contractions and increased bleeding while feeding in the first week or less, feeling relaxed and drowsy while feeding, increased thirst, breasts softening while feeding, and the let-down sensations.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) contradicts the box's own wording — tugging &quot;but no pain.&quot; Persistent pain is a sign of a latch problem, not of effective feeding.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">indicators of effective breastfeeding</span><span class="chip t2">signs in mother and infant</span></div>
+<div class="stem">25. Which infant signs of effective breastfeeding does Box 25.3 list?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Latches without difficulty, has bursts of 15 to 20 sucks and swallows at a time, audible swallowing is present, easily releases the breast at the end of the feeding, appears content afterward, and has at least three substantive bowel movements and six to eight wet diapers every 24 hours after day 4</li><li class="fopt"><span class="mk">B</span>Sleeps through feedings and wakes only when awakened</li><li class="fopt"><span class="mk">C</span>Has one wet diaper per day in the first week</li><li class="fopt"><span class="mk">D</span>Feeds for exactly 10 minutes per side</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 25.3's infant signs are exactly these.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) would be a red flag rather than a sign of effectiveness — output is the objective measure, and the numbers in the box are what make it usable at home.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">indicators of effective breastfeeding</span><span class="chip t2">output as the measure</span></div>
+<div class="stem">26. What stool pattern should a breastfed newborn show over the first week, and what finding is a red flag?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Meconium for the first 1 to 2 days, greener and thinner by day 2 or 3, greenish yellow and looser by day 3 or 4 if the milk has transitioned, and yellow, soft, and seedy by the end of the first week; still passing meconium by day 3 or 4 is a red flag prompting assessment of breastfeeding effectiveness and milk transfer</li><li class="fopt"><span class="mk">B</span>Meconium throughout the first week, which is expected</li><li class="fopt"><span class="mk">C</span>Yellow seedy stools from day 1</li><li class="fopt"><span class="mk">D</span>No stools for the first 5 days</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives the transition in order and names the red flag: &quot;If an infant is still passing meconium stool by day 3 or 4, breastfeeding effectiveness and milk transfer should be assessed.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) normalizes the exact finding the chapter flags, and the stool transition doubles as a feeding-adequacy timeline — it tracks whether milk is actually moving.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">indicators of effective breastfeeding</span><span class="chip t2">output as the measure</span></div>
+<div class="stem">27. What does dark, concentrated urine suggest in a breastfed newborn, and what caveat does the chapter add?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It can be associated with inadequate intake and possible dehydration, though infants with jaundice often have darker urine as bilirubin is excreted</li><li class="fopt"><span class="mk">B</span>It is always normal</li><li class="fopt"><span class="mk">C</span>It always indicates a urinary tract infection</li><li class="fopt"><span class="mk">D</span>It indicates excessive intake</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;As the volume of breast milk increases, urine becomes more dilute and should be light yellow; dark, concentrated urine can be associated with inadequate intake and possible dehydration.&quot; The caveat: &quot;Infants with jaundice often have darker urine as bilirubin is excreted.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) discards the chapter's statement that &quot;the infant's output is highly indicative of feeding adequacy,&quot; and the jaundice caveat is what keeps the finding from being read mechanically.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">indicators of effective breastfeeding</span><span class="chip t2">output as the measure</span></div>
+<div class="stem">28. How often should the nurse observe a breastfeeding session during the postpartum stay, and what should the assessment include?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>At least one session every 8 to 12 hours, with at least one assessment during the 8 hours before discharge, including positioning, latch, and milk transfer</li><li class="fopt"><span class="mk">B</span>Once during the entire stay</li><li class="fopt"><span class="mk">C</span>Only if the mother reports difficulty</li><li class="fopt"><span class="mk">D</span>Every feeding, without exception</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The nurse should observe at least one breastfeeding session every 8 to 12 hours to assess feeding effectiveness while the mother and newborn are on the postpartum unit; at least one assessment is needed during the 8 hours before discharge.&quot; The assessment &quot;should include positioning, latch, and milk transfer,&quot; and named tools are the Infant Breastfeeding Assessment Tool, the Mother Baby Assessment tool, and the LATCH scoring system.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) makes observation contingent on a complaint, and the predischarge assessment exists precisely because problems often surface after the family goes home.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supplementation bottles and pacifiers</span><span class="chip t2">when to supplement</span></div>
+<div class="stem">29. What is the default rule on supplementing a breastfeeding infant, and why does the chapter give a reason beyond nutrition?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Unless a medical indication exists, no artificial milk substitutes should be given to breastfeeding infants; early supplementation by hospital staff undermines a new mother's confidence and models behavior that is counterproductive to establishing breastfeeding</li><li class="fopt"><span class="mk">B</span>Supplementation is routine in the first 48 hours</li><li class="fopt"><span class="mk">C</span>Supplementation is recommended whenever the mother is tired</li><li class="fopt"><span class="mk">D</span>Supplementation has no effect on breastfeeding success</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Unless a medical indication exists, no artificial milk substitutes (i.e., commercial infant formula) should be given to breastfeeding infants,&quot; and &quot;early supplementation by hospital staff undermines a new mother's confidence and models behavior that is counterproductive to establishing breastfeeding.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) treats a bottle as nutritionally neutral and socially inert, and the chapter's objection is as much about what it teaches the mother as about what it feeds the baby.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supplementation bottles and pacifiers</span><span class="chip t2">when to supplement</span></div>
+<div class="stem">30. When supplementation is necessary, what is the recommended order of options?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Expressed breast milk first; if the mother cannot provide it, pasteurized human donor milk from a milk bank; and if donor milk is not accessible, a commercial infant formula</li><li class="fopt"><span class="mk">B</span>Formula first, then donor milk, then expressed milk</li><li class="fopt"><span class="mk">C</span>Donor milk first in all cases</li><li class="fopt"><span class="mk">D</span>Water or glucose water first</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;When supplementation is deemed necessary, giving the baby expressed breast milk is best. If the mother is not able to provide the milk, the recommended alternative is pasteurized human donor milk (PHDM) from a milk bank. However, donor milk is not readily accessible in many cases, and a commercial infant formula is used.&quot; A protein-hydrolysate formula instead of standard formula &quot;avoids exposure to intact cow's milk proteins and may help lower bilirubin levels.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) offers a supplement with no nutritional value to an infant whose problem is inadequate intake.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supplementation bottles and pacifiers</span><span class="chip t2">when to supplement</span></div>
+<div class="stem">31. Which findings are infant indications for supplementation? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hypoglycemia</li><li class="fopt right"><span class="mk">&#10003;</span>Dehydration</li><li class="fopt right"><span class="mk">&#10003;</span>Weight loss of more than 8% by day 5, or weight loss exceeding the 75th percentile for age associated with delayed lactogenesis</li><li class="fopt right"><span class="mk">&#10003;</span>Delayed passage of bowel movements, or meconium stool continuing to day 5, and hyperbilirubinemia</li><li class="fopt"><span class="mk">E</span>Maternal fatigue</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The infant indications listed are hypoglycemia, dehydration, the weight-loss thresholds, delayed passage of bowel movements or meconium continuing to day 5, and hyperbilirubinemia.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is not an infant indication, though the maternal indications do include delayed lactogenesis, intolerable pain during feedings, and temporary cessation because of medications or conditions, plus insufficient glandular tissue or previous breast surgery.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supplementation bottles and pacifiers</span><span class="chip t2">bottles and pacifiers</span></div>
+<div class="stem">32. What does the chapter say about bottles and pacifiers for a breastfeeding infant?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is best to avoid bottles until breastfeeding is well established because breastfeeding and bottle-feeding require different oral motor skills; pacifiers are recommended for healthy term infants at nap or sleep time because of the correlation with decreased SIDS risk, but only after breastfeeding is well established</li><li class="fopt"><span class="mk">B</span>Bottles and pacifiers should be introduced on day 1</li><li class="fopt"><span class="mk">C</span>Pacifiers should never be used in breastfed infants</li><li class="fopt"><span class="mk">D</span>Bottles are preferred for any supplementation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;It is best to avoid bottles until breastfeeding is well established because breastfeeding and bottle-feeding require different oral motor skills,&quot; with supplemental nursing devices, a spoon, dropper, cup, or syringe as alternatives, and a slow-flow nipple if a bottle is used. On pacifiers: &quot;because of the correlation between pacifier use and a decreased risk for sudden infant death syndrome (SIDS), experts recommend pacifier use for healthy term infants at nap or sleep time, but only after breastfeeding is well established.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) drops the SIDS benefit entirely, and (B) drops the timing qualifier that reconciles the two recommendations.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donor milk and milk banking</span><span class="chip t2">who receives donor milk</span></div>
+<div class="stem">33. For which infants does the AAP recommend pasteurized human donor milk?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>For high-risk infants if the mother's own milk is not available despite substantial lactation support</li><li class="fopt"><span class="mk">B</span>For all infants whose mothers choose not to breastfeed</li><li class="fopt"><span class="mk">C</span>Only for infants with galactosemia</li><li class="fopt"><span class="mk">D</span>Only for term infants</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The AAP recommends PHDM for high-risk infants if the mother's own milk is not available despite substantial lactation support,&quot; and &quot;for infants who cannot be breastfed but who also cannot survive except on human milk, PHDM is critically important.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names the one diagnosis in which no human milk of any kind may be given — galactosemia is in the absolute contraindication category.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donor milk and milk banking</span><span class="chip t2">who receives donor milk</span></div>
+<div class="stem">34. In which situations does the chapter describe donor milk being used? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>In neonatal intensive care units, primarily for very-low-birth-weight infants and other preterm or sick infants when the mother's own milk is not available</li><li class="fopt right"><span class="mk">&#10003;</span>In term infants, to bridge the gap until the mother's own milk volume is sufficient, or when the mother is unable to breastfeed because of surgery or hospitalization</li><li class="fopt right"><span class="mk">&#10003;</span>For infants with gastrointestinal anomalies such as omphalocele or gastroschisis, or conditions requiring GI surgery such as short-gut syndrome</li><li class="fopt right"><span class="mk">&#10003;</span>For necrotizing enterocolitis, congenital heart disease, and metabolic disorders, especially amino acid disorders</li><li class="fopt"><span class="mk">E</span>As a routine alternative for any mother who prefers not to breastfeed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names each of these clinical uses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) misses the scarcity that shapes the whole section: &quot;the demand for human milk far exceeds the supply,&quot; and banked milk &quot;is dispensed only by prescription.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donor milk and milk banking</span><span class="chip t2">how milk banking works</span></div>
+<div class="stem">35. Which statements about milk banking in the United States are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>There is no federal oversight or regulation of milk banking in the United States</li><li class="fopt right"><span class="mk">&#10003;</span>HMBANA has established annually reviewed guidelines for the operation of not-for-profit donor human milk banks, and there are currently 31 such banks in the United States and Canada</li><li class="fopt right"><span class="mk">&#10003;</span>All donors are screened both by interview and serologically for communicable diseases</li><li class="fopt right"><span class="mk">&#10003;</span>Donor milk is stored frozen until pasteurized to kill potential pathogens, then refrozen for storage until dispensed</li><li class="fopt"><span class="mk">E</span>Donors are paid a per-ounce fee by nonprofit banks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that there is no federal oversight, that HMBANA sets guidelines with 31 banks in the United States and Canada, and describes the screening, pasteurization, and refreezing process. &quot;The heat processing adds a level of protection for the recipient that is not possible with any other donor tissue or organ.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the fee structure: &quot;A per-ounce fee is charged by the bank to pay for the processing costs, but the HMBANA guidelines prohibit payment to donors.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">donor milk and milk banking</span><span class="chip t2">how milk banking works</span></div>
+<div class="stem">36. What concerns does the chapter raise about for-profit human milk companies?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bioethical issues surrounding the sale of human milk, compensation to donors, and diverting supply from nonprofit milk banks, plus concern about the quality and safety of the milk and the potential for predatory recruitment of low-income women as donors</li><li class="fopt"><span class="mk">B</span>No concerns are raised</li><li class="fopt"><span class="mk">C</span>Only concerns about cost to families</li><li class="fopt"><span class="mk">D</span>Only concerns about pasteurization temperature</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>For-profit companies &quot;offer payment to women who donate,&quot; raising &quot;bioethical issues surrounding the sale of human milk, the compensation to donors, and diverting the supply of donor milk from nonprofit milk banks,&quot; plus &quot;concern about the quality and safety of the milk&quot; and &quot;the potential for predatory recruitment of low-income women as donors.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reduces a set of ethical and safety concerns to a price question, and the donor-recruitment concern is the one that connects back to the chapter's own disparities data.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mastitis</span><span class="chip t2">recognizing it</span></div>
+<div class="stem">37. A woman 3 weeks postpartum has the sudden onset of fever, chills, body aches, and nausea, with localized breast pain and a hot, reddened area on one breast. What is this, and where does it most commonly occur?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Mastitis, an infectious process of the breast, most commonly occurring in the upper outer quadrant, with most cases in the first 2 to 4 weeks postpartum</li><li class="fopt"><span class="mk">B</span>Engorgement, which resolves in 24 to 48 hours</li><li class="fopt"><span class="mk">C</span>A plugged duct without infection</li><li class="fopt"><span class="mk">D</span>A breast abscess by definition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Mastitis &quot;is characterized by the sudden onset of influenza-like symptoms including fever, chills, malaise, body aches, headache, nausea, and vomiting. The woman usually has localized breast pain and tenderness and a hot, reddened area on the breast.&quot; It &quot;most commonly occurs in the upper outer quadrant of the breast; one or both breasts can be affected. Most cases occur during the first 2 to 4 weeks postpartum, although mastitis can occur at any time.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is a bilateral, systemic-symptom-free condition of the early days, and the influenza-like symptoms with a localized red area are what separate mastitis from it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mastitis</span><span class="chip t2">recognizing it</span></div>
+<div class="stem">38. Which factors predispose a woman to mastitis? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Inadequate emptying of the breasts, related to engorgement, plugged ducts, a sudden decrease in the number of feedings, abrupt weaning, or wearing underwire bras</li><li class="fopt right"><span class="mk">&#10003;</span>Sore, cracked nipples, which provide a portal of entry for causative organisms</li><li class="fopt right"><span class="mk">&#10003;</span>Stress, fatigue, and maternal illness</li><li class="fopt right"><span class="mk">&#10003;</span>Breast trauma and poor maternal nutrition</li><li class="fopt"><span class="mk">E</span>Exclusive breastfeeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names inadequate emptying as the common factor, cracked nipples as the portal of entry — with Staphylococcus, Streptococcus, and Escherichia coli most common — plus stress, fatigue, maternal illness, ill family members, breast trauma, and poor maternal nutrition.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the relationship: it is reduced or interrupted feeding, not frequent feeding, that predisposes to mastitis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mastitis</span><span class="chip t2">treating it</span></div>
+<div class="stem">39. A woman with mastitis asks whether she should stop breastfeeding. What should the nurse tell her?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>That she should stop until the antibiotics are finished</li><li class="fopt right"><span class="mk">&#10003;</span>That treatment includes continued lactation, and that complete emptying of the breasts through breastfeeding, hand expression, or pumping is important — the infection cannot be transmitted to the infant</li><li class="fopt"><span class="mk">C</span>That she should feed only from the unaffected breast</li><li class="fopt"><span class="mk">D</span>That she should pump and discard the milk from the affected breast</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Treatment is &quot;bedrest, antibiotics (dicloxacillin [Dynapen], cephalexin [Keflex], or clindamycin [Cleocin]), measures to reduce pain and swelling (antiinflammatory medications and cold compresses), and continued lactation.&quot; And: &quot;Complete emptying of the breasts through breastfeeding, hand expression, or pumping is important.&quot; The sentence that settles it: &quot;The infection cannot be transmitted to the infant.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A), (C), and (D) all reduce emptying of the affected breast, which is the condition that caused the mastitis in the first place — stopping makes it worse and is the most common reason breastfeeding ends prematurely.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mastitis</span><span class="chip t2">treating it</span></div>
+<div class="stem">40. What complications can follow untreated mastitis, and how are they prevented?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Breast abscess, chronic mastitis, and fungal infections of the breast; most complications can be prevented by early recognition and treatment</li><li class="fopt"><span class="mk">B</span>Permanent loss of milk production in every case</li><li class="fopt"><span class="mk">C</span>Transmission of infection to the infant</li><li class="fopt"><span class="mk">D</span>No complications occur</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Complications are &quot;breast abscess, chronic mastitis, and fungal infections of the breast. Most complications can be prevented by early recognition and treatment.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) contradicts the chapter's explicit statement that the infection cannot be transmitted to the infant, and it is the belief that leads a mother to wean.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mastitis</span><span class="chip t2">treating it</span></div>
+<div class="stem">41. What teaching about mastitis should be given before discharge from the birth facility?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The signs of mastitis, and to call the health care provider promptly if the symptoms occur</li><li class="fopt"><span class="mk">B</span>Nothing, since mastitis occurs only after 6 weeks</li><li class="fopt"><span class="mk">C</span>To take prophylactic antibiotics</li><li class="fopt"><span class="mk">D</span>To wean at the first sign of breast pain</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Breastfeeding mothers should be taught the signs of mastitis before they are discharged from the birth facility, and they need to know to call the health care provider promptly if the symptoms occur.&quot; Adequate fluid intake and a balanced diet are also important.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the action that turns a treatable infection into the end of breastfeeding, and abrupt weaning is itself on the list of predisposing factors.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"breastfeeding rates and benefits","subtopic":"the numbers","stem":"Which breastfeeding rates does the chapter report for infants born in 2019?","options":["83.2% ever breastfed, 55.8% receiving any breast milk at 6 months, and 24.9% exclusively breastfed through 6 months","50% ever breastfed and 10% at 6 months","95% ever breastfed and 60% exclusively at 6 months","83.2% ever breastfed and 83.2% still breastfeeding at 1 year"],"correct":[0],"sata":false,"why":"The chapter gives 83.2% ever breastfed, 78.6% receiving some breast milk at 1 month, 55.8% at 6 months, 35.3% at 12 months, 45.3% exclusive through 3 months, and 24.9% exclusive through 6 months. Commercial infant formula was fed to 19.2% of breastfed newborns during the first 2 days of life.","trap":"(D) holds the initiation rate steady through a year, and the gap between initiation and duration is the whole reason the Healthy People 2030 targets exist — 42.4% exclusive through 6 months and 54.1% breastfed at 1 year.","k":"1kwrgcnxktwxp"},{"topic":"breastfeeding rates and benefits","subtopic":"the numbers","stem":"Which groups does the chapter identify as having the lowest breastfeeding rates?","options":["Non-Hispanic Blacks, lower income families, families living in rural areas, women 20 to 29 years of age, and women participating in the WIC program","Women over 30 in urban areas","Women with previous breastfeeding experience","No disparities are identified"],"correct":[0],"sata":false,"why":"\"The lowest breastfeeding rates continue to be among non-Hispanic Blacks, lower income families, and families living in rural areas. Younger women (20 to 29 years of age) are less likely to breastfeed than women who are 30 years of age or older. Women participating in the Special Supplemental Nutrition Program for Women, Infants and Children (WIC) have lower breastfeeding rates than women who were eligible but did not participate and women who were ineligible.\"","trap":"(D) erases a set of disparities the chapter names precisely, and those groups are where support changes outcomes most.","k":"tbsakx1awsvjz"},{"topic":"breastfeeding rates and benefits","subtopic":"what breastfeeding protects against","stem":"Which infant and child outcomes does Table 25.1 associate with breastfeeding? Select all that apply.","options":["Reduced risk for sudden infant death syndrome and reduced infant and child mortality","Reduced risk for necrotizing enterocolitis in preterm infants, gastrointestinal infections, and lower respiratory tract infections","Reduced risk for obesity in childhood, adolescence, and adulthood, and for type 1 and type 2 diabetes","Enhanced neurodevelopmental outcomes, including higher intelligence","Reduced risk for congenital anomalies"],"correct":[0,1,2,3],"sata":true,"why":"Table 25.1's infant column includes reduced risk for SIDS, reduced infant and child mortality, reduced gastrointestinal infections, necrotizing enterocolitis in preterm infants, Crohn disease, ulcerative colitis, lower respiratory tract infections, asthma, acute otitis media, obesity across the lifespan, type 1 and type 2 diabetes, and leukemia, plus enhanced neurodevelopmental outcomes.","trap":"(E) claims a benefit for something determined before birth. Breastfeeding cannot prevent an anomaly that formed during organogenesis.","k":"15gmp0g1g01taq"},{"topic":"breastfeeding rates and benefits","subtopic":"what breastfeeding protects against","stem":"Which maternal benefits does Table 25.1 name, and how do they relate to duration?","options":["Reduced risk for endometrial, ovarian, breast, and thyroid cancer, type 2 diabetes, and hypertension, plus enhanced maternal-infant bonding; benefits increase with the number of children breastfed and the total length of lactation","Reduced risk for osteoporosis only, with no relationship to duration","Benefits are the same regardless of how long she breastfeeds","No maternal benefits are described"],"correct":[0],"sata":false,"why":"The maternal column lists reduced risk for endometrial, ovarian, breast, and thyroid cancer, type 2 diabetes, and hypertension, plus enhanced bonding. \"The benefits are increased with the number of children who were breastfed and the total length of time of lactation,\" and on the infant side, \"benefits are optimized when infants are breastfed exclusively and when the duration of breastfeeding is increased.\"","trap":"(C) drops the dose-response relationship, which is what makes duration worth supporting rather than treating initiation as the finish line.","k":"1cx0i0q1ivb4w"},{"topic":"breastfeeding rates and benefits","subtopic":"what breastfeeding protects against","stem":"Which benefits does Table 25.1 list for families and society?","options":["Convenience and readiness to feed, cost-effectiveness compared with formula feeding including bottles and supplies, reduced health care costs, less parental absence from work because of an ill infant, and a reduced environmental burden from disposal of formula packaging and equipment","Only cost savings","Only reduced health care costs","No societal benefits are described"],"correct":[0],"sata":false,"why":"The third column lists each of these.","trap":"(B) narrows a list whose breadth is the point — the work-absence and environmental entries are the ones most often forgotten, and they are what make this a public health argument rather than only a family one.","k":"q769uh78qqn7"},{"topic":"uniqueness of human milk","subtopic":"why formula is not equivalent","stem":"A parent says formula is basically the same as breast milk. How should the nurse respond, based on the chapter?","options":["Agree, since formulas are nutritionally complete","Explain that although many consider commercial formula equivalent, this belief is erroneous: human milk is the gold standard for infant nutrition and is nutritionally superior to infant formula","Explain that formula is superior for weight gain","Avoid the topic"],"correct":[1],"sata":false,"why":"\"Although many consider commercial infant formula to be equivalent to breast milk, this belief is erroneous. Human milk is the gold standard for infant nutrition; it is nutritionally superior to infant formula.\" Formulas \"are usually adequate in providing nutrition to maintain infant growth and development within normal limits, but they are not equivalent to human milk.\"","trap":"(A) accepts a premise the chapter states plainly as wrong, and the qualifier matters: formula is adequate, not equivalent.","k":"8nm4g31u3yhdd"},{"topic":"uniqueness of human milk","subtopic":"why formula is not equivalent","stem":"What does the chapter mean by saying human milk is species specific and dynamic?","options":["That it is a dynamic substance whose composition changes to meet the changing nutritional and immunologic needs of the growing infant, and that milk produced by mothers of preterm infants differs in composition from that of mothers who give birth at term","That its composition is fixed from birth","That it varies only by maternal diet","That it is identical across all mammals"],"correct":[0],"sata":false,"why":"\"Human milk is species specific,\" \"it is a dynamic substance with composition that changes to meet the changing nutritional and immunologic needs of the growing infant,\" and \"the milk produced by mothers of preterm infants differs in composition from that of mothers who give birth at term.\" It is also \"more easily digested\" and has \"greater bioavailability of vitamins, minerals, active enzymes, and hormones.\"","trap":"(B) treats milk as a fixed formulation, which is exactly the property that formula has and milk does not.","k":"1m7379x16tuclf"},{"topic":"uniqueness of human milk","subtopic":"immune and microbiome components","stem":"Which immune components does the chapter name in human milk?","options":["Secretory IgA as the major immunoglobulin, with IgG, IgM, IgD, and IgE also present, plus T and B lymphocytes, epidermal growth factor, cytokines, interleukins, bifidus factor, complement, and lactoferrin","IgG as the major immunoglobulin, with no cellular components","Only antibodies, with no cells or growth factors","No immune components"],"correct":[0],"sata":false,"why":"\"The major immunoglobulin (Ig) in human milk is secretory IgA; IgG, IgM, IgD, and IgE are also present. Human milk also contains T lymphocytes and B lymphocytes, epidermal growth factor, cytokines, interleukins, bifidus factor, complement (C3 and C4), and lactoferrin.\"","trap":"(B) names the major immunoglobulin of the placental transfer rather than of milk, and it drops the living cells that no formula contains.","k":"1ocyxdi1qug2j8"},{"topic":"uniqueness of human milk","subtopic":"immune and microbiome components","stem":"What does the chapter say about breast milk and the infant's gut?","options":["Breast milk is the most important factor in infant gut colonization at birth, promoting colonization and maturation of the intestinal microbiome, which is essential to development of the immune system and establishes a baseline pattern for life","Breast milk has no effect on gut bacteria","Formula colonizes the gut identically","Gut colonization is determined entirely by birth route"],"correct":[0],"sata":false,"why":"\"Breast milk is the most important factor in infant gut colonization at birth. Breast milk promotes colonization and maturation of the infant's intestinal microbiome, which is essential to development of the immune system and establishes a baseline pattern for life.\"","trap":"(D) names a real influence and makes it the only one, which would make feeding choice irrelevant to a system the chapter says milk shapes for life.","k":"17xts6j1r8h5wt"},{"topic":"contraindications to breastfeeding","subtopic":"the three categories","stem":"An infant is diagnosed with galactosemia. What does Table 25.2 direct?","options":["Breastfeeding may continue with supplementation","Absolutely no breastfeeding and no expressed milk","No breastfeeding, but expressed milk may be given","Temporary interruption only"],"correct":[1],"sata":false,"why":"Table 25.2 places infant galactosemia in the absolute category — no breastfeeding and no expressed milk — along with maternal HIV infection, T-cell lymphotropic virus type 1 or 2, suspected or confirmed Ebola infection, and illicit drug use such as PCP or cocaine.","trap":"(C) belongs to a different category entirely. The table has three categories, not two, and knowing which one a condition falls into is what the questions turn on.","k":"19mbzab1fa1kwl"},{"topic":"contraindications to breastfeeding","subtopic":"the three categories","stem":"A mother has untreated active tuberculosis. What does Table 25.2 permit?","options":["Breastfeeding may continue as usual","No breastfeeding, but expressed milk may be fed; she can resume breastfeeding 2 weeks after treatment was begun and she is no longer contagious","Absolutely no breastfeeding and no expressed milk, permanently","Temporary interruption of both for 24 hours"],"correct":[1],"sata":false,"why":"Table 25.2's third category — no breastfeeding but expressed milk permitted — includes untreated active tuberculosis, with breastfeeding resuming \"2 weeks after treatment was begun and she is no longer contagious.\" The same category includes active varicella that developed between 5 days before and 2 days after birth.","trap":"(C) treats a transmissible respiratory infection as a permanent bar when the milk itself is safe — the separation is about airborne contact, not about the milk.","k":"fke6lsoii31u"},{"topic":"contraindications to breastfeeding","subtopic":"the three categories","stem":"A mother has herpes simplex lesions confined to one breast. What does the chapter's footnote permit?","options":["She must stop breastfeeding entirely","She may cover the lesions and breastfeed on the opposite breast","She may breastfeed on the affected breast if she covers the lesions","She may pump from both breasts and feed the milk"],"correct":[1],"sata":false,"why":"Active herpes lesions on the breasts place a mother in the temporary category — no breastfeeding or expressed milk — but the table's footnote gives a partial exception: \"If HSV lesions are confined to one breast, the mother may cover the lesions and breastfeed on the opposite breast.\"","trap":"(C) reverses which breast is available, and (D) ignores that expressed milk is also withheld in the temporary category.","k":"h3x3iu1amii50"},{"topic":"contraindications to breastfeeding","subtopic":"the three categories","stem":"Which conditions call for a temporary interruption of both breastfeeding and expressed milk? Select all that apply.","options":["Untreated brucellosis","Diagnostic imaging that uses radiopharmaceuticals","Active herpes lesions on the breasts","Certain maternal medications","Maternal HIV infection"],"correct":[0,1,2,3],"sata":true,"why":"Table 25.2's temporary category lists untreated brucellosis, diagnostic imaging with radiopharmaceuticals, active herpes lesions on the breasts, and certain medications. LactMed is the named reference for medication safety in lactation.","trap":"(E) is in the absolute category in the United States, where \"maternal human immunodeficiency virus (HIV) infection is considered a contraindication for breastfeeding and for feeding expressed breast milk\" — though \"in other countries, national or subnational health authorities make recommendations\" of their own.","k":"hhnle0comsp2"},{"topic":"contraindications to breastfeeding","subtopic":"the three categories","stem":"A mother is enrolled in a methadone treatment program with negative screens for HIV and illicit drug use. What does Table 25.2 say about breastfeeding?","options":["It is absolutely contraindicated because methadone is an opioid","It is permitted — the exception to the illicit drug contraindication is a mother enrolled in a methadone treatment program with a negative screen for HIV and illicit drug use","It is permitted only with donor milk supplementation","It requires a 2-week interruption"],"correct":[1],"sata":false,"why":"The absolute category includes \"mother is using illicit drugs (e.g., PCP, cocaine); exception is if she is enrolled in methadone treatment program and has negative screen for HIV and illicit drug use.\"","trap":"(A) applies the drug contraindication to the treatment for it, which would remove both the milk and one of the strongest incentives for staying in treatment.","k":"18qsp6wya6lfi"},{"topic":"feeding readiness cues","subtopic":"recognizing hunger early","stem":"Which feeding-readiness cues should prompt a mother to offer the breast? Select all that apply.","options":["Sucking or mouthing motions","Hand-to-mouth or hand-to-hand movements","The rooting reflex, in which the infant moves toward whatever touches the area around the mouth and attempts to suck","Becoming more alert and active and turning the head to look for the breast","Crying in a distraught manner"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists sucking or mouthing motions, hand-to-mouth or hand-to-hand movements, and the rooting reflex at initiation, and expands the list under cue-based feeding: \"becoming more alert and active, turning the head to look for the breast, opening the mouth, fists moving to the mouth, and sucking on hands.\"","trap":"(E) is the sign to feed before: \"crying is a late sign of hunger; the goal is to offer the breast before the infant is crying.\" The chapter also warns against waiting until the infant is \"withdrawing into sleep.\"","k":"cbcc041in9kfy"},{"topic":"feeding readiness cues","subtopic":"recognizing hunger early","stem":"How should the mother and infant be positioned during the hospital stay to support cue-based feeding?","options":["The infant in the nursery, brought to the mother on a schedule","Keeping the baby close, with newborns remaining with mothers during the recovery period and rooming-in during the stay; the mother and breastfeeding infant should sleep in proximity — in the same room but not in the same bed","The infant in the mother's bed at all times","The infant in the nursery at night so the mother can rest"],"correct":[1],"sata":false,"why":"\"Keeping the baby close is the best way to observe and respond to these cues. Newborns should remain with mothers during the recovery period after birth and room-in during the stay in the birth facility.\" And: \"The mother and breastfeeding infant should sleep in proximity (in the same room but not in the same bed) to promote breastfeeding.\"","trap":"(C) crosses the line the parenthesis draws. Same room supports feeding; same bed is the arrangement safe-sleep guidance excludes.","k":"156m5z5138eqav"},{"topic":"feeding readiness cues","subtopic":"the first hour","stem":"When is the ideal time to begin breastfeeding, and what happens to routine newborn procedures?","options":["Within the first hour after birth, with the newborn remaining in direct skin-to-skin contact until able to breastfeed for the first time; routine procedures such as vitamin K injection, eye prophylaxis, and bathing should be delayed until the neonate has completed the first feeding","After the newborn's first bath and vitamin K injection","After the first 4 hours of transition","Only after the mother has rested"],"correct":[0],"sata":false,"why":"\"The ideal time to begin breastfeeding is within the first hour after birth,\" and \"a newborn without complications should be allowed to remain in direct skin-to-skin contact with the mother until he or she is able to breastfeed for the first time. This is true both for mothers who gave birth by cesarean and for mothers who gave birth vaginally.\" Routine procedures \"should be delayed until the neonate has completed the first feeding.\"","trap":"(B) reverses the order and is the traditional sequence, which is why the delay has to be stated as an instruction rather than assumed.","k":"114qao51yuvcwj"},{"topic":"feeding readiness cues","subtopic":"the first hour","stem":"A mother worries that her newborn is taking very little at each feeding on day 1. What should the nurse explain?","options":["That babies normally consume small amounts during the first 3 days of life, with intake increasing from 5 to 15 mL per feeding in the first 24 hours to 60 to 90 mL by the end of the first week","That the infant should be taking 60 mL per feeding from the first day","That supplementation is needed immediately","That small intake indicates poor latch in every case"],"correct":[0],"sata":false,"why":"\"Babies normally consume small amounts of milk with feedings during the first 3 days of life,\" and as the digestive tract clears of meconium, \"milk intake increases from 5 to 15 mL per feeding in the first 24 hours to 60 to 90 mL by the end of the first week.\"","trap":"(C) is the response that undermines a mother's confidence in the exact window when confidence matters most, and the chapter warns that early supplementation by staff \"models behavior that is counterproductive to establishing breastfeeding.\"","k":"5tfb11pk6pc7"},{"topic":"frequency and duration of feedings","subtopic":"how often","stem":"How often should a newborn breastfeed, and how is feeding frequency counted?","options":["At least 8 to 10 times in a 24-hour period, around the clock, with frequency determined by counting from the beginning of one feeding to the beginning of the next","Every 4 hours, counting from the end of one feeding to the beginning of the next","Six times a day on a fixed schedule","Only when the infant cries"],"correct":[0],"sata":false,"why":"\"Newborns need to breastfeed at least 8 to 10 times in a 24-hour period, around the clock,\" and \"feeding frequency is determined by counting from the beginning of one feeding to the beginning of the next.\"","trap":"(B) counts from the end, which stretches the interval and produces fewer feedings than the infant needs — the same counting rule appears with uterine contractions in labor, and it is easy to reverse in both places.","k":"hf6w9w20q5q6"},{"topic":"frequency and duration of feedings","subtopic":"how often","stem":"A mother is told to feed her newborn strictly every 3 hours. What does the Safety Alert say?","options":["That strict scheduling ensures adequate intake","That nurses should caution parents against strict feeding schedules, because forcing the baby to wait for a set amount of time before feeding can result in failure to meet the nutritional needs of the infant","That scheduling is required until milk comes in","That scheduling applies only to formula-fed infants"],"correct":[1],"sata":false,"why":"The Safety Alert states: \"Nurses should caution parents against attempting to place newborn infants on strict feeding schedules. Strict scheduling of feedings (forcing the baby to wait for a set amount of time before feeding) can result in failure to meet the nutritional needs of the infant.\"","trap":"(C) treats the first days as an exception when they are the period of greatest risk — and cluster feeding is normal: \"some cluster feed every hour or so for three to five feedings and then sleep for a longer period.\"","k":"1p5vpv91hj54fr"},{"topic":"frequency and duration of feedings","subtopic":"how often","stem":"During the first 24 to 48 hours, a newborn sleeps through feeding times. What should parents be taught?","options":["To let the baby sleep and feed when he wakes","That some babies do not awaken often enough to feed, and parents may need to awaken the baby for feedings","To supplement with formula while the baby sleeps","To wait 6 hours between feedings"],"correct":[1],"sata":false,"why":"\"During the first 24 to 48 hours after birth, some babies do not awaken often enough to feed. Parents need to understand that they may need to awaken the baby for feedings.\" Once the infant is feeding well and gaining, demand feeding is appropriate, and even then \"the infant should still receive at least eight feedings in 24 hours.\"","trap":"(A) applies cue-based feeding to an infant whose cues are absent, which is how a sleepy newborn becomes a dehydrated one.","k":"288sgm1g1604"},{"topic":"frequency and duration of feedings","subtopic":"how long, and why minutes mislead","stem":"A mother asks how many minutes she should feed on each side. What should the nurse teach?","options":["Exactly 10 minutes per side","To look for signs that the baby has finished — the sucking and swallowing pattern has slowed, the breast is softened, the baby appears content and may fall asleep or release the nipple — rather than feeding for a set number of minutes, since time at the breast is not a reliable indicator of the amount of milk consumed","To feed for 5 minutes on each side to prevent nipple soreness","To feed until exactly 30 minutes have passed"],"correct":[1],"sata":false,"why":"\"Instead of instructing parents to feed for a set number of minutes, nurses should teach them to look for signs that the baby has finished feeding (e.g., the baby's sucking and swallowing pattern has slowed, the breast is softened, the baby appears content and may fall asleep or release the nipple).\" And: \"The amount of time an infant spends breastfeeding is not a reliable indicator of the amount of milk the infant consumes because some of the time at the breast is spent in nonnutritive sucking.\" The average early feeding is 30 to 40 minutes.","trap":"(C) is the old advice for preventing soreness, and it is the shortest route to the hindmilk problem in the next item.","k":"153dvt9x63tyb"},{"topic":"frequency and duration of feedings","subtopic":"how long, and why minutes mislead","stem":"A baby feeds effectively with adequate urine output and bowel movements, but weight gain is not satisfactory. What does the chapter suggest, and why?","options":["That the mother may be switching to the second breast too soon; feeding on the first breast until it softens ensures the baby triggers multiple milk ejection reflexes to provide the higher-fat hindmilk, which usually results in increased weight gain","That formula supplementation should begin immediately","That the infant needs a pacifier between feedings","That feedings should be shortened"],"correct":[0],"sata":false,"why":"\"If a baby seems to be feeding effectively and urine output and bowel movements are adequate, but the weight gain is not satisfactory, the mother may be switching to the second breast too soon. Feeding on the first breast until it softens ensures that the baby triggers multiple milk ejection reflexes to provide the higher-fat hindmilk, which usually results in increased weight gain.\"","trap":"(B) adds formula to a problem that is a technique issue, and the chapter's alternating rule is the other half of the answer: \"the first breast offered should be alternated at each feeding to ensure that each breast receives equal stimulation and emptying.\"","k":"1pzvnk41gc95te"},{"topic":"indicators of effective breastfeeding","subtopic":"signs in mother and infant","stem":"Which maternal signs of effective breastfeeding appear in Box 25.3? Select all that apply.","options":["Onset of copious milk production by day 3 or 4","A firm tugging sensation on the nipple as the infant sucks, but no pain","Uterine contractions and increased vaginal bleeding while feeding during the first week","With milk ejection, a warm rush or tingling in both breasts and leaking of milk from the opposite breast","Sharp nipple pain throughout each feeding"],"correct":[0,1,2,3],"sata":true,"why":"Box 25.3's maternal signs are copious milk production by day 3 or 4, a firm tugging sensation without pain, uterine contractions and increased bleeding while feeding in the first week or less, feeling relaxed and drowsy while feeding, increased thirst, breasts softening while feeding, and the let-down sensations.","trap":"(E) contradicts the box's own wording — tugging \"but no pain.\" Persistent pain is a sign of a latch problem, not of effective feeding.","k":"hypz3017j2nry"},{"topic":"indicators of effective breastfeeding","subtopic":"signs in mother and infant","stem":"Which infant signs of effective breastfeeding does Box 25.3 list?","options":["Latches without difficulty, has bursts of 15 to 20 sucks and swallows at a time, audible swallowing is present, easily releases the breast at the end of the feeding, appears content afterward, and has at least three substantive bowel movements and six to eight wet diapers every 24 hours after day 4","Sleeps through feedings and wakes only when awakened","Has one wet diaper per day in the first week","Feeds for exactly 10 minutes per side"],"correct":[0],"sata":false,"why":"Box 25.3's infant signs are exactly these.","trap":"(C) would be a red flag rather than a sign of effectiveness — output is the objective measure, and the numbers in the box are what make it usable at home.","k":"yy9vt11fu66nr"},{"topic":"indicators of effective breastfeeding","subtopic":"output as the measure","stem":"What stool pattern should a breastfed newborn show over the first week, and what finding is a red flag?","options":["Meconium for the first 1 to 2 days, greener and thinner by day 2 or 3, greenish yellow and looser by day 3 or 4 if the milk has transitioned, and yellow, soft, and seedy by the end of the first week; still passing meconium by day 3 or 4 is a red flag prompting assessment of breastfeeding effectiveness and milk transfer","Meconium throughout the first week, which is expected","Yellow seedy stools from day 1","No stools for the first 5 days"],"correct":[0],"sata":false,"why":"The chapter gives the transition in order and names the red flag: \"If an infant is still passing meconium stool by day 3 or 4, breastfeeding effectiveness and milk transfer should be assessed.\"","trap":"(B) normalizes the exact finding the chapter flags, and the stool transition doubles as a feeding-adequacy timeline — it tracks whether milk is actually moving.","k":"10vy5851lnq1lf"},{"topic":"indicators of effective breastfeeding","subtopic":"output as the measure","stem":"What does dark, concentrated urine suggest in a breastfed newborn, and what caveat does the chapter add?","options":["It can be associated with inadequate intake and possible dehydration, though infants with jaundice often have darker urine as bilirubin is excreted","It is always normal","It always indicates a urinary tract infection","It indicates excessive intake"],"correct":[0],"sata":false,"why":"\"As the volume of breast milk increases, urine becomes more dilute and should be light yellow; dark, concentrated urine can be associated with inadequate intake and possible dehydration.\" The caveat: \"Infants with jaundice often have darker urine as bilirubin is excreted.\"","trap":"(B) discards the chapter's statement that \"the infant's output is highly indicative of feeding adequacy,\" and the jaundice caveat is what keeps the finding from being read mechanically.","k":"pb5nw71jgvrwh"},{"topic":"indicators of effective breastfeeding","subtopic":"output as the measure","stem":"How often should the nurse observe a breastfeeding session during the postpartum stay, and what should the assessment include?","options":["At least one session every 8 to 12 hours, with at least one assessment during the 8 hours before discharge, including positioning, latch, and milk transfer","Once during the entire stay","Only if the mother reports difficulty","Every feeding, without exception"],"correct":[0],"sata":false,"why":"\"The nurse should observe at least one breastfeeding session every 8 to 12 hours to assess feeding effectiveness while the mother and newborn are on the postpartum unit; at least one assessment is needed during the 8 hours before discharge.\" The assessment \"should include positioning, latch, and milk transfer,\" and named tools are the Infant Breastfeeding Assessment Tool, the Mother Baby Assessment tool, and the LATCH scoring system.","trap":"(C) makes observation contingent on a complaint, and the predischarge assessment exists precisely because problems often surface after the family goes home.","k":"18y2y4lgvxar"},{"topic":"supplementation bottles and pacifiers","subtopic":"when to supplement","stem":"What is the default rule on supplementing a breastfeeding infant, and why does the chapter give a reason beyond nutrition?","options":["Unless a medical indication exists, no artificial milk substitutes should be given to breastfeeding infants; early supplementation by hospital staff undermines a new mother's confidence and models behavior that is counterproductive to establishing breastfeeding","Supplementation is routine in the first 48 hours","Supplementation is recommended whenever the mother is tired","Supplementation has no effect on breastfeeding success"],"correct":[0],"sata":false,"why":"\"Unless a medical indication exists, no artificial milk substitutes (i.e., commercial infant formula) should be given to breastfeeding infants,\" and \"early supplementation by hospital staff undermines a new mother's confidence and models behavior that is counterproductive to establishing breastfeeding.\"","trap":"(D) treats a bottle as nutritionally neutral and socially inert, and the chapter's objection is as much about what it teaches the mother as about what it feeds the baby.","k":"1b1h8o8tnj8by"},{"topic":"supplementation bottles and pacifiers","subtopic":"when to supplement","stem":"When supplementation is necessary, what is the recommended order of options?","options":["Expressed breast milk first; if the mother cannot provide it, pasteurized human donor milk from a milk bank; and if donor milk is not accessible, a commercial infant formula","Formula first, then donor milk, then expressed milk","Donor milk first in all cases","Water or glucose water first"],"correct":[0],"sata":false,"why":"\"When supplementation is deemed necessary, giving the baby expressed breast milk is best. If the mother is not able to provide the milk, the recommended alternative is pasteurized human donor milk (PHDM) from a milk bank. However, donor milk is not readily accessible in many cases, and a commercial infant formula is used.\" A protein-hydrolysate formula instead of standard formula \"avoids exposure to intact cow's milk proteins and may help lower bilirubin levels.\"","trap":"(D) offers a supplement with no nutritional value to an infant whose problem is inadequate intake.","k":"gj4vp5nrsljn"},{"topic":"supplementation bottles and pacifiers","subtopic":"when to supplement","stem":"Which findings are infant indications for supplementation? Select all that apply.","options":["Hypoglycemia","Dehydration","Weight loss of more than 8% by day 5, or weight loss exceeding the 75th percentile for age associated with delayed lactogenesis","Delayed passage of bowel movements, or meconium stool continuing to day 5, and hyperbilirubinemia","Maternal fatigue"],"correct":[0,1,2,3],"sata":true,"why":"The infant indications listed are hypoglycemia, dehydration, the weight-loss thresholds, delayed passage of bowel movements or meconium continuing to day 5, and hyperbilirubinemia.","trap":"(E) is not an infant indication, though the maternal indications do include delayed lactogenesis, intolerable pain during feedings, and temporary cessation because of medications or conditions, plus insufficient glandular tissue or previous breast surgery.","k":"1jcvgq2vz3tpc"},{"topic":"supplementation bottles and pacifiers","subtopic":"bottles and pacifiers","stem":"What does the chapter say about bottles and pacifiers for a breastfeeding infant?","options":["It is best to avoid bottles until breastfeeding is well established because breastfeeding and bottle-feeding require different oral motor skills; pacifiers are recommended for healthy term infants at nap or sleep time because of the correlation with decreased SIDS risk, but only after breastfeeding is well established","Bottles and pacifiers should be introduced on day 1","Pacifiers should never be used in breastfed infants","Bottles are preferred for any supplementation"],"correct":[0],"sata":false,"why":"\"It is best to avoid bottles until breastfeeding is well established because breastfeeding and bottle-feeding require different oral motor skills,\" with supplemental nursing devices, a spoon, dropper, cup, or syringe as alternatives, and a slow-flow nipple if a bottle is used. On pacifiers: \"because of the correlation between pacifier use and a decreased risk for sudden infant death syndrome (SIDS), experts recommend pacifier use for healthy term infants at nap or sleep time, but only after breastfeeding is well established.\"","trap":"(C) drops the SIDS benefit entirely, and (B) drops the timing qualifier that reconciles the two recommendations.","k":"1h6vjo31c6ggt5"},{"topic":"donor milk and milk banking","subtopic":"who receives donor milk","stem":"For which infants does the AAP recommend pasteurized human donor milk?","options":["For high-risk infants if the mother's own milk is not available despite substantial lactation support","For all infants whose mothers choose not to breastfeed","Only for infants with galactosemia","Only for term infants"],"correct":[0],"sata":false,"why":"\"The AAP recommends PHDM for high-risk infants if the mother's own milk is not available despite substantial lactation support,\" and \"for infants who cannot be breastfed but who also cannot survive except on human milk, PHDM is critically important.\"","trap":"(C) names the one diagnosis in which no human milk of any kind may be given — galactosemia is in the absolute contraindication category.","k":"1tondjo1olr6zq"},{"topic":"donor milk and milk banking","subtopic":"who receives donor milk","stem":"In which situations does the chapter describe donor milk being used? Select all that apply.","options":["In neonatal intensive care units, primarily for very-low-birth-weight infants and other preterm or sick infants when the mother's own milk is not available","In term infants, to bridge the gap until the mother's own milk volume is sufficient, or when the mother is unable to breastfeed because of surgery or hospitalization","For infants with gastrointestinal anomalies such as omphalocele or gastroschisis, or conditions requiring GI surgery such as short-gut syndrome","For necrotizing enterocolitis, congenital heart disease, and metabolic disorders, especially amino acid disorders","As a routine alternative for any mother who prefers not to breastfeed"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names each of these clinical uses.","trap":"(E) misses the scarcity that shapes the whole section: \"the demand for human milk far exceeds the supply,\" and banked milk \"is dispensed only by prescription.\"","k":"1mekb391h5xvlz"},{"topic":"donor milk and milk banking","subtopic":"how milk banking works","stem":"Which statements about milk banking in the United States are accurate? Select all that apply.","options":["There is no federal oversight or regulation of milk banking in the United States","HMBANA has established annually reviewed guidelines for the operation of not-for-profit donor human milk banks, and there are currently 31 such banks in the United States and Canada","All donors are screened both by interview and serologically for communicable diseases","Donor milk is stored frozen until pasteurized to kill potential pathogens, then refrozen for storage until dispensed","Donors are paid a per-ounce fee by nonprofit banks"],"correct":[0,1,2,3],"sata":true,"why":"The chapter states that there is no federal oversight, that HMBANA sets guidelines with 31 banks in the United States and Canada, and describes the screening, pasteurization, and refreezing process. \"The heat processing adds a level of protection for the recipient that is not possible with any other donor tissue or organ.\"","trap":"(E) reverses the fee structure: \"A per-ounce fee is charged by the bank to pay for the processing costs, but the HMBANA guidelines prohibit payment to donors.\"","k":"145hfwr1lxnqg1"},{"topic":"donor milk and milk banking","subtopic":"how milk banking works","stem":"What concerns does the chapter raise about for-profit human milk companies?","options":["Bioethical issues surrounding the sale of human milk, compensation to donors, and diverting supply from nonprofit milk banks, plus concern about the quality and safety of the milk and the potential for predatory recruitment of low-income women as donors","No concerns are raised","Only concerns about cost to families","Only concerns about pasteurization temperature"],"correct":[0],"sata":false,"why":"For-profit companies \"offer payment to women who donate,\" raising \"bioethical issues surrounding the sale of human milk, the compensation to donors, and diverting the supply of donor milk from nonprofit milk banks,\" plus \"concern about the quality and safety of the milk\" and \"the potential for predatory recruitment of low-income women as donors.\"","trap":"(C) reduces a set of ethical and safety concerns to a price question, and the donor-recruitment concern is the one that connects back to the chapter's own disparities data.","k":"14rh21abwuozc"},{"topic":"mastitis","subtopic":"recognizing it","stem":"A woman 3 weeks postpartum has the sudden onset of fever, chills, body aches, and nausea, with localized breast pain and a hot, reddened area on one breast. What is this, and where does it most commonly occur?","options":["Mastitis, an infectious process of the breast, most commonly occurring in the upper outer quadrant, with most cases in the first 2 to 4 weeks postpartum","Engorgement, which resolves in 24 to 48 hours","A plugged duct without infection","A breast abscess by definition"],"correct":[0],"sata":false,"why":"Mastitis \"is characterized by the sudden onset of influenza-like symptoms including fever, chills, malaise, body aches, headache, nausea, and vomiting. The woman usually has localized breast pain and tenderness and a hot, reddened area on the breast.\" It \"most commonly occurs in the upper outer quadrant of the breast; one or both breasts can be affected. Most cases occur during the first 2 to 4 weeks postpartum, although mastitis can occur at any time.\"","trap":"(B) is a bilateral, systemic-symptom-free condition of the early days, and the influenza-like symptoms with a localized red area are what separate mastitis from it.","k":"9a9nr01fm7ezq"},{"topic":"mastitis","subtopic":"recognizing it","stem":"Which factors predispose a woman to mastitis? Select all that apply.","options":["Inadequate emptying of the breasts, related to engorgement, plugged ducts, a sudden decrease in the number of feedings, abrupt weaning, or wearing underwire bras","Sore, cracked nipples, which provide a portal of entry for causative organisms","Stress, fatigue, and maternal illness","Breast trauma and poor maternal nutrition","Exclusive breastfeeding"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names inadequate emptying as the common factor, cracked nipples as the portal of entry — with Staphylococcus, Streptococcus, and Escherichia coli most common — plus stress, fatigue, maternal illness, ill family members, breast trauma, and poor maternal nutrition.","trap":"(E) reverses the relationship: it is reduced or interrupted feeding, not frequent feeding, that predisposes to mastitis.","k":"18cigua8tluc"},{"topic":"mastitis","subtopic":"treating it","stem":"A woman with mastitis asks whether she should stop breastfeeding. What should the nurse tell her?","options":["That she should stop until the antibiotics are finished","That treatment includes continued lactation, and that complete emptying of the breasts through breastfeeding, hand expression, or pumping is important — the infection cannot be transmitted to the infant","That she should feed only from the unaffected breast","That she should pump and discard the milk from the affected breast"],"correct":[1],"sata":false,"why":"Treatment is \"bedrest, antibiotics (dicloxacillin [Dynapen], cephalexin [Keflex], or clindamycin [Cleocin]), measures to reduce pain and swelling (antiinflammatory medications and cold compresses), and continued lactation.\" And: \"Complete emptying of the breasts through breastfeeding, hand expression, or pumping is important.\" The sentence that settles it: \"The infection cannot be transmitted to the infant.\"","trap":"(A), (C), and (D) all reduce emptying of the affected breast, which is the condition that caused the mastitis in the first place — stopping makes it worse and is the most common reason breastfeeding ends prematurely.","k":"1yjtdqe15vmfz8"},{"topic":"mastitis","subtopic":"treating it","stem":"What complications can follow untreated mastitis, and how are they prevented?","options":["Breast abscess, chronic mastitis, and fungal infections of the breast; most complications can be prevented by early recognition and treatment","Permanent loss of milk production in every case","Transmission of infection to the infant","No complications occur"],"correct":[0],"sata":false,"why":"Complications are \"breast abscess, chronic mastitis, and fungal infections of the breast. Most complications can be prevented by early recognition and treatment.\"","trap":"(C) contradicts the chapter's explicit statement that the infection cannot be transmitted to the infant, and it is the belief that leads a mother to wean.","k":"d70b2x1wb3pk3"},{"topic":"mastitis","subtopic":"treating it","stem":"What teaching about mastitis should be given before discharge from the birth facility?","options":["The signs of mastitis, and to call the health care provider promptly if the symptoms occur","Nothing, since mastitis occurs only after 6 weeks","To take prophylactic antibiotics","To wean at the first sign of breast pain"],"correct":[0],"sata":false,"why":"\"Breastfeeding mothers should be taught the signs of mastitis before they are discharged from the birth facility, and they need to know to call the health care provider promptly if the symptoms occur.\" Adequate fluid intake and a balanced diet are also important.","trap":"(D) is the action that turns a treatable infection into the end of breastfeeding, and abrupt weaning is itself on the list of predisposing factors.","k":"l1qdag1fjv3y"}];
+const TITLE = "Chapter 25 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 25";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

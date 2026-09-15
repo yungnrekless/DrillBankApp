@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 22 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 22</div><h1>Chapter 22 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">bonding versus attachment</span><span class="chip t2">the two definitions</span></div>
+<div class="stem">1. A nurse documents that a 2-day-old infant has &quot;good attachment&quot; with the mother. Why is this the wrong term?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because attachment is a two-way interaction that develops during the first year of the infant's life, and the quality of attachment is not typically observable before 9 months of age</li><li class="fopt"><span class="mk">B</span>Because attachment applies only to fathers</li><li class="fopt"><span class="mk">C</span>Because attachment cannot be documented by nurses</li><li class="fopt"><span class="mk">D</span>Because attachment and bonding are identical terms</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Attachment is a two-way interaction between the mother (or primary caregiver) and the infant that develops during the first year of the infant's life,&quot; and &quot;the quality of attachment is not typically observable before 9 months of age.&quot; What is observable in the first days is bonding: &quot;bonding behaviors may be observed in the early moments, days, weeks, and months after birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the usage the chapter opens by correcting: &quot;the term bonding should be considered separately from the term attachment, as they refer to different but related processes.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bonding versus attachment</span><span class="chip t2">the two definitions</span></div>
+<div class="stem">2. When does bonding begin, and how does it relate to attachment developmentally?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>At birth, and it follows attachment</li><li class="fopt right"><span class="mk">&#10003;</span>During pregnancy, continuing to develop into childhood; parent-infant bonding precedes attachment developmentally</li><li class="fopt"><span class="mk">C</span>At 9 months, along with attachment</li><li class="fopt"><span class="mk">D</span>Only once the infant can respond socially</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Bonding is &quot;the emotions and feelings experienced by the mother (or parent) in relation to the infant,&quot; and &quot;it begins during pregnancy and continues to develop into childhood.&quot; The chapter states the order: &quot;Parent-infant bonding precedes attachment developmentally.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) starts the process at birth and reverses the order, which would make prenatal attachment-promoting care look pointless.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bonding versus attachment</span><span class="chip t2">mutuality and the infant's contribution</span></div>
+<div class="stem">3. An infant cries, and the parent comes to the crib; the infant then roots and grasps the parent's finger. Which behaviors are these, and what does each accomplish?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Crying is a signaling behavior that initiates contact and brings the caregiver to the child; rooting and grasping are executive behaviors that maintain the contact</li><li class="fopt"><span class="mk">B</span>Crying is an executive behavior; rooting is a signaling behavior</li><li class="fopt"><span class="mk">C</span>Both are signaling behaviors</li><li class="fopt"><span class="mk">D</span>Both are reflexes with no role in bonding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The infant displays signaling behaviors such as crying, smiling, and cooing that initiate the contact and bring the caregiver to the child,&quot; and &quot;executive behaviors such as rooting, grasping, and postural adjustments that maintain the contact.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the pair. The cue that survives is that signaling calls the parent over and executive behavior holds on once they arrive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bonding versus attachment</span><span class="chip t2">mutuality and the infant's contribution</span></div>
+<div class="stem">4. What does the chapter say about how an infant's own characteristics affect bonding?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Infant characteristics have no effect</li><li class="fopt right"><span class="mk">&#10003;</span>The infant's behaviors and characteristics elicit a corresponding set of parental behaviors, and bonding occurs more readily with an infant whose temperament, social capabilities, appearance, and sex fit the parent's expectations</li><li class="fopt"><span class="mk">C</span>Only the parent's characteristics matter</li><li class="fopt"><span class="mk">D</span>Irritable infants bond more strongly because they demand more care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The concept of bonding includes mutuality; that is, the infant's behaviors and characteristics elicit a corresponding set of parental behaviors and characteristics.&quot; And plainly: &quot;Most caregivers are attracted to an alert, responsive, cuddly infant but find it less desirable to interact with an irritable, apparently disinterested infant. Bonding occurs more readily with the infant whose temperament, social capabilities, appearance, and sex fit the parent's expectations.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) makes bonding entirely a parental achievement, which both misplaces responsibility and misses why an irritable or sedated infant is a bonding risk factor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant and parental bonding behaviors</span><span class="chip t2">what facilitates and what inhibits</span></div>
+<div class="stem">5. Which infant behaviors does Table 22.1 list as facilitating bonding? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Visually alert, with eye-to-eye contact and tracking of the parent's face</li><li class="fopt right"><span class="mk">&#10003;</span>Smiling, and vocalizing with crying only when hungry or wet</li><li class="fopt right"><span class="mk">&#10003;</span>Enjoying being cuddled and held, and being easily consolable</li><li class="fopt right"><span class="mk">&#10003;</span>Activity and regularity that are somewhat predictable</li><li class="fopt"><span class="mk">E</span>Gaze aversion with eyes closed most of the time</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 22.1's facilitating column includes visual alertness and eye contact, an appealing facial appearance, smiles, vocalization with limited crying, the grasp reflex, feeding well, enjoying being held, easy consolability, predictable activity, sufficient attention span, and preference for the parents.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is from the inhibiting column, along with hyperirritability, a bland facial expression, colicky crying for hours, resisting holding by stiffening, and being inconsolable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant and parental bonding behaviors</span><span class="chip t2">what facilitates and what inhibits</span></div>
+<div class="stem">6. Which parental behaviors does Table 22.2 list as inhibiting bonding? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Turning away from the infant or ignoring the infant's presence</li><li class="fopt right"><span class="mk">&#10003;</span>Identifying the infant with someone the parent dislikes, or failing to recognize the infant's unique features</li><li class="fopt right"><span class="mk">&#10003;</span>Failing to place the infant in a family context or having difficulty naming the infant</li><li class="fopt right"><span class="mk">&#10003;</span>Viewing the infant's behavior as exploiting or deliberately uncooperative, and the appearance as distasteful</li><li class="fopt"><span class="mk">E</span>Assigning meaning to the infant's actions and sensitively interpreting the infant's needs</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 22.2's inhibiting column includes each of these, plus avoiding proximity, refusing to hold the infant, maintaining a bland countenance or frowning, expressing disappointment, waking a sleeping infant, handling roughly, and hurrying feedings.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is squarely in the facilitating column — assigning meaning and interpreting needs is what synchrony is built from.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant and parental bonding behaviors</span><span class="chip t2">the touch progression</span></div>
+<div class="stem">7. A mother has been touching her newborn only with her fingertips for the first several minutes after birth. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As an inhibiting behavior requiring intervention</li><li class="fopt right"><span class="mk">&#10003;</span>As the normal beginning of the touch progression — fingertip to fingers to palms to encompassing contact — since the mother begins exploration with her fingertips, one of the most touch-sensitive areas of the body</li><li class="fopt"><span class="mk">C</span>As evidence of postpartum depression</li><li class="fopt"><span class="mk">D</span>As a cultural practice requiring no assessment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 22.2 describes the facilitating progression: &quot;touches; progresses from fingertip to fingers to palms to encompassing contact.&quot; The prose confirms that the mother &quot;begins the exploration process with her fingertips, one of the most touch-sensitive areas of the body. Within a short time, she uses her palm to caress the infant's trunk and eventually enfolds the infant.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) misreads the first step of a normal sequence. The inhibiting version is in the same table row and is defined by failure to advance: &quot;fails to move from fingertip touch to palmar contact and holding.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant and parental bonding behaviors</span><span class="chip t2">the touch progression</span></div>
+<div class="stem">8. Which sensory and comfort behaviors does the chapter describe parents using with a newborn, and what cultural variation does it name?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gentle stroking to soothe and quiet, and patting or gently rubbing the back after feedings; minimal touching and cuddling is a traditional Southeast Asian practice thought to protect the infant from evil spirits, while women in India and Bali have practiced infant massage since ancient times</li><li class="fopt"><span class="mk">B</span>Vigorous rubbing is preferred in all cultures</li><li class="fopt"><span class="mk">C</span>Touch practices are universal and do not vary</li><li class="fopt"><span class="mk">D</span>Infant massage is discouraged in all cultures</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Gentle stroking motions are used to soothe and quiet the infant; patting or gently rubbing the infant's back is a comfort after feedings.&quot; The chapter names both cultural variations explicitly.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the assumption behind misjudging a family whose touch practices differ, which the chapter warns about by name: &quot;incorrect judgments may be made about parent-infant bonding if nurses do not practice culturally sensitive care.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acquaintance and claiming</span><span class="chip t2">how the infant is claimed</span></div>
+<div class="stem">9. In what order does the claiming process proceed?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Uniqueness first, then differences, then likeness</li><li class="fopt right"><span class="mk">&#10003;</span>The child is first identified in terms of likeness to other family members, then in terms of differences, and finally in terms of uniqueness</li><li class="fopt"><span class="mk">C</span>Differences first, then likeness</li><li class="fopt"><span class="mk">D</span>There is no established order</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The child is first identified in terms of likeness to other family members, then in terms of differences, and finally in terms of uniqueness. The unique infant newcomer is thus incorporated into the family.&quot; Parents become acquainted through &quot;eye contact, touching, talking, and exploring.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reverses the sequence, and the order matters because a family still at the likeness stage on day 1 is doing exactly what the chapter describes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acquaintance and claiming</span><span class="chip t2">how the infant is claimed</span></div>
+<div class="stem">10. Can adoptive parents engage in the claiming process?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>No, because claiming depends on biologic likeness</li><li class="fopt right"><span class="mk">&#10003;</span>Yes — claiming can be accomplished through things other than biologic likeness, and adoptive parents or parents not biologically related to the child may also engage in it, undergoing the same acquaintance process when they first meet their child</li><li class="fopt"><span class="mk">C</span>Only after a year of placement</li><li class="fopt"><span class="mk">D</span>Only if the child resembles them</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Claiming can be accomplished through things other than biologic likeness, and therefore adoptive parents or parents who are, for other reasons, not biologically related to the child may also engage in this claiming process.&quot; And: &quot;Adoptive parents undergo the same process when they first meet their new child.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reads the first step of claiming — identifying likeness — as a requirement rather than one route among several.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acquaintance and claiming</span><span class="chip t2">when claiming goes wrong</span></div>
+<div class="stem">11. A mother says her newborn &quot;cries just to spite me&quot; and &quot;has been nothing but pain since the day he was born,&quot; and she holds him at a distance. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As normal postpartum fatigue</li><li class="fopt right"><span class="mk">&#10003;</span>As negative claiming: some parents claim the infant in terms of the discomfort or pain the infant causes, interpret the infant's normal responses as being negative toward them, and react with dislike or indifference</li><li class="fopt"><span class="mk">C</span>As an expected first-day response in all mothers</li><li class="fopt"><span class="mk">D</span>As a cultural practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Some parents react negatively to their newborns. They claim the infant in terms of the discomfort or pain the infant causes. A parent might interpret the infant's normal responses as being negative toward the parents, and the parent may react to the child with dislike or indifference, not holding the child close or touching the child to be comforting.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the explanation that lets an inhibiting pattern pass unremarked, and fatigue is a real risk factor for it — but the behavior described is an assessment finding in its own right.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acquaintance and claiming</span><span class="chip t2">when claiming goes wrong</span></div>
+<div class="stem">12. What is the fantasy infant, and why does it matter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An imaginary sibling the older child invents</li><li class="fopt right"><span class="mk">&#10003;</span>The image of the ideal infant that parents develop during pregnancy and often before conception; at birth the fantasy infant becomes the real infant, and how closely the dream child resembles the real child influences the bonding process</li><li class="fopt"><span class="mk">C</span>A term for the infant's own developing self-image</li><li class="fopt"><span class="mk">D</span>The infant as described on ultrasound</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;During pregnancy and often even before conception, parents develop an image of the ideal or fantasy infant. At birth, the fantasy infant becomes the real infant. How closely the dream child resembles the real child influences the bonding process.&quot; A parental task is to &quot;reconcile the actual child with the fantasy and dream child,&quot; and &quot;if the real child differs greatly from the fantasy child, parents may delay the acceptance of the child.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) narrows a psychological construct to an image on a screen, and misses why an infant's sex, temperament, or appearance can slow acceptance.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">assessing bonding</span><span class="chip t2">how the assessment is done</span></div>
+<div class="stem">13. How does the chapter contrast assessment of parent-infant bonding with physical assessment of the neonate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Bonding assessment has more concrete guidelines</li><li class="fopt right"><span class="mk">&#10003;</span>In contrast to physical assessment, which has concrete guidelines to follow, assessment of parent-infant bonding relies more on skillful observation and interviewing</li><li class="fopt"><span class="mk">C</span>Bonding assessment is performed only by social workers</li><li class="fopt"><span class="mk">D</span>Bonding cannot be assessed at all</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In contrast to physical assessment of the neonate, which has concrete guidelines to follow, assessment of parent-infant bonding relies more on skillful observation and interviewing.&quot; Rooming-in and liberal visiting provide the opportunities, and &quot;bonding behaviors can be easily observed during infant feeding sessions.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) hands off an assessment the chapter assigns to the nurse — and the feeding session, which the nurse is present for, is the named observation window.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">assessing bonding</span><span class="chip t2">how the assessment is done</span></div>
+<div class="stem">14. Which observations does Box 22.1 direct the nurse to make when assessing bonding? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Whether the parents reach out for the infant and call the infant by name when the infant is brought to them</li><li class="fopt right"><span class="mk">&#10003;</span>Whether they speak about the infant in terms of who the infant resembles and what appears special about their infant</li><li class="fopt right"><span class="mk">&#10003;</span>What kind of body contact is seen, including whether fingertips or whole hands are used and whether there are body parts they avoid touching</li><li class="fopt right"><span class="mk">&#10003;</span>What kinds of stimulation they provide when the infant is awake, and how they look at the infant</li><li class="fopt"><span class="mk">E</span>Whether the infant's weight gain is adequate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 22.1 covers reaching out and naming, identification talk, body contact and the fingertip-versus-whole-hand observation, stimulation and visual contact when the infant is awake, comfort with caregiving including expressed disgust at activities such as diaper changes, demonstrations of affection, and comforting techniques used when the infant is fussy.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is a physical assessment parameter, and the point of the box is that bonding is assessed by watching interaction rather than by measuring outcomes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">assessing bonding</span><span class="chip t2">the cultural caveats inside the assessment</span></div>
+<div class="stem">15. Parents from a culture in which infants are not named in the early newborn period have not named their baby by day 2. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As an inhibiting bonding behavior requiring referral</li><li class="fopt right"><span class="mk">&#10003;</span>As culturally appropriate — Box 22.1 carries the caution inside the question itself, noting that in some cultures parents may not name the infant in the early newborn period</li><li class="fopt"><span class="mk">C</span>As evidence of an unintended pregnancy</li><li class="fopt"><span class="mk">D</span>As grounds for a child protection report</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 22.1's first item includes the parenthetical caution: &quot;(Recognize that in some cultures, parents may not name the infant in the early newborn period.)&quot; The chapter adds that nurses &quot;need to clarify with the client and family members or friends what cultural norms the parents may follow to avoid possible stereotyping.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies Table 22.2's &quot;has difficulty naming&quot; line without the cultural clarification the same chapter requires, and this is the specific misjudgment the book names.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">assessing bonding</span><span class="chip t2">the cultural caveats inside the assessment</span></div>
+<div class="stem">16. A father avoids sustained direct eye contact with his newborn. What should the nurse consider before interpreting this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>That eye contact is universally a bonding indicator</li><li class="fopt right"><span class="mk">&#10003;</span>That in North American culture eye contact appears to reinforce the development of a trusting relationship, but in other cultures sustained direct eye contact is considered rude, immodest, and dangerous — a danger that may arise from the mal de ojo, or evil eye, resulting from excessive admiration</li><li class="fopt"><span class="mk">C</span>That avoidance of eye contact always indicates depression</li><li class="fopt"><span class="mk">D</span>That the father should be instructed to maintain eye contact continuously</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In North American culture, eye contact appears to reinforce the development of a trusting relationship. In other cultures, eye contact is perceived differently. For example, in some cultures, sustained direct eye contact is considered to be rude, immodest, and dangerous for some. This danger may arise from the mal de ojo (evil eye), resulting from excessive admiration.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) prescribes a behavior the family may experience as harmful, which is how well-meant teaching becomes culturally insensitive care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">risk factors for impaired bonding</span><span class="chip t2">what puts bonding at risk</span></div>
+<div class="stem">17. Which maternal factors appear in Box 22.2 as risk factors for delayed or impaired maternal-infant bonding? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Unintended or undesired pregnancy, and negative feelings about the pregnancy</li><li class="fopt right"><span class="mk">&#10003;</span>Primiparity</li><li class="fopt right"><span class="mk">&#10003;</span>Cesarean birth, traumatic or complicated birth, and maternal exhaustion or sedation</li><li class="fopt right"><span class="mk">&#10003;</span>Depressive symptoms, anxiety, stress, and social isolation</li><li class="fopt"><span class="mk">E</span>Multiparity with short interpregnancy intervals</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 22.2's maternal list includes unintended or undesired pregnancy, negative feelings about the pregnancy, primiparity, posttraumatic stress, depressive symptoms, anxiety and stress, pregnancy complications, preterm birth, traumatic or complicated birth, cesarean birth, maternal exhaustion or sedation, social isolation, and substance use.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is not on the list, and (B) is the one most often missed — it is the first-time mother, not the experienced one, whom the box identifies as at risk.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">risk factors for impaired bonding</span><span class="chip t2">what puts bonding at risk</span></div>
+<div class="stem">18. Which newborn factors does Box 22.2 name as risks for impaired bonding?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Prematurity with separation from parents such as in the NICU, congenital anomaly or genetic syndrome, neonatal abstinence syndrome, and a difficult or irritable temperament</li><li class="fopt"><span class="mk">B</span>Large birth weight and rapid feeding</li><li class="fopt"><span class="mk">C</span>Male sex only</li><li class="fopt"><span class="mk">D</span>Only congenital anomalies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 22.2's newborn list is prematurity with separation, congenital anomaly or genetic syndrome, neonatal abstinence syndrome, and a difficult, irritable temperament.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) narrows a four-item list to its most visible entry, and the temperament item is the one that connects back to mutuality — an irritable infant is harder to bond with, and that is stated rather than implied.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">risk factors for impaired bonding</span><span class="chip t2">what puts bonding at risk</span></div>
+<div class="stem">19. How does the chapter say the labor process itself affects bonding?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It has no effect once the infant is born healthy</li><li class="fopt right"><span class="mk">&#10003;</span>It significantly affects immediate bonding: long labor, feeling tired or sedated after birth, problems with breastfeeding, preterm birth, and being separated from the infant at birth can delay the development of initial positive feelings toward the newborn</li><li class="fopt"><span class="mk">C</span>It affects only fathers</li><li class="fopt"><span class="mk">D</span>It affects bonding only after cesarean birth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The labor process significantly affects the immediate bonding of mothers to their newborn infants. Factors such as long labor, feeling tired or sedated after birth, problems with breastfeeding, preterm birth, and being separated from the infant at birth can delay the development of initial positive feelings toward the newborn.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats a healthy outcome as erasing the experience, and the word &quot;delay&quot; is what makes this a nursing problem rather than a permanent one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">risk factors for impaired bonding</span><span class="chip t2">what puts bonding at risk</span></div>
+<div class="stem">20. Which nursing interventions does the chapter describe for facilitating bonding? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Encouraging and assisting parents to hold the newborn skin-to-skin immediately after birth and at other times</li><li class="fopt right"><span class="mk">&#10003;</span>Providing opportunities for parents to examine their newborn and ask questions about the infant's appearance</li><li class="fopt right"><span class="mk">&#10003;</span>Providing privacy for parents with rooming-in to enhance interaction</li><li class="fopt right"><span class="mk">&#10003;</span>Heightening parental awareness of the infant's responses and ability to communicate, and bolstering the parent's self-confidence</li><li class="fopt"><span class="mk">E</span>Limiting parental handling of the infant to reduce overstimulation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names skin-to-skin holding, opportunities to examine the newborn and ask questions, privacy with rooming-in, heightening awareness of infant communication, and bolstering the parent's self-confidence and ego.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the entire intervention set. The chapter's concern about overstimulation is about reading the infant's cues within an interaction, not about limiting parental contact.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">early and extended contact</span><span class="chip t2">what skin-to-skin does and does not do</span></div>
+<div class="stem">21. A mother whose infant was taken to the NICU immediately after birth is distressed that she missed the first hour. What should the nurse tell her?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>That the critical bonding window has passed</li><li class="fopt right"><span class="mk">&#10003;</span>That early contact may facilitate bonding but a delay does not necessarily mean bonding will be inhibited, that no scientific evidence has demonstrated immediate contact is essential for the human parent-child relationship, and that the parent-infant relationship is a process that develops over time</li><li class="fopt"><span class="mk">C</span>That bonding is now unlikely without intensive intervention</li><li class="fopt"><span class="mk">D</span>That she should not hold the infant until discharge</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Although a delay in contact does not necessarily mean that bonding will be inhibited, additional psychologic energy may be necessary to achieve the same effect. To date, no scientific evidence has demonstrated that immediate contact after birth is essential for the human parent-child relationship.&quot; Parents who could not have early contact &quot;can be reassured that such contact is not essential for optimal parent-infant interactions,&quot; and nurses &quot;need to stress that the parent-infant relationship is a process that develops over time.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the message an over-enthusiastic reading of skin-to-skin teaching sends, and it adds guilt to a separation the mother did not choose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">early and extended contact</span><span class="chip t2">what skin-to-skin does and does not do</span></div>
+<div class="stem">22. Given that immediate contact is not essential, why is early skin-to-skin contact still recommended as a standard of care?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because it facilitates parental affectionate bonding behaviors and has many benefits and a lack of adverse effects</li><li class="fopt"><span class="mk">B</span>Because it is required for lactation to begin</li><li class="fopt"><span class="mk">C</span>Because it prevents hypothermia only</li><li class="fopt"><span class="mk">D</span>It is no longer recommended</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Early skin-to-skin contact between the newborn and the mother immediately after birth and during the first hour facilitates parental affectionate bonding behaviors and is recommended as a standard of care owing to the many benefits and lack of adverse effects.&quot; Fathers or co-parents can also hold newborns skin-to-skin, and in many settings the initial bath is delayed to allow time for this.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) takes the honest caveat about the evidence and converts it into abandonment of the practice — the chapter holds both positions at once.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">early and extended contact</span><span class="chip t2">extended contact and breastfeeding</span></div>
+<div class="stem">23. What is rooming-in, and for whom does the chapter say extended contact is especially important?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The infant stays in the room with the mother; extended contact should be available for all parents but especially for those at risk for parenting challenges, such as adolescents</li><li class="fopt"><span class="mk">B</span>The infant stays in the nursery, with scheduled visits</li><li class="fopt"><span class="mk">C</span>Extended contact is reserved for low-risk mothers</li><li class="fopt"><span class="mk">D</span>Extended contact is discouraged after cesarean birth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>With rooming-in, &quot;the infant stays in the room with the mother,&quot; and &quot;extended contact with the infant should be available for all parents but especially for those at risk for parenting challenges such as adolescents.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the targeting: extended contact matters most for the families with the fewest advantages, which is the opposite of restricting it to the lowest-risk group.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">early and extended contact</span><span class="chip t2">extended contact and breastfeeding</span></div>
+<div class="stem">24. How does breastfeeding contribute to bonding?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It has no effect on bonding</li><li class="fopt right"><span class="mk">&#10003;</span>Breastfeeding enhances bonding, because the release of oxytocin with infant suckling promotes bonding and the development of maternal behavior</li><li class="fopt"><span class="mk">C</span>It delays bonding by tiring the mother</li><li class="fopt"><span class="mk">D</span>It contributes only through nutrition</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Breastfeeding enhances bonding; the release of oxytocin with infant suckling promotes bonding and the development of maternal behavior.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reduces feeding to calories, and it is the same oxytocin release that contracts the uterus — one hormone doing two jobs at once.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the senses in parent-infant interaction</span><span class="chip t2">eye contact and the en face position</span></div>
+<div class="stem">25. What is the en face position, and what are its two defining features?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The parent's face and the infant's face approximately 8 inches apart and on the same plane</li><li class="fopt"><span class="mk">B</span>The infant held facing away from the parent</li><li class="fopt"><span class="mk">C</span>The parent's face 18 inches from the infant's, at any angle</li><li class="fopt"><span class="mk">D</span>The infant held over the parent's shoulder</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In this position, the parent's face and the infant's face are approximately 8 inches apart and on the same plane.&quot; Table 22.2 lists assuming the en face position among the facilitating parental behaviors.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) keeps one feature and loses the other. Both the distance and the shared plane are part of the definition, and the same plane is what makes eye contact possible.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the senses in parent-infant interaction</span><span class="chip t2">eye contact and the en face position</span></div>
+<div class="stem">26. Which nursing actions promote eye contact between parents and newborn? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Positioning the infant on the mother's abdomen or chest with the mother's and the infant's faces on the same plane immediately after birth</li><li class="fopt right"><span class="mk">&#10003;</span>Dimming the lights, which encourages the infant's eyes to open</li><li class="fopt right"><span class="mk">&#10003;</span>Delaying instillation of prophylactic antibiotic eye ointment until the infant and parents have had some time together in the first hour after birth</li><li class="fopt"><span class="mk">D</span>Waking the infant for interaction whenever the parents are present</li><li class="fopt"><span class="mk">E</span>Omitting the eye prophylaxis entirely</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names all three actions: the positioning on the same plane, dimming the lights, and delaying the eye ointment &quot;until the infant and parents have had some time together in the first hour after birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) turns a timed delay into an omission of required newborn care, and (D) is listed in Table 22.2 as an inhibiting parental behavior — &quot;wakes infant when infant is sleeping.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the senses in parent-infant interaction</span><span class="chip t2">voice, scent, and rhythm</span></div>
+<div class="stem">27. A newborn waves his arms, lifts his head, and kicks his legs while his mother speaks to him. What is this called?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Biorhythmicity</li><li class="fopt right"><span class="mk">&#10003;</span>Entrainment — newborns move in time with the structure of adult speech, seemingly dancing in tune to a parent's voice</li><li class="fopt"><span class="mk">C</span>Reciprocity</li><li class="fopt"><span class="mk">D</span>An exaggerated motor reflex</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Newborns move in time with the structure of adult speech, which is termed entrainment.&quot; They &quot;wave their arms, lift their heads, and kick their legs, seemingly 'dancing in tune' to a parent's voice. Culturally determined rhythms of speech are ingrained in the infant long before they use spoken language to communicate.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the related but different concept: &quot;the fetus is in tune with the mother's natural rhythms, referred to as biorhythmicity, such as her heartbeat,&quot; and after birth the mother's heartbeat or a recording of one can soothe a crying infant.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the senses in parent-infant interaction</span><span class="chip t2">voice, scent, and rhythm</span></div>
+<div class="stem">28. Which statements about the newborn's senses and the parents' use of them does the chapter support? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Parents wait tensely for the first cry, and once it has reassured them of the infant's health, they begin comforting behaviors</li><li class="fopt right"><span class="mk">&#10003;</span>Infants respond to higher-pitched voices and can distinguish the mother's voice from others soon after birth</li><li class="fopt right"><span class="mk">&#10003;</span>Mothers note that each infant has a unique scent</li><li class="fopt right"><span class="mk">&#10003;</span>Infants learn rapidly to distinguish the scent of their own mother's breast milk</li><li class="fopt"><span class="mk">E</span>Newborns cannot distinguish one voice from another until about 3 months</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes the tense wait for the first cry and the comforting that follows, the infant's response to higher-pitched voices and recognition of the mother's voice soon after birth, mothers' comments on each infant's unique scent, and infants' rapid learning of their own mother's milk scent.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) contradicts the voice finding directly, and it is the sort of claim that would discourage parents from talking to a newborn who is already listening.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">reciprocity synchrony and responsivity</span><span class="chip t2">the exchange and the fit</span></div>
+<div class="stem">29. How does the chapter distinguish reciprocity from synchrony?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reciprocity is a type of body movement or behavior that provides the observer with cues, and the exchange often takes several weeks to develop; synchrony refers to the fit between the infant's cues and the parent's response</li><li class="fopt"><span class="mk">B</span>Reciprocity is the fit; synchrony is the exchange</li><li class="fopt"><span class="mk">C</span>They are interchangeable terms</li><li class="fopt"><span class="mk">D</span>Reciprocity applies only to feeding and synchrony only to play</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Reciprocity is a type of body movement or behavior that provides the observer with cues,&quot; and it &quot;often takes several weeks to develop with a new infant.&quot; &quot;Synchrony refers to the 'fit' between the infant's cues and the parent's response.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) swaps them. Using the chapter's own metaphor: reciprocity is that the ball comes back, and synchrony is that it lands well.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">reciprocity synchrony and responsivity</span><span class="chip t2">the exchange and the fit</span></div>
+<div class="stem">30. The chapter uses two metaphors for reciprocal interaction. What are they, and what does synchrony achieve?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Contingency, because the parent's response is contingent on the infant's cue, and serve and return, as the infant serves a cue and the parent returns it; synchrony happens when parents effectively and appropriately return their infants' serves, resulting in more prolonged engagement linked to healthy brain development</li><li class="fopt"><span class="mk">B</span>Mirroring and modeling; synchrony produces faster weight gain</li><li class="fopt"><span class="mk">C</span>Attachment and bonding; synchrony produces earlier walking</li><li class="fopt"><span class="mk">D</span>Feedback and reinforcement; synchrony has no demonstrated outcome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Reciprocity &quot;has also been called 'contingency,' as the parent's response is contingent on the infant's cue,&quot; and &quot;the metaphor of 'serve and return' has been used to describe the interactive behavior as the infant serves a cue and the parent responds by returning the cue, as in a tennis game.&quot; And: &quot;synchrony happens when parents are effectively and appropriately returning their infants' serves, resulting in more prolonged engagement that has been linked to healthy brain development.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) strips the outcome, and the brain-development link is why this is taught as more than a pleasant interaction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">reciprocity synchrony and responsivity</span><span class="chip t2">reading the infant's cues</span></div>
+<div class="stem">31. During face-to-face play, an infant averts her eyes and yawns. What should the parent do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Increase stimulation to re-engage her</li><li class="fopt right"><span class="mk">&#10003;</span>Decrease the active response, since the infant can alternate the gaze voluntarily and looks away when understimulated or overstimulated; if the parent continues to stimulate the infant, the infant may again become fussy</li><li class="fopt"><span class="mk">C</span>End the interaction permanently</li><li class="fopt"><span class="mk">D</span>Wake the infant if she falls asleep</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's worked example ends exactly here: &quot;the infant then averts the eyes and yawns; the mother decreases her active response. If the parent continues to stimulate the infant, the infant may again become fussy.&quot; The infant &quot;is able to alternate the gaze voluntarily, looking away from the parent's face when understimulated or overstimulated.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reads gaze aversion as a failure to engage rather than as a message, and the chapter notes that this sensitivity &quot;is especially important when interacting with preterm infants.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">reciprocity synchrony and responsivity</span><span class="chip t2">reading the infant's cues</span></div>
+<div class="stem">32. A mother talks and smiles continuously while her infant is actively sucking at the breast. What should the nurse teach?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>To continue, since stimulation during feeding promotes bonding</li><li class="fopt right"><span class="mk">&#10003;</span>To reserve stimulation for pauses in sucking activity and not to talk or smile excessively while the infant is sucking, because the infant will stop feeding to interact with her</li><li class="fopt"><span class="mk">C</span>To feed in silence at all times</li><li class="fopt"><span class="mk">D</span>To feed only when the infant is drowsy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Mothers learn to reserve stimulation for pauses in sucking activity and not to talk or smile excessively while the infant is sucking because the infant will stop feeding to interact with her.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the intuitive praise a nurse would give, which is what makes this counterintuitive rule worth teaching. (C) overcorrects — the pauses are exactly when interaction belongs.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">reciprocity synchrony and responsivity</span><span class="chip t2">reading the infant's cues</span></div>
+<div class="stem">33. In which infant state does the chapter say interaction is most successful, and what makes it difficult?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The quiet alert state, which is one of the most difficult of the sleep-wake states to maintain and occurs most often during a feeding or in face-to-face play</li><li class="fopt"><span class="mk">B</span>Deep sleep, which is the calmest state</li><li class="fopt"><span class="mk">C</span>Active crying, which shows the most engagement</li><li class="fopt"><span class="mk">D</span>Drowsiness, which is the easiest to sustain</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>For modulation of rhythm, &quot;the infant must be in the quiet alert state, one of the most difficult of the sleep-wake states to maintain. The alert state occurs most often during a feeding or in face-to-face play.&quot; Nurses &quot;teach parents to recognize the alert state and to engage in interactions when the infant is alert and receptive.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) treats crying as communication to be answered with play, when the chapter's own cue list puts &quot;pouting or crying, arching of the back, and general squirming&quot; at the end of an interaction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">reciprocity synchrony and responsivity</span><span class="chip t2">reading the infant's cues</span></div>
+<div class="stem">34. What is infantilizing speech, and how does the chapter distinguish it from baby talk?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Infantilizing speech means slowing the tempo, speaking loudly and rhythmically, and emphasizing keywords with repeated phrases; it does not mean using baby talk, which involves distortion of sounds</li><li class="fopt"><span class="mk">B</span>They are the same thing</li><li class="fopt"><span class="mk">C</span>Infantilizing speech means distorting sounds to match the infant's babbling</li><li class="fopt"><span class="mk">D</span>Both are discouraged</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The parent's behavioral repertoire includes infantilizing speech — &quot;slowing the tempo, speaking loudly and rhythmically, and emphasizing keywords,&quot; with phrases repeated — and the chapter draws the line: &quot;infantilizing does not mean using baby talk, which involves distortion of sounds.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) collapses a distinction the chapter makes deliberately, and it is the difference between a speech pattern that supports language and one that distorts it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attachment quality and transition to parenthood</span><span class="chip t2">what makes attachment secure</span></div>
+<div class="stem">35. Which statements about the quality of attachment does the chapter support? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>All infants attach to their parents, but the quality varies from secure to insecure and disorganized</li><li class="fopt right"><span class="mk">&#10003;</span>Secure attachment is based on a solid foundation of reciprocal and synchronous serve and return interactions</li><li class="fopt right"><span class="mk">&#10003;</span>The parent fosters secure attachment by staying close to the infant and responding consistently to the infant's bids for attention that indicate need</li><li class="fopt right"><span class="mk">&#10003;</span>The quality of attachment can be assessed during infancy, beginning at about 9 months of age</li><li class="fopt"><span class="mk">E</span>Only infants with responsive parents form attachments at all</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;While all infants attach to their parents, the quality of attachment varies from secure to insecure and disorganized.&quot; Secure attachment is built on reciprocal and synchronous serve and return interactions, with the parent staying close and responding consistently, providing &quot;a secure base for the infant's exploration and a safe haven from distress.&quot; Quality can be assessed from about 9 months, and &quot;secure attachment is linked to a host of optimal physical and mental health outcomes over the lifespan.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) confuses whether attachment forms with how good it is — the attachment system &quot;maintains the proximity of the infant to the caregiver, thus helping to ensure the survival of the otherwise helpless infant,&quot; and it operates regardless.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attachment quality and transition to parenthood</span><span class="chip t2">what makes attachment secure</span></div>
+<div class="stem">36. How does the current perspective frame the transition to parenthood?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As a major life crisis</li><li class="fopt right"><span class="mk">&#10003;</span>As a developmental transition — a time of disorder and disequilibrium as well as satisfaction, typically more challenging for first-time parents, and for the majority of new parents an opportunity rather than a time of danger</li><li class="fopt"><span class="mk">C</span>As a period of uniform joy</li><li class="fopt"><span class="mk">D</span>As a transition that affects only the mother</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The current perspective is that parenthood is a developmental transition rather than a major life crisis,&quot; and it is &quot;a time of disorder and disequilibrium, as well as satisfaction,&quot; &quot;typically more challenging for first-time parents.&quot; The chapter's summary: &quot;For the majority of new parents, the transition to parenthood is an opportunity rather than a time of danger.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) misses the chapter's note that &quot;the transition can be more difficult for fathers or co-parents. They often feel deprived when the mothers, who are also experiencing stress, cannot provide their usual level of support.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attachment quality and transition to parenthood</span><span class="chip t2">mercer's stages</span></div>
+<div class="stem">37. A mother 6 weeks after birth is developing her own style of mothering as she learns to respond to her infant's cues. Which of Mercer's stages of becoming a mother is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Stage 1, during pregnancy</li><li class="fopt"><span class="mk">B</span>Stage 2, beginning with birth</li><li class="fopt right"><span class="mk">&#10003;</span>Stage 3, from 2 weeks to 4 months after birth, in which the mother is individualizing the maternal role</li><li class="fopt"><span class="mk">D</span>Stage 4, from about 4 months and beyond</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In stage 3, &quot;2 weeks to 4 months after birth,&quot; the mother &quot;is individualizing the maternal role, developing her own unique style of mothering as she learns to respond to infant cues.&quot; Stage 4, from about 4 months and beyond, is &quot;incorporating the maternal identity into her self-system and gaining competence in her role.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the stage of learning from others and professionals, which ends before the individualizing work begins. The chapter also notes that &quot;the time frames ... vary based on each individual mother and family; the most influential factors are the mother's relationships with her partner and with her baby.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attachment quality and transition to parenthood</span><span class="chip t2">mercer's stages</span></div>
+<div class="stem">38. What happens in stage 1 of becoming a mother, and what does this imply about when the process starts?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It occurs during pregnancy — adjusting to physical, psychologic, and social aspects, exploring expectations of the maternal role, seeking information from others, and visualizing herself as a mother — so the process starts before the birth</li><li class="fopt"><span class="mk">B</span>It begins at birth with the first feeding</li><li class="fopt"><span class="mk">C</span>It begins at discharge</li><li class="fopt"><span class="mk">D</span>It begins when the infant first smiles socially</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Stage 1 occurs &quot;during pregnancy&quot; and involves &quot;adjusting to the physical, psychologic, and social aspects, exploring expectations of the maternal role, seeking information from others, and visualizing herself as a mother.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) starts the process at birth, which is the same error as dating bonding from birth — both begin in pregnancy, which is what makes prenatal preparation part of the work.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">social influences on parenting</span><span class="chip t2">support</span></div>
+<div class="stem">39. A fatigued second-time mother is struggling in the first weeks. Which kind of support does the chapter say will help her more, and why?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>General support, which addresses feeling loved, respected, and valued</li><li class="fopt right"><span class="mk">&#10003;</span>Situation-specific support, which relates to practical concerns such as physical needs and childcare — moods and fatigue in the postpartum period can be helped more by situation-specific support from family and friends than by general support</li><li class="fopt"><span class="mk">C</span>Professional counseling only</li><li class="fopt"><span class="mk">D</span>Neither type has been shown to help</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;General support addresses feeling loved, respected, and valued. Situation-specific support relates to practical concerns such as physical needs and childcare,&quot; and the mother's &quot;moods and fatigue in the postpartum period can be helped more by situation-specific support from family and friends than by general support.&quot; The chapter's example: &quot;the practical support of a grandparent bathing the infant can help lessen a second-time mother's feelings of loss by providing her time to be with her firstborn child.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reassurance a nurse offers naturally, and the chapter says the practical kind does more for exactly this problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">social influences on parenting</span><span class="chip t2">support</span></div>
+<div class="stem">40. Which statements about social support networks does the chapter support? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Social support is strongly related to positive adaptation by new parents, including adolescent parents</li><li class="fopt right"><span class="mk">&#10003;</span>The type and satisfaction of support seem to be more important than the total number of support network members</li><li class="fopt right"><span class="mk">&#10003;</span>Sometimes a large network can cause problems because it results in conflicting advice from numerous people</li><li class="fopt right"><span class="mk">&#10003;</span>Grandparents or in-laws are most appreciated when they assist with household responsibilities and do not intrude into the parents' privacy or judge them critically</li><li class="fopt"><span class="mk">E</span>The larger the support network, the better the adaptation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states each of these, and notes that support spans &quot;both in-person and online settings,&quot; and that &quot;through seeking help within the social network, new mothers learn culturally valued practices and develop role competency.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is contradicted twice — by the statement that type and satisfaction matter more than number, and by the conflicting-advice problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">social influences on parenting</span><span class="chip t2">siblings and grandparents</span></div>
+<div class="stem">41. A 3-year-old begins wetting the bed and hitting the new baby after the mother returns home. How should the nurse interpret this, and what should the parents be taught?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>As regression and aggression, which are expected negative reactions, with sibling jealousy common once the initial excitement is over; parents should allow children to interact at their own pace rather than forcing them to interact</li><li class="fopt"><span class="mk">B</span>As a behavioral disorder requiring evaluation</li><li class="fopt"><span class="mk">C</span>As evidence of poor parenting</li><li class="fopt"><span class="mk">D</span>As a sign the child should be separated from the infant</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Negative sibling behaviors include &quot;regression in toileting and sleep habits, aggression toward the infant, and increased seeking of attention and whining,&quot; and &quot;jealousy (sibling rivalry) is common once the initial excitement of having a new infant in the home is over.&quot; The chapter's pacing rule: &quot;the adjustment of older children to a newborn takes time, and parents should allow children to interact at their own pace rather than forcing them to interact. To expect a young child to accept and love a rival for the parents' affection assumes an unrealistic level of maturity.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) pathologizes a reaction the chapter describes as expected, and reactions arise from three sources it names: temporary separation from the mother, changes in the parents' behavior, and the infant coming home.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">social influences on parenting</span><span class="chip t2">siblings and grandparents</span></div>
+<div class="stem">42. Which strategies does the chapter's teaching box give for facilitating sibling acceptance of a new baby? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Move the child to a bed, if still sleeping in a crib, at least 2 months before the infant is due</li><li class="fopt right"><span class="mk">&#10003;</span>When the child arrives at the birth facility, make sure your arms are open to embrace the child, and do not force interaction between the child and the infant</li><li class="fopt right"><span class="mk">&#10003;</span>Have someone else carry the infant from the car when going home so that you can hug the child first</li><li class="fopt right"><span class="mk">&#10003;</span>Arrange a special time for the child to be alone with each parent, and praise the child for acting age appropriately</li><li class="fopt"><span class="mk">E</span>Keep the child away during infant feeding times to avoid jealousy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The teaching box includes the prenatal crib-to-bed move at least 2 months ahead, taking the child on a prenatal visit, open arms at the birth facility without forcing interaction, a gift for the child, having someone else carry the infant into the house, special one-on-one time, and praising age-appropriate behavior &quot;so that being an infant does not seem better than being older.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the box's own instruction: &quot;do not exclude the child during infant feeding times.&quot; Excluding the child during feeds makes the infant's care look like the reason for the child's loss of access.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">social influences on parenting</span><span class="chip t2">siblings and grandparents</span></div>
+<div class="stem">43. What does the chapter describe as the primary role of grandparents?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>To take over infant care so the parents can rest</li><li class="fopt right"><span class="mk">&#10003;</span>To support, nurture, and empower their child in his or her parenting role, acknowledging that things have changed since they first became parents</li><li class="fopt"><span class="mk">C</span>To advise the parents on correct techniques</li><li class="fopt"><span class="mk">D</span>To remain uninvolved during the first months</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A primary role of the grandparents is to support, nurture, and empower their child in his or her parenting role. Grandparents must acknowledge that things have changed since they first became parents.&quot; Becoming a grandparent is &quot;a time of transition as roles and relationships change,&quot; with joy and anticipation &quot;often intermingled with some degree of anxiety and uncertainty.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the behavior the support section identifies as unwelcome — grandparents are most appreciated when they help practically and do not judge critically.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">social influences on parenting</span><span class="chip t2">siblings and grandparents</span></div>
+<div class="stem">44. How do socioeconomic conditions and personal aspirations affect the transition to parenthood, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Socioeconomic conditions often determine access to available resources, and financial concerns can interfere with parents' ability to focus attention on the infant; unresolved resentment when parenthood blocks personal or career plans may result in indifference and neglect or in excessive concerns with impossibly high standards</li><li class="fopt"><span class="mk">B</span>Financial stress has no effect on parenting behavior</li><li class="fopt"><span class="mk">C</span>Career ambitions always improve parenting</li><li class="fopt"><span class="mk">D</span>Only the mother's aspirations matter</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Socioeconomic conditions often determine access to available resources,&quot; and &quot;concerns over financial issues can interfere with the ability of parents to focus their attention on the infant.&quot; When parenthood &quot;interferes with or blocks their plans for personal freedom or career advancement,&quot; unresolved resentment &quot;may result in indifference and neglect of the infant or in excessive concerns,&quot; with impossibly high standards set.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats finances as outside the nurse's scope, when the chapter's response is concrete: give parents opportunities to express feelings to an objective listener, discuss measures to permit personal growth, refer to support groups, and advocate for family-friendly work policies.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"bonding versus attachment","subtopic":"the two definitions","stem":"A nurse documents that a 2-day-old infant has \"good attachment\" with the mother. Why is this the wrong term?","options":["Because attachment is a two-way interaction that develops during the first year of the infant's life, and the quality of attachment is not typically observable before 9 months of age","Because attachment applies only to fathers","Because attachment cannot be documented by nurses","Because attachment and bonding are identical terms"],"correct":[0],"sata":false,"why":"\"Attachment is a two-way interaction between the mother (or primary caregiver) and the infant that develops during the first year of the infant's life,\" and \"the quality of attachment is not typically observable before 9 months of age.\" What is observable in the first days is bonding: \"bonding behaviors may be observed in the early moments, days, weeks, and months after birth.\"","trap":"(D) is the usage the chapter opens by correcting: \"the term bonding should be considered separately from the term attachment, as they refer to different but related processes.\"","k":"1n48tg01t7ts3q"},{"topic":"bonding versus attachment","subtopic":"the two definitions","stem":"When does bonding begin, and how does it relate to attachment developmentally?","options":["At birth, and it follows attachment","During pregnancy, continuing to develop into childhood; parent-infant bonding precedes attachment developmentally","At 9 months, along with attachment","Only once the infant can respond socially"],"correct":[1],"sata":false,"why":"Bonding is \"the emotions and feelings experienced by the mother (or parent) in relation to the infant,\" and \"it begins during pregnancy and continues to develop into childhood.\" The chapter states the order: \"Parent-infant bonding precedes attachment developmentally.\"","trap":"(A) starts the process at birth and reverses the order, which would make prenatal attachment-promoting care look pointless.","k":"112dtqb54sa7d"},{"topic":"bonding versus attachment","subtopic":"mutuality and the infant's contribution","stem":"An infant cries, and the parent comes to the crib; the infant then roots and grasps the parent's finger. Which behaviors are these, and what does each accomplish?","options":["Crying is a signaling behavior that initiates contact and brings the caregiver to the child; rooting and grasping are executive behaviors that maintain the contact","Crying is an executive behavior; rooting is a signaling behavior","Both are signaling behaviors","Both are reflexes with no role in bonding"],"correct":[0],"sata":false,"why":"\"The infant displays signaling behaviors such as crying, smiling, and cooing that initiate the contact and bring the caregiver to the child,\" and \"executive behaviors such as rooting, grasping, and postural adjustments that maintain the contact.\"","trap":"(B) reverses the pair. The cue that survives is that signaling calls the parent over and executive behavior holds on once they arrive.","k":"sak2xfp2t2fp"},{"topic":"bonding versus attachment","subtopic":"mutuality and the infant's contribution","stem":"What does the chapter say about how an infant's own characteristics affect bonding?","options":["Infant characteristics have no effect","The infant's behaviors and characteristics elicit a corresponding set of parental behaviors, and bonding occurs more readily with an infant whose temperament, social capabilities, appearance, and sex fit the parent's expectations","Only the parent's characteristics matter","Irritable infants bond more strongly because they demand more care"],"correct":[1],"sata":false,"why":"\"The concept of bonding includes mutuality; that is, the infant's behaviors and characteristics elicit a corresponding set of parental behaviors and characteristics.\" And plainly: \"Most caregivers are attracted to an alert, responsive, cuddly infant but find it less desirable to interact with an irritable, apparently disinterested infant. Bonding occurs more readily with the infant whose temperament, social capabilities, appearance, and sex fit the parent's expectations.\"","trap":"(A) makes bonding entirely a parental achievement, which both misplaces responsibility and misses why an irritable or sedated infant is a bonding risk factor.","k":"137fgf8189j2ua"},{"topic":"infant and parental bonding behaviors","subtopic":"what facilitates and what inhibits","stem":"Which infant behaviors does Table 22.1 list as facilitating bonding? Select all that apply.","options":["Visually alert, with eye-to-eye contact and tracking of the parent's face","Smiling, and vocalizing with crying only when hungry or wet","Enjoying being cuddled and held, and being easily consolable","Activity and regularity that are somewhat predictable","Gaze aversion with eyes closed most of the time"],"correct":[0,1,2,3],"sata":true,"why":"Table 22.1's facilitating column includes visual alertness and eye contact, an appealing facial appearance, smiles, vocalization with limited crying, the grasp reflex, feeding well, enjoying being held, easy consolability, predictable activity, sufficient attention span, and preference for the parents.","trap":"(E) is from the inhibiting column, along with hyperirritability, a bland facial expression, colicky crying for hours, resisting holding by stiffening, and being inconsolable.","k":"10w14m91xbq8kn"},{"topic":"infant and parental bonding behaviors","subtopic":"what facilitates and what inhibits","stem":"Which parental behaviors does Table 22.2 list as inhibiting bonding? Select all that apply.","options":["Turning away from the infant or ignoring the infant's presence","Identifying the infant with someone the parent dislikes, or failing to recognize the infant's unique features","Failing to place the infant in a family context or having difficulty naming the infant","Viewing the infant's behavior as exploiting or deliberately uncooperative, and the appearance as distasteful","Assigning meaning to the infant's actions and sensitively interpreting the infant's needs"],"correct":[0,1,2,3],"sata":true,"why":"Table 22.2's inhibiting column includes each of these, plus avoiding proximity, refusing to hold the infant, maintaining a bland countenance or frowning, expressing disappointment, waking a sleeping infant, handling roughly, and hurrying feedings.","trap":"(E) is squarely in the facilitating column — assigning meaning and interpreting needs is what synchrony is built from.","k":"jvknqj16lzdy1"},{"topic":"infant and parental bonding behaviors","subtopic":"the touch progression","stem":"A mother has been touching her newborn only with her fingertips for the first several minutes after birth. How should the nurse interpret this?","options":["As an inhibiting behavior requiring intervention","As the normal beginning of the touch progression — fingertip to fingers to palms to encompassing contact — since the mother begins exploration with her fingertips, one of the most touch-sensitive areas of the body","As evidence of postpartum depression","As a cultural practice requiring no assessment"],"correct":[1],"sata":false,"why":"Table 22.2 describes the facilitating progression: \"touches; progresses from fingertip to fingers to palms to encompassing contact.\" The prose confirms that the mother \"begins the exploration process with her fingertips, one of the most touch-sensitive areas of the body. Within a short time, she uses her palm to caress the infant's trunk and eventually enfolds the infant.\"","trap":"(A) misreads the first step of a normal sequence. The inhibiting version is in the same table row and is defined by failure to advance: \"fails to move from fingertip touch to palmar contact and holding.\"","k":"3a61okjjmh5m"},{"topic":"infant and parental bonding behaviors","subtopic":"the touch progression","stem":"Which sensory and comfort behaviors does the chapter describe parents using with a newborn, and what cultural variation does it name?","options":["Gentle stroking to soothe and quiet, and patting or gently rubbing the back after feedings; minimal touching and cuddling is a traditional Southeast Asian practice thought to protect the infant from evil spirits, while women in India and Bali have practiced infant massage since ancient times","Vigorous rubbing is preferred in all cultures","Touch practices are universal and do not vary","Infant massage is discouraged in all cultures"],"correct":[0],"sata":false,"why":"\"Gentle stroking motions are used to soothe and quiet the infant; patting or gently rubbing the infant's back is a comfort after feedings.\" The chapter names both cultural variations explicitly.","trap":"(C) is the assumption behind misjudging a family whose touch practices differ, which the chapter warns about by name: \"incorrect judgments may be made about parent-infant bonding if nurses do not practice culturally sensitive care.\"","k":"1sjkj7nq85fx"},{"topic":"acquaintance and claiming","subtopic":"how the infant is claimed","stem":"In what order does the claiming process proceed?","options":["Uniqueness first, then differences, then likeness","The child is first identified in terms of likeness to other family members, then in terms of differences, and finally in terms of uniqueness","Differences first, then likeness","There is no established order"],"correct":[1],"sata":false,"why":"\"The child is first identified in terms of likeness to other family members, then in terms of differences, and finally in terms of uniqueness. The unique infant newcomer is thus incorporated into the family.\" Parents become acquainted through \"eye contact, touching, talking, and exploring.\"","trap":"(A) reverses the sequence, and the order matters because a family still at the likeness stage on day 1 is doing exactly what the chapter describes.","k":"41odut1dl24w7"},{"topic":"acquaintance and claiming","subtopic":"how the infant is claimed","stem":"Can adoptive parents engage in the claiming process?","options":["No, because claiming depends on biologic likeness","Yes — claiming can be accomplished through things other than biologic likeness, and adoptive parents or parents not biologically related to the child may also engage in it, undergoing the same acquaintance process when they first meet their child","Only after a year of placement","Only if the child resembles them"],"correct":[1],"sata":false,"why":"\"Claiming can be accomplished through things other than biologic likeness, and therefore adoptive parents or parents who are, for other reasons, not biologically related to the child may also engage in this claiming process.\" And: \"Adoptive parents undergo the same process when they first meet their new child.\"","trap":"(D) reads the first step of claiming — identifying likeness — as a requirement rather than one route among several.","k":"1xerf04mb65g2"},{"topic":"acquaintance and claiming","subtopic":"when claiming goes wrong","stem":"A mother says her newborn \"cries just to spite me\" and \"has been nothing but pain since the day he was born,\" and she holds him at a distance. How should the nurse interpret this?","options":["As normal postpartum fatigue","As negative claiming: some parents claim the infant in terms of the discomfort or pain the infant causes, interpret the infant's normal responses as being negative toward them, and react with dislike or indifference","As an expected first-day response in all mothers","As a cultural practice"],"correct":[1],"sata":false,"why":"\"Some parents react negatively to their newborns. They claim the infant in terms of the discomfort or pain the infant causes. A parent might interpret the infant's normal responses as being negative toward the parents, and the parent may react to the child with dislike or indifference, not holding the child close or touching the child to be comforting.\"","trap":"(A) is the explanation that lets an inhibiting pattern pass unremarked, and fatigue is a real risk factor for it — but the behavior described is an assessment finding in its own right.","k":"1qp4b9uv9nzng"},{"topic":"acquaintance and claiming","subtopic":"when claiming goes wrong","stem":"What is the fantasy infant, and why does it matter?","options":["An imaginary sibling the older child invents","The image of the ideal infant that parents develop during pregnancy and often before conception; at birth the fantasy infant becomes the real infant, and how closely the dream child resembles the real child influences the bonding process","A term for the infant's own developing self-image","The infant as described on ultrasound"],"correct":[1],"sata":false,"why":"\"During pregnancy and often even before conception, parents develop an image of the ideal or fantasy infant. At birth, the fantasy infant becomes the real infant. How closely the dream child resembles the real child influences the bonding process.\" A parental task is to \"reconcile the actual child with the fantasy and dream child,\" and \"if the real child differs greatly from the fantasy child, parents may delay the acceptance of the child.\"","trap":"(D) narrows a psychological construct to an image on a screen, and misses why an infant's sex, temperament, or appearance can slow acceptance.","k":"8d2x8i1ak6128"},{"topic":"assessing bonding","subtopic":"how the assessment is done","stem":"How does the chapter contrast assessment of parent-infant bonding with physical assessment of the neonate?","options":["Bonding assessment has more concrete guidelines","In contrast to physical assessment, which has concrete guidelines to follow, assessment of parent-infant bonding relies more on skillful observation and interviewing","Bonding assessment is performed only by social workers","Bonding cannot be assessed at all"],"correct":[1],"sata":false,"why":"\"In contrast to physical assessment of the neonate, which has concrete guidelines to follow, assessment of parent-infant bonding relies more on skillful observation and interviewing.\" Rooming-in and liberal visiting provide the opportunities, and \"bonding behaviors can be easily observed during infant feeding sessions.\"","trap":"(C) hands off an assessment the chapter assigns to the nurse — and the feeding session, which the nurse is present for, is the named observation window.","k":"ysp2h91355uif"},{"topic":"assessing bonding","subtopic":"how the assessment is done","stem":"Which observations does Box 22.1 direct the nurse to make when assessing bonding? Select all that apply.","options":["Whether the parents reach out for the infant and call the infant by name when the infant is brought to them","Whether they speak about the infant in terms of who the infant resembles and what appears special about their infant","What kind of body contact is seen, including whether fingertips or whole hands are used and whether there are body parts they avoid touching","What kinds of stimulation they provide when the infant is awake, and how they look at the infant","Whether the infant's weight gain is adequate"],"correct":[0,1,2,3],"sata":true,"why":"Box 22.1 covers reaching out and naming, identification talk, body contact and the fingertip-versus-whole-hand observation, stimulation and visual contact when the infant is awake, comfort with caregiving including expressed disgust at activities such as diaper changes, demonstrations of affection, and comforting techniques used when the infant is fussy.","trap":"(E) is a physical assessment parameter, and the point of the box is that bonding is assessed by watching interaction rather than by measuring outcomes.","k":"z3afgv1rhromh"},{"topic":"assessing bonding","subtopic":"the cultural caveats inside the assessment","stem":"Parents from a culture in which infants are not named in the early newborn period have not named their baby by day 2. How should the nurse interpret this?","options":["As an inhibiting bonding behavior requiring referral","As culturally appropriate — Box 22.1 carries the caution inside the question itself, noting that in some cultures parents may not name the infant in the early newborn period","As evidence of an unintended pregnancy","As grounds for a child protection report"],"correct":[1],"sata":false,"why":"Box 22.1's first item includes the parenthetical caution: \"(Recognize that in some cultures, parents may not name the infant in the early newborn period.)\" The chapter adds that nurses \"need to clarify with the client and family members or friends what cultural norms the parents may follow to avoid possible stereotyping.\"","trap":"(A) applies Table 22.2's \"has difficulty naming\" line without the cultural clarification the same chapter requires, and this is the specific misjudgment the book names.","k":"1cqc61k1nykhxe"},{"topic":"assessing bonding","subtopic":"the cultural caveats inside the assessment","stem":"A father avoids sustained direct eye contact with his newborn. What should the nurse consider before interpreting this?","options":["That eye contact is universally a bonding indicator","That in North American culture eye contact appears to reinforce the development of a trusting relationship, but in other cultures sustained direct eye contact is considered rude, immodest, and dangerous — a danger that may arise from the mal de ojo, or evil eye, resulting from excessive admiration","That avoidance of eye contact always indicates depression","That the father should be instructed to maintain eye contact continuously"],"correct":[1],"sata":false,"why":"\"In North American culture, eye contact appears to reinforce the development of a trusting relationship. In other cultures, eye contact is perceived differently. For example, in some cultures, sustained direct eye contact is considered to be rude, immodest, and dangerous for some. This danger may arise from the mal de ojo (evil eye), resulting from excessive admiration.\"","trap":"(D) prescribes a behavior the family may experience as harmful, which is how well-meant teaching becomes culturally insensitive care.","k":"u4acj92xyigj"},{"topic":"risk factors for impaired bonding","subtopic":"what puts bonding at risk","stem":"Which maternal factors appear in Box 22.2 as risk factors for delayed or impaired maternal-infant bonding? Select all that apply.","options":["Unintended or undesired pregnancy, and negative feelings about the pregnancy","Primiparity","Cesarean birth, traumatic or complicated birth, and maternal exhaustion or sedation","Depressive symptoms, anxiety, stress, and social isolation","Multiparity with short interpregnancy intervals"],"correct":[0,1,2,3],"sata":true,"why":"Box 22.2's maternal list includes unintended or undesired pregnancy, negative feelings about the pregnancy, primiparity, posttraumatic stress, depressive symptoms, anxiety and stress, pregnancy complications, preterm birth, traumatic or complicated birth, cesarean birth, maternal exhaustion or sedation, social isolation, and substance use.","trap":"(E) is not on the list, and (B) is the one most often missed — it is the first-time mother, not the experienced one, whom the box identifies as at risk.","k":"12ro2oe18jgj2k"},{"topic":"risk factors for impaired bonding","subtopic":"what puts bonding at risk","stem":"Which newborn factors does Box 22.2 name as risks for impaired bonding?","options":["Prematurity with separation from parents such as in the NICU, congenital anomaly or genetic syndrome, neonatal abstinence syndrome, and a difficult or irritable temperament","Large birth weight and rapid feeding","Male sex only","Only congenital anomalies"],"correct":[0],"sata":false,"why":"Box 22.2's newborn list is prematurity with separation, congenital anomaly or genetic syndrome, neonatal abstinence syndrome, and a difficult, irritable temperament.","trap":"(D) narrows a four-item list to its most visible entry, and the temperament item is the one that connects back to mutuality — an irritable infant is harder to bond with, and that is stated rather than implied.","k":"1tw3z1jp9nh0d"},{"topic":"risk factors for impaired bonding","subtopic":"what puts bonding at risk","stem":"How does the chapter say the labor process itself affects bonding?","options":["It has no effect once the infant is born healthy","It significantly affects immediate bonding: long labor, feeling tired or sedated after birth, problems with breastfeeding, preterm birth, and being separated from the infant at birth can delay the development of initial positive feelings toward the newborn","It affects only fathers","It affects bonding only after cesarean birth"],"correct":[1],"sata":false,"why":"\"The labor process significantly affects the immediate bonding of mothers to their newborn infants. Factors such as long labor, feeling tired or sedated after birth, problems with breastfeeding, preterm birth, and being separated from the infant at birth can delay the development of initial positive feelings toward the newborn.\"","trap":"(A) treats a healthy outcome as erasing the experience, and the word \"delay\" is what makes this a nursing problem rather than a permanent one.","k":"1uif83f1m75n5x"},{"topic":"risk factors for impaired bonding","subtopic":"what puts bonding at risk","stem":"Which nursing interventions does the chapter describe for facilitating bonding? Select all that apply.","options":["Encouraging and assisting parents to hold the newborn skin-to-skin immediately after birth and at other times","Providing opportunities for parents to examine their newborn and ask questions about the infant's appearance","Providing privacy for parents with rooming-in to enhance interaction","Heightening parental awareness of the infant's responses and ability to communicate, and bolstering the parent's self-confidence","Limiting parental handling of the infant to reduce overstimulation"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names skin-to-skin holding, opportunities to examine the newborn and ask questions, privacy with rooming-in, heightening awareness of infant communication, and bolstering the parent's self-confidence and ego.","trap":"(E) reverses the entire intervention set. The chapter's concern about overstimulation is about reading the infant's cues within an interaction, not about limiting parental contact.","k":"pqwrul5nnxgj"},{"topic":"early and extended contact","subtopic":"what skin-to-skin does and does not do","stem":"A mother whose infant was taken to the NICU immediately after birth is distressed that she missed the first hour. What should the nurse tell her?","options":["That the critical bonding window has passed","That early contact may facilitate bonding but a delay does not necessarily mean bonding will be inhibited, that no scientific evidence has demonstrated immediate contact is essential for the human parent-child relationship, and that the parent-infant relationship is a process that develops over time","That bonding is now unlikely without intensive intervention","That she should not hold the infant until discharge"],"correct":[1],"sata":false,"why":"\"Although a delay in contact does not necessarily mean that bonding will be inhibited, additional psychologic energy may be necessary to achieve the same effect. To date, no scientific evidence has demonstrated that immediate contact after birth is essential for the human parent-child relationship.\" Parents who could not have early contact \"can be reassured that such contact is not essential for optimal parent-infant interactions,\" and nurses \"need to stress that the parent-infant relationship is a process that develops over time.\"","trap":"(A) is the message an over-enthusiastic reading of skin-to-skin teaching sends, and it adds guilt to a separation the mother did not choose.","k":"1tynfuto4lkn7"},{"topic":"early and extended contact","subtopic":"what skin-to-skin does and does not do","stem":"Given that immediate contact is not essential, why is early skin-to-skin contact still recommended as a standard of care?","options":["Because it facilitates parental affectionate bonding behaviors and has many benefits and a lack of adverse effects","Because it is required for lactation to begin","Because it prevents hypothermia only","It is no longer recommended"],"correct":[0],"sata":false,"why":"\"Early skin-to-skin contact between the newborn and the mother immediately after birth and during the first hour facilitates parental affectionate bonding behaviors and is recommended as a standard of care owing to the many benefits and lack of adverse effects.\" Fathers or co-parents can also hold newborns skin-to-skin, and in many settings the initial bath is delayed to allow time for this.","trap":"(D) takes the honest caveat about the evidence and converts it into abandonment of the practice — the chapter holds both positions at once.","k":"12dja6a1b235zo"},{"topic":"early and extended contact","subtopic":"extended contact and breastfeeding","stem":"What is rooming-in, and for whom does the chapter say extended contact is especially important?","options":["The infant stays in the room with the mother; extended contact should be available for all parents but especially for those at risk for parenting challenges, such as adolescents","The infant stays in the nursery, with scheduled visits","Extended contact is reserved for low-risk mothers","Extended contact is discouraged after cesarean birth"],"correct":[0],"sata":false,"why":"With rooming-in, \"the infant stays in the room with the mother,\" and \"extended contact with the infant should be available for all parents but especially for those at risk for parenting challenges such as adolescents.\"","trap":"(C) inverts the targeting: extended contact matters most for the families with the fewest advantages, which is the opposite of restricting it to the lowest-risk group.","k":"wsp7gydn883s"},{"topic":"early and extended contact","subtopic":"extended contact and breastfeeding","stem":"How does breastfeeding contribute to bonding?","options":["It has no effect on bonding","Breastfeeding enhances bonding, because the release of oxytocin with infant suckling promotes bonding and the development of maternal behavior","It delays bonding by tiring the mother","It contributes only through nutrition"],"correct":[1],"sata":false,"why":"\"Breastfeeding enhances bonding; the release of oxytocin with infant suckling promotes bonding and the development of maternal behavior.\"","trap":"(D) reduces feeding to calories, and it is the same oxytocin release that contracts the uterus — one hormone doing two jobs at once.","k":"d25zumlcn268"},{"topic":"the senses in parent-infant interaction","subtopic":"eye contact and the en face position","stem":"What is the en face position, and what are its two defining features?","options":["The parent's face and the infant's face approximately 8 inches apart and on the same plane","The infant held facing away from the parent","The parent's face 18 inches from the infant's, at any angle","The infant held over the parent's shoulder"],"correct":[0],"sata":false,"why":"\"In this position, the parent's face and the infant's face are approximately 8 inches apart and on the same plane.\" Table 22.2 lists assuming the en face position among the facilitating parental behaviors.","trap":"(C) keeps one feature and loses the other. Both the distance and the shared plane are part of the definition, and the same plane is what makes eye contact possible.","k":"6apdxz1ilupt"},{"topic":"the senses in parent-infant interaction","subtopic":"eye contact and the en face position","stem":"Which nursing actions promote eye contact between parents and newborn? Select all that apply.","options":["Positioning the infant on the mother's abdomen or chest with the mother's and the infant's faces on the same plane immediately after birth","Dimming the lights, which encourages the infant's eyes to open","Delaying instillation of prophylactic antibiotic eye ointment until the infant and parents have had some time together in the first hour after birth","Waking the infant for interaction whenever the parents are present","Omitting the eye prophylaxis entirely"],"correct":[0,1,2],"sata":true,"why":"The chapter names all three actions: the positioning on the same plane, dimming the lights, and delaying the eye ointment \"until the infant and parents have had some time together in the first hour after birth.\"","trap":"(E) turns a timed delay into an omission of required newborn care, and (D) is listed in Table 22.2 as an inhibiting parental behavior — \"wakes infant when infant is sleeping.\"","k":"t6ejc31cv3as1"},{"topic":"the senses in parent-infant interaction","subtopic":"voice, scent, and rhythm","stem":"A newborn waves his arms, lifts his head, and kicks his legs while his mother speaks to him. What is this called?","options":["Biorhythmicity","Entrainment — newborns move in time with the structure of adult speech, seemingly dancing in tune to a parent's voice","Reciprocity","An exaggerated motor reflex"],"correct":[1],"sata":false,"why":"\"Newborns move in time with the structure of adult speech, which is termed entrainment.\" They \"wave their arms, lift their heads, and kick their legs, seemingly 'dancing in tune' to a parent's voice. Culturally determined rhythms of speech are ingrained in the infant long before they use spoken language to communicate.\"","trap":"(A) is the related but different concept: \"the fetus is in tune with the mother's natural rhythms, referred to as biorhythmicity, such as her heartbeat,\" and after birth the mother's heartbeat or a recording of one can soothe a crying infant.","k":"1r3za421xf0luo"},{"topic":"the senses in parent-infant interaction","subtopic":"voice, scent, and rhythm","stem":"Which statements about the newborn's senses and the parents' use of them does the chapter support? Select all that apply.","options":["Parents wait tensely for the first cry, and once it has reassured them of the infant's health, they begin comforting behaviors","Infants respond to higher-pitched voices and can distinguish the mother's voice from others soon after birth","Mothers note that each infant has a unique scent","Infants learn rapidly to distinguish the scent of their own mother's breast milk","Newborns cannot distinguish one voice from another until about 3 months"],"correct":[0,1,2,3],"sata":true,"why":"The chapter describes the tense wait for the first cry and the comforting that follows, the infant's response to higher-pitched voices and recognition of the mother's voice soon after birth, mothers' comments on each infant's unique scent, and infants' rapid learning of their own mother's milk scent.","trap":"(E) contradicts the voice finding directly, and it is the sort of claim that would discourage parents from talking to a newborn who is already listening.","k":"1ngfrsqk2fljo"},{"topic":"reciprocity synchrony and responsivity","subtopic":"the exchange and the fit","stem":"How does the chapter distinguish reciprocity from synchrony?","options":["Reciprocity is a type of body movement or behavior that provides the observer with cues, and the exchange often takes several weeks to develop; synchrony refers to the fit between the infant's cues and the parent's response","Reciprocity is the fit; synchrony is the exchange","They are interchangeable terms","Reciprocity applies only to feeding and synchrony only to play"],"correct":[0],"sata":false,"why":"\"Reciprocity is a type of body movement or behavior that provides the observer with cues,\" and it \"often takes several weeks to develop with a new infant.\" \"Synchrony refers to the 'fit' between the infant's cues and the parent's response.\"","trap":"(B) swaps them. Using the chapter's own metaphor: reciprocity is that the ball comes back, and synchrony is that it lands well.","k":"18pw4dt1n3jq4j"},{"topic":"reciprocity synchrony and responsivity","subtopic":"the exchange and the fit","stem":"The chapter uses two metaphors for reciprocal interaction. What are they, and what does synchrony achieve?","options":["Contingency, because the parent's response is contingent on the infant's cue, and serve and return, as the infant serves a cue and the parent returns it; synchrony happens when parents effectively and appropriately return their infants' serves, resulting in more prolonged engagement linked to healthy brain development","Mirroring and modeling; synchrony produces faster weight gain","Attachment and bonding; synchrony produces earlier walking","Feedback and reinforcement; synchrony has no demonstrated outcome"],"correct":[0],"sata":false,"why":"Reciprocity \"has also been called 'contingency,' as the parent's response is contingent on the infant's cue,\" and \"the metaphor of 'serve and return' has been used to describe the interactive behavior as the infant serves a cue and the parent responds by returning the cue, as in a tennis game.\" And: \"synchrony happens when parents are effectively and appropriately returning their infants' serves, resulting in more prolonged engagement that has been linked to healthy brain development.\"","trap":"(D) strips the outcome, and the brain-development link is why this is taught as more than a pleasant interaction.","k":"1r3a8yx1r2akcj"},{"topic":"reciprocity synchrony and responsivity","subtopic":"reading the infant's cues","stem":"During face-to-face play, an infant averts her eyes and yawns. What should the parent do?","options":["Increase stimulation to re-engage her","Decrease the active response, since the infant can alternate the gaze voluntarily and looks away when understimulated or overstimulated; if the parent continues to stimulate the infant, the infant may again become fussy","End the interaction permanently","Wake the infant if she falls asleep"],"correct":[1],"sata":false,"why":"The chapter's worked example ends exactly here: \"the infant then averts the eyes and yawns; the mother decreases her active response. If the parent continues to stimulate the infant, the infant may again become fussy.\" The infant \"is able to alternate the gaze voluntarily, looking away from the parent's face when understimulated or overstimulated.\"","trap":"(A) reads gaze aversion as a failure to engage rather than as a message, and the chapter notes that this sensitivity \"is especially important when interacting with preterm infants.\"","k":"1ruce9ay7kyvc"},{"topic":"reciprocity synchrony and responsivity","subtopic":"reading the infant's cues","stem":"A mother talks and smiles continuously while her infant is actively sucking at the breast. What should the nurse teach?","options":["To continue, since stimulation during feeding promotes bonding","To reserve stimulation for pauses in sucking activity and not to talk or smile excessively while the infant is sucking, because the infant will stop feeding to interact with her","To feed in silence at all times","To feed only when the infant is drowsy"],"correct":[1],"sata":false,"why":"\"Mothers learn to reserve stimulation for pauses in sucking activity and not to talk or smile excessively while the infant is sucking because the infant will stop feeding to interact with her.\"","trap":"(A) is the intuitive praise a nurse would give, which is what makes this counterintuitive rule worth teaching. (C) overcorrects — the pauses are exactly when interaction belongs.","k":"1hg8ab2jf13c8"},{"topic":"reciprocity synchrony and responsivity","subtopic":"reading the infant's cues","stem":"In which infant state does the chapter say interaction is most successful, and what makes it difficult?","options":["The quiet alert state, which is one of the most difficult of the sleep-wake states to maintain and occurs most often during a feeding or in face-to-face play","Deep sleep, which is the calmest state","Active crying, which shows the most engagement","Drowsiness, which is the easiest to sustain"],"correct":[0],"sata":false,"why":"For modulation of rhythm, \"the infant must be in the quiet alert state, one of the most difficult of the sleep-wake states to maintain. The alert state occurs most often during a feeding or in face-to-face play.\" Nurses \"teach parents to recognize the alert state and to engage in interactions when the infant is alert and receptive.\"","trap":"(C) treats crying as communication to be answered with play, when the chapter's own cue list puts \"pouting or crying, arching of the back, and general squirming\" at the end of an interaction.","k":"ydnosmgzkmv0"},{"topic":"reciprocity synchrony and responsivity","subtopic":"reading the infant's cues","stem":"What is infantilizing speech, and how does the chapter distinguish it from baby talk?","options":["Infantilizing speech means slowing the tempo, speaking loudly and rhythmically, and emphasizing keywords with repeated phrases; it does not mean using baby talk, which involves distortion of sounds","They are the same thing","Infantilizing speech means distorting sounds to match the infant's babbling","Both are discouraged"],"correct":[0],"sata":false,"why":"The parent's behavioral repertoire includes infantilizing speech — \"slowing the tempo, speaking loudly and rhythmically, and emphasizing keywords,\" with phrases repeated — and the chapter draws the line: \"infantilizing does not mean using baby talk, which involves distortion of sounds.\"","trap":"(B) collapses a distinction the chapter makes deliberately, and it is the difference between a speech pattern that supports language and one that distorts it.","k":"9b9d5z1r99sqd"},{"topic":"attachment quality and transition to parenthood","subtopic":"what makes attachment secure","stem":"Which statements about the quality of attachment does the chapter support? Select all that apply.","options":["All infants attach to their parents, but the quality varies from secure to insecure and disorganized","Secure attachment is based on a solid foundation of reciprocal and synchronous serve and return interactions","The parent fosters secure attachment by staying close to the infant and responding consistently to the infant's bids for attention that indicate need","The quality of attachment can be assessed during infancy, beginning at about 9 months of age","Only infants with responsive parents form attachments at all"],"correct":[0,1,2,3],"sata":true,"why":"\"While all infants attach to their parents, the quality of attachment varies from secure to insecure and disorganized.\" Secure attachment is built on reciprocal and synchronous serve and return interactions, with the parent staying close and responding consistently, providing \"a secure base for the infant's exploration and a safe haven from distress.\" Quality can be assessed from about 9 months, and \"secure attachment is linked to a host of optimal physical and mental health outcomes over the lifespan.\"","trap":"(E) confuses whether attachment forms with how good it is — the attachment system \"maintains the proximity of the infant to the caregiver, thus helping to ensure the survival of the otherwise helpless infant,\" and it operates regardless.","k":"sg64ib1rshbw5"},{"topic":"attachment quality and transition to parenthood","subtopic":"what makes attachment secure","stem":"How does the current perspective frame the transition to parenthood?","options":["As a major life crisis","As a developmental transition — a time of disorder and disequilibrium as well as satisfaction, typically more challenging for first-time parents, and for the majority of new parents an opportunity rather than a time of danger","As a period of uniform joy","As a transition that affects only the mother"],"correct":[1],"sata":false,"why":"\"The current perspective is that parenthood is a developmental transition rather than a major life crisis,\" and it is \"a time of disorder and disequilibrium, as well as satisfaction,\" \"typically more challenging for first-time parents.\" The chapter's summary: \"For the majority of new parents, the transition to parenthood is an opportunity rather than a time of danger.\"","trap":"(D) misses the chapter's note that \"the transition can be more difficult for fathers or co-parents. They often feel deprived when the mothers, who are also experiencing stress, cannot provide their usual level of support.\"","k":"45gs6q1tk9nj0"},{"topic":"attachment quality and transition to parenthood","subtopic":"mercer's stages","stem":"A mother 6 weeks after birth is developing her own style of mothering as she learns to respond to her infant's cues. Which of Mercer's stages of becoming a mother is this?","options":["Stage 1, during pregnancy","Stage 2, beginning with birth","Stage 3, from 2 weeks to 4 months after birth, in which the mother is individualizing the maternal role","Stage 4, from about 4 months and beyond"],"correct":[2],"sata":false,"why":"In stage 3, \"2 weeks to 4 months after birth,\" the mother \"is individualizing the maternal role, developing her own unique style of mothering as she learns to respond to infant cues.\" Stage 4, from about 4 months and beyond, is \"incorporating the maternal identity into her self-system and gaining competence in her role.\"","trap":"(B) is the stage of learning from others and professionals, which ends before the individualizing work begins. The chapter also notes that \"the time frames ... vary based on each individual mother and family; the most influential factors are the mother's relationships with her partner and with her baby.\"","k":"123z7hhswov1r"},{"topic":"attachment quality and transition to parenthood","subtopic":"mercer's stages","stem":"What happens in stage 1 of becoming a mother, and what does this imply about when the process starts?","options":["It occurs during pregnancy — adjusting to physical, psychologic, and social aspects, exploring expectations of the maternal role, seeking information from others, and visualizing herself as a mother — so the process starts before the birth","It begins at birth with the first feeding","It begins at discharge","It begins when the infant first smiles socially"],"correct":[0],"sata":false,"why":"Stage 1 occurs \"during pregnancy\" and involves \"adjusting to the physical, psychologic, and social aspects, exploring expectations of the maternal role, seeking information from others, and visualizing herself as a mother.\"","trap":"(B) starts the process at birth, which is the same error as dating bonding from birth — both begin in pregnancy, which is what makes prenatal preparation part of the work.","k":"wpcbmu5tvgs8"},{"topic":"social influences on parenting","subtopic":"support","stem":"A fatigued second-time mother is struggling in the first weeks. Which kind of support does the chapter say will help her more, and why?","options":["General support, which addresses feeling loved, respected, and valued","Situation-specific support, which relates to practical concerns such as physical needs and childcare — moods and fatigue in the postpartum period can be helped more by situation-specific support from family and friends than by general support","Professional counseling only","Neither type has been shown to help"],"correct":[1],"sata":false,"why":"\"General support addresses feeling loved, respected, and valued. Situation-specific support relates to practical concerns such as physical needs and childcare,\" and the mother's \"moods and fatigue in the postpartum period can be helped more by situation-specific support from family and friends than by general support.\" The chapter's example: \"the practical support of a grandparent bathing the infant can help lessen a second-time mother's feelings of loss by providing her time to be with her firstborn child.\"","trap":"(A) is the reassurance a nurse offers naturally, and the chapter says the practical kind does more for exactly this problem.","k":"1n7dij54r7g57"},{"topic":"social influences on parenting","subtopic":"support","stem":"Which statements about social support networks does the chapter support? Select all that apply.","options":["Social support is strongly related to positive adaptation by new parents, including adolescent parents","The type and satisfaction of support seem to be more important than the total number of support network members","Sometimes a large network can cause problems because it results in conflicting advice from numerous people","Grandparents or in-laws are most appreciated when they assist with household responsibilities and do not intrude into the parents' privacy or judge them critically","The larger the support network, the better the adaptation"],"correct":[0,1,2,3],"sata":true,"why":"The chapter states each of these, and notes that support spans \"both in-person and online settings,\" and that \"through seeking help within the social network, new mothers learn culturally valued practices and develop role competency.\"","trap":"(E) is contradicted twice — by the statement that type and satisfaction matter more than number, and by the conflicting-advice problem.","k":"11a1p5mqez070"},{"topic":"social influences on parenting","subtopic":"siblings and grandparents","stem":"A 3-year-old begins wetting the bed and hitting the new baby after the mother returns home. How should the nurse interpret this, and what should the parents be taught?","options":["As regression and aggression, which are expected negative reactions, with sibling jealousy common once the initial excitement is over; parents should allow children to interact at their own pace rather than forcing them to interact","As a behavioral disorder requiring evaluation","As evidence of poor parenting","As a sign the child should be separated from the infant"],"correct":[0],"sata":false,"why":"Negative sibling behaviors include \"regression in toileting and sleep habits, aggression toward the infant, and increased seeking of attention and whining,\" and \"jealousy (sibling rivalry) is common once the initial excitement of having a new infant in the home is over.\" The chapter's pacing rule: \"the adjustment of older children to a newborn takes time, and parents should allow children to interact at their own pace rather than forcing them to interact. To expect a young child to accept and love a rival for the parents' affection assumes an unrealistic level of maturity.\"","trap":"(B) pathologizes a reaction the chapter describes as expected, and reactions arise from three sources it names: temporary separation from the mother, changes in the parents' behavior, and the infant coming home.","k":"1v0jl2ei9909k"},{"topic":"social influences on parenting","subtopic":"siblings and grandparents","stem":"Which strategies does the chapter's teaching box give for facilitating sibling acceptance of a new baby? Select all that apply.","options":["Move the child to a bed, if still sleeping in a crib, at least 2 months before the infant is due","When the child arrives at the birth facility, make sure your arms are open to embrace the child, and do not force interaction between the child and the infant","Have someone else carry the infant from the car when going home so that you can hug the child first","Arrange a special time for the child to be alone with each parent, and praise the child for acting age appropriately","Keep the child away during infant feeding times to avoid jealousy"],"correct":[0,1,2,3],"sata":true,"why":"The teaching box includes the prenatal crib-to-bed move at least 2 months ahead, taking the child on a prenatal visit, open arms at the birth facility without forcing interaction, a gift for the child, having someone else carry the infant into the house, special one-on-one time, and praising age-appropriate behavior \"so that being an infant does not seem better than being older.\"","trap":"(E) reverses the box's own instruction: \"do not exclude the child during infant feeding times.\" Excluding the child during feeds makes the infant's care look like the reason for the child's loss of access.","k":"1lpva69nvt9y3"},{"topic":"social influences on parenting","subtopic":"siblings and grandparents","stem":"What does the chapter describe as the primary role of grandparents?","options":["To take over infant care so the parents can rest","To support, nurture, and empower their child in his or her parenting role, acknowledging that things have changed since they first became parents","To advise the parents on correct techniques","To remain uninvolved during the first months"],"correct":[1],"sata":false,"why":"\"A primary role of the grandparents is to support, nurture, and empower their child in his or her parenting role. Grandparents must acknowledge that things have changed since they first became parents.\" Becoming a grandparent is \"a time of transition as roles and relationships change,\" with joy and anticipation \"often intermingled with some degree of anxiety and uncertainty.\"","trap":"(C) is the behavior the support section identifies as unwelcome — grandparents are most appreciated when they help practically and do not judge critically.","k":"ws5tik188vjq2"},{"topic":"social influences on parenting","subtopic":"siblings and grandparents","stem":"How do socioeconomic conditions and personal aspirations affect the transition to parenthood, according to the chapter?","options":["Socioeconomic conditions often determine access to available resources, and financial concerns can interfere with parents' ability to focus attention on the infant; unresolved resentment when parenthood blocks personal or career plans may result in indifference and neglect or in excessive concerns with impossibly high standards","Financial stress has no effect on parenting behavior","Career ambitions always improve parenting","Only the mother's aspirations matter"],"correct":[0],"sata":false,"why":"\"Socioeconomic conditions often determine access to available resources,\" and \"concerns over financial issues can interfere with the ability of parents to focus their attention on the infant.\" When parenthood \"interferes with or blocks their plans for personal freedom or career advancement,\" unresolved resentment \"may result in indifference and neglect of the infant or in excessive concerns,\" with impossibly high standards set.","trap":"(B) treats finances as outside the nurse's scope, when the chapter's response is concrete: give parents opportunities to express feelings to an objective listener, discuss measures to permit personal growth, refer to support groups, and advocate for family-friendly work policies.","k":"gox0a3j53ui5"}];
+const TITLE = "Chapter 22 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 22";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

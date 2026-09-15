@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 34 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 34</div><h1>Chapter 34 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">classifying newborns by size and gestational age</span><span class="chip t2">classification by weight</span></div>
+<div class="stem">1. How does the chapter define low birth weight, very low birth weight, and extremely low birth weight?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Less than 2500 g, less than 1500 g, and less than 1000 g respectively, with low birth weight defined regardless of gestational age</li><li class="fopt"><span class="mk">B</span>Less than 3000 g, less than 2000 g, and less than 1500 g</li><li class="fopt"><span class="mk">C</span>Less than 2500 g only for preterm infants</li><li class="fopt"><span class="mk">D</span>The categories apply only before 37 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A low-birth-weight infant is &quot;an infant whose birth weight is less than 2500 g (5.5 lb.), regardless of gestational age&quot;; very low birth weight is &quot;less than 1500 g (3.3 lb.)&quot;; extremely low birth weight is &quot;less than 1000 g (2.2 lb.).&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) attaches a gestational-age condition the definition explicitly rejects, and that phrase is what allows a term growth-restricted infant and a preterm appropriately grown infant both to be low birth weight for entirely different reasons.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">classifying newborns by size and gestational age</span><span class="chip t2">classification by weight</span></div>
+<div class="stem">2. An infant's birth weight falls below the 10th percentile on intrauterine growth curves, with head circumference within normal parameters. How is this classified?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Small for gestational age with symmetric intrauterine growth restriction</li><li class="fopt right"><span class="mk">&#10003;</span>Small for gestational age with asymmetric growth restriction, in which head circumference remains within normal parameters while birth weight falls below the 10th percentile</li><li class="fopt"><span class="mk">C</span>Appropriate for gestational age</li><li class="fopt"><span class="mk">D</span>Large for gestational age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Small for gestational age describes &quot;an infant whose rate of intrauterine growth was slow and whose birth weight falls below the 10th percentile.&quot; Asymmetric growth restriction is &quot;growth restriction in which head circumference remains within normal parameters while birth weight falls below the 10th percentile,&quot; while symmetric restriction is &quot;growth restriction in which weight, length, and head circumference all are affected.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the pattern in which everything is small, which points to a chronic, early insult rather than a late one — the same distinction Chapter 26 draws antenatally.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">classifying newborns by size and gestational age</span><span class="chip t2">classification by gestational age</span></div>
+<div class="stem">3. Which gestational-age boundaries does Box 34.1 give? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Preterm is born before 37 0/7 weeks, and late preterm is 34 0/7 through 36 6/7 weeks</li><li class="fopt right"><span class="mk">&#10003;</span>Early term is 37 0/7 through 38 6/7 weeks</li><li class="fopt right"><span class="mk">&#10003;</span>Full term is 39 0/7 through 40 6/7 weeks</li><li class="fopt right"><span class="mk">&#10003;</span>Late term is 41 0/7 through 41 6/7 weeks, and postterm is 42 0/7 weeks or more</li><li class="fopt"><span class="mk">E</span>Postterm is 41 weeks or more</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 34.1 gives the complete ladder: preterm before 37 0/7, late preterm 34 0/7 through 36 6/7, early term 37 0/7 through 38 6/7, full term 39 0/7 through 40 6/7, late term 41 0/7 through 41 6/7, and postterm 42 0/7 or more.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) moves the postterm boundary a week early, which would reclassify every late-term infant. This is the same ladder Chapter 14 gives, which is why the boundaries are worth holding once.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">classifying newborns by size and gestational age</span><span class="chip t2">classification by gestational age</span></div>
+<div class="stem">4. What does the chapter give as the preterm birth rate in the United States in 2021?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>10.48%, the highest rate since 2007, with early preterm births below 34 weeks at 2.81% and late preterm births at 7.67%</li><li class="fopt"><span class="mk">B</span>5% overall</li><li class="fopt"><span class="mk">C</span>15% overall, declining since 2007</li><li class="fopt"><span class="mk">D</span>10.48%, the lowest rate since 2007</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The preterm birth rate in the United States in 2021 was 10.48%, the highest rate since 2007,&quot; with &quot;the birth rate for early preterm infants (&lt; 34 weeks gestation) was 2.81%, the highest since 2011; for LPIs (34 0/7 to 36 6/7 weeks gestation), the rate was 7.67%, the highest since 2007.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the trend, and the direction matters — the chapter presents these as rising, not falling.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">classifying newborns by size and gestational age</span><span class="chip t2">classification by gestational age</span></div>
+<div class="stem">5. Two infants both weigh 2000 g: one is preterm and one is postterm. What principle does the chapter give?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Their potential problems and care needs differ, and in general the closer infants are to term in gestational age and birth weight, the easier their adjustment to the external environment</li><li class="fopt"><span class="mk">B</span>Their care needs are identical because their weights are identical</li><li class="fopt"><span class="mk">C</span>The postterm infant is always sicker</li><li class="fopt"><span class="mk">D</span>Weight alone determines risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The potential problems and care needs of the preterm infant weighing 2000 g (4.4 lb.) differ from those of the term or postterm infant of equal weight,&quot; and &quot;in general, the closer infants are to term in relation to gestational age and birth weight, the easier is their adjustment to the external environment.&quot; Preterm infants &quot;are at risk because their organ systems are immature and they lack adequate nutrient reserves.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the reasoning that would treat two 2000-g infants the same, when one has immature organs and the other has mature organs and a failing placenta behind it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">respiratory function in the preterm infant</span><span class="chip t2">why the preterm lung fails</span></div>
+<div class="stem">6. Which structural deficits does the chapter list as putting the preterm infant at respiratory risk? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A decreased number of functional alveoli and deficient surfactant levels</li><li class="fopt right"><span class="mk">&#10003;</span>A smaller lumen in the airways with greater collapsibility or obstruction of respiratory passages</li><li class="fopt right"><span class="mk">&#10003;</span>Insufficient calcification of the bony thorax and a weak or absent gag reflex</li><li class="fopt right"><span class="mk">&#10003;</span>Immature and friable capillaries in the lungs, with a greater distance between functional alveoli and the capillary bed</li><li class="fopt"><span class="mk">E</span>Excessive alveolar surface area relative to body size</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists eight deficits: decreased functional alveoli, deficient surfactant, a smaller airway lumen, greater collapsibility or obstruction, insufficient calcification of the bony thorax, a weak or absent gag reflex, immature and friable pulmonary capillaries, and a greater distance between alveoli and the capillary bed.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the first deficit. Fewer alveoli and a longer diffusion distance are what make gas exchange inefficient, and every later complication in the chapter traces back to this list.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">respiratory function in the preterm infant</span><span class="chip t2">why the preterm lung fails</span></div>
+<div class="stem">7. What is the normal respiratory rate for a newborn, and what are the early signs of respiratory distress?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>30 to 60 times per minute with significant reliance on the abdominal muscles; early signs are chest wall retractions, flaring of the nares, and expiratory grunting</li><li class="fopt"><span class="mk">B</span>12 to 20 per minute; early signs are bradypnea and apnea</li><li class="fopt"><span class="mk">C</span>60 to 80 per minute; the first sign is generalized cyanosis</li><li class="fopt"><span class="mk">D</span>30 to 60 per minute; the first sign is seesaw breathing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Infants normally breathe between 30 and 60 times/min, relying significantly on their abdominal muscles.&quot; Early signs of distress are &quot;chest wall retractions, flaring of the nares, and expiratory grunting,&quot; worsening to &quot;seesaw breathing patterns, retractions, flaring of the nares, expiratory grunting, apneic spells,&quot; with color progressing &quot;from pink to circumoral cyanosis and then to generalized cyanosis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a later sign as the first, which is the difference between intervening early and intervening after decompensation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">respiratory function in the preterm infant</span><span class="chip t2">breathing patterns and color</span></div>
+<div class="stem">8. A preterm infant has pauses in breathing lasting up to 10 seconds followed by rapid respirations. How is this classified, and how does it differ from apnea?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Periodic breathing, a pattern commonly seen in preterm infants; apnea is a cessation of breathing of 20 seconds or longer, or a shorter pause accompanied by bradycardia, cyanosis, or hypotonia</li><li class="fopt"><span class="mk">B</span>Apnea, requiring immediate resuscitation</li><li class="fopt"><span class="mk">C</span>Normal newborn breathing at any gestational age</li><li class="fopt"><span class="mk">D</span>Periodic breathing, which is always pathologic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Preterm infants &quot;exhibit up to 10-second respiratory pauses followed by compensatory rapid respirations&quot; — periodic breathing, &quot;a respiratory pattern commonly seen in preterm infants.&quot; Apnea is &quot;a cessation of breathing of 20 seconds or longer, or a shorter pause accompanied by bradycardia, cyanosis, or hypotonia.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats a common pattern as an emergency, and the discriminator is not only the 20-second clock but the accompanying findings — a 12-second pause with bradycardia is apnea.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">respiratory function in the preterm infant</span><span class="chip t2">breathing patterns and color</span></div>
+<div class="stem">9. A newborn has bluish hands and feet but a pink trunk and face. What does the Nursing Alert direct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That this is acrocyanosis, a normal finding in the neonate, while central cyanosis indicates an underlying problem requiring immediate evaluation</li><li class="fopt"><span class="mk">B</span>That both findings are normal</li><li class="fopt"><span class="mk">C</span>That this requires immediate intubation</li><li class="fopt"><span class="mk">D</span>That acrocyanosis indicates cardiac disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Nursing Alert states: &quot;Acrocyanosis is a normal finding in the neonate, but central cyanosis indicates an underlying problem that requires immediate evaluation.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) collapses the distinction that decides whether to act. The location of the cyanosis, not its presence, is what separates a normal transitional finding from an emergency.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">respiratory function in the preterm infant</span><span class="chip t2">breathing patterns and color</span></div>
+<div class="stem">10. Which findings suggest hypovolemia and shock in a preterm infant?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hypotension, capillary refill slower than 3 seconds, continued respiratory distress despite oxygen and ventilation, and reduced urine output</li><li class="fopt"><span class="mk">B</span>Hypertension and bounding pulses</li><li class="fopt"><span class="mk">C</span>Bradycardia alone</li><li class="fopt"><span class="mk">D</span>Acrocyanosis with brisk capillary refill</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names hypovolemia and shock presenting as &quot;hypotension, slow (&gt;3 seconds) capillary refill, continued respiratory distress despite the provision of oxygen and ventilation, and reduced urine output.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is one component of several conditions in this chapter — it appears in apnea, in cold stress, and here — and it means nothing on its own.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cold stress in the preterm infant</span><span class="chip t2">why heat is lost</span></div>
+<div class="stem">11. Which factors put the preterm infant at high risk for heat loss? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A large surface area for body weight with minimal insulating subcutaneous fat</li><li class="fopt right"><span class="mk">&#10003;</span>Limited stores of brown fat, an internal source for heat generation present in normal term infants</li><li class="fopt right"><span class="mk">&#10003;</span>Fragile capillaries and decreased or absent reflex control of skin capillaries</li><li class="fopt right"><span class="mk">&#10003;</span>Inadequate muscle mass activity and poor muscle tone, leaving more body surface exposed, with an immature temperature regulation center in the brain</li><li class="fopt"><span class="mk">E</span>Excessive shivering that depletes glucose stores</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists a large surface area for body weight, minimal subcutaneous fat, limited brown fat stores, fragile capillaries, decreased or absent reflex capillary control, inadequate muscle mass activity, poor muscle tone, and an immature temperature regulation center. &quot;Because of their large body surface in relation to their weight, preterm infants are at high risk for heat loss.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) attributes an adult mechanism to a newborn. Shivering appears in Box 34.2 only for &quot;mature infants in presence of severe hypothermia&quot; — it is a late finding, not a mechanism.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cold stress in the preterm infant</span><span class="chip t2">why heat is lost</span></div>
+<div class="stem">12. What is a neutral thermal environment, and how is it achieved?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The environmental temperature at which oxygen consumption is minimal but adequate to maintain body temperature, achieved with a radiant warmer bed or an incubator with control settings</li><li class="fopt"><span class="mk">B</span>The temperature at which the infant shivers least</li><li class="fopt"><span class="mk">C</span>A room temperature of 20°C</li><li class="fopt"><span class="mk">D</span>The temperature at which the infant's skin feels warm to touch</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The goal of thermoregulation is to create a neutral thermal environment (NTE), which is the environmental temperature at which oxygen consumption is minimal but adequate to maintain body temperature,&quot; achieved with &quot;a radiant warmer bed or ... an incubator with control settings.&quot; The nurse works against four mechanisms of heat transfer: convection, conduction, radiation, and evaporation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) substitutes a subjective check for a physiologic definition, and the definition is what explains why the goal is oxygen consumption rather than comfort.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cold stress in the preterm infant</span><span class="chip t2">the cold-stress cycle and its signs</span></div>
+<div class="stem">13. How does the chapter describe the cold-stress cycle in a preterm infant?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The infant tries to conserve heat and burns more calories, causing metabolism to increase and further stressing the already compromised neonate, and preterm infants have few reserves in terms of calories and fat stores</li><li class="fopt"><span class="mk">B</span>The infant shivers, generating enough heat to compensate</li><li class="fopt"><span class="mk">C</span>Metabolism decreases, conserving energy</li><li class="fopt"><span class="mk">D</span>Cold stress affects only temperature, not metabolism</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Because preterm infants have few reserves in terms of calories and fat stores, they can easily lose heat and develop hypothermia. Cold stress results when the infant tries to conserve heat and burns more calories, causing the metabolism to increase, further stressing the already compromised neonate.&quot; The chapter calls prevention &quot;a critical nursing role.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the metabolic direction, which would make cold stress an energy-sparing state rather than the energy-consuming spiral that produces hypoglycemia and acidosis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cold stress in the preterm infant</span><span class="chip t2">the cold-stress cycle and its signs</span></div>
+<div class="stem">14. Which findings appear in Box 34.2 as signs of hypothermia or cold stress? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Apnea and bradycardia</li><li class="fopt right"><span class="mk">&#10003;</span>Hypoglycemia, hypoxia, and metabolic acidosis</li><li class="fopt right"><span class="mk">&#10003;</span>Central cyanosis, hypotonia, lethargy, and irritability</li><li class="fopt right"><span class="mk">&#10003;</span>Feeding intolerance with abdominal distention, emesis, and increased residuals</li><li class="fopt"><span class="mk">E</span>A low axillary temperature as the earliest sign</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 34.2 lists apnea, bradycardia, central cyanosis, coagulation defects such as pulmonary hemorrhage, hypoglycemia, hypotonia, hypoxia, feeding intolerance, increased metabolic rate, irritability, lethargy, metabolic acidosis, peripheral vasoconstriction, poor weight gain with chronic hypothermia, and shivering in mature infants with severe hypothermia.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) names the finding that is conspicuously absent from the box as an early sign. The infant compensates first by burning glucose and oxygen, so the metabolic consequences appear before the temperature falls.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cold stress in the preterm infant</span><span class="chip t2">the cold-stress cycle and its signs</span></div>
+<div class="stem">15. Which mechanisms of heat transfer does the nurse work against in thermoregulating a preterm infant?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Convection, conduction, radiation, and evaporation</li><li class="fopt"><span class="mk">B</span>Convection and conduction only</li><li class="fopt"><span class="mk">C</span>Radiation and shivering</li><li class="fopt"><span class="mk">D</span>Evaporation only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names all four: &quot;convection, conduction, radiation, and evaporation.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) drops the two that dominate in a delivery room — evaporation from wet skin and radiation to cold surfaces — and those are the two the first minutes of care are built around.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">retinopathy of prematurity</span><span class="chip t2">when the retina is vulnerable</span></div>
+<div class="stem">16. When do retinal vessels develop, and when is the retina no longer susceptible to retinopathy of prematurity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They begin to form in utero at approximately 16 weeks in response to vascular endothelial growth factor and continue until maturity at approximately 42 to 43 weeks after conception; once the retina is completely vascularized, the vessels are not susceptible to ROP</li><li class="fopt"><span class="mk">B</span>They form entirely in the first trimester</li><li class="fopt"><span class="mk">C</span>They mature at 37 weeks</li><li class="fopt"><span class="mk">D</span>The retina remains susceptible throughout childhood</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The normal retinal vessels begin to form in utero at approximately 16 weeks in response to the release of vascular endothelial growth factor (VEGF). These vessels continue to develop until they reach maturity at approximately 42 to 43 weeks after conception. Once the retina is completely vascularized, the retinal vessels are not susceptible to ROP.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) ends the vulnerable window at term, when it actually extends past it — which is why screening continues until vascularization is complete rather than until discharge.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">retinopathy of prematurity</span><span class="chip t2">when the retina is vulnerable</span></div>
+<div class="stem">17. What mechanism does the chapter propose for the injury in retinopathy of prematurity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The mechanism is unclear; fluctuating blood oxygen levels may temporarily stop the release of factors responsible for retinal vascularization, and as retinal tissue becomes hypoxic, vascular growth factors are released, producing neovascularization with capillary hemorrhages, fibrotic scarring, and possible retinal detachment</li><li class="fopt"><span class="mk">B</span>Direct oxygen toxicity burns the retina</li><li class="fopt"><span class="mk">C</span>Bright light in the nursery damages the retina</li><li class="fopt"><span class="mk">D</span>The mechanism is fully understood and is purely genetic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The mechanism of injury in ROP is unclear. Fluctuating blood oxygen levels may temporarily stop the release of factors responsible for vascularization of the retina. As the retinal tissue becomes hypoxic, the release of vascular growth factors occurs, and neovascularization (development of new blood vessels) occurs in the retina and vitreous, with capillary hemorrhages, fibrotic scarring, and possible retinal detachment.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the simplified version taught for decades, and the word that matters in the real mechanism is *fluctuating* — it is the swing rather than the level alone that the nursing intervention targets.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">retinopathy of prematurity</span><span class="chip t2">screening and prevention</span></div>
+<div class="stem">18. When does ophthalmologic examination for retinopathy of prematurity begin, and how long does it continue?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>At 31 to 32 weeks, continuing until retinal vascularization is complete</li><li class="fopt"><span class="mk">B</span>At birth, with a single examination</li><li class="fopt"><span class="mk">C</span>At discharge only</li><li class="fopt"><span class="mk">D</span>At 6 months of age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The infant is examined by an ophthalmologist beginning at 31 to 32 weeks with examinations continuing until retinal vascularization is complete.&quot; The entire disease process in severe cases &quot;can take several months to evolve.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats a months-long evolving process as a one-time finding, and a normal early examination says nothing about what happens over the following weeks.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">retinopathy of prematurity</span><span class="chip t2">screening and prevention</span></div>
+<div class="stem">19. What does the chapter identify as the key to managing retinopathy of prematurity, and what treatments exist?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Prevention and early detection, with blood oxygen levels closely monitored and significant fluctuations avoided, oxygen and ventilator settings adjusted to keep saturations within acceptable levels; treatments are laser photocoagulation or intraocular injections of anti-VEGF medications</li><li class="fopt"><span class="mk">B</span>Treatment with corticosteroids</li><li class="fopt"><span class="mk">C</span>Immediate surgery at diagnosis in every case</li><li class="fopt"><span class="mk">D</span>No treatment is available</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The key to the management of ROP is prevention and early detection. Blood oxygen levels in the preterm infant should be closely monitored, and significant fluctuations should be avoided. Oxygen and ventilator settings should be adjusted to keep oxygen saturations within acceptable levels.&quot; Treatments are &quot;laser photocoagulation or intraocular injections of anti-VEGF medications, which inhibit the release of VEGF.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would remove the reason for screening, and the anti-VEGF treatment mirrors the mechanism exactly — the same growth factor that builds the retina drives the damage when it surges.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bronchopulmonary dysplasia</span><span class="chip t2">the ventilation-related complication</span></div>
+<div class="stem">20. What is bronchopulmonary dysplasia, and in which infants does it most commonly occur?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A chronic pulmonary condition occurring most commonly in preterm infants requiring mechanical ventilation</li><li class="fopt"><span class="mk">B</span>An acute infection of the lungs in term infants</li><li class="fopt"><span class="mk">C</span>A congenital malformation of the airways</li><li class="fopt"><span class="mk">D</span>A complication of postmaturity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Bronchopulmonary dysplasia is &quot;a chronic pulmonary condition occurring most commonly in preterm infants requiring mechanical ventilation.&quot; Its etiology is multifactorial, including &quot;pulmonary immaturity, surfactant deficiency, lung injury and stretch, barotrauma, inflammation caused by oxygen exposure, inadequate nutrition, fluid overload, ligation of a PDA, and familial predisposition.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) attaches the complication to the wrong end of the gestational-age ladder. Postmature infants face meconium aspiration, not the ventilator-associated chronic lung disease of prematurity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bronchopulmonary dysplasia</span><span class="chip t2">the ventilation-related complication</span></div>
+<div class="stem">21. What signs does the chapter give for bronchopulmonary dysplasia, and what is the key to its management?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Tachypnea, retractions, nasal flaring, increased work of breathing, and increased distress with handling and feeding; the key is prevention of prematurity and minimizing exposure to mechanical ventilation, aided by antenatal steroids, exogenous surfactant, and use of CPAP and gentle ventilation in the birth setting</li><li class="fopt"><span class="mk">B</span>Bradypnea and apnea, treated with higher ventilator pressures</li><li class="fopt"><span class="mk">C</span>Cyanosis only, treated with long-term oxygen alone</li><li class="fopt"><span class="mk">D</span>There are no characteristic signs</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Signs are &quot;tachypnea, retractions, nasal flaring, increased work of breathing, and increased distress with handling and feeding,&quot; and &quot;the key to the management of BPD is prevention of prematurity and minimizing exposure to mechanical ventilation,&quot; supported by &quot;antenatal steroids, exogenous surfactant, and use of CPAP and gentle ventilation in the birth setting.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) escalates the exposure that causes the injury, and the pattern here matches retinopathy of prematurity exactly: the treatment that saves the infant is also what harms the organ.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bronchopulmonary dysplasia</span><span class="chip t2">the ventilation-related complication</span></div>
+<div class="stem">22. What do bronchopulmonary dysplasia and retinopathy of prematurity have in common, as the chapter presents them?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Both are complications of the treatments that keep the preterm infant alive — oxygen and ventilation — and for both, prevention outranks treatment</li><li class="fopt"><span class="mk">B</span>Both are infections</li><li class="fopt"><span class="mk">C</span>Both occur only in term infants</li><li class="fopt"><span class="mk">D</span>Both are congenital</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter presents both as the same causal family: oxygen and ventilation rescue the lungs and produce bronchopulmonary dysplasia and retinopathy of prematurity. For each, the stated key to management is prevention — avoiding oxygen fluctuations in one and minimizing ventilation exposure in the other.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) misclassifies the mechanism, which matters because it would point toward antibiotics rather than toward the ventilator and oxygen settings that are the actual targets.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">necrotizing enterocolitis</span><span class="chip t2">the three conditions of its etiology</span></div>
+<div class="stem">23. Which three conditions does the chapter enumerate in the etiology of necrotizing enterocolitis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Intestinal ischemia, bacterial colonization of the initially sterile gastrointestinal tract with harmful organisms, and enteral feeding — especially formula feeding</li><li class="fopt"><span class="mk">B</span>Infection, dehydration, and hypoglycemia</li><li class="fopt"><span class="mk">C</span>Prematurity, jaundice, and hypothermia</li><li class="fopt"><span class="mk">D</span>Maternal diabetes, macrosomia, and birth trauma</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter enumerates intestinal ischemia — from &quot;asphyxia/hypoxia or events that cause a redistribution of blood flow away from the GI tract (e.g., hypotension, hypovolemia, severe stress)&quot; — bacterial colonization with organisms such as Klebsiella, Escherichia coli, and Clostridium, and enteral feeding: &quot;the majority of infants with NEC had received some type of enteral feeding.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names prematurity, which is a risk factor in Box 34.6 rather than one of the three mechanisms — and knowing the mechanisms is what makes the protective factor make sense.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">necrotizing enterocolitis</span><span class="chip t2">the three conditions of its etiology</span></div>
+<div class="stem">24. A nurse is caring for a very-low-birth-weight infant. What does the chapter identify as protective against necrotizing enterocolitis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Breast milk, which seems to have a protective effect — NEC is rare among infants who are exclusively fed breast milk — and probiotics such as Bifidobacterium infantis and Lactobacillus acidophilus, which assist in establishing normal bowel flora</li><li class="fopt"><span class="mk">B</span>Early formula feeding to build gut tolerance</li><li class="fopt"><span class="mk">C</span>Withholding all enteral feeding indefinitely</li><li class="fopt"><span class="mk">D</span>Prophylactic antibiotics</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Breast milk seems to have a protective effect against the development of NEC—it is rare among infants who are exclusively fed breast milk,&quot; and &quot;the use of probiotics such as Bifidobacterium infantis and Lactobacillus acidophilus assist in the establishment of normal bowel flora and appear to decrease the incidence of NEC.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) runs against the chapter's own nursing implication to &quot;exercise antibiotic stewardship,&quot; and the evidence box notes that human milk &quot;inhibits bacteria such as Escherichia coli, Staphylococcus aureus, and Candida from proliferating.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">necrotizing enterocolitis</span><span class="chip t2">risk factors, timing, and nursing role</span></div>
+<div class="stem">25. Which risk factors for necrotizing enterocolitis appear in Box 34.6? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Prematurity and asphyxia</li><li class="fopt right"><span class="mk">&#10003;</span>Red blood cell transfusion and early enteral or hyperosmolar feedings</li><li class="fopt right"><span class="mk">&#10003;</span>Patent ductus arteriosus and congenital heart disease</li><li class="fopt right"><span class="mk">&#10003;</span>Maternal smoking or cocaine use, polycythemia, and anemia</li><li class="fopt"><span class="mk">E</span>Postmaturity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 34.6 lists prematurity, asphyxia, red blood cell transfusion, early enteral or hyperosmolar feedings, patent ductus arteriosus, congenital heart disease, maternal smoking or cocaine use, polycythemia, anemia, genetic predisposition, and gastrointestinal infection.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is not on the list — &quot;approximately 95% of cases occur in preterm infants,&quot; and NEC occurs in up to 5% of all very-low-birth-weight infants, with mortality as high as 50% in extremely-low-birth-weight infants.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">necrotizing enterocolitis</span><span class="chip t2">risk factors, timing, and nursing role</span></div>
+<div class="stem">26. How does the timing of necrotizing enterocolitis differ between term and preterm infants?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>In the term infant it usually occurs between 1 and 3 days after birth but can occur as late as 1 month; in the preterm infant it usually occurs within the first 7 days but can be delayed up to 30 days</li><li class="fopt"><span class="mk">B</span>It occurs only in the first 24 hours in both</li><li class="fopt"><span class="mk">C</span>It occurs only after 1 month in both</li><li class="fopt"><span class="mk">D</span>Timing is identical in both groups</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The onset of NEC in the term infant usually occurs between 1 and 3 days after birth but can occur as late as 1 month. In the preterm infant, NEC usually occurs within the first 7 days but can be delayed for up to 30 days.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) collapses two different windows, and the long tails on both mean a stable infant weeks into the stay is still at risk — which matters because &quot;the signs of NEC are nonspecific, which is characteristic of many neonatal diseases.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">necrotizing enterocolitis</span><span class="chip t2">risk factors, timing, and nursing role</span></div>
+<div class="stem">27. Which nursing implications does the Evidence-Based Practice box give for reducing necrotizing enterocolitis? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Exercise antibiotic stewardship</li><li class="fopt right"><span class="mk">&#10003;</span>Prioritize feedings by the mother, and encourage mothers of at-risk preterm infants to provide breast milk, assisting with milk expression using an appropriate pump and meticulous hygiene</li><li class="fopt right"><span class="mk">&#10003;</span>Perform meticulous hand hygiene and teach families those practices, and advocate for cleanliness in hospital cleaning practices</li><li class="fopt right"><span class="mk">&#10003;</span>Advocate for proper staffing ratios, since nurse staffing is a component of the level of quality care very-low-birth-weight infants receive</li><li class="fopt"><span class="mk">E</span>Begin formula feeding early to establish gut flora</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The box's nursing implications are antibiotic stewardship, prioritizing the mother's milk, meticulous hand hygiene with family teaching, advocating for cleanliness in hospital cleaning practices, assisting with milk expression, and advocating for proper staffing ratios.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the feeding recommendation. Enteral feeding — especially formula feeding — is one of the three conditions in the etiology, and the mother's milk is the protective alternative.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parental tasks in the nicu</span><span class="chip t2">the five tasks</span></div>
+<div class="stem">28. A mother of a critically ill preterm infant grieves in preparation for her baby's possible death while still hoping the baby survives. Which parental task is this, and when does it begin?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Anticipatory grief, which begins during labor and lasts until the infant dies or shows evidence of surviving</li><li class="fopt"><span class="mk">B</span>Accepting that the baby is not healthy and full term</li><li class="fopt"><span class="mk">C</span>Resuming the process of relating to the infant</li><li class="fopt"><span class="mk">D</span>Learning what is unique about this baby</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In anticipatory grief, &quot;the parent grieves in preparation for the infant's possible death, although the parent clings to the hope that the infant will survive,&quot; and the process &quot;begins during labor ... and lasts until the infant dies or shows evidence of surviving.&quot; Its value: &quot;being able to anticipate the loss gives families an opportunity to plan, feel more in control of their situation, and say goodbye in a special way.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the next task, &quot;grief and depression typify this phase, which persists until the infant is out of danger and is expected to survive&quot; — a different emotional problem with a different endpoint.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parental tasks in the nicu</span><span class="chip t2">the five tasks</span></div>
+<div class="stem">29. A father in the NICU appears emotionally detached and does not engage with his infant. How might the chapter frame this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As definite evidence of impaired bonding requiring immediate referral</li><li class="fopt right"><span class="mk">&#10003;</span>As a possible feature of anticipatory grief, in which some individuals or family members distance or detach themselves from the experience as a way of protecting themselves from the pain of loss and grief</li><li class="fopt"><span class="mk">C</span>As disinterest in the child</li><li class="fopt"><span class="mk">D</span>As a normal male response to all infants</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter notes the risk within anticipatory grief: &quot;some individuals or family members distance or detach themselves from the experience ... as a way of protecting themselves from the pain of loss and grief.&quot; The nurse's role during anticipatory grief is &quot;to advocate for the family so that other health care professionals realize that the family is grieving. Being fully present for these families and practicing active listening are important.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies a bonding-assessment label without the grief context, and the chapter cautions that &quot;how a parent responds to this situation depends on many factors including religious, spiritual, and cultural beliefs.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parental tasks in the nicu</span><span class="chip t2">the five tasks</span></div>
+<div class="stem">30. An infant is gaining weight, feeding, and weaning from the incubator, and the parents are beginning to interact more. Which parental task does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Anticipatory grief</li><li class="fopt right"><span class="mk">&#10003;</span>Resuming the process of relating to the infant — developing an attachment that was interrupted by the infant's critical condition at birth</li><li class="fopt"><span class="mk">C</span>Adjusting the home environment</li><li class="fopt"><span class="mk">D</span>Accepting that the baby is not healthy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;As the baby's condition begins to improve and the baby gains weight, is able to breastfeed or bottle-feed, and is weaned from the incubator or radiant warmer, the parent can begin the process of developing an attachment ... that was interrupted by the infant's critical condition at birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) belongs earlier in the sequence and ends &quot;until the infant is out of danger and is expected to survive,&quot; which the stem's improvements suggest has already happened.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parental tasks in the nicu</span><span class="chip t2">the five tasks</span></div>
+<div class="stem">31. Which tasks complete the chapter's list of five parental tasks in the NICU?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Learning what is unique about this baby — special needs and growth patterns, caregiving needs, and growth and development expectations — and adjusting the home environment, including limiting visitors to minimize exposure to pathogens and possibly altering the environmental temperature</li><li class="fopt"><span class="mk">B</span>Choosing a pediatrician and arranging insurance</li><li class="fopt"><span class="mk">C</span>Selecting a feeding method and a car seat</li><li class="fopt"><span class="mk">D</span>Returning to work and arranging childcare</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The fourth task is &quot;learning what is unique about this baby,&quot; covering &quot;special needs and growth patterns, caregiving needs, and growth and development expectations,&quot; and the fifth is adjusting the home environment: &quot;parents are encouraged to limit the number of visitors to minimize exposure of the infant to pathogens. The environmental temperature may have to be altered.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) are practical logistics rather than the developmental and caregiving adjustments the chapter frames as tasks.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">parental tasks in the nicu</span><span class="chip t2">the five tasks</span></div>
+<div class="stem">32. What principle does the chapter give as the basis for involving parents in NICU care?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Principles of family-centered care, with nurses instrumental in helping parents learn who their infant is, recognize behavioral cues in the infant's development, and use those cues in the care they provide</li><li class="fopt"><span class="mk">B</span>That parents should observe but not participate until discharge</li><li class="fopt"><span class="mk">C</span>That care is best delivered without parental involvement to reduce infection risk</li><li class="fopt"><span class="mk">D</span>That involvement should begin only when the infant is stable enough to go home</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Principles of family-centered care form the basis of active involvement of parents in the care of their children,&quot; and nurses &quot;are instrumental in helping parents learn who their infant is and to recognize behavioral cues in the infant's development and to use these cues in the care they provide.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) delays involvement until the tasks the chapter describes have already been missed — the relating task begins as the infant improves, not at discharge.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supporting nicu parents</span><span class="chip t2">the first visit</span></div>
+<div class="stem">33. Why does the chapter say a nurse should be present during the parents' first visit to their infant in the NICU? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>To help them see the infant rather than focus on the equipment, with the importance and purpose of the equipment explained</li><li class="fopt right"><span class="mk">&#10003;</span>To explain the characteristics normal for an infant of their baby's gestational age so that parents do not compare their child with a term, healthy infant</li><li class="fopt right"><span class="mk">&#10003;</span>To encourage the parents to express their feelings about the pregnancy, labor, and birth and the experience of having a high-risk infant</li><li class="fopt right"><span class="mk">&#10003;</span>To assess the parents' perceptions of the infant and begin preparing them to participate in providing care</li><li class="fopt"><span class="mk">E</span>To restrict the length of the visit to reduce infant stimulation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives exactly these purposes for the nurse's presence at the first visit.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the aim of the visit, which is to bring the parents closer rather than to limit their time — &quot;as soon as possible, the parents should see and touch their infant so that they can begin to acknowledge the reality of the birth and the infant's true appearance and condition.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supporting nicu parents</span><span class="chip t2">the first visit</span></div>
+<div class="stem">34. How can parents be prepared before a first NICU visit?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>When a high-risk birth is anticipated, the family can be given a tour of the NICU or shown a video; after an unexpected preterm birth, the parents can be given a booklet, view a video, or have someone describe what they will see</li><li class="fopt"><span class="mk">B</span>No preparation is possible</li><li class="fopt"><span class="mk">C</span>Only written consent is required</li><li class="fopt"><span class="mk">D</span>Preparation is discouraged because it increases anxiety</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The family can be given a tour of the NICU or shown a video to prepare them for the sights and activities of the unit&quot; when a high-risk birth is anticipated, and after an unexpected preterm birth, &quot;the parents can be given a booklet, view a video, or have someone describe what they will see.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) withholds the preparation that makes the first sight of the unit survivable, and the first stated purpose of the nurse's presence is to help parents see past the equipment.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supporting nicu parents</span><span class="chip t2">contact, family, and support</span></div>
+<div class="stem">35. What does the chapter recommend about physical contact between parents and a critically ill infant?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Physical contact is important to establish early bonding and attachment; if parents cannot hold the infant, they can touch and stroke the baby as they speak softly, and as the condition improves they can hold the neonate and provide kangaroo care, gradually participating in feeding, bathing, and changing</li><li class="fopt"><span class="mk">B</span>Contact should be avoided until the infant is extubated</li><li class="fopt"><span class="mk">C</span>Only the mother should touch the infant</li><li class="fopt"><span class="mk">D</span>Contact should be limited to once daily</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Physical contact with the infant is important to establish early bonding and attachment. If it is not possible for parents to hold the infant, they can touch and stroke the baby as they speak softly. As the infant's condition improves, parents can hold the neonate and provide kangaroo care. They gradually begin to participate in infant caregiving activities such as feeding, bathing, and changing.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) postpones all contact until a milestone that may be weeks away, when the chapter offers a graded alternative for every stage of the infant's condition.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supporting nicu parents</span><span class="chip t2">contact, family, and support</span></div>
+<div class="stem">36. Parents live several hours from the hospital and cannot visit daily. What methods does the chapter describe for keeping them connected?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Daily phone calls, notes written as if by the infant, photographs of the infant, and camera systems in some NICUs that allow parents to view their infant remotely</li><li class="fopt"><span class="mk">B</span>Weekly summary letters only</li><li class="fopt"><span class="mk">C</span>No contact until they can visit</li><li class="fopt"><span class="mk">D</span>Contact only through the primary care provider</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>When parents cannot be present, &quot;staff members devise appropriate methods to keep them informed and to help them feel connected to the newborn. Examples are daily phone calls, notes written as if by the infant, photographs of the infant. Some NICUs have camera systems that allow parents to view their infant remotely.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) leaves a family to imagine the worst, and the relating task the chapter describes cannot begin without some form of contact.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supporting nicu parents</span><span class="chip t2">contact, family, and support</span></div>
+<div class="stem">37. How does the chapter describe the experience of grandparents and siblings of an infant in the NICU?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Grandparents may experience grief and sadness as they watch their own children facing the difficulties of having a preterm or high-risk infant; siblings old enough to expect a new baby can be very confused when the baby must remain in the hospital, may benefit from visiting when possible, and after discharge some are bewildered and angry at the seemingly disproportionate parental time spent on the newborn</li><li class="fopt"><span class="mk">B</span>Only the parents are affected</li><li class="fopt"><span class="mk">C</span>Siblings should never visit the NICU</li><li class="fopt"><span class="mk">D</span>Grandparents are unaffected because they are not the parents</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes grandparents' grief as they watch their own children struggle, siblings' confusion when the expected baby does not come home, the value of NICU visits when possible, and the post-discharge reaction: &quot;some children are bewildered and angry at the seemingly disproportionate amount of parental time spent on the newborn.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) forecloses a visit the chapter recommends when possible, and it is often what makes the absent baby real to an older child.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">supporting nicu parents</span><span class="chip t2">contact, family, and support</span></div>
+<div class="stem">38. What support structures does the chapter describe for NICU parents?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Support groups for parents of infants in NICUs, arrangements for an experienced NICU parent to contact a new group member, and referral for psychologic or family counseling when appropriate — especially for mothers, who are likely to need help expressing their feelings</li><li class="fopt"><span class="mk">B</span>No formal support is described</li><li class="fopt"><span class="mk">C</span>Only referral to social work</li><li class="fopt"><span class="mk">D</span>Support groups only for mothers</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Some hospitals have support groups for the parents of infants in NICUs,&quot; hospitals &quot;may arrange to have an experienced NICU parent make contact with a new group member,&quot; and &quot;parents, especially mothers, are likely to need help in expressing their feelings and, when appropriate, can be referred for psychologic or family counseling.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) excludes the partner, whom the chapter includes in the tasks and in the grief, and the peer-contact arrangement is the one most easily overlooked.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the postmature infant</span><span class="chip t2">definition and appearance</span></div>
+<div class="stem">39. How does the chapter define a postterm pregnancy and the resulting infant, and what is dysmaturity?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A pregnancy prolonged beyond 42 0/7 weeks is postterm, and the infant is postterm or postmature; postmaturity can be associated with placental insufficiency, producing a fetus with a wasted appearance — dysmaturity — from loss of subcutaneous fat and muscle mass</li><li class="fopt"><span class="mk">B</span>A pregnancy beyond 40 weeks, producing an infant who is always oversized</li><li class="fopt"><span class="mk">C</span>A pregnancy beyond 41 weeks, producing an infant who is always growth restricted</li><li class="fopt"><span class="mk">D</span>Postmaturity and dysmaturity are the same word</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A pregnancy that is prolonged beyond 42 0/7 weeks is a postterm pregnancy, and the infant who is born is called postterm or postmature. Postmaturity can be associated with placental insufficiency, resulting in a fetus that has a wasted appearance (dysmaturity) at birth because of loss of subcutaneous fat and muscle mass.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) merges a gestational-age category with a physical description, and they are not the same: &quot;not all postterm infants show signs of dysmaturity.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the postmature infant</span><span class="chip t2">definition and appearance</span></div>
+<div class="stem">40. A postterm infant is large at birth with advanced development and bone age, without a wasted appearance. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As inconsistent with postmaturity</li><li class="fopt right"><span class="mk">&#10003;</span>As expected: not all postterm infants show signs of dysmaturity; some continue to grow in utero and are large at birth, and most postmature infants are oversized but otherwise normal, with advanced development and bone age</li><li class="fopt"><span class="mk">C</span>As a sign of maternal diabetes only</li><li class="fopt"><span class="mk">D</span>As evidence of inaccurate dating</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Not all postterm infants show signs of dysmaturity; some continue to grow in utero and are large at birth. Most postmature infants are oversized but otherwise normal, with advanced development and bone age.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats the wasted appearance as required, which would make most postmature infants unclassifiable — and it is the dysmature subset, not the oversized one, that signals placental failure.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the postmature infant</span><span class="chip t2">definition and appearance</span></div>
+<div class="stem">41. Which physical characteristics may be seen in the postmature infant? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Dry, cracked, desquamating, parchment-like skin at birth</li><li class="fopt right"><span class="mk">&#10003;</span>Firm nails extending beyond the fingertips</li><li class="fopt right"><span class="mk">&#10003;</span>Depleted subcutaneous fat layers leaving the skin loose, giving an old-person appearance, with a long and thin body</li><li class="fopt right"><span class="mk">&#10003;</span>Absent vernix, and possible meconium staining of skin, nails, and cord that is golden yellow to green</li><li class="fopt"><span class="mk">E</span>Abundant lanugo and thick vernix</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists dry, cracked, parchment-like skin; firm nails extending beyond the fingertips; depleted subcutaneous fat with an old-person appearance; a long, thin body; absent vernix; and possible meconium staining, noting that an infant may show &quot;some, but not necessarily all&quot; of these.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) describes a preterm infant. Lanugo and vernix decrease as gestation advances, so their abundance points the other direction on the ladder.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the postmature infant</span><span class="chip t2">complications and care</span></div>
+<div class="stem">42. Why is the perinatal mortality rate significantly higher in the postmature fetus and neonate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because during labor and birth the increased oxygen demands of the postmature fetus are not fully met, and insufficient gas exchange in the postmature placenta increases the likelihood of intrauterine hypoxia, which can result in passage of meconium in utero and raise the risk for meconium aspiration syndrome</li><li class="fopt"><span class="mk">B</span>Because postmature infants are always growth restricted</li><li class="fopt"><span class="mk">C</span>Because postmature infants cannot regulate temperature</li><li class="fopt"><span class="mk">D</span>Because of surfactant deficiency</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The perinatal mortality rate is significantly higher in the postmature fetus and neonate,&quot; because &quot;during labor and birth the increased oxygen demands of the postmature fetus are not fully met.&quot; And: &quot;Insufficient gas exchange in the postmature placenta also increases the likelihood of intrauterine hypoxia, which can result in the passage of meconium in utero, thereby increasing the risk for meconium aspiration syndrome (MAS).&quot; Watch also for fetal distress, macrosomia, and birth injury.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names the preterm infant's problem. The postmature lung is mature; the placenta supporting it is not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the postmature infant</span><span class="chip t2">complications and care</span></div>
+<div class="stem">43. Parents are concerned about their postmature newborn's dry, peeling skin. What care and teaching does the chapter describe?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Initial bathing with a mild soap, moisturizing the skin with a petrolatum-based ointment, and helping parents understand the reasons for the dry, peeling skin</li><li class="fopt"><span class="mk">B</span>Vigorous scrubbing to remove the peeling skin</li><li class="fopt"><span class="mk">C</span>No bathing for the first week</li><li class="fopt"><span class="mk">D</span>Application of antibiotic ointment to all peeling areas</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Initial bathing should be done with a mild soap. It can be helpful to moisturize the skin with a petrolatum-based ointment.&quot; And: &quot;Parents may be concerned about the appearance of the postmature infant. Nurses can help them understand reasons for the dry, peeling skin.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) would damage already fragile skin, and the teaching half of the answer is what turns an alarming appearance into an explainable one.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"classifying newborns by size and gestational age","subtopic":"classification by weight","stem":"How does the chapter define low birth weight, very low birth weight, and extremely low birth weight?","options":["Less than 2500 g, less than 1500 g, and less than 1000 g respectively, with low birth weight defined regardless of gestational age","Less than 3000 g, less than 2000 g, and less than 1500 g","Less than 2500 g only for preterm infants","The categories apply only before 37 weeks"],"correct":[0],"sata":false,"why":"A low-birth-weight infant is \"an infant whose birth weight is less than 2500 g (5.5 lb.), regardless of gestational age\"; very low birth weight is \"less than 1500 g (3.3 lb.)\"; extremely low birth weight is \"less than 1000 g (2.2 lb.).\"","trap":"(C) attaches a gestational-age condition the definition explicitly rejects, and that phrase is what allows a term growth-restricted infant and a preterm appropriately grown infant both to be low birth weight for entirely different reasons.","k":"xed0285ob22q"},{"topic":"classifying newborns by size and gestational age","subtopic":"classification by weight","stem":"An infant's birth weight falls below the 10th percentile on intrauterine growth curves, with head circumference within normal parameters. How is this classified?","options":["Small for gestational age with symmetric intrauterine growth restriction","Small for gestational age with asymmetric growth restriction, in which head circumference remains within normal parameters while birth weight falls below the 10th percentile","Appropriate for gestational age","Large for gestational age"],"correct":[1],"sata":false,"why":"Small for gestational age describes \"an infant whose rate of intrauterine growth was slow and whose birth weight falls below the 10th percentile.\" Asymmetric growth restriction is \"growth restriction in which head circumference remains within normal parameters while birth weight falls below the 10th percentile,\" while symmetric restriction is \"growth restriction in which weight, length, and head circumference all are affected.\"","trap":"(A) is the pattern in which everything is small, which points to a chronic, early insult rather than a late one — the same distinction Chapter 26 draws antenatally.","k":"1rt9r0g1hupqri"},{"topic":"classifying newborns by size and gestational age","subtopic":"classification by gestational age","stem":"Which gestational-age boundaries does Box 34.1 give? Select all that apply.","options":["Preterm is born before 37 0/7 weeks, and late preterm is 34 0/7 through 36 6/7 weeks","Early term is 37 0/7 through 38 6/7 weeks","Full term is 39 0/7 through 40 6/7 weeks","Late term is 41 0/7 through 41 6/7 weeks, and postterm is 42 0/7 weeks or more","Postterm is 41 weeks or more"],"correct":[0,1,2,3],"sata":true,"why":"Box 34.1 gives the complete ladder: preterm before 37 0/7, late preterm 34 0/7 through 36 6/7, early term 37 0/7 through 38 6/7, full term 39 0/7 through 40 6/7, late term 41 0/7 through 41 6/7, and postterm 42 0/7 or more.","trap":"(E) moves the postterm boundary a week early, which would reclassify every late-term infant. This is the same ladder Chapter 14 gives, which is why the boundaries are worth holding once.","k":"1m77pmz1ov7och"},{"topic":"classifying newborns by size and gestational age","subtopic":"classification by gestational age","stem":"What does the chapter give as the preterm birth rate in the United States in 2021?","options":["10.48%, the highest rate since 2007, with early preterm births below 34 weeks at 2.81% and late preterm births at 7.67%","5% overall","15% overall, declining since 2007","10.48%, the lowest rate since 2007"],"correct":[0],"sata":false,"why":"\"The preterm birth rate in the United States in 2021 was 10.48%, the highest rate since 2007,\" with \"the birth rate for early preterm infants (\u003c 34 weeks gestation) was 2.81%, the highest since 2011; for LPIs (34 0/7 to 36 6/7 weeks gestation), the rate was 7.67%, the highest since 2007.\"","trap":"(D) inverts the trend, and the direction matters — the chapter presents these as rising, not falling.","k":"11bgmbt0917h"},{"topic":"classifying newborns by size and gestational age","subtopic":"classification by gestational age","stem":"Two infants both weigh 2000 g: one is preterm and one is postterm. What principle does the chapter give?","options":["Their potential problems and care needs differ, and in general the closer infants are to term in gestational age and birth weight, the easier their adjustment to the external environment","Their care needs are identical because their weights are identical","The postterm infant is always sicker","Weight alone determines risk"],"correct":[0],"sata":false,"why":"\"The potential problems and care needs of the preterm infant weighing 2000 g (4.4 lb.) differ from those of the term or postterm infant of equal weight,\" and \"in general, the closer infants are to term in relation to gestational age and birth weight, the easier is their adjustment to the external environment.\" Preterm infants \"are at risk because their organ systems are immature and they lack adequate nutrient reserves.\"","trap":"(D) is the reasoning that would treat two 2000-g infants the same, when one has immature organs and the other has mature organs and a failing placenta behind it.","k":"1hti19u1uujo4k"},{"topic":"respiratory function in the preterm infant","subtopic":"why the preterm lung fails","stem":"Which structural deficits does the chapter list as putting the preterm infant at respiratory risk? Select all that apply.","options":["A decreased number of functional alveoli and deficient surfactant levels","A smaller lumen in the airways with greater collapsibility or obstruction of respiratory passages","Insufficient calcification of the bony thorax and a weak or absent gag reflex","Immature and friable capillaries in the lungs, with a greater distance between functional alveoli and the capillary bed","Excessive alveolar surface area relative to body size"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists eight deficits: decreased functional alveoli, deficient surfactant, a smaller airway lumen, greater collapsibility or obstruction, insufficient calcification of the bony thorax, a weak or absent gag reflex, immature and friable pulmonary capillaries, and a greater distance between alveoli and the capillary bed.","trap":"(E) reverses the first deficit. Fewer alveoli and a longer diffusion distance are what make gas exchange inefficient, and every later complication in the chapter traces back to this list.","k":"1vv29c61qks9oo"},{"topic":"respiratory function in the preterm infant","subtopic":"why the preterm lung fails","stem":"What is the normal respiratory rate for a newborn, and what are the early signs of respiratory distress?","options":["30 to 60 times per minute with significant reliance on the abdominal muscles; early signs are chest wall retractions, flaring of the nares, and expiratory grunting","12 to 20 per minute; early signs are bradypnea and apnea","60 to 80 per minute; the first sign is generalized cyanosis","30 to 60 per minute; the first sign is seesaw breathing"],"correct":[0],"sata":false,"why":"\"Infants normally breathe between 30 and 60 times/min, relying significantly on their abdominal muscles.\" Early signs of distress are \"chest wall retractions, flaring of the nares, and expiratory grunting,\" worsening to \"seesaw breathing patterns, retractions, flaring of the nares, expiratory grunting, apneic spells,\" with color progressing \"from pink to circumoral cyanosis and then to generalized cyanosis.\"","trap":"(D) names a later sign as the first, which is the difference between intervening early and intervening after decompensation.","k":"1yqe2bd1m6prkz"},{"topic":"respiratory function in the preterm infant","subtopic":"breathing patterns and color","stem":"A preterm infant has pauses in breathing lasting up to 10 seconds followed by rapid respirations. How is this classified, and how does it differ from apnea?","options":["Periodic breathing, a pattern commonly seen in preterm infants; apnea is a cessation of breathing of 20 seconds or longer, or a shorter pause accompanied by bradycardia, cyanosis, or hypotonia","Apnea, requiring immediate resuscitation","Normal newborn breathing at any gestational age","Periodic breathing, which is always pathologic"],"correct":[0],"sata":false,"why":"Preterm infants \"exhibit up to 10-second respiratory pauses followed by compensatory rapid respirations\" — periodic breathing, \"a respiratory pattern commonly seen in preterm infants.\" Apnea is \"a cessation of breathing of 20 seconds or longer, or a shorter pause accompanied by bradycardia, cyanosis, or hypotonia.\"","trap":"(B) treats a common pattern as an emergency, and the discriminator is not only the 20-second clock but the accompanying findings — a 12-second pause with bradycardia is apnea.","k":"10xya241bzsvgm"},{"topic":"respiratory function in the preterm infant","subtopic":"breathing patterns and color","stem":"A newborn has bluish hands and feet but a pink trunk and face. What does the Nursing Alert direct?","options":["That this is acrocyanosis, a normal finding in the neonate, while central cyanosis indicates an underlying problem requiring immediate evaluation","That both findings are normal","That this requires immediate intubation","That acrocyanosis indicates cardiac disease"],"correct":[0],"sata":false,"why":"The Nursing Alert states: \"Acrocyanosis is a normal finding in the neonate, but central cyanosis indicates an underlying problem that requires immediate evaluation.\"","trap":"(B) collapses the distinction that decides whether to act. The location of the cyanosis, not its presence, is what separates a normal transitional finding from an emergency.","k":"1euk6g64452vs"},{"topic":"respiratory function in the preterm infant","subtopic":"breathing patterns and color","stem":"Which findings suggest hypovolemia and shock in a preterm infant?","options":["Hypotension, capillary refill slower than 3 seconds, continued respiratory distress despite oxygen and ventilation, and reduced urine output","Hypertension and bounding pulses","Bradycardia alone","Acrocyanosis with brisk capillary refill"],"correct":[0],"sata":false,"why":"The chapter names hypovolemia and shock presenting as \"hypotension, slow (>3 seconds) capillary refill, continued respiratory distress despite the provision of oxygen and ventilation, and reduced urine output.\"","trap":"(C) is one component of several conditions in this chapter — it appears in apnea, in cold stress, and here — and it means nothing on its own.","k":"1ej8nvv1m02r9p"},{"topic":"cold stress in the preterm infant","subtopic":"why heat is lost","stem":"Which factors put the preterm infant at high risk for heat loss? Select all that apply.","options":["A large surface area for body weight with minimal insulating subcutaneous fat","Limited stores of brown fat, an internal source for heat generation present in normal term infants","Fragile capillaries and decreased or absent reflex control of skin capillaries","Inadequate muscle mass activity and poor muscle tone, leaving more body surface exposed, with an immature temperature regulation center in the brain","Excessive shivering that depletes glucose stores"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists a large surface area for body weight, minimal subcutaneous fat, limited brown fat stores, fragile capillaries, decreased or absent reflex capillary control, inadequate muscle mass activity, poor muscle tone, and an immature temperature regulation center. \"Because of their large body surface in relation to their weight, preterm infants are at high risk for heat loss.\"","trap":"(E) attributes an adult mechanism to a newborn. Shivering appears in Box 34.2 only for \"mature infants in presence of severe hypothermia\" — it is a late finding, not a mechanism.","k":"1o5vaaz1s7e43h"},{"topic":"cold stress in the preterm infant","subtopic":"why heat is lost","stem":"What is a neutral thermal environment, and how is it achieved?","options":["The environmental temperature at which oxygen consumption is minimal but adequate to maintain body temperature, achieved with a radiant warmer bed or an incubator with control settings","The temperature at which the infant shivers least","A room temperature of 20°C","The temperature at which the infant's skin feels warm to touch"],"correct":[0],"sata":false,"why":"\"The goal of thermoregulation is to create a neutral thermal environment (NTE), which is the environmental temperature at which oxygen consumption is minimal but adequate to maintain body temperature,\" achieved with \"a radiant warmer bed or ... an incubator with control settings.\" The nurse works against four mechanisms of heat transfer: convection, conduction, radiation, and evaporation.","trap":"(D) substitutes a subjective check for a physiologic definition, and the definition is what explains why the goal is oxygen consumption rather than comfort.","k":"1fkzhna1htl654"},{"topic":"cold stress in the preterm infant","subtopic":"the cold-stress cycle and its signs","stem":"How does the chapter describe the cold-stress cycle in a preterm infant?","options":["The infant tries to conserve heat and burns more calories, causing metabolism to increase and further stressing the already compromised neonate, and preterm infants have few reserves in terms of calories and fat stores","The infant shivers, generating enough heat to compensate","Metabolism decreases, conserving energy","Cold stress affects only temperature, not metabolism"],"correct":[0],"sata":false,"why":"\"Because preterm infants have few reserves in terms of calories and fat stores, they can easily lose heat and develop hypothermia. Cold stress results when the infant tries to conserve heat and burns more calories, causing the metabolism to increase, further stressing the already compromised neonate.\" The chapter calls prevention \"a critical nursing role.\"","trap":"(C) reverses the metabolic direction, which would make cold stress an energy-sparing state rather than the energy-consuming spiral that produces hypoglycemia and acidosis.","k":"j2vl671iwj7ad"},{"topic":"cold stress in the preterm infant","subtopic":"the cold-stress cycle and its signs","stem":"Which findings appear in Box 34.2 as signs of hypothermia or cold stress? Select all that apply.","options":["Apnea and bradycardia","Hypoglycemia, hypoxia, and metabolic acidosis","Central cyanosis, hypotonia, lethargy, and irritability","Feeding intolerance with abdominal distention, emesis, and increased residuals","A low axillary temperature as the earliest sign"],"correct":[0,1,2,3],"sata":true,"why":"Box 34.2 lists apnea, bradycardia, central cyanosis, coagulation defects such as pulmonary hemorrhage, hypoglycemia, hypotonia, hypoxia, feeding intolerance, increased metabolic rate, irritability, lethargy, metabolic acidosis, peripheral vasoconstriction, poor weight gain with chronic hypothermia, and shivering in mature infants with severe hypothermia.","trap":"(E) names the finding that is conspicuously absent from the box as an early sign. The infant compensates first by burning glucose and oxygen, so the metabolic consequences appear before the temperature falls.","k":"q13pu6w6a1ao"},{"topic":"cold stress in the preterm infant","subtopic":"the cold-stress cycle and its signs","stem":"Which mechanisms of heat transfer does the nurse work against in thermoregulating a preterm infant?","options":["Convection, conduction, radiation, and evaporation","Convection and conduction only","Radiation and shivering","Evaporation only"],"correct":[0],"sata":false,"why":"The chapter names all four: \"convection, conduction, radiation, and evaporation.\"","trap":"(B) drops the two that dominate in a delivery room — evaporation from wet skin and radiation to cold surfaces — and those are the two the first minutes of care are built around.","k":"13l6pal1343bpj"},{"topic":"retinopathy of prematurity","subtopic":"when the retina is vulnerable","stem":"When do retinal vessels develop, and when is the retina no longer susceptible to retinopathy of prematurity?","options":["They begin to form in utero at approximately 16 weeks in response to vascular endothelial growth factor and continue until maturity at approximately 42 to 43 weeks after conception; once the retina is completely vascularized, the vessels are not susceptible to ROP","They form entirely in the first trimester","They mature at 37 weeks","The retina remains susceptible throughout childhood"],"correct":[0],"sata":false,"why":"\"The normal retinal vessels begin to form in utero at approximately 16 weeks in response to the release of vascular endothelial growth factor (VEGF). These vessels continue to develop until they reach maturity at approximately 42 to 43 weeks after conception. Once the retina is completely vascularized, the retinal vessels are not susceptible to ROP.\"","trap":"(C) ends the vulnerable window at term, when it actually extends past it — which is why screening continues until vascularization is complete rather than until discharge.","k":"4d3ggsowd4pa"},{"topic":"retinopathy of prematurity","subtopic":"when the retina is vulnerable","stem":"What mechanism does the chapter propose for the injury in retinopathy of prematurity?","options":["The mechanism is unclear; fluctuating blood oxygen levels may temporarily stop the release of factors responsible for retinal vascularization, and as retinal tissue becomes hypoxic, vascular growth factors are released, producing neovascularization with capillary hemorrhages, fibrotic scarring, and possible retinal detachment","Direct oxygen toxicity burns the retina","Bright light in the nursery damages the retina","The mechanism is fully understood and is purely genetic"],"correct":[0],"sata":false,"why":"\"The mechanism of injury in ROP is unclear. Fluctuating blood oxygen levels may temporarily stop the release of factors responsible for vascularization of the retina. As the retinal tissue becomes hypoxic, the release of vascular growth factors occurs, and neovascularization (development of new blood vessels) occurs in the retina and vitreous, with capillary hemorrhages, fibrotic scarring, and possible retinal detachment.\"","trap":"(B) is the simplified version taught for decades, and the word that matters in the real mechanism is *fluctuating* — it is the swing rather than the level alone that the nursing intervention targets.","k":"nlumj71a3o0mx"},{"topic":"retinopathy of prematurity","subtopic":"screening and prevention","stem":"When does ophthalmologic examination for retinopathy of prematurity begin, and how long does it continue?","options":["At 31 to 32 weeks, continuing until retinal vascularization is complete","At birth, with a single examination","At discharge only","At 6 months of age"],"correct":[0],"sata":false,"why":"\"The infant is examined by an ophthalmologist beginning at 31 to 32 weeks with examinations continuing until retinal vascularization is complete.\" The entire disease process in severe cases \"can take several months to evolve.\"","trap":"(B) treats a months-long evolving process as a one-time finding, and a normal early examination says nothing about what happens over the following weeks.","k":"x42k951svndvr"},{"topic":"retinopathy of prematurity","subtopic":"screening and prevention","stem":"What does the chapter identify as the key to managing retinopathy of prematurity, and what treatments exist?","options":["Prevention and early detection, with blood oxygen levels closely monitored and significant fluctuations avoided, oxygen and ventilator settings adjusted to keep saturations within acceptable levels; treatments are laser photocoagulation or intraocular injections of anti-VEGF medications","Treatment with corticosteroids","Immediate surgery at diagnosis in every case","No treatment is available"],"correct":[0],"sata":false,"why":"\"The key to the management of ROP is prevention and early detection. Blood oxygen levels in the preterm infant should be closely monitored, and significant fluctuations should be avoided. Oxygen and ventilator settings should be adjusted to keep oxygen saturations within acceptable levels.\" Treatments are \"laser photocoagulation or intraocular injections of anti-VEGF medications, which inhibit the release of VEGF.\"","trap":"(D) would remove the reason for screening, and the anti-VEGF treatment mirrors the mechanism exactly — the same growth factor that builds the retina drives the damage when it surges.","k":"1rhgfb2so0dqo"},{"topic":"bronchopulmonary dysplasia","subtopic":"the ventilation-related complication","stem":"What is bronchopulmonary dysplasia, and in which infants does it most commonly occur?","options":["A chronic pulmonary condition occurring most commonly in preterm infants requiring mechanical ventilation","An acute infection of the lungs in term infants","A congenital malformation of the airways","A complication of postmaturity"],"correct":[0],"sata":false,"why":"Bronchopulmonary dysplasia is \"a chronic pulmonary condition occurring most commonly in preterm infants requiring mechanical ventilation.\" Its etiology is multifactorial, including \"pulmonary immaturity, surfactant deficiency, lung injury and stretch, barotrauma, inflammation caused by oxygen exposure, inadequate nutrition, fluid overload, ligation of a PDA, and familial predisposition.\"","trap":"(D) attaches the complication to the wrong end of the gestational-age ladder. Postmature infants face meconium aspiration, not the ventilator-associated chronic lung disease of prematurity.","k":"ssezgu16sv37g"},{"topic":"bronchopulmonary dysplasia","subtopic":"the ventilation-related complication","stem":"What signs does the chapter give for bronchopulmonary dysplasia, and what is the key to its management?","options":["Tachypnea, retractions, nasal flaring, increased work of breathing, and increased distress with handling and feeding; the key is prevention of prematurity and minimizing exposure to mechanical ventilation, aided by antenatal steroids, exogenous surfactant, and use of CPAP and gentle ventilation in the birth setting","Bradypnea and apnea, treated with higher ventilator pressures","Cyanosis only, treated with long-term oxygen alone","There are no characteristic signs"],"correct":[0],"sata":false,"why":"Signs are \"tachypnea, retractions, nasal flaring, increased work of breathing, and increased distress with handling and feeding,\" and \"the key to the management of BPD is prevention of prematurity and minimizing exposure to mechanical ventilation,\" supported by \"antenatal steroids, exogenous surfactant, and use of CPAP and gentle ventilation in the birth setting.\"","trap":"(B) escalates the exposure that causes the injury, and the pattern here matches retinopathy of prematurity exactly: the treatment that saves the infant is also what harms the organ.","k":"1jzswjl1xkrxcb"},{"topic":"bronchopulmonary dysplasia","subtopic":"the ventilation-related complication","stem":"What do bronchopulmonary dysplasia and retinopathy of prematurity have in common, as the chapter presents them?","options":["Both are complications of the treatments that keep the preterm infant alive — oxygen and ventilation — and for both, prevention outranks treatment","Both are infections","Both occur only in term infants","Both are congenital"],"correct":[0],"sata":false,"why":"The chapter presents both as the same causal family: oxygen and ventilation rescue the lungs and produce bronchopulmonary dysplasia and retinopathy of prematurity. For each, the stated key to management is prevention — avoiding oxygen fluctuations in one and minimizing ventilation exposure in the other.","trap":"(B) misclassifies the mechanism, which matters because it would point toward antibiotics rather than toward the ventilator and oxygen settings that are the actual targets.","k":"17zcjcznuu27x"},{"topic":"necrotizing enterocolitis","subtopic":"the three conditions of its etiology","stem":"Which three conditions does the chapter enumerate in the etiology of necrotizing enterocolitis?","options":["Intestinal ischemia, bacterial colonization of the initially sterile gastrointestinal tract with harmful organisms, and enteral feeding — especially formula feeding","Infection, dehydration, and hypoglycemia","Prematurity, jaundice, and hypothermia","Maternal diabetes, macrosomia, and birth trauma"],"correct":[0],"sata":false,"why":"The chapter enumerates intestinal ischemia — from \"asphyxia/hypoxia or events that cause a redistribution of blood flow away from the GI tract (e.g., hypotension, hypovolemia, severe stress)\" — bacterial colonization with organisms such as Klebsiella, Escherichia coli, and Clostridium, and enteral feeding: \"the majority of infants with NEC had received some type of enteral feeding.\"","trap":"(C) names prematurity, which is a risk factor in Box 34.6 rather than one of the three mechanisms — and knowing the mechanisms is what makes the protective factor make sense.","k":"1rgpwwk186tg96"},{"topic":"necrotizing enterocolitis","subtopic":"the three conditions of its etiology","stem":"A nurse is caring for a very-low-birth-weight infant. What does the chapter identify as protective against necrotizing enterocolitis?","options":["Breast milk, which seems to have a protective effect — NEC is rare among infants who are exclusively fed breast milk — and probiotics such as Bifidobacterium infantis and Lactobacillus acidophilus, which assist in establishing normal bowel flora","Early formula feeding to build gut tolerance","Withholding all enteral feeding indefinitely","Prophylactic antibiotics"],"correct":[0],"sata":false,"why":"\"Breast milk seems to have a protective effect against the development of NEC—it is rare among infants who are exclusively fed breast milk,\" and \"the use of probiotics such as Bifidobacterium infantis and Lactobacillus acidophilus assist in the establishment of normal bowel flora and appear to decrease the incidence of NEC.\"","trap":"(D) runs against the chapter's own nursing implication to \"exercise antibiotic stewardship,\" and the evidence box notes that human milk \"inhibits bacteria such as Escherichia coli, Staphylococcus aureus, and Candida from proliferating.\"","k":"odv7lbqv6fat"},{"topic":"necrotizing enterocolitis","subtopic":"risk factors, timing, and nursing role","stem":"Which risk factors for necrotizing enterocolitis appear in Box 34.6? Select all that apply.","options":["Prematurity and asphyxia","Red blood cell transfusion and early enteral or hyperosmolar feedings","Patent ductus arteriosus and congenital heart disease","Maternal smoking or cocaine use, polycythemia, and anemia","Postmaturity"],"correct":[0,1,2,3],"sata":true,"why":"Box 34.6 lists prematurity, asphyxia, red blood cell transfusion, early enteral or hyperosmolar feedings, patent ductus arteriosus, congenital heart disease, maternal smoking or cocaine use, polycythemia, anemia, genetic predisposition, and gastrointestinal infection.","trap":"(E) is not on the list — \"approximately 95% of cases occur in preterm infants,\" and NEC occurs in up to 5% of all very-low-birth-weight infants, with mortality as high as 50% in extremely-low-birth-weight infants.","k":"d0gurm1hbkts0"},{"topic":"necrotizing enterocolitis","subtopic":"risk factors, timing, and nursing role","stem":"How does the timing of necrotizing enterocolitis differ between term and preterm infants?","options":["In the term infant it usually occurs between 1 and 3 days after birth but can occur as late as 1 month; in the preterm infant it usually occurs within the first 7 days but can be delayed up to 30 days","It occurs only in the first 24 hours in both","It occurs only after 1 month in both","Timing is identical in both groups"],"correct":[0],"sata":false,"why":"\"The onset of NEC in the term infant usually occurs between 1 and 3 days after birth but can occur as late as 1 month. In the preterm infant, NEC usually occurs within the first 7 days but can be delayed for up to 30 days.\"","trap":"(D) collapses two different windows, and the long tails on both mean a stable infant weeks into the stay is still at risk — which matters because \"the signs of NEC are nonspecific, which is characteristic of many neonatal diseases.\"","k":"1swquet1xb162f"},{"topic":"necrotizing enterocolitis","subtopic":"risk factors, timing, and nursing role","stem":"Which nursing implications does the Evidence-Based Practice box give for reducing necrotizing enterocolitis? Select all that apply.","options":["Exercise antibiotic stewardship","Prioritize feedings by the mother, and encourage mothers of at-risk preterm infants to provide breast milk, assisting with milk expression using an appropriate pump and meticulous hygiene","Perform meticulous hand hygiene and teach families those practices, and advocate for cleanliness in hospital cleaning practices","Advocate for proper staffing ratios, since nurse staffing is a component of the level of quality care very-low-birth-weight infants receive","Begin formula feeding early to establish gut flora"],"correct":[0,1,2,3],"sata":true,"why":"The box's nursing implications are antibiotic stewardship, prioritizing the mother's milk, meticulous hand hygiene with family teaching, advocating for cleanliness in hospital cleaning practices, assisting with milk expression, and advocating for proper staffing ratios.","trap":"(E) reverses the feeding recommendation. Enteral feeding — especially formula feeding — is one of the three conditions in the etiology, and the mother's milk is the protective alternative.","k":"1qjv25j1obgyw9"},{"topic":"parental tasks in the nicu","subtopic":"the five tasks","stem":"A mother of a critically ill preterm infant grieves in preparation for her baby's possible death while still hoping the baby survives. Which parental task is this, and when does it begin?","options":["Anticipatory grief, which begins during labor and lasts until the infant dies or shows evidence of surviving","Accepting that the baby is not healthy and full term","Resuming the process of relating to the infant","Learning what is unique about this baby"],"correct":[0],"sata":false,"why":"In anticipatory grief, \"the parent grieves in preparation for the infant's possible death, although the parent clings to the hope that the infant will survive,\" and the process \"begins during labor ... and lasts until the infant dies or shows evidence of surviving.\" Its value: \"being able to anticipate the loss gives families an opportunity to plan, feel more in control of their situation, and say goodbye in a special way.\"","trap":"(B) is the next task, \"grief and depression typify this phase, which persists until the infant is out of danger and is expected to survive\" — a different emotional problem with a different endpoint.","k":"1513197zzb79p"},{"topic":"parental tasks in the nicu","subtopic":"the five tasks","stem":"A father in the NICU appears emotionally detached and does not engage with his infant. How might the chapter frame this?","options":["As definite evidence of impaired bonding requiring immediate referral","As a possible feature of anticipatory grief, in which some individuals or family members distance or detach themselves from the experience as a way of protecting themselves from the pain of loss and grief","As disinterest in the child","As a normal male response to all infants"],"correct":[1],"sata":false,"why":"The chapter notes the risk within anticipatory grief: \"some individuals or family members distance or detach themselves from the experience ... as a way of protecting themselves from the pain of loss and grief.\" The nurse's role during anticipatory grief is \"to advocate for the family so that other health care professionals realize that the family is grieving. Being fully present for these families and practicing active listening are important.\"","trap":"(A) applies a bonding-assessment label without the grief context, and the chapter cautions that \"how a parent responds to this situation depends on many factors including religious, spiritual, and cultural beliefs.\"","k":"19h8z0w1ogkloe"},{"topic":"parental tasks in the nicu","subtopic":"the five tasks","stem":"An infant is gaining weight, feeding, and weaning from the incubator, and the parents are beginning to interact more. Which parental task does this describe?","options":["Anticipatory grief","Resuming the process of relating to the infant — developing an attachment that was interrupted by the infant's critical condition at birth","Adjusting the home environment","Accepting that the baby is not healthy"],"correct":[1],"sata":false,"why":"\"As the baby's condition begins to improve and the baby gains weight, is able to breastfeed or bottle-feed, and is weaned from the incubator or radiant warmer, the parent can begin the process of developing an attachment ... that was interrupted by the infant's critical condition at birth.\"","trap":"(D) belongs earlier in the sequence and ends \"until the infant is out of danger and is expected to survive,\" which the stem's improvements suggest has already happened.","k":"x5317ealcuys"},{"topic":"parental tasks in the nicu","subtopic":"the five tasks","stem":"Which tasks complete the chapter's list of five parental tasks in the NICU?","options":["Learning what is unique about this baby — special needs and growth patterns, caregiving needs, and growth and development expectations — and adjusting the home environment, including limiting visitors to minimize exposure to pathogens and possibly altering the environmental temperature","Choosing a pediatrician and arranging insurance","Selecting a feeding method and a car seat","Returning to work and arranging childcare"],"correct":[0],"sata":false,"why":"The fourth task is \"learning what is unique about this baby,\" covering \"special needs and growth patterns, caregiving needs, and growth and development expectations,\" and the fifth is adjusting the home environment: \"parents are encouraged to limit the number of visitors to minimize exposure of the infant to pathogens. The environmental temperature may have to be altered.\"","trap":"(B) and (D) are practical logistics rather than the developmental and caregiving adjustments the chapter frames as tasks.","k":"1mlnk91bmcc1b"},{"topic":"parental tasks in the nicu","subtopic":"the five tasks","stem":"What principle does the chapter give as the basis for involving parents in NICU care?","options":["Principles of family-centered care, with nurses instrumental in helping parents learn who their infant is, recognize behavioral cues in the infant's development, and use those cues in the care they provide","That parents should observe but not participate until discharge","That care is best delivered without parental involvement to reduce infection risk","That involvement should begin only when the infant is stable enough to go home"],"correct":[0],"sata":false,"why":"\"Principles of family-centered care form the basis of active involvement of parents in the care of their children,\" and nurses \"are instrumental in helping parents learn who their infant is and to recognize behavioral cues in the infant's development and to use these cues in the care they provide.\"","trap":"(D) delays involvement until the tasks the chapter describes have already been missed — the relating task begins as the infant improves, not at discharge.","k":"2vztst1e20wm7"},{"topic":"supporting nicu parents","subtopic":"the first visit","stem":"Why does the chapter say a nurse should be present during the parents' first visit to their infant in the NICU? Select all that apply.","options":["To help them see the infant rather than focus on the equipment, with the importance and purpose of the equipment explained","To explain the characteristics normal for an infant of their baby's gestational age so that parents do not compare their child with a term, healthy infant","To encourage the parents to express their feelings about the pregnancy, labor, and birth and the experience of having a high-risk infant","To assess the parents' perceptions of the infant and begin preparing them to participate in providing care","To restrict the length of the visit to reduce infant stimulation"],"correct":[0,1,2,3],"sata":true,"why":"The chapter gives exactly these purposes for the nurse's presence at the first visit.","trap":"(E) reverses the aim of the visit, which is to bring the parents closer rather than to limit their time — \"as soon as possible, the parents should see and touch their infant so that they can begin to acknowledge the reality of the birth and the infant's true appearance and condition.\"","k":"wyhuc61cqagds"},{"topic":"supporting nicu parents","subtopic":"the first visit","stem":"How can parents be prepared before a first NICU visit?","options":["When a high-risk birth is anticipated, the family can be given a tour of the NICU or shown a video; after an unexpected preterm birth, the parents can be given a booklet, view a video, or have someone describe what they will see","No preparation is possible","Only written consent is required","Preparation is discouraged because it increases anxiety"],"correct":[0],"sata":false,"why":"\"The family can be given a tour of the NICU or shown a video to prepare them for the sights and activities of the unit\" when a high-risk birth is anticipated, and after an unexpected preterm birth, \"the parents can be given a booklet, view a video, or have someone describe what they will see.\"","trap":"(D) withholds the preparation that makes the first sight of the unit survivable, and the first stated purpose of the nurse's presence is to help parents see past the equipment.","k":"n2t6iw4ey2f2"},{"topic":"supporting nicu parents","subtopic":"contact, family, and support","stem":"What does the chapter recommend about physical contact between parents and a critically ill infant?","options":["Physical contact is important to establish early bonding and attachment; if parents cannot hold the infant, they can touch and stroke the baby as they speak softly, and as the condition improves they can hold the neonate and provide kangaroo care, gradually participating in feeding, bathing, and changing","Contact should be avoided until the infant is extubated","Only the mother should touch the infant","Contact should be limited to once daily"],"correct":[0],"sata":false,"why":"\"Physical contact with the infant is important to establish early bonding and attachment. If it is not possible for parents to hold the infant, they can touch and stroke the baby as they speak softly. As the infant's condition improves, parents can hold the neonate and provide kangaroo care. They gradually begin to participate in infant caregiving activities such as feeding, bathing, and changing.\"","trap":"(B) postpones all contact until a milestone that may be weeks away, when the chapter offers a graded alternative for every stage of the infant's condition.","k":"1b8dznu118wv9s"},{"topic":"supporting nicu parents","subtopic":"contact, family, and support","stem":"Parents live several hours from the hospital and cannot visit daily. What methods does the chapter describe for keeping them connected?","options":["Daily phone calls, notes written as if by the infant, photographs of the infant, and camera systems in some NICUs that allow parents to view their infant remotely","Weekly summary letters only","No contact until they can visit","Contact only through the primary care provider"],"correct":[0],"sata":false,"why":"When parents cannot be present, \"staff members devise appropriate methods to keep them informed and to help them feel connected to the newborn. Examples are daily phone calls, notes written as if by the infant, photographs of the infant. Some NICUs have camera systems that allow parents to view their infant remotely.\"","trap":"(C) leaves a family to imagine the worst, and the relating task the chapter describes cannot begin without some form of contact.","k":"lc9c971kt97ul"},{"topic":"supporting nicu parents","subtopic":"contact, family, and support","stem":"How does the chapter describe the experience of grandparents and siblings of an infant in the NICU?","options":["Grandparents may experience grief and sadness as they watch their own children facing the difficulties of having a preterm or high-risk infant; siblings old enough to expect a new baby can be very confused when the baby must remain in the hospital, may benefit from visiting when possible, and after discharge some are bewildered and angry at the seemingly disproportionate parental time spent on the newborn","Only the parents are affected","Siblings should never visit the NICU","Grandparents are unaffected because they are not the parents"],"correct":[0],"sata":false,"why":"The chapter describes grandparents' grief as they watch their own children struggle, siblings' confusion when the expected baby does not come home, the value of NICU visits when possible, and the post-discharge reaction: \"some children are bewildered and angry at the seemingly disproportionate amount of parental time spent on the newborn.\"","trap":"(C) forecloses a visit the chapter recommends when possible, and it is often what makes the absent baby real to an older child.","k":"ebfqmn16vymzh"},{"topic":"supporting nicu parents","subtopic":"contact, family, and support","stem":"What support structures does the chapter describe for NICU parents?","options":["Support groups for parents of infants in NICUs, arrangements for an experienced NICU parent to contact a new group member, and referral for psychologic or family counseling when appropriate — especially for mothers, who are likely to need help expressing their feelings","No formal support is described","Only referral to social work","Support groups only for mothers"],"correct":[0],"sata":false,"why":"\"Some hospitals have support groups for the parents of infants in NICUs,\" hospitals \"may arrange to have an experienced NICU parent make contact with a new group member,\" and \"parents, especially mothers, are likely to need help in expressing their feelings and, when appropriate, can be referred for psychologic or family counseling.\"","trap":"(D) excludes the partner, whom the chapter includes in the tasks and in the grief, and the peer-contact arrangement is the one most easily overlooked.","k":"1n1ryrn1lqwlml"},{"topic":"the postmature infant","subtopic":"definition and appearance","stem":"How does the chapter define a postterm pregnancy and the resulting infant, and what is dysmaturity?","options":["A pregnancy prolonged beyond 42 0/7 weeks is postterm, and the infant is postterm or postmature; postmaturity can be associated with placental insufficiency, producing a fetus with a wasted appearance — dysmaturity — from loss of subcutaneous fat and muscle mass","A pregnancy beyond 40 weeks, producing an infant who is always oversized","A pregnancy beyond 41 weeks, producing an infant who is always growth restricted","Postmaturity and dysmaturity are the same word"],"correct":[0],"sata":false,"why":"\"A pregnancy that is prolonged beyond 42 0/7 weeks is a postterm pregnancy, and the infant who is born is called postterm or postmature. Postmaturity can be associated with placental insufficiency, resulting in a fetus that has a wasted appearance (dysmaturity) at birth because of loss of subcutaneous fat and muscle mass.\"","trap":"(D) merges a gestational-age category with a physical description, and they are not the same: \"not all postterm infants show signs of dysmaturity.\"","k":"wex4setj7w64"},{"topic":"the postmature infant","subtopic":"definition and appearance","stem":"A postterm infant is large at birth with advanced development and bone age, without a wasted appearance. How should the nurse interpret this?","options":["As inconsistent with postmaturity","As expected: not all postterm infants show signs of dysmaturity; some continue to grow in utero and are large at birth, and most postmature infants are oversized but otherwise normal, with advanced development and bone age","As a sign of maternal diabetes only","As evidence of inaccurate dating"],"correct":[1],"sata":false,"why":"\"Not all postterm infants show signs of dysmaturity; some continue to grow in utero and are large at birth. Most postmature infants are oversized but otherwise normal, with advanced development and bone age.\"","trap":"(A) treats the wasted appearance as required, which would make most postmature infants unclassifiable — and it is the dysmature subset, not the oversized one, that signals placental failure.","k":"12xysc5qel0wv"},{"topic":"the postmature infant","subtopic":"definition and appearance","stem":"Which physical characteristics may be seen in the postmature infant? Select all that apply.","options":["Dry, cracked, desquamating, parchment-like skin at birth","Firm nails extending beyond the fingertips","Depleted subcutaneous fat layers leaving the skin loose, giving an old-person appearance, with a long and thin body","Absent vernix, and possible meconium staining of skin, nails, and cord that is golden yellow to green","Abundant lanugo and thick vernix"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists dry, cracked, parchment-like skin; firm nails extending beyond the fingertips; depleted subcutaneous fat with an old-person appearance; a long, thin body; absent vernix; and possible meconium staining, noting that an infant may show \"some, but not necessarily all\" of these.","trap":"(E) describes a preterm infant. Lanugo and vernix decrease as gestation advances, so their abundance points the other direction on the ladder.","k":"11xmmcy1dxdd7c"},{"topic":"the postmature infant","subtopic":"complications and care","stem":"Why is the perinatal mortality rate significantly higher in the postmature fetus and neonate?","options":["Because during labor and birth the increased oxygen demands of the postmature fetus are not fully met, and insufficient gas exchange in the postmature placenta increases the likelihood of intrauterine hypoxia, which can result in passage of meconium in utero and raise the risk for meconium aspiration syndrome","Because postmature infants are always growth restricted","Because postmature infants cannot regulate temperature","Because of surfactant deficiency"],"correct":[0],"sata":false,"why":"\"The perinatal mortality rate is significantly higher in the postmature fetus and neonate,\" because \"during labor and birth the increased oxygen demands of the postmature fetus are not fully met.\" And: \"Insufficient gas exchange in the postmature placenta also increases the likelihood of intrauterine hypoxia, which can result in the passage of meconium in utero, thereby increasing the risk for meconium aspiration syndrome (MAS).\" Watch also for fetal distress, macrosomia, and birth injury.","trap":"(D) names the preterm infant's problem. The postmature lung is mature; the placenta supporting it is not.","k":"d0fkko1prcbvu"},{"topic":"the postmature infant","subtopic":"complications and care","stem":"Parents are concerned about their postmature newborn's dry, peeling skin. What care and teaching does the chapter describe?","options":["Initial bathing with a mild soap, moisturizing the skin with a petrolatum-based ointment, and helping parents understand the reasons for the dry, peeling skin","Vigorous scrubbing to remove the peeling skin","No bathing for the first week","Application of antibiotic ointment to all peeling areas"],"correct":[0],"sata":false,"why":"\"Initial bathing should be done with a mild soap. It can be helpful to moisturize the skin with a petrolatum-based ointment.\" And: \"Parents may be concerned about the appearance of the postmature infant. Nurses can help them understand reasons for the dry, peeling skin.\"","trap":"(B) would damage already fragile skin, and the teaching half of the answer is what turns an alarming appearance into an explainable one.","k":"1o1bxh11x5fvz3"}];
+const TITLE = "Chapter 34 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 34";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

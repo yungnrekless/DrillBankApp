@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 37 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 37</div><h1>Chapter 37 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">standardized terminology for perinatal loss</span><span class="chip t2">the twenty-week line</span></div>
+<div class="stem">1. A pregnancy ends in utero at 17 weeks. What is the correct term, and what term should the nurse use with the family?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Miscarriage, defined as any in utero death before 20 weeks of gestation; miscarriage is the accepted term among providers, used to differentiate this loss from elective abortions</li><li class="fopt"><span class="mk">B</span>Stillbirth, because the fetus died before birth</li><li class="fopt"><span class="mk">C</span>Fetal death, because it occurred in utero</li><li class="fopt"><span class="mk">D</span>Early neonatal death</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Miscarriage is &quot;any in utero death before 20 weeks of gestation,&quot; and although &quot;providers sometimes refer to these losses as spontaneous abortions, miscarriage is the accepted term among providers to differentiate this form of loss from elective abortions.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies a term the chapter reserves for 20 weeks and later, and the word choice matters to a family who may hear &quot;abortion&quot; as something they chose.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">standardized terminology for perinatal loss</span><span class="chip t2">the twenty-week line</span></div>
+<div class="stem">2. A fetus dies in utero at 26 weeks. Which terms apply?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fetal death, which is any death before birth after 20 weeks; it is also a stillbirth, since a stillbirth is a fetal death occurring at 20 weeks or later; and it is an early fetal death, since fetal deaths are subdivided as early at 20 to 27 weeks and late at 28 weeks or more</li><li class="fopt"><span class="mk">B</span>Miscarriage</li><li class="fopt"><span class="mk">C</span>Late fetal death</li><li class="fopt"><span class="mk">D</span>Late neonatal death</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Fetal death refers to any death before birth after 20 weeks of gestation,&quot; &quot;a stillbirth is a fetal death occurring at 20 weeks or later,&quot; and &quot;fetal deaths are subdivided as early (20 to 27 weeks of gestation) or late (≥28 weeks of gestation).&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) crosses the 28-week boundary that separates early from late fetal death, and (D) applies a neonatal term to a fetus who was never born alive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">standardized terminology for perinatal loss</span><span class="chip t2">the neonatal and infant boundaries</span></div>
+<div class="stem">3. A live-born infant dies on day 12 of life. How is this classified?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A late neonatal death, since deaths occurring between 7 and 27 days are late neonatal deaths</li><li class="fopt"><span class="mk">B</span>An early neonatal death</li><li class="fopt"><span class="mk">C</span>An infant death but not a neonatal death</li><li class="fopt"><span class="mk">D</span>A stillbirth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Death of a live-born infant fewer than 7 days old is an early neonatal death,&quot; and &quot;deaths occurring between 7 and 27 days are late neonatal deaths.&quot; Any live birth of a child who dies within the first year is an infant death.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is what the same death becomes on day 30 — past 27 days it is no longer a neonatal death, though it remains an infant death through the first year.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">standardized terminology for perinatal loss</span><span class="chip t2">the neonatal and infant boundaries</span></div>
+<div class="stem">4. Why does the chapter say standardized terminology for pregnancy-associated deaths matters?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because health care practitioners are required to report fetal deaths, live births, and infant deaths, which are used collectively as data to determine perinatal and neonatal mortality rates at state and national levels, and policy makers use those rates to influence decisions about allocating resources to improve care and outcomes</li><li class="fopt"><span class="mk">B</span>Because it determines insurance coverage</li><li class="fopt"><span class="mk">C</span>Because families prefer technical language</li><li class="fopt"><span class="mk">D</span>Because the terms have no practical consequence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The American Academy of Pediatrics &quot;recommended standard terminology for deaths associated with pregnancy&quot; in 2016, and &quot;health care practitioners are required to report fetal deaths, live births, and infant deaths, which are used collectively as data to determine perinatal and neonatal mortality rates at state and national levels. Policy makers, in turn, use these rates to influence policy decisions related to allocation of resources to improve care and outcomes.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) makes the definitions academic, when the chapter ties them directly to how resources reach perinatal care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">standardized terminology for perinatal loss</span><span class="chip t2">the neonatal and infant boundaries</span></div>
+<div class="stem">5. How does the chapter define perinatal loss as a general term?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A general term commonly used to describe losses associated with pregnancy, particularly losses occurring after conception and after the woman has recognized that she is pregnant</li><li class="fopt"><span class="mk">B</span>Only deaths occurring after 20 weeks</li><li class="fopt"><span class="mk">C</span>Only neonatal deaths</li><li class="fopt"><span class="mk">D</span>Only losses occurring during labor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Perinatal loss is &quot;a general term commonly used to describe losses associated with pregnancy, particularly losses occurring after conception and after the woman has recognized that she is pregnant.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) restricts a deliberately broad term to the subset with its own name, and the breadth is what lets the chapter include losses that involve no death at all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of perinatal loss and grief phases</span><span class="chip t2">which losses are grieved</span></div>
+<div class="stem">6. A woman who had a miscarriage at 9 weeks tells the nurse that no one in her family knew she was pregnant. What does the chapter say about this situation?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Grief from miscarriage is often suffered in isolation because other people in a woman's family and social network may not even know about the pregnancy and subsequent loss, and it may be disenfranchised — even when others know, their understanding of the meaning of the pregnancy or its importance to the woman may be underestimated or unappreciated</li><li class="fopt"><span class="mk">B</span>Early losses are grieved less intensely</li><li class="fopt"><span class="mk">C</span>Grief is easier when others do not know</li><li class="fopt"><span class="mk">D</span>Miscarriage grief resolves within days</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Grief from miscarriage is often suffered in isolation because other people in a woman's family and social network may not even know about the pregnancy and subsequent loss,&quot; and even when they do know, &quot;their understanding of the meaning of the pregnancy or its importance to the woman may be underestimated or unappreciated.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the assumption that makes early losses invisible, and the isolation the chapter describes is an assessment finding rather than a mitigating factor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of perinatal loss and grief phases</span><span class="chip t2">which losses are grieved</span></div>
+<div class="stem">7. Which losses does the chapter describe as producing grief even though no death occurs? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Preterm birth, where the full-term healthy newborn parents expected is replaced by a small baby who is sick or requires lengthy hospitalization</li><li class="fopt right"><span class="mk">&#10003;</span>A delayed or foregone opportunity to breastfeed, which is another loss</li><li class="fopt right"><span class="mk">&#10003;</span>A cesarean birth, which some women grieve, compounded when it is emergent and under general anesthesia so that the woman and partner are separated and she does not hear her baby's first cries</li><li class="fopt right"><span class="mk">&#10003;</span>Multifetal pregnancy reduction, after which expectant parents may feel deep grief and sadness despite the continued development of one or two fetuses</li><li class="fopt"><span class="mk">E</span>A planned vaginal birth at term with a healthy infant</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Other losses associated with childbearing can result in distress or even grief, even if the loss does not involve death.&quot; The chapter names preterm birth and the delayed or foregone breastfeeding it causes, the birth experience itself — &quot;the reality of the birth experience is inconsistent with the parents' hopes and expectations&quot; — and multifetal pregnancy reduction, where grief follows even as the pregnancy continues.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) describes the expected outcome, and the chapter's point is that grief is measured against what the parents hoped for rather than against a clinical standard.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of perinatal loss and grief phases</span><span class="chip t2">which losses are grieved</span></div>
+<div class="stem">8. Why does a serious fetal diagnosis create a particularly difficult situation for parents?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because the standard anatomy ultrasound is typically performed between 18 and 20 weeks — later than the time most women would otherwise consider an abortion — so most pregnancies with a diagnosis of a severe fetal defect are pregnancies that are wanted</li><li class="fopt"><span class="mk">B</span>Because the diagnosis is usually made in the first trimester</li><li class="fopt"><span class="mk">C</span>Because the incidence of fetal defects has risen sharply</li><li class="fopt"><span class="mk">D</span>Because the diagnosis is always certain</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Current standards of maternity care include at least one ultrasound examination, typically performed between 18 and 20 weeks of gestation,&quot; and &quot;because these diagnoses are made midpregnancy—later than the time most women would otherwise consider an abortion—most pregnancies with diagnosis of a severe fetal defect are pregnancies that are wanted.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) misreads a real trend that the chapter corrects explicitly: increased ultrasound use &quot;has resulted in increased diagnosis of fetal defects; note that this is an increase in the diagnosis of defects, not in the actual incidence of defects.&quot; And (D) overstates certainty the chapter also qualifies — the abundance of prenatal information &quot;may lead to more, not less, uncertainty about long-term outcomes.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of perinatal loss and grief phases</span><span class="chip t2">miles' phases</span></div>
+<div class="stem">9. Which three phases does Miles describe in parental grief, and what qualifier does the chapter attach?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Acute distress characterized by shock and numbness, a period of intense grief with emotional, cognitive, behavioral, and physical responses, and reorganization, when parents return to their usual level of functioning although the distress associated with the death remains; the phases are overlapping rather than sequential stages</li><li class="fopt"><span class="mk">B</span>Denial, anger, and acceptance, completed in order</li><li class="fopt"><span class="mk">C</span>Shock, resolution, and closure</li><li class="fopt"><span class="mk">D</span>A single undifferentiated period of grief</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Miles hypothesized that parental grief responses occur in three overlapping phases&quot;: acute distress following the diagnosis or death, &quot;a period of intense grief that includes emotional, cognitive, behavioral, and physical responses,&quot; and reorganization, which &quot;occurs when they return to their usual level of functioning, although the distress associated with the death remains.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) imports a different model and adds a sequence the word &quot;overlapping&quot; denies — and the chapter's larger point is that &quot;the goal of the grief process is not resolution but rather the incorporation of the person who has died into one's own life moving forward.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">types of perinatal loss and grief phases</span><span class="chip t2">miles' phases</span></div>
+<div class="stem">10. A mother whose infant has just died appears calm and shows almost no emotion. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>As a possible reflection of numbness during acute distress — occasionally a lack of affect, calmness, or even euphoria can reflect numbness, and for some people a way of coping with a profound loss is to avoid emotional displays</li><li class="fopt"><span class="mk">B</span>As evidence she is not grieving</li><li class="fopt"><span class="mk">C</span>As denial requiring confrontation</li><li class="fopt"><span class="mk">D</span>As a sign that no follow-up is needed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Acute distress brings &quot;a sense of unreality, loss of innocence, and powerlessness ... and having a sense of disbelief. Profound sadness accompanied by intense outbursts of emotion and crying is common.&quot; But: &quot;Occasionally a lack of affect, calmness, or even euphoria can reflect their numbness,&quot; and &quot;for some persons, their way of coping with a profound loss is to avoid emotional displays.&quot; Expressions of grief &quot;may be guided by deep sociocultural and religious/spiritual influences that are unfamiliar to the nurse, who is expected to provide nonjudgmental support.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reads a coping style as an absence of grief, which is the judgment the chapter's nonjudgmental-support instruction is written against.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">communicating with bereaved parents</span><span class="chip t2">why comforting is the error</span></div>
+<div class="stem">11. A nurse feels an urge to say something that will make a bereaved mother feel better. What does the chapter say about this impulse?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The initial impulse to reduce one's sense of helplessness is to say or do something to reduce the parent's pain, and although such a response seems supportive at the time, it can stifle the further expression of emotion; the nurse should resist the temptation to give advice or use clichés</li><li class="fopt"><span class="mk">B</span>The impulse should be followed, since reassurance is the priority</li><li class="fopt"><span class="mk">C</span>The nurse should leave the room until the parents compose themselves</li><li class="fopt"><span class="mk">D</span>The nurse should offer a factual explanation of the cause</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The initial impulse to reduce one's sense of helplessness is to say or do something to reduce his or her pain. Although such a response seems supportive at the time, it can stifle the further expression of emotion,&quot; and &quot;the nurse should resist the temptation to give advice or use clichés in offering support to the bereaved.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) removes the presence that is itself the intervention: &quot;the nurse should have a presence of self and the willingness to be alongside, quietly supporting the bereaved person,&quot; and &quot;this presence is comforting for parents.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">communicating with bereaved parents</span><span class="chip t2">why comforting is the error</span></div>
+<div class="stem">12. Which statements appear in Box 37.1's &quot;what to say&quot; list? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>I'm sad for you</li><li class="fopt right"><span class="mk">&#10003;</span>This must be hard for you</li><li class="fopt right"><span class="mk">&#10003;</span>What can I do for you?</li><li class="fopt right"><span class="mk">&#10003;</span>I'm here, and I want to listen</li><li class="fopt"><span class="mk">E</span>I know how you feel</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 37.1's &quot;what to say&quot; list is: I'm sad for you; How are you doing with all of this?; This must be hard for you; What can I do for you?; I'm sorry; and I'm here, and I want to listen.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is on the &quot;what not to say&quot; list, alongside God had a purpose for her; Be thankful you have another child; The living must go on; It's God's will; You're young, you can have others; Now you have an angel in heaven; This happened for the best; Better for this to happen now, before you knew the baby; and There was something wrong with the baby anyway.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">communicating with bereaved parents</span><span class="chip t2">the techniques</span></div>
+<div class="stem">13. Which communication techniques does the chapter endorse with bereaved parents? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Presence — being alongside and quietly supporting whatever expressions of feeling are appropriate for them</li><li class="fopt right"><span class="mk">&#10003;</span>Minimal encouragers such as leaning forward and nodding, and inviting the person to say more</li><li class="fopt right"><span class="mk">&#10003;</span>Sitting through the silence, which gives the bereaved person an opportunity to collect thoughts and process what they are sharing</li><li class="fopt right"><span class="mk">&#10003;</span>Naming the feeling, such as observing aloud that the person sounds or looks angry</li><li class="fopt"><span class="mk">E</span>Using touch automatically with every bereaved parent</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter endorses presence, minimal encouragers — &quot;leaning forward, nodding the head&quot; is &quot;often encouragement enough for the bereaved person to tell his or her story&quot; — silence, which &quot;can be therapeutic,&quot; and identifying the feeling when a person expresses anger.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) skips the assessment the chapter requires: &quot;careful assessment is important before using touch as a therapeutic technique. For some, touch is a meaningful expression of concern, but for others it is an invasion of privacy or contrary to their cultural or religious beliefs.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">communicating with bereaved parents</span><span class="chip t2">the techniques</span></div>
+<div class="stem">14. A bereaved mother repeatedly asks the nurse whether something she did caused the loss. How should the nurse respond?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Recognize that the answers to these questions must be answered by the bereaved themselves as part of their healing; trying to give answers when there are no clear answers, or trying to assuage their feelings by telling them they should not feel guilty, does not help them process their grief</li><li class="fopt"><span class="mk">B</span>Provide a definitive answer to relieve her guilt</li><li class="fopt"><span class="mk">C</span>Tell her she should not feel guilty</li><li class="fopt"><span class="mk">D</span>Redirect the conversation to the infant's care</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A sense of guilt can pervade the experience of bereaved parents, who may raise many questions surrounding their loss that can leave them feeling guilty. This is particularly true for mothers,&quot; and &quot;the nurse should recognize that the answers to these questions must be answered by the bereaved themselves; it is part of their healing.&quot; Both failure modes are named: giving answers where there are none, and telling parents they should not feel guilty.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the kindest-sounding response and one of the two the chapter identifies as unhelpful — and statistics do not help either, since &quot;for many people, understanding that something happens frequently is no consolation when it happens to them.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">communicating with bereaved parents</span><span class="chip t2">the techniques</span></div>
+<div class="stem">15. Whose grief does the chapter say is most often overlooked, and what should the nurse do about it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The partner's, since much of the attention at the time of a loss is on the woman and the partner is usually expected to be her main support; nurses may need to be intentional in addressing the partner's grief and helping them realize that they too need support, asking the father or partner directly about their views of what happened and their feelings of loss</li><li class="fopt"><span class="mk">B</span>The grandparents'</li><li class="fopt"><span class="mk">C</span>The nurse's own</li><li class="fopt"><span class="mk">D</span>No one's grief is overlooked</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Much of the attention at the time of a loss is on the woman, and her partner is usually expected to be her main support. The partner's grief is sometimes not recognized or acknowledged,&quot; and &quot;nurses may need to be intentional in addressing their grief.&quot; Because nurses &quot;tend to be very focused on the physical and emotional needs of the mother, it is especially important to ask the father or partner directly about their views of what happened and the associated feelings of loss.&quot; Partners &quot;may hide their feelings from each other to protect the other during times of loss.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) contradicts a gap the chapter names explicitly, and the direct question to the partner is the intervention that closes it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">communicating with bereaved parents</span><span class="chip t2">the techniques</span></div>
+<div class="stem">16. What should the nurse tell parents about what lies ahead in their grief?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That most parents are not prepared for the raw feelings they experience or for the fact that these painful, complex feelings and related behavioral reactions continue for many weeks or months, and that reassuring them their responses are normal and preparing them for a potentially lengthy process can be useful</li><li class="fopt"><span class="mk">B</span>That the worst will be over within a week</li><li class="fopt"><span class="mk">C</span>That grief resolves completely with time</li><li class="fopt"><span class="mk">D</span>That they should avoid discussing the loss</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Most parents are not prepared for the raw feelings that they experience or the fact that these painful, complex feelings and related behavioral reactions continue for many weeks or months. Reassuring them that their responses are normal and preparing them for the potentially lengthy process of grief can be useful.&quot; Grief &quot;is a long-term process that can extend for months and years; some aspects of grief endure throughout life.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) promises an endpoint the chapter replaces with continuing bonds — incorporating the person who died into one's ongoing life rather than resolving the loss.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">memory making and postmortem care</span><span class="chip t2">mementos</span></div>
+<div class="stem">17. Which mementos can the nurse offer bereaved parents, and what rule governs offering them?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The baby's weight, length, and head circumference, footprints and handprints on a special card or in a memory book, and everyday articles such as the tape measure, baby lotions, combs or hairbrushes, clothing, hats, blankets, crib cards, and identification bands; the nurse should ask parents whether they wish to have these articles before giving them</li><li class="fopt"><span class="mk">B</span>All available items should be sent home without asking</li><li class="fopt"><span class="mk">C</span>Mementos should be offered only if parents request them first</li><li class="fopt"><span class="mk">D</span>Mementos are not appropriate after a perinatal death</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The nurse can provide information about the baby's weight, length, and head circumference to the family. Footprints and handprints can be taken and placed with the other information on a special card or in a memory or baby book.&quot; Everyday articles listed include the tape measure, lotions, combs or hairbrushes, clothing, hats, blankets, crib cards, and identification bands, and &quot;the identification band helps the parents remember the size of the baby and personalizes the mementos.&quot; The rule: &quot;The nurse should ask parents if they wish to have these articles before giving them to the parents.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) removes the parents' choice from an object they may or may not want to carry home, and the same permission rule applies again to hair: &quot;the nurse must ask the parents for permission before cutting a lock of hair, which can be removed from the nape of the neck, where it is not noticeable.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">memory making and postmortem care</span><span class="chip t2">mementos</span></div>
+<div class="stem">18. What technique improves the quality of a newborn's footprints or handprints?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Applying alcohol or acetone to the palms or soles to help the ink adhere, especially for small babies, placing the heel or palm down first and rolling the foot or hand forward while keeping the toes or fingers extended</li><li class="fopt"><span class="mk">B</span>Pressing the whole foot down flat at once</li><li class="fopt"><span class="mk">C</span>Warming the skin with a heat lamp</li><li class="fopt"><span class="mk">D</span>Tracing the outline, which produces the most accurate record</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Alcohol or acetone applied to the palms or soles can help the ink adhere and improve the quality of the prints, especially for small babies,&quot; and &quot;the baby's heel or palm is placed down first, and the foot or hand is rolled forward, keeping the toes or fingers extended.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names the fallback rather than the technique, and the chapter notes its limitation: tracing is possible &quot;although this distorts the actual size.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">memory making and postmortem care</span><span class="chip t2">mementos</span></div>
+<div class="stem">19. What does the chapter say about photographs after a perinatal death?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Photographs are generally taken when it has been determined to be culturally acceptable to the family, and the decision for photography is up to the parents; close-ups of the baby's face, hands, and feet are included, with the baby both clothed and unclothed, and objects placed nearby to contextualize the photo and give an idea of the baby's approximate size</li><li class="fopt"><span class="mk">B</span>Photographs should always be taken without asking</li><li class="fopt"><span class="mk">C</span>Photographs should never be taken</li><li class="fopt"><span class="mk">D</span>Only clothed photographs are appropriate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Photographs are generally taken when it has been determined to be culturally acceptable to the family—the decision for photography is up to the parents,&quot; and they include &quot;close-ups of the baby's face, hands, and feet, with the baby both clothed and unclothed,&quot; with nearby objects that &quot;serve to contextualize the photo and give an idea of the baby's approximate size.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) sit at opposite extremes of a decision the chapter assigns to the parents rather than to the nurse or the unit.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">memory making and postmortem care</span><span class="chip t2">postmortem care</span></div>
+<div class="stem">20. A nurse is preparing a deceased infant's body for transfer to the morgue, and the infant takes an agonal respiration. What does the Nursing Alert direct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Dying neonates may respond reflexively to the stimulation of cleaning and preparing for the morgue, sometimes for several hours after being pronounced dead; if this happens the nurse should notify a physician for confirmation of death</li><li class="fopt"><span class="mk">B</span>Resuscitation should be started immediately</li><li class="fopt"><span class="mk">C</span>The nurse should document the movement and continue</li><li class="fopt"><span class="mk">D</span>The parents should be told the infant is alive</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Nursing Alert states that &quot;dying neonates may respond reflexively to the stimulation of cleaning and preparing for the morgue and sometimes will do this for several hours after being pronounced dead. This is extremely startling and upsetting when a baby who has been pronounced dead takes an agonal respiration or an extremity twitches. If this happens, the nurse should notify a physician for confirmation of death.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would give parents a moment of hope the chapter is preparing the nurse to handle, and the physician's confirmation is what settles it before anything is said.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">memory making and postmortem care</span><span class="chip t2">postmortem care</span></div>
+<div class="stem">21. What is a burial cradle, and what other point does the chapter make about postmortem care?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A miniature casket usually made of Styrofoam or wood, used as a sensitive and respectful way to take the fetus or infant to the morgue, making the process more dignified for parents and nursing staff; the Joint Commission requires that appropriate care be offered to the body after death, and nurses can find that providing postmortem care helps them in their own grief, particularly NICU nurses who have cared for an infant for hours, days, or weeks</li><li class="fopt"><span class="mk">B</span>A bassinet used for viewing only, with no role in transport</li><li class="fopt"><span class="mk">C</span>A required legal document</li><li class="fopt"><span class="mk">D</span>A device with no relevance to staff</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A sensitive and respectful approach for taking the fetus or infant to the morgue is the use of a burial cradle, which makes the process more dignified for parents and the nursing staff. A burial cradle is a miniature casket usually made of Styrofoam or wood.&quot; The Joint Commission &quot;requires that appropriate care be offered to the body after death,&quot; and &quot;nurses can find that providing postmortem care helps them in their own grief related to a perinatal loss.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) omits the staff half of the point, which is the chapter's acknowledgment that the nurses who provided the care are grieving too.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"standardized terminology for perinatal loss","subtopic":"the twenty-week line","stem":"A pregnancy ends in utero at 17 weeks. What is the correct term, and what term should the nurse use with the family?","options":["Miscarriage, defined as any in utero death before 20 weeks of gestation; miscarriage is the accepted term among providers, used to differentiate this loss from elective abortions","Stillbirth, because the fetus died before birth","Fetal death, because it occurred in utero","Early neonatal death"],"correct":[0],"sata":false,"why":"Miscarriage is \"any in utero death before 20 weeks of gestation,\" and although \"providers sometimes refer to these losses as spontaneous abortions, miscarriage is the accepted term among providers to differentiate this form of loss from elective abortions.\"","trap":"(B) applies a term the chapter reserves for 20 weeks and later, and the word choice matters to a family who may hear \"abortion\" as something they chose.","k":"1netjuu64jmd0"},{"topic":"standardized terminology for perinatal loss","subtopic":"the twenty-week line","stem":"A fetus dies in utero at 26 weeks. Which terms apply?","options":["Fetal death, which is any death before birth after 20 weeks; it is also a stillbirth, since a stillbirth is a fetal death occurring at 20 weeks or later; and it is an early fetal death, since fetal deaths are subdivided as early at 20 to 27 weeks and late at 28 weeks or more","Miscarriage","Late fetal death","Late neonatal death"],"correct":[0],"sata":false,"why":"\"Fetal death refers to any death before birth after 20 weeks of gestation,\" \"a stillbirth is a fetal death occurring at 20 weeks or later,\" and \"fetal deaths are subdivided as early (20 to 27 weeks of gestation) or late (≥28 weeks of gestation).\"","trap":"(C) crosses the 28-week boundary that separates early from late fetal death, and (D) applies a neonatal term to a fetus who was never born alive.","k":"5ju8yefvmzw4"},{"topic":"standardized terminology for perinatal loss","subtopic":"the neonatal and infant boundaries","stem":"A live-born infant dies on day 12 of life. How is this classified?","options":["A late neonatal death, since deaths occurring between 7 and 27 days are late neonatal deaths","An early neonatal death","An infant death but not a neonatal death","A stillbirth"],"correct":[0],"sata":false,"why":"\"Death of a live-born infant fewer than 7 days old is an early neonatal death,\" and \"deaths occurring between 7 and 27 days are late neonatal deaths.\" Any live birth of a child who dies within the first year is an infant death.","trap":"(C) is what the same death becomes on day 30 — past 27 days it is no longer a neonatal death, though it remains an infant death through the first year.","k":"j28gxm1hyi8c0"},{"topic":"standardized terminology for perinatal loss","subtopic":"the neonatal and infant boundaries","stem":"Why does the chapter say standardized terminology for pregnancy-associated deaths matters?","options":["Because health care practitioners are required to report fetal deaths, live births, and infant deaths, which are used collectively as data to determine perinatal and neonatal mortality rates at state and national levels, and policy makers use those rates to influence decisions about allocating resources to improve care and outcomes","Because it determines insurance coverage","Because families prefer technical language","Because the terms have no practical consequence"],"correct":[0],"sata":false,"why":"The American Academy of Pediatrics \"recommended standard terminology for deaths associated with pregnancy\" in 2016, and \"health care practitioners are required to report fetal deaths, live births, and infant deaths, which are used collectively as data to determine perinatal and neonatal mortality rates at state and national levels. Policy makers, in turn, use these rates to influence policy decisions related to allocation of resources to improve care and outcomes.\"","trap":"(D) makes the definitions academic, when the chapter ties them directly to how resources reach perinatal care.","k":"18fmr2k1dl0aca"},{"topic":"standardized terminology for perinatal loss","subtopic":"the neonatal and infant boundaries","stem":"How does the chapter define perinatal loss as a general term?","options":["A general term commonly used to describe losses associated with pregnancy, particularly losses occurring after conception and after the woman has recognized that she is pregnant","Only deaths occurring after 20 weeks","Only neonatal deaths","Only losses occurring during labor"],"correct":[0],"sata":false,"why":"Perinatal loss is \"a general term commonly used to describe losses associated with pregnancy, particularly losses occurring after conception and after the woman has recognized that she is pregnant.\"","trap":"(B) restricts a deliberately broad term to the subset with its own name, and the breadth is what lets the chapter include losses that involve no death at all.","k":"zppftpwybdbf"},{"topic":"types of perinatal loss and grief phases","subtopic":"which losses are grieved","stem":"A woman who had a miscarriage at 9 weeks tells the nurse that no one in her family knew she was pregnant. What does the chapter say about this situation?","options":["Grief from miscarriage is often suffered in isolation because other people in a woman's family and social network may not even know about the pregnancy and subsequent loss, and it may be disenfranchised — even when others know, their understanding of the meaning of the pregnancy or its importance to the woman may be underestimated or unappreciated","Early losses are grieved less intensely","Grief is easier when others do not know","Miscarriage grief resolves within days"],"correct":[0],"sata":false,"why":"\"Grief from miscarriage is often suffered in isolation because other people in a woman's family and social network may not even know about the pregnancy and subsequent loss,\" and even when they do know, \"their understanding of the meaning of the pregnancy or its importance to the woman may be underestimated or unappreciated.\"","trap":"(B) is the assumption that makes early losses invisible, and the isolation the chapter describes is an assessment finding rather than a mitigating factor.","k":"1ewhgwunvmvk0"},{"topic":"types of perinatal loss and grief phases","subtopic":"which losses are grieved","stem":"Which losses does the chapter describe as producing grief even though no death occurs? Select all that apply.","options":["Preterm birth, where the full-term healthy newborn parents expected is replaced by a small baby who is sick or requires lengthy hospitalization","A delayed or foregone opportunity to breastfeed, which is another loss","A cesarean birth, which some women grieve, compounded when it is emergent and under general anesthesia so that the woman and partner are separated and she does not hear her baby's first cries","Multifetal pregnancy reduction, after which expectant parents may feel deep grief and sadness despite the continued development of one or two fetuses","A planned vaginal birth at term with a healthy infant"],"correct":[0,1,2,3],"sata":true,"why":"\"Other losses associated with childbearing can result in distress or even grief, even if the loss does not involve death.\" The chapter names preterm birth and the delayed or foregone breastfeeding it causes, the birth experience itself — \"the reality of the birth experience is inconsistent with the parents' hopes and expectations\" — and multifetal pregnancy reduction, where grief follows even as the pregnancy continues.","trap":"(E) describes the expected outcome, and the chapter's point is that grief is measured against what the parents hoped for rather than against a clinical standard.","k":"fctqxefbpuos"},{"topic":"types of perinatal loss and grief phases","subtopic":"which losses are grieved","stem":"Why does a serious fetal diagnosis create a particularly difficult situation for parents?","options":["Because the standard anatomy ultrasound is typically performed between 18 and 20 weeks — later than the time most women would otherwise consider an abortion — so most pregnancies with a diagnosis of a severe fetal defect are pregnancies that are wanted","Because the diagnosis is usually made in the first trimester","Because the incidence of fetal defects has risen sharply","Because the diagnosis is always certain"],"correct":[0],"sata":false,"why":"\"Current standards of maternity care include at least one ultrasound examination, typically performed between 18 and 20 weeks of gestation,\" and \"because these diagnoses are made midpregnancy—later than the time most women would otherwise consider an abortion—most pregnancies with diagnosis of a severe fetal defect are pregnancies that are wanted.\"","trap":"(C) misreads a real trend that the chapter corrects explicitly: increased ultrasound use \"has resulted in increased diagnosis of fetal defects; note that this is an increase in the diagnosis of defects, not in the actual incidence of defects.\" And (D) overstates certainty the chapter also qualifies — the abundance of prenatal information \"may lead to more, not less, uncertainty about long-term outcomes.\"","k":"3vpbk919nge87"},{"topic":"types of perinatal loss and grief phases","subtopic":"miles' phases","stem":"Which three phases does Miles describe in parental grief, and what qualifier does the chapter attach?","options":["Acute distress characterized by shock and numbness, a period of intense grief with emotional, cognitive, behavioral, and physical responses, and reorganization, when parents return to their usual level of functioning although the distress associated with the death remains; the phases are overlapping rather than sequential stages","Denial, anger, and acceptance, completed in order","Shock, resolution, and closure","A single undifferentiated period of grief"],"correct":[0],"sata":false,"why":"\"Miles hypothesized that parental grief responses occur in three overlapping phases\": acute distress following the diagnosis or death, \"a period of intense grief that includes emotional, cognitive, behavioral, and physical responses,\" and reorganization, which \"occurs when they return to their usual level of functioning, although the distress associated with the death remains.\"","trap":"(B) imports a different model and adds a sequence the word \"overlapping\" denies — and the chapter's larger point is that \"the goal of the grief process is not resolution but rather the incorporation of the person who has died into one's own life moving forward.\"","k":"m0ob1ar8qdsc"},{"topic":"types of perinatal loss and grief phases","subtopic":"miles' phases","stem":"A mother whose infant has just died appears calm and shows almost no emotion. How should the nurse interpret this?","options":["As a possible reflection of numbness during acute distress — occasionally a lack of affect, calmness, or even euphoria can reflect numbness, and for some people a way of coping with a profound loss is to avoid emotional displays","As evidence she is not grieving","As denial requiring confrontation","As a sign that no follow-up is needed"],"correct":[0],"sata":false,"why":"Acute distress brings \"a sense of unreality, loss of innocence, and powerlessness ... and having a sense of disbelief. Profound sadness accompanied by intense outbursts of emotion and crying is common.\" But: \"Occasionally a lack of affect, calmness, or even euphoria can reflect their numbness,\" and \"for some persons, their way of coping with a profound loss is to avoid emotional displays.\" Expressions of grief \"may be guided by deep sociocultural and religious/spiritual influences that are unfamiliar to the nurse, who is expected to provide nonjudgmental support.\"","trap":"(B) reads a coping style as an absence of grief, which is the judgment the chapter's nonjudgmental-support instruction is written against.","k":"6uf8if190igix"},{"topic":"communicating with bereaved parents","subtopic":"why comforting is the error","stem":"A nurse feels an urge to say something that will make a bereaved mother feel better. What does the chapter say about this impulse?","options":["The initial impulse to reduce one's sense of helplessness is to say or do something to reduce the parent's pain, and although such a response seems supportive at the time, it can stifle the further expression of emotion; the nurse should resist the temptation to give advice or use clichés","The impulse should be followed, since reassurance is the priority","The nurse should leave the room until the parents compose themselves","The nurse should offer a factual explanation of the cause"],"correct":[0],"sata":false,"why":"\"The initial impulse to reduce one's sense of helplessness is to say or do something to reduce his or her pain. Although such a response seems supportive at the time, it can stifle the further expression of emotion,\" and \"the nurse should resist the temptation to give advice or use clichés in offering support to the bereaved.\"","trap":"(C) removes the presence that is itself the intervention: \"the nurse should have a presence of self and the willingness to be alongside, quietly supporting the bereaved person,\" and \"this presence is comforting for parents.\"","k":"o5arij1lci121"},{"topic":"communicating with bereaved parents","subtopic":"why comforting is the error","stem":"Which statements appear in Box 37.1's \"what to say\" list? Select all that apply.","options":["I'm sad for you","This must be hard for you","What can I do for you?","I'm here, and I want to listen","I know how you feel"],"correct":[0,1,2,3],"sata":true,"why":"Box 37.1's \"what to say\" list is: I'm sad for you; How are you doing with all of this?; This must be hard for you; What can I do for you?; I'm sorry; and I'm here, and I want to listen.","trap":"(E) is on the \"what not to say\" list, alongside God had a purpose for her; Be thankful you have another child; The living must go on; It's God's will; You're young, you can have others; Now you have an angel in heaven; This happened for the best; Better for this to happen now, before you knew the baby; and There was something wrong with the baby anyway.","k":"hg6cnn15szp35"},{"topic":"communicating with bereaved parents","subtopic":"the techniques","stem":"Which communication techniques does the chapter endorse with bereaved parents? Select all that apply.","options":["Presence — being alongside and quietly supporting whatever expressions of feeling are appropriate for them","Minimal encouragers such as leaning forward and nodding, and inviting the person to say more","Sitting through the silence, which gives the bereaved person an opportunity to collect thoughts and process what they are sharing","Naming the feeling, such as observing aloud that the person sounds or looks angry","Using touch automatically with every bereaved parent"],"correct":[0,1,2,3],"sata":true,"why":"The chapter endorses presence, minimal encouragers — \"leaning forward, nodding the head\" is \"often encouragement enough for the bereaved person to tell his or her story\" — silence, which \"can be therapeutic,\" and identifying the feeling when a person expresses anger.","trap":"(E) skips the assessment the chapter requires: \"careful assessment is important before using touch as a therapeutic technique. For some, touch is a meaningful expression of concern, but for others it is an invasion of privacy or contrary to their cultural or religious beliefs.\"","k":"12gb7ub1s80kad"},{"topic":"communicating with bereaved parents","subtopic":"the techniques","stem":"A bereaved mother repeatedly asks the nurse whether something she did caused the loss. How should the nurse respond?","options":["Recognize that the answers to these questions must be answered by the bereaved themselves as part of their healing; trying to give answers when there are no clear answers, or trying to assuage their feelings by telling them they should not feel guilty, does not help them process their grief","Provide a definitive answer to relieve her guilt","Tell her she should not feel guilty","Redirect the conversation to the infant's care"],"correct":[0],"sata":false,"why":"\"A sense of guilt can pervade the experience of bereaved parents, who may raise many questions surrounding their loss that can leave them feeling guilty. This is particularly true for mothers,\" and \"the nurse should recognize that the answers to these questions must be answered by the bereaved themselves; it is part of their healing.\" Both failure modes are named: giving answers where there are none, and telling parents they should not feel guilty.","trap":"(C) is the kindest-sounding response and one of the two the chapter identifies as unhelpful — and statistics do not help either, since \"for many people, understanding that something happens frequently is no consolation when it happens to them.\"","k":"1qwhl6ph4h62z"},{"topic":"communicating with bereaved parents","subtopic":"the techniques","stem":"Whose grief does the chapter say is most often overlooked, and what should the nurse do about it?","options":["The partner's, since much of the attention at the time of a loss is on the woman and the partner is usually expected to be her main support; nurses may need to be intentional in addressing the partner's grief and helping them realize that they too need support, asking the father or partner directly about their views of what happened and their feelings of loss","The grandparents'","The nurse's own","No one's grief is overlooked"],"correct":[0],"sata":false,"why":"\"Much of the attention at the time of a loss is on the woman, and her partner is usually expected to be her main support. The partner's grief is sometimes not recognized or acknowledged,\" and \"nurses may need to be intentional in addressing their grief.\" Because nurses \"tend to be very focused on the physical and emotional needs of the mother, it is especially important to ask the father or partner directly about their views of what happened and the associated feelings of loss.\" Partners \"may hide their feelings from each other to protect the other during times of loss.\"","trap":"(D) contradicts a gap the chapter names explicitly, and the direct question to the partner is the intervention that closes it.","k":"1o9eldm67ihwg"},{"topic":"communicating with bereaved parents","subtopic":"the techniques","stem":"What should the nurse tell parents about what lies ahead in their grief?","options":["That most parents are not prepared for the raw feelings they experience or for the fact that these painful, complex feelings and related behavioral reactions continue for many weeks or months, and that reassuring them their responses are normal and preparing them for a potentially lengthy process can be useful","That the worst will be over within a week","That grief resolves completely with time","That they should avoid discussing the loss"],"correct":[0],"sata":false,"why":"\"Most parents are not prepared for the raw feelings that they experience or the fact that these painful, complex feelings and related behavioral reactions continue for many weeks or months. Reassuring them that their responses are normal and preparing them for the potentially lengthy process of grief can be useful.\" Grief \"is a long-term process that can extend for months and years; some aspects of grief endure throughout life.\"","trap":"(C) promises an endpoint the chapter replaces with continuing bonds — incorporating the person who died into one's ongoing life rather than resolving the loss.","k":"1lnwj4p1rf1deb"},{"topic":"memory making and postmortem care","subtopic":"mementos","stem":"Which mementos can the nurse offer bereaved parents, and what rule governs offering them?","options":["The baby's weight, length, and head circumference, footprints and handprints on a special card or in a memory book, and everyday articles such as the tape measure, baby lotions, combs or hairbrushes, clothing, hats, blankets, crib cards, and identification bands; the nurse should ask parents whether they wish to have these articles before giving them","All available items should be sent home without asking","Mementos should be offered only if parents request them first","Mementos are not appropriate after a perinatal death"],"correct":[0],"sata":false,"why":"\"The nurse can provide information about the baby's weight, length, and head circumference to the family. Footprints and handprints can be taken and placed with the other information on a special card or in a memory or baby book.\" Everyday articles listed include the tape measure, lotions, combs or hairbrushes, clothing, hats, blankets, crib cards, and identification bands, and \"the identification band helps the parents remember the size of the baby and personalizes the mementos.\" The rule: \"The nurse should ask parents if they wish to have these articles before giving them to the parents.\"","trap":"(B) removes the parents' choice from an object they may or may not want to carry home, and the same permission rule applies again to hair: \"the nurse must ask the parents for permission before cutting a lock of hair, which can be removed from the nape of the neck, where it is not noticeable.\"","k":"c9flla6ssmd0"},{"topic":"memory making and postmortem care","subtopic":"mementos","stem":"What technique improves the quality of a newborn's footprints or handprints?","options":["Applying alcohol or acetone to the palms or soles to help the ink adhere, especially for small babies, placing the heel or palm down first and rolling the foot or hand forward while keeping the toes or fingers extended","Pressing the whole foot down flat at once","Warming the skin with a heat lamp","Tracing the outline, which produces the most accurate record"],"correct":[0],"sata":false,"why":"\"Alcohol or acetone applied to the palms or soles can help the ink adhere and improve the quality of the prints, especially for small babies,\" and \"the baby's heel or palm is placed down first, and the foot or hand is rolled forward, keeping the toes or fingers extended.\"","trap":"(D) names the fallback rather than the technique, and the chapter notes its limitation: tracing is possible \"although this distorts the actual size.\"","k":"ecigsu1myz12s"},{"topic":"memory making and postmortem care","subtopic":"mementos","stem":"What does the chapter say about photographs after a perinatal death?","options":["Photographs are generally taken when it has been determined to be culturally acceptable to the family, and the decision for photography is up to the parents; close-ups of the baby's face, hands, and feet are included, with the baby both clothed and unclothed, and objects placed nearby to contextualize the photo and give an idea of the baby's approximate size","Photographs should always be taken without asking","Photographs should never be taken","Only clothed photographs are appropriate"],"correct":[0],"sata":false,"why":"\"Photographs are generally taken when it has been determined to be culturally acceptable to the family—the decision for photography is up to the parents,\" and they include \"close-ups of the baby's face, hands, and feet, with the baby both clothed and unclothed,\" with nearby objects that \"serve to contextualize the photo and give an idea of the baby's approximate size.\"","trap":"(B) and (C) sit at opposite extremes of a decision the chapter assigns to the parents rather than to the nurse or the unit.","k":"1p2a1xucbafwg"},{"topic":"memory making and postmortem care","subtopic":"postmortem care","stem":"A nurse is preparing a deceased infant's body for transfer to the morgue, and the infant takes an agonal respiration. What does the Nursing Alert direct?","options":["Dying neonates may respond reflexively to the stimulation of cleaning and preparing for the morgue, sometimes for several hours after being pronounced dead; if this happens the nurse should notify a physician for confirmation of death","Resuscitation should be started immediately","The nurse should document the movement and continue","The parents should be told the infant is alive"],"correct":[0],"sata":false,"why":"The Nursing Alert states that \"dying neonates may respond reflexively to the stimulation of cleaning and preparing for the morgue and sometimes will do this for several hours after being pronounced dead. This is extremely startling and upsetting when a baby who has been pronounced dead takes an agonal respiration or an extremity twitches. If this happens, the nurse should notify a physician for confirmation of death.\"","trap":"(D) would give parents a moment of hope the chapter is preparing the nurse to handle, and the physician's confirmation is what settles it before anything is said.","k":"mx53zs3w946a"},{"topic":"memory making and postmortem care","subtopic":"postmortem care","stem":"What is a burial cradle, and what other point does the chapter make about postmortem care?","options":["A miniature casket usually made of Styrofoam or wood, used as a sensitive and respectful way to take the fetus or infant to the morgue, making the process more dignified for parents and nursing staff; the Joint Commission requires that appropriate care be offered to the body after death, and nurses can find that providing postmortem care helps them in their own grief, particularly NICU nurses who have cared for an infant for hours, days, or weeks","A bassinet used for viewing only, with no role in transport","A required legal document","A device with no relevance to staff"],"correct":[0],"sata":false,"why":"\"A sensitive and respectful approach for taking the fetus or infant to the morgue is the use of a burial cradle, which makes the process more dignified for parents and the nursing staff. A burial cradle is a miniature casket usually made of Styrofoam or wood.\" The Joint Commission \"requires that appropriate care be offered to the body after death,\" and \"nurses can find that providing postmortem care helps them in their own grief related to a perinatal loss.\"","trap":"(D) omits the staff half of the point, which is the chapter's acknowledgment that the nurses who provided the care are grieving too.","k":"1dtj4jy190q474"}];
+const TITLE = "Chapter 37 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 37";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

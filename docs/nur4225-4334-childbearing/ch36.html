@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 36 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 36</div><h1>Chapter 36 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemolytic disease mechanism</span><span class="chip t2">how alloimmune hemolysis works</span></div>
+<div class="stem">1. How does alloimmune hemolytic disease of the newborn occur?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Antigens expressed by fetal erythrocytes stimulate the maternal immune response, and when maternal IgG antibodies specific to the fetal red cells cross the placenta they are not protective but attack the fetal red cells, causing agglutination, clumping, and lysis</li><li class="fopt"><span class="mk">B</span>The fetus makes antibodies against maternal red cells</li><li class="fopt"><span class="mk">C</span>The placenta produces antibodies against fetal red cells</li><li class="fopt"><span class="mk">D</span>Maternal IgM crosses the placenta and destroys fetal red cells</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Hemolytic disease of the newborn, associated with alloimmunity, is the result of antigens expressed by fetal erythrocytes stimulating the maternal immune response.&quot; Normally &quot;maternal immunoglobulin G (IgG) antibodies cross the placenta and enter the fetal circulation, providing an adaptive measure to protect the infant,&quot; but &quot;when maternal IgG antibodies specific to the fetal RBCs cross the placenta, they are not protective, but can instead attack the fetal RBCs.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names the immunoglobulin that does not cross the placenta at all, which is exactly why IgG is the one that can do this damage.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemolytic disease mechanism</span><span class="chip t2">how alloimmune hemolysis works</span></div>
+<div class="stem">2. What two consequences follow from lysis of fetal red blood cells?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Anemia as red cell volume decreases, and hyperbilirubinemia as freed heme is converted to biliverdin and eventually bilirubin</li><li class="fopt"><span class="mk">B</span>Polycythemia and hypoglycemia</li><li class="fopt"><span class="mk">C</span>Thrombocytopenia and neutropenia</li><li class="fopt"><span class="mk">D</span>Only anemia, with no effect on bilirubin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;As erythrocytes are lysed, the volume decreases, resulting in anemia,&quot; and the freed heme &quot;is converted to biliverdin and eventually bilirubin,&quot; producing hyperbilirubinemia. Hemolytic anemia &quot;occurs when there is rapid destruction of red blood cells (RBCs), faster than the body can produce them.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) drops the half of the problem that drives newborn treatment — phototherapy, exchange transfusion, and the whole bilirubin-monitoring schedule exist because of the second consequence.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemolytic disease mechanism</span><span class="chip t2">which incompatibility does what</span></div>
+<div class="stem">3. Which statement captures the relationship between ABO and Rh incompatibility?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hemolytic disease from alloimmunity is most often caused by ABO incompatibility, which is usually a mild disease process, while Rh incompatibility is less common and results in more severe hemolysis</li><li class="fopt"><span class="mk">B</span>Rh incompatibility is more common and milder than ABO</li><li class="fopt"><span class="mk">C</span>Both occur with equal frequency and severity</li><li class="fopt"><span class="mk">D</span>ABO incompatibility is rarer and more severe</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Hemolytic disease in newborns from alloimmunity is most often caused by ABO incompatibility but can also be the result of rhesus (Rh) incompatibility. ABO incompatibility usually is a mild disease process whereas Rh incompatibility is less common and results in more severe hemolysis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts both halves, and the inversion matters clinically: the common cause is the mild one, so a mildly jaundiced first-born with a positive antiglobulin test is far more likely ABO than Rh.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemolytic disease mechanism</span><span class="chip t2">which incompatibility does what</span></div>
+<div class="stem">4. Besides alloimmunity, what other causes of newborn hemolysis does the chapter name?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Nonimmune or acquired hemolysis such as with infection, and inherited erythrocyte defects such as thalassemia, glucose-6-phosphate dehydrogenase deficiency, and pyruvate kinase deficiency</li><li class="fopt"><span class="mk">B</span>Only infection</li><li class="fopt"><span class="mk">C</span>Only inherited defects</li><li class="fopt"><span class="mk">D</span>There are no other causes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three broad causes are &quot;alloimmune hemolysis (e.g., Rh incompatibility), nonimmune or acquired hemolysis (e.g., infection), or inherited erythrocyte defects that result in hemolysis (e.g., thalassemia).&quot; G6PD deficiency &quot;is most common among neonates whose genetic heritage comes from Africa, Asia, the Mediterranean, and the Middle East,&quot; is sex-linked so &quot;male offspring are affected more often,&quot; and requires a trigger: &quot;a deficiency of the RBC enzyme in combination with exposure to an oxidant stressor (such as sepsis) results in hemolysis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would make every jaundiced newborn an immunologic problem, and the enzyme deficiencies are the ones that need a stressor before they declare themselves.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh incompatibility</span><span class="chip t2">who is at risk</span></div>
+<div class="stem">5. Which maternal-fetal pairing is at risk in Rh incompatibility?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Only the Rh-positive fetus of an Rh-negative mother</li><li class="fopt"><span class="mk">B</span>The Rh-negative fetus of an Rh-positive mother</li><li class="fopt"><span class="mk">C</span>Any pairing in which the parents differ</li><li class="fopt"><span class="mk">D</span>Only the Rh-negative fetus of an Rh-negative mother</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Only the Rh-positive fetus of an Rh-negative mother is at risk.&quot; An Rh-negative fetus &quot;is in no danger because, similar to the mother, the fetus does not have the Rh antigen,&quot; and &quot;an Rh-negative fetus with a Rh-positive mother is also in no danger of hemolysis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the pair, which is the most common error with this topic — the mother must be the one lacking the antigen for her to make antibodies against it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh incompatibility</span><span class="chip t2">who is at risk</span></div>
+<div class="stem">6. An Rh-negative woman's partner is heterozygous for the Rh factor. What does this mean for their children?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>There is a 50% chance that each infant will be Rh positive and a 50% chance that each will be Rh negative</li><li class="fopt"><span class="mk">B</span>All the offspring will be Rh positive</li><li class="fopt"><span class="mk">C</span>All the offspring will be Rh negative</li><li class="fopt"><span class="mk">D</span>The father's zygosity has no bearing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;If the mother is Rh-negative and the father is Rh-positive and homozygous for the Rh factor, all the offspring will be Rh-positive. If the father is heterozygous for the factor, there is a 50% chance that each infant born of the union will be Rh-positive and a 50% chance that each infant will be Rh-negative.&quot; The Rh-negative blood type occurs in &quot;approximately 15% of Whites, 8% of Blacks, 1% to 2% of Native Americans and Inuit Eskimos, and less than 1% of Asians.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies the homozygous result to a heterozygous father, and paternal zygosity testing is the first assessment precisely because it changes the probability this much.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh incompatibility</span><span class="chip t2">sensitization and its consequences</span></div>
+<div class="stem">7. Why is the first pregnancy with an Rh-positive fetus usually spared?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because Rh-negative women usually become sensitized in the first pregnancy but do not produce enough antibodies to cause lysis of fetal blood cells; in subsequent pregnancies, antibodies form in response to repeated contact with the antigen and lysis results</li><li class="fopt"><span class="mk">B</span>Because the placenta blocks all antibody transfer in a first pregnancy</li><li class="fopt"><span class="mk">C</span>Because fetal red cells do not carry the Rh antigen until the second pregnancy</li><li class="fopt"><span class="mk">D</span>The first pregnancy is not spared and is the most severely affected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Usually, Rh-negative women become sensitized in their first pregnancy with an Rh-positive fetus but do not produce enough antibodies to cause lysis (destruction) of fetal blood cells. During subsequent pregnancies, antibodies form in response to repeated contact with the antigen via fetal blood exposure, and lysis of fetal RBCs results.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) describes ABO incompatibility instead, where first-born infants can be affected because mothers with type O already have the antibodies without prior sensitization.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh incompatibility</span><span class="chip t2">sensitization and its consequences</span></div>
+<div class="stem">8. When can maternal sensitization to the Rh antigen occur? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>During pregnancy and at birth</li><li class="fopt right"><span class="mk">&#10003;</span>With miscarriage or induced abortion</li><li class="fopt right"><span class="mk">&#10003;</span>With amniocentesis or external cephalic version</li><li class="fopt right"><span class="mk">&#10003;</span>With trauma, and with events that increase transplacental hemorrhage such as multiple gestation, placental abruption, placenta previa, manual removal of the placenta, and cesarean birth</li><li class="fopt"><span class="mk">E</span>Only at the time of birth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sensitization can occur &quot;during pregnancy, birth, miscarriage, induced abortion, amniocentesis, external cephalic version, or trauma,&quot; and &quot;multiple gestation, placental abruption, placenta previa, manual removal of the placenta, and cesarean birth increase the incidence of transplacental hemorrhage and the risk of isoimmunization.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) restricts sensitization to the one event everyone remembers, and it would leave an Rh-negative woman unprotected after every other exposure on the list.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh incompatibility</span><span class="chip t2">sensitization and its consequences</span></div>
+<div class="stem">9. What is hydrops fetalis, and what characterizes it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The most severe result of fetal anemia in Rh incompatibility, marked by anemia, cardiac decompensation, cardiomegaly, hepatosplenomegaly, and hypoxia, with decreased intravascular oncotic pressure causing generalized edema and effusions into the peritoneal, pericardial, and pleural spaces; mortality is as high as 24% if severe and undiagnosed</li><li class="fopt"><span class="mk">B</span>A mild form of hemolytic disease requiring no treatment</li><li class="fopt"><span class="mk">C</span>The compensatory production of immature erythrocytes</li><li class="fopt"><span class="mk">D</span>Fetal hyperbilirubinemia alone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In the most severe cases of Rh incompatibility, fetal anemia results in hydrops fetalis,&quot; identified by &quot;marked anemia, cardiac decompensation, cardiomegaly, hepatosplenomegaly, and hypoxia.&quot; With progression, &quot;there is decreased intravascular oncotic pressure and fluid leaks out of the intravascular space. This results in generalized edema and effusions into the peritoneal (ascites), pericardial, and pleural (hydrothorax) spaces.&quot; Mortality is &quot;as high as 24%.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) describes erythroblastosis fetalis, the compensatory step that precedes hydrops — &quot;the fetus compensates for the hemolytic anemia by producing large numbers of immature erythrocytes to replace those lysed.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">abo incompatibility</span><span class="chip t2">which pairings and how often</span></div>
+<div class="stem">10. Which maternal and fetal blood types produce ABO incompatibility, and how often does it cause clinical effects?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It occurs if the fetal blood type is A, B, or AB and the maternal type is O, and rarely in infants with type B blood born to mothers with type A; of the 20% of newborns who have ABO incompatibility, only 5% have clinical effects</li><li class="fopt"><span class="mk">B</span>It occurs when the mother is type AB and the fetus is type O, and all affected infants have clinical effects</li><li class="fopt"><span class="mk">C</span>It occurs only between type A mothers and type B infants</li><li class="fopt"><span class="mk">D</span>It occurs in all pregnancies where blood types differ</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;ABO incompatibility occurs if the fetal blood type is A, B, or AB and the maternal type is O. It occurs rarely in infants with type B blood born to mothers with type A blood.&quot; And: &quot;Of the 20% of newborns who have ABO incompatibility, only 5% have clinical effects.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the pairing. The type O mother is the one with antibodies to both A and B — &quot;those with type AB blood have no antibodies.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">abo incompatibility</span><span class="chip t2">which pairings and how often</span></div>
+<div class="stem">11. Why can a first-born infant be affected by ABO incompatibility, and what prophylaxis is available?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because mothers with type O blood already have anti-A and anti-B antibodies in their blood without sensitization first; there is no preventive treatment available for mothers prenatally</li><li class="fopt"><span class="mk">B</span>Because sensitization occurs during the first trimester; RhoGAM prevents it</li><li class="fopt"><span class="mk">C</span>Because the first pregnancy always sensitizes; an ABO immune globulin is given at 28 weeks</li><li class="fopt"><span class="mk">D</span>First-born infants cannot be affected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In contrast to the situation that pertains to Rh incompatibility, first-born infants can be affected because mothers with type O blood already have anti-A and anti-B antibodies in their blood without sensitization first.&quot; And: &quot;There is no preventive treatment available for mothers prenatally.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) invents an ABO equivalent of Rh immune globulin, which does not exist — the naturally occurring antibodies are already present, so there is nothing to prevent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">abo incompatibility</span><span class="chip t2">diagnosis and treatment</span></div>
+<div class="stem">12. How is ABO incompatibility identified in the newborn, and what does a stronger reaction mean?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>By a Coombs test, also called a direct antiglobulin test; a positive result means there are antibodies attached to the infant's red cells, and the strength of the reaction reflects the number of antibodies present</li><li class="fopt"><span class="mk">B</span>By maternal serum antibody titer alone</li><li class="fopt"><span class="mk">C</span>By the infant's blood type alone</li><li class="fopt"><span class="mk">D</span>By bilirubin level alone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;ABO incompatibility is identified by a Coombs test (also referred to as a direct antiglobulin test [DAT]). A positive DAT means there are antibodies attached to the infant's RBCs. The strength of the DAT reaction (i.e., the more positive) is reflective of the number of antibodies present.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) identifies the setup rather than the disease. Twenty percent of newborns have the incompatibility; the antiglobulin test is what shows whether antibodies have actually attached.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">abo incompatibility</span><span class="chip t2">diagnosis and treatment</span></div>
+<div class="stem">13. An infant with ABO incompatibility has a positive direct antiglobulin test. What determines treatment, and what is usually used?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Treatment depends on serum bilirubin levels and hematocrit and reticulocyte values; hyperbilirubinemia is usually treated with phototherapy, and if hemolysis is severe, exchange transfusion and intravenous immunoglobulin are options</li><li class="fopt"><span class="mk">B</span>All infants with a positive test receive exchange transfusion</li><li class="fopt"><span class="mk">C</span>No treatment is ever needed for ABO incompatibility</li><li class="fopt"><span class="mk">D</span>Treatment is determined by the mother's antibody titer</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;If an infant is born and has a positive DAT, treatment is dependent on serum bilirubin levels and hematocrit and reticulocyte values.&quot; Hyperbilirubinemia &quot;is usually treated with phototherapy,&quot; and &quot;if the hemolysis is severe, other treatment options include exchange transfusions and intravenous (IV) immunoglobulin.&quot; The resulting anemia &quot;is usually mild, and hyperbilirubinemia is the most common complication.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) escalates every positive test to the most invasive option, when the usual course is mild and phototherapy is usually enough.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh immune globulin and titers</span><span class="chip t2">the immune globulin</span></div>
+<div class="stem">14. What does Rh immune globulin do, and how effective is it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is a commercial preparation of passive antibodies against the Rh factor; the injection destroys any fetal red cells in the maternal circulation and blocks maternal sensitization and antibody production, and it is 90% effective in preventing sensitization</li><li class="fopt"><span class="mk">B</span>It treats hemolysis in the fetus</li><li class="fopt"><span class="mk">C</span>It reverses sensitization once antibodies have formed</li><li class="fopt"><span class="mk">D</span>It is 100% effective</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;RhoGAM, a commercial preparation of passive antibodies against the Rh factor, is frequently used. This injection of anti-Rh antibodies destroys any fetal RBCs in the maternal circulation and blocks maternal sensitization and antibody production.&quot; And: &quot;Rh immune globulin is 90% effective in preventing sensitization.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the one thing it cannot do. It prevents antibody formation; it does nothing for a woman who has already produced antibodies, which is why the postpartum dose is for the unsensitized mother.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh immune globulin and titers</span><span class="chip t2">the immune globulin</span></div>
+<div class="stem">15. When is Rh immune globulin recommended for an Rh-negative mother, and how much fetal blood does one dose cover?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>At 28 weeks of gestation, within 72 hours of birth, after an invasive procedure, and any time there is a risk of fetal-maternal hemorrhage; one dose accommodates approximately 15 mL of fetal red blood cells</li><li class="fopt"><span class="mk">B</span>Only after birth, covering 30 mL of fetal red cells</li><li class="fopt"><span class="mk">C</span>Only at 28 weeks, covering 50 mL</li><li class="fopt"><span class="mk">D</span>Monthly throughout pregnancy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;It is recommended to be given to an Rh-negative mother at 28 weeks of gestation, within 72 hours of birth, after an invasive procedure, and any time there is a risk of fetal-maternal hemorrhage,&quot; and &quot;one dose accommodates approximately 15 mL of fetal RBCs.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) drops the antepartum dose, which is what protects the current pregnancy's third trimester and the sensitizing events that occur before birth.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh immune globulin and titers</span><span class="chip t2">the immune globulin</span></div>
+<div class="stem">16. Who should receive the postpartum dose of Rh immune globulin?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The unsensitized Rh-negative mother whose newborn is Rh positive, within 72 hours of birth, to prevent her from producing antibodies to fetal blood cells that entered her bloodstream during the birth</li><li class="fopt"><span class="mk">B</span>Every Rh-negative mother regardless of the newborn's type</li><li class="fopt"><span class="mk">C</span>Every Rh-positive mother</li><li class="fopt"><span class="mk">D</span>The already sensitized Rh-negative mother</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The unsensitized Rh-negative mother, whose newborn is Rh positive, should receive Rh immune globulin within 72 hours of birth to prevent her from producing antibodies to the fetal blood cells that entered her bloodstream during the birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) gives the drug to the one woman it cannot help, since its purpose is to block sensitization that has already occurred in her case.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh immune globulin and titers</span><span class="chip t2">antibody screening and fetal surveillance</span></div>
+<div class="stem">17. Which test detects unbound antibodies in maternal serum, and which detects antibodies attached to the infant's red cells?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The indirect Coombs test is the maternal test; the direct antiglobulin test is the infant's</li><li class="fopt"><span class="mk">B</span>The direct antiglobulin test is the maternal test; the indirect Coombs is the infant's</li><li class="fopt"><span class="mk">C</span>Both are maternal tests</li><li class="fopt"><span class="mk">D</span>Both are infant tests</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>At the first prenatal visit, along with maternal blood type, &quot;an antibody screen is performed, and an indirect Coombs test is done to detect unbound antibodies in maternal serum,&quot; while &quot;a positive DAT means there are antibodies attached to the infant's RBCs.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) swaps the two, and the cue that holds is where the antibodies are: unattached in the mother's serum is indirect, already stuck to the infant's cells is direct.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh immune globulin and titers</span><span class="chip t2">antibody screening and fetal surveillance</span></div>
+<div class="stem">18. An Rh-negative woman's anti-D titer is 1:16. How should this be interpreted, and what follows?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is a critical titer, meaning the fetus is at risk for severe hemolytic disease and follow-up is needed; serial measurement of the fetal middle cerebral artery peak systolic velocity by Doppler is the recommended method to detect fetal anemia</li><li class="fopt"><span class="mk">B</span>It is reassuring and requires no follow-up</li><li class="fopt"><span class="mk">C</span>It indicates the mother needs Rh immune globulin</li><li class="fopt"><span class="mk">D</span>It confirms hydrops fetalis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;An anti-D titer greater than or equal to 1:16 is considered a critical titer, meaning the fetus is at risk for severe hemolytic disease and follow-up is needed,&quot; while &quot;a level of 1:8 rarely results in fetal jeopardy.&quot; And: &quot;Serial measurement of the fetal middle cerebral artery peak systolic velocity (MCA-PSV) using Doppler ultrasound is the recommended method to detect fetal anemia.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) offers prophylaxis to a woman whose titer proves she is already sensitized — the antepartum dose at 28 weeks is given when the screen &quot;remains negative, indicating that sensitization has not occurred.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">rh immune globulin and titers</span><span class="chip t2">antibody screening and fetal surveillance</span></div>
+<div class="stem">19. Which thresholds govern the workup and treatment of suspected fetal anemia in Rh disease? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A middle cerebral artery peak systolic velocity greater than 1.5 multiples of the median, or signs of fetal hydrops, prompts cordocentesis to assess the fetal hematocrit</li><li class="fopt right"><span class="mk">&#10003;</span>A fetal hematocrit below 30% indicates intrauterine transfusion</li><li class="fopt right"><span class="mk">&#10003;</span>Repeat transfusions are usually performed at 3- to 4-week intervals until 35 weeks</li><li class="fopt right"><span class="mk">&#10003;</span>Birth is planned at 38 weeks, when lung maturity is expected</li><li class="fopt"><span class="mk">E</span>A titer of 1:8 requires immediate transfusion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives each of these thresholds, and intrauterine transfusion &quot;involves the infusion of Rh-negative type O blood into the umbilical vein,&quot; which &quot;is associated with high survival rates and a low risk of disabilities in surviving infants.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) treats the reassuring titer as an emergency. A level of 1:8 &quot;rarely results in fetal jeopardy,&quot; and a positive screen is simply repeated every 2 to 4 weeks until a critical value is reached.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn management of hemolytic disease</span><span class="chip t2">assessment at birth</span></div>
+<div class="stem">20. What laboratory work is obtained on a newborn at risk for hemolytic disease?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cord blood sent to determine blood type and Rh status and to screen for maternal antibodies with the Coombs test; hematocrit and reticulocyte count at birth and at 24 to 48 hours of age; and a follow-up bilirubin level every 4 to 6 hours based on clinical findings</li><li class="fopt"><span class="mk">B</span>A single bilirubin level before discharge</li><li class="fopt"><span class="mk">C</span>Only the blood type</li><li class="fopt"><span class="mk">D</span>No laboratory work is needed unless jaundice appears</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>At birth &quot;the neonate's cord blood is sent to the laboratory to determine the blood type and Rh status and to screen for maternal antibodies with the Coombs test (DAT),&quot; with &quot;hematocrit and reticulocyte count ... obtained at birth and at 24 to 48 hours of age,&quot; and &quot;a follow-up bilirubin level is obtained every 4 to 6 hours based on clinical findings.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) waits for a visible sign in a condition whose whole management is built on catching the rise before it becomes visible damage.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn management of hemolytic disease</span><span class="chip t2">assessment at birth</span></div>
+<div class="stem">21. Why is prompt monitoring and treatment of bilirubin levels important in hemolytic disease, and what two nursing interventions does the chapter name?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>To prevent acute bilirubin encephalopathy and kernicterus; early feeding is initiated to stimulate stooling, which facilitates removal of bilirubin, and prevention or prompt therapy for perinatal asphyxia, acidosis, cold stress, sepsis, and hypoglycemia decreases the risk of severe hemolytic disease and susceptibility to encephalopathy</li><li class="fopt"><span class="mk">B</span>To prevent anemia only; the intervention is transfusion</li><li class="fopt"><span class="mk">C</span>To prevent infection; the intervention is antibiotics</li><li class="fopt"><span class="mk">D</span>Monitoring is routine with no specific rationale</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Monitoring of bilirubin levels and prompt treatment with phototherapy is needed to prevent acute bilirubin encephalopathy and kernicterus.&quot; The two named interventions are early feeding — &quot;initiated to stimulate stooling, which facilitates the removal of bilirubin&quot; — and prevention or prompt therapy for &quot;perinatal asphyxia, acidosis, cold stress, sepsis, and hypoglycemia.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats the anemia and ignores the neurologic injury that the bilirubin causes, which is the reason the monitoring interval is measured in hours.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn management of hemolytic disease</span><span class="chip t2">exchange transfusion</span></div>
+<div class="stem">22. What does exchange transfusion accomplish, and which blood is used in Rh incompatibility?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It replaces the red cells that would otherwise be hemolyzed by circulating maternal antibodies, removes the antibodies responsible for hemolysis, and corrects the anemia; type O Rh-negative blood is used, because the negative Rh from the donor blood prevents the maternal antibodies still present in the infant's serum from hemolyzing the transfused cells</li><li class="fopt"><span class="mk">B</span>It removes bilirubin only; type-specific blood is used</li><li class="fopt"><span class="mk">C</span>It replaces plasma only; any blood type may be used</li><li class="fopt"><span class="mk">D</span>It is used only for ABO incompatibility</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Exchange transfusion replaces the RBCs that would otherwise be hemolyzed by circulating maternal antibodies, removes the antibodies responsible for hemolysis, and corrects the anemia caused by hemolysis of the infant's sensitized RBCs.&quot; And: &quot;If the infant has Rh incompatibility, type O Rh-negative blood is used for transfusion. The negative Rh from the donor blood prevents the maternal antibodies that are still present in the infant serum from hemolyzing the transfused blood RBCs.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names one of three accomplishments and picks the blood type that the maternal antibodies would destroy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">newborn management of hemolytic disease</span><span class="chip t2">exchange transfusion</span></div>
+<div class="stem">23. Which complications should the nurse monitor for after an exchange transfusion? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hypocalcemia and low magnesium, because preservatives in donor blood lower the infant's serum calcium and magnesium levels</li><li class="fopt right"><span class="mk">&#10003;</span>Jitteriness, irritability, convulsions, tachycardia, and electrocardiographic changes as signs of hypocalcemia</li><li class="fopt right"><span class="mk">&#10003;</span>Hypoglycemia in the hours after the exchange, because the high glucose content of the preservatives can stimulate insulin secretion</li><li class="fopt"><span class="mk">D</span>Hyperglycemia lasting several days with no risk of rebound</li><li class="fopt"><span class="mk">E</span>Polycythemia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Preservatives in donor blood lower the infant's serum calcium and magnesium levels,&quot; with hypocalcemia showing as &quot;jitteriness, irritability, convulsions, tachycardia, and electrocardiographic changes,&quot; and &quot;the nurse monitors the neonate for hypoglycemia during the hours after the exchange because the high glucose content of the preservatives can stimulate insulin secretion.&quot; The double exchange, replacing twice the infant's blood volume, is &quot;preferred for hemolytic disease,&quot; performed in amounts of 5 to 20 mL at a time.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names the initial glucose load and stops before the rebound, which is the finding the nurse is actually watching for.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomalies and maternal risk factors</span><span class="chip t2">scale and causation</span></div>
+<div class="stem">24. How does the chapter define a congenital anomaly, and how common are they?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A structural or functional abnormality that occurs during intrauterine life and can affect any part of the body; WHO estimates 6% of all infants are born with a birth defect, making congenital anomalies the fourth leading cause of neonatal death globally, and in the United States they occur in 1 of every 33 infants born</li><li class="fopt"><span class="mk">B</span>A genetic mutation only, affecting fewer than 1% of infants</li><li class="fopt"><span class="mk">C</span>An abnormality acquired during birth</li><li class="fopt"><span class="mk">D</span>A defect present only in preterm infants</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A congenital anomaly is a structural or functional abnormality that occurs during intrauterine life and can affect any part of the body. It is also known as a birth defect, congenital disorder, or congenital malformation.&quot; WHO &quot;estimates that 6% of all infants are born with a birth defect,&quot; making them &quot;the fourth leading cause of neonatal death globally,&quot; and in the United States &quot;congenital malformations occur in 1 of every 33 infants born (120,000 annually),&quot; as &quot;the leading causes of infant deaths in the United States.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) restricts causation to genetics, which the chapter contradicts twice — the causes are multifactorial, and &quot;up to 50% do not have an identifiable cause.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomalies and maternal risk factors</span><span class="chip t2">scale and causation</span></div>
+<div class="stem">25. Which maternal health factors does the chapter name as contributing to congenital anomalies?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Nutritional status such as folic acid deficiency, maternal behaviors such as smoking and alcohol use, obesity, advanced maternal age, and disease processes such as infections including cytomegalovirus, Zika, and rubella, or diabetes</li><li class="fopt"><span class="mk">B</span>Only advanced maternal age</li><li class="fopt"><span class="mk">C</span>Only infections</li><li class="fopt"><span class="mk">D</span>Maternal factors do not contribute</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Maternal health factors that contribute to congenital anomalies include nutritional status (e.g., folic acid deficiency), maternal behaviors (e.g., smoking, alcohol use), obesity, advanced maternal age, and disease processes such as infections (e.g., cytomegalovirus, Zika, rubella) or diabetes.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would remove the modifiable half of the problem, and the overlap among these factors across heart defects, neural tube defects, and clefts is why the blueprint names maternal risk factors as its own topic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomalies and maternal risk factors</span><span class="chip t2">scale and causation</span></div>
+<div class="stem">26. Which anomalies does the chapter identify as the most common causes of serious problems in the neonate, and why are minor findings still reported?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Congenital heart defects, neural tube defects, cleft lip with palate, clubfoot, and developmental dysplasia of the hip; minor abnormalities can be part of a characteristic pattern of malformations, and a minor defect can point to a more serious major anomaly and aid in its diagnosis</li><li class="fopt"><span class="mk">B</span>Only congenital heart defects; minor findings are not reported</li><li class="fopt"><span class="mk">C</span>Only neural tube defects; minor findings are cosmetic</li><li class="fopt"><span class="mk">D</span>Only clefts and clubfoot</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The most common anomalies that cause serious problems in the neonate are congenital heart defects (CHDs), neural tube defects (NTDs), cleft lip with palate, clubfoot, and developmental dysplasia of the hip (DDH).&quot; And: &quot;It is important to identify even small deviations from normal because minor abnormalities can be part of a characteristic pattern of malformations. A minor defect can point to a more serious major anomaly and aid in its diagnosis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) discards the reason for documenting small findings, which is that they travel in patterns rather than alone.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomalies and maternal risk factors</span><span class="chip t2">congenital heart defects</span></div>
+<div class="stem">27. Which maternal risk factors for congenital heart defects appear in Box 36.1? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Febrile illness in the first trimester and rubella infection</li><li class="fopt right"><span class="mk">&#10003;</span>Medications including anticonvulsants such as phenytoin, lithium, and opioids in early pregnancy</li><li class="fopt right"><span class="mk">&#10003;</span>Alcohol intake, obesity, poor nutrition with folic acid deficiency, and maternal tobacco use</li><li class="fopt right"><span class="mk">&#10003;</span>Diabetes mellitus or phenylalanine hydroxylase deficiency, systemic lupus erythematosus, and maternal age 40 years or older</li><li class="fopt"><span class="mk">E</span>Maternal hypothyroidism</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 36.1 lists febrile illness in the first trimester, rubella infection, anticonvulsants such as phenytoin, lithium, opioids in early pregnancy, alcohol intake, obesity, poor nutrition and folic acid deficiency, radiation or air pollution exposure, diabetes mellitus or phenylalanine hydroxylase deficiency, systemic lupus erythematosus, maternal age 40 or older, and maternal tobacco use.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is not on the list, and most of the items that are on it reappear as risk factors for neural tube defects and orofacial clefts — which is the chapter's larger point.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital anomalies and maternal risk factors</span><span class="chip t2">congenital heart defects</span></div>
+<div class="stem">28. What proportion of infants with congenital heart anomalies have a critical defect, and what screening is recommended?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>25% have a critical congenital heart defect requiring surgical intervention within the first year of life, and routine pulse oximetry assessment before discharge is recommended, with clear evidence that screening programs detect critical defects and reduce infant morbidity and mortality</li><li class="fopt"><span class="mk">B</span>5% have a critical defect, and echocardiography is recommended for all newborns</li><li class="fopt"><span class="mk">C</span>All congenital heart defects are critical</li><li class="fopt"><span class="mk">D</span>No screening is recommended</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;25% of infants with congenital heart anomalies have a critical congenital heart defect (CCHD) that will require surgical intervention within the first year of life,&quot; and &quot;recommendations for newborn screening include routine pulse oximetry assessment before discharge,&quot; with &quot;clear evidence that screening programs are effective in detecting CCHD and in reducing infant morbidity and mortality due to CCHD.&quot; Congenital heart defects are &quot;the most common type of congenital abnormality,&quot; affecting 1% of United States infants.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) replaces a simple universal screen with a test that cannot be done on every newborn, and the pulse oximetry screen exists because some critical defects are silent at discharge.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neural tube defects</span><span class="chip t2">folic acid and recurrence</span></div>
+<div class="stem">29. What folic acid supplementation does the chapter recommend, and for whom?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>400 mcg per day for women of childbearing age, and 4000 mcg — 4 mg — daily for those with a history of neural tube defects, continuing for at least the first trimester of pregnancy</li><li class="fopt"><span class="mk">B</span>400 mcg for all women, with no higher dose for any group</li><li class="fopt"><span class="mk">C</span>4 mg for all women of childbearing age</li><li class="fopt"><span class="mk">D</span>600 mcg for women with a history of neural tube defects</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Maternal folic acid deficiency has a direct bearing on failure of the neural tube to close. As a preventive measure, folic acid supplementation (400 mcg/day) is recommended for women of childbearing age; those with a history of NTDs should take 4000 mcg (4 mg) daily. Folic acid supplementation should continue for at least the first trimester of pregnancy.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) gives every woman the high-risk dose, and the tenfold difference between the two is the detail that makes this the chapter's most testable number.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neural tube defects</span><span class="chip t2">folic acid and recurrence</span></div>
+<div class="stem">30. What is the recurrence risk of a neural tube defect after one affected child, and after two?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>3% to 4% after one affected child, and 10% after two previously affected children</li><li class="fopt"><span class="mk">B</span>1% after one, and 2% after two</li><li class="fopt"><span class="mk">C</span>25% after one, and 50% after two</li><li class="fopt"><span class="mk">D</span>The risk does not increase with previous affected children</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The risk for recurrence after one child has been affected is 3% to 4%,&quot; and &quot;the risk of recurrence is 10% after two previously affected children.&quot; In the United States, neural tube defects &quot;are estimated to affect 3000 pregnancies each year,&quot; and &quot;the addition of folic acid to wheat products and increased prenatal consumption of folic acid decreased the incidence of NTDs over the past 20 years.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) applies Mendelian arithmetic to a multifactorial condition, and the actual figures are what justify the 4-mg dose rather than a genetic counseling conversation about certainty.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neural tube defects</span><span class="chip t2">folic acid and recurrence</span></div>
+<div class="stem">31. Which exposures has the chapter implicated in neural tube defects? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Maternal treatment with anticonvulsants such as valproic acid or carbamazepine</li><li class="fopt right"><span class="mk">&#10003;</span>Treatment with methotrexate, and use of opioids during the first trimester</li><li class="fopt right"><span class="mk">&#10003;</span>Maternal obesity, folate deficiency, and maternal diabetes</li><li class="fopt right"><span class="mk">&#10003;</span>Excessive maternal body heat exposure during the early first trimester, significant febrile illness, and lower socioeconomic status</li><li class="fopt"><span class="mk">E</span>Maternal hypertension</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names anticonvulsants such as valproic acid or carbamazepine, methotrexate, first-trimester opioid use, maternal obesity, folate deficiency, and maternal diabetes, and adds excessive maternal body heat exposure in the early first trimester, significant febrile illness, and lower socioeconomic status.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is not among them, though febrile illness is — and the same first-trimester fever appears in Box 36.1 as a cardiac risk factor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neural tube defects</span><span class="chip t2">the specific defects</span></div>
+<div class="stem">32. How do spina bifida occulta, meningocele, and myelomeningocele differ?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>In spina bifida occulta the spinal cord or meninges do not herniate through the defect and neurologic deficits in the newborn are typically absent; in meningocele the meninges and cerebrospinal fluid extend through a vertebral opening without the spinal cord, usually covered with skin; in myelomeningocele the meninges, cerebrospinal fluid, and neural elements including the spinal cord herniate, resulting in partial or complete motor or sensory dysfunction below the opening</li><li class="fopt"><span class="mk">B</span>All three involve herniation of the spinal cord</li><li class="fopt"><span class="mk">C</span>Myelomeningocele is the mildest form</li><li class="fopt"><span class="mk">D</span>Meningocele always produces paralysis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Spina bifida occulta is &quot;a milder form ... The spinal cord or meninges do not herniate or protrude through the defect,&quot; most often at L5 and S1, with neurologic deficits &quot;typically absent&quot; and skin findings such as a dimple, nevus, hemangioma, or hair tuft. Meningocele &quot;occurs when meninges and cerebrospinal fluid (CSF) extend through an irregular vertebral opening; the neural elements (spinal cord) are usually not present,&quot; and symptoms are rare. Myelomeningocele is &quot;the most common form of spina bifida,&quot; with herniation of meninges, CSF, and neural elements, resulting in &quot;partial or complete motor or sensory dysfunction of the body parts below the spinal opening.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the severity. What distinguishes the three is how much comes through the defect, and myelomeningocele is the one that brings the spinal cord with it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neural tube defects</span><span class="chip t2">the specific defects</span></div>
+<div class="stem">33. How does the chapter describe anencephaly and its prognosis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An open and more serious neural tube defect in which the cranial portion of the neural tube fails to close, resulting in absence of both cerebral hemispheres and the overlying skull; it is incompatible with life, with most affected infants stillborn or dying in the first few days from respiratory failure, and palliative care and family support are needed</li><li class="fopt"><span class="mk">B</span>A closed defect with a good prognosis after surgery</li><li class="fopt"><span class="mk">C</span>A defect corrected by shunting</li><li class="fopt"><span class="mk">D</span>A form of microcephaly</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Anencephaly &quot;is an open defect and is a more serious NTD,&quot; in which &quot;the cranial portion of the neural tube fails to close resulting in absence of both cerebral hemispheres and of the overlying skull.&quot; And: &quot;This condition is incompatible with life; the majority of affected infants are stillborn or die during the first few days due to respiratory failure. Palliative care and family support are needed.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a different finding — microcephaly is &quot;an occipitofrontal head circumference more than 3 standard deviations smaller than the mean for gestational age, weight, and sex,&quot; with a brain that is small rather than absent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neural tube defects</span><span class="chip t2">the specific defects</span></div>
+<div class="stem">34. An infant is born with a myelomeningocele awaiting surgical repair. Which preoperative nursing measures does the chapter specify? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Protecting the protruding sac from injury, rupture, and the resulting risk of central nervous system infection</li><li class="fopt right"><span class="mk">&#10003;</span>Positioning the infant prone-kneeling, with the knees protected from skin breakdown</li><li class="fopt right"><span class="mk">&#10003;</span>Covering the sac with a sterile, moist, nonadherent dressing, cared for using sterile technique</li><li class="fopt right"><span class="mk">&#10003;</span>Placing a drape over the buttocks below the lesion, secured with the drape's adhesive, to keep the lesion free of meconium or stool</li><li class="fopt"><span class="mk">E</span>Positioning the infant supine to reduce pressure on the knees</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A major preoperative nursing intervention for a neonate with a myelomeningocele is to protect the protruding sac from injury, rupture, and resultant risk of CNS infection.&quot; The infant is positioned &quot;in a prone-kneeling position and the knees protected from skin breakdown,&quot; the sac is &quot;covered with a sterile, moist, nonadherent dressing and cared for using sterile technique,&quot; and &quot;a drape should be placed over the buttocks below the lesion ... to keep the lesion free of meconium or stool.&quot; Postnatal closure is usually performed within 48 to 72 hours.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) places the infant directly on the sac, which is the one position that risks the rupture every other measure is designed to prevent. The Safety Alert adds that these infants &quot;are at increased risk for developing latex sensitivity, so they must not come into direct or secondary contact with any products or equipment containing latex.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cleft lip and palate</span><span class="chip t2">the defects and their causes</span></div>
+<div class="stem">35. How does the chapter describe the range of cleft lip and cleft palate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cleft lip is most often unilateral though it can be bilateral, and ranges from a simple notch in the lip to complete separation extending to the floor of the nose; cleft palate occurs midline in the secondary palate and ranges from a bifid uvula to a complete cleft extending from the soft to the hard palate</li><li class="fopt"><span class="mk">B</span>Both are always bilateral and complete</li><li class="fopt"><span class="mk">C</span>Cleft palate is always visible on external examination</li><li class="fopt"><span class="mk">D</span>The two always occur together</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Cleft lip is most often unilateral, although it can occur bilaterally,&quot; and &quot;cleft lip can range from a simple notch in the lip to complete separation of the lip extending to the floor of the nose. Cleft palate occurs midline in the secondary palate; it can range from a bifid uvula to a complete cleft extending from the soft to the hard palate.&quot; The most common defect is cleft lip with cleft palate at 6.4 per 10,000 live births, with cleft palate alone at 5.93 and cleft lip alone at 3.56.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) would mean a cleft palate could not be missed, when a bifid uvula at the mild end requires the newborn oral examination to find it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cleft lip and palate</span><span class="chip t2">the defects and their causes</span></div>
+<div class="stem">36. What causes orofacial clefts, according to the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Most cases are due to multifactorial inheritance, from a combination of genetic and environmental factors including maternal infection, folic acid deficiency, maternal diabetes, maternal smoking, radiation exposure, obesity, alcohol ingestion, and medications such as corticosteroids, lithium, valproic acid, retinoids, and phenytoin; clefts can occur as part of a syndrome or as an isolated defect</li><li class="fopt"><span class="mk">B</span>A single gene defect in all cases</li><li class="fopt"><span class="mk">C</span>Birth trauma</li><li class="fopt"><span class="mk">D</span>Maternal age alone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Most cases of orofacial clefts are due to multifactorial inheritance, caused by a combination of genetic and environmental factors,&quot; with the listed exposures, and a cleft can appear &quot;as part of a syndrome (e.g., Pierre-Robin, CHARGE) or as an isolated defect.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the answer a family may expect, and the multifactorial reality is why the exposure list overlaps so closely with the heart-defect and neural-tube lists earlier in the chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cleft lip and palate</span><span class="chip t2">repair and feeding</span></div>
+<div class="stem">37. When are cleft lip and cleft palate repaired, and why do the two differ?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cleft lip and nasal deformity are repaired by 6 months; cleft palate repair is usually performed between 9 and 12 months of age to promote speech development, with more severe bilateral cleft lip requiring repair in stages</li><li class="fopt"><span class="mk">B</span>Both are repaired within the first month</li><li class="fopt"><span class="mk">C</span>Both are repaired at 2 years of age</li><li class="fopt"><span class="mk">D</span>Cleft palate is repaired first, at 3 months</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Surgical repair of cleft lip and nasal deformity is done by 6 months. Repair of a cleft palate is usually performed between 9 and 12 months of age to promote speech development.&quot; More severe bilateral cleft lip requires &quot;surgical repair in stages.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reverses the order, and the reason for the later palate repair is the one detail that makes the sequence memorable — the timing is set by speech development rather than by the size of the defect.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cleft lip and palate</span><span class="chip t2">repair and feeding</span></div>
+<div class="stem">38. Why do infants with orofacial clefts have feeding difficulty, and which defect causes more trouble?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A cleft lip leaves the newborn unable to maintain a seal around a nipple, and a cleft palate leaves the infant unable to form a vacuum to maintain suction; feeding problems are greater with cleft palate than with an isolated cleft lip</li><li class="fopt"><span class="mk">B</span>Both defects cause identical difficulty</li><li class="fopt"><span class="mk">C</span>Cleft lip causes more difficulty than cleft palate</li><li class="fopt"><span class="mk">D</span>Neither affects feeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The cleft lip renders the newborn unable to maintain a seal around a nipple; a cleft palate leaves the infant unable to form a vacuum to maintain suction when feeding,&quot; and &quot;feeding problems are greater in infants with a cleft palate than in infants with an isolated cleft lip.&quot; Breastfeeding &quot;is possible if the infant has a cleft lip alone but is more challenging with a cleft palate,&quot; and special nipples, bottles, and appliances such as the Haberman or pigeon feeder are used.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the severity, and the mechanism explains why: a seal can be compensated for, but the vacuum cannot be generated at all without an intact palate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cleft lip and palate</span><span class="chip t2">repair and feeding</span></div>
+<div class="stem">39. What is the aspiration risk in an infant with an orofacial cleft, and what support do parents need?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The inability to suck and swallow normally allows milk to pool in the nasopharynx, increasing the likelihood of aspiration, and milk often comes out through the cleft and the nares; parents need support, particularly with cleft lip because it is both a cosmetic and a functional defect, and the nurse must recognize that this can interfere with normal parent-infant bonding in the neonatal period and assess and intervene appropriately</li><li class="fopt"><span class="mk">B</span>There is no aspiration risk; parents need no additional support</li><li class="fopt"><span class="mk">C</span>The risk is limited to the first feeding, and parental concern is purely cosmetic</li><li class="fopt"><span class="mk">D</span>Aspiration occurs only with bottle feeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The inability to suck and swallow normally allows milk to pool in the nasopharynx, which increases the likelihood of aspiration. As the infant attempts to suck, milk often comes out through the cleft and the nares.&quot; And: &quot;Parents of infants with a cleft lip or palate need support, particularly with cleft lip because it is both a cosmetic and a functional defect. Recognizing that this can interfere with normal parent-infant bonding in the neonatal period, the nurse must assess for and intervene appropriately.&quot; Associated laryngeal clefts may require airway management.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reduces the parents' distress to appearance, and the chapter's point is that the visible defect and the bonding risk are connected — which is why assessment of bonding, not just of feeding, is named.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"hemolytic disease mechanism","subtopic":"how alloimmune hemolysis works","stem":"How does alloimmune hemolytic disease of the newborn occur?","options":["Antigens expressed by fetal erythrocytes stimulate the maternal immune response, and when maternal IgG antibodies specific to the fetal red cells cross the placenta they are not protective but attack the fetal red cells, causing agglutination, clumping, and lysis","The fetus makes antibodies against maternal red cells","The placenta produces antibodies against fetal red cells","Maternal IgM crosses the placenta and destroys fetal red cells"],"correct":[0],"sata":false,"why":"\"Hemolytic disease of the newborn, associated with alloimmunity, is the result of antigens expressed by fetal erythrocytes stimulating the maternal immune response.\" Normally \"maternal immunoglobulin G (IgG) antibodies cross the placenta and enter the fetal circulation, providing an adaptive measure to protect the infant,\" but \"when maternal IgG antibodies specific to the fetal RBCs cross the placenta, they are not protective, but can instead attack the fetal RBCs.\"","trap":"(D) names the immunoglobulin that does not cross the placenta at all, which is exactly why IgG is the one that can do this damage.","k":"182jfykw8ibuy"},{"topic":"hemolytic disease mechanism","subtopic":"how alloimmune hemolysis works","stem":"What two consequences follow from lysis of fetal red blood cells?","options":["Anemia as red cell volume decreases, and hyperbilirubinemia as freed heme is converted to biliverdin and eventually bilirubin","Polycythemia and hypoglycemia","Thrombocytopenia and neutropenia","Only anemia, with no effect on bilirubin"],"correct":[0],"sata":false,"why":"\"As erythrocytes are lysed, the volume decreases, resulting in anemia,\" and the freed heme \"is converted to biliverdin and eventually bilirubin,\" producing hyperbilirubinemia. Hemolytic anemia \"occurs when there is rapid destruction of red blood cells (RBCs), faster than the body can produce them.\"","trap":"(D) drops the half of the problem that drives newborn treatment — phototherapy, exchange transfusion, and the whole bilirubin-monitoring schedule exist because of the second consequence.","k":"45qpez1y1hkyp"},{"topic":"hemolytic disease mechanism","subtopic":"which incompatibility does what","stem":"Which statement captures the relationship between ABO and Rh incompatibility?","options":["Hemolytic disease from alloimmunity is most often caused by ABO incompatibility, which is usually a mild disease process, while Rh incompatibility is less common and results in more severe hemolysis","Rh incompatibility is more common and milder than ABO","Both occur with equal frequency and severity","ABO incompatibility is rarer and more severe"],"correct":[0],"sata":false,"why":"\"Hemolytic disease in newborns from alloimmunity is most often caused by ABO incompatibility but can also be the result of rhesus (Rh) incompatibility. ABO incompatibility usually is a mild disease process whereas Rh incompatibility is less common and results in more severe hemolysis.\"","trap":"(D) inverts both halves, and the inversion matters clinically: the common cause is the mild one, so a mildly jaundiced first-born with a positive antiglobulin test is far more likely ABO than Rh.","k":"1kut2sv6vagfx"},{"topic":"hemolytic disease mechanism","subtopic":"which incompatibility does what","stem":"Besides alloimmunity, what other causes of newborn hemolysis does the chapter name?","options":["Nonimmune or acquired hemolysis such as with infection, and inherited erythrocyte defects such as thalassemia, glucose-6-phosphate dehydrogenase deficiency, and pyruvate kinase deficiency","Only infection","Only inherited defects","There are no other causes"],"correct":[0],"sata":false,"why":"The three broad causes are \"alloimmune hemolysis (e.g., Rh incompatibility), nonimmune or acquired hemolysis (e.g., infection), or inherited erythrocyte defects that result in hemolysis (e.g., thalassemia).\" G6PD deficiency \"is most common among neonates whose genetic heritage comes from Africa, Asia, the Mediterranean, and the Middle East,\" is sex-linked so \"male offspring are affected more often,\" and requires a trigger: \"a deficiency of the RBC enzyme in combination with exposure to an oxidant stressor (such as sepsis) results in hemolysis.\"","trap":"(D) would make every jaundiced newborn an immunologic problem, and the enzyme deficiencies are the ones that need a stressor before they declare themselves.","k":"lgq5tx1o5izdn"},{"topic":"rh incompatibility","subtopic":"who is at risk","stem":"Which maternal-fetal pairing is at risk in Rh incompatibility?","options":["Only the Rh-positive fetus of an Rh-negative mother","The Rh-negative fetus of an Rh-positive mother","Any pairing in which the parents differ","Only the Rh-negative fetus of an Rh-negative mother"],"correct":[0],"sata":false,"why":"\"Only the Rh-positive fetus of an Rh-negative mother is at risk.\" An Rh-negative fetus \"is in no danger because, similar to the mother, the fetus does not have the Rh antigen,\" and \"an Rh-negative fetus with a Rh-positive mother is also in no danger of hemolysis.\"","trap":"(B) reverses the pair, which is the most common error with this topic — the mother must be the one lacking the antigen for her to make antibodies against it.","k":"eqybn6piscv4"},{"topic":"rh incompatibility","subtopic":"who is at risk","stem":"An Rh-negative woman's partner is heterozygous for the Rh factor. What does this mean for their children?","options":["There is a 50% chance that each infant will be Rh positive and a 50% chance that each will be Rh negative","All the offspring will be Rh positive","All the offspring will be Rh negative","The father's zygosity has no bearing"],"correct":[0],"sata":false,"why":"\"If the mother is Rh-negative and the father is Rh-positive and homozygous for the Rh factor, all the offspring will be Rh-positive. If the father is heterozygous for the factor, there is a 50% chance that each infant born of the union will be Rh-positive and a 50% chance that each infant will be Rh-negative.\" The Rh-negative blood type occurs in \"approximately 15% of Whites, 8% of Blacks, 1% to 2% of Native Americans and Inuit Eskimos, and less than 1% of Asians.\"","trap":"(B) applies the homozygous result to a heterozygous father, and paternal zygosity testing is the first assessment precisely because it changes the probability this much.","k":"a5pdgn19v2git"},{"topic":"rh incompatibility","subtopic":"sensitization and its consequences","stem":"Why is the first pregnancy with an Rh-positive fetus usually spared?","options":["Because Rh-negative women usually become sensitized in the first pregnancy but do not produce enough antibodies to cause lysis of fetal blood cells; in subsequent pregnancies, antibodies form in response to repeated contact with the antigen and lysis results","Because the placenta blocks all antibody transfer in a first pregnancy","Because fetal red cells do not carry the Rh antigen until the second pregnancy","The first pregnancy is not spared and is the most severely affected"],"correct":[0],"sata":false,"why":"\"Usually, Rh-negative women become sensitized in their first pregnancy with an Rh-positive fetus but do not produce enough antibodies to cause lysis (destruction) of fetal blood cells. During subsequent pregnancies, antibodies form in response to repeated contact with the antigen via fetal blood exposure, and lysis of fetal RBCs results.\"","trap":"(D) describes ABO incompatibility instead, where first-born infants can be affected because mothers with type O already have the antibodies without prior sensitization.","k":"1xc64wy1xje7f0"},{"topic":"rh incompatibility","subtopic":"sensitization and its consequences","stem":"When can maternal sensitization to the Rh antigen occur? Select all that apply.","options":["During pregnancy and at birth","With miscarriage or induced abortion","With amniocentesis or external cephalic version","With trauma, and with events that increase transplacental hemorrhage such as multiple gestation, placental abruption, placenta previa, manual removal of the placenta, and cesarean birth","Only at the time of birth"],"correct":[0,1,2,3],"sata":true,"why":"Sensitization can occur \"during pregnancy, birth, miscarriage, induced abortion, amniocentesis, external cephalic version, or trauma,\" and \"multiple gestation, placental abruption, placenta previa, manual removal of the placenta, and cesarean birth increase the incidence of transplacental hemorrhage and the risk of isoimmunization.\"","trap":"(E) restricts sensitization to the one event everyone remembers, and it would leave an Rh-negative woman unprotected after every other exposure on the list.","k":"9umcd1cvog3f"},{"topic":"rh incompatibility","subtopic":"sensitization and its consequences","stem":"What is hydrops fetalis, and what characterizes it?","options":["The most severe result of fetal anemia in Rh incompatibility, marked by anemia, cardiac decompensation, cardiomegaly, hepatosplenomegaly, and hypoxia, with decreased intravascular oncotic pressure causing generalized edema and effusions into the peritoneal, pericardial, and pleural spaces; mortality is as high as 24% if severe and undiagnosed","A mild form of hemolytic disease requiring no treatment","The compensatory production of immature erythrocytes","Fetal hyperbilirubinemia alone"],"correct":[0],"sata":false,"why":"\"In the most severe cases of Rh incompatibility, fetal anemia results in hydrops fetalis,\" identified by \"marked anemia, cardiac decompensation, cardiomegaly, hepatosplenomegaly, and hypoxia.\" With progression, \"there is decreased intravascular oncotic pressure and fluid leaks out of the intravascular space. This results in generalized edema and effusions into the peritoneal (ascites), pericardial, and pleural (hydrothorax) spaces.\" Mortality is \"as high as 24%.\"","trap":"(C) describes erythroblastosis fetalis, the compensatory step that precedes hydrops — \"the fetus compensates for the hemolytic anemia by producing large numbers of immature erythrocytes to replace those lysed.\"","k":"1ao0rmq197l6fs"},{"topic":"abo incompatibility","subtopic":"which pairings and how often","stem":"Which maternal and fetal blood types produce ABO incompatibility, and how often does it cause clinical effects?","options":["It occurs if the fetal blood type is A, B, or AB and the maternal type is O, and rarely in infants with type B blood born to mothers with type A; of the 20% of newborns who have ABO incompatibility, only 5% have clinical effects","It occurs when the mother is type AB and the fetus is type O, and all affected infants have clinical effects","It occurs only between type A mothers and type B infants","It occurs in all pregnancies where blood types differ"],"correct":[0],"sata":false,"why":"\"ABO incompatibility occurs if the fetal blood type is A, B, or AB and the maternal type is O. It occurs rarely in infants with type B blood born to mothers with type A blood.\" And: \"Of the 20% of newborns who have ABO incompatibility, only 5% have clinical effects.\"","trap":"(B) reverses the pairing. The type O mother is the one with antibodies to both A and B — \"those with type AB blood have no antibodies.\"","k":"75i3m61fb6lig"},{"topic":"abo incompatibility","subtopic":"which pairings and how often","stem":"Why can a first-born infant be affected by ABO incompatibility, and what prophylaxis is available?","options":["Because mothers with type O blood already have anti-A and anti-B antibodies in their blood without sensitization first; there is no preventive treatment available for mothers prenatally","Because sensitization occurs during the first trimester; RhoGAM prevents it","Because the first pregnancy always sensitizes; an ABO immune globulin is given at 28 weeks","First-born infants cannot be affected"],"correct":[0],"sata":false,"why":"\"In contrast to the situation that pertains to Rh incompatibility, first-born infants can be affected because mothers with type O blood already have anti-A and anti-B antibodies in their blood without sensitization first.\" And: \"There is no preventive treatment available for mothers prenatally.\"","trap":"(C) invents an ABO equivalent of Rh immune globulin, which does not exist — the naturally occurring antibodies are already present, so there is nothing to prevent.","k":"jmpzzleotx1v"},{"topic":"abo incompatibility","subtopic":"diagnosis and treatment","stem":"How is ABO incompatibility identified in the newborn, and what does a stronger reaction mean?","options":["By a Coombs test, also called a direct antiglobulin test; a positive result means there are antibodies attached to the infant's red cells, and the strength of the reaction reflects the number of antibodies present","By maternal serum antibody titer alone","By the infant's blood type alone","By bilirubin level alone"],"correct":[0],"sata":false,"why":"\"ABO incompatibility is identified by a Coombs test (also referred to as a direct antiglobulin test [DAT]). A positive DAT means there are antibodies attached to the infant's RBCs. The strength of the DAT reaction (i.e., the more positive) is reflective of the number of antibodies present.\"","trap":"(C) identifies the setup rather than the disease. Twenty percent of newborns have the incompatibility; the antiglobulin test is what shows whether antibodies have actually attached.","k":"rmlyxj6liw6t"},{"topic":"abo incompatibility","subtopic":"diagnosis and treatment","stem":"An infant with ABO incompatibility has a positive direct antiglobulin test. What determines treatment, and what is usually used?","options":["Treatment depends on serum bilirubin levels and hematocrit and reticulocyte values; hyperbilirubinemia is usually treated with phototherapy, and if hemolysis is severe, exchange transfusion and intravenous immunoglobulin are options","All infants with a positive test receive exchange transfusion","No treatment is ever needed for ABO incompatibility","Treatment is determined by the mother's antibody titer"],"correct":[0],"sata":false,"why":"\"If an infant is born and has a positive DAT, treatment is dependent on serum bilirubin levels and hematocrit and reticulocyte values.\" Hyperbilirubinemia \"is usually treated with phototherapy,\" and \"if the hemolysis is severe, other treatment options include exchange transfusions and intravenous (IV) immunoglobulin.\" The resulting anemia \"is usually mild, and hyperbilirubinemia is the most common complication.\"","trap":"(B) escalates every positive test to the most invasive option, when the usual course is mild and phototherapy is usually enough.","k":"1s2835r1qv75jl"},{"topic":"rh immune globulin and titers","subtopic":"the immune globulin","stem":"What does Rh immune globulin do, and how effective is it?","options":["It is a commercial preparation of passive antibodies against the Rh factor; the injection destroys any fetal red cells in the maternal circulation and blocks maternal sensitization and antibody production, and it is 90% effective in preventing sensitization","It treats hemolysis in the fetus","It reverses sensitization once antibodies have formed","It is 100% effective"],"correct":[0],"sata":false,"why":"\"RhoGAM, a commercial preparation of passive antibodies against the Rh factor, is frequently used. This injection of anti-Rh antibodies destroys any fetal RBCs in the maternal circulation and blocks maternal sensitization and antibody production.\" And: \"Rh immune globulin is 90% effective in preventing sensitization.\"","trap":"(C) is the one thing it cannot do. It prevents antibody formation; it does nothing for a woman who has already produced antibodies, which is why the postpartum dose is for the unsensitized mother.","k":"hr5llxkoqp6v"},{"topic":"rh immune globulin and titers","subtopic":"the immune globulin","stem":"When is Rh immune globulin recommended for an Rh-negative mother, and how much fetal blood does one dose cover?","options":["At 28 weeks of gestation, within 72 hours of birth, after an invasive procedure, and any time there is a risk of fetal-maternal hemorrhage; one dose accommodates approximately 15 mL of fetal red blood cells","Only after birth, covering 30 mL of fetal red cells","Only at 28 weeks, covering 50 mL","Monthly throughout pregnancy"],"correct":[0],"sata":false,"why":"\"It is recommended to be given to an Rh-negative mother at 28 weeks of gestation, within 72 hours of birth, after an invasive procedure, and any time there is a risk of fetal-maternal hemorrhage,\" and \"one dose accommodates approximately 15 mL of fetal RBCs.\"","trap":"(B) drops the antepartum dose, which is what protects the current pregnancy's third trimester and the sensitizing events that occur before birth.","k":"t1054mr2lxe8"},{"topic":"rh immune globulin and titers","subtopic":"the immune globulin","stem":"Who should receive the postpartum dose of Rh immune globulin?","options":["The unsensitized Rh-negative mother whose newborn is Rh positive, within 72 hours of birth, to prevent her from producing antibodies to fetal blood cells that entered her bloodstream during the birth","Every Rh-negative mother regardless of the newborn's type","Every Rh-positive mother","The already sensitized Rh-negative mother"],"correct":[0],"sata":false,"why":"\"The unsensitized Rh-negative mother, whose newborn is Rh positive, should receive Rh immune globulin within 72 hours of birth to prevent her from producing antibodies to the fetal blood cells that entered her bloodstream during the birth.\"","trap":"(D) gives the drug to the one woman it cannot help, since its purpose is to block sensitization that has already occurred in her case.","k":"bhtdkk1kt7d6q"},{"topic":"rh immune globulin and titers","subtopic":"antibody screening and fetal surveillance","stem":"Which test detects unbound antibodies in maternal serum, and which detects antibodies attached to the infant's red cells?","options":["The indirect Coombs test is the maternal test; the direct antiglobulin test is the infant's","The direct antiglobulin test is the maternal test; the indirect Coombs is the infant's","Both are maternal tests","Both are infant tests"],"correct":[0],"sata":false,"why":"At the first prenatal visit, along with maternal blood type, \"an antibody screen is performed, and an indirect Coombs test is done to detect unbound antibodies in maternal serum,\" while \"a positive DAT means there are antibodies attached to the infant's RBCs.\"","trap":"(B) swaps the two, and the cue that holds is where the antibodies are: unattached in the mother's serum is indirect, already stuck to the infant's cells is direct.","k":"bllze1tbfng7"},{"topic":"rh immune globulin and titers","subtopic":"antibody screening and fetal surveillance","stem":"An Rh-negative woman's anti-D titer is 1:16. How should this be interpreted, and what follows?","options":["It is a critical titer, meaning the fetus is at risk for severe hemolytic disease and follow-up is needed; serial measurement of the fetal middle cerebral artery peak systolic velocity by Doppler is the recommended method to detect fetal anemia","It is reassuring and requires no follow-up","It indicates the mother needs Rh immune globulin","It confirms hydrops fetalis"],"correct":[0],"sata":false,"why":"\"An anti-D titer greater than or equal to 1:16 is considered a critical titer, meaning the fetus is at risk for severe hemolytic disease and follow-up is needed,\" while \"a level of 1:8 rarely results in fetal jeopardy.\" And: \"Serial measurement of the fetal middle cerebral artery peak systolic velocity (MCA-PSV) using Doppler ultrasound is the recommended method to detect fetal anemia.\"","trap":"(C) offers prophylaxis to a woman whose titer proves she is already sensitized — the antepartum dose at 28 weeks is given when the screen \"remains negative, indicating that sensitization has not occurred.\"","k":"yendkb1h1d50x"},{"topic":"rh immune globulin and titers","subtopic":"antibody screening and fetal surveillance","stem":"Which thresholds govern the workup and treatment of suspected fetal anemia in Rh disease? Select all that apply.","options":["A middle cerebral artery peak systolic velocity greater than 1.5 multiples of the median, or signs of fetal hydrops, prompts cordocentesis to assess the fetal hematocrit","A fetal hematocrit below 30% indicates intrauterine transfusion","Repeat transfusions are usually performed at 3- to 4-week intervals until 35 weeks","Birth is planned at 38 weeks, when lung maturity is expected","A titer of 1:8 requires immediate transfusion"],"correct":[0,1,2,3],"sata":true,"why":"The chapter gives each of these thresholds, and intrauterine transfusion \"involves the infusion of Rh-negative type O blood into the umbilical vein,\" which \"is associated with high survival rates and a low risk of disabilities in surviving infants.\"","trap":"(E) treats the reassuring titer as an emergency. A level of 1:8 \"rarely results in fetal jeopardy,\" and a positive screen is simply repeated every 2 to 4 weeks until a critical value is reached.","k":"mzkm3s5213o2"},{"topic":"newborn management of hemolytic disease","subtopic":"assessment at birth","stem":"What laboratory work is obtained on a newborn at risk for hemolytic disease?","options":["Cord blood sent to determine blood type and Rh status and to screen for maternal antibodies with the Coombs test; hematocrit and reticulocyte count at birth and at 24 to 48 hours of age; and a follow-up bilirubin level every 4 to 6 hours based on clinical findings","A single bilirubin level before discharge","Only the blood type","No laboratory work is needed unless jaundice appears"],"correct":[0],"sata":false,"why":"At birth \"the neonate's cord blood is sent to the laboratory to determine the blood type and Rh status and to screen for maternal antibodies with the Coombs test (DAT),\" with \"hematocrit and reticulocyte count ... obtained at birth and at 24 to 48 hours of age,\" and \"a follow-up bilirubin level is obtained every 4 to 6 hours based on clinical findings.\"","trap":"(D) waits for a visible sign in a condition whose whole management is built on catching the rise before it becomes visible damage.","k":"19kfg5t17od3cz"},{"topic":"newborn management of hemolytic disease","subtopic":"assessment at birth","stem":"Why is prompt monitoring and treatment of bilirubin levels important in hemolytic disease, and what two nursing interventions does the chapter name?","options":["To prevent acute bilirubin encephalopathy and kernicterus; early feeding is initiated to stimulate stooling, which facilitates removal of bilirubin, and prevention or prompt therapy for perinatal asphyxia, acidosis, cold stress, sepsis, and hypoglycemia decreases the risk of severe hemolytic disease and susceptibility to encephalopathy","To prevent anemia only; the intervention is transfusion","To prevent infection; the intervention is antibiotics","Monitoring is routine with no specific rationale"],"correct":[0],"sata":false,"why":"\"Monitoring of bilirubin levels and prompt treatment with phototherapy is needed to prevent acute bilirubin encephalopathy and kernicterus.\" The two named interventions are early feeding — \"initiated to stimulate stooling, which facilitates the removal of bilirubin\" — and prevention or prompt therapy for \"perinatal asphyxia, acidosis, cold stress, sepsis, and hypoglycemia.\"","trap":"(B) treats the anemia and ignores the neurologic injury that the bilirubin causes, which is the reason the monitoring interval is measured in hours.","k":"6362jqihfnpw"},{"topic":"newborn management of hemolytic disease","subtopic":"exchange transfusion","stem":"What does exchange transfusion accomplish, and which blood is used in Rh incompatibility?","options":["It replaces the red cells that would otherwise be hemolyzed by circulating maternal antibodies, removes the antibodies responsible for hemolysis, and corrects the anemia; type O Rh-negative blood is used, because the negative Rh from the donor blood prevents the maternal antibodies still present in the infant's serum from hemolyzing the transfused cells","It removes bilirubin only; type-specific blood is used","It replaces plasma only; any blood type may be used","It is used only for ABO incompatibility"],"correct":[0],"sata":false,"why":"\"Exchange transfusion replaces the RBCs that would otherwise be hemolyzed by circulating maternal antibodies, removes the antibodies responsible for hemolysis, and corrects the anemia caused by hemolysis of the infant's sensitized RBCs.\" And: \"If the infant has Rh incompatibility, type O Rh-negative blood is used for transfusion. The negative Rh from the donor blood prevents the maternal antibodies that are still present in the infant serum from hemolyzing the transfused blood RBCs.\"","trap":"(B) names one of three accomplishments and picks the blood type that the maternal antibodies would destroy.","k":"1nr4x91u9e2b"},{"topic":"newborn management of hemolytic disease","subtopic":"exchange transfusion","stem":"Which complications should the nurse monitor for after an exchange transfusion? Select all that apply.","options":["Hypocalcemia and low magnesium, because preservatives in donor blood lower the infant's serum calcium and magnesium levels","Jitteriness, irritability, convulsions, tachycardia, and electrocardiographic changes as signs of hypocalcemia","Hypoglycemia in the hours after the exchange, because the high glucose content of the preservatives can stimulate insulin secretion","Hyperglycemia lasting several days with no risk of rebound","Polycythemia"],"correct":[0,1,2],"sata":true,"why":"\"Preservatives in donor blood lower the infant's serum calcium and magnesium levels,\" with hypocalcemia showing as \"jitteriness, irritability, convulsions, tachycardia, and electrocardiographic changes,\" and \"the nurse monitors the neonate for hypoglycemia during the hours after the exchange because the high glucose content of the preservatives can stimulate insulin secretion.\" The double exchange, replacing twice the infant's blood volume, is \"preferred for hemolytic disease,\" performed in amounts of 5 to 20 mL at a time.","trap":"(D) names the initial glucose load and stops before the rebound, which is the finding the nurse is actually watching for.","k":"1b5elufzewr09"},{"topic":"congenital anomalies and maternal risk factors","subtopic":"scale and causation","stem":"How does the chapter define a congenital anomaly, and how common are they?","options":["A structural or functional abnormality that occurs during intrauterine life and can affect any part of the body; WHO estimates 6% of all infants are born with a birth defect, making congenital anomalies the fourth leading cause of neonatal death globally, and in the United States they occur in 1 of every 33 infants born","A genetic mutation only, affecting fewer than 1% of infants","An abnormality acquired during birth","A defect present only in preterm infants"],"correct":[0],"sata":false,"why":"\"A congenital anomaly is a structural or functional abnormality that occurs during intrauterine life and can affect any part of the body. It is also known as a birth defect, congenital disorder, or congenital malformation.\" WHO \"estimates that 6% of all infants are born with a birth defect,\" making them \"the fourth leading cause of neonatal death globally,\" and in the United States \"congenital malformations occur in 1 of every 33 infants born (120,000 annually),\" as \"the leading causes of infant deaths in the United States.\"","trap":"(B) restricts causation to genetics, which the chapter contradicts twice — the causes are multifactorial, and \"up to 50% do not have an identifiable cause.\"","k":"9g2wfjxy13d"},{"topic":"congenital anomalies and maternal risk factors","subtopic":"scale and causation","stem":"Which maternal health factors does the chapter name as contributing to congenital anomalies?","options":["Nutritional status such as folic acid deficiency, maternal behaviors such as smoking and alcohol use, obesity, advanced maternal age, and disease processes such as infections including cytomegalovirus, Zika, and rubella, or diabetes","Only advanced maternal age","Only infections","Maternal factors do not contribute"],"correct":[0],"sata":false,"why":"\"Maternal health factors that contribute to congenital anomalies include nutritional status (e.g., folic acid deficiency), maternal behaviors (e.g., smoking, alcohol use), obesity, advanced maternal age, and disease processes such as infections (e.g., cytomegalovirus, Zika, rubella) or diabetes.\"","trap":"(D) would remove the modifiable half of the problem, and the overlap among these factors across heart defects, neural tube defects, and clefts is why the blueprint names maternal risk factors as its own topic.","k":"17pogbm19iujt4"},{"topic":"congenital anomalies and maternal risk factors","subtopic":"scale and causation","stem":"Which anomalies does the chapter identify as the most common causes of serious problems in the neonate, and why are minor findings still reported?","options":["Congenital heart defects, neural tube defects, cleft lip with palate, clubfoot, and developmental dysplasia of the hip; minor abnormalities can be part of a characteristic pattern of malformations, and a minor defect can point to a more serious major anomaly and aid in its diagnosis","Only congenital heart defects; minor findings are not reported","Only neural tube defects; minor findings are cosmetic","Only clefts and clubfoot"],"correct":[0],"sata":false,"why":"\"The most common anomalies that cause serious problems in the neonate are congenital heart defects (CHDs), neural tube defects (NTDs), cleft lip with palate, clubfoot, and developmental dysplasia of the hip (DDH).\" And: \"It is important to identify even small deviations from normal because minor abnormalities can be part of a characteristic pattern of malformations. A minor defect can point to a more serious major anomaly and aid in its diagnosis.\"","trap":"(B) discards the reason for documenting small findings, which is that they travel in patterns rather than alone.","k":"15t6ozd19742uf"},{"topic":"congenital anomalies and maternal risk factors","subtopic":"congenital heart defects","stem":"Which maternal risk factors for congenital heart defects appear in Box 36.1? Select all that apply.","options":["Febrile illness in the first trimester and rubella infection","Medications including anticonvulsants such as phenytoin, lithium, and opioids in early pregnancy","Alcohol intake, obesity, poor nutrition with folic acid deficiency, and maternal tobacco use","Diabetes mellitus or phenylalanine hydroxylase deficiency, systemic lupus erythematosus, and maternal age 40 years or older","Maternal hypothyroidism"],"correct":[0,1,2,3],"sata":true,"why":"Box 36.1 lists febrile illness in the first trimester, rubella infection, anticonvulsants such as phenytoin, lithium, opioids in early pregnancy, alcohol intake, obesity, poor nutrition and folic acid deficiency, radiation or air pollution exposure, diabetes mellitus or phenylalanine hydroxylase deficiency, systemic lupus erythematosus, maternal age 40 or older, and maternal tobacco use.","trap":"(E) is not on the list, and most of the items that are on it reappear as risk factors for neural tube defects and orofacial clefts — which is the chapter's larger point.","k":"18odxwr1gbov6x"},{"topic":"congenital anomalies and maternal risk factors","subtopic":"congenital heart defects","stem":"What proportion of infants with congenital heart anomalies have a critical defect, and what screening is recommended?","options":["25% have a critical congenital heart defect requiring surgical intervention within the first year of life, and routine pulse oximetry assessment before discharge is recommended, with clear evidence that screening programs detect critical defects and reduce infant morbidity and mortality","5% have a critical defect, and echocardiography is recommended for all newborns","All congenital heart defects are critical","No screening is recommended"],"correct":[0],"sata":false,"why":"\"25% of infants with congenital heart anomalies have a critical congenital heart defect (CCHD) that will require surgical intervention within the first year of life,\" and \"recommendations for newborn screening include routine pulse oximetry assessment before discharge,\" with \"clear evidence that screening programs are effective in detecting CCHD and in reducing infant morbidity and mortality due to CCHD.\" Congenital heart defects are \"the most common type of congenital abnormality,\" affecting 1% of United States infants.","trap":"(B) replaces a simple universal screen with a test that cannot be done on every newborn, and the pulse oximetry screen exists because some critical defects are silent at discharge.","k":"d30pateqxx2f"},{"topic":"neural tube defects","subtopic":"folic acid and recurrence","stem":"What folic acid supplementation does the chapter recommend, and for whom?","options":["400 mcg per day for women of childbearing age, and 4000 mcg — 4 mg — daily for those with a history of neural tube defects, continuing for at least the first trimester of pregnancy","400 mcg for all women, with no higher dose for any group","4 mg for all women of childbearing age","600 mcg for women with a history of neural tube defects"],"correct":[0],"sata":false,"why":"\"Maternal folic acid deficiency has a direct bearing on failure of the neural tube to close. As a preventive measure, folic acid supplementation (400 mcg/day) is recommended for women of childbearing age; those with a history of NTDs should take 4000 mcg (4 mg) daily. Folic acid supplementation should continue for at least the first trimester of pregnancy.\"","trap":"(C) gives every woman the high-risk dose, and the tenfold difference between the two is the detail that makes this the chapter's most testable number.","k":"17uazrl1ag1czr"},{"topic":"neural tube defects","subtopic":"folic acid and recurrence","stem":"What is the recurrence risk of a neural tube defect after one affected child, and after two?","options":["3% to 4% after one affected child, and 10% after two previously affected children","1% after one, and 2% after two","25% after one, and 50% after two","The risk does not increase with previous affected children"],"correct":[0],"sata":false,"why":"\"The risk for recurrence after one child has been affected is 3% to 4%,\" and \"the risk of recurrence is 10% after two previously affected children.\" In the United States, neural tube defects \"are estimated to affect 3000 pregnancies each year,\" and \"the addition of folic acid to wheat products and increased prenatal consumption of folic acid decreased the incidence of NTDs over the past 20 years.\"","trap":"(C) applies Mendelian arithmetic to a multifactorial condition, and the actual figures are what justify the 4-mg dose rather than a genetic counseling conversation about certainty.","k":"bo6hq6149l9co"},{"topic":"neural tube defects","subtopic":"folic acid and recurrence","stem":"Which exposures has the chapter implicated in neural tube defects? Select all that apply.","options":["Maternal treatment with anticonvulsants such as valproic acid or carbamazepine","Treatment with methotrexate, and use of opioids during the first trimester","Maternal obesity, folate deficiency, and maternal diabetes","Excessive maternal body heat exposure during the early first trimester, significant febrile illness, and lower socioeconomic status","Maternal hypertension"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names anticonvulsants such as valproic acid or carbamazepine, methotrexate, first-trimester opioid use, maternal obesity, folate deficiency, and maternal diabetes, and adds excessive maternal body heat exposure in the early first trimester, significant febrile illness, and lower socioeconomic status.","trap":"(E) is not among them, though febrile illness is — and the same first-trimester fever appears in Box 36.1 as a cardiac risk factor.","k":"11wdj5u9jwp4w"},{"topic":"neural tube defects","subtopic":"the specific defects","stem":"How do spina bifida occulta, meningocele, and myelomeningocele differ?","options":["In spina bifida occulta the spinal cord or meninges do not herniate through the defect and neurologic deficits in the newborn are typically absent; in meningocele the meninges and cerebrospinal fluid extend through a vertebral opening without the spinal cord, usually covered with skin; in myelomeningocele the meninges, cerebrospinal fluid, and neural elements including the spinal cord herniate, resulting in partial or complete motor or sensory dysfunction below the opening","All three involve herniation of the spinal cord","Myelomeningocele is the mildest form","Meningocele always produces paralysis"],"correct":[0],"sata":false,"why":"Spina bifida occulta is \"a milder form ... The spinal cord or meninges do not herniate or protrude through the defect,\" most often at L5 and S1, with neurologic deficits \"typically absent\" and skin findings such as a dimple, nevus, hemangioma, or hair tuft. Meningocele \"occurs when meninges and cerebrospinal fluid (CSF) extend through an irregular vertebral opening; the neural elements (spinal cord) are usually not present,\" and symptoms are rare. Myelomeningocele is \"the most common form of spina bifida,\" with herniation of meninges, CSF, and neural elements, resulting in \"partial or complete motor or sensory dysfunction of the body parts below the spinal opening.\"","trap":"(C) reverses the severity. What distinguishes the three is how much comes through the defect, and myelomeningocele is the one that brings the spinal cord with it.","k":"auyogknm4a7e"},{"topic":"neural tube defects","subtopic":"the specific defects","stem":"How does the chapter describe anencephaly and its prognosis?","options":["An open and more serious neural tube defect in which the cranial portion of the neural tube fails to close, resulting in absence of both cerebral hemispheres and the overlying skull; it is incompatible with life, with most affected infants stillborn or dying in the first few days from respiratory failure, and palliative care and family support are needed","A closed defect with a good prognosis after surgery","A defect corrected by shunting","A form of microcephaly"],"correct":[0],"sata":false,"why":"Anencephaly \"is an open defect and is a more serious NTD,\" in which \"the cranial portion of the neural tube fails to close resulting in absence of both cerebral hemispheres and of the overlying skull.\" And: \"This condition is incompatible with life; the majority of affected infants are stillborn or die during the first few days due to respiratory failure. Palliative care and family support are needed.\"","trap":"(D) names a different finding — microcephaly is \"an occipitofrontal head circumference more than 3 standard deviations smaller than the mean for gestational age, weight, and sex,\" with a brain that is small rather than absent.","k":"1aziu9e5rj14c"},{"topic":"neural tube defects","subtopic":"the specific defects","stem":"An infant is born with a myelomeningocele awaiting surgical repair. Which preoperative nursing measures does the chapter specify? Select all that apply.","options":["Protecting the protruding sac from injury, rupture, and the resulting risk of central nervous system infection","Positioning the infant prone-kneeling, with the knees protected from skin breakdown","Covering the sac with a sterile, moist, nonadherent dressing, cared for using sterile technique","Placing a drape over the buttocks below the lesion, secured with the drape's adhesive, to keep the lesion free of meconium or stool","Positioning the infant supine to reduce pressure on the knees"],"correct":[0,1,2,3],"sata":true,"why":"\"A major preoperative nursing intervention for a neonate with a myelomeningocele is to protect the protruding sac from injury, rupture, and resultant risk of CNS infection.\" The infant is positioned \"in a prone-kneeling position and the knees protected from skin breakdown,\" the sac is \"covered with a sterile, moist, nonadherent dressing and cared for using sterile technique,\" and \"a drape should be placed over the buttocks below the lesion ... to keep the lesion free of meconium or stool.\" Postnatal closure is usually performed within 48 to 72 hours.","trap":"(E) places the infant directly on the sac, which is the one position that risks the rupture every other measure is designed to prevent. The Safety Alert adds that these infants \"are at increased risk for developing latex sensitivity, so they must not come into direct or secondary contact with any products or equipment containing latex.\"","k":"1jays1t163z5qz"},{"topic":"cleft lip and palate","subtopic":"the defects and their causes","stem":"How does the chapter describe the range of cleft lip and cleft palate?","options":["Cleft lip is most often unilateral though it can be bilateral, and ranges from a simple notch in the lip to complete separation extending to the floor of the nose; cleft palate occurs midline in the secondary palate and ranges from a bifid uvula to a complete cleft extending from the soft to the hard palate","Both are always bilateral and complete","Cleft palate is always visible on external examination","The two always occur together"],"correct":[0],"sata":false,"why":"\"Cleft lip is most often unilateral, although it can occur bilaterally,\" and \"cleft lip can range from a simple notch in the lip to complete separation of the lip extending to the floor of the nose. Cleft palate occurs midline in the secondary palate; it can range from a bifid uvula to a complete cleft extending from the soft to the hard palate.\" The most common defect is cleft lip with cleft palate at 6.4 per 10,000 live births, with cleft palate alone at 5.93 and cleft lip alone at 3.56.","trap":"(C) would mean a cleft palate could not be missed, when a bifid uvula at the mild end requires the newborn oral examination to find it.","k":"1t4dvan1evws6x"},{"topic":"cleft lip and palate","subtopic":"the defects and their causes","stem":"What causes orofacial clefts, according to the chapter?","options":["Most cases are due to multifactorial inheritance, from a combination of genetic and environmental factors including maternal infection, folic acid deficiency, maternal diabetes, maternal smoking, radiation exposure, obesity, alcohol ingestion, and medications such as corticosteroids, lithium, valproic acid, retinoids, and phenytoin; clefts can occur as part of a syndrome or as an isolated defect","A single gene defect in all cases","Birth trauma","Maternal age alone"],"correct":[0],"sata":false,"why":"\"Most cases of orofacial clefts are due to multifactorial inheritance, caused by a combination of genetic and environmental factors,\" with the listed exposures, and a cleft can appear \"as part of a syndrome (e.g., Pierre-Robin, CHARGE) or as an isolated defect.\"","trap":"(B) is the answer a family may expect, and the multifactorial reality is why the exposure list overlaps so closely with the heart-defect and neural-tube lists earlier in the chapter.","k":"ar567fav4shl"},{"topic":"cleft lip and palate","subtopic":"repair and feeding","stem":"When are cleft lip and cleft palate repaired, and why do the two differ?","options":["Cleft lip and nasal deformity are repaired by 6 months; cleft palate repair is usually performed between 9 and 12 months of age to promote speech development, with more severe bilateral cleft lip requiring repair in stages","Both are repaired within the first month","Both are repaired at 2 years of age","Cleft palate is repaired first, at 3 months"],"correct":[0],"sata":false,"why":"\"Surgical repair of cleft lip and nasal deformity is done by 6 months. Repair of a cleft palate is usually performed between 9 and 12 months of age to promote speech development.\" More severe bilateral cleft lip requires \"surgical repair in stages.\"","trap":"(D) reverses the order, and the reason for the later palate repair is the one detail that makes the sequence memorable — the timing is set by speech development rather than by the size of the defect.","k":"1msmqhl1b36p1r"},{"topic":"cleft lip and palate","subtopic":"repair and feeding","stem":"Why do infants with orofacial clefts have feeding difficulty, and which defect causes more trouble?","options":["A cleft lip leaves the newborn unable to maintain a seal around a nipple, and a cleft palate leaves the infant unable to form a vacuum to maintain suction; feeding problems are greater with cleft palate than with an isolated cleft lip","Both defects cause identical difficulty","Cleft lip causes more difficulty than cleft palate","Neither affects feeding"],"correct":[0],"sata":false,"why":"\"The cleft lip renders the newborn unable to maintain a seal around a nipple; a cleft palate leaves the infant unable to form a vacuum to maintain suction when feeding,\" and \"feeding problems are greater in infants with a cleft palate than in infants with an isolated cleft lip.\" Breastfeeding \"is possible if the infant has a cleft lip alone but is more challenging with a cleft palate,\" and special nipples, bottles, and appliances such as the Haberman or pigeon feeder are used.","trap":"(C) reverses the severity, and the mechanism explains why: a seal can be compensated for, but the vacuum cannot be generated at all without an intact palate.","k":"1q3wpzm1gkguxk"},{"topic":"cleft lip and palate","subtopic":"repair and feeding","stem":"What is the aspiration risk in an infant with an orofacial cleft, and what support do parents need?","options":["The inability to suck and swallow normally allows milk to pool in the nasopharynx, increasing the likelihood of aspiration, and milk often comes out through the cleft and the nares; parents need support, particularly with cleft lip because it is both a cosmetic and a functional defect, and the nurse must recognize that this can interfere with normal parent-infant bonding in the neonatal period and assess and intervene appropriately","There is no aspiration risk; parents need no additional support","The risk is limited to the first feeding, and parental concern is purely cosmetic","Aspiration occurs only with bottle feeding"],"correct":[0],"sata":false,"why":"\"The inability to suck and swallow normally allows milk to pool in the nasopharynx, which increases the likelihood of aspiration. As the infant attempts to suck, milk often comes out through the cleft and the nares.\" And: \"Parents of infants with a cleft lip or palate need support, particularly with cleft lip because it is both a cosmetic and a functional defect. Recognizing that this can interfere with normal parent-infant bonding in the neonatal period, the nurse must assess for and intervene appropriately.\" Associated laryngeal clefts may require airway management.","trap":"(C) reduces the parents' distress to appearance, and the chapter's point is that the visible defect and the bonding risk are connected — which is why assessment of bonding, not just of feeding, is named.","k":"5bet217yhui4"}];
+const TITLE = "Chapter 36 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 36";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

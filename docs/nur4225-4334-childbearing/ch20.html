@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 20 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 20</div><h1>Chapter 20 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">uterine involution timeline</span><span class="chip t2">where the fundus is, hour by day</span></div>
+<div class="stem">1. Six hours after a vaginal birth, the nurse palpates the fundus one fingerbreadth above the umbilicus. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As abnormal, requiring immediate provider notification</li><li class="fopt right"><span class="mk">&#10003;</span>As expected, since within 12 hours the fundus can rise to approximately 1 cm above the umbilicus before beginning to descend</li><li class="fopt"><span class="mk">C</span>As a sign of a full bladder only</li><li class="fopt"><span class="mk">D</span>As evidence of retained placental fragments</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The fundus is &quot;in the midline, approximately 2 cm below the level of the umbilicus&quot; at the end of the third stage, and &quot;within 12 hours the fundus can rise to approximately 1 cm above the umbilicus.&quot; After that, &quot;the fundus descends 1 to 2 cm every 24 hours.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the reflex response to a fundus above the umbilicus, and the timing is what settles it. The same finding on postpartum day 3 would be abnormal, because by then the fundus should be several centimeters lower.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">uterine involution timeline</span><span class="chip t2">where the fundus is, hour by day</span></div>
+<div class="stem">2. Where should the fundus be on the sixth postpartum day, and when should it no longer be palpable abdominally?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Halfway between the umbilicus and the symphysis pubis on day 6; not palpable abdominally after 2 weeks</li><li class="fopt"><span class="mk">B</span>At the umbilicus on day 6; not palpable after 6 weeks</li><li class="fopt"><span class="mk">C</span>At the symphysis pubis on day 6; not palpable after 1 week</li><li class="fopt"><span class="mk">D</span>One centimeter above the umbilicus on day 6; not palpable after 4 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;By the sixth postpartum day the fundus is normally located halfway between the umbilicus and the symphysis pubis,&quot; and &quot;after 2 weeks the uterus should not be palpable abdominally.&quot; By 6 weeks it &quot;should have returned to its nonpregnant location.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) holds the fundus at its day-1 position for a week, which would mean no involution at all — the finding that defines subinvolution.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">uterine involution timeline</span><span class="chip t2">how involution happens, and when it fails</span></div>
+<div class="stem">3. A woman asks how her uterus shrinks back to its former size. Which explanation reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The muscle cells added during pregnancy are all destroyed, returning the uterus to its exact prepregnancy size</li><li class="fopt right"><span class="mk">&#10003;</span>Falling hormone levels cause autolysis — the self-destruction of excess hypertrophied tissue — while the additional cells laid down during pregnancy remain, which accounts for the slight increase in uterine size after each pregnancy</li><li class="fopt"><span class="mk">C</span>The uterus shrinks by expelling endometrial tissue only</li><li class="fopt"><span class="mk">D</span>Involution is complete within 1 week</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Pregnancy growth came from &quot;both hyperplasia (an increase in the number of muscle cells) and hypertrophy (an enlargement of the existing cells),&quot; and after birth &quot;the decrease in these hormones causes autolysis,&quot; the self-destruction of excess hypertrophied tissue. &quot;The additional cells laid down during pregnancy remain and account for the slight increase in uterine size after each pregnancy.&quot; The uterus weighs about 500 g at 1 week, 300 g at 2 weeks, and about 100 g at 4 weeks.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) misses the parity detail that explains why a multipara's uterus never quite returns to a nullipara's size.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">uterine involution timeline</span><span class="chip t2">how involution happens, and when it fails</span></div>
+<div class="stem">4. A woman on postpartum day 10 has a uterus that remains enlarged and boggy with continued rubra bleeding. What is this called, and what are the most common causes?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Subinvolution, most commonly caused by retained placental fragments and infection</li><li class="fopt"><span class="mk">B</span>Normal involution</li><li class="fopt"><span class="mk">C</span>Endometriosis</li><li class="fopt"><span class="mk">D</span>Uterine atony, which occurs only in the first hour</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Subinvolution is the failure of the uterus to return to a nonpregnant state as a result of ineffective uterine contractions,&quot; and &quot;the most common causes of subinvolution are retained placental fragments and infection.&quot; Persistent lochia rubra &quot;suggests continued bleeding as a result of retained fragments of the placenta or membranes.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) confines atony to the immediate postpartum period, when the problem here is a failure of involution over days — which is why the two most common causes are things left behind or an infection, not a single relaxed moment.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">uterine involution timeline</span><span class="chip t2">how involution happens, and when it fails</span></div>
+<div class="stem">5. How is postpartum hemostasis primarily achieved?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>By platelet aggregation and clot formation at the placental site</li><li class="fopt right"><span class="mk">&#10003;</span>By compression of intramyometrial blood vessels as the uterine muscle contracts, rather than by platelet aggregation and clot formation</li><li class="fopt"><span class="mk">C</span>By vasoconstriction from circulating catecholamines</li><li class="fopt"><span class="mk">D</span>By fibrin deposition in the endometrium</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Postpartum hemostasis is achieved primarily by compression of intramyometrial blood vessels as the uterine muscle contracts rather than by platelet aggregation and clot formation.&quot; Oxytocin &quot;strengthens and coordinates these uterine contractions, compressing blood vessels and promoting hemostasis.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the ordinary mechanism of hemostasis everywhere else in the body, and it is why a boggy uterus bleeds despite a normal platelet count — and why the intervention is massage and oxytocin rather than clotting factors.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">afterpains and uterine contractions</span><span class="chip t2">who has them and when</span></div>
+<div class="stem">6. A multiparous woman reports strong uterine cramping that intensifies when she breastfeeds. How should the nurse respond?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Explain that afterpains are more common in subsequent pregnancies and that breastfeeding intensifies them because it stimulates uterine contractions, and that they typically resolve in 3 to 7 days</li><li class="fopt"><span class="mk">B</span>Notify the provider, since cramping during breastfeeding is abnormal</li><li class="fopt"><span class="mk">C</span>Advise her to stop breastfeeding until the cramping resolves</li><li class="fopt"><span class="mk">D</span>Explain that afterpains are strongest in first-time mothers</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In primiparous women, the uterine tone is good, the fundus generally remains firm, and the woman usually perceives only mild uterine cramping. Periodic relaxation and vigorous contractions are more common in subsequent pregnancies&quot; and cause afterpains, which &quot;typically resolve in 3 to 7 days.&quot; Both breastfeeding and oxytocic medication &quot;usually intensify afterpains because both stimulate uterine contractions.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reverses the parity relationship, and (C) would remove the intervention that most reduces bleeding — breastfeeding &quot;increases the release of oxytocin, which promotes uterine contractions, therefore decreasing blood loss and reducing the risk for postpartum hemorrhage.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">afterpains and uterine contractions</span><span class="chip t2">who has them and when</span></div>
+<div class="stem">7. After which births are afterpains most noticeable?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Births in which the uterus was overdistended, such as with a large infant, multifetal gestation, or polyhydramnios</li><li class="fopt"><span class="mk">B</span>Precipitous births only</li><li class="fopt"><span class="mk">C</span>Cesarean births only</li><li class="fopt"><span class="mk">D</span>First births</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Afterpains are &quot;more noticeable after births in which the uterus was overdistended (e.g., large infant, multifetal gestation, polyhydramnios).&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the mirror error of the previous item. Overdistention and parity both work in the same direction, and both run opposite to the intuition that a first birth hurts most afterward.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">afterpains and uterine contractions</span><span class="chip t2">why oxytocin is routine</span></div>
+<div class="stem">8. Why is exogenous oxytocin usually administered immediately after expulsion of the placenta?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because during the first 1 to 2 postpartum hours uterine contractions can decrease in intensity and become uncoordinated, and it is vital that the uterus remain firm and well contracted</li><li class="fopt"><span class="mk">B</span>Because oxytocin prevents infection</li><li class="fopt"><span class="mk">C</span>Because oxytocin promotes milk production</li><li class="fopt"><span class="mk">D</span>Because oxytocin relieves afterpains</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;During the first 1 to 2 postpartum hours, uterine contractions can decrease in intensity and become uncoordinated. Because it is vital that the uterus remain firm and well contracted, exogenous oxytocin (Pitocin) is usually administered intravenously or intramuscularly immediately after expulsion of the placenta.&quot; With active third-stage management it may be given after the birth but before the placenta is expelled, and &quot;the uterus is very sensitive to oxytocin during the first week or so after birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) assigns oxytocin the job that belongs to prolactin, and (D) reverses its effect on afterpains, which it intensifies rather than relieves.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">afterpains and uterine contractions</span><span class="chip t2">why oxytocin is routine</span></div>
+<div class="stem">9. What does the chapter say about healing at the placental site?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Upward growth of the endometrium causes sloughing of necrotic tissue and prevents the scar formation characteristic of normal wound healing, which enables the endometrium to resume its usual cycle and allow implantation in future pregnancies</li><li class="fopt"><span class="mk">B</span>The site heals by scar formation like any other wound</li><li class="fopt"><span class="mk">C</span>The site never fully heals</li><li class="fopt"><span class="mk">D</span>Healing is complete within 3 days</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Upward growth of the endometrium causes sloughing of necrotic tissue and prevents the scar formation characteristic of normal wound healing. This unique healing process enables the endometrium to resume its usual cycle of changes and to allow implantation and placentation in future pregnancies.&quot; Endometrial regeneration begins within 3 days and is complete by the third week, with regeneration at the placental site complete by the sixth week.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies ordinary wound healing to the one site in the body that deliberately avoids it — and a scarred placental site would prevent future implantation there.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lochia characteristics</span><span class="chip t2">the three stages</span></div>
+<div class="stem">10. A woman on postpartum day 2 has bright red vaginal discharge containing small particles of debris. How is this documented, and what does it contain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Lochia rubra, present days 1 to 3, containing blood from the placental site, trophoblastic tissue debris, vernix, lanugo, and meconium</li><li class="fopt"><span class="mk">B</span>Lochia serosa, present days 4 to 10</li><li class="fopt"><span class="mk">C</span>Lochia alba, containing white blood cells only</li><li class="fopt"><span class="mk">D</span>Nonlochial bleeding from a laceration</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 20.1 gives lochia rubra as bright red, 1 to 3 days after birth, containing &quot;blood from placental site; trophoblastic tissue debris, vernix, lanugo, meconium.&quot; It is the only stage whose contents include fetal debris.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) has the right idea and the wrong window: serosa is pinkish-brown from days 4 to 10, and alba is whitish-yellow from days 10 to 14 and can last 3 to 6 weeks.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lochia characteristics</span><span class="chip t2">the three stages</span></div>
+<div class="stem">11. A woman is 12 days postpartum and reports whitish-yellow discharge. She asks how much longer it will last. What should the nurse say?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That this is lochia alba, which typically appears at 10 to 14 days and can last 3 to 6 weeks, and that most women experience lochia for 4 to 6 weeks after birth</li><li class="fopt"><span class="mk">B</span>That discharge at this point indicates infection</li><li class="fopt"><span class="mk">C</span>That lochia should have stopped by day 10</li><li class="fopt"><span class="mk">D</span>That this is lochia serosa and will become rubra again</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 20.1 gives lochia alba as whitish-yellow at 10 to 14 days, lasting 3 to 6 weeks, and the chapter states that &quot;most women experience lochia for 4 to 6 weeks after birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reverses the progression. Lochia moves rubra to serosa to alba and does not go back — a return to rubra is what suggests retained fragments.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lochia characteristics</span><span class="chip t2">what is normal variation and what is not</span></div>
+<div class="stem">12. A woman who stood up from bed reports a sudden gush of dark blood. Her fundus is firm and the flow quickly lessens to a trickle. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As hemorrhage requiring immediate intervention</li><li class="fopt right"><span class="mk">&#10003;</span>As lochia that pooled in the vagina while she was lying down, which should not be confused with hemorrhage</li><li class="fopt"><span class="mk">C</span>As a cervical laceration</li><li class="fopt"><span class="mk">D</span>As retained placental fragments</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Lochia tends to pool in the vagina when the woman is lying in bed; the woman then can experience a gush of blood when she stands. This gush should not be confused with hemorrhage.&quot; Box 20.1 adds that a gush appearing with fundal massage, if dark, &quot;has been pooled in the relaxed vagina, and the amount soon lessens to a trickle of bright red lochia.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is what the same volume of blood would suggest if it spurted while the uterus was firmly contracted — the direction and pattern of the flow, not the volume, is the discriminator.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lochia characteristics</span><span class="chip t2">what is normal variation and what is not</span></div>
+<div class="stem">13. A woman 10 days postpartum reports a sudden increase in bleeding. What does the chapter say, and what is the time limit for acting?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is not uncommon to have a sudden brief increase in bleeding 7 to 14 days after birth when sloughing of eschar over the placental site occurs; if it does not subside within 1 to 2 hours, she needs evaluation for possible retained placental fragments</li><li class="fopt"><span class="mk">B</span>Any increase in bleeding after day 7 is abnormal and requires immediate admission</li><li class="fopt"><span class="mk">C</span>Increased bleeding at this point always indicates endometritis</li><li class="fopt"><span class="mk">D</span>She should be told to expect this for the next 2 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;It is not uncommon for women to experience a sudden, but brief, increase in bleeding 7 to 14 days after birth when sloughing of eschar over the placental site occurs. If this increase in bleeding does not subside within 1 to 2 hours, the woman needs to be evaluated for possible retained placental fragments.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) drops the time limit, which is the part that makes this teachable — the event is normal, and its persistence past 1 to 2 hours is not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">lochia characteristics</span><span class="chip t2">what is normal variation and what is not</span></div>
+<div class="stem">14. Which lochia findings indicate a problem? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Persistence of lochia rubra, which suggests continued bleeding from retained fragments of placenta or membranes</li><li class="fopt right"><span class="mk">&#10003;</span>Continued lochia serosa or alba at 3 to 4 weeks, particularly with fever, pain, or abdominal tenderness, which can indicate endometritis</li><li class="fopt right"><span class="mk">&#10003;</span>An offensive odor, which usually indicates infection</li><li class="fopt right"><span class="mk">&#10003;</span>Bleeding that spurts from the vagina while the uterus is firmly contracted, which suggests a cervical or vaginal tear</li><li class="fopt"><span class="mk">E</span>Scant lochia in a woman receiving an oxytocic medication</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names persistent rubra, continued serosa or alba at 3 to 4 weeks with symptoms, and an offensive odor — normal lochia &quot;should smell like normal menstrual flow.&quot; Box 20.1 identifies spurting blood with a firm uterus as a tear.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) has a normal explanation the chapter states directly: &quot;if the woman receives an oxytocic medication, regardless of the route of administration, the flow of lochia is often scant until the effects of the medication wear off.&quot; Lochia is also usually less after cesarean birth, because the uterus was suctioned or wiped before closure, and flow &quot;usually increases with ambulation and breastfeeding.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum vital signs</span><span class="chip t2">temperature</span></div>
+<div class="stem">15. A woman's temperature is 37.9°C (100.2 °F) 10 hours after birth. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>As within normal limits, since during the first 24 hours the temperature can increase to 38°C as a result of the dehydrating effects of labor</li><li class="fopt"><span class="mk">B</span>As puerperal sepsis</li><li class="fopt"><span class="mk">C</span>As requiring blood cultures immediately</li><li class="fopt"><span class="mk">D</span>As mastitis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 20.2 gives the normal finding: &quot;during first 24 h, temperature can increase to 38°C (100.4 °F) as a result of dehydrating effects of labor. After 24 h, the woman should be afebrile.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies the postpartum sepsis criterion to a reading inside the normal window. The same number after 24 hours, recurring or persisting for 2 days, is what suggests puerperal sepsis — along with mastitis, endometritis, urinary tract infection, or other systemic infection.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum vital signs</span><span class="chip t2">temperature</span></div>
+<div class="stem">16. A woman's temperature is 38.2°C (100.8 °F) on postpartum day 2 and again on day 3. What does this suggest?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Normal postpartum thermoregulation</li><li class="fopt right"><span class="mk">&#10003;</span>Infection: a temperature of 38°C or higher after the first 24 hours that recurs or persists for 2 days suggests puerperal sepsis, with mastitis, endometritis, urinary tract infection, or other systemic infection as possible causes</li><li class="fopt"><span class="mk">C</span>Engorgement alone</li><li class="fopt"><span class="mk">D</span>Dehydration from labor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A diagnosis of puerperal sepsis is suggested if an increase in maternal temperature to 38°C (100.4 °F) or higher is noted after the first 24 h after birth and recurs or persists for 2 days.&quot; The chapter adds that a temperature of 38°C or higher during the first 10 days postpartum can indicate infection.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names a real cause of mild temperature elevation — engorged breasts &quot;are hard and uncomfortable, and mild temperature elevation can occur&quot; — but a recurrent fever over 2 days meets the sepsis criterion and is evaluated.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum vital signs</span><span class="chip t2">pulse, blood pressure, and shivering</span></div>
+<div class="stem">17. A woman's pulse is 48 beats/min on postpartum day 3. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As bradycardia requiring cardiac evaluation</li><li class="fopt right"><span class="mk">&#10003;</span>As puerperal bradycardia, which is common for 6 to 10 days after birth with heart rates of 40 to 50 beats/min</li><li class="fopt"><span class="mk">C</span>As a sign of hypovolemia</li><li class="fopt"><span class="mk">D</span>As an effect of the epidural</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Puerperal bradycardia is common for 6 to 10 days after birth, with the heart rate decreasing to 40 to 50 beats/min.&quot; The finding that matters is the opposite: &quot;a rapid pulse rate or one that is increasing can indicate hypovolemia due to hemorrhage.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the postpartum pattern. In this period tachycardia is the warning and bradycardia is the expectation, which reverses ordinary adult assessment.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum vital signs</span><span class="chip t2">pulse, blood pressure, and shivering</span></div>
+<div class="stem">18. A woman becomes dizzy and faint when she stands for the first time after birth. Her blood pressure is unchanged. What explains this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Orthostatic hypotension from the splanchnic engorgement that can occur after birth, which can develop in the first 48 hours</li><li class="fopt"><span class="mk">B</span>Hemorrhage</li><li class="fopt"><span class="mk">C</span>Preeclampsia</li><li class="fopt"><span class="mk">D</span>Epidural-induced hypotension persisting for days</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 20.2 describes &quot;orthostatic hypotension, as indicated by feelings of faintness or dizziness immediately after standing up,&quot; which &quot;can develop in the first 48 h as a result of the splanchnic engorgement that can occur after birth.&quot; Blood pressure normally shows &quot;a transient increase of approximately 5% during the first few days.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the diagnosis to rule out rather than the explanation here, and the table warns that falling blood pressure is &quot;a late sign&quot; of hemorrhage, with other symptoms usually present first.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum vital signs</span><span class="chip t2">pulse, blood pressure, and shivering</span></div>
+<div class="stem">19. A woman's blood pressure is 148/94 mm Hg on two readings 4 hours apart on postpartum day 2. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As a normal transient postpartum increase</li><li class="fopt right"><span class="mk">&#10003;</span>As possible gestational hypertension or preeclampsia, which should be evaluated</li><li class="fopt"><span class="mk">C</span>As an expected effect of breastfeeding</li><li class="fopt"><span class="mk">D</span>As orthostatic hypotension</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 20.2 states that &quot;elevated blood pressure (&gt;140/90 mm Hg on two occasions 4 h apart) can be a sign of gestational hypertension or preeclampsia and should be evaluated.&quot; An increased reading can also result from excessive use of vasopressor or oxytocic medications.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) stretches the normal 5% transient increase past the threshold the same table sets. Preeclampsia can appear for the first time after birth, which is why the postpartum blood pressure is not a formality.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum vital signs</span><span class="chip t2">pulse, blood pressure, and shivering</span></div>
+<div class="stem">20. About half of women experience shivering episodes shortly after birth. What does the chapter say about this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The exact cause is unknown and usually no treatment is needed, although pharmacologic treatment may be needed if the shivering is related to the effects of anesthesia</li><li class="fopt"><span class="mk">B</span>It always indicates infection</li><li class="fopt"><span class="mk">C</span>It indicates hemorrhage</li><li class="fopt"><span class="mk">D</span>It requires immediate warming measures and a provider notification</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;As many as 50% of women experience shivering episodes during the first few minutes up to the first hour after birth. The exact cause is unknown, and usually no treatment is needed&quot;; if it is related to anesthesia, pharmacologic treatment may be needed.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats a common, self-limited event as a rigor. Fever criteria in this period are specific, and shivering alone does not meet them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blood and fluid changes</span><span class="chip t2">expected blood loss</span></div>
+<div class="stem">21. How much blood loss is expected with a vaginal birth and with a cesarean birth?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>300 to 500 mL for a vaginal birth, about 10% of blood volume; 500 to 1000 mL for a cesarean birth, 15% to 30% of blood volume</li><li class="fopt"><span class="mk">B</span>100 to 300 mL for a vaginal birth; 300 to 500 mL for a cesarean birth</li><li class="fopt"><span class="mk">C</span>500 to 1000 mL for a vaginal birth; 1000 to 1500 mL for a cesarean birth</li><li class="fopt"><span class="mk">D</span>The same for both routes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The average blood loss for a vaginal birth of a single fetus ranges from 300 to 500 mL (10% of blood volume),&quot; and &quot;the typical blood loss for women who give birth by cesarean is 500 to 1000 mL (15% to 30% of blood volume).&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) collapses a distinction that changes the interpretation of the same number: a 700-mL loss is expected after a cesarean and excessive after a vaginal birth.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blood and fluid changes</span><span class="chip t2">expected blood loss</span></div>
+<div class="stem">22. Why can most women tolerate the blood loss of birth, and what compensations does the chapter name? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Pregnancy-induced hypervolemia, an increase in blood volume of 40% to 45% above prepregnancy levels</li><li class="fopt right"><span class="mk">&#10003;</span>Elimination of uteroplacental circulation, which reduces the size of the maternal vascular bed by 10% to 15%</li><li class="fopt right"><span class="mk">&#10003;</span>Loss of placental endocrine function, which removes the stimulus for vasodilation</li><li class="fopt right"><span class="mk">&#10003;</span>Mobilization of extravascular water stored during pregnancy</li><li class="fopt"><span class="mk">E</span>A rapid rise in erythrocyte production within the first 24 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Pregnancy-induced hypervolemia ... allows most women to tolerate considerable blood loss during birth,&quot; and the chapter lists three compensations: reduction of the vascular bed by 10% to 15%, loss of the vasodilating stimulus, and mobilization of stored extravascular water. &quot;By the third postpartum day, the plasma volume has been replenished as extravascular fluid returns to the intravascular space.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) invents a marrow response on a timescale the chapter does not support: hemoglobin and hematocrit &quot;decrease slightly during the first 24 hours, plateau by 3 to 4 days, and then begin to increase, reaching nonpregnant levels by 4 to 8 weeks.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blood and fluid changes</span><span class="chip t2">cardiac output and blood components</span></div>
+<div class="stem">23. What happens to cardiac output immediately after birth?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It falls by half because of blood loss</li><li class="fopt right"><span class="mk">&#10003;</span>It increases by 60% to 80% over prelabor values and returns to prelabor values within 1 hour</li><li class="fopt"><span class="mk">C</span>It remains unchanged for 24 hours</li><li class="fopt"><span class="mk">D</span>It increases gradually over 2 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Typically, cardiac output is increased immediately after birth by 60% to 80% over prelabor values; it returns to prelabor values within 1 hour,&quot; because of &quot;the compensatory influx of nearly 500 mL of blood into the maternal system from the uteroplacental bed, a rapid decrease in uterine blood flow, and mobilization of extracellular fluid.&quot; By 2 weeks it decreases by 30%, reaching prepregnant levels by 6 to 8 weeks.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) reasons from the blood loss alone and misses the autotransfusion — this is also the physiology behind the warning that the immediate postbirth period is the most dangerous window for a woman with cardiac disease.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blood and fluid changes</span><span class="chip t2">cardiac output and blood components</span></div>
+<div class="stem">24. A postpartum woman's white blood cell count is 26,000/mm3. How should the nurse interpret this, and what consequence does the chapter draw?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As diagnostic of infection</li><li class="fopt right"><span class="mk">&#10003;</span>As within the expected postpartum range, since the count can rise to 30,000/mm3; leukocytosis coupled with the normal increase in erythrocyte sedimentation rate can obscure the diagnosis of acute infection</li><li class="fopt"><span class="mk">C</span>As evidence of hemorrhage</li><li class="fopt"><span class="mk">D</span>As requiring immediate antibiotics</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;During labor and after birth the white blood cell (WBC) count can rise to 30,000/mm3 but returns to normal levels within 1 to 2 weeks after birth,&quot; and &quot;leukocytosis, coupled with the increase in erythrocyte sedimentation rate that normally occurs, can obscure the diagnosis of acute infection.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) uses a value that is not diagnostic in this population, which is exactly the problem the chapter names — infection has to be diagnosed on other grounds here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blood and fluid changes</span><span class="chip t2">cardiac output and blood components</span></div>
+<div class="stem">25. How long does the chapter say the postpartum hypercoagulable state increases thromboembolic risk?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>For 24 hours after birth</li><li class="fopt right"><span class="mk">&#10003;</span>For up to 12 weeks after birth, when combined with vessel damage and immobility</li><li class="fopt"><span class="mk">C</span>For 1 week after birth</li><li class="fopt"><span class="mk">D</span>Only during the hospital stay</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Clotting factors and fibrinogen &quot;remain elevated in the immediate puerperium,&quot; and &quot;when combined with vessel damage and immobility, this hypercoagulability causes an increased risk for venous thromboembolism and pulmonary embolism for up to 12 weeks after birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) ends the risk at discharge, which is where most teaching stops and where the risk does not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum blood and fluid changes</span><span class="chip t2">fluid loss</span></div>
+<div class="stem">26. A woman on postpartum night 2 wakes drenched in sweat and reports voiding large amounts. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Obtain blood cultures for suspected infection</li><li class="fopt right"><span class="mk">&#10003;</span>Provide a gown change and reassurance, since urine output of 3000 mL or more per day and profuse diaphoresis, especially at night, are common for the first 2 to 3 days and account for a weight loss of 2 to 3 kg</li><li class="fopt"><span class="mk">C</span>Restrict fluids to reduce the diuresis</li><li class="fopt"><span class="mk">D</span>Insert an indwelling catheter to measure output accurately</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Within 12 hours of birth, women begin to lose excess tissue fluid accumulated during pregnancy,&quot; driven by decreased estrogen levels, removal of increased venous pressure in the lower extremities, and loss of the pregnancy-induced blood volume increase. &quot;Urine output of 3000 mL or more each day during the first 2 to 3 days after birth is common,&quot; and &quot;profuse diaphoresis often occurs, especially at night, for the first 2 to 3 days,&quot; together accounting for &quot;a weight loss of 2 to 3 kg (5 to 6.6 lb.) during the early puerperium.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) works up a normal physiologic event, and (D) adds a catheter that would raise the risk of urinary tract infection in a woman already at increased risk.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bladder and renal recovery</span><span class="chip t2">why voiding is impaired</span></div>
+<div class="stem">27. Which factors contribute to a decreased urge to void after birth? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Birth-induced trauma</li><li class="fopt right"><span class="mk">&#10003;</span>Increased bladder capacity after birth</li><li class="fopt right"><span class="mk">&#10003;</span>The effects of epidural or spinal anesthesia</li><li class="fopt right"><span class="mk">&#10003;</span>Pelvic soreness from labor, lacerations, or episiotomy, which can reduce or alter the voiding reflex</li><li class="fopt"><span class="mk">E</span>Decreased urine production in the first 24 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Birth-induced trauma, increased bladder capacity after birth, and the effects of conduction (e.g., epidural or spinal) anesthesia can result in a decreased urge to void. In addition, pelvic soreness caused by the forces of labor, vaginal or perineal lacerations, or episiotomy can reduce or alter the voiding reflex.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the fluid picture entirely. Urine production rises sharply, which is what makes the decreased urge dangerous: &quot;decreased voiding combined with postpartal diuresis can result in bladder distention.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bladder and renal recovery</span><span class="chip t2">why voiding is impaired</span></div>
+<div class="stem">28. Why does bladder distention immediately after birth cause excessive bleeding?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because it increases intraabdominal pressure</li><li class="fopt right"><span class="mk">&#10003;</span>Because a distended bladder pushes the uterus up and to the side and prevents it from contracting firmly</li><li class="fopt"><span class="mk">C</span>Because it compresses the renal arteries</li><li class="fopt"><span class="mk">D</span>It does not cause bleeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Immediately after birth, excessive bleeding can occur if the bladder becomes distended because it pushes the uterus up and to the side and prevents it from contracting firmly.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) misses the single most actionable link in postpartum assessment — a fundus that is boggy and displaced laterally is a bladder problem until proven otherwise.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bladder and renal recovery</span><span class="chip t2">why voiding is impaired</span></div>
+<div class="stem">29. What problem does bladder overdistention cause later in the puerperium, and when is bladder tone usually restored?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It makes the bladder more susceptible to infection and impedes the resumption of normal voiding; tone is usually restored by 5 to 7 days after birth</li><li class="fopt"><span class="mk">B</span>It causes hemorrhage; tone returns within 24 hours</li><li class="fopt"><span class="mk">C</span>It causes permanent incontinence; tone never fully returns</li><li class="fopt"><span class="mk">D</span>It has no later consequences</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Later in the puerperium, overdistention can make the bladder more susceptible to infection and impede the resumption of normal voiding,&quot; and &quot;with adequate bladder emptying, bladder tone is usually restored by 5 to 7 days after birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies the immediate consequence to the later period. The same distention causes bleeding early and infection later.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bladder and renal recovery</span><span class="chip t2">why voiding is impaired</span></div>
+<div class="stem">30. Which statements about postpartum renal recovery are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Renal function returns to normal by 6 weeks after birth</li><li class="fopt right"><span class="mk">&#10003;</span>About 8 weeks are required for the pregnancy-induced hypotonia and dilation of the ureters and renal pelves to return to the nonpregnant state</li><li class="fopt right"><span class="mk">&#10003;</span>Renal glycosuria induced by pregnancy disappears by 1 week postpartum, though lactosuria can occur in lactating women</li><li class="fopt right"><span class="mk">&#10003;</span>The blood urea nitrogen level increases during the puerperium as autolysis of the involuting uterus occurs</li><li class="fopt"><span class="mk">E</span>Pregnancy-associated proteinuria persists for 6 months</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives all four: renal function normal by 6 weeks, ureteral and renal pelvic changes resolving in about 8 weeks, glycosuria gone by 1 week with possible lactosuria, and a rising BUN from uterine autolysis. Plasma creatinine returns to normal by 6 weeks.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) extends a finding the chapter resolves at 6 weeks: &quot;pregnancy-associated proteinuria resolves by 6 weeks after birth.&quot; Persistent proteinuria past that point is not expected.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum breast changes</span><span class="chip t2">lactogenesis and engorgement</span></div>
+<div class="stem">31. A breastfeeding woman's breasts become fuller and heavier about 3 days after birth as the colostrum changes to mature milk. What is this called, and when does it occur?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Lactogenesis II, occurring by about 72 to 96 hours after birth</li><li class="fopt"><span class="mk">B</span>Lactogenesis I, occurring in the first 24 hours</li><li class="fopt"><span class="mk">C</span>Let-down, occurring with each feeding</li><li class="fopt"><span class="mk">D</span>Engorgement, which is always pathologic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The breasts gradually become fuller and heavier as the colostrum transitions to mature milk by about 72 to 96 hours after birth; this is known as lactogenesis II&quot; — often called the milk coming in. True milk is &quot;bluish white ... with a skim-milk appearance,&quot; and in the first 24 hours &quot;there is little if any change in the breast tissue&quot; beyond colostrum, &quot;a clear yellow fluid.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names the ejection reflex triggered by oxytocin at each feeding, which is a different event from the transition to mature milk.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum breast changes</span><span class="chip t2">lactogenesis and engorgement</span></div>
+<div class="stem">32. A breastfeeding woman has hard, uncomfortable, engorged breasts on day 3 with a mild temperature elevation, and her infant is having trouble latching. What should the nurse teach?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That engorgement is from an increase in blood and lymphatic fluid as milk production increases, that the fullness of the nipple tissue can make latching difficult, and that with frequent breastfeeding and proper care it typically lasts only 24 to 48 hours</li><li class="fopt"><span class="mk">B</span>That she should stop breastfeeding until the swelling resolves</li><li class="fopt"><span class="mk">C</span>That the temperature elevation indicates mastitis</li><li class="fopt"><span class="mk">D</span>That engorgement lasts about 2 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Some women experience engorgement at this time owing to an increase in blood and lymphatic fluid as milk production increases. Engorged breasts are hard and uncomfortable, and mild temperature elevation can occur; the fullness of the nipple tissue can make it difficult for the infant to latch on and feed.&quot; And: &quot;with frequent breastfeeding and proper care, engorgement is a temporary condition that typically lasts only 24 to 48 hours.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) removes the treatment. Frequent feeding is what resolves engorgement in a lactating woman, and stopping would worsen it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum breast changes</span><span class="chip t2">lactogenesis and engorgement</span></div>
+<div class="stem">33. A woman who is not breastfeeding has distended, firm, tender breasts on postpartum day 3 and asks whether she should express some milk for relief. What should the nurse tell her?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Yes, expressing milk will relieve the pressure</li><li class="fopt right"><span class="mk">&#10003;</span>No — breast distention is caused primarily by temporary congestion of veins and lymphatics rather than by an accumulation of milk; milk is present but should not be expressed, and the engorgement resolves spontaneously with discomfort decreasing usually within 24 to 36 hours</li><li class="fopt"><span class="mk">C</span>She should pump every 3 hours until the swelling resolves</li><li class="fopt"><span class="mk">D</span>She should apply heat and massage the breasts to move the milk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In nonbreastfeeding women, &quot;breast distention is caused primarily by the temporary congestion of veins and lymphatics rather than by an accumulation of milk. Milk is present but should not be expressed.&quot; Engorgement &quot;resolves spontaneously, and discomfort decreases usually within 24 to 36 hours,&quot; and &quot;lactation ceases within a few days to 1 week.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (C) both stimulate the breast and prolong lactation, which is the opposite of what this woman wants — and it is the most tempting advice because it works for the breastfeeding woman two items earlier.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum breast changes</span><span class="chip t2">assessment findings and hormones</span></div>
+<div class="stem">34. A lactating woman's breast tissue feels nodular and lumpy. How does the chapter distinguish this from a concerning finding?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The nodularity associated with milk production tends to shift in position, in contrast to lumps associated with fibrocystic changes or cancer, which can be palpated consistently in the same location</li><li class="fopt"><span class="mk">B</span>Nodularity in a lactating breast is always abnormal</li><li class="fopt"><span class="mk">C</span>Nodularity is distinguished only by ultrasound</li><li class="fopt"><span class="mk">D</span>Milk-related lumps are always painful and other lumps never are</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>As milk ducts fill, breast tissue &quot;can feel somewhat nodular or lumpy. In contrast to the lumps associated with fibrocystic breast changes or cancer (which can be palpated consistently in the same location), the nodularity associated with milk production tends to shift in position.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) substitutes pain for location, and location is the discriminator the chapter gives. Nonlactating engorgement can also involve &quot;axillary breast tissue (the tail of Spence) and any accessory breast or nipple tissue along the milk line.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum breast changes</span><span class="chip t2">assessment findings and hormones</span></div>
+<div class="stem">35. Which hormone produces milk and which ejects it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Prolactin from the anterior pituitary stimulates milk production; oxytocin from the posterior pituitary triggers the milk ejection or let-down reflex in response to suckling or nipple stimulation</li><li class="fopt"><span class="mk">B</span>Oxytocin produces milk; prolactin ejects it</li><li class="fopt"><span class="mk">C</span>Both are produced by the anterior pituitary</li><li class="fopt"><span class="mk">D</span>Estrogen produces milk and prolactin ejects it</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Prolactin, produced by the anterior pituitary, is the hormone that stimulates milk production,&quot; and &quot;the posterior pituitary produces oxytocin in response to infant suckling or nipple stimulation with milk expression. Oxytocin triggers the milk ejection or let-down reflex.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the pair, and the consequence matters: because oxytocin also contracts the uterus, breastfeeding reduces bleeding and intensifies afterpains at the same time.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cervix ovaries and return of fertility</span><span class="chip t2">the cervix</span></div>
+<div class="stem">36. A woman's postpartum examination notes a cervical os that appears as a jagged slit rather than a circle. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As a laceration requiring repair</li><li class="fopt right"><span class="mk">&#10003;</span>As the permanent change the chapter describes: the external cervical os never regains its prepregnancy appearance and instead appears as a jagged slit, often described as a fish mouth</li><li class="fopt"><span class="mk">C</span>As evidence of infection</li><li class="fopt"><span class="mk">D</span>As a temporary finding that resolves by 6 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The external cervical os never regains its prepregnancy appearance; it no longer has a circular shape, but instead appears as a jagged slit often described as a 'fish mouth.'&quot; The cervix is soft immediately after birth, shortens and firms over 12 to 18 hours, and regains its form within 2 to 3 days.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) treats a permanent parity marker as an injury. Dilation also closes gradually: 2 to 3 cm by the second or third day, about 1 cm by 1 week.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cervix ovaries and return of fertility</span><span class="chip t2">ovulation, menses, and contraception</span></div>
+<div class="stem">37. A nonlactating woman asks when she could become pregnant again. What does the chapter say?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ovulation can occur as early as 27 days after birth, with a mean of about 7 to 9 weeks, and about 70% of nonlactating women resume menstruating by 12 weeks</li><li class="fopt"><span class="mk">B</span>Ovulation does not resume for at least 3 months</li><li class="fopt"><span class="mk">C</span>Ovulation resumes only after the first menstrual period</li><li class="fopt"><span class="mk">D</span>Ovulation cannot occur before 6 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In nonlactating women, ovulation can occur &quot;as early as 27 days after birth,&quot; with a mean of &quot;about 7 to 9 weeks,&quot; and &quot;about 70% of nonlactating women resume menstruating by 12 weeks after birth.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the sequence, which is the assumption behind many unplanned pregnancies — ovulation precedes the first menses.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cervix ovaries and return of fertility</span><span class="chip t2">ovulation, menses, and contraception</span></div>
+<div class="stem">38. A woman who is exclusively breastfeeding asks whether she needs contraception. What does the chapter support?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>That breastfeeding reliably prevents pregnancy for 6 months</li><li class="fopt right"><span class="mk">&#10003;</span>That the mean time to ovulation in lactating women is about 6 months, but breastfeeding frequency, duration of each feeding, and supplementary feedings all influence it, so discussion of contraceptive options early in the postpartum period is necessary</li><li class="fopt"><span class="mk">C</span>That contraception is unnecessary until menses return</li><li class="fopt"><span class="mk">D</span>That ovulation is suppressed by oxytocin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The mean time to ovulation in lactating women is &quot;about 6 months,&quot; and &quot;breastfeeding frequency, duration of each feeding, and the use of supplementary feedings influence the return of ovulation,&quot; with ovulation delayed longest in exclusive breastfeeding. &quot;Because of the uncertainty about the return of ovulation and menstruation, discussion of contraceptive options early in the postpartum period is necessary.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names the wrong hormone: &quot;the persistence of elevated serum prolactin levels in lactating women appears to be responsible for suppressing ovulation.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cervix ovaries and return of fertility</span><span class="chip t2">ovulation, menses, and contraception</span></div>
+<div class="stem">39. What should a woman be told about her first menstrual period after birth?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>That it is usually heavier than normal, and that within three or four cycles the amount returns to the prepregnancy volume</li><li class="fopt"><span class="mk">B</span>That it is usually lighter than normal</li><li class="fopt"><span class="mk">C</span>That it will be identical to her prepregnancy periods</li><li class="fopt"><span class="mk">D</span>That heavy first menses always indicate retained placental fragments</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The first menstrual flow after birth is usually heavier than normal. Within three or four cycles, the amount of menstrual flow returns to the prepregnancy volume.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) converts an expected finding into a complication, and it is the sort of report that would otherwise send a woman back to triage unnecessarily.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum endocrine changes</span><span class="chip t2">hormone withdrawal</span></div>
+<div class="stem">40. What happens to estrogen, progesterone, and hCG levels after birth?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Estrogen and progesterone drop markedly and reach their lowest levels 1 week after birth; hCG decreases rapidly but can be detected for 3 to 4 weeks after birth</li><li class="fopt"><span class="mk">B</span>All three remain elevated for 6 weeks</li><li class="fopt"><span class="mk">C</span>Estrogen rises while progesterone falls</li><li class="fopt"><span class="mk">D</span>hCG is undetectable within 24 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Estrogen and progesterone levels drop markedly after birth and reach their lowest levels 1 week after birth,&quot; and &quot;the hCG levels decrease rapidly after birth. However, the hormone can be detected in the maternal system for 3 to 4 weeks after birth.&quot; Decreased estrogen is also associated with the diuresis of excess extracellular fluid.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) would make a positive pregnancy test at 2 weeks postpartum alarming, when the chapter explains it as residual hCG.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum endocrine changes</span><span class="chip t2">hormone withdrawal</span></div>
+<div class="stem">41. A woman with type 1 diabetes has just given birth. What does the chapter say about her insulin needs?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>They rise sharply because of the stress of birth</li><li class="fopt right"><span class="mk">&#10003;</span>They fall significantly, because decreases in human placental lactogen, estrogens, cortisol, and placental insulinase reverse the diabetogenic effects of pregnancy — and she will likely require much less insulin for several days, especially if breastfeeding</li><li class="fopt"><span class="mk">C</span>They remain unchanged</li><li class="fopt"><span class="mk">D</span>Insulin is discontinued permanently</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Decreases in human placental lactogen, estrogens, cortisol, and the placental enzyme insulinase reverse the diabetogenic effects of pregnancy, resulting in significantly lower blood glucose levels in the immediate postpartum period. Women with type 1 diabetes will likely require much less insulin for several days after birth, especially if they are breastfeeding.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies a stress response to a woman whose insulin resistance has just been removed with the placenta, and continuing the pregnancy dose is what causes severe postpartum hypoglycemia.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">postpartum endocrine changes</span><span class="chip t2">hormone withdrawal</span></div>
+<div class="stem">42. Which statements about postpartum metabolic and prolactin changes are accurate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The thyroid gland gradually returns to normal by 3 months after birth, with thyroxine and triiodothyronine reaching prepregnant levels by 6 weeks</li><li class="fopt right"><span class="mk">&#10003;</span>There is an increased risk for transient autoimmune thyroiditis in the postpartum period</li><li class="fopt right"><span class="mk">&#10003;</span>The basal metabolic rate remains elevated for the first 1 to 2 weeks after birth</li><li class="fopt right"><span class="mk">&#10003;</span>In nonbreastfeeding women, prolactin levels decline after birth and reach the nonpregnant range by the third postpartum week</li><li class="fopt"><span class="mk">E</span>Prolactin levels in breastfeeding women fall below nonpregnant levels within 6 weeks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives the thyroid timeline, the transient autoimmune thyroiditis risk, the elevated basal metabolic rate for 1 to 2 weeks, and the nonbreastfeeding prolactin decline by the third week.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the lactating pattern: prolactin is &quot;highest during the first month after birth, gradually decreasing after 6 weeks, but remaining elevated above nonpregnant levels as long as she is breastfeeding.&quot;</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"uterine involution timeline","subtopic":"where the fundus is, hour by day","stem":"Six hours after a vaginal birth, the nurse palpates the fundus one fingerbreadth above the umbilicus. How should this be interpreted?","options":["As abnormal, requiring immediate provider notification","As expected, since within 12 hours the fundus can rise to approximately 1 cm above the umbilicus before beginning to descend","As a sign of a full bladder only","As evidence of retained placental fragments"],"correct":[1],"sata":false,"why":"The fundus is \"in the midline, approximately 2 cm below the level of the umbilicus\" at the end of the third stage, and \"within 12 hours the fundus can rise to approximately 1 cm above the umbilicus.\" After that, \"the fundus descends 1 to 2 cm every 24 hours.\"","trap":"(A) is the reflex response to a fundus above the umbilicus, and the timing is what settles it. The same finding on postpartum day 3 would be abnormal, because by then the fundus should be several centimeters lower.","k":"1h93vh8f5168u"},{"topic":"uterine involution timeline","subtopic":"where the fundus is, hour by day","stem":"Where should the fundus be on the sixth postpartum day, and when should it no longer be palpable abdominally?","options":["Halfway between the umbilicus and the symphysis pubis on day 6; not palpable abdominally after 2 weeks","At the umbilicus on day 6; not palpable after 6 weeks","At the symphysis pubis on day 6; not palpable after 1 week","One centimeter above the umbilicus on day 6; not palpable after 4 weeks"],"correct":[0],"sata":false,"why":"\"By the sixth postpartum day the fundus is normally located halfway between the umbilicus and the symphysis pubis,\" and \"after 2 weeks the uterus should not be palpable abdominally.\" By 6 weeks it \"should have returned to its nonpregnant location.\"","trap":"(B) holds the fundus at its day-1 position for a week, which would mean no involution at all — the finding that defines subinvolution.","k":"12ufjuslwv1bi"},{"topic":"uterine involution timeline","subtopic":"how involution happens, and when it fails","stem":"A woman asks how her uterus shrinks back to its former size. Which explanation reflects the chapter?","options":["The muscle cells added during pregnancy are all destroyed, returning the uterus to its exact prepregnancy size","Falling hormone levels cause autolysis — the self-destruction of excess hypertrophied tissue — while the additional cells laid down during pregnancy remain, which accounts for the slight increase in uterine size after each pregnancy","The uterus shrinks by expelling endometrial tissue only","Involution is complete within 1 week"],"correct":[1],"sata":false,"why":"Pregnancy growth came from \"both hyperplasia (an increase in the number of muscle cells) and hypertrophy (an enlargement of the existing cells),\" and after birth \"the decrease in these hormones causes autolysis,\" the self-destruction of excess hypertrophied tissue. \"The additional cells laid down during pregnancy remain and account for the slight increase in uterine size after each pregnancy.\" The uterus weighs about 500 g at 1 week, 300 g at 2 weeks, and about 100 g at 4 weeks.","trap":"(A) misses the parity detail that explains why a multipara's uterus never quite returns to a nullipara's size.","k":"jiu89v3cw7ch"},{"topic":"uterine involution timeline","subtopic":"how involution happens, and when it fails","stem":"A woman on postpartum day 10 has a uterus that remains enlarged and boggy with continued rubra bleeding. What is this called, and what are the most common causes?","options":["Subinvolution, most commonly caused by retained placental fragments and infection","Normal involution","Endometriosis","Uterine atony, which occurs only in the first hour"],"correct":[0],"sata":false,"why":"\"Subinvolution is the failure of the uterus to return to a nonpregnant state as a result of ineffective uterine contractions,\" and \"the most common causes of subinvolution are retained placental fragments and infection.\" Persistent lochia rubra \"suggests continued bleeding as a result of retained fragments of the placenta or membranes.\"","trap":"(D) confines atony to the immediate postpartum period, when the problem here is a failure of involution over days — which is why the two most common causes are things left behind or an infection, not a single relaxed moment.","k":"2q8q5bo3vcod"},{"topic":"uterine involution timeline","subtopic":"how involution happens, and when it fails","stem":"How is postpartum hemostasis primarily achieved?","options":["By platelet aggregation and clot formation at the placental site","By compression of intramyometrial blood vessels as the uterine muscle contracts, rather than by platelet aggregation and clot formation","By vasoconstriction from circulating catecholamines","By fibrin deposition in the endometrium"],"correct":[1],"sata":false,"why":"\"Postpartum hemostasis is achieved primarily by compression of intramyometrial blood vessels as the uterine muscle contracts rather than by platelet aggregation and clot formation.\" Oxytocin \"strengthens and coordinates these uterine contractions, compressing blood vessels and promoting hemostasis.\"","trap":"(A) is the ordinary mechanism of hemostasis everywhere else in the body, and it is why a boggy uterus bleeds despite a normal platelet count — and why the intervention is massage and oxytocin rather than clotting factors.","k":"aowpaqyp7ik4"},{"topic":"afterpains and uterine contractions","subtopic":"who has them and when","stem":"A multiparous woman reports strong uterine cramping that intensifies when she breastfeeds. How should the nurse respond?","options":["Explain that afterpains are more common in subsequent pregnancies and that breastfeeding intensifies them because it stimulates uterine contractions, and that they typically resolve in 3 to 7 days","Notify the provider, since cramping during breastfeeding is abnormal","Advise her to stop breastfeeding until the cramping resolves","Explain that afterpains are strongest in first-time mothers"],"correct":[0],"sata":false,"why":"\"In primiparous women, the uterine tone is good, the fundus generally remains firm, and the woman usually perceives only mild uterine cramping. Periodic relaxation and vigorous contractions are more common in subsequent pregnancies\" and cause afterpains, which \"typically resolve in 3 to 7 days.\" Both breastfeeding and oxytocic medication \"usually intensify afterpains because both stimulate uterine contractions.\"","trap":"(D) reverses the parity relationship, and (C) would remove the intervention that most reduces bleeding — breastfeeding \"increases the release of oxytocin, which promotes uterine contractions, therefore decreasing blood loss and reducing the risk for postpartum hemorrhage.\"","k":"15xazvq131r3ps"},{"topic":"afterpains and uterine contractions","subtopic":"who has them and when","stem":"After which births are afterpains most noticeable?","options":["Births in which the uterus was overdistended, such as with a large infant, multifetal gestation, or polyhydramnios","Precipitous births only","Cesarean births only","First births"],"correct":[0],"sata":false,"why":"Afterpains are \"more noticeable after births in which the uterus was overdistended (e.g., large infant, multifetal gestation, polyhydramnios).\"","trap":"(D) is the mirror error of the previous item. Overdistention and parity both work in the same direction, and both run opposite to the intuition that a first birth hurts most afterward.","k":"97y2bechpq1o"},{"topic":"afterpains and uterine contractions","subtopic":"why oxytocin is routine","stem":"Why is exogenous oxytocin usually administered immediately after expulsion of the placenta?","options":["Because during the first 1 to 2 postpartum hours uterine contractions can decrease in intensity and become uncoordinated, and it is vital that the uterus remain firm and well contracted","Because oxytocin prevents infection","Because oxytocin promotes milk production","Because oxytocin relieves afterpains"],"correct":[0],"sata":false,"why":"\"During the first 1 to 2 postpartum hours, uterine contractions can decrease in intensity and become uncoordinated. Because it is vital that the uterus remain firm and well contracted, exogenous oxytocin (Pitocin) is usually administered intravenously or intramuscularly immediately after expulsion of the placenta.\" With active third-stage management it may be given after the birth but before the placenta is expelled, and \"the uterus is very sensitive to oxytocin during the first week or so after birth.\"","trap":"(C) assigns oxytocin the job that belongs to prolactin, and (D) reverses its effect on afterpains, which it intensifies rather than relieves.","k":"hvh53u9r4lrs"},{"topic":"afterpains and uterine contractions","subtopic":"why oxytocin is routine","stem":"What does the chapter say about healing at the placental site?","options":["Upward growth of the endometrium causes sloughing of necrotic tissue and prevents the scar formation characteristic of normal wound healing, which enables the endometrium to resume its usual cycle and allow implantation in future pregnancies","The site heals by scar formation like any other wound","The site never fully heals","Healing is complete within 3 days"],"correct":[0],"sata":false,"why":"\"Upward growth of the endometrium causes sloughing of necrotic tissue and prevents the scar formation characteristic of normal wound healing. This unique healing process enables the endometrium to resume its usual cycle of changes and to allow implantation and placentation in future pregnancies.\" Endometrial regeneration begins within 3 days and is complete by the third week, with regeneration at the placental site complete by the sixth week.","trap":"(B) applies ordinary wound healing to the one site in the body that deliberately avoids it — and a scarred placental site would prevent future implantation there.","k":"1ggch6v1fijkxx"},{"topic":"lochia characteristics","subtopic":"the three stages","stem":"A woman on postpartum day 2 has bright red vaginal discharge containing small particles of debris. How is this documented, and what does it contain?","options":["Lochia rubra, present days 1 to 3, containing blood from the placental site, trophoblastic tissue debris, vernix, lanugo, and meconium","Lochia serosa, present days 4 to 10","Lochia alba, containing white blood cells only","Nonlochial bleeding from a laceration"],"correct":[0],"sata":false,"why":"Table 20.1 gives lochia rubra as bright red, 1 to 3 days after birth, containing \"blood from placental site; trophoblastic tissue debris, vernix, lanugo, meconium.\" It is the only stage whose contents include fetal debris.","trap":"(B) has the right idea and the wrong window: serosa is pinkish-brown from days 4 to 10, and alba is whitish-yellow from days 10 to 14 and can last 3 to 6 weeks.","k":"j2n1l01a543cy"},{"topic":"lochia characteristics","subtopic":"the three stages","stem":"A woman is 12 days postpartum and reports whitish-yellow discharge. She asks how much longer it will last. What should the nurse say?","options":["That this is lochia alba, which typically appears at 10 to 14 days and can last 3 to 6 weeks, and that most women experience lochia for 4 to 6 weeks after birth","That discharge at this point indicates infection","That lochia should have stopped by day 10","That this is lochia serosa and will become rubra again"],"correct":[0],"sata":false,"why":"Table 20.1 gives lochia alba as whitish-yellow at 10 to 14 days, lasting 3 to 6 weeks, and the chapter states that \"most women experience lochia for 4 to 6 weeks after birth.\"","trap":"(D) reverses the progression. Lochia moves rubra to serosa to alba and does not go back — a return to rubra is what suggests retained fragments.","k":"1p6f3m4qictlq"},{"topic":"lochia characteristics","subtopic":"what is normal variation and what is not","stem":"A woman who stood up from bed reports a sudden gush of dark blood. Her fundus is firm and the flow quickly lessens to a trickle. How should the nurse interpret this?","options":["As hemorrhage requiring immediate intervention","As lochia that pooled in the vagina while she was lying down, which should not be confused with hemorrhage","As a cervical laceration","As retained placental fragments"],"correct":[1],"sata":false,"why":"\"Lochia tends to pool in the vagina when the woman is lying in bed; the woman then can experience a gush of blood when she stands. This gush should not be confused with hemorrhage.\" Box 20.1 adds that a gush appearing with fundal massage, if dark, \"has been pooled in the relaxed vagina, and the amount soon lessens to a trickle of bright red lochia.\"","trap":"(C) is what the same volume of blood would suggest if it spurted while the uterus was firmly contracted — the direction and pattern of the flow, not the volume, is the discriminator.","k":"1gx2autmpb36f"},{"topic":"lochia characteristics","subtopic":"what is normal variation and what is not","stem":"A woman 10 days postpartum reports a sudden increase in bleeding. What does the chapter say, and what is the time limit for acting?","options":["It is not uncommon to have a sudden brief increase in bleeding 7 to 14 days after birth when sloughing of eschar over the placental site occurs; if it does not subside within 1 to 2 hours, she needs evaluation for possible retained placental fragments","Any increase in bleeding after day 7 is abnormal and requires immediate admission","Increased bleeding at this point always indicates endometritis","She should be told to expect this for the next 2 weeks"],"correct":[0],"sata":false,"why":"\"It is not uncommon for women to experience a sudden, but brief, increase in bleeding 7 to 14 days after birth when sloughing of eschar over the placental site occurs. If this increase in bleeding does not subside within 1 to 2 hours, the woman needs to be evaluated for possible retained placental fragments.\"","trap":"(D) drops the time limit, which is the part that makes this teachable — the event is normal, and its persistence past 1 to 2 hours is not.","k":"eq9my61s19fho"},{"topic":"lochia characteristics","subtopic":"what is normal variation and what is not","stem":"Which lochia findings indicate a problem? Select all that apply.","options":["Persistence of lochia rubra, which suggests continued bleeding from retained fragments of placenta or membranes","Continued lochia serosa or alba at 3 to 4 weeks, particularly with fever, pain, or abdominal tenderness, which can indicate endometritis","An offensive odor, which usually indicates infection","Bleeding that spurts from the vagina while the uterus is firmly contracted, which suggests a cervical or vaginal tear","Scant lochia in a woman receiving an oxytocic medication"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names persistent rubra, continued serosa or alba at 3 to 4 weeks with symptoms, and an offensive odor — normal lochia \"should smell like normal menstrual flow.\" Box 20.1 identifies spurting blood with a firm uterus as a tear.","trap":"(E) has a normal explanation the chapter states directly: \"if the woman receives an oxytocic medication, regardless of the route of administration, the flow of lochia is often scant until the effects of the medication wear off.\" Lochia is also usually less after cesarean birth, because the uterus was suctioned or wiped before closure, and flow \"usually increases with ambulation and breastfeeding.\"","k":"demnh7mc5e01"},{"topic":"postpartum vital signs","subtopic":"temperature","stem":"A woman's temperature is 37.9°C (100.2 °F) 10 hours after birth. How should the nurse interpret this?","options":["As within normal limits, since during the first 24 hours the temperature can increase to 38°C as a result of the dehydrating effects of labor","As puerperal sepsis","As requiring blood cultures immediately","As mastitis"],"correct":[0],"sata":false,"why":"Table 20.2 gives the normal finding: \"during first 24 h, temperature can increase to 38°C (100.4 °F) as a result of dehydrating effects of labor. After 24 h, the woman should be afebrile.\"","trap":"(B) applies the postpartum sepsis criterion to a reading inside the normal window. The same number after 24 hours, recurring or persisting for 2 days, is what suggests puerperal sepsis — along with mastitis, endometritis, urinary tract infection, or other systemic infection.","k":"1yjiw5r162zqgd"},{"topic":"postpartum vital signs","subtopic":"temperature","stem":"A woman's temperature is 38.2°C (100.8 °F) on postpartum day 2 and again on day 3. What does this suggest?","options":["Normal postpartum thermoregulation","Infection: a temperature of 38°C or higher after the first 24 hours that recurs or persists for 2 days suggests puerperal sepsis, with mastitis, endometritis, urinary tract infection, or other systemic infection as possible causes","Engorgement alone","Dehydration from labor"],"correct":[1],"sata":false,"why":"\"A diagnosis of puerperal sepsis is suggested if an increase in maternal temperature to 38°C (100.4 °F) or higher is noted after the first 24 h after birth and recurs or persists for 2 days.\" The chapter adds that a temperature of 38°C or higher during the first 10 days postpartum can indicate infection.","trap":"(C) names a real cause of mild temperature elevation — engorged breasts \"are hard and uncomfortable, and mild temperature elevation can occur\" — but a recurrent fever over 2 days meets the sepsis criterion and is evaluated.","k":"1kyip216eii8k"},{"topic":"postpartum vital signs","subtopic":"pulse, blood pressure, and shivering","stem":"A woman's pulse is 48 beats/min on postpartum day 3. How should the nurse interpret this?","options":["As bradycardia requiring cardiac evaluation","As puerperal bradycardia, which is common for 6 to 10 days after birth with heart rates of 40 to 50 beats/min","As a sign of hypovolemia","As an effect of the epidural"],"correct":[1],"sata":false,"why":"\"Puerperal bradycardia is common for 6 to 10 days after birth, with the heart rate decreasing to 40 to 50 beats/min.\" The finding that matters is the opposite: \"a rapid pulse rate or one that is increasing can indicate hypovolemia due to hemorrhage.\"","trap":"(C) inverts the postpartum pattern. In this period tachycardia is the warning and bradycardia is the expectation, which reverses ordinary adult assessment.","k":"iv5oa61ffglzk"},{"topic":"postpartum vital signs","subtopic":"pulse, blood pressure, and shivering","stem":"A woman becomes dizzy and faint when she stands for the first time after birth. Her blood pressure is unchanged. What explains this?","options":["Orthostatic hypotension from the splanchnic engorgement that can occur after birth, which can develop in the first 48 hours","Hemorrhage","Preeclampsia","Epidural-induced hypotension persisting for days"],"correct":[0],"sata":false,"why":"Table 20.2 describes \"orthostatic hypotension, as indicated by feelings of faintness or dizziness immediately after standing up,\" which \"can develop in the first 48 h as a result of the splanchnic engorgement that can occur after birth.\" Blood pressure normally shows \"a transient increase of approximately 5% during the first few days.\"","trap":"(B) is the diagnosis to rule out rather than the explanation here, and the table warns that falling blood pressure is \"a late sign\" of hemorrhage, with other symptoms usually present first.","k":"ypmt297oqobb"},{"topic":"postpartum vital signs","subtopic":"pulse, blood pressure, and shivering","stem":"A woman's blood pressure is 148/94 mm Hg on two readings 4 hours apart on postpartum day 2. How should this be interpreted?","options":["As a normal transient postpartum increase","As possible gestational hypertension or preeclampsia, which should be evaluated","As an expected effect of breastfeeding","As orthostatic hypotension"],"correct":[1],"sata":false,"why":"Table 20.2 states that \"elevated blood pressure (>140/90 mm Hg on two occasions 4 h apart) can be a sign of gestational hypertension or preeclampsia and should be evaluated.\" An increased reading can also result from excessive use of vasopressor or oxytocic medications.","trap":"(A) stretches the normal 5% transient increase past the threshold the same table sets. Preeclampsia can appear for the first time after birth, which is why the postpartum blood pressure is not a formality.","k":"1gc7vr41pnjcru"},{"topic":"postpartum vital signs","subtopic":"pulse, blood pressure, and shivering","stem":"About half of women experience shivering episodes shortly after birth. What does the chapter say about this?","options":["The exact cause is unknown and usually no treatment is needed, although pharmacologic treatment may be needed if the shivering is related to the effects of anesthesia","It always indicates infection","It indicates hemorrhage","It requires immediate warming measures and a provider notification"],"correct":[0],"sata":false,"why":"\"As many as 50% of women experience shivering episodes during the first few minutes up to the first hour after birth. The exact cause is unknown, and usually no treatment is needed\"; if it is related to anesthesia, pharmacologic treatment may be needed.","trap":"(B) treats a common, self-limited event as a rigor. Fever criteria in this period are specific, and shivering alone does not meet them.","k":"13czqby174b03s"},{"topic":"postpartum blood and fluid changes","subtopic":"expected blood loss","stem":"How much blood loss is expected with a vaginal birth and with a cesarean birth?","options":["300 to 500 mL for a vaginal birth, about 10% of blood volume; 500 to 1000 mL for a cesarean birth, 15% to 30% of blood volume","100 to 300 mL for a vaginal birth; 300 to 500 mL for a cesarean birth","500 to 1000 mL for a vaginal birth; 1000 to 1500 mL for a cesarean birth","The same for both routes"],"correct":[0],"sata":false,"why":"\"The average blood loss for a vaginal birth of a single fetus ranges from 300 to 500 mL (10% of blood volume),\" and \"the typical blood loss for women who give birth by cesarean is 500 to 1000 mL (15% to 30% of blood volume).\"","trap":"(D) collapses a distinction that changes the interpretation of the same number: a 700-mL loss is expected after a cesarean and excessive after a vaginal birth.","k":"y39lni6wq23s"},{"topic":"postpartum blood and fluid changes","subtopic":"expected blood loss","stem":"Why can most women tolerate the blood loss of birth, and what compensations does the chapter name? Select all that apply.","options":["Pregnancy-induced hypervolemia, an increase in blood volume of 40% to 45% above prepregnancy levels","Elimination of uteroplacental circulation, which reduces the size of the maternal vascular bed by 10% to 15%","Loss of placental endocrine function, which removes the stimulus for vasodilation","Mobilization of extravascular water stored during pregnancy","A rapid rise in erythrocyte production within the first 24 hours"],"correct":[0,1,2,3],"sata":true,"why":"\"Pregnancy-induced hypervolemia ... allows most women to tolerate considerable blood loss during birth,\" and the chapter lists three compensations: reduction of the vascular bed by 10% to 15%, loss of the vasodilating stimulus, and mobilization of stored extravascular water. \"By the third postpartum day, the plasma volume has been replenished as extravascular fluid returns to the intravascular space.\"","trap":"(E) invents a marrow response on a timescale the chapter does not support: hemoglobin and hematocrit \"decrease slightly during the first 24 hours, plateau by 3 to 4 days, and then begin to increase, reaching nonpregnant levels by 4 to 8 weeks.\"","k":"14mrkee67z59o"},{"topic":"postpartum blood and fluid changes","subtopic":"cardiac output and blood components","stem":"What happens to cardiac output immediately after birth?","options":["It falls by half because of blood loss","It increases by 60% to 80% over prelabor values and returns to prelabor values within 1 hour","It remains unchanged for 24 hours","It increases gradually over 2 weeks"],"correct":[1],"sata":false,"why":"\"Typically, cardiac output is increased immediately after birth by 60% to 80% over prelabor values; it returns to prelabor values within 1 hour,\" because of \"the compensatory influx of nearly 500 mL of blood into the maternal system from the uteroplacental bed, a rapid decrease in uterine blood flow, and mobilization of extracellular fluid.\" By 2 weeks it decreases by 30%, reaching prepregnant levels by 6 to 8 weeks.","trap":"(A) reasons from the blood loss alone and misses the autotransfusion — this is also the physiology behind the warning that the immediate postbirth period is the most dangerous window for a woman with cardiac disease.","k":"1c77b6m1wp3mk4"},{"topic":"postpartum blood and fluid changes","subtopic":"cardiac output and blood components","stem":"A postpartum woman's white blood cell count is 26,000/mm3. How should the nurse interpret this, and what consequence does the chapter draw?","options":["As diagnostic of infection","As within the expected postpartum range, since the count can rise to 30,000/mm3; leukocytosis coupled with the normal increase in erythrocyte sedimentation rate can obscure the diagnosis of acute infection","As evidence of hemorrhage","As requiring immediate antibiotics"],"correct":[1],"sata":false,"why":"\"During labor and after birth the white blood cell (WBC) count can rise to 30,000/mm3 but returns to normal levels within 1 to 2 weeks after birth,\" and \"leukocytosis, coupled with the increase in erythrocyte sedimentation rate that normally occurs, can obscure the diagnosis of acute infection.\"","trap":"(A) uses a value that is not diagnostic in this population, which is exactly the problem the chapter names — infection has to be diagnosed on other grounds here.","k":"14t91jw13zq9i"},{"topic":"postpartum blood and fluid changes","subtopic":"cardiac output and blood components","stem":"How long does the chapter say the postpartum hypercoagulable state increases thromboembolic risk?","options":["For 24 hours after birth","For up to 12 weeks after birth, when combined with vessel damage and immobility","For 1 week after birth","Only during the hospital stay"],"correct":[1],"sata":false,"why":"Clotting factors and fibrinogen \"remain elevated in the immediate puerperium,\" and \"when combined with vessel damage and immobility, this hypercoagulability causes an increased risk for venous thromboembolism and pulmonary embolism for up to 12 weeks after birth.\"","trap":"(D) ends the risk at discharge, which is where most teaching stops and where the risk does not.","k":"dcx72jg6517l"},{"topic":"postpartum blood and fluid changes","subtopic":"fluid loss","stem":"A woman on postpartum night 2 wakes drenched in sweat and reports voiding large amounts. What should the nurse do?","options":["Obtain blood cultures for suspected infection","Provide a gown change and reassurance, since urine output of 3000 mL or more per day and profuse diaphoresis, especially at night, are common for the first 2 to 3 days and account for a weight loss of 2 to 3 kg","Restrict fluids to reduce the diuresis","Insert an indwelling catheter to measure output accurately"],"correct":[1],"sata":false,"why":"\"Within 12 hours of birth, women begin to lose excess tissue fluid accumulated during pregnancy,\" driven by decreased estrogen levels, removal of increased venous pressure in the lower extremities, and loss of the pregnancy-induced blood volume increase. \"Urine output of 3000 mL or more each day during the first 2 to 3 days after birth is common,\" and \"profuse diaphoresis often occurs, especially at night, for the first 2 to 3 days,\" together accounting for \"a weight loss of 2 to 3 kg (5 to 6.6 lb.) during the early puerperium.\"","trap":"(A) works up a normal physiologic event, and (D) adds a catheter that would raise the risk of urinary tract infection in a woman already at increased risk.","k":"1jorgjnotiarh"},{"topic":"bladder and renal recovery","subtopic":"why voiding is impaired","stem":"Which factors contribute to a decreased urge to void after birth? Select all that apply.","options":["Birth-induced trauma","Increased bladder capacity after birth","The effects of epidural or spinal anesthesia","Pelvic soreness from labor, lacerations, or episiotomy, which can reduce or alter the voiding reflex","Decreased urine production in the first 24 hours"],"correct":[0,1,2,3],"sata":true,"why":"\"Birth-induced trauma, increased bladder capacity after birth, and the effects of conduction (e.g., epidural or spinal) anesthesia can result in a decreased urge to void. In addition, pelvic soreness caused by the forces of labor, vaginal or perineal lacerations, or episiotomy can reduce or alter the voiding reflex.\"","trap":"(E) reverses the fluid picture entirely. Urine production rises sharply, which is what makes the decreased urge dangerous: \"decreased voiding combined with postpartal diuresis can result in bladder distention.\"","k":"12f0p3i1a68bzc"},{"topic":"bladder and renal recovery","subtopic":"why voiding is impaired","stem":"Why does bladder distention immediately after birth cause excessive bleeding?","options":["Because it increases intraabdominal pressure","Because a distended bladder pushes the uterus up and to the side and prevents it from contracting firmly","Because it compresses the renal arteries","It does not cause bleeding"],"correct":[1],"sata":false,"why":"\"Immediately after birth, excessive bleeding can occur if the bladder becomes distended because it pushes the uterus up and to the side and prevents it from contracting firmly.\"","trap":"(D) misses the single most actionable link in postpartum assessment — a fundus that is boggy and displaced laterally is a bladder problem until proven otherwise.","k":"1mpk0psvtyibi"},{"topic":"bladder and renal recovery","subtopic":"why voiding is impaired","stem":"What problem does bladder overdistention cause later in the puerperium, and when is bladder tone usually restored?","options":["It makes the bladder more susceptible to infection and impedes the resumption of normal voiding; tone is usually restored by 5 to 7 days after birth","It causes hemorrhage; tone returns within 24 hours","It causes permanent incontinence; tone never fully returns","It has no later consequences"],"correct":[0],"sata":false,"why":"\"Later in the puerperium, overdistention can make the bladder more susceptible to infection and impede the resumption of normal voiding,\" and \"with adequate bladder emptying, bladder tone is usually restored by 5 to 7 days after birth.\"","trap":"(B) applies the immediate consequence to the later period. The same distention causes bleeding early and infection later.","k":"dw6uhpzq1o2b"},{"topic":"bladder and renal recovery","subtopic":"why voiding is impaired","stem":"Which statements about postpartum renal recovery are accurate? Select all that apply.","options":["Renal function returns to normal by 6 weeks after birth","About 8 weeks are required for the pregnancy-induced hypotonia and dilation of the ureters and renal pelves to return to the nonpregnant state","Renal glycosuria induced by pregnancy disappears by 1 week postpartum, though lactosuria can occur in lactating women","The blood urea nitrogen level increases during the puerperium as autolysis of the involuting uterus occurs","Pregnancy-associated proteinuria persists for 6 months"],"correct":[0,1,2,3],"sata":true,"why":"The chapter gives all four: renal function normal by 6 weeks, ureteral and renal pelvic changes resolving in about 8 weeks, glycosuria gone by 1 week with possible lactosuria, and a rising BUN from uterine autolysis. Plasma creatinine returns to normal by 6 weeks.","trap":"(E) extends a finding the chapter resolves at 6 weeks: \"pregnancy-associated proteinuria resolves by 6 weeks after birth.\" Persistent proteinuria past that point is not expected.","k":"f3uaz3kob8ut"},{"topic":"postpartum breast changes","subtopic":"lactogenesis and engorgement","stem":"A breastfeeding woman's breasts become fuller and heavier about 3 days after birth as the colostrum changes to mature milk. What is this called, and when does it occur?","options":["Lactogenesis II, occurring by about 72 to 96 hours after birth","Lactogenesis I, occurring in the first 24 hours","Let-down, occurring with each feeding","Engorgement, which is always pathologic"],"correct":[0],"sata":false,"why":"\"The breasts gradually become fuller and heavier as the colostrum transitions to mature milk by about 72 to 96 hours after birth; this is known as lactogenesis II\" — often called the milk coming in. True milk is \"bluish white ... with a skim-milk appearance,\" and in the first 24 hours \"there is little if any change in the breast tissue\" beyond colostrum, \"a clear yellow fluid.\"","trap":"(C) names the ejection reflex triggered by oxytocin at each feeding, which is a different event from the transition to mature milk.","k":"obqvk81a6bhja"},{"topic":"postpartum breast changes","subtopic":"lactogenesis and engorgement","stem":"A breastfeeding woman has hard, uncomfortable, engorged breasts on day 3 with a mild temperature elevation, and her infant is having trouble latching. What should the nurse teach?","options":["That engorgement is from an increase in blood and lymphatic fluid as milk production increases, that the fullness of the nipple tissue can make latching difficult, and that with frequent breastfeeding and proper care it typically lasts only 24 to 48 hours","That she should stop breastfeeding until the swelling resolves","That the temperature elevation indicates mastitis","That engorgement lasts about 2 weeks"],"correct":[0],"sata":false,"why":"\"Some women experience engorgement at this time owing to an increase in blood and lymphatic fluid as milk production increases. Engorged breasts are hard and uncomfortable, and mild temperature elevation can occur; the fullness of the nipple tissue can make it difficult for the infant to latch on and feed.\" And: \"with frequent breastfeeding and proper care, engorgement is a temporary condition that typically lasts only 24 to 48 hours.\"","trap":"(B) removes the treatment. Frequent feeding is what resolves engorgement in a lactating woman, and stopping would worsen it.","k":"1w5ui7k1onw8um"},{"topic":"postpartum breast changes","subtopic":"lactogenesis and engorgement","stem":"A woman who is not breastfeeding has distended, firm, tender breasts on postpartum day 3 and asks whether she should express some milk for relief. What should the nurse tell her?","options":["Yes, expressing milk will relieve the pressure","No — breast distention is caused primarily by temporary congestion of veins and lymphatics rather than by an accumulation of milk; milk is present but should not be expressed, and the engorgement resolves spontaneously with discomfort decreasing usually within 24 to 36 hours","She should pump every 3 hours until the swelling resolves","She should apply heat and massage the breasts to move the milk"],"correct":[1],"sata":false,"why":"In nonbreastfeeding women, \"breast distention is caused primarily by the temporary congestion of veins and lymphatics rather than by an accumulation of milk. Milk is present but should not be expressed.\" Engorgement \"resolves spontaneously, and discomfort decreases usually within 24 to 36 hours,\" and \"lactation ceases within a few days to 1 week.\"","trap":"(A) and (C) both stimulate the breast and prolong lactation, which is the opposite of what this woman wants — and it is the most tempting advice because it works for the breastfeeding woman two items earlier.","k":"d096k22tg5oo"},{"topic":"postpartum breast changes","subtopic":"assessment findings and hormones","stem":"A lactating woman's breast tissue feels nodular and lumpy. How does the chapter distinguish this from a concerning finding?","options":["The nodularity associated with milk production tends to shift in position, in contrast to lumps associated with fibrocystic changes or cancer, which can be palpated consistently in the same location","Nodularity in a lactating breast is always abnormal","Nodularity is distinguished only by ultrasound","Milk-related lumps are always painful and other lumps never are"],"correct":[0],"sata":false,"why":"As milk ducts fill, breast tissue \"can feel somewhat nodular or lumpy. In contrast to the lumps associated with fibrocystic breast changes or cancer (which can be palpated consistently in the same location), the nodularity associated with milk production tends to shift in position.\"","trap":"(D) substitutes pain for location, and location is the discriminator the chapter gives. Nonlactating engorgement can also involve \"axillary breast tissue (the tail of Spence) and any accessory breast or nipple tissue along the milk line.\"","k":"1i7f1kg12tnv92"},{"topic":"postpartum breast changes","subtopic":"assessment findings and hormones","stem":"Which hormone produces milk and which ejects it?","options":["Prolactin from the anterior pituitary stimulates milk production; oxytocin from the posterior pituitary triggers the milk ejection or let-down reflex in response to suckling or nipple stimulation","Oxytocin produces milk; prolactin ejects it","Both are produced by the anterior pituitary","Estrogen produces milk and prolactin ejects it"],"correct":[0],"sata":false,"why":"\"Prolactin, produced by the anterior pituitary, is the hormone that stimulates milk production,\" and \"the posterior pituitary produces oxytocin in response to infant suckling or nipple stimulation with milk expression. Oxytocin triggers the milk ejection or let-down reflex.\"","trap":"(B) reverses the pair, and the consequence matters: because oxytocin also contracts the uterus, breastfeeding reduces bleeding and intensifies afterpains at the same time.","k":"1wn5bbp1u7d4pv"},{"topic":"cervix ovaries and return of fertility","subtopic":"the cervix","stem":"A woman's postpartum examination notes a cervical os that appears as a jagged slit rather than a circle. How should the nurse interpret this?","options":["As a laceration requiring repair","As the permanent change the chapter describes: the external cervical os never regains its prepregnancy appearance and instead appears as a jagged slit, often described as a fish mouth","As evidence of infection","As a temporary finding that resolves by 6 weeks"],"correct":[1],"sata":false,"why":"\"The external cervical os never regains its prepregnancy appearance; it no longer has a circular shape, but instead appears as a jagged slit often described as a 'fish mouth.'\" The cervix is soft immediately after birth, shortens and firms over 12 to 18 hours, and regains its form within 2 to 3 days.","trap":"(A) treats a permanent parity marker as an injury. Dilation also closes gradually: 2 to 3 cm by the second or third day, about 1 cm by 1 week.","k":"14cg0rg178c5ba"},{"topic":"cervix ovaries and return of fertility","subtopic":"ovulation, menses, and contraception","stem":"A nonlactating woman asks when she could become pregnant again. What does the chapter say?","options":["Ovulation can occur as early as 27 days after birth, with a mean of about 7 to 9 weeks, and about 70% of nonlactating women resume menstruating by 12 weeks","Ovulation does not resume for at least 3 months","Ovulation resumes only after the first menstrual period","Ovulation cannot occur before 6 weeks"],"correct":[0],"sata":false,"why":"In nonlactating women, ovulation can occur \"as early as 27 days after birth,\" with a mean of \"about 7 to 9 weeks,\" and \"about 70% of nonlactating women resume menstruating by 12 weeks after birth.\"","trap":"(C) reverses the sequence, which is the assumption behind many unplanned pregnancies — ovulation precedes the first menses.","k":"19h6bm115pjs27"},{"topic":"cervix ovaries and return of fertility","subtopic":"ovulation, menses, and contraception","stem":"A woman who is exclusively breastfeeding asks whether she needs contraception. What does the chapter support?","options":["That breastfeeding reliably prevents pregnancy for 6 months","That the mean time to ovulation in lactating women is about 6 months, but breastfeeding frequency, duration of each feeding, and supplementary feedings all influence it, so discussion of contraceptive options early in the postpartum period is necessary","That contraception is unnecessary until menses return","That ovulation is suppressed by oxytocin"],"correct":[1],"sata":false,"why":"The mean time to ovulation in lactating women is \"about 6 months,\" and \"breastfeeding frequency, duration of each feeding, and the use of supplementary feedings influence the return of ovulation,\" with ovulation delayed longest in exclusive breastfeeding. \"Because of the uncertainty about the return of ovulation and menstruation, discussion of contraceptive options early in the postpartum period is necessary.\"","trap":"(D) names the wrong hormone: \"the persistence of elevated serum prolactin levels in lactating women appears to be responsible for suppressing ovulation.\"","k":"owed1nrj2n3"},{"topic":"cervix ovaries and return of fertility","subtopic":"ovulation, menses, and contraception","stem":"What should a woman be told about her first menstrual period after birth?","options":["That it is usually heavier than normal, and that within three or four cycles the amount returns to the prepregnancy volume","That it is usually lighter than normal","That it will be identical to her prepregnancy periods","That heavy first menses always indicate retained placental fragments"],"correct":[0],"sata":false,"why":"\"The first menstrual flow after birth is usually heavier than normal. Within three or four cycles, the amount of menstrual flow returns to the prepregnancy volume.\"","trap":"(D) converts an expected finding into a complication, and it is the sort of report that would otherwise send a woman back to triage unnecessarily.","k":"m04qzo1cyca86"},{"topic":"postpartum endocrine changes","subtopic":"hormone withdrawal","stem":"What happens to estrogen, progesterone, and hCG levels after birth?","options":["Estrogen and progesterone drop markedly and reach their lowest levels 1 week after birth; hCG decreases rapidly but can be detected for 3 to 4 weeks after birth","All three remain elevated for 6 weeks","Estrogen rises while progesterone falls","hCG is undetectable within 24 hours"],"correct":[0],"sata":false,"why":"\"Estrogen and progesterone levels drop markedly after birth and reach their lowest levels 1 week after birth,\" and \"the hCG levels decrease rapidly after birth. However, the hormone can be detected in the maternal system for 3 to 4 weeks after birth.\" Decreased estrogen is also associated with the diuresis of excess extracellular fluid.","trap":"(D) would make a positive pregnancy test at 2 weeks postpartum alarming, when the chapter explains it as residual hCG.","k":"1h5gb50niqkmu"},{"topic":"postpartum endocrine changes","subtopic":"hormone withdrawal","stem":"A woman with type 1 diabetes has just given birth. What does the chapter say about her insulin needs?","options":["They rise sharply because of the stress of birth","They fall significantly, because decreases in human placental lactogen, estrogens, cortisol, and placental insulinase reverse the diabetogenic effects of pregnancy — and she will likely require much less insulin for several days, especially if breastfeeding","They remain unchanged","Insulin is discontinued permanently"],"correct":[1],"sata":false,"why":"\"Decreases in human placental lactogen, estrogens, cortisol, and the placental enzyme insulinase reverse the diabetogenic effects of pregnancy, resulting in significantly lower blood glucose levels in the immediate postpartum period. Women with type 1 diabetes will likely require much less insulin for several days after birth, especially if they are breastfeeding.\"","trap":"(A) applies a stress response to a woman whose insulin resistance has just been removed with the placenta, and continuing the pregnancy dose is what causes severe postpartum hypoglycemia.","k":"1avihj7gg5r9h"},{"topic":"postpartum endocrine changes","subtopic":"hormone withdrawal","stem":"Which statements about postpartum metabolic and prolactin changes are accurate? Select all that apply.","options":["The thyroid gland gradually returns to normal by 3 months after birth, with thyroxine and triiodothyronine reaching prepregnant levels by 6 weeks","There is an increased risk for transient autoimmune thyroiditis in the postpartum period","The basal metabolic rate remains elevated for the first 1 to 2 weeks after birth","In nonbreastfeeding women, prolactin levels decline after birth and reach the nonpregnant range by the third postpartum week","Prolactin levels in breastfeeding women fall below nonpregnant levels within 6 weeks"],"correct":[0,1,2,3],"sata":true,"why":"The chapter gives the thyroid timeline, the transient autoimmune thyroiditis risk, the elevated basal metabolic rate for 1 to 2 weeks, and the nonbreastfeeding prolactin decline by the third week.","trap":"(E) reverses the lactating pattern: prolactin is \"highest during the first month after birth, gradually decreasing after 6 weeks, but remaining elevated above nonpregnant levels as long as she is breastfeeding.\"","k":"1vdoy9c1vozpwu"}];
+const TITLE = "Chapter 20 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 20";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 26 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 26</div><h1>Chapter 26 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">categories of high-risk factors</span><span class="chip t2">the four categories</span></div>
+<div class="stem">1. A nurse is classifying risk factors for a pregnant woman. Which definition matches the biophysical category?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Factors that originate within the pregnant woman or fetus and affect the development or functioning of either one or both</li><li class="fopt"><span class="mk">B</span>Maternal behaviors and adverse life events that have a negative effect on health</li><li class="fopt"><span class="mk">C</span>Factors arising from the context in which the woman and family live</li><li class="fopt"><span class="mk">D</span>Hazards in the workplace and the woman's general environment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Biophysical risks include factors that originate within the pregnant woman or fetus and affect the development or functioning of either one or both,&quot; with examples of genetic disorders, nutritional and general health status, and medical or obstetric illnesses.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B), (C), and (D) define the psychosocial, sociodemographic, and environmental categories respectively. The phrase &quot;originate within&quot; is what makes the biophysical category answerable without memorizing every example.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">categories of high-risk factors</span><span class="chip t2">the four categories</span></div>
+<div class="stem">2. In which category does Box 26.1 file smoking, caffeine, alcohol, and drug use?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Biophysical, because they act on the body</li><li class="fopt right"><span class="mk">&#10003;</span>Psychosocial, because the category covers maternal behaviors and adverse life events</li><li class="fopt"><span class="mk">C</span>Sociodemographic</li><li class="fopt"><span class="mk">D</span>Environmental</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 26.1 files smoking, caffeine, alcohol, drugs, and psychologic status under psychosocial factors, because &quot;psychosocial risks consist of maternal behaviors and adverse life events that have a negative effect on the health of the pregnant woman or fetus.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the intuitive filing — these substances have physical effects — and it is the error a categorization item is built on. Biophysical is reserved for what originates within the woman or fetus, not for anything with a physical mechanism.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">categories of high-risk factors</span><span class="chip t2">the four categories</span></div>
+<div class="stem">3. Which factors does Box 26.1 place in the sociodemographic category? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Low income, which underlies many other risk factors</li><li class="fopt right"><span class="mk">&#10003;</span>Lack of prenatal care, since failure to diagnose and treat complications early is a major risk factor</li><li class="fopt right"><span class="mk">&#10003;</span>Age at both ends of the childbearing spectrum</li><li class="fopt right"><span class="mk">&#10003;</span>Parity, marital status, and ethnicity</li><li class="fopt"><span class="mk">E</span>Genetic disorders and ABO incompatibility</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The sociodemographic factors are low income, lack of prenatal care, age, parity, marital status, social determinants of health such as rural residence, and ethnicity. Sociodemographic risks &quot;arise from the context in which the pregnant woman and family live.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is a biophysical genetic consideration, listed in Box 26.1 alongside defective genes, transmissible inherited disorders, chromosomal anomalies, multiple gestation, and large fetal size.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">categories of high-risk factors</span><span class="chip t2">the four categories</span></div>
+<div class="stem">4. A woman has three separate identified risk factors, each described as minor. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Minor risks can be disregarded individually and collectively</li><li class="fopt right"><span class="mk">&#10003;</span>Risk factors are interrelated and cumulative in their effects</li><li class="fopt"><span class="mk">C</span>Only the most severe factor determines her risk</li><li class="fopt"><span class="mk">D</span>Risk is determined by counting factors, with three or more defining high risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states it in one sentence: &quot;Risk factors are interrelated and cumulative in their effects.&quot; Categories exist because risk was formerly &quot;evaluated only from a medical standpoint,&quot; and the broader grouping reflects threats to health and pregnancy outcome.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) turns a qualitative principle into a counting rule, which the chapter does not support — the interaction among factors, not the tally, is the point.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">categories of high-risk factors</span><span class="chip t2">what the book qualifies</span></div>
+<div class="stem">5. Which statements reflect the chapter's qualifications about age and ethnicity as risk factors? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Women at both ends of the childbearing age spectrum have an increased incidence of poor outcomes, but age may not be a risk factor in all cases</li><li class="fopt right"><span class="mk">&#10003;</span>The risks to women older than 35 are not from age alone but from considerations such as previous pregnancies, genetics, medical history, lifestyle, nutrition, and prenatal care</li><li class="fopt right"><span class="mk">&#10003;</span>Although ethnicity by itself is not a major risk, race is associated with some poor pregnancy outcomes</li><li class="fopt right"><span class="mk">&#10003;</span>In the United States, Black women have rates of preterm birth almost twice as high as those of other racial and ethnic groups</li><li class="fopt"><span class="mk">E</span>Advanced maternal age is an inherent biologic risk that cannot be modified by any other factor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter qualifies both factors deliberately, stating that age &quot;may not be a risk factor in all cases,&quot; that older women's risks come from accumulated considerations rather than age alone, and that ethnicity by itself is not a major risk while race is associated with poor outcomes — with the preterm birth disparity stated numerically.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) contradicts the sentence immediately preceding it in the text. Older women do face more chronic hypertension, preeclampsia, diabetes, prolonged labor, cesarean birth, previa, abruption, and death — but the chapter attributes these to what accumulates with age, not to age itself.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specific pregnancy problems and risk factors</span><span class="chip t2">too much fluid and too little</span></div>
+<div class="stem">6. Which conditions does Box 26.2 list as risk factors for polyhydramnios? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Poorly controlled diabetes mellitus</li><li class="fopt right"><span class="mk">&#10003;</span>Fetal congenital anomalies such as gastrointestinal obstruction or central nervous system abnormalities</li><li class="fopt right"><span class="mk">&#10003;</span>Twin-to-twin transfusion syndrome</li><li class="fopt right"><span class="mk">&#10003;</span>Fetomaternal hemorrhage and genetic disorders</li><li class="fopt"><span class="mk">E</span>Renal agenesis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 26.2's polyhydramnios list is poorly controlled diabetes, fetomaternal hemorrhage, fetal congenital anomalies such as gastrointestinal obstruction or CNS abnormalities, genetic disorders, and twin-to-twin transfusion syndrome.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is on the oligohydramnios list, and the logic separates the two: fluid comes from fetal urine, so renal agenesis drains it, while anomalies that impair swallowing let it accumulate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specific pregnancy problems and risk factors</span><span class="chip t2">too much fluid and too little</span></div>
+<div class="stem">7. Which conditions appear on Box 26.2's oligohydramnios list?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Renal agenesis, prelabor rupture of membranes, prolonged pregnancy, severe growth restriction, maternal hypertensive disorders, maternal dehydration or hypovolemia, and uteroplacental insufficiency</li><li class="fopt"><span class="mk">B</span>Diabetes, twin-to-twin transfusion, and gastrointestinal obstruction</li><li class="fopt"><span class="mk">C</span>Advanced maternal age and parental chromosomal rearrangements</li><li class="fopt"><span class="mk">D</span>Autoimmune disease and multifetal gestation only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 26.2 lists renal agenesis (Potter syndrome), prelabor rupture of membranes, prolonged pregnancy, severe intrauterine growth restriction, maternal hypertensive disorders, maternal dehydration or hypovolemia, and uteroplacental insufficiency.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the chromosomal abnormality list from the same box — advanced maternal age, parental chromosomal rearrangements, a previous autosomal trisomy, abnormal ultrasound findings, and an increased calculated risk from noninvasive screening.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specific pregnancy problems and risk factors</span><span class="chip t2">growth restriction by cause</span></div>
+<div class="stem">8. Box 26.2 splits the risk factors for intrauterine growth restriction into fetal and maternal causes. Which are the fetal causes?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Genetic disorders, teratogenic exposure, fetal infection, and structural abnormalities</li><li class="fopt"><span class="mk">B</span>Hypertensive disorders and pregestational diabetes</li><li class="fopt"><span class="mk">C</span>Living at a high altitude and tobacco use</li><li class="fopt"><span class="mk">D</span>Multifetal gestation and malabsorptive disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The fetal causes are genetic disorders, teratogenic exposure, fetal infection, and structural abnormalities. The maternal causes are hypertensive disorders, pregestational diabetes, cyanotic heart disease, autoimmune disease, restrictive pulmonary disease, multifetal gestation, malabsorptive disease or malnutrition, living at a high altitude above 10,000 feet, and tobacco or substance use.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B), (C) and (D) are all maternal causes, and the maternal list is much the longer of the two — which is what makes a &quot;which is fetal&quot; item answerable by elimination if the four fetal items are held.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specific pregnancy problems and risk factors</span><span class="chip t2">growth restriction by cause</span></div>
+<div class="stem">9. A woman lives at 11,000 feet and smokes. Which risk does the chapter connect to these factors?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Polyhydramnios</li><li class="fopt right"><span class="mk">&#10003;</span>Intrauterine growth restriction, since living at a high altitude above 10,000 feet and tobacco use are both maternal causes</li><li class="fopt"><span class="mk">C</span>Chromosomal abnormality</li><li class="fopt"><span class="mk">D</span>Prelabor rupture of membranes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 26.2 lists &quot;living at a high altitude (&gt;10,000 feet)&quot; and &quot;tobacco/substance use/misuse&quot; among the maternal causes of intrauterine growth restriction. Box 26.1 separately notes that smoking is associated with low-birth-weight infants, higher neonatal mortality, increased miscarriage, and increased prelabor rupture of membranes, with risks aggravated by low socioeconomic status, poor nutrition, and concurrent alcohol use.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a real smoking association from a different box, and the stem's altitude detail is what points to growth restriction specifically.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">antepartum testing goals and indications</span><span class="chip t2">why testing is done</span></div>
+<div class="stem">10. A nurse is explaining why antepartum testing is performed. Which two goals does the chapter name?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>To identify fetuses at risk for injury from interrupted oxygenation, and to identify appropriately oxygenated fetuses so unnecessary intervention can be avoided</li><li class="fopt"><span class="mk">B</span>To determine fetal sex and estimate birth weight</li><li class="fopt"><span class="mk">C</span>To confirm the estimated date of birth and detect anomalies</li><li class="fopt"><span class="mk">D</span>To replace routine prenatal care in high-risk pregnancies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states both goals: &quot;to identify fetuses at risk for injury caused by acute or chronic interruption of oxygenation so that permanent injury or death might be prevented,&quot; and &quot;to identify appropriately oxygenated fetuses so that unnecessary intervention can be avoided.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) mistakes the relationship: this chapter concentrates on testing done for high-risk pregnancies in addition to routine testing, not instead of it. The second goal is the one most often forgotten and the reason a low false-negative rate matters.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">antepartum testing goals and indications</span><span class="chip t2">why testing is done</span></div>
+<div class="stem">11. When does antepartum monitoring typically begin, and how are tests selected?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>By 32 to 34 weeks of gestation, continuing regularly until birth; tests are selected on the basis of their effectiveness, with results interpreted in light of the complete clinical picture</li><li class="fopt"><span class="mk">B</span>At 20 weeks in all pregnancies, with tests selected by patient preference</li><li class="fopt"><span class="mk">C</span>Only after a complication is diagnosed, with tests selected by availability</li><li class="fopt"><span class="mk">D</span>At 38 weeks, with a single test performed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In most cases, monitoring begins by 32 to 34 weeks of gestation and continues regularly until birth,&quot; and &quot;assessment tests should be selected on the basis of their effectiveness, and the results must be interpreted in light of the complete clinical picture.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) waits for a diagnosis when Box 26.3's indications include conditions known before testing begins — diabetes, hypertension, preeclampsia, lupus, renal disease, cyanotic heart disease.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">antepartum testing goals and indications</span><span class="chip t2">why testing is done</span></div>
+<div class="stem">12. Which findings appear in Box 26.3 as common indications for antepartum testing? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Diabetes, hypertension, and preeclampsia</li><li class="fopt right"><span class="mk">&#10003;</span>Systemic lupus erythematosus, renal disease, and cyanotic heart disease</li><li class="fopt right"><span class="mk">&#10003;</span>Fetal growth restriction and oligohydramnios</li><li class="fopt right"><span class="mk">&#10003;</span>Late term or postterm gestation, previous stillbirth, and decreased fetal movement</li><li class="fopt"><span class="mk">E</span>A first pregnancy in a healthy 24-year-old</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 26.3 lists diabetes, hypertension, preeclampsia, systemic lupus erythematosus, renal disease, cyanotic heart disease, fetal growth restriction, oligohydramnios, late term or postterm gestation, previous stillbirth, and decreased fetal movement.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) describes a pregnancy with no listed indication, and testing every such pregnancy is what the second goal of antepartum testing exists to prevent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daily fetal movement counting</span><span class="chip t2">how counts are done and read</span></div>
+<div class="stem">13. A woman asks how to count fetal movements. Which protocols does the chapter describe? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Counting once a day for 60 minutes</li><li class="fopt right"><span class="mk">&#10003;</span>Counting two or three times daily, such as after meals or before bedtime, for 2 hours or until 10 movements are counted</li><li class="fopt right"><span class="mk">&#10003;</span>Counting all fetal movements in a 12-hour period each day until a minimum of 10 movements are counted</li><li class="fopt"><span class="mk">D</span>Counting continuously for 24 hours each day</li><li class="fopt"><span class="mk">E</span>Counting only when movement feels reduced</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives all three protocols and notes that no single one is established as correct. Counting is used because it &quot;is noninvasive, inexpensive, and simple to understand and usually does not interfere with a daily routine,&quot; and women &quot;are able to recognize about 80% to 90% of fetal movements.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) makes counting reactive rather than routine, which defeats its purpose — what matters is &quot;establishing a very low number of daily fetal movements or a trend toward decreased motion.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daily fetal movement counting</span><span class="chip t2">how counts are done and read</span></div>
+<div class="stem">14. What does the chapter identify as the fetal alarm signal?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Fewer than 10 movements in 2 hours</li><li class="fopt right"><span class="mk">&#10003;</span>Fetal movements ceasing entirely for 12 hours</li><li class="fopt"><span class="mk">C</span>Any decrease from the previous day's count</li><li class="fopt"><span class="mk">D</span>Movements felt only after meals</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Apart from a very low count or a downward trend, &quot;the clinical value of the absolute number of fetal movements has not been established, other than in the situation in which fetal movements cease entirely for 12 hours (the so-called fetal alarm signal).&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is a counting endpoint from one of the protocols, not an alarm criterion. Not reaching 10 in 2 hours prompts continued counting or evaluation; total cessation for 12 hours is the named emergency.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daily fetal movement counting</span><span class="chip t2">how counts are done and read</span></div>
+<div class="stem">15. A woman at 32 weeks reports decreased fetal activity. What does the chapter say is usually done?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Reassurance and instructions to continue counting</li><li class="fopt right"><span class="mk">&#10003;</span>A nonstress test</li><li class="fopt"><span class="mk">C</span>An immediate biophysical profile</li><li class="fopt"><span class="mk">D</span>Admission for continuous monitoring</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;When a pregnant woman reports decreased fetal activity, a nonstress test is usually performed.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the answer that feels supportive and is the one the chapter's decreased-movement indication in Box 26.3 rules out. The report itself is an indication for testing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daily fetal movement counting</span><span class="chip t2">what reduces counts without meaning compromise</span></div>
+<div class="stem">16. Which factors reduce fetal movement or its perception without indicating fetal compromise? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The fetal sleep cycle</li><li class="fopt right"><span class="mk">&#10003;</span>Medications that depress the central nervous system</li><li class="fopt right"><span class="mk">&#10003;</span>Drinking alcohol or smoking a cigarette</li><li class="fopt right"><span class="mk">&#10003;</span>Maternal obesity, which decreases perception of fetal movements</li><li class="fopt"><span class="mk">E</span>Approaching term, when movements normally decrease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Safety Alert states that fetal movements &quot;are usually not present during the fetal sleep cycle; they may be reduced temporarily if the woman is taking medications that depress the central nervous system, drinking alcohol, or smoking a cigarette,&quot; and &quot;obesity decreases perception of fetal movements.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the lay belief the same alert denies in one sentence: fetal movements &quot;do not decrease as the woman nears term.&quot; Reassuring a 39-week woman that fewer movements are expected is the wrong answer.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">daily fetal movement counting</span><span class="chip t2">what reduces counts without meaning compromise</span></div>
+<div class="stem">17. A woman asks why counting fetal movements is worth doing if it is so simple. What does the chapter say about its evidence base?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>It has been proven to prevent perinatal mortality</li><li class="fopt right"><span class="mk">&#10003;</span>Research has failed to conclusively demonstrate that fetal movement counting is of benefit in preventing perinatal mortality, though the presence of movements is generally a reassuring sign of fetal health and decreased activity is noted in response to hypoxemia</li><li class="fopt"><span class="mk">C</span>It is more accurate than any other antepartum test</li><li class="fopt"><span class="mk">D</span>It has been abandoned in current practice</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Research has failed to conclusively demonstrate that fetal movement counting is of benefit in preventing perinatal mortality,&quot; even though &quot;the presence of movements is generally a reassuring sign of fetal health&quot; and &quot;decreased fetal activity is noted in response to hypoxemia.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) overstates the evidence for a test the chapter presents honestly, and (D) discards a method that remains standard teaching — including the significance of movements, the counting procedure, how to record findings, and when to notify the provider.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ultrasonography routes and levels</span><span class="chip t2">transvaginal versus abdominal</span></div>
+<div class="stem">18. A woman is scheduled for a transvaginal ultrasound at 8 weeks. What preparation is needed, and why is this route chosen?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>A full bladder is required to displace the uterus upward</li><li class="fopt right"><span class="mk">&#10003;</span>No full bladder is needed; the transvaginal route is optimal in the first trimester and allows pelvic anatomy to be evaluated in greater detail with earlier diagnosis of intrauterine pregnancy</li><li class="fopt"><span class="mk">C</span>A full bladder is needed only if the woman is obese</li><li class="fopt"><span class="mk">D</span>Bowel preparation is required</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The transvaginal approach &quot;does not require that the woman have a full bladder,&quot; is &quot;optimally used in the first trimester to detect ectopic pregnancies, monitor the developing embryo, help identify abnormalities, and help establish gestational age,&quot; and &quot;allows pelvic anatomic features to be evaluated in greater detail and intrauterine pregnancy to be diagnosed earlier.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the preparation for an abdominal scan, where a full bladder displaces the uterus upward for a better image — and giving that instruction before a transvaginal scan is an uncomfortable and pointless error.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ultrasonography routes and levels</span><span class="chip t2">transvaginal versus abdominal</span></div>
+<div class="stem">19. Why might a transvaginal scan be chosen for a woman with obesity later in pregnancy?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because it is faster</li><li class="fopt right"><span class="mk">&#10003;</span>Because it is especially useful in obese women whose thick abdominal layers cannot be penetrated adequately</li><li class="fopt"><span class="mk">C</span>Because abdominal scanning is contraindicated in obesity</li><li class="fopt"><span class="mk">D</span>Because it requires less gel</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The transvaginal route is &quot;especially useful in obese women whose thick abdominal layers cannot be penetrated adequately.&quot; The abdominal approach is &quot;more useful after the first trimester when the pregnant uterus becomes an abdominal organ,&quot; and it allows the screen to be positioned so the woman and her partner can watch.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overstates a practical limitation into a contraindication. The procedure itself &quot;is not physically painful, although the woman feels pressure as the probe is moved,&quot; and a protective cover and water-soluble gel are used.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ultrasonography routes and levels</span><span class="chip t2">levels and types of scans</span></div>
+<div class="stem">20. A provider performs a bedside scan in the labor unit solely to determine fetal presentation. Which level of ultrasonography is this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Standard, or basic</li><li class="fopt right"><span class="mk">&#10003;</span>Limited</li><li class="fopt"><span class="mk">C</span>Specialized, or targeted</li><li class="fopt"><span class="mk">D</span>Four-dimensional</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Limited examinations are performed to determine a specific piece of information about the pregnancy such as identifying fetal presentation during labor or estimating AFV,&quot; and they are &quot;usually performed by the woman's obstetric health care provider in the office or clinic or in the labor and birth unit.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) describes the full survey — fetal presentation, amniotic fluid volume, cardiac activity, placental position, growth parameters, number of fetuses, and an anatomic survey — which a specially trained nurse may perform. &quot;Limited&quot; describes the question asked, not the equipment used.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ultrasonography routes and levels</span><span class="chip t2">levels and types of scans</span></div>
+<div class="stem">21. When is a specialized, or targeted, ultrasound examination indicated, and who performs it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>When it is suspected that a woman is carrying an anatomically or physiologically abnormal fetus, performed by highly trained and experienced personnel</li><li class="fopt"><span class="mk">B</span>At every first prenatal visit, performed by a nurse with special training</li><li class="fopt"><span class="mk">C</span>Whenever a woman requests images of her fetus</li><li class="fopt"><span class="mk">D</span>Only during labor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Specialized (also called detailed) or targeted examinations are performed when it is suspected that a woman is carrying an anatomically or physiologically abnormal fetus,&quot; by &quot;highly trained and experienced personnel,&quot; with indications of &quot;abnormal history or laboratory findings or abnormal results of a previous standard or limited ultrasound examination.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) describes keepsake imaging, which ACOG and AIUM &quot;strongly discourage.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">ultrasonography routes and levels</span><span class="chip t2">levels and types of scans</span></div>
+<div class="stem">22. Which descriptions of ultrasound scan types match Box 26.4? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Two-dimensional scanning sends sound waves straight down and produces a flat image in black, white, or shades of gray, and is the standard medical scan used in pregnancy</li><li class="fopt right"><span class="mk">&#10003;</span>Three-dimensional scanning sends sound waves at different angles and adds depth, usually displayed in sepia tones</li><li class="fopt right"><span class="mk">&#10003;</span>Four-dimensional scanning adds time, with images recorded and played back in succession so the fetus is viewed in real time</li><li class="fopt right"><span class="mk">&#10003;</span>Three-dimensional images are often requested by families simply for their own enjoyment</li><li class="fopt"><span class="mk">E</span>Four-dimensional scanning replaces two-dimensional scanning for all diagnostic purposes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 26.4 describes all three scan types as listed, names the two-dimensional scan as &quot;the standard medical scan used in pregnancy,&quot; and notes that three-dimensional images &quot;are also often requested by pregnant women and families simply for their own enjoyment.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) promotes a newer technology over the one the box names as standard, and it sits uneasily beside the chapter's caution that ultrasound &quot;should be used only by qualified health professionals to provide medical benefit to clients.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gestational age dating and fetal growth</span><span class="chip t2">dating measurements</span></div>
+<div class="stem">23. A woman has an ultrasound at 9 weeks to establish gestational age. Which measurement is used, and how does it rank?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Crown-rump length, or maximum embryo length, which is commonly accepted as the most accurate method of determining gestational age using ultrasound</li><li class="fopt"><span class="mk">B</span>Biparietal diameter, which is the most accurate at any gestational age</li><li class="fopt"><span class="mk">C</span>Femur length alone</li><li class="fopt"><span class="mk">D</span>Abdominal circumference alone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In the first trimester, the measurement is &quot;the maximum embryo length or the crown-rump length,&quot; and &quot;early embryo measurement is commonly accepted as the most accurate method of determining gestational age using ultrasound.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names a real measurement used at the wrong time. After the first trimester, dating uses &quot;the biparietal diameter (BPD), head circumference, abdominal circumference, and femur length,&quot; and &quot;gestational age calculation using a combination of these measurements is the most accepted method of ultrasound dating after the first trimester.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gestational age dating and fetal growth</span><span class="chip t2">dating measurements</span></div>
+<div class="stem">24. When can fetal cardiac activity first be demonstrated, and what confirms fetal death on ultrasound?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>At about 6 weeks of gestation by transvaginal ultrasound; fetal death is confirmed by lack of heart motion along with fetal scalp edema, maceration, and overlap of the cranial bones</li><li class="fopt"><span class="mk">B</span>At 12 weeks by abdominal ultrasound; fetal death is confirmed by absent movement alone</li><li class="fopt"><span class="mk">C</span>At 16 weeks; fetal death is confirmed by a single absent heartbeat</li><li class="fopt"><span class="mk">D</span>At 10 weeks; fetal death cannot be confirmed by ultrasound</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Fetal cardiac activity can be demonstrated by about 6 weeks of gestation using transvaginal ultrasound,&quot; and &quot;fetal death can be confirmed by lack of heart motion along with the presence of fetal scalp edema and maceration and overlap of the cranial bones.&quot; Good views of cardiac anatomy are possible in most women at 13 weeks when the fetus is favorably positioned.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) relies on absent movement, which the kick-count section already establishes is unreliable on its own.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gestational age dating and fetal growth</span><span class="chip t2">growth restriction and macrosomia</span></div>
+<div class="stem">25. An ultrasound shows a fetus that is small in all parameters — head, abdomen, and limbs alike. What does this pattern indicate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Asymmetric growth restriction from placental insufficiency</li><li class="fopt right"><span class="mk">&#10003;</span>Symmetric growth restriction, reflecting a chronic or long-standing insult such as low genetic growth potential, intrauterine infection, chromosomal anomaly, maternal undernutrition, or heavy smoking</li><li class="fopt"><span class="mk">C</span>Macrosomia</li><li class="fopt"><span class="mk">D</span>Inaccurate dating only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Symmetric IUGR reflects a chronic or long-standing insult&quot; and the fetus &quot;is small in all parameters,&quot; with the causes named as low genetic growth potential, intrauterine infection, chromosomal anomaly, maternal undernutrition, or heavy smoking.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the pattern in which &quot;head and body growth do not match,&quot; which &quot;suggests an acute or late-occurring deprivation such as placental insufficiency.&quot; The cue is that a late insult spares the head.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gestational age dating and fetal growth</span><span class="chip t2">growth restriction and macrosomia</span></div>
+<div class="stem">26. A fetus at 34 weeks has a normal head circumference but an abdominal circumference well below expected, in a woman with chronic hypertension. What pattern is this, and what does it suggest?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Symmetric growth restriction from a chromosomal anomaly</li><li class="fopt right"><span class="mk">&#10003;</span>Asymmetric growth restriction, suggesting an acute or late-occurring deprivation such as placental insufficiency resulting from hypertension, renal disease, or cardiovascular disease</li><li class="fopt"><span class="mk">C</span>Macrosomia</li><li class="fopt"><span class="mk">D</span>Polyhydramnios</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Asymmetric growth suggests an acute or late-occurring deprivation such as placental insufficiency,&quot; and the causes named are hypertension, renal disease, and cardiovascular disease — the mother's history in this stem.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, and the two are separated by the measurements rather than by the history: symmetric is small everywhere, asymmetric spares the head.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gestational age dating and fetal growth</span><span class="chip t2">growth restriction and macrosomia</span></div>
+<div class="stem">27. What does the chapter say about fetal growth extremes and their consequences?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reduced fetal growth is still one of the most frequent conditions associated with stillbirth, and macrosomic infants are at increased risk for traumatic injury and asphyxia during birth</li><li class="fopt"><span class="mk">B</span>Growth restriction is no longer associated with stillbirth</li><li class="fopt"><span class="mk">C</span>Macrosomia carries no birth risk if the pelvis is adequate</li><li class="fopt"><span class="mk">D</span>Macrosomia is defined as an estimated weight of 3500 g or more</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Reduced fetal growth is still one of the most frequent conditions associated with stillbirth,&quot; and &quot;macrosomic infants are at increased risk for traumatic injury and asphyxia during birth.&quot; Macrosomia is an &quot;estimated weight of 4000 g or more,&quot; and it &quot;also may be characterized as symmetric or asymmetric.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) lowers the threshold by 500 g, and serial measurements of biparietal diameter, limb length, and abdominal circumference are what &quot;allow differentiation among size discrepancies resulting from inaccurate dates, true IUGR, and macrosomia.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nuchal translucency and placental position</span><span class="chip t2">what an elevated measurement means</span></div>
+<div class="stem">28. A woman has nuchal translucency screening. When is it performed, and what measurement is abnormal?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Between 10 and 14 weeks of gestation, with a fluid collection greater than 3 mm considered abnormal</li><li class="fopt"><span class="mk">B</span>Between 16 and 20 weeks, with more than 5 mm abnormal</li><li class="fopt"><span class="mk">C</span>In the third trimester, with any measurable fluid abnormal</li><li class="fopt"><span class="mk">D</span>At 6 weeks, with more than 1 mm abnormal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Nuchal translucency screening &quot;uses ultrasound measurement of fluid in the nape of the fetal neck between 10 and 14 weeks of gestation to identify possible fetal abnormalities,&quot; and &quot;a fluid collection greater than 3 mm is considered abnormal.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) borrows a second-trimester window that belongs to other screening. The chapter also stresses that &quot;mandatory training and quality assurance for professionals who perform NT measurement is critical to ensure accurate results.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nuchal translucency and placental position</span><span class="chip t2">what an elevated measurement means</span></div>
+<div class="stem">29. An elevated nuchal translucency is found with normal maternal serum markers. What does the chapter say this indicates?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An increased risk for trisomies 13, 18, and 21</li><li class="fopt right"><span class="mk">&#10003;</span>An increased risk for isolated anomalies such as congenital heart defects, abdominal wall defects, and diaphragmatic hernia</li><li class="fopt"><span class="mk">C</span>A definitive diagnosis of a chromosomal abnormality</li><li class="fopt"><span class="mk">D</span>No increased risk of any kind</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Combined with abnormal maternal serum markers, an elevated nuchal translucency &quot;indicates a possible increased risk of certain chromosomal abnormalities in the fetus including trisomies 13, 18, and 21.&quot; Alone, it &quot;indicates an increased risk for isolated anomalies such as congenital heart defects, abdominal wall defects, and diaphragmatic hernia,&quot; and a targeted scan with possible fetal echocardiography should be offered in the second trimester.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the correct answer for the combined finding, and the modifier — with or without abnormal serum markers — is what changes the meaning.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nuchal translucency and placental position</span><span class="chip t2">what an elevated measurement means</span></div>
+<div class="stem">30. An ultrasound reports an absent nasal bone, echogenic bowel, and pyelectasis. How should these findings be described to the woman?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As diagnostic of trisomy 21</li><li class="fopt right"><span class="mk">&#10003;</span>As soft markers only, which are not diagnostic for the anomaly; a positive screen leads to genetic counseling and an offered invasive test for fetal karyotyping, which can provide a definitive diagnosis</li><li class="fopt"><span class="mk">C</span>As normal variants of no significance</li><li class="fopt"><span class="mk">D</span>As indications for immediate birth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The soft markers for trisomy 21 are &quot;an absent nasal bone, shortened femur or humerus, echogenic intracardiac focus, echogenic bowel, pyelectasis ... and cerebral ventriculomegaly,&quot; and &quot;these findings are considered soft markers only; they are not diagnostic for the anomaly.&quot; A positive screen means referral for genetic counseling and an offered invasive test for karyotyping.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) converts screening into diagnosis, which is the distinction this entire section is built on — and the word &quot;markers&quot; is the cue.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">nuchal translucency and placental position</span><span class="chip t2">placental location</span></div>
+<div class="stem">31. An ultrasound at 18 weeks shows the placental edge 1.5 cm from the internal cervical os. What should the nurse tell the woman?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>That she has placenta previa and will require cesarean birth</li><li class="fopt right"><span class="mk">&#10003;</span>That repeated scans will be performed as pregnancy progresses, and that at least 90% of placentas identified earlier in pregnancy as previa or low lying ultimately resolve by the third trimester</li><li class="fopt"><span class="mk">C</span>That no follow-up is needed</li><li class="fopt"><span class="mk">D</span>That she must be placed on bed rest for the remainder of pregnancy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>After 16 weeks, an edge &quot;at least 2 cm from the cervix&quot; is normal; &quot;if the placental edge is less than 2 cm from the cervix, repeated ultrasound scans should be performed as pregnancy progresses.&quot; And &quot;at least 90% of placentas identified earlier in pregnancy as previa, or low lying, ultimately resolve by the third trimester,&quot; because the placenta grows toward the fundus where the blood supply is better and the lower uterine segment elongates.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) converts a second-trimester finding into a delivery plan, which is what the 90% figure exists to prevent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">doppler and amniotic fluid volume</span><span class="chip t2">doppler findings</span></div>
+<div class="stem">32. A Doppler study shows absent end-diastolic flow in the umbilical artery. What has this finding been associated with?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fetal growth restriction</li><li class="fopt"><span class="mk">B</span>Moderate to severe fetal anemia</li><li class="fopt"><span class="mk">C</span>Polyhydramnios</li><li class="fopt"><span class="mk">D</span>Normal fetal adaptation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Severe restriction of umbilical artery blood flow as indicated by absent or reversed flow during diastole has been associated with fetal growth restriction.&quot; Doppler analysis &quot;uses systolic/diastolic flow ratios and resistance indices to estimate blood flow in various arteries,&quot; providing &quot;an indication of fetal adaptation and reserve.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) belongs to a different vessel: &quot;significantly increased peak systolic velocity in the middle cerebral artery has been found to predict moderate to severe fetal anemia.&quot; Abnormal maternal uterine artery waveforms are also used to predict growth restriction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">doppler and amniotic fluid volume</span><span class="chip t2">doppler findings</span></div>
+<div class="stem">33. What value does the chapter attribute to Doppler blood flow analysis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It is of value in reducing perinatal mortality and unnecessary obstetric interventions in fetuses with growth restriction</li><li class="fopt"><span class="mk">B</span>It replaces the biophysical profile</li><li class="fopt"><span class="mk">C</span>It is used only in the first trimester</li><li class="fopt"><span class="mk">D</span>It has no established clinical value</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Doppler blood flow analysis is &quot;of value in reducing perinatal mortality and unnecessary obstetric interventions in fetuses with growth restriction&quot; — which maps onto both stated goals of antepartum testing at once.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) overstates one test's role. Each test in this chapter answers a particular question, and the BPP is the one that answers both the acute and the chronic question.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">doppler and amniotic fluid volume</span><span class="chip t2">measuring amniotic fluid</span></div>
+<div class="stem">34. An amniotic fluid index of 4 cm is reported. How should this be interpreted, and what would the same number mean as a single deepest pocket?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An AFI under 5 cm indicates oligohydramnios; as a single deepest pocket, 4 cm would be normal, since oligohydramnios by that method is less than 2 cm</li><li class="fopt"><span class="mk">B</span>An AFI of 4 cm is normal; a single pocket of 4 cm indicates oligohydramnios</li><li class="fopt"><span class="mk">C</span>Both indicate polyhydramnios</li><li class="fopt"><span class="mk">D</span>Both indicate oligohydramnios</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;An AFI of less than 5 cm indicates oligohydramnios,&quot; where the AFI sums &quot;the vertical depths (in centimeters) of the largest pocket of amniotic fluid in all four quadrants.&quot; By the single-pocket method, oligohydramnios is a maximum vertical pocket of less than 2 cm, and polyhydramnios is a pocket greater than 8 cm; by AFI, polyhydramnios is 25 cm or more.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) applies one system's threshold to the other's number, which is the manufactured error these two measurement systems invite.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">doppler and amniotic fluid volume</span><span class="chip t2">measuring amniotic fluid</span></div>
+<div class="stem">35. Which subjective findings does the chapter associate with abnormal amniotic fluid volume? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Oligohydramnios: a fundal height small for gestational age and a fetus that is easily palpated</li><li class="fopt right"><span class="mk">&#10003;</span>Polyhydramnios: a fundal height large for gestational age and a fetus that cannot easily be palpated or that is ballotable</li><li class="fopt right"><span class="mk">&#10003;</span>Oligohydramnios is associated with renal agenesis, prelabor rupture of membranes, and severe growth restriction</li><li class="fopt right"><span class="mk">&#10003;</span>Polyhydramnios is associated with gastrointestinal and CNS anomalies, twin-to-twin transfusion syndrome, infections, and placental abnormalities</li><li class="fopt"><span class="mk">E</span>Ultrasound measurement of amniotic fluid volume is highly accurate and reliably predicts abnormal values</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives both sets of subjective findings and both association lists.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses the chapter's own caveat: &quot;accurate measurement of AFV using ultrasound is difficult, and evidence indicates that the estimates produced poorly predict abnormal values. However, the measurement is still frequently performed in clinical practice.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the biophysical profile</span><span class="chip t2">components and scoring</span></div>
+<div class="stem">36. Which five components make up the biophysical profile, and how is each scored?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Amniotic fluid volume, fetal breathing movements, fetal movements, fetal tone, and FHR reactivity by nonstress test; each is scored 2 or 0</li><li class="fopt"><span class="mk">B</span>The same five components, each scored 0, 1, or 2</li><li class="fopt"><span class="mk">C</span>Four ultrasound measures only, each scored 2 or 0</li><li class="fopt"><span class="mk">D</span>Amniotic fluid volume, placental grade, fetal weight, tone, and heart rate</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The BPP's components are &quot;AFV, FBMs, fetal movements, and fetal tone determined by ultrasound and fetal heart rate (FHR) reactivity determined by means of the nonstress test (NST).&quot; Table 26.2 scores each variable 2 or 0, so totals are always even and range from 0 to 10. The chapter calls the BPP &quot;a physical examination of the fetus including determination of vital signs.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) allows a score of 1, which the table never awards — a distractor offering a total of 7 or 9 is impossible by construction and is a free elimination.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the biophysical profile</span><span class="chip t2">components and scoring</span></div>
+<div class="stem">37. Which findings earn a score of 2 on the biophysical profile? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>At least one episode of fetal breathing movements lasting at least 30 seconds within a 30-minute observation</li><li class="fopt right"><span class="mk">&#10003;</span>At least three trunk or limb movements in 30 minutes</li><li class="fopt right"><span class="mk">&#10003;</span>At least one episode of active extension with return to flexion, with opening and closing of the hand considered normal tone</li><li class="fopt right"><span class="mk">&#10003;</span>A deepest vertical pocket of amniotic fluid greater than 2 cm</li><li class="fopt"><span class="mk">E</span>A nonreactive nonstress test</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 26.2 awards 2 points for each of those four findings, plus 2 points for a reactive nonstress test.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) scores 0. A nonreactive NST is one of the five ways to lose 2 points, and which point was lost is what a BPP total does not tell you on its own.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the biophysical profile</span><span class="chip t2">the acute and chronic split</span></div>
+<div class="stem">38. Why does the chapter distinguish amniotic fluid volume from the other four biophysical profile components?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Because fluid volume is harder to measure</li><li class="fopt right"><span class="mk">&#10003;</span>Because FHR reactivity, breathing movements, fetal movement, and tone reflect current CNS status, whereas amniotic fluid volume demonstrates the adequacy of placental function over a longer period of time</li><li class="fopt"><span class="mk">C</span>Because fluid volume is scored differently</li><li class="fopt"><span class="mk">D</span>Because fluid volume is optional</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states it directly: &quot;FHR reactivity, FBMs, fetal movement, and fetal tone reflect current CNS status, whereas the AFV demonstrates the adequacy of placental function over a longer period of time.&quot; The BPP is &quot;based on acute and chronic markers of fetal disease.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is true — the chapter concedes that measuring fluid accurately is difficult — and it is not the reason for the distinction. The split is about what each marker reports, not how hard it is to obtain.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the biophysical profile</span><span class="chip t2">the acute and chronic split</span></div>
+<div class="stem">39. A fetus at 35 weeks scores 8 on the biophysical profile, with the 2 points lost on amniotic fluid volume. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>As the desired result, since a score of 8 is normal</li><li class="fopt right"><span class="mk">&#10003;</span>As requiring attention, because the desired result is a BPP of 8 or 10 with a normal amniotic fluid volume, and low fluid indicates placental function failing over time</li><li class="fopt"><span class="mk">C</span>As requiring repeat testing in 1 week regardless</li><li class="fopt"><span class="mk">D</span>As indistinguishable from a score of 8 with normal fluid</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A BPP of 8 or 10 with a normal AFV is the desired test result.&quot; When the lost points are the fluid points, the acute markers are reassuring while the marker of placental function over time is not — and Table 26.3's score-6 row makes the priority explicit: &quot;deliver if oligohydramnios is present.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) treats the total as the whole answer, which is exactly what the acute-chronic split forbids. The number does not say which point was lost.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the biophysical profile</span><span class="chip t2">the acute and chronic split</span></div>
+<div class="stem">40. A fetus at 37 weeks has a biophysical profile score of 4. What does Table 26.3 direct?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Repeat testing in 1 week</li><li class="fopt right"><span class="mk">&#10003;</span>Proceed to birth, since the gestational age is 36 weeks or greater</li><li class="fopt"><span class="mk">C</span>Repeat the score, since the fetus is under 32 weeks</li><li class="fopt"><span class="mk">D</span>Extend testing time to 120 minutes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 26.3 interprets a score of 4 as &quot;suspect chronic asphyxia,&quot; directing that &quot;if ≥36 weeks of gestation, proceed to birth; if &lt;32 weeks of gestation, repeat score.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the management for a score of 0 to 2, where testing is extended to 120 minutes and &quot;if persistent score ≤4, proceed to birth, regardless of gestational age.&quot; That final phrase is the cue that overrides gestational age at the bottom of the ladder.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the biophysical profile</span><span class="chip t2">the modified profile</span></div>
+<div class="stem">41. How does the modified biophysical profile differ from the full biophysical profile, and what is the desired result?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It combines the nonstress test with measurement of a single deepest pocket of amniotic fluid rather than the four-quadrant AFI; the desired result is a reactive NST and a single deepest vertical pocket greater than 2 cm</li><li class="fopt"><span class="mk">B</span>It uses the four-quadrant AFI with the nonstress test</li><li class="fopt"><span class="mk">C</span>It omits the nonstress test and uses only ultrasound measures</li><li class="fopt"><span class="mk">D</span>It scores all five variables in half the time</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The modified profile is &quot;a way to shorten the testing time required for the complete BPP by assessing the components that are most predictive of perinatal outcome&quot; — &quot;the NST, which assesses the current fetal condition,&quot; plus &quot;measurement of the quantity of amniotic fluid, an indicator of placental function over a longer period of time.&quot; The fluid &quot;is determined by measuring a single deepest pocket of fluid instead of using the AFI,&quot; and the desired result is &quot;a reactive NST and a single deepest vertical pocket of amniotic fluid that is more than 2 cm.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) changes the one measurement detail that distinguishes the modified profile, and (C) removes the component that reports the fetus's present condition — leaving only the chronic marker.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mri and nonmedical ultrasonography</span><span class="chip t2">magnetic resonance imaging</span></div>
+<div class="stem">42. How does magnetic resonance imaging compare with computed tomography and ultrasound in obstetrics?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Like CT it gives excellent soft tissue images but uses no ionizing radiation and needs no iodinated contrast; like ultrasound it is noninvasive and multiplanar, but with no interference from skeletal, fatty, or gas-filled structures and no need for a full bladder</li><li class="fopt"><span class="mk">B</span>It uses ionizing radiation but less than CT</li><li class="fopt"><span class="mk">C</span>It requires a full bladder like abdominal ultrasound</li><li class="fopt"><span class="mk">D</span>It cannot evaluate the placenta</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Similar to computed tomography (CT), MRI provides excellent pictures of soft tissue. In contrast to CT, ionizing radiation is not used,&quot; and vascular structures can be evaluated &quot;without injecting an iodinated contrast medium.&quot; Compared with sonography, &quot;no interference occurs from skeletal, fatty, or gas-filled structures, and imaging of deep pelvic structures does not require a full bladder.&quot; It evaluates fetal structure and growth, the placenta, amniotic fluid quantity, and maternal structures.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) attributes CT's central drawback to the modality chosen to avoid it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mri and nonmedical ultrasonography</span><span class="chip t2">magnetic resonance imaging</span></div>
+<div class="stem">43. A woman is scheduled for fetal MRI. What should the nurse tell her about the procedure and its main limitation?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>She will lie supine with one hip elevated if possible, for 20 to 60 minutes, staying perfectly still except for short breaks; the main limitation is fetal motion obscuring anatomic detail, which is only reliably prevented by sedating the woman — an approach reserved for selected cases</li><li class="fopt"><span class="mk">B</span>The procedure takes 5 minutes and requires no stillness</li><li class="fopt"><span class="mk">C</span>The main limitation is a documented decrease in fetal heart rate and movement</li><li class="fopt"><span class="mk">D</span>She must fast for 12 hours beforehand</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The woman &quot;is placed on a table in the supine position with one hip elevated if possible,&quot; and &quot;the procedure may take from 20 to 60 minutes, during which time the woman must be perfectly still except for short breaks.&quot; The fetus &quot;will probably move, which will obscure anatomic details,&quot; and the only reliable solution is a maternal sedative &quot;reserved for selected cases.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) contradicts the chapter's reassurance: &quot;MRI has little effect on the fetus. Concerns that the FHR or fetal movement would decrease have not been supported by evidence.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mri and nonmedical ultrasonography</span><span class="chip t2">keepsake imaging and the nursing role</span></div>
+<div class="stem">44. A woman asks the nurse about having a keepsake three-dimensional ultrasound at a shopping-mall studio. What position do ACOG and AIUM take, and why?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>They strongly discourage the practice, because exposure of the fetus to high-frequency sound waves without a clear medical indication should be avoided, and because casual ultrasonography by unqualified people could give false reassurance or reveal abnormalities in settings not conducive to discussion and follow-up</li><li class="fopt"><span class="mk">B</span>They endorse it as a bonding activity</li><li class="fopt"><span class="mk">C</span>They discourage it because ultrasound uses ionizing radiation</li><li class="fopt"><span class="mk">D</span>They take no position</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Both organizations &quot;have published statements that strongly discourage this practice,&quot; for the two stated reasons. Diagnostic ultrasound exposure &quot;appears to be safe for the fetus,&quot; but &quot;because there is the possibility that unrecognized harm exists, ultrasound should be used only by qualified health professionals to provide medical benefit to clients.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) supplies a mechanism ultrasound does not have — that is CT's problem — and it would make the objection easy to dismiss once the woman learns there is no radiation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">mri and nonmedical ultrasonography</span><span class="chip t2">keepsake imaging and the nursing role</span></div>
+<div class="stem">45. What does the chapter describe as the main role of nurses in ultrasonography and biophysical profile testing?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Performing all scans independently</li><li class="fopt right"><span class="mk">&#10003;</span>Counseling and educating women about the procedure, although a growing number of nurses with additional training perform scans and biophysical profiles in certain centers</li><li class="fopt"><span class="mk">C</span>Interpreting the images and reporting results to the woman</li><li class="fopt"><span class="mk">D</span>Nurses have no role in ultrasound testing</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Although a growing number of nurses with additional training and education perform ultrasound scans and BPPs in certain centers, the main role of nurses is counseling and educating women about the procedure.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) and (D) sit at opposite extremes of a role the chapter describes as expanding but still centered on teaching — and a specially trained nurse may perform a standard examination, which is where the expansion is real.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"categories of high-risk factors","subtopic":"the four categories","stem":"A nurse is classifying risk factors for a pregnant woman. Which definition matches the biophysical category?","options":["Factors that originate within the pregnant woman or fetus and affect the development or functioning of either one or both","Maternal behaviors and adverse life events that have a negative effect on health","Factors arising from the context in which the woman and family live","Hazards in the workplace and the woman's general environment"],"correct":[0],"sata":false,"why":"\"Biophysical risks include factors that originate within the pregnant woman or fetus and affect the development or functioning of either one or both,\" with examples of genetic disorders, nutritional and general health status, and medical or obstetric illnesses.","trap":"(B), (C), and (D) define the psychosocial, sociodemographic, and environmental categories respectively. The phrase \"originate within\" is what makes the biophysical category answerable without memorizing every example.","k":"80rlbmf8icrc"},{"topic":"categories of high-risk factors","subtopic":"the four categories","stem":"In which category does Box 26.1 file smoking, caffeine, alcohol, and drug use?","options":["Biophysical, because they act on the body","Psychosocial, because the category covers maternal behaviors and adverse life events","Sociodemographic","Environmental"],"correct":[1],"sata":false,"why":"Box 26.1 files smoking, caffeine, alcohol, drugs, and psychologic status under psychosocial factors, because \"psychosocial risks consist of maternal behaviors and adverse life events that have a negative effect on the health of the pregnant woman or fetus.\"","trap":"(A) is the intuitive filing — these substances have physical effects — and it is the error a categorization item is built on. Biophysical is reserved for what originates within the woman or fetus, not for anything with a physical mechanism.","k":"t9ta3tw0yszn"},{"topic":"categories of high-risk factors","subtopic":"the four categories","stem":"Which factors does Box 26.1 place in the sociodemographic category? Select all that apply.","options":["Low income, which underlies many other risk factors","Lack of prenatal care, since failure to diagnose and treat complications early is a major risk factor","Age at both ends of the childbearing spectrum","Parity, marital status, and ethnicity","Genetic disorders and ABO incompatibility"],"correct":[0,1,2,3],"sata":true,"why":"The sociodemographic factors are low income, lack of prenatal care, age, parity, marital status, social determinants of health such as rural residence, and ethnicity. Sociodemographic risks \"arise from the context in which the pregnant woman and family live.\"","trap":"(E) is a biophysical genetic consideration, listed in Box 26.1 alongside defective genes, transmissible inherited disorders, chromosomal anomalies, multiple gestation, and large fetal size.","k":"j937j61cv8r2o"},{"topic":"categories of high-risk factors","subtopic":"the four categories","stem":"A woman has three separate identified risk factors, each described as minor. How should the nurse interpret this?","options":["Minor risks can be disregarded individually and collectively","Risk factors are interrelated and cumulative in their effects","Only the most severe factor determines her risk","Risk is determined by counting factors, with three or more defining high risk"],"correct":[1],"sata":false,"why":"The chapter states it in one sentence: \"Risk factors are interrelated and cumulative in their effects.\" Categories exist because risk was formerly \"evaluated only from a medical standpoint,\" and the broader grouping reflects threats to health and pregnancy outcome.","trap":"(D) turns a qualitative principle into a counting rule, which the chapter does not support — the interaction among factors, not the tally, is the point.","k":"1u4p69ub2zecc"},{"topic":"categories of high-risk factors","subtopic":"what the book qualifies","stem":"Which statements reflect the chapter's qualifications about age and ethnicity as risk factors? Select all that apply.","options":["Women at both ends of the childbearing age spectrum have an increased incidence of poor outcomes, but age may not be a risk factor in all cases","The risks to women older than 35 are not from age alone but from considerations such as previous pregnancies, genetics, medical history, lifestyle, nutrition, and prenatal care","Although ethnicity by itself is not a major risk, race is associated with some poor pregnancy outcomes","In the United States, Black women have rates of preterm birth almost twice as high as those of other racial and ethnic groups","Advanced maternal age is an inherent biologic risk that cannot be modified by any other factor"],"correct":[0,1,2,3],"sata":true,"why":"The chapter qualifies both factors deliberately, stating that age \"may not be a risk factor in all cases,\" that older women's risks come from accumulated considerations rather than age alone, and that ethnicity by itself is not a major risk while race is associated with poor outcomes — with the preterm birth disparity stated numerically.","trap":"(E) contradicts the sentence immediately preceding it in the text. Older women do face more chronic hypertension, preeclampsia, diabetes, prolonged labor, cesarean birth, previa, abruption, and death — but the chapter attributes these to what accumulates with age, not to age itself.","k":"1oqejln1au016l"},{"topic":"specific pregnancy problems and risk factors","subtopic":"too much fluid and too little","stem":"Which conditions does Box 26.2 list as risk factors for polyhydramnios? Select all that apply.","options":["Poorly controlled diabetes mellitus","Fetal congenital anomalies such as gastrointestinal obstruction or central nervous system abnormalities","Twin-to-twin transfusion syndrome","Fetomaternal hemorrhage and genetic disorders","Renal agenesis"],"correct":[0,1,2,3],"sata":true,"why":"Box 26.2's polyhydramnios list is poorly controlled diabetes, fetomaternal hemorrhage, fetal congenital anomalies such as gastrointestinal obstruction or CNS abnormalities, genetic disorders, and twin-to-twin transfusion syndrome.","trap":"(E) is on the oligohydramnios list, and the logic separates the two: fluid comes from fetal urine, so renal agenesis drains it, while anomalies that impair swallowing let it accumulate.","k":"1y67dg8kmj8hi"},{"topic":"specific pregnancy problems and risk factors","subtopic":"too much fluid and too little","stem":"Which conditions appear on Box 26.2's oligohydramnios list?","options":["Renal agenesis, prelabor rupture of membranes, prolonged pregnancy, severe growth restriction, maternal hypertensive disorders, maternal dehydration or hypovolemia, and uteroplacental insufficiency","Diabetes, twin-to-twin transfusion, and gastrointestinal obstruction","Advanced maternal age and parental chromosomal rearrangements","Autoimmune disease and multifetal gestation only"],"correct":[0],"sata":false,"why":"Box 26.2 lists renal agenesis (Potter syndrome), prelabor rupture of membranes, prolonged pregnancy, severe intrauterine growth restriction, maternal hypertensive disorders, maternal dehydration or hypovolemia, and uteroplacental insufficiency.","trap":"(C) is the chromosomal abnormality list from the same box — advanced maternal age, parental chromosomal rearrangements, a previous autosomal trisomy, abnormal ultrasound findings, and an increased calculated risk from noninvasive screening.","k":"y3fdoa15y4jv8"},{"topic":"specific pregnancy problems and risk factors","subtopic":"growth restriction by cause","stem":"Box 26.2 splits the risk factors for intrauterine growth restriction into fetal and maternal causes. Which are the fetal causes?","options":["Genetic disorders, teratogenic exposure, fetal infection, and structural abnormalities","Hypertensive disorders and pregestational diabetes","Living at a high altitude and tobacco use","Multifetal gestation and malabsorptive disease"],"correct":[0],"sata":false,"why":"The fetal causes are genetic disorders, teratogenic exposure, fetal infection, and structural abnormalities. The maternal causes are hypertensive disorders, pregestational diabetes, cyanotic heart disease, autoimmune disease, restrictive pulmonary disease, multifetal gestation, malabsorptive disease or malnutrition, living at a high altitude above 10,000 feet, and tobacco or substance use.","trap":"(B), (C) and (D) are all maternal causes, and the maternal list is much the longer of the two — which is what makes a \"which is fetal\" item answerable by elimination if the four fetal items are held.","k":"1prbmwy1f6lxhg"},{"topic":"specific pregnancy problems and risk factors","subtopic":"growth restriction by cause","stem":"A woman lives at 11,000 feet and smokes. Which risk does the chapter connect to these factors?","options":["Polyhydramnios","Intrauterine growth restriction, since living at a high altitude above 10,000 feet and tobacco use are both maternal causes","Chromosomal abnormality","Prelabor rupture of membranes"],"correct":[1],"sata":false,"why":"Box 26.2 lists \"living at a high altitude (>10,000 feet)\" and \"tobacco/substance use/misuse\" among the maternal causes of intrauterine growth restriction. Box 26.1 separately notes that smoking is associated with low-birth-weight infants, higher neonatal mortality, increased miscarriage, and increased prelabor rupture of membranes, with risks aggravated by low socioeconomic status, poor nutrition, and concurrent alcohol use.","trap":"(D) names a real smoking association from a different box, and the stem's altitude detail is what points to growth restriction specifically.","k":"1bhhmrmcn94xo"},{"topic":"antepartum testing goals and indications","subtopic":"why testing is done","stem":"A nurse is explaining why antepartum testing is performed. Which two goals does the chapter name?","options":["To identify fetuses at risk for injury from interrupted oxygenation, and to identify appropriately oxygenated fetuses so unnecessary intervention can be avoided","To determine fetal sex and estimate birth weight","To confirm the estimated date of birth and detect anomalies","To replace routine prenatal care in high-risk pregnancies"],"correct":[0],"sata":false,"why":"The chapter states both goals: \"to identify fetuses at risk for injury caused by acute or chronic interruption of oxygenation so that permanent injury or death might be prevented,\" and \"to identify appropriately oxygenated fetuses so that unnecessary intervention can be avoided.\"","trap":"(D) mistakes the relationship: this chapter concentrates on testing done for high-risk pregnancies in addition to routine testing, not instead of it. The second goal is the one most often forgotten and the reason a low false-negative rate matters.","k":"rb6n2yse4o0k"},{"topic":"antepartum testing goals and indications","subtopic":"why testing is done","stem":"When does antepartum monitoring typically begin, and how are tests selected?","options":["By 32 to 34 weeks of gestation, continuing regularly until birth; tests are selected on the basis of their effectiveness, with results interpreted in light of the complete clinical picture","At 20 weeks in all pregnancies, with tests selected by patient preference","Only after a complication is diagnosed, with tests selected by availability","At 38 weeks, with a single test performed"],"correct":[0],"sata":false,"why":"\"In most cases, monitoring begins by 32 to 34 weeks of gestation and continues regularly until birth,\" and \"assessment tests should be selected on the basis of their effectiveness, and the results must be interpreted in light of the complete clinical picture.\"","trap":"(C) waits for a diagnosis when Box 26.3's indications include conditions known before testing begins — diabetes, hypertension, preeclampsia, lupus, renal disease, cyanotic heart disease.","k":"e35hjg2n0j0q"},{"topic":"antepartum testing goals and indications","subtopic":"why testing is done","stem":"Which findings appear in Box 26.3 as common indications for antepartum testing? Select all that apply.","options":["Diabetes, hypertension, and preeclampsia","Systemic lupus erythematosus, renal disease, and cyanotic heart disease","Fetal growth restriction and oligohydramnios","Late term or postterm gestation, previous stillbirth, and decreased fetal movement","A first pregnancy in a healthy 24-year-old"],"correct":[0,1,2,3],"sata":true,"why":"Box 26.3 lists diabetes, hypertension, preeclampsia, systemic lupus erythematosus, renal disease, cyanotic heart disease, fetal growth restriction, oligohydramnios, late term or postterm gestation, previous stillbirth, and decreased fetal movement.","trap":"(E) describes a pregnancy with no listed indication, and testing every such pregnancy is what the second goal of antepartum testing exists to prevent.","k":"17vi7q4nbb3su"},{"topic":"daily fetal movement counting","subtopic":"how counts are done and read","stem":"A woman asks how to count fetal movements. Which protocols does the chapter describe? Select all that apply.","options":["Counting once a day for 60 minutes","Counting two or three times daily, such as after meals or before bedtime, for 2 hours or until 10 movements are counted","Counting all fetal movements in a 12-hour period each day until a minimum of 10 movements are counted","Counting continuously for 24 hours each day","Counting only when movement feels reduced"],"correct":[0,1,2],"sata":true,"why":"The chapter gives all three protocols and notes that no single one is established as correct. Counting is used because it \"is noninvasive, inexpensive, and simple to understand and usually does not interfere with a daily routine,\" and women \"are able to recognize about 80% to 90% of fetal movements.\"","trap":"(E) makes counting reactive rather than routine, which defeats its purpose — what matters is \"establishing a very low number of daily fetal movements or a trend toward decreased motion.\"","k":"5ukeiw1p325s6"},{"topic":"daily fetal movement counting","subtopic":"how counts are done and read","stem":"What does the chapter identify as the fetal alarm signal?","options":["Fewer than 10 movements in 2 hours","Fetal movements ceasing entirely for 12 hours","Any decrease from the previous day's count","Movements felt only after meals"],"correct":[1],"sata":false,"why":"Apart from a very low count or a downward trend, \"the clinical value of the absolute number of fetal movements has not been established, other than in the situation in which fetal movements cease entirely for 12 hours (the so-called fetal alarm signal).\"","trap":"(A) is a counting endpoint from one of the protocols, not an alarm criterion. Not reaching 10 in 2 hours prompts continued counting or evaluation; total cessation for 12 hours is the named emergency.","k":"1fxh9ua1t6rzxw"},{"topic":"daily fetal movement counting","subtopic":"how counts are done and read","stem":"A woman at 32 weeks reports decreased fetal activity. What does the chapter say is usually done?","options":["Reassurance and instructions to continue counting","A nonstress test","An immediate biophysical profile","Admission for continuous monitoring"],"correct":[1],"sata":false,"why":"\"When a pregnant woman reports decreased fetal activity, a nonstress test is usually performed.\"","trap":"(A) is the answer that feels supportive and is the one the chapter's decreased-movement indication in Box 26.3 rules out. The report itself is an indication for testing.","k":"wyy4n01hun5k2"},{"topic":"daily fetal movement counting","subtopic":"what reduces counts without meaning compromise","stem":"Which factors reduce fetal movement or its perception without indicating fetal compromise? Select all that apply.","options":["The fetal sleep cycle","Medications that depress the central nervous system","Drinking alcohol or smoking a cigarette","Maternal obesity, which decreases perception of fetal movements","Approaching term, when movements normally decrease"],"correct":[0,1,2,3],"sata":true,"why":"The Safety Alert states that fetal movements \"are usually not present during the fetal sleep cycle; they may be reduced temporarily if the woman is taking medications that depress the central nervous system, drinking alcohol, or smoking a cigarette,\" and \"obesity decreases perception of fetal movements.\"","trap":"(E) is the lay belief the same alert denies in one sentence: fetal movements \"do not decrease as the woman nears term.\" Reassuring a 39-week woman that fewer movements are expected is the wrong answer.","k":"1qt8rrxir7p0f"},{"topic":"daily fetal movement counting","subtopic":"what reduces counts without meaning compromise","stem":"A woman asks why counting fetal movements is worth doing if it is so simple. What does the chapter say about its evidence base?","options":["It has been proven to prevent perinatal mortality","Research has failed to conclusively demonstrate that fetal movement counting is of benefit in preventing perinatal mortality, though the presence of movements is generally a reassuring sign of fetal health and decreased activity is noted in response to hypoxemia","It is more accurate than any other antepartum test","It has been abandoned in current practice"],"correct":[1],"sata":false,"why":"\"Research has failed to conclusively demonstrate that fetal movement counting is of benefit in preventing perinatal mortality,\" even though \"the presence of movements is generally a reassuring sign of fetal health\" and \"decreased fetal activity is noted in response to hypoxemia.\"","trap":"(A) overstates the evidence for a test the chapter presents honestly, and (D) discards a method that remains standard teaching — including the significance of movements, the counting procedure, how to record findings, and when to notify the provider.","k":"1y42vl11c3k73f"},{"topic":"ultrasonography routes and levels","subtopic":"transvaginal versus abdominal","stem":"A woman is scheduled for a transvaginal ultrasound at 8 weeks. What preparation is needed, and why is this route chosen?","options":["A full bladder is required to displace the uterus upward","No full bladder is needed; the transvaginal route is optimal in the first trimester and allows pelvic anatomy to be evaluated in greater detail with earlier diagnosis of intrauterine pregnancy","A full bladder is needed only if the woman is obese","Bowel preparation is required"],"correct":[1],"sata":false,"why":"The transvaginal approach \"does not require that the woman have a full bladder,\" is \"optimally used in the first trimester to detect ectopic pregnancies, monitor the developing embryo, help identify abnormalities, and help establish gestational age,\" and \"allows pelvic anatomic features to be evaluated in greater detail and intrauterine pregnancy to be diagnosed earlier.\"","trap":"(A) is the preparation for an abdominal scan, where a full bladder displaces the uterus upward for a better image — and giving that instruction before a transvaginal scan is an uncomfortable and pointless error.","k":"qvpj6c9jz916"},{"topic":"ultrasonography routes and levels","subtopic":"transvaginal versus abdominal","stem":"Why might a transvaginal scan be chosen for a woman with obesity later in pregnancy?","options":["Because it is faster","Because it is especially useful in obese women whose thick abdominal layers cannot be penetrated adequately","Because abdominal scanning is contraindicated in obesity","Because it requires less gel"],"correct":[1],"sata":false,"why":"The transvaginal route is \"especially useful in obese women whose thick abdominal layers cannot be penetrated adequately.\" The abdominal approach is \"more useful after the first trimester when the pregnant uterus becomes an abdominal organ,\" and it allows the screen to be positioned so the woman and her partner can watch.","trap":"(C) overstates a practical limitation into a contraindication. The procedure itself \"is not physically painful, although the woman feels pressure as the probe is moved,\" and a protective cover and water-soluble gel are used.","k":"1f7wcgu12ylx2s"},{"topic":"ultrasonography routes and levels","subtopic":"levels and types of scans","stem":"A provider performs a bedside scan in the labor unit solely to determine fetal presentation. Which level of ultrasonography is this?","options":["Standard, or basic","Limited","Specialized, or targeted","Four-dimensional"],"correct":[1],"sata":false,"why":"\"Limited examinations are performed to determine a specific piece of information about the pregnancy such as identifying fetal presentation during labor or estimating AFV,\" and they are \"usually performed by the woman's obstetric health care provider in the office or clinic or in the labor and birth unit.\"","trap":"(A) describes the full survey — fetal presentation, amniotic fluid volume, cardiac activity, placental position, growth parameters, number of fetuses, and an anatomic survey — which a specially trained nurse may perform. \"Limited\" describes the question asked, not the equipment used.","k":"1ulhqf71e7rpkx"},{"topic":"ultrasonography routes and levels","subtopic":"levels and types of scans","stem":"When is a specialized, or targeted, ultrasound examination indicated, and who performs it?","options":["When it is suspected that a woman is carrying an anatomically or physiologically abnormal fetus, performed by highly trained and experienced personnel","At every first prenatal visit, performed by a nurse with special training","Whenever a woman requests images of her fetus","Only during labor"],"correct":[0],"sata":false,"why":"\"Specialized (also called detailed) or targeted examinations are performed when it is suspected that a woman is carrying an anatomically or physiologically abnormal fetus,\" by \"highly trained and experienced personnel,\" with indications of \"abnormal history or laboratory findings or abnormal results of a previous standard or limited ultrasound examination.\"","trap":"(C) describes keepsake imaging, which ACOG and AIUM \"strongly discourage.\"","k":"1pgapnp17m2l1r"},{"topic":"ultrasonography routes and levels","subtopic":"levels and types of scans","stem":"Which descriptions of ultrasound scan types match Box 26.4? Select all that apply.","options":["Two-dimensional scanning sends sound waves straight down and produces a flat image in black, white, or shades of gray, and is the standard medical scan used in pregnancy","Three-dimensional scanning sends sound waves at different angles and adds depth, usually displayed in sepia tones","Four-dimensional scanning adds time, with images recorded and played back in succession so the fetus is viewed in real time","Three-dimensional images are often requested by families simply for their own enjoyment","Four-dimensional scanning replaces two-dimensional scanning for all diagnostic purposes"],"correct":[0,1,2,3],"sata":true,"why":"Box 26.4 describes all three scan types as listed, names the two-dimensional scan as \"the standard medical scan used in pregnancy,\" and notes that three-dimensional images \"are also often requested by pregnant women and families simply for their own enjoyment.\"","trap":"(E) promotes a newer technology over the one the box names as standard, and it sits uneasily beside the chapter's caution that ultrasound \"should be used only by qualified health professionals to provide medical benefit to clients.\"","k":"1b5jn4lnuqch7"},{"topic":"gestational age dating and fetal growth","subtopic":"dating measurements","stem":"A woman has an ultrasound at 9 weeks to establish gestational age. Which measurement is used, and how does it rank?","options":["Crown-rump length, or maximum embryo length, which is commonly accepted as the most accurate method of determining gestational age using ultrasound","Biparietal diameter, which is the most accurate at any gestational age","Femur length alone","Abdominal circumference alone"],"correct":[0],"sata":false,"why":"In the first trimester, the measurement is \"the maximum embryo length or the crown-rump length,\" and \"early embryo measurement is commonly accepted as the most accurate method of determining gestational age using ultrasound.\"","trap":"(B) names a real measurement used at the wrong time. After the first trimester, dating uses \"the biparietal diameter (BPD), head circumference, abdominal circumference, and femur length,\" and \"gestational age calculation using a combination of these measurements is the most accepted method of ultrasound dating after the first trimester.\"","k":"1a779xkon5kla"},{"topic":"gestational age dating and fetal growth","subtopic":"dating measurements","stem":"When can fetal cardiac activity first be demonstrated, and what confirms fetal death on ultrasound?","options":["At about 6 weeks of gestation by transvaginal ultrasound; fetal death is confirmed by lack of heart motion along with fetal scalp edema, maceration, and overlap of the cranial bones","At 12 weeks by abdominal ultrasound; fetal death is confirmed by absent movement alone","At 16 weeks; fetal death is confirmed by a single absent heartbeat","At 10 weeks; fetal death cannot be confirmed by ultrasound"],"correct":[0],"sata":false,"why":"\"Fetal cardiac activity can be demonstrated by about 6 weeks of gestation using transvaginal ultrasound,\" and \"fetal death can be confirmed by lack of heart motion along with the presence of fetal scalp edema and maceration and overlap of the cranial bones.\" Good views of cardiac anatomy are possible in most women at 13 weeks when the fetus is favorably positioned.","trap":"(B) relies on absent movement, which the kick-count section already establishes is unreliable on its own.","k":"1iqmbzi1xb4qj8"},{"topic":"gestational age dating and fetal growth","subtopic":"growth restriction and macrosomia","stem":"An ultrasound shows a fetus that is small in all parameters — head, abdomen, and limbs alike. What does this pattern indicate?","options":["Asymmetric growth restriction from placental insufficiency","Symmetric growth restriction, reflecting a chronic or long-standing insult such as low genetic growth potential, intrauterine infection, chromosomal anomaly, maternal undernutrition, or heavy smoking","Macrosomia","Inaccurate dating only"],"correct":[1],"sata":false,"why":"\"Symmetric IUGR reflects a chronic or long-standing insult\" and the fetus \"is small in all parameters,\" with the causes named as low genetic growth potential, intrauterine infection, chromosomal anomaly, maternal undernutrition, or heavy smoking.","trap":"(A) is the pattern in which \"head and body growth do not match,\" which \"suggests an acute or late-occurring deprivation such as placental insufficiency.\" The cue is that a late insult spares the head.","k":"osadx31vdmcjt"},{"topic":"gestational age dating and fetal growth","subtopic":"growth restriction and macrosomia","stem":"A fetus at 34 weeks has a normal head circumference but an abdominal circumference well below expected, in a woman with chronic hypertension. What pattern is this, and what does it suggest?","options":["Symmetric growth restriction from a chromosomal anomaly","Asymmetric growth restriction, suggesting an acute or late-occurring deprivation such as placental insufficiency resulting from hypertension, renal disease, or cardiovascular disease","Macrosomia","Polyhydramnios"],"correct":[1],"sata":false,"why":"\"Asymmetric growth suggests an acute or late-occurring deprivation such as placental insufficiency,\" and the causes named are hypertension, renal disease, and cardiovascular disease — the mother's history in this stem.","trap":"(A) is the mirror error of the previous item, and the two are separated by the measurements rather than by the history: symmetric is small everywhere, asymmetric spares the head.","k":"14iyanzjrehsh"},{"topic":"gestational age dating and fetal growth","subtopic":"growth restriction and macrosomia","stem":"What does the chapter say about fetal growth extremes and their consequences?","options":["Reduced fetal growth is still one of the most frequent conditions associated with stillbirth, and macrosomic infants are at increased risk for traumatic injury and asphyxia during birth","Growth restriction is no longer associated with stillbirth","Macrosomia carries no birth risk if the pelvis is adequate","Macrosomia is defined as an estimated weight of 3500 g or more"],"correct":[0],"sata":false,"why":"\"Reduced fetal growth is still one of the most frequent conditions associated with stillbirth,\" and \"macrosomic infants are at increased risk for traumatic injury and asphyxia during birth.\" Macrosomia is an \"estimated weight of 4000 g or more,\" and it \"also may be characterized as symmetric or asymmetric.\"","trap":"(D) lowers the threshold by 500 g, and serial measurements of biparietal diameter, limb length, and abdominal circumference are what \"allow differentiation among size discrepancies resulting from inaccurate dates, true IUGR, and macrosomia.\"","k":"curzgf17soqot"},{"topic":"nuchal translucency and placental position","subtopic":"what an elevated measurement means","stem":"A woman has nuchal translucency screening. When is it performed, and what measurement is abnormal?","options":["Between 10 and 14 weeks of gestation, with a fluid collection greater than 3 mm considered abnormal","Between 16 and 20 weeks, with more than 5 mm abnormal","In the third trimester, with any measurable fluid abnormal","At 6 weeks, with more than 1 mm abnormal"],"correct":[0],"sata":false,"why":"Nuchal translucency screening \"uses ultrasound measurement of fluid in the nape of the fetal neck between 10 and 14 weeks of gestation to identify possible fetal abnormalities,\" and \"a fluid collection greater than 3 mm is considered abnormal.\"","trap":"(B) borrows a second-trimester window that belongs to other screening. The chapter also stresses that \"mandatory training and quality assurance for professionals who perform NT measurement is critical to ensure accurate results.\"","k":"dim4vwsnjvgq"},{"topic":"nuchal translucency and placental position","subtopic":"what an elevated measurement means","stem":"An elevated nuchal translucency is found with normal maternal serum markers. What does the chapter say this indicates?","options":["An increased risk for trisomies 13, 18, and 21","An increased risk for isolated anomalies such as congenital heart defects, abdominal wall defects, and diaphragmatic hernia","A definitive diagnosis of a chromosomal abnormality","No increased risk of any kind"],"correct":[1],"sata":false,"why":"Combined with abnormal maternal serum markers, an elevated nuchal translucency \"indicates a possible increased risk of certain chromosomal abnormalities in the fetus including trisomies 13, 18, and 21.\" Alone, it \"indicates an increased risk for isolated anomalies such as congenital heart defects, abdominal wall defects, and diaphragmatic hernia,\" and a targeted scan with possible fetal echocardiography should be offered in the second trimester.","trap":"(A) is the correct answer for the combined finding, and the modifier — with or without abnormal serum markers — is what changes the meaning.","k":"1eixfng1gilawa"},{"topic":"nuchal translucency and placental position","subtopic":"what an elevated measurement means","stem":"An ultrasound reports an absent nasal bone, echogenic bowel, and pyelectasis. How should these findings be described to the woman?","options":["As diagnostic of trisomy 21","As soft markers only, which are not diagnostic for the anomaly; a positive screen leads to genetic counseling and an offered invasive test for fetal karyotyping, which can provide a definitive diagnosis","As normal variants of no significance","As indications for immediate birth"],"correct":[1],"sata":false,"why":"The soft markers for trisomy 21 are \"an absent nasal bone, shortened femur or humerus, echogenic intracardiac focus, echogenic bowel, pyelectasis ... and cerebral ventriculomegaly,\" and \"these findings are considered soft markers only; they are not diagnostic for the anomaly.\" A positive screen means referral for genetic counseling and an offered invasive test for karyotyping.","trap":"(A) converts screening into diagnosis, which is the distinction this entire section is built on — and the word \"markers\" is the cue.","k":"g373c2fwullg"},{"topic":"nuchal translucency and placental position","subtopic":"placental location","stem":"An ultrasound at 18 weeks shows the placental edge 1.5 cm from the internal cervical os. What should the nurse tell the woman?","options":["That she has placenta previa and will require cesarean birth","That repeated scans will be performed as pregnancy progresses, and that at least 90% of placentas identified earlier in pregnancy as previa or low lying ultimately resolve by the third trimester","That no follow-up is needed","That she must be placed on bed rest for the remainder of pregnancy"],"correct":[1],"sata":false,"why":"After 16 weeks, an edge \"at least 2 cm from the cervix\" is normal; \"if the placental edge is less than 2 cm from the cervix, repeated ultrasound scans should be performed as pregnancy progresses.\" And \"at least 90% of placentas identified earlier in pregnancy as previa, or low lying, ultimately resolve by the third trimester,\" because the placenta grows toward the fundus where the blood supply is better and the lower uterine segment elongates.","trap":"(A) converts a second-trimester finding into a delivery plan, which is what the 90% figure exists to prevent.","k":"1yjj8fs1paj646"},{"topic":"doppler and amniotic fluid volume","subtopic":"doppler findings","stem":"A Doppler study shows absent end-diastolic flow in the umbilical artery. What has this finding been associated with?","options":["Fetal growth restriction","Moderate to severe fetal anemia","Polyhydramnios","Normal fetal adaptation"],"correct":[0],"sata":false,"why":"\"Severe restriction of umbilical artery blood flow as indicated by absent or reversed flow during diastole has been associated with fetal growth restriction.\" Doppler analysis \"uses systolic/diastolic flow ratios and resistance indices to estimate blood flow in various arteries,\" providing \"an indication of fetal adaptation and reserve.\"","trap":"(B) belongs to a different vessel: \"significantly increased peak systolic velocity in the middle cerebral artery has been found to predict moderate to severe fetal anemia.\" Abnormal maternal uterine artery waveforms are also used to predict growth restriction.","k":"p879yfucqmyx"},{"topic":"doppler and amniotic fluid volume","subtopic":"doppler findings","stem":"What value does the chapter attribute to Doppler blood flow analysis?","options":["It is of value in reducing perinatal mortality and unnecessary obstetric interventions in fetuses with growth restriction","It replaces the biophysical profile","It is used only in the first trimester","It has no established clinical value"],"correct":[0],"sata":false,"why":"Doppler blood flow analysis is \"of value in reducing perinatal mortality and unnecessary obstetric interventions in fetuses with growth restriction\" — which maps onto both stated goals of antepartum testing at once.","trap":"(B) overstates one test's role. Each test in this chapter answers a particular question, and the BPP is the one that answers both the acute and the chronic question.","k":"1ihxe0sg5lu4y"},{"topic":"doppler and amniotic fluid volume","subtopic":"measuring amniotic fluid","stem":"An amniotic fluid index of 4 cm is reported. How should this be interpreted, and what would the same number mean as a single deepest pocket?","options":["An AFI under 5 cm indicates oligohydramnios; as a single deepest pocket, 4 cm would be normal, since oligohydramnios by that method is less than 2 cm","An AFI of 4 cm is normal; a single pocket of 4 cm indicates oligohydramnios","Both indicate polyhydramnios","Both indicate oligohydramnios"],"correct":[0],"sata":false,"why":"\"An AFI of less than 5 cm indicates oligohydramnios,\" where the AFI sums \"the vertical depths (in centimeters) of the largest pocket of amniotic fluid in all four quadrants.\" By the single-pocket method, oligohydramnios is a maximum vertical pocket of less than 2 cm, and polyhydramnios is a pocket greater than 8 cm; by AFI, polyhydramnios is 25 cm or more.","trap":"(D) applies one system's threshold to the other's number, which is the manufactured error these two measurement systems invite.","k":"1qfnr6e9jxaes"},{"topic":"doppler and amniotic fluid volume","subtopic":"measuring amniotic fluid","stem":"Which subjective findings does the chapter associate with abnormal amniotic fluid volume? Select all that apply.","options":["Oligohydramnios: a fundal height small for gestational age and a fetus that is easily palpated","Polyhydramnios: a fundal height large for gestational age and a fetus that cannot easily be palpated or that is ballotable","Oligohydramnios is associated with renal agenesis, prelabor rupture of membranes, and severe growth restriction","Polyhydramnios is associated with gastrointestinal and CNS anomalies, twin-to-twin transfusion syndrome, infections, and placental abnormalities","Ultrasound measurement of amniotic fluid volume is highly accurate and reliably predicts abnormal values"],"correct":[0,1,2,3],"sata":true,"why":"The chapter gives both sets of subjective findings and both association lists.","trap":"(E) reverses the chapter's own caveat: \"accurate measurement of AFV using ultrasound is difficult, and evidence indicates that the estimates produced poorly predict abnormal values. However, the measurement is still frequently performed in clinical practice.\"","k":"q6dw1h16g8kmf"},{"topic":"the biophysical profile","subtopic":"components and scoring","stem":"Which five components make up the biophysical profile, and how is each scored?","options":["Amniotic fluid volume, fetal breathing movements, fetal movements, fetal tone, and FHR reactivity by nonstress test; each is scored 2 or 0","The same five components, each scored 0, 1, or 2","Four ultrasound measures only, each scored 2 or 0","Amniotic fluid volume, placental grade, fetal weight, tone, and heart rate"],"correct":[0],"sata":false,"why":"The BPP's components are \"AFV, FBMs, fetal movements, and fetal tone determined by ultrasound and fetal heart rate (FHR) reactivity determined by means of the nonstress test (NST).\" Table 26.2 scores each variable 2 or 0, so totals are always even and range from 0 to 10. The chapter calls the BPP \"a physical examination of the fetus including determination of vital signs.\"","trap":"(B) allows a score of 1, which the table never awards — a distractor offering a total of 7 or 9 is impossible by construction and is a free elimination.","k":"1ai21tw1r1wxce"},{"topic":"the biophysical profile","subtopic":"components and scoring","stem":"Which findings earn a score of 2 on the biophysical profile? Select all that apply.","options":["At least one episode of fetal breathing movements lasting at least 30 seconds within a 30-minute observation","At least three trunk or limb movements in 30 minutes","At least one episode of active extension with return to flexion, with opening and closing of the hand considered normal tone","A deepest vertical pocket of amniotic fluid greater than 2 cm","A nonreactive nonstress test"],"correct":[0,1,2,3],"sata":true,"why":"Table 26.2 awards 2 points for each of those four findings, plus 2 points for a reactive nonstress test.","trap":"(E) scores 0. A nonreactive NST is one of the five ways to lose 2 points, and which point was lost is what a BPP total does not tell you on its own.","k":"1sg2yz2vbuq4s"},{"topic":"the biophysical profile","subtopic":"the acute and chronic split","stem":"Why does the chapter distinguish amniotic fluid volume from the other four biophysical profile components?","options":["Because fluid volume is harder to measure","Because FHR reactivity, breathing movements, fetal movement, and tone reflect current CNS status, whereas amniotic fluid volume demonstrates the adequacy of placental function over a longer period of time","Because fluid volume is scored differently","Because fluid volume is optional"],"correct":[1],"sata":false,"why":"The chapter states it directly: \"FHR reactivity, FBMs, fetal movement, and fetal tone reflect current CNS status, whereas the AFV demonstrates the adequacy of placental function over a longer period of time.\" The BPP is \"based on acute and chronic markers of fetal disease.\"","trap":"(A) is true — the chapter concedes that measuring fluid accurately is difficult — and it is not the reason for the distinction. The split is about what each marker reports, not how hard it is to obtain.","k":"1kt5nw63ul1eo"},{"topic":"the biophysical profile","subtopic":"the acute and chronic split","stem":"A fetus at 35 weeks scores 8 on the biophysical profile, with the 2 points lost on amniotic fluid volume. How should this be interpreted?","options":["As the desired result, since a score of 8 is normal","As requiring attention, because the desired result is a BPP of 8 or 10 with a normal amniotic fluid volume, and low fluid indicates placental function failing over time","As requiring repeat testing in 1 week regardless","As indistinguishable from a score of 8 with normal fluid"],"correct":[1],"sata":false,"why":"\"A BPP of 8 or 10 with a normal AFV is the desired test result.\" When the lost points are the fluid points, the acute markers are reassuring while the marker of placental function over time is not — and Table 26.3's score-6 row makes the priority explicit: \"deliver if oligohydramnios is present.\"","trap":"(D) treats the total as the whole answer, which is exactly what the acute-chronic split forbids. The number does not say which point was lost.","k":"nwv3cresc1xd"},{"topic":"the biophysical profile","subtopic":"the acute and chronic split","stem":"A fetus at 37 weeks has a biophysical profile score of 4. What does Table 26.3 direct?","options":["Repeat testing in 1 week","Proceed to birth, since the gestational age is 36 weeks or greater","Repeat the score, since the fetus is under 32 weeks","Extend testing time to 120 minutes"],"correct":[1],"sata":false,"why":"Table 26.3 interprets a score of 4 as \"suspect chronic asphyxia,\" directing that \"if ≥36 weeks of gestation, proceed to birth; if \u003c32 weeks of gestation, repeat score.\"","trap":"(D) is the management for a score of 0 to 2, where testing is extended to 120 minutes and \"if persistent score ≤4, proceed to birth, regardless of gestational age.\" That final phrase is the cue that overrides gestational age at the bottom of the ladder.","k":"uq7ufo1pq3eu"},{"topic":"the biophysical profile","subtopic":"the modified profile","stem":"How does the modified biophysical profile differ from the full biophysical profile, and what is the desired result?","options":["It combines the nonstress test with measurement of a single deepest pocket of amniotic fluid rather than the four-quadrant AFI; the desired result is a reactive NST and a single deepest vertical pocket greater than 2 cm","It uses the four-quadrant AFI with the nonstress test","It omits the nonstress test and uses only ultrasound measures","It scores all five variables in half the time"],"correct":[0],"sata":false,"why":"The modified profile is \"a way to shorten the testing time required for the complete BPP by assessing the components that are most predictive of perinatal outcome\" — \"the NST, which assesses the current fetal condition,\" plus \"measurement of the quantity of amniotic fluid, an indicator of placental function over a longer period of time.\" The fluid \"is determined by measuring a single deepest pocket of fluid instead of using the AFI,\" and the desired result is \"a reactive NST and a single deepest vertical pocket of amniotic fluid that is more than 2 cm.\"","trap":"(B) changes the one measurement detail that distinguishes the modified profile, and (C) removes the component that reports the fetus's present condition — leaving only the chronic marker.","k":"10spf031f3yq0l"},{"topic":"mri and nonmedical ultrasonography","subtopic":"magnetic resonance imaging","stem":"How does magnetic resonance imaging compare with computed tomography and ultrasound in obstetrics?","options":["Like CT it gives excellent soft tissue images but uses no ionizing radiation and needs no iodinated contrast; like ultrasound it is noninvasive and multiplanar, but with no interference from skeletal, fatty, or gas-filled structures and no need for a full bladder","It uses ionizing radiation but less than CT","It requires a full bladder like abdominal ultrasound","It cannot evaluate the placenta"],"correct":[0],"sata":false,"why":"\"Similar to computed tomography (CT), MRI provides excellent pictures of soft tissue. In contrast to CT, ionizing radiation is not used,\" and vascular structures can be evaluated \"without injecting an iodinated contrast medium.\" Compared with sonography, \"no interference occurs from skeletal, fatty, or gas-filled structures, and imaging of deep pelvic structures does not require a full bladder.\" It evaluates fetal structure and growth, the placenta, amniotic fluid quantity, and maternal structures.","trap":"(B) attributes CT's central drawback to the modality chosen to avoid it.","k":"hg41svxhwiex"},{"topic":"mri and nonmedical ultrasonography","subtopic":"magnetic resonance imaging","stem":"A woman is scheduled for fetal MRI. What should the nurse tell her about the procedure and its main limitation?","options":["She will lie supine with one hip elevated if possible, for 20 to 60 minutes, staying perfectly still except for short breaks; the main limitation is fetal motion obscuring anatomic detail, which is only reliably prevented by sedating the woman — an approach reserved for selected cases","The procedure takes 5 minutes and requires no stillness","The main limitation is a documented decrease in fetal heart rate and movement","She must fast for 12 hours beforehand"],"correct":[0],"sata":false,"why":"The woman \"is placed on a table in the supine position with one hip elevated if possible,\" and \"the procedure may take from 20 to 60 minutes, during which time the woman must be perfectly still except for short breaks.\" The fetus \"will probably move, which will obscure anatomic details,\" and the only reliable solution is a maternal sedative \"reserved for selected cases.\"","trap":"(C) contradicts the chapter's reassurance: \"MRI has little effect on the fetus. Concerns that the FHR or fetal movement would decrease have not been supported by evidence.\"","k":"qkz9nc17v5yge"},{"topic":"mri and nonmedical ultrasonography","subtopic":"keepsake imaging and the nursing role","stem":"A woman asks the nurse about having a keepsake three-dimensional ultrasound at a shopping-mall studio. What position do ACOG and AIUM take, and why?","options":["They strongly discourage the practice, because exposure of the fetus to high-frequency sound waves without a clear medical indication should be avoided, and because casual ultrasonography by unqualified people could give false reassurance or reveal abnormalities in settings not conducive to discussion and follow-up","They endorse it as a bonding activity","They discourage it because ultrasound uses ionizing radiation","They take no position"],"correct":[0],"sata":false,"why":"Both organizations \"have published statements that strongly discourage this practice,\" for the two stated reasons. Diagnostic ultrasound exposure \"appears to be safe for the fetus,\" but \"because there is the possibility that unrecognized harm exists, ultrasound should be used only by qualified health professionals to provide medical benefit to clients.\"","trap":"(C) supplies a mechanism ultrasound does not have — that is CT's problem — and it would make the objection easy to dismiss once the woman learns there is no radiation.","k":"12k4q5p1km7maj"},{"topic":"mri and nonmedical ultrasonography","subtopic":"keepsake imaging and the nursing role","stem":"What does the chapter describe as the main role of nurses in ultrasonography and biophysical profile testing?","options":["Performing all scans independently","Counseling and educating women about the procedure, although a growing number of nurses with additional training perform scans and biophysical profiles in certain centers","Interpreting the images and reporting results to the woman","Nurses have no role in ultrasound testing"],"correct":[1],"sata":false,"why":"\"Although a growing number of nurses with additional training and education perform ultrasound scans and BPPs in certain centers, the main role of nurses is counseling and educating women about the procedure.\"","trap":"(A) and (D) sit at opposite extremes of a role the chapter describes as expanding but still centered on teaching — and a specially trained nurse may perform a standard examination, which is where the expansion is real.","k":"qud7lw1mpyjfe"}];
+const TITLE = "Chapter 26 — NUR 4225 05 / NUR 4334 03 — Childbearing Family - practicum (4225) + didactic (4334)";
+const SUBTITLE = "Chapter 26";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4225-4334-childbearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

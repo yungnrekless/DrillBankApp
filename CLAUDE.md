@@ -15,7 +15,7 @@ Each class lives under `courses/<slug>/`:
 - `courses/<slug>/data/` — the three JSON files below
 
 There is no top-level `data/` or `drills/` any more. Current courses, as of
-2026-09-14:
+2026-09-15:
 
 | Slug | Course | Ch | Questions | Topics | Attempts |
 |---|---|---|---|---|---|
@@ -23,7 +23,7 @@ There is no top-level `data/` or `drills/` any more. Current courses, as of
 | `nur4353-community-and-culture` | NUR 4353 Community/Public Health | 21 | 802 | 99 | 0 |
 | `nur4351-research-consumer` | NUR 4351 Consumer of Research | 14 | 404 | 92 | none |
 | `nur4226-4339-childrearing` | NUR 4226/4339 Childrearing Family | 31 | 1394 | 315 | none |
-| `nur4225-4334-childbearing` | NUR 4225/4334 Childbearing Family | 9 | 433 | 95 | 8 |
+| `nur4225-4334-childbearing` | NUR 4225/4334 Childbearing Family | 28 | 1363 | 301 | 8 |
 
 **The Attempts column gates one real operation.** Where it is `none` or `0`,
 `questions.json` is still derivable from `drills/*.md` and a delete-and-reimport
@@ -32,8 +32,9 @@ them, so import additively and never regenerate — see "Never renumber or
 regenerate qids" below. That column only ever grows, so check it rather than
 assuming.
 
-Both childbearing and childrearing are partial: their chapter counts are what
-has been authored so far, not what the blueprint covers.
+Childbearing is partial: its chapter count is what has been authored so far,
+not what the blueprint covers. Childrearing is complete at 31 chapters —
+chapters 7, 8 and 9 were omitted on purpose and will not be added.
 
 The slug is shared with two sibling tools in the same parent directory —
 `factbank-tool/courses/<slug>/factbanks/` and `study-guides/<slug>/` — and
