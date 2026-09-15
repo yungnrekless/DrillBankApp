@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 16 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 16</div><h1>Chapter 16 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood obesity screening and classification</span><span class="chip t2">general</span></div>
+<div class="stem">1. A 9-year-old girl's body mass index falls at the 91st percentile for her age and sex. How should the nurse classify this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Overweight, which is a body mass index at the 85th to 94th percentile</li><li class="fopt"><span class="mk">B</span>Obesity, which is a body mass index at or above the 95th percentile</li><li class="fopt"><span class="mk">C</span>Normal weight, since the value is below the 95th percentile</li><li class="fopt"><span class="mk">D</span>Severe obesity, requiring immediate referral for bariatric evaluation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Overweight is a body mass index at the &quot;85th to 94th percentile,&quot; age- and gender-specific; obesity is a body mass index &quot;at or above the 95th percentile for children of the same age and sex.&quot; Body mass index is &quot;the most accurate method for screening children and adolescents for obesity,&quot; calculated as weight in kilograms divided by height in meters squared.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the adjacent band, and these two percentile ranges are the single most swappable pair of numbers in the chapter. Note the wording that decides borderline cases: obesity is &quot;at or above&quot; the 95th percentile, so a child exactly at the 95th percentile is obese rather than overweight.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood obesity screening and classification</span><span class="chip t2">general</span></div>
+<div class="stem">2. A 12-year-old competitive swimmer has a body mass index at the 96th percentile but very low measured body fat. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A subset of adolescents such as athletes may have a high body mass index because of increased muscle mass rather than fat mass, and clinical judgment is needed</li><li class="fopt"><span class="mk">B</span>The body mass index is diagnostic and the child should be treated for obesity</li><li class="fopt"><span class="mk">C</span>Body mass index in children uses fixed cut-points, so athletic status is irrelevant</li><li class="fopt"><span class="mk">D</span>Body mass index is not a useful screening tool in any child</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A subset of adolescents (e.g., athletes) may have a high BMI because of increased muscle mass rather than fat mass. Clinical judgment is needed.&quot; Body mass index remains &quot;currently considered the best method to assess weight in children and adolescents,&quot; but in children it &quot;varies to accommodate age- and gender-specific changes in growth,&quot; unlike the fixed adult definitions.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) imports the adult framework, where &quot;BMI definitions are fixed measures without regard for sex and age.&quot; Pediatric body mass index is interpreted by percentile precisely because the same raw number means different things at different ages.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood obesity screening and classification</span><span class="chip t2">general</span></div>
+<div class="stem">3. A parent of an obese 10-year-old asks whether a thyroid problem or a slow metabolism explains the weight. Which response reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fewer than 5% of childhood obesity is attributable to an underlying disease, and there is little evidence to support a relationship between obesity and low metabolism; energy imbalance is the usual explanation</li><li class="fopt"><span class="mk">B</span>Endocrine disease accounts for the majority of childhood obesity</li><li class="fopt"><span class="mk">C</span>A low basal metabolic rate is the most common identified cause</li><li class="fopt"><span class="mk">D</span>No endocrine condition ever causes childhood obesity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Fewer than 5% of childhood obesity has an underlying disease, and there is &quot;little evidence to support a relationship between obesity and low metabolism.&quot; Hypothyroidism, Cushing-type states, and hypothalamic damage do occur but are the minority.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the explanation families most often arrive with, and the chapter addresses it directly. (D) overcorrects — organic causes exist and are worth evaluating when the history suggests them; they are simply not where the answer usually lies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood obesity screening and classification</span><span class="chip t2">general</span></div>
+<div class="stem">4. A child with hypotonia, short stature, hypogonadism, almond-shaped eyes, and relentless food seeking is being evaluated for obesity. Which syndrome does this suggest, and what does it imply for management?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Prader-Willi syndrome; these children lack the internal mechanism that regulates satiety and go to great lengths to obtain food, so environmental control of food access is required</li><li class="fopt"><span class="mk">B</span>Prader-Willi syndrome; appetite counseling and portion education are sufficient</li><li class="fopt"><span class="mk">C</span>Cushing syndrome; corticosteroid excess explains the food seeking</li><li class="fopt"><span class="mk">D</span>Hypothyroidism; the food seeking resolves with hormone replacement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Prader-Willi syndrome presents with hypotonia, hyperphagia, short stature, hypogonadism, and almond-shaped eyes. The functional key is that these children &quot;lack the internal mechanism that regulates satiety and as a result go to great lengths to obtain food.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the right syndrome and the wrong intervention, which is the more consequential half of the item. Counseling a child to recognize fullness cannot work when the satiety mechanism itself is absent; the environment has to supply the limit the physiology does not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">complications of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">5. An asymptomatic obese 11-year-old is being evaluated. Which findings are recognized complications of childhood obesity? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Insulin resistance syndrome, which develops before hyperinsulinemia, obesity, hypertension, and dyslipidemia individually appear</li><li class="fopt right"><span class="mk">&#10003;</span>Nonalcoholic fatty liver disease, the most common liver disease in children</li><li class="fopt right"><span class="mk">&#10003;</span>Obstructive sleep apnea, reported in 20% to 30% of obese children and adolescents</li><li class="fopt right"><span class="mk">&#10003;</span>Slipped capital femoral epiphysis and Blount disease</li><li class="fopt"><span class="mk">E</span>A low incidence of bullying, since peer groups accommodate weight differences at this age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The incidence of metabolic syndrome was 30% in obese children,&quot; and insulin resistance syndrome — hyperinsulinemia, obesity, hypertension, and dyslipidemia — &quot;develops before any of these conditions develops.&quot; Between 10% and 25% of obese youth are diagnosed with nonalcoholic fatty liver disease, &quot;the most common liver disease in children.&quot; Obstructive sleep apnea &quot;is reported in 20% to 30%.&quot; Musculoskeletal complications include slipped capital femoral epiphysis and Blount disease.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one option from the wrong side of the sort and inverts the chapter: &quot;overweight children are more frequently the victims of bullying compared with children of normal weight,&quot; including &quot;name calling, teasing, threats, physical harm, rejection, rumors, and sexual harassment.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">complications of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">6. An obese 13-year-old has a normal alanine aminotransferase and feels well. The parent concludes the liver is unaffected. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Liver enzymes in nonalcoholic fatty liver disease are either normal or slightly elevated, and people with nonalcoholic steatohepatitis may feel healthy and show no outward signs of liver disease, so a normal enzyme does not exclude it</li><li class="fopt"><span class="mk">B</span>A normal alanine aminotransferase reliably excludes fatty liver disease</li><li class="fopt"><span class="mk">C</span>Fatty liver disease in children always produces jaundice</li><li class="fopt"><span class="mk">D</span>Nonalcoholic fatty liver disease does not progress in children</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In nonalcoholic fatty liver disease, alanine and aspartate aminotransferase are &quot;either normal or slightly elevated,&quot; and &quot;People with NASH may feel healthy and show no outward signs of liver disease.&quot; Approximately 25% of pediatric cases progress to nonalcoholic steatohepatitis, in which fatty infiltration &quot;causes liver inflammation… and may cause scarring,&quot; and may progress to &quot;cirrhosis and end-stage liver disease&quot; requiring transplantation. Diagnosis is by ultrasound, computed tomography, or liver biopsy; treatment is weight loss.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the inference the laboratory value invites, and it is why the chapter states the negative. A normal enzyme in a child with the risk factor is not reassurance; it is a reason to image rather than to stop looking.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">complications of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">7. An obese 13-year-old reports hip pain and has begun walking with a limp. Which complication should the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Slipped capital femoral epiphysis, in which the cartilage plate at the top of the femur slips out of place; it is the most common hip disorder among young teenagers</li><li class="fopt"><span class="mk">B</span>Blount disease, an overgrowth of the medial proximal tibial metaphysis</li><li class="fopt"><span class="mk">C</span>Obstructive sleep apnea referred pain</li><li class="fopt"><span class="mk">D</span>Nonalcoholic steatohepatitis with referred pain to the hip</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Slipped capital femoral epiphysis is &quot;the most common hip disorder among young teenagers,&quot; occurring when &quot;the cartilage plate (epiphysis) at the top of the femur slips out of place.&quot; Blount disease is a different entity: &quot;overgrowth of the medial aspect of the proximal tibial metaphysis that causes the lower leg to angle inward (tibia vara),&quot; with &quot;a dose-response relationship between BMI and Blount disease.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the paired musculoskeletal complication and is distinguished by site: the hip points to slipped capital femoral epiphysis, and inward bowing of the lower leg points to Blount disease. Both are obesity complications, so the presenting location is the whole discriminator.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">complications of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">8. A 10-year-old with obesity bows inward at the lower legs below the knees. Which complication does this suggest?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Slipped capital femoral epiphysis</li><li class="fopt right"><span class="mk">&#10003;</span>Blount disease, an overgrowth of the medial aspect of the proximal tibial metaphysis causing the lower leg to angle inward, known as tibia vara</li><li class="fopt"><span class="mk">C</span>A normal variant requiring no referral</li><li class="fopt"><span class="mk">D</span>Rickets from vitamin D deficiency, which obesity does not affect</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Blount disease is &quot;overgrowth of the medial aspect of the proximal tibial metaphysis that causes the lower leg to angle inward (tibia vara),&quot; and the chapter notes &quot;a dose-response relationship between BMI and Blount disease.&quot; Orthopedic referral is the named pathway for it.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. Both conditions share obesity as the driver and differ only in which joint is affected, so an item on this pair always turns on the anatomic site named in the stem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">management of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">9. A nurse is counseling the family of an obese 10-year-old about diet. Which approach reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Focus dietary counseling on improving the nutritional quality of the diet rather than on dietary restriction, and advise the child to avoid fad diets</li><li class="fopt"><span class="mk">B</span>Prescribe a specific calorie restriction and weigh the child weekly</li><li class="fopt"><span class="mk">C</span>Recommend a commercially available fad diet, since adherence is higher</li><li class="fopt"><span class="mk">D</span>Restrict the child's food at home while allowing free choice elsewhere</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Dietary counseling focuses on improving the nutritional quality of the diet rather than on dietary restriction. Children should avoid fad diets.&quot; The recommended profile is &quot;no trans fats, low saturated fat, moderate total fat (≤30%), low sodium, and at least nine servings of fruits and vegetables,&quot; with high-fiber foods promoted and refined starches and sugars avoided.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) splits the environment in a way the chapter argues against; the emphasis is on parents taking &quot;charge of family meals and the home food environment&quot; so that &quot;healthy choices are readily available,&quot; with meals eaten together &quot;away from distractions such as television.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">management of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">10. A nurse wants to increase physical activity in an obese 11-year-old. Which intervention does the chapter identify as most effective?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Limiting sedentary screen time behaviors, which is the most effective way to encourage physical activity, targeting 60 minutes or more of activity per day and less than 2 hours of screen time</li><li class="fopt"><span class="mk">B</span>Enrolling the child in a competitive sports league regardless of interest</li><li class="fopt"><span class="mk">C</span>Beginning a supervised weight-training program</li><li class="fopt"><span class="mk">D</span>Setting a daily pedometer target and no other change</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Limiting sedentary screen time behaviors… is the most effective way to encourage physical activity.&quot; The paired figures are 60 minutes or more of physical activity per day and less than 2 hours of screen time, with a daily target of 10,000 to 15,000 steps.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is addressed separately and with an age restriction, as the next item shows. (D) names a real target but adopts it in isolation; the pedometer measures the activity that removing screen time makes room for.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">management of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">11. Parents of a prepubertal 9-year-old ask about starting weight training to reduce body fat. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Weight training increases basal metabolic rate and replaces fat mass with muscle mass, but it is not generally recommended for prepubertal children until they have reached physical and skeletal maturity; increased outdoor playtime is the appropriate alternative</li><li class="fopt"><span class="mk">B</span>Weight training is the first-line activity intervention at any age</li><li class="fopt"><span class="mk">C</span>Weight training is contraindicated at every age in childhood</li><li class="fopt"><span class="mk">D</span>Prepubertal children gain muscle mass more efficiently than adolescents</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Weight training &quot;increases basal metabolic rate and replaces fat mass with muscle mass&quot; but is &quot;not generally recommended for prepubertal children until they have reached physical and skeletal maturity.&quot; For this age group, increased outdoor playtime is the recommended approach. Chapter 15 gives the underlying reason: school-age muscles are &quot;still functionally immature… and they are more readily injured by overuse.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overcorrects into a blanket prohibition; the restriction is developmental rather than permanent, and it lifts at physical and skeletal maturity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">management of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">12. A 14-year-old is brought in by a parent who insists the adolescent begin a weight-loss program. The adolescent is uninterested and says the visit was not their idea. What should the nurse do first?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Explore the reasons behind the desire to lose weight, recognizing that it may be wiser to defer treatment until the family is ready</li><li class="fopt"><span class="mk">B</span>Begin a structured diet and exercise plan at this visit, since delay worsens outcomes</li><li class="fopt"><span class="mk">C</span>Refer immediately for bariatric surgical evaluation</li><li class="fopt"><span class="mk">D</span>Counsel the adolescent privately that the parent's concern should be disregarded</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Nursing Alert makes motivation the pivot: explore &quot;the reasons behind the desire to lose weight.&quot; And on timing, &quot;It may be wiser to defer treatment until the family is ready.&quot; Treatment of obesity &quot;is difficult,&quot; and &quot;the average individual only loses about 5% to 10% of his or her weight with available therapies,&quot; with lost weight &quot;frequently regained in a year or two.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) starts a plan with no one committed to carrying it out, which is what the deferral guidance exists to prevent. Beginning and failing is not neutral — it adds a documented failure to a child already at risk for &quot;a negative self-image and low body satisfaction that persists into adulthood.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">management of childhood obesity</span><span class="chip t2">general</span></div>
+<div class="stem">13. A severely obese 16-year-old is being considered for bariatric surgery. Which criteria apply? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Attainment of Tanner stage 4 or 95% of adult linear growth</li><li class="fopt right"><span class="mk">&#10003;</span>A body mass index of 35 or above with severe comorbidity</li><li class="fopt right"><span class="mk">&#10003;</span>A body mass index of 40 or above with less severe comorbidity</li><li class="fopt right"><span class="mk">&#10003;</span>Avoidance of pregnancy for at least 18 months postoperatively</li><li class="fopt"><span class="mk">E</span>Completion of at least 5 years of documented dietary failure before consideration</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The bariatric surgery criteria are attainment of Tanner stage 4 or 95% of adult linear growth; a body mass index of 35 or above with severe comorbidity, or 40 or above with less severe comorbidity; and avoidance of pregnancy for at least 18 months postoperatively.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one option from the wrong side of the sort — no such duration requirement appears in the criteria. Note the relationship among the real ones, which is counterintuitive and therefore testable: the *higher* body mass index threshold pairs with the *milder* comorbidity, because either severe disease or extreme weight alone can justify the procedure.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">dental disorders in the school-age child</span><span class="chip t2">general</span></div>
+<div class="stem">14. A parent asks which is worse for a child's teeth — a large soda with dinner or a lollipop eaten between meals. Which response reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Sucrose has been consistently implicated as the most cariogenic, and the damage depends on form and timing, so sticky or chewy candy and lollipops ingested between meals are worse than a larger quantity of sugar taken with a meal</li><li class="fopt"><span class="mk">B</span>The total quantity of sugar is the only factor that matters</li><li class="fopt"><span class="mk">C</span>Liquid sugars are more cariogenic than sticky candies in all circumstances</li><li class="fopt"><span class="mk">D</span>Timing of sugar intake has no effect on caries risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Sucrose has been consistently implicated as the most cariogenic,&quot; and the damage depends on form and timing — sticky or sour chewy candy and lollipops, &quot;ingested between meals.&quot; Conversely, &quot;saliva, some foods, and chewing gum after a meal&quot; help neutralize acid.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the intuitive metric and it is the weaker answer here. Quantity matters less than how long the sugar stays in contact with the tooth and whether the meal's own saliva response is available to neutralize the acid.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">dental disorders in the school-age child</span><span class="chip t2">general</span></div>
+<div class="stem">15. A nurse is teaching about caries risk in a 7-year-old whose permanent incisors have just erupted. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Newly erupted teeth are more susceptible to decay than those that have been erupted for 2 years or longer, because they have not yet acquired sufficient surface minerals</li><li class="fopt"><span class="mk">B</span>Newly erupted permanent teeth are highly resistant to decay</li><li class="fopt"><span class="mk">C</span>Susceptibility to caries is unrelated to how recently a tooth erupted</li><li class="fopt"><span class="mk">D</span>Permanent teeth are not at risk for caries until adolescence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Newly erupted teeth are &quot;more susceptible to decay than those that have been erupted for 2 years or longer&quot; because they have not &quot;acquired sufficient surface minerals.&quot; This is why middle childhood, when the permanent teeth erupt, is the peak susceptibility window, and more than half of US children have dental caries.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) assumes the permanent dentition arrives fully protected, which is the opposite of the case and is why this period carries the risk it does.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">dental disorders in the school-age child</span><span class="chip t2">general</span></div>
+<div class="stem">16. A child has inflamed, bleeding gums. Radiographs show loss of connective tissue and bone in the supporting structures. How should the nurse describe this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Gingivitis, which is simple inflammation of the gums</li><li class="fopt right"><span class="mk">&#10003;</span>Periodontitis, which is inflammation plus loss of connective tissue and bone in the supporting structures</li><li class="fopt"><span class="mk">C</span>Acute necrotizing ulcerative gingivitis, also called trench mouth, which is common in this age group</li><li class="fopt"><span class="mk">D</span>Normal eruption-related inflammation requiring no intervention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Gingivitis is &quot;simple inflammation of the gums.&quot; Periodontitis is inflammation plus &quot;loss of connective tissue and bone in the supporting structures.&quot; Acute necrotizing ulcerative gingivitis, or trench mouth, is a distinct entity and is uncommon.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) names the milder condition on the same spectrum, and bone loss is the single finding that separates them. (C) attaches a memorable name to an uncommon condition, which is the reason it stays in memory out of proportion to how often it is the answer.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">dental disorders in the school-age child</span><span class="chip t2">general</span></div>
+<div class="stem">17. A 9-year-old has a permanent central incisor knocked out during a soccer game. Which actions should the nurse take? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hold the tooth by the crown rather than the root</li><li class="fopt right"><span class="mk">&#10003;</span>Rinse the tooth gently under running water or saline, with the sink stoppered</li><li class="fopt"><span class="mk">C</span>Scrub the root surface thoroughly to remove debris before reinsertion</li><li class="fopt right"><span class="mk">&#10003;</span>Reinsert the tooth into the socket and transport the child immediately</li><li class="fopt right"><span class="mk">&#10003;</span>Understand that reimplantation within 1 hour gives the best chance of success</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hold an avulsed permanent tooth &quot;by the crown,&quot; rinse it gently under running water or saline with the sink stoppered, do not scrub, reinsert it into the socket, and transport immediately. Reimplantation &quot;within 1 hour&quot; gives the best chance of success. An unsuccessfully reimplanted tooth is retained 6 months to 12 years.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the one option from the wrong side of the sort, and it is the step that destroys the tooth — scrubbing removes the periodontal ligament cells that reattachment depends on. Note also the exception that a distractor may exploit: avulsed *primary* teeth are usually not reimplanted.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enuresis</span><span class="chip t2">general</span></div>
+<div class="stem">18. A 6-year-old wets the bed about three nights a week and has done so continuously for the past 5 months. Which statement is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>This meets the diagnostic criteria for enuresis, which require occurrence at least twice a week for at least 3 months in a child at least 5 years of age</li><li class="fopt"><span class="mk">B</span>This does not meet criteria, because the child must be at least 7 years old</li><li class="fopt"><span class="mk">C</span>This does not meet criteria, because the events must occur nightly</li><li class="fopt"><span class="mk">D</span>Enuresis cannot be diagnosed before puberty</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Enuresis requires occurrence at least twice a week for at least 3 months, in a child at least 5 years old. Prevalence falls with age: 20% at age 5, 10% at age 8, and 3% at age 12. It is more common in boys, and the risk reaches up to 77% when both parents were enuretic.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) substitutes the wrong minimum age. These three parameters — twice a week, 3 months, age 5 — pair with encopresis's three, which are once a month, 3 months, and age 4, and the six numbers get cross-swapped more than any other set in the chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enuresis</span><span class="chip t2">general</span></div>
+<div class="stem">19. A nurse is calculating the expected functional bladder capacity of a 6-year-old. Which figure is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>8 ounces, using the formula of age in years plus 2 ounces</li><li class="fopt"><span class="mk">B</span>10 ounces, using age plus 4 ounces</li><li class="fopt"><span class="mk">C</span>6 ounces, equal to the child's age in ounces</li><li class="fopt"><span class="mk">D</span>12 ounces, which is the adult capacity</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Normal functional bladder capacity is age plus 2 ounces, so a 6-year-old's capacity is 8 ounces, or 237 ml. Separately, 10 to 12 ounces — 300 to 350 ml — is the volume sufficient to hold a night's urine.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) uses the common distractor formula of age plus 4. (D) borrows the volume needed to hold a night's urine and presents it as the child's current capacity, which is in fact the gap the treatment aims to close.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enuresis</span><span class="chip t2">general</span></div>
+<div class="stem">20. Parents of an 8-year-old with enuresis ask about the urine alarm. Which teaching is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The alarm requires at least 6 to 8 weeks to be effective, children may relapse once they stop using it, and relapse is treated by reinstituting the alarm</li><li class="fopt"><span class="mk">B</span>The alarm works within a few nights or not at all</li><li class="fopt"><span class="mk">C</span>The alarm is a second-line option after medication has failed</li><li class="fopt"><span class="mk">D</span>Relapse after alarm use means the treatment should not be repeated</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The urine alarm needs &quot;at least 6 to 8 weeks,&quot; children &quot;may relapse once they stop using it,&quot; and relapse is treated by reinstituting the alarm. It is inexpensive and free of side effects, and drug therapy is explicitly second-line, with imipramine third-line and cardiotoxic at high doses. Successful treatment is defined as 7 to 28 consecutive dry nights.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) sets an expectation that guarantees the family abandons an effective treatment before it has had time to work, which is the practical reason the 6-to-8-week figure matters. (C) inverts the treatment order.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enuresis</span><span class="chip t2">general</span></div>
+<div class="stem">21. A provider is considering desmopressin for a child with enuresis. Which statement reflects current recommendations?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The tablet form is used and can produce a response in up to 70% of children, but the nasal spray caused hyponatremia and seizures and is no longer recommended; the drug must be tapered off rather than stopped abruptly</li><li class="fopt"><span class="mk">B</span>The nasal spray is preferred because of more reliable absorption</li><li class="fopt"><span class="mk">C</span>Desmopressin may be discontinued abruptly once dryness is achieved</li><li class="fopt"><span class="mk">D</span>Desmopressin is first-line therapy ahead of the urine alarm</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Desmopressin response can reach 70%, but the nasal spray &quot;caused hyponatremia and seizures and is no longer recommended,&quot; and the drug &quot;must [be] tapered off,&quot; since abrupt discontinuation carries a high relapse rate.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the route that was withdrawn for causing seizures, and it pulls because a nasal spray sounds gentler than a tablet in a child. (D) promotes a second-line drug over the first-line behavioral treatment.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enuresis</span><span class="chip t2">general</span></div>
+<div class="stem">22. A frustrated parent says they have begun making their enuretic 7-year-old wash his own sheets every morning as a consequence. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Punishment must not be used to correct enuresis, and parents need reassurance that bed-wetting does not represent willful misbehavior; the child may participate in changing linens as part of self-care, but not as a penalty</li><li class="fopt"><span class="mk">B</span>Requiring the child to launder the sheets is an appropriate natural consequence</li><li class="fopt"><span class="mk">C</span>The child should be excluded from all linen changing to avoid shame</li><li class="fopt"><span class="mk">D</span>Withholding evening fluids and adding a consequence is the recommended combination</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;It is imperative that punishment not be used to correct enuresis,&quot; and parents &quot;need reassurance that the bed-wetting does not represent willful misbehavior.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) describes the same physical activity as the correct answer and differs only in framing, which is precisely the distinction the chapter draws. Having the child change linens as participation in self-care is appropriate; imposing it as a consequence makes it punishment for something involuntary. Note also that enuresis &quot;may serve as a trigger for child abuse.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">encopresis</span><span class="chip t2">general</span></div>
+<div class="stem">23. A 6-year-old has been soiling his underwear several times a week for 4 months. Examination reveals loose stool leakage and small amounts of hard stool in the rectum. What does this pattern suggest, and what is the first treatment?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Leakage around an impaction; the first treatment is disimpaction, and customary dosages are usually insufficient</li><li class="fopt"><span class="mk">B</span>Infectious diarrhea; the first treatment is an antidiarrheal agent</li><li class="fopt"><span class="mk">C</span>Irritable bowel syndrome; the first treatment is dietary fiber alone</li><li class="fopt"><span class="mk">D</span>Normal variation requiring no treatment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Loose leakage together with &quot;small amounts of hard stool… suggests leakage around an impaction.&quot; The first treatment is disimpaction, and &quot;customary dosages are usually insufficient.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats the most visible finding — loose stool — as the problem, and an antidiarrheal would worsen the impaction that is producing it. The stem's combination of loose leakage *and* palpable hard stool is the signature that separates overflow from true diarrhea.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">encopresis</span><span class="chip t2">general</span></div>
+<div class="stem">24. A parent reports that their 5-year-old stiffens, stands in a corner with straight legs and a red face, and &quot;does a little dance&quot; before soiling. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Retentive posturing, which looks like effort to defecate but is in fact withholding</li><li class="fopt"><span class="mk">B</span>Effective straining that indicates constipation is resolving</li><li class="fopt"><span class="mk">C</span>A seizure equivalent requiring neurologic evaluation</li><li class="fopt"><span class="mk">D</span>Normal toileting behavior for the age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Retentive posturing presents as &quot;Stiffening, standing in a corner with straight legs and a bright red face, 'doing a little dance,' crawling, or hiding.&quot; A parent who reports the child &quot;straining&quot; may in fact be describing withholding.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the parent's usual reading of the behavior, and it points the assessment in the opposite direction from the truth. The child is working to keep stool in, not to pass it, which is why the history taken at face value can be misleading.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">encopresis</span><span class="chip t2">general</span></div>
+<div class="stem">25. A nurse suspects encopresis in a 7-year-old but the family has not raised it. What is the best approach, and what are the diagnostic criteria?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ask directly about soiling, since parents and children are reluctant to volunteer the information; encopresis requires occurrence at least once a month for at least 3 months in a child at least 4 years of age</li><li class="fopt"><span class="mk">B</span>Wait for the family to raise the topic, to avoid embarrassing the child</li><li class="fopt"><span class="mk">C</span>Ask directly; the criteria are twice a week for 3 months in a child at least 5 years old</li><li class="fopt"><span class="mk">D</span>Ask the child alone, without informing the parents</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Because the parents and child are reluctant to volunteer information, direct questioning about the soiling is more successful.&quot; Encopresis requires occurrence at least once a month for at least 3 months in a child at least 4 years of age. The toileting routine is 10 to 15 minutes after meals, for 10 minutes.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) has the right approach and imports enuresis's criteria — twice a week, age 5 — onto encopresis. Those two criteria sets are adjacent in the chapter and differ in both frequency and minimum age, which is exactly what makes them swappable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attention-deficit/hyperactivity disorder</span><span class="chip t2">general</span></div>
+<div class="stem">26. A 9-year-old is being evaluated for attention-deficit/hyperactivity disorder. Which elements are required by the DSM-5 criteria? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>At least six symptoms of inattention or hyperactivity-impulsivity</li><li class="fopt right"><span class="mk">&#10003;</span>Symptoms present for at least 6 months</li><li class="fopt right"><span class="mk">&#10003;</span>Onset of symptoms before age 12 years</li><li class="fopt right"><span class="mk">&#10003;</span>Symptoms present in two or more settings</li><li class="fopt"><span class="mk">E</span>Onset of symptoms before age 7 years</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The criteria require six symptoms — five suffice at age 17 years and older — present for at least 6 months, with onset before age 12 years, in two or more settings. Attention-deficit/hyperactivity disorder affects about 11% of school-age children, and a parent with the condition has a more than 50% chance of having a child with it.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one option from the wrong side of the sort, and it is the superseded DSM-IV threshold. It remains the classic distractor precisely because it was correct under the previous edition, so a learner who studied from older material will select it confidently.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attention-deficit/hyperactivity disorder</span><span class="chip t2">general</span></div>
+<div class="stem">27. A 5-year-old has been diagnosed with attention-deficit/hyperactivity disorder. Which first-line treatment does the chapter specify for this age?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Behavior therapy first, with methylphenidate only if behavior interventions fail and the disturbance is moderate to severe</li><li class="fopt"><span class="mk">B</span>Stimulant medication first, with behavior therapy added if medication is insufficient</li><li class="fopt"><span class="mk">C</span>Medication and behavior therapy started simultaneously in all cases</li><li class="fopt"><span class="mk">D</span>No treatment until the child reaches school age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The treatment algorithm is age-banded. At ages 4 to 5, behavior therapy comes first, with methylphenidate only if behavior interventions fail and the disturbance is moderate to severe. At ages 6 to 11, medication and/or behavior therapy, &quot;preferably both.&quot; At ages 12 to 18, medication with the adolescent's assent and/or behavior therapy.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies the school-age approach to a preschooler, which is the distinction this algorithm exists to draw. Note the assent requirement that appears only in the oldest band — the adolescent's agreement is part of the criterion, not a courtesy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attention-deficit/hyperactivity disorder</span><span class="chip t2">general</span></div>
+<div class="stem">28. A child with attention-deficit/hyperactivity disorder also has a motor tic disorder, and a stimulant is being considered. Which concern applies?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stimulants may exaggerate tics, so they are avoided when tics or a family history of Tourette syndrome are present</li><li class="fopt"><span class="mk">B</span>Stimulants reliably suppress tics and are therefore preferred</li><li class="fopt"><span class="mk">C</span>Tics are a contraindication to all attention-deficit/hyperactivity disorder treatment</li><li class="fopt"><span class="mk">D</span>Tics and attention-deficit/hyperactivity disorder never coexist</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Stimulants &quot;may exaggerate tics,&quot; so they are avoided when tics or a family history of Tourette syndrome are present. This is the one hard contraindication in the attention-deficit/hyperactivity disorder section, and it links directly to the tic-disorder content later in the chapter.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) converts a medication-specific caution into a blanket bar on treatment. Behavior therapy remains available and is first-line at several ages regardless, so the presence of tics changes the agent rather than removing the option of treatment.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attention-deficit/hyperactivity disorder</span><span class="chip t2">general</span></div>
+<div class="stem">29. A child taking a stimulant for attention-deficit/hyperactivity disorder has lost appetite and is having difficulty falling asleep. Which management strategies apply? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Give the medication with or after meals to manage appetite loss</li><li class="fopt right"><span class="mk">&#10003;</span>Offer evening snacks and small frequent meals</li><li class="fopt right"><span class="mk">&#10003;</span>Give the medication early in the day and use the minimal effective dose for sleeplessness</li><li class="fopt"><span class="mk">D</span>Add caffeinated beverages to enhance the medication's effect</li><li class="fopt right"><span class="mk">&#10003;</span>Monitor growth, since long-term dextroamphetamine use is associated with growth suppression</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>For appetite loss, give the medication &quot;with or after meals,&quot; with evening snacks and small frequent meals. For sleeplessness, give it &quot;early in the day&quot; at the minimal effective dose. Growth suppression is associated with long-term dextroamphetamine use, so growth is monitored. Insulin requirements may change.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the one option from the wrong side of the sort and reverses the interaction: &quot;Caffeine decreases efficacy.&quot; It pulls because caffeine is itself a stimulant, so combining the two sounds additive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attention-deficit/hyperactivity disorder</span><span class="chip t2">general</span></div>
+<div class="stem">30. A parent of a child with attention-deficit/hyperactivity disorder says the child &quot;will learn to listen if I just tell him what to do.&quot; What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Verbal instructions should be accompanied by visual references</li><li class="fopt"><span class="mk">B</span>Instructions should be given verbally and repeated more forcefully</li><li class="fopt"><span class="mk">C</span>Written instructions alone are sufficient at this age</li><li class="fopt"><span class="mk">D</span>The child should be expected to recall multistep instructions without support</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Verbal instructions should be accompanied by visual references.&quot; This appears in the chapter's own review questions, which makes the phrasing worth holding exactly.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the parent's instinct — that the problem is volume or firmness rather than the channel — and it is what the visual-reference guidance replaces. Repetition without a visual anchor addresses the wrong limitation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">attention-deficit/hyperactivity disorder</span><span class="chip t2">general</span></div>
+<div class="stem">31. A parent asks to move their child with attention-deficit/hyperactivity disorder out of a classroom with &quot;too many rules.&quot; Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Children with attention-deficit/hyperactivity disorder need an orderly, predictable, and consistent classroom environment with clear and consistent rules, so a highly structured classroom is the goal rather than a problem</li><li class="fopt"><span class="mk">B</span>A less structured classroom allows the child freedom to self-regulate</li><li class="fopt"><span class="mk">C</span>Classroom structure has no bearing on outcomes in this disorder</li><li class="fopt"><span class="mk">D</span>The child should be removed from the general classroom entirely</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Children with attention-deficit/hyperactivity disorder need &quot;an orderly, predictable, and consistent classroom environment with clear and consistent rules.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the request in the stem restated as a rationale, and it reverses what helps. The structure a parent perceives as rigidity is the external scaffolding that compensates for the self-regulation the child cannot yet supply.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">learning disability and educational plans</span><span class="chip t2">general</span></div>
+<div class="stem">32. A 9-year-old reads far below grade level despite an above-average intelligence quotient, with normal vision and hearing. Which statement reflects the chapter's concept of learning disability?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Children with learning disabilities tend to have normal or above-average intelligence with a wide gap between verbal and performance scores, and the diagnosis explicitly excludes problems arising primarily from visual, hearing, or motor disabilities, cognitive impairment, emotional disturbance, or environmental disadvantage</li><li class="fopt"><span class="mk">B</span>Learning disability requires below-average intelligence</li><li class="fopt"><span class="mk">C</span>Uncorrected hearing loss is a common form of learning disability</li><li class="fopt"><span class="mk">D</span>Learning disability and cognitive impairment are the same diagnosis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Children with learning disabilities &quot;tend to have normal or above-average intelligence,&quot; with &quot;a wide gap between verbal and performance scores.&quot; Explicitly excluded are problems arising primarily from visual, hearing, or motor disabilities, cognitive impairment, emotional disturbance, or environmental disadvantage.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the intelligence requirement, which is the defining feature: the disability is the discrepancy between ability and achievement, so normal intelligence is part of the definition rather than an exception to it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">learning disability and educational plans</span><span class="chip t2">general</span></div>
+<div class="stem">33. A school proposes a plan providing a child with specialized instruction and related services. Which plan is this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An individualized education program, which provides specialized instruction and related services</li><li class="fopt"><span class="mk">B</span>A 504 plan, which provides accommodations for access and academic success</li><li class="fopt"><span class="mk">C</span>Either plan, since the two are interchangeable</li><li class="fopt"><span class="mk">D</span>Neither, since specialized instruction is provided outside these frameworks</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>An individualized education program provides specialized instruction and related services. A 504 plan provides accommodations for access and academic success. The cue word is the discriminator: *instruction* signals the individualized education program, and *accommodation* signals the 504 plan.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the other framework, and the two are confused constantly because both are school-based supports triggered by a disability. What separates them is whether the school is changing what is taught and how, or changing the conditions under which the standard curriculum is accessed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">learning disability and educational plans</span><span class="chip t2">general</span></div>
+<div class="stem">34. A student with a documented disability needs extended test time and preferential seating but does not require changes to the curriculum itself. Which plan fits?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>An individualized education program</li><li class="fopt right"><span class="mk">&#10003;</span>A 504 plan, which provides accommodations for access and academic success</li><li class="fopt"><span class="mk">C</span>No plan is needed for accommodations of this kind</li><li class="fopt"><span class="mk">D</span>An individualized education program, because any disability triggers one</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A 504 plan provides accommodations for access and academic success, while an individualized education program provides specialized instruction and related services. Extended time and seating change the conditions of access rather than the instruction itself.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item, and (D) states the assumption behind it — that a documented disability automatically calls for the more intensive framework. What decides between them is the nature of the support needed, not the presence of a diagnosis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tic disorders and tourette syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">35. A parent reports that their 8-year-old's facial tics worsen before a school performance, lessen while he is absorbed in building a model, and are absent while he sleeps. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>This is the expected pattern: tics decrease during concentration, are markedly diminished during sleep, and become more exaggerated with stress or excitement</li><li class="fopt"><span class="mk">B</span>This pattern is atypical and suggests a seizure disorder</li><li class="fopt"><span class="mk">C</span>Tics that disappear during sleep are voluntary</li><li class="fopt"><span class="mk">D</span>Tics characteristically worsen with concentration and persist in sleep</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Tics &quot;decrease during concentration, are markedly diminished during sleep, and become more exaggerated with stress or excitement.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) states what most people assume about involuntary movements, which is why this pattern is the discriminating feature. (C) draws the wrong conclusion from the sleep finding — disappearance in sleep does not make the movements voluntary, and the chapter is explicit that they are not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tic disorders and tourette syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">36. A child with a tic disorder repeats his own words immediately after saying them. Which term describes this?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Echolalia, repeating another person's words</li><li class="fopt right"><span class="mk">&#10003;</span>Palilalia, repeating one's own words</li><li class="fopt"><span class="mk">C</span>Coprolalia, using socially unacceptable or obscene words</li><li class="fopt"><span class="mk">D</span>Metalinguistic awareness</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Echolalia is repeating another person's words; palilalia is repeating one's own; coprolalia is the use of socially unacceptable or obscene words. Only coprolalia belongs to the chronic end of the tic spectrum.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the better-known term and the one that surfaces first, which is what makes this trio worth separating. The discriminator is simply whose words are being repeated — another's for echolalia, one's own for palilalia.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tic disorders and tourette syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">37. A 10-year-old has had motor tics but no vocal tics for the past 14 months, with no secondary cause identified. Which classification applies?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Tourette syndrome, since the duration exceeds 12 months</li><li class="fopt right"><span class="mk">&#10003;</span>A chronic, or persistent, tic disorder, since Tourette syndrome requires both motor and vocal tics</li><li class="fopt"><span class="mk">C</span>A provisional tic disorder, since 14 months is under the threshold</li><li class="fopt"><span class="mk">D</span>No tic disorder, since vocal tics are absent</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A chronic or persistent tic disorder is defined by duration of more than 1 year. Tourette syndrome requires both motor and vocal tics, onset before 18 years, duration of more than 12 months, and no secondary cause. Tic disorders affect about 6 per 1000 children, with a 3:1 male predominance.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) applies the duration criterion alone and ignores the requirement that both tic types be present, which is the single feature separating Tourette syndrome from a chronic tic disorder. Duration is satisfied here; the symptom profile is not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">tic disorders and tourette syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">38. A teacher asks whether a student should lose privileges when his tics disrupt the class. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Punishment for the behaviors is inappropriate because these actions are involuntary, and although the child can suppress tics somewhat, persistent pressure for control constitutes an additional stress</li><li class="fopt"><span class="mk">B</span>Consistent consequences will reduce the frequency of tics</li><li class="fopt"><span class="mk">C</span>The child should be required to suppress tics throughout the school day</li><li class="fopt"><span class="mk">D</span>The child should be removed from the classroom whenever tics occur</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Punishment for the behaviors is inappropriate because these actions are involuntary.&quot; Although the child can suppress tics to a degree, &quot;persistent pressure for control constitutes an additional stress.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) exploits the fact that suppression is partially possible, and turns a limited capacity into an expectation. Because stress and excitement exaggerate tics, sustained pressure to suppress them predictably makes them worse — the intervention produces the behavior it targets.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school phobia, posttraumatic stress, and childhood depression</span><span class="chip t2">general</span></div>
+<div class="stem">39. A 10-year-old has stomachaches and headaches every school morning that resolve promptly once he is allowed to stay home, and he is symptom-free on weekends and holidays. Which understanding should guide the nurse?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>In school phobia the child fears leaving home rather than going to school; symptoms subside promptly when the child may stay home and are absent on weekends and holidays</li><li class="fopt"><span class="mk">B</span>The child fears a specific threat at school that must be identified before he can return</li><li class="fopt"><span class="mk">C</span>The pattern indicates an undiagnosed gastrointestinal disorder</li><li class="fopt"><span class="mk">D</span>Symptoms that resolve at home indicate the complaints are fabricated</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In school phobia the child fears leaving home rather than going to school. Symptoms &quot;subside promptly when the child may stay home&quot; and are &quot;absent on weekends and holidays.&quot; The condition is more common at 10 years and older.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the axis swap the chapter states outright, and it sends the assessment toward the school when the fear is about separation from home. (D) misreads the pattern as malingering — the symptoms are genuine, and their timing reflects what triggers them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school phobia, posttraumatic stress, and childhood depression</span><span class="chip t2">general</span></div>
+<div class="stem">40. Parents of a child with school phobia ask whether to let him stay home until he feels ready. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The goal is attendance, and the longer the child is permitted to stay out of school, the more difficult it is to reenter; parents should be told gently but firmly that the child must return</li><li class="fopt"><span class="mk">B</span>The child should remain home until the anxiety resolves fully</li><li class="fopt"><span class="mk">C</span>Home schooling is the recommended first-line response</li><li class="fopt"><span class="mk">D</span>Attendance should be deferred until a psychiatric evaluation is complete</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The longer the child is permitted to stay out of school, the more difficult it is to reenter,&quot; and parents must be told gently but firmly that the child is to return.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the compassionate response and the one that entrenches the problem, because avoidance relieves the anxiety in the short term and therefore strengthens it. Every additional day away raises the barrier to the return that is the actual treatment goal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school phobia, posttraumatic stress, and childhood depression</span><span class="chip t2">general</span></div>
+<div class="stem">41. A child who witnessed a traumatic event appeared numb and detached about 2 weeks afterward, and the parents say he seemed unaffected. Two months later he is tearful, irritable, and clearly struggling. How should the nurse interpret these two phases?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The second phase, at about 2 weeks, is numbness and denial, during which severe depression, aggression, or psychosis can develop without support; the third phase, at 2 to 3 months, is when the child appears to be getting worse when actually he or she is getting better</li><li class="fopt"><span class="mk">B</span>The child deteriorated because the trauma was inadequately treated in the first weeks</li><li class="fopt"><span class="mk">C</span>The apparent recovery at 2 weeks indicates the trauma had no lasting effect</li><li class="fopt"><span class="mk">D</span>Distress emerging at 2 months indicates a new, unrelated stressor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Posttraumatic stress in children runs in phases of 1 to 2 hours, about 2 weeks, and 2 to 3 months. The second phase is numbness and denial, in which the child &quot;appears to have produced no impression,&quot; and it is when &quot;severe depression, aggression, or psychosis&quot; can develop without support. In the third phase the child &quot;appears to be getting worse, when actually he or she is getting better.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reads the numb phase as resilience, which is the more dangerous of the two misreadings because it withdraws support precisely when it is most needed. Reading the third phase as deterioration is the mirror error, and it can prompt intervention changes at the point where recovery has begun.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school phobia, posttraumatic stress, and childhood depression</span><span class="chip t2">general</span></div>
+<div class="stem">42. A previously cheerful 9-year-old has become withdrawn and aggressive over the past month with no obvious cause identified. What does the chapter direct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Children exhibiting any sudden change in behavior need to be assessed for exposure to a traumatic event, since the precipitant may go unrecognized and bullying and psychologic abuse are most common in school-age children</li><li class="fopt"><span class="mk">B</span>Sudden behavior change at this age is developmentally normal and needs no assessment</li><li class="fopt"><span class="mk">C</span>Assessment for trauma is warranted only when a traumatic event is already known</li><li class="fopt"><span class="mk">D</span>The behavior indicates conduct disorder, which requires three criteria over 12 months</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Children exhibiting any sudden change in behavior need to be assessed for exposure to a traumatic event.&quot; The precipitant may go unrecognized, and &quot;bullying and psychologic abuse are most common in school-age children.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) inverts the logic of screening: the reason to assess is precisely that the event may not be known, since the kinds of trauma most common at this age happen out of adult view. (D) reaches for a diagnosis whose own threshold — three of fifteen criteria over 12 months, one within 6 months — this stem does not come close to meeting.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">school phobia, posttraumatic stress, and childhood depression</span><span class="chip t2">general</span></div>
+<div class="stem">43. An adolescent is started on an antidepressant for childhood depression, and the family asks when to expect improvement. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Antidepressants take 2 to 4 weeks to produce a therapeutic effect</li><li class="fopt"><span class="mk">B</span>Improvement should be evident within 48 hours</li><li class="fopt"><span class="mk">C</span>The medication works immediately or should be changed</li><li class="fopt"><span class="mk">D</span>Antidepressants are not used in children at any age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Antidepressants require 2 to 4 weeks to reach a therapeutic effect. Persistent depressive disorder, or dysthymia, requires a duration of at least 2 years.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) sets an expectation that leads families to abandon an adequate trial before the drug has had time to act, which is the practical reason this interval is worth teaching at the time of prescribing rather than at follow-up.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"childhood obesity screening and classification","subtopic":"general","stem":"A 9-year-old girl's body mass index falls at the 91st percentile for her age and sex. How should the nurse classify this?","options":["Overweight, which is a body mass index at the 85th to 94th percentile","Obesity, which is a body mass index at or above the 95th percentile","Normal weight, since the value is below the 95th percentile","Severe obesity, requiring immediate referral for bariatric evaluation"],"correct":[0],"sata":false,"why":"Overweight is a body mass index at the \"85th to 94th percentile,\" age- and gender-specific; obesity is a body mass index \"at or above the 95th percentile for children of the same age and sex.\" Body mass index is \"the most accurate method for screening children and adolescents for obesity,\" calculated as weight in kilograms divided by height in meters squared.","trap":"(B) names the adjacent band, and these two percentile ranges are the single most swappable pair of numbers in the chapter. Note the wording that decides borderline cases: obesity is \"at or above\" the 95th percentile, so a child exactly at the 95th percentile is obese rather than overweight.","k":"4y7ic31altn2d"},{"topic":"childhood obesity screening and classification","subtopic":"general","stem":"A 12-year-old competitive swimmer has a body mass index at the 96th percentile but very low measured body fat. How should the nurse interpret this?","options":["A subset of adolescents such as athletes may have a high body mass index because of increased muscle mass rather than fat mass, and clinical judgment is needed","The body mass index is diagnostic and the child should be treated for obesity","Body mass index in children uses fixed cut-points, so athletic status is irrelevant","Body mass index is not a useful screening tool in any child"],"correct":[0],"sata":false,"why":"\"A subset of adolescents (e.g., athletes) may have a high BMI because of increased muscle mass rather than fat mass. Clinical judgment is needed.\" Body mass index remains \"currently considered the best method to assess weight in children and adolescents,\" but in children it \"varies to accommodate age- and gender-specific changes in growth,\" unlike the fixed adult definitions.","trap":"(C) imports the adult framework, where \"BMI definitions are fixed measures without regard for sex and age.\" Pediatric body mass index is interpreted by percentile precisely because the same raw number means different things at different ages.","k":"14t1oipgqqey3"},{"topic":"childhood obesity screening and classification","subtopic":"general","stem":"A parent of an obese 10-year-old asks whether a thyroid problem or a slow metabolism explains the weight. Which response reflects the chapter?","options":["Fewer than 5% of childhood obesity is attributable to an underlying disease, and there is little evidence to support a relationship between obesity and low metabolism; energy imbalance is the usual explanation","Endocrine disease accounts for the majority of childhood obesity","A low basal metabolic rate is the most common identified cause","No endocrine condition ever causes childhood obesity"],"correct":[0],"sata":false,"why":"Fewer than 5% of childhood obesity has an underlying disease, and there is \"little evidence to support a relationship between obesity and low metabolism.\" Hypothyroidism, Cushing-type states, and hypothalamic damage do occur but are the minority.","trap":"(C) is the explanation families most often arrive with, and the chapter addresses it directly. (D) overcorrects — organic causes exist and are worth evaluating when the history suggests them; they are simply not where the answer usually lies.","k":"z5r54613twngo"},{"topic":"childhood obesity screening and classification","subtopic":"general","stem":"A child with hypotonia, short stature, hypogonadism, almond-shaped eyes, and relentless food seeking is being evaluated for obesity. Which syndrome does this suggest, and what does it imply for management?","options":["Prader-Willi syndrome; these children lack the internal mechanism that regulates satiety and go to great lengths to obtain food, so environmental control of food access is required","Prader-Willi syndrome; appetite counseling and portion education are sufficient","Cushing syndrome; corticosteroid excess explains the food seeking","Hypothyroidism; the food seeking resolves with hormone replacement"],"correct":[0],"sata":false,"why":"Prader-Willi syndrome presents with hypotonia, hyperphagia, short stature, hypogonadism, and almond-shaped eyes. The functional key is that these children \"lack the internal mechanism that regulates satiety and as a result go to great lengths to obtain food.\"","trap":"(B) names the right syndrome and the wrong intervention, which is the more consequential half of the item. Counseling a child to recognize fullness cannot work when the satiety mechanism itself is absent; the environment has to supply the limit the physiology does not.","k":"1we07ji1mp7x9w"},{"topic":"complications of childhood obesity","subtopic":"general","stem":"An asymptomatic obese 11-year-old is being evaluated. Which findings are recognized complications of childhood obesity? Select all that apply.","options":["Insulin resistance syndrome, which develops before hyperinsulinemia, obesity, hypertension, and dyslipidemia individually appear","Nonalcoholic fatty liver disease, the most common liver disease in children","Obstructive sleep apnea, reported in 20% to 30% of obese children and adolescents","Slipped capital femoral epiphysis and Blount disease","A low incidence of bullying, since peer groups accommodate weight differences at this age"],"correct":[0,1,2,3],"sata":true,"why":"\"The incidence of metabolic syndrome was 30% in obese children,\" and insulin resistance syndrome — hyperinsulinemia, obesity, hypertension, and dyslipidemia — \"develops before any of these conditions develops.\" Between 10% and 25% of obese youth are diagnosed with nonalcoholic fatty liver disease, \"the most common liver disease in children.\" Obstructive sleep apnea \"is reported in 20% to 30%.\" Musculoskeletal complications include slipped capital femoral epiphysis and Blount disease.","trap":"(E) is the one option from the wrong side of the sort and inverts the chapter: \"overweight children are more frequently the victims of bullying compared with children of normal weight,\" including \"name calling, teasing, threats, physical harm, rejection, rumors, and sexual harassment.\"","k":"17ivbjfnlmskd"},{"topic":"complications of childhood obesity","subtopic":"general","stem":"An obese 13-year-old has a normal alanine aminotransferase and feels well. The parent concludes the liver is unaffected. Which response is correct?","options":["Liver enzymes in nonalcoholic fatty liver disease are either normal or slightly elevated, and people with nonalcoholic steatohepatitis may feel healthy and show no outward signs of liver disease, so a normal enzyme does not exclude it","A normal alanine aminotransferase reliably excludes fatty liver disease","Fatty liver disease in children always produces jaundice","Nonalcoholic fatty liver disease does not progress in children"],"correct":[0],"sata":false,"why":"In nonalcoholic fatty liver disease, alanine and aspartate aminotransferase are \"either normal or slightly elevated,\" and \"People with NASH may feel healthy and show no outward signs of liver disease.\" Approximately 25% of pediatric cases progress to nonalcoholic steatohepatitis, in which fatty infiltration \"causes liver inflammation… and may cause scarring,\" and may progress to \"cirrhosis and end-stage liver disease\" requiring transplantation. Diagnosis is by ultrasound, computed tomography, or liver biopsy; treatment is weight loss.","trap":"(B) is the inference the laboratory value invites, and it is why the chapter states the negative. A normal enzyme in a child with the risk factor is not reassurance; it is a reason to image rather than to stop looking.","k":"1nvld6z1r9p8zl"},{"topic":"complications of childhood obesity","subtopic":"general","stem":"An obese 13-year-old reports hip pain and has begun walking with a limp. Which complication should the nurse suspect?","options":["Slipped capital femoral epiphysis, in which the cartilage plate at the top of the femur slips out of place; it is the most common hip disorder among young teenagers","Blount disease, an overgrowth of the medial proximal tibial metaphysis","Obstructive sleep apnea referred pain","Nonalcoholic steatohepatitis with referred pain to the hip"],"correct":[0],"sata":false,"why":"Slipped capital femoral epiphysis is \"the most common hip disorder among young teenagers,\" occurring when \"the cartilage plate (epiphysis) at the top of the femur slips out of place.\" Blount disease is a different entity: \"overgrowth of the medial aspect of the proximal tibial metaphysis that causes the lower leg to angle inward (tibia vara),\" with \"a dose-response relationship between BMI and Blount disease.\"","trap":"(B) is the paired musculoskeletal complication and is distinguished by site: the hip points to slipped capital femoral epiphysis, and inward bowing of the lower leg points to Blount disease. Both are obesity complications, so the presenting location is the whole discriminator.","k":"ojz97te6nr9j"},{"topic":"complications of childhood obesity","subtopic":"general","stem":"A 10-year-old with obesity bows inward at the lower legs below the knees. Which complication does this suggest?","options":["Slipped capital femoral epiphysis","Blount disease, an overgrowth of the medial aspect of the proximal tibial metaphysis causing the lower leg to angle inward, known as tibia vara","A normal variant requiring no referral","Rickets from vitamin D deficiency, which obesity does not affect"],"correct":[1],"sata":false,"why":"Blount disease is \"overgrowth of the medial aspect of the proximal tibial metaphysis that causes the lower leg to angle inward (tibia vara),\" and the chapter notes \"a dose-response relationship between BMI and Blount disease.\" Orthopedic referral is the named pathway for it.","trap":"(A) is the mirror error of the previous item. Both conditions share obesity as the driver and differ only in which joint is affected, so an item on this pair always turns on the anatomic site named in the stem.","k":"zq5yj4160kamy"},{"topic":"management of childhood obesity","subtopic":"general","stem":"A nurse is counseling the family of an obese 10-year-old about diet. Which approach reflects the chapter?","options":["Focus dietary counseling on improving the nutritional quality of the diet rather than on dietary restriction, and advise the child to avoid fad diets","Prescribe a specific calorie restriction and weigh the child weekly","Recommend a commercially available fad diet, since adherence is higher","Restrict the child's food at home while allowing free choice elsewhere"],"correct":[0],"sata":false,"why":"\"Dietary counseling focuses on improving the nutritional quality of the diet rather than on dietary restriction. Children should avoid fad diets.\" The recommended profile is \"no trans fats, low saturated fat, moderate total fat (≤30%), low sodium, and at least nine servings of fruits and vegetables,\" with high-fiber foods promoted and refined starches and sugars avoided.","trap":"(D) splits the environment in a way the chapter argues against; the emphasis is on parents taking \"charge of family meals and the home food environment\" so that \"healthy choices are readily available,\" with meals eaten together \"away from distractions such as television.\"","k":"11v4ywsdrgk3q"},{"topic":"management of childhood obesity","subtopic":"general","stem":"A nurse wants to increase physical activity in an obese 11-year-old. Which intervention does the chapter identify as most effective?","options":["Limiting sedentary screen time behaviors, which is the most effective way to encourage physical activity, targeting 60 minutes or more of activity per day and less than 2 hours of screen time","Enrolling the child in a competitive sports league regardless of interest","Beginning a supervised weight-training program","Setting a daily pedometer target and no other change"],"correct":[0],"sata":false,"why":"\"Limiting sedentary screen time behaviors… is the most effective way to encourage physical activity.\" The paired figures are 60 minutes or more of physical activity per day and less than 2 hours of screen time, with a daily target of 10,000 to 15,000 steps.","trap":"(C) is addressed separately and with an age restriction, as the next item shows. (D) names a real target but adopts it in isolation; the pedometer measures the activity that removing screen time makes room for.","k":"p6ujx26083s8"},{"topic":"management of childhood obesity","subtopic":"general","stem":"Parents of a prepubertal 9-year-old ask about starting weight training to reduce body fat. Which response is correct?","options":["Weight training increases basal metabolic rate and replaces fat mass with muscle mass, but it is not generally recommended for prepubertal children until they have reached physical and skeletal maturity; increased outdoor playtime is the appropriate alternative","Weight training is the first-line activity intervention at any age","Weight training is contraindicated at every age in childhood","Prepubertal children gain muscle mass more efficiently than adolescents"],"correct":[0],"sata":false,"why":"Weight training \"increases basal metabolic rate and replaces fat mass with muscle mass\" but is \"not generally recommended for prepubertal children until they have reached physical and skeletal maturity.\" For this age group, increased outdoor playtime is the recommended approach. Chapter 15 gives the underlying reason: school-age muscles are \"still functionally immature… and they are more readily injured by overuse.\"","trap":"(C) overcorrects into a blanket prohibition; the restriction is developmental rather than permanent, and it lifts at physical and skeletal maturity.","k":"e9beong2elm5"},{"topic":"management of childhood obesity","subtopic":"general","stem":"A 14-year-old is brought in by a parent who insists the adolescent begin a weight-loss program. The adolescent is uninterested and says the visit was not their idea. What should the nurse do first?","options":["Explore the reasons behind the desire to lose weight, recognizing that it may be wiser to defer treatment until the family is ready","Begin a structured diet and exercise plan at this visit, since delay worsens outcomes","Refer immediately for bariatric surgical evaluation","Counsel the adolescent privately that the parent's concern should be disregarded"],"correct":[0],"sata":false,"why":"The Nursing Alert makes motivation the pivot: explore \"the reasons behind the desire to lose weight.\" And on timing, \"It may be wiser to defer treatment until the family is ready.\" Treatment of obesity \"is difficult,\" and \"the average individual only loses about 5% to 10% of his or her weight with available therapies,\" with lost weight \"frequently regained in a year or two.\"","trap":"(B) starts a plan with no one committed to carrying it out, which is what the deferral guidance exists to prevent. Beginning and failing is not neutral — it adds a documented failure to a child already at risk for \"a negative self-image and low body satisfaction that persists into adulthood.\"","k":"1y8jben1epz9yx"},{"topic":"management of childhood obesity","subtopic":"general","stem":"A severely obese 16-year-old is being considered for bariatric surgery. Which criteria apply? Select all that apply.","options":["Attainment of Tanner stage 4 or 95% of adult linear growth","A body mass index of 35 or above with severe comorbidity","A body mass index of 40 or above with less severe comorbidity","Avoidance of pregnancy for at least 18 months postoperatively","Completion of at least 5 years of documented dietary failure before consideration"],"correct":[0,1,2,3],"sata":true,"why":"The bariatric surgery criteria are attainment of Tanner stage 4 or 95% of adult linear growth; a body mass index of 35 or above with severe comorbidity, or 40 or above with less severe comorbidity; and avoidance of pregnancy for at least 18 months postoperatively.","trap":"(E) is the one option from the wrong side of the sort — no such duration requirement appears in the criteria. Note the relationship among the real ones, which is counterintuitive and therefore testable: the *higher* body mass index threshold pairs with the *milder* comorbidity, because either severe disease or extreme weight alone can justify the procedure.","k":"qahk241svvtg6"},{"topic":"dental disorders in the school-age child","subtopic":"general","stem":"A parent asks which is worse for a child's teeth — a large soda with dinner or a lollipop eaten between meals. Which response reflects the chapter?","options":["Sucrose has been consistently implicated as the most cariogenic, and the damage depends on form and timing, so sticky or chewy candy and lollipops ingested between meals are worse than a larger quantity of sugar taken with a meal","The total quantity of sugar is the only factor that matters","Liquid sugars are more cariogenic than sticky candies in all circumstances","Timing of sugar intake has no effect on caries risk"],"correct":[0],"sata":false,"why":"\"Sucrose has been consistently implicated as the most cariogenic,\" and the damage depends on form and timing — sticky or sour chewy candy and lollipops, \"ingested between meals.\" Conversely, \"saliva, some foods, and chewing gum after a meal\" help neutralize acid.","trap":"(B) is the intuitive metric and it is the weaker answer here. Quantity matters less than how long the sugar stays in contact with the tooth and whether the meal's own saliva response is available to neutralize the acid.","k":"43hdvj10a5g8t"},{"topic":"dental disorders in the school-age child","subtopic":"general","stem":"A nurse is teaching about caries risk in a 7-year-old whose permanent incisors have just erupted. Which statement is accurate?","options":["Newly erupted teeth are more susceptible to decay than those that have been erupted for 2 years or longer, because they have not yet acquired sufficient surface minerals","Newly erupted permanent teeth are highly resistant to decay","Susceptibility to caries is unrelated to how recently a tooth erupted","Permanent teeth are not at risk for caries until adolescence"],"correct":[0],"sata":false,"why":"Newly erupted teeth are \"more susceptible to decay than those that have been erupted for 2 years or longer\" because they have not \"acquired sufficient surface minerals.\" This is why middle childhood, when the permanent teeth erupt, is the peak susceptibility window, and more than half of US children have dental caries.","trap":"(B) assumes the permanent dentition arrives fully protected, which is the opposite of the case and is why this period carries the risk it does.","k":"hzujgb12ubkod"},{"topic":"dental disorders in the school-age child","subtopic":"general","stem":"A child has inflamed, bleeding gums. Radiographs show loss of connective tissue and bone in the supporting structures. How should the nurse describe this?","options":["Gingivitis, which is simple inflammation of the gums","Periodontitis, which is inflammation plus loss of connective tissue and bone in the supporting structures","Acute necrotizing ulcerative gingivitis, also called trench mouth, which is common in this age group","Normal eruption-related inflammation requiring no intervention"],"correct":[1],"sata":false,"why":"Gingivitis is \"simple inflammation of the gums.\" Periodontitis is inflammation plus \"loss of connective tissue and bone in the supporting structures.\" Acute necrotizing ulcerative gingivitis, or trench mouth, is a distinct entity and is uncommon.","trap":"(A) names the milder condition on the same spectrum, and bone loss is the single finding that separates them. (C) attaches a memorable name to an uncommon condition, which is the reason it stays in memory out of proportion to how often it is the answer.","k":"lx7ny6twx5aw"},{"topic":"dental disorders in the school-age child","subtopic":"general","stem":"A 9-year-old has a permanent central incisor knocked out during a soccer game. Which actions should the nurse take? Select all that apply.","options":["Hold the tooth by the crown rather than the root","Rinse the tooth gently under running water or saline, with the sink stoppered","Scrub the root surface thoroughly to remove debris before reinsertion","Reinsert the tooth into the socket and transport the child immediately","Understand that reimplantation within 1 hour gives the best chance of success"],"correct":[0,1,3,4],"sata":true,"why":"Hold an avulsed permanent tooth \"by the crown,\" rinse it gently under running water or saline with the sink stoppered, do not scrub, reinsert it into the socket, and transport immediately. Reimplantation \"within 1 hour\" gives the best chance of success. An unsuccessfully reimplanted tooth is retained 6 months to 12 years.","trap":"(C) is the one option from the wrong side of the sort, and it is the step that destroys the tooth — scrubbing removes the periodontal ligament cells that reattachment depends on. Note also the exception that a distractor may exploit: avulsed *primary* teeth are usually not reimplanted.","k":"vue6f61gauliw"},{"topic":"enuresis","subtopic":"general","stem":"A 6-year-old wets the bed about three nights a week and has done so continuously for the past 5 months. Which statement is correct?","options":["This meets the diagnostic criteria for enuresis, which require occurrence at least twice a week for at least 3 months in a child at least 5 years of age","This does not meet criteria, because the child must be at least 7 years old","This does not meet criteria, because the events must occur nightly","Enuresis cannot be diagnosed before puberty"],"correct":[0],"sata":false,"why":"Enuresis requires occurrence at least twice a week for at least 3 months, in a child at least 5 years old. Prevalence falls with age: 20% at age 5, 10% at age 8, and 3% at age 12. It is more common in boys, and the risk reaches up to 77% when both parents were enuretic.","trap":"(B) substitutes the wrong minimum age. These three parameters — twice a week, 3 months, age 5 — pair with encopresis's three, which are once a month, 3 months, and age 4, and the six numbers get cross-swapped more than any other set in the chapter.","k":"16nkgt7815h5"},{"topic":"enuresis","subtopic":"general","stem":"A nurse is calculating the expected functional bladder capacity of a 6-year-old. Which figure is correct?","options":["8 ounces, using the formula of age in years plus 2 ounces","10 ounces, using age plus 4 ounces","6 ounces, equal to the child's age in ounces","12 ounces, which is the adult capacity"],"correct":[0],"sata":false,"why":"Normal functional bladder capacity is age plus 2 ounces, so a 6-year-old's capacity is 8 ounces, or 237 ml. Separately, 10 to 12 ounces — 300 to 350 ml — is the volume sufficient to hold a night's urine.","trap":"(B) uses the common distractor formula of age plus 4. (D) borrows the volume needed to hold a night's urine and presents it as the child's current capacity, which is in fact the gap the treatment aims to close.","k":"4k5m2526rg5z"},{"topic":"enuresis","subtopic":"general","stem":"Parents of an 8-year-old with enuresis ask about the urine alarm. Which teaching is accurate?","options":["The alarm requires at least 6 to 8 weeks to be effective, children may relapse once they stop using it, and relapse is treated by reinstituting the alarm","The alarm works within a few nights or not at all","The alarm is a second-line option after medication has failed","Relapse after alarm use means the treatment should not be repeated"],"correct":[0],"sata":false,"why":"The urine alarm needs \"at least 6 to 8 weeks,\" children \"may relapse once they stop using it,\" and relapse is treated by reinstituting the alarm. It is inexpensive and free of side effects, and drug therapy is explicitly second-line, with imipramine third-line and cardiotoxic at high doses. Successful treatment is defined as 7 to 28 consecutive dry nights.","trap":"(B) sets an expectation that guarantees the family abandons an effective treatment before it has had time to work, which is the practical reason the 6-to-8-week figure matters. (C) inverts the treatment order.","k":"1ttide17urr7j"},{"topic":"enuresis","subtopic":"general","stem":"A provider is considering desmopressin for a child with enuresis. Which statement reflects current recommendations?","options":["The tablet form is used and can produce a response in up to 70% of children, but the nasal spray caused hyponatremia and seizures and is no longer recommended; the drug must be tapered off rather than stopped abruptly","The nasal spray is preferred because of more reliable absorption","Desmopressin may be discontinued abruptly once dryness is achieved","Desmopressin is first-line therapy ahead of the urine alarm"],"correct":[0],"sata":false,"why":"Desmopressin response can reach 70%, but the nasal spray \"caused hyponatremia and seizures and is no longer recommended,\" and the drug \"must [be] tapered off,\" since abrupt discontinuation carries a high relapse rate.","trap":"(B) names the route that was withdrawn for causing seizures, and it pulls because a nasal spray sounds gentler than a tablet in a child. (D) promotes a second-line drug over the first-line behavioral treatment.","k":"iw0vqnl2o78p"},{"topic":"enuresis","subtopic":"general","stem":"A frustrated parent says they have begun making their enuretic 7-year-old wash his own sheets every morning as a consequence. What should the nurse advise?","options":["Punishment must not be used to correct enuresis, and parents need reassurance that bed-wetting does not represent willful misbehavior; the child may participate in changing linens as part of self-care, but not as a penalty","Requiring the child to launder the sheets is an appropriate natural consequence","The child should be excluded from all linen changing to avoid shame","Withholding evening fluids and adding a consequence is the recommended combination"],"correct":[0],"sata":false,"why":"\"It is imperative that punishment not be used to correct enuresis,\" and parents \"need reassurance that the bed-wetting does not represent willful misbehavior.\"","trap":"(B) describes the same physical activity as the correct answer and differs only in framing, which is precisely the distinction the chapter draws. Having the child change linens as participation in self-care is appropriate; imposing it as a consequence makes it punishment for something involuntary. Note also that enuresis \"may serve as a trigger for child abuse.\"","k":"1n757ub3gnmfh"},{"topic":"encopresis","subtopic":"general","stem":"A 6-year-old has been soiling his underwear several times a week for 4 months. Examination reveals loose stool leakage and small amounts of hard stool in the rectum. What does this pattern suggest, and what is the first treatment?","options":["Leakage around an impaction; the first treatment is disimpaction, and customary dosages are usually insufficient","Infectious diarrhea; the first treatment is an antidiarrheal agent","Irritable bowel syndrome; the first treatment is dietary fiber alone","Normal variation requiring no treatment"],"correct":[0],"sata":false,"why":"Loose leakage together with \"small amounts of hard stool… suggests leakage around an impaction.\" The first treatment is disimpaction, and \"customary dosages are usually insufficient.\"","trap":"(B) treats the most visible finding — loose stool — as the problem, and an antidiarrheal would worsen the impaction that is producing it. The stem's combination of loose leakage *and* palpable hard stool is the signature that separates overflow from true diarrhea.","k":"wzz8ae1j82a7s"},{"topic":"encopresis","subtopic":"general","stem":"A parent reports that their 5-year-old stiffens, stands in a corner with straight legs and a red face, and \"does a little dance\" before soiling. How should the nurse interpret this?","options":["Retentive posturing, which looks like effort to defecate but is in fact withholding","Effective straining that indicates constipation is resolving","A seizure equivalent requiring neurologic evaluation","Normal toileting behavior for the age"],"correct":[0],"sata":false,"why":"Retentive posturing presents as \"Stiffening, standing in a corner with straight legs and a bright red face, 'doing a little dance,' crawling, or hiding.\" A parent who reports the child \"straining\" may in fact be describing withholding.","trap":"(B) is the parent's usual reading of the behavior, and it points the assessment in the opposite direction from the truth. The child is working to keep stool in, not to pass it, which is why the history taken at face value can be misleading.","k":"1e08wjm1snhp3k"},{"topic":"encopresis","subtopic":"general","stem":"A nurse suspects encopresis in a 7-year-old but the family has not raised it. What is the best approach, and what are the diagnostic criteria?","options":["Ask directly about soiling, since parents and children are reluctant to volunteer the information; encopresis requires occurrence at least once a month for at least 3 months in a child at least 4 years of age","Wait for the family to raise the topic, to avoid embarrassing the child","Ask directly; the criteria are twice a week for 3 months in a child at least 5 years old","Ask the child alone, without informing the parents"],"correct":[0],"sata":false,"why":"\"Because the parents and child are reluctant to volunteer information, direct questioning about the soiling is more successful.\" Encopresis requires occurrence at least once a month for at least 3 months in a child at least 4 years of age. The toileting routine is 10 to 15 minutes after meals, for 10 minutes.","trap":"(C) has the right approach and imports enuresis's criteria — twice a week, age 5 — onto encopresis. Those two criteria sets are adjacent in the chapter and differ in both frequency and minimum age, which is exactly what makes them swappable.","k":"16ngoy8yj3642"},{"topic":"attention-deficit/hyperactivity disorder","subtopic":"general","stem":"A 9-year-old is being evaluated for attention-deficit/hyperactivity disorder. Which elements are required by the DSM-5 criteria? Select all that apply.","options":["At least six symptoms of inattention or hyperactivity-impulsivity","Symptoms present for at least 6 months","Onset of symptoms before age 12 years","Symptoms present in two or more settings","Onset of symptoms before age 7 years"],"correct":[0,1,2,3],"sata":true,"why":"The criteria require six symptoms — five suffice at age 17 years and older — present for at least 6 months, with onset before age 12 years, in two or more settings. Attention-deficit/hyperactivity disorder affects about 11% of school-age children, and a parent with the condition has a more than 50% chance of having a child with it.","trap":"(E) is the one option from the wrong side of the sort, and it is the superseded DSM-IV threshold. It remains the classic distractor precisely because it was correct under the previous edition, so a learner who studied from older material will select it confidently.","k":"k5ih3qrpjfc"},{"topic":"attention-deficit/hyperactivity disorder","subtopic":"general","stem":"A 5-year-old has been diagnosed with attention-deficit/hyperactivity disorder. Which first-line treatment does the chapter specify for this age?","options":["Behavior therapy first, with methylphenidate only if behavior interventions fail and the disturbance is moderate to severe","Stimulant medication first, with behavior therapy added if medication is insufficient","Medication and behavior therapy started simultaneously in all cases","No treatment until the child reaches school age"],"correct":[0],"sata":false,"why":"The treatment algorithm is age-banded. At ages 4 to 5, behavior therapy comes first, with methylphenidate only if behavior interventions fail and the disturbance is moderate to severe. At ages 6 to 11, medication and/or behavior therapy, \"preferably both.\" At ages 12 to 18, medication with the adolescent's assent and/or behavior therapy.","trap":"(B) applies the school-age approach to a preschooler, which is the distinction this algorithm exists to draw. Note the assent requirement that appears only in the oldest band — the adolescent's agreement is part of the criterion, not a courtesy.","k":"c07yu91ho2k9v"},{"topic":"attention-deficit/hyperactivity disorder","subtopic":"general","stem":"A child with attention-deficit/hyperactivity disorder also has a motor tic disorder, and a stimulant is being considered. Which concern applies?","options":["Stimulants may exaggerate tics, so they are avoided when tics or a family history of Tourette syndrome are present","Stimulants reliably suppress tics and are therefore preferred","Tics are a contraindication to all attention-deficit/hyperactivity disorder treatment","Tics and attention-deficit/hyperactivity disorder never coexist"],"correct":[0],"sata":false,"why":"Stimulants \"may exaggerate tics,\" so they are avoided when tics or a family history of Tourette syndrome are present. This is the one hard contraindication in the attention-deficit/hyperactivity disorder section, and it links directly to the tic-disorder content later in the chapter.","trap":"(C) converts a medication-specific caution into a blanket bar on treatment. Behavior therapy remains available and is first-line at several ages regardless, so the presence of tics changes the agent rather than removing the option of treatment.","k":"i561wp1n2z7cz"},{"topic":"attention-deficit/hyperactivity disorder","subtopic":"general","stem":"A child taking a stimulant for attention-deficit/hyperactivity disorder has lost appetite and is having difficulty falling asleep. Which management strategies apply? Select all that apply.","options":["Give the medication with or after meals to manage appetite loss","Offer evening snacks and small frequent meals","Give the medication early in the day and use the minimal effective dose for sleeplessness","Add caffeinated beverages to enhance the medication's effect","Monitor growth, since long-term dextroamphetamine use is associated with growth suppression"],"correct":[0,1,2,4],"sata":true,"why":"For appetite loss, give the medication \"with or after meals,\" with evening snacks and small frequent meals. For sleeplessness, give it \"early in the day\" at the minimal effective dose. Growth suppression is associated with long-term dextroamphetamine use, so growth is monitored. Insulin requirements may change.","trap":"(D) is the one option from the wrong side of the sort and reverses the interaction: \"Caffeine decreases efficacy.\" It pulls because caffeine is itself a stimulant, so combining the two sounds additive.","k":"62pa2tzivk8b"},{"topic":"attention-deficit/hyperactivity disorder","subtopic":"general","stem":"A parent of a child with attention-deficit/hyperactivity disorder says the child \"will learn to listen if I just tell him what to do.\" What should the nurse advise?","options":["Verbal instructions should be accompanied by visual references","Instructions should be given verbally and repeated more forcefully","Written instructions alone are sufficient at this age","The child should be expected to recall multistep instructions without support"],"correct":[0],"sata":false,"why":"\"Verbal instructions should be accompanied by visual references.\" This appears in the chapter's own review questions, which makes the phrasing worth holding exactly.","trap":"(B) is the parent's instinct — that the problem is volume or firmness rather than the channel — and it is what the visual-reference guidance replaces. Repetition without a visual anchor addresses the wrong limitation.","k":"r9thry1w3r2zs"},{"topic":"attention-deficit/hyperactivity disorder","subtopic":"general","stem":"A parent asks to move their child with attention-deficit/hyperactivity disorder out of a classroom with \"too many rules.\" Which response is correct?","options":["Children with attention-deficit/hyperactivity disorder need an orderly, predictable, and consistent classroom environment with clear and consistent rules, so a highly structured classroom is the goal rather than a problem","A less structured classroom allows the child freedom to self-regulate","Classroom structure has no bearing on outcomes in this disorder","The child should be removed from the general classroom entirely"],"correct":[0],"sata":false,"why":"Children with attention-deficit/hyperactivity disorder need \"an orderly, predictable, and consistent classroom environment with clear and consistent rules.\"","trap":"(B) is the request in the stem restated as a rationale, and it reverses what helps. The structure a parent perceives as rigidity is the external scaffolding that compensates for the self-regulation the child cannot yet supply.","k":"1fvx2qo1kqu4ci"},{"topic":"learning disability and educational plans","subtopic":"general","stem":"A 9-year-old reads far below grade level despite an above-average intelligence quotient, with normal vision and hearing. Which statement reflects the chapter's concept of learning disability?","options":["Children with learning disabilities tend to have normal or above-average intelligence with a wide gap between verbal and performance scores, and the diagnosis explicitly excludes problems arising primarily from visual, hearing, or motor disabilities, cognitive impairment, emotional disturbance, or environmental disadvantage","Learning disability requires below-average intelligence","Uncorrected hearing loss is a common form of learning disability","Learning disability and cognitive impairment are the same diagnosis"],"correct":[0],"sata":false,"why":"Children with learning disabilities \"tend to have normal or above-average intelligence,\" with \"a wide gap between verbal and performance scores.\" Explicitly excluded are problems arising primarily from visual, hearing, or motor disabilities, cognitive impairment, emotional disturbance, or environmental disadvantage.","trap":"(B) inverts the intelligence requirement, which is the defining feature: the disability is the discrepancy between ability and achievement, so normal intelligence is part of the definition rather than an exception to it.","k":"1oqw148zmux2y"},{"topic":"learning disability and educational plans","subtopic":"general","stem":"A school proposes a plan providing a child with specialized instruction and related services. Which plan is this?","options":["An individualized education program, which provides specialized instruction and related services","A 504 plan, which provides accommodations for access and academic success","Either plan, since the two are interchangeable","Neither, since specialized instruction is provided outside these frameworks"],"correct":[0],"sata":false,"why":"An individualized education program provides specialized instruction and related services. A 504 plan provides accommodations for access and academic success. The cue word is the discriminator: *instruction* signals the individualized education program, and *accommodation* signals the 504 plan.","trap":"(B) names the other framework, and the two are confused constantly because both are school-based supports triggered by a disability. What separates them is whether the school is changing what is taught and how, or changing the conditions under which the standard curriculum is accessed.","k":"1ap6fubkc2i11"},{"topic":"learning disability and educational plans","subtopic":"general","stem":"A student with a documented disability needs extended test time and preferential seating but does not require changes to the curriculum itself. Which plan fits?","options":["An individualized education program","A 504 plan, which provides accommodations for access and academic success","No plan is needed for accommodations of this kind","An individualized education program, because any disability triggers one"],"correct":[1],"sata":false,"why":"A 504 plan provides accommodations for access and academic success, while an individualized education program provides specialized instruction and related services. Extended time and seating change the conditions of access rather than the instruction itself.","trap":"(A) is the mirror error of the previous item, and (D) states the assumption behind it — that a documented disability automatically calls for the more intensive framework. What decides between them is the nature of the support needed, not the presence of a diagnosis.","k":"xxwm77jngyxp"},{"topic":"tic disorders and tourette syndrome","subtopic":"general","stem":"A parent reports that their 8-year-old's facial tics worsen before a school performance, lessen while he is absorbed in building a model, and are absent while he sleeps. How should the nurse interpret this?","options":["This is the expected pattern: tics decrease during concentration, are markedly diminished during sleep, and become more exaggerated with stress or excitement","This pattern is atypical and suggests a seizure disorder","Tics that disappear during sleep are voluntary","Tics characteristically worsen with concentration and persist in sleep"],"correct":[0],"sata":false,"why":"Tics \"decrease during concentration, are markedly diminished during sleep, and become more exaggerated with stress or excitement.\"","trap":"(D) states what most people assume about involuntary movements, which is why this pattern is the discriminating feature. (C) draws the wrong conclusion from the sleep finding — disappearance in sleep does not make the movements voluntary, and the chapter is explicit that they are not.","k":"1red9dvenn4sp"},{"topic":"tic disorders and tourette syndrome","subtopic":"general","stem":"A child with a tic disorder repeats his own words immediately after saying them. Which term describes this?","options":["Echolalia, repeating another person's words","Palilalia, repeating one's own words","Coprolalia, using socially unacceptable or obscene words","Metalinguistic awareness"],"correct":[1],"sata":false,"why":"Echolalia is repeating another person's words; palilalia is repeating one's own; coprolalia is the use of socially unacceptable or obscene words. Only coprolalia belongs to the chronic end of the tic spectrum.","trap":"(A) is the better-known term and the one that surfaces first, which is what makes this trio worth separating. The discriminator is simply whose words are being repeated — another's for echolalia, one's own for palilalia.","k":"1dmaic2kuop0g"},{"topic":"tic disorders and tourette syndrome","subtopic":"general","stem":"A 10-year-old has had motor tics but no vocal tics for the past 14 months, with no secondary cause identified. Which classification applies?","options":["Tourette syndrome, since the duration exceeds 12 months","A chronic, or persistent, tic disorder, since Tourette syndrome requires both motor and vocal tics","A provisional tic disorder, since 14 months is under the threshold","No tic disorder, since vocal tics are absent"],"correct":[1],"sata":false,"why":"A chronic or persistent tic disorder is defined by duration of more than 1 year. Tourette syndrome requires both motor and vocal tics, onset before 18 years, duration of more than 12 months, and no secondary cause. Tic disorders affect about 6 per 1000 children, with a 3:1 male predominance.","trap":"(A) applies the duration criterion alone and ignores the requirement that both tic types be present, which is the single feature separating Tourette syndrome from a chronic tic disorder. Duration is satisfied here; the symptom profile is not.","k":"4r9umcx9n3pe"},{"topic":"tic disorders and tourette syndrome","subtopic":"general","stem":"A teacher asks whether a student should lose privileges when his tics disrupt the class. What should the nurse advise?","options":["Punishment for the behaviors is inappropriate because these actions are involuntary, and although the child can suppress tics somewhat, persistent pressure for control constitutes an additional stress","Consistent consequences will reduce the frequency of tics","The child should be required to suppress tics throughout the school day","The child should be removed from the classroom whenever tics occur"],"correct":[0],"sata":false,"why":"\"Punishment for the behaviors is inappropriate because these actions are involuntary.\" Although the child can suppress tics to a degree, \"persistent pressure for control constitutes an additional stress.\"","trap":"(C) exploits the fact that suppression is partially possible, and turns a limited capacity into an expectation. Because stress and excitement exaggerate tics, sustained pressure to suppress them predictably makes them worse — the intervention produces the behavior it targets.","k":"1gnsm4x1gv4fp7"},{"topic":"school phobia, posttraumatic stress, and childhood depression","subtopic":"general","stem":"A 10-year-old has stomachaches and headaches every school morning that resolve promptly once he is allowed to stay home, and he is symptom-free on weekends and holidays. Which understanding should guide the nurse?","options":["In school phobia the child fears leaving home rather than going to school; symptoms subside promptly when the child may stay home and are absent on weekends and holidays","The child fears a specific threat at school that must be identified before he can return","The pattern indicates an undiagnosed gastrointestinal disorder","Symptoms that resolve at home indicate the complaints are fabricated"],"correct":[0],"sata":false,"why":"In school phobia the child fears leaving home rather than going to school. Symptoms \"subside promptly when the child may stay home\" and are \"absent on weekends and holidays.\" The condition is more common at 10 years and older.","trap":"(B) is the axis swap the chapter states outright, and it sends the assessment toward the school when the fear is about separation from home. (D) misreads the pattern as malingering — the symptoms are genuine, and their timing reflects what triggers them.","k":"382fjh1j89t3b"},{"topic":"school phobia, posttraumatic stress, and childhood depression","subtopic":"general","stem":"Parents of a child with school phobia ask whether to let him stay home until he feels ready. What should the nurse advise?","options":["The goal is attendance, and the longer the child is permitted to stay out of school, the more difficult it is to reenter; parents should be told gently but firmly that the child must return","The child should remain home until the anxiety resolves fully","Home schooling is the recommended first-line response","Attendance should be deferred until a psychiatric evaluation is complete"],"correct":[0],"sata":false,"why":"\"The longer the child is permitted to stay out of school, the more difficult it is to reenter,\" and parents must be told gently but firmly that the child is to return.","trap":"(B) is the compassionate response and the one that entrenches the problem, because avoidance relieves the anxiety in the short term and therefore strengthens it. Every additional day away raises the barrier to the return that is the actual treatment goal.","k":"kt8gqfvwliqt"},{"topic":"school phobia, posttraumatic stress, and childhood depression","subtopic":"general","stem":"A child who witnessed a traumatic event appeared numb and detached about 2 weeks afterward, and the parents say he seemed unaffected. Two months later he is tearful, irritable, and clearly struggling. How should the nurse interpret these two phases?","options":["The second phase, at about 2 weeks, is numbness and denial, during which severe depression, aggression, or psychosis can develop without support; the third phase, at 2 to 3 months, is when the child appears to be getting worse when actually he or she is getting better","The child deteriorated because the trauma was inadequately treated in the first weeks","The apparent recovery at 2 weeks indicates the trauma had no lasting effect","Distress emerging at 2 months indicates a new, unrelated stressor"],"correct":[0],"sata":false,"why":"Posttraumatic stress in children runs in phases of 1 to 2 hours, about 2 weeks, and 2 to 3 months. The second phase is numbness and denial, in which the child \"appears to have produced no impression,\" and it is when \"severe depression, aggression, or psychosis\" can develop without support. In the third phase the child \"appears to be getting worse, when actually he or she is getting better.\"","trap":"(C) reads the numb phase as resilience, which is the more dangerous of the two misreadings because it withdraws support precisely when it is most needed. Reading the third phase as deterioration is the mirror error, and it can prompt intervention changes at the point where recovery has begun.","k":"iqn77e1q8n0sk"},{"topic":"school phobia, posttraumatic stress, and childhood depression","subtopic":"general","stem":"A previously cheerful 9-year-old has become withdrawn and aggressive over the past month with no obvious cause identified. What does the chapter direct?","options":["Children exhibiting any sudden change in behavior need to be assessed for exposure to a traumatic event, since the precipitant may go unrecognized and bullying and psychologic abuse are most common in school-age children","Sudden behavior change at this age is developmentally normal and needs no assessment","Assessment for trauma is warranted only when a traumatic event is already known","The behavior indicates conduct disorder, which requires three criteria over 12 months"],"correct":[0],"sata":false,"why":"\"Children exhibiting any sudden change in behavior need to be assessed for exposure to a traumatic event.\" The precipitant may go unrecognized, and \"bullying and psychologic abuse are most common in school-age children.\"","trap":"(C) inverts the logic of screening: the reason to assess is precisely that the event may not be known, since the kinds of trauma most common at this age happen out of adult view. (D) reaches for a diagnosis whose own threshold — three of fifteen criteria over 12 months, one within 6 months — this stem does not come close to meeting.","k":"oet3q41uwzlbi"},{"topic":"school phobia, posttraumatic stress, and childhood depression","subtopic":"general","stem":"An adolescent is started on an antidepressant for childhood depression, and the family asks when to expect improvement. Which response is accurate?","options":["Antidepressants take 2 to 4 weeks to produce a therapeutic effect","Improvement should be evident within 48 hours","The medication works immediately or should be changed","Antidepressants are not used in children at any age"],"correct":[0],"sata":false,"why":"Antidepressants require 2 to 4 weeks to reach a therapeutic effect. Persistent depressive disorder, or dysthymia, requires a duration of at least 2 years.","trap":"(C) sets an expectation that leads families to abandon an adequate trial before the drug has had time to act, which is the practical reason this interval is worth teaching at the time of prescribing rather than at follow-up.","k":"8a5otfl6ukwt"}];
+const TITLE = "Chapter 16 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 16";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 29 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 29</div><h1>Chapter 29 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">cancer warning signs and diagnostic workup in children</span><span class="chip t2">general</span></div>
+<div class="stem">1. A nurse is reviewing findings in a 4-year-old that would raise concern for a malignancy. Which are among the chapter's warning signs? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An unusual mass or swelling</li><li class="fopt right"><span class="mk">&#10003;</span>Persistent, localized pain or limping</li><li class="fopt right"><span class="mk">&#10003;</span>Prolonged, unexplained fever</li><li class="fopt right"><span class="mk">&#10003;</span>Frequent headaches, often with vomiting</li><li class="fopt"><span class="mk">E</span>A single episode of epistaxis after a fall</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 29.1 lists an unusual mass or swelling, unexplained paleness and loss of energy, easy bruising, persistent localized pain or limping, prolonged unexplained fever or illness, frequent headaches often with vomiting, sudden eye or vision changes, and unexplained rapid weight loss (p. 1078).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) lacks the qualifier every real entry carries — the chapter states that &quot;Cancers in children are often difficult to recognize. Therefore being alert to the persistence of possible signs and symptoms is essential,&quot; and the operative word throughout the box is persistence.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cancer warning signs and diagnostic workup in children</span><span class="chip t2">general</span></div>
+<div class="stem">2. A parent reports that her 5-year-old has a swollen lymph node. What additional findings would make this concerning for malignancy?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fever for more than 1 week, recent weight loss, or an abnormal chest radiograph</li><li class="fopt"><span class="mk">B</span>Any palpable node larger than 1 cm</li><li class="fopt"><span class="mk">C</span>Tenderness of the node on palpation</li><li class="fopt"><span class="mk">D</span>A node that has been present for 3 days</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;enlarged, firm lymph nodes in a child with fever for more than 1 week, a recent history of weight loss, or an abnormal chest x-ray film may indicate a serious disease and should be evaluated further&quot; (p. 1079).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) each treat a single node characteristic as sufficient, and a swollen node alone is not the cancer cue in this chapter — all three of the named qualifiers do the work, which is why they are stated together.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cancer warning signs and diagnostic workup in children</span><span class="chip t2">general</span></div>
+<div class="stem">3. A parent brings in a photograph showing a white glow in her toddler's pupil instead of the normal red reflex. What should the nurse recognize?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Leukocoria, which can be a sign of retinoblastoma</li><li class="fopt"><span class="mk">B</span>A normal photographic artifact requiring no follow-up</li><li class="fopt"><span class="mk">C</span>Cataract, which is unrelated to malignancy</li><li class="fopt"><span class="mk">D</span>Strabismus, which is the most common presenting sign of eye tumors</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes leukocoria or white eye reflex as a yellow or whitish glow in the pupil, as opposed to the normal red pupillary reflex, noted in photographs, and states it can be a sign of retinoblastoma (pp. 1079, 1102).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names the second most common sign rather than the first — strabismus results from poor fixation of the visually impaired eye — and (B) dismisses a finding whose &quot;fleeting nature... often results in a delayed diagnosis,&quot; which is precisely why a photograph matters.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cancer warning signs and diagnostic workup in children</span><span class="chip t2">general</span></div>
+<div class="stem">4. A nurse is explaining childhood cancer to a parent who asks what she could have done to prevent it. What is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>There are no generally recognized preventive measures for childhood cancer, because lifestyle risk factors drive adult rather than childhood cancer</li><li class="fopt"><span class="mk">B</span>Dietary changes in early childhood substantially reduce risk</li><li class="fopt"><span class="mk">C</span>Avoiding all environmental exposures prevents most childhood cancers</li><li class="fopt"><span class="mk">D</span>Childhood cancer is the leading cause of death in children ages 1 to 15</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that lifestyle risk factors drive adult cancer rather than childhood cancer, and that there are no generally recognized preventive measures for childhood cancer (pp. 1072–1073).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) overstates a real statistic, since cancer is the leading cause of death *from disease* in children ages 1 to 15 rather than the leading cause of death overall; the distinction matters when counseling families, and so does the fact that nothing they did or failed to do caused this.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">chemotherapy administration and side-effect management</span><span class="chip t2">general</span></div>
+<div class="stem">5. A nurse is preparing to handle chemotherapeutic agents. Which precautions does the chapter direct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Prepare the drugs in a ventilated preparation room</li><li class="fopt right"><span class="mk">&#10003;</span>Wear gloves and protective clothing</li><li class="fopt right"><span class="mk">&#10003;</span>Use face and eye protection and a respirator when indicated</li><li class="fopt right"><span class="mk">&#10003;</span>Place sterile gauze at every connection point</li><li class="fopt"><span class="mk">E</span>Recap needles carefully before disposal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's handling precautions name a ventilated preparation room, gloves and protective clothing, face and eye protection with a respirator when indicated, and sterile gauze at every connection point (p. 1076).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses an explicit instruction — do not recap or break needles — and it is the kind of action that reads as careful while creating the exposure the whole list exists to prevent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">chemotherapy administration and side-effect management</span><span class="chip t2">general</span></div>
+<div class="stem">6. A nurse notes swelling and a lack of blood return at a peripheral intravenous site during a chemotherapy infusion. What should the nurse do first?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stop the infusion immediately</li><li class="fopt"><span class="mk">B</span>Slow the infusion and apply a warm compress</li><li class="fopt"><span class="mk">C</span>Flush the line with saline to confirm patency</li><li class="fopt"><span class="mk">D</span>Notify the practitioner before changing anything</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs stopping the chemotherapy infusion immediately at the first sign of infiltration (p. 1076).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) pushes more vesicant into the tissue while testing a line that has already failed; note that the action differs for a suspected hypersensitivity reaction, where the nurse discontinues the drug, flushes and maintains the line with saline, and monitors vital signs — infiltration means stop, hypersensitivity means stop and keep the line open.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">chemotherapy administration and side-effect management</span><span class="chip t2">general</span></div>
+<div class="stem">7. A child is scheduled for chemotherapy known to cause nausea. When should antiemetics be given?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>On a schedule, before chemotherapy and around the clock for at least 24 hours after</li><li class="fopt"><span class="mk">B</span>As needed, once nausea develops</li><li class="fopt"><span class="mk">C</span>Only if vomiting occurs more than three times</li><li class="fopt"><span class="mk">D</span>After the infusion is complete, to avoid drug interactions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs giving antiemetics on a schedule, before chemotherapy and around the clock for at least 24 hours after, rather than as needed, with the rationale of preventing anticipatory nausea (p. 1081).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is standard practice for most symptoms and is specifically wrong here, because once anticipatory nausea is established it becomes conditioned and far harder to treat; note also that nausea and vomiting are usually not indications for stopping the chemotherapy itself.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">chemotherapy administration and side-effect management</span><span class="chip t2">general</span></div>
+<div class="stem">8. A child receiving vincristine has not had a bowel movement in 4 days. What should the nurse recommend?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A stool softener, increased activity, and a laxative such as polyethylene glycol</li><li class="fopt"><span class="mk">B</span>Increased dietary fiber as the primary intervention</li><li class="fopt"><span class="mk">C</span>A rectal suppository for prompt relief</li><li class="fopt"><span class="mk">D</span>Fluid restriction to firm the stool</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Increased fiber may not be effective because the increased bulk tends to increase fecal distention and discomfort without producing the necessary mechanical stimulation,&quot; directing stool softeners, activity, and laxatives such as polyethylene glycol instead (p. 1082).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is contraindicated, since rectal temperatures and suppositories are avoided in the child with cancer — an instruction that appears three separate times in this chapter; (B) is the intuitive constipation answer and the one the chapter specifically rules out for this cause.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric oncologic emergencies</span><span class="chip t2">general</span></div>
+<div class="stem">9. A child beginning induction for acute lymphoblastic leukemia develops flank pain, muscle cramps, and tetany. Which laboratory pattern should the nurse expect? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hyperuricemia</li><li class="fopt right"><span class="mk">&#10003;</span>Hyperphosphatemia</li><li class="fopt right"><span class="mk">&#10003;</span>Hyperkalemia</li><li class="fopt right"><span class="mk">&#10003;</span>Hypocalcemia</li><li class="fopt"><span class="mk">E</span>Hypercalcemia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter defines tumor lysis syndrome by &quot;hyperuricemia, hypocalcemia, hyperphosphatemia, and hyperkalemia,&quot; resulting from rapid release of intracellular contents during lysis of malignant cells, typically during the initial treatment period (p. 1078).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) uses the pattern against the reader — three of the four values go up and calcium is the outlier that goes down, so an option offering the calcium in the same direction as the rest is the designed error.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric oncologic emergencies</span><span class="chip t2">general</span></div>
+<div class="stem">10. A child with tumor lysis syndrome is at risk for acute renal failure. Which intervention addresses the mechanism?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Aggressive intravenous fluids with allopurinol or rasburicase to reduce uric acid</li><li class="fopt"><span class="mk">B</span>Fluid restriction to reduce renal workload</li><li class="fopt"><span class="mk">C</span>Potassium supplementation to correct the electrolyte shift</li><li class="fopt"><span class="mk">D</span>Calcium restriction to prevent stone formation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The crystallization of uric acid that can occur with hyperuricemia can lead to acute renal failure,&quot; and directs frequent serum chemistries and urine pH, strict intake and output, aggressive intravenous fluids, and allopurinol, noting that hyperuricemia &quot;is now effectively treated with recombinant urate oxidase, or rasburicase,&quot; which converts uric acid to the more soluble allantoin (p. 1078).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) would worsen an already elevated potassium, and (B) removes the very intervention that clears the uric acid load; risk factors for this syndrome are a high white cell count at diagnosis, large tumor burden, chemosensitivity, and a high proliferative rate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric oncologic emergencies</span><span class="chip t2">general</span></div>
+<div class="stem">11. A child newly diagnosed with leukemia has a white blood cell count of 130,000/mm3 with respiratory distress and confusion. What is this, and what is the mechanism?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hyperleukocytosis, in which capillary obstruction and microinfarction produce organ dysfunction</li><li class="fopt"><span class="mk">B</span>Tumor lysis syndrome, in which electrolyte shifts produce neurologic change</li><li class="fopt"><span class="mk">C</span>Superior vena cava syndrome, in which a mediastinal mass obstructs venous return</li><li class="fopt"><span class="mk">D</span>Disseminated intravascular coagulation, in which microthrombi consume clotting factors</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter defines hyperleukocytosis as &quot;a peripheral white blood cell count greater than 100,000/mm3, [which] can lead to capillary obstruction, microinfarction, and organ dysfunction,&quot; with respiratory distress, cyanosis, and neurologic changes (p. 1078).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the other early-treatment emergency in the same patient and is a metabolic rather than a rheologic problem; the distinguishing feature here is the cell count itself, and management is rapid cytoreduction with hydration, urinary alkalinization, and allopurinol.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric oncologic emergencies</span><span class="chip t2">general</span></div>
+<div class="stem">12. A child with Hodgkin lymphoma develops cyanosis of the face and neck, facial and upper extremity edema, and distended neck and chest veins. What is the priority?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Airway protection and alleviation of respiratory distress</li><li class="fopt"><span class="mk">B</span>Immediate lumbar puncture to assess for central nervous system involvement</li><li class="fopt"><span class="mk">C</span>Elevation of the lower extremities to improve venous return</li><li class="fopt"><span class="mk">D</span>Fluid bolus to improve perfusion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes superior vena cava syndrome from space-occupying chest lesions, &quot;especially from Hodgkin disease and NHL,&quot; presenting with cyanosis of the face, neck, and upper chest, facial and upper extremity edema, and distended neck and chest veins, managed by &quot;Airway protection and alleviation of respiratory distress&quot; (p. 1078).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) treats the distention as hypovolemia when the problem is obstructed return; note that the second leading cause of this syndrome is thrombotic complications of implantable intravenous devices, so a child with a port belongs on this differential too.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infection and bleeding risk in the child with cancer</span><span class="chip t2">general</span></div>
+<div class="stem">13. A child receiving chemotherapy has a white blood cell count of 1000/mm3, with 7% neutrophils and 7% bands. What is the absolute neutrophil count, and what does it mean?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>140/mm3, which places the child at high risk for overwhelming infection</li><li class="fopt"><span class="mk">B</span>1400/mm3, which is mildly reduced but not high risk</li><li class="fopt"><span class="mk">C</span>70/mm3, since only segmented neutrophils are counted</li><li class="fopt"><span class="mk">D</span>140/mm3, which is within normal limits during chemotherapy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's guideline directs determining the total percentage of neutrophils including polys or segs and bands, then multiplying the white cell count by that percentage — so 7% plus 7% is 14%, and 0.14 times 1000 is 140/mm3; the at-risk child is the one with fever and a count below 500/mm3 (p. 1079).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) drops the bands, which the calculation explicitly includes; (D) normalizes a value more than threefold below the risk threshold. Note the clinical trap in the same paragraph — the usual signs of inflammation may be absent, but &quot;fever will occur,&quot; so fever is the reliable sign precisely when redness and pus are not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infection and bleeding risk in the child with cancer</span><span class="chip t2">general</span></div>
+<div class="stem">14. A child with an absolute neutrophil count of 300/mm3 is being cared for at home. Which instructions are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Avoid crowded areas such as shopping centers</li><li class="fopt right"><span class="mk">&#10003;</span>Report fever promptly, since it may be the only sign of infection</li><li class="fopt right"><span class="mk">&#10003;</span>Siblings may receive live measles-mumps-rubella and varicella vaccines</li><li class="fopt right"><span class="mk">&#10003;</span>Use acetaminophen rather than aspirin for fever or pain</li><li class="fopt"><span class="mk">E</span>Isolate the child from any sibling who has recently received a live vaccine</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter advises cautious isolation from crowded areas when the count falls below 500/mm3, notes that fever occurs even when other signs do not, states that siblings and family members &quot;can receive live MMR and varicella vaccine without risk to the child who is immunosuppressed,&quot; and substitutes acetaminophen for aspirin (pp. 1079–1080, 1084).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) over-applies the live-vaccine rule — the restriction is on the patient receiving them, not on the household, and isolating the child from a recently vaccinated sibling imposes a separation the chapter does not require.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infection and bleeding risk in the child with cancer</span><span class="chip t2">general</span></div>
+<div class="stem">15. A child receiving chemotherapy has a platelet count of 18,000/mm3. Which finding should the nurse expect, and which action is appropriate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Spontaneous gum or nose bleeding may occur, and pressure is applied at the site without disturbing clot formation</li><li class="fopt"><span class="mk">B</span>Spontaneous bleeding is not expected until the count falls below 5000/mm3</li><li class="fopt"><span class="mk">C</span>Prophylactic platelet transfusion should be given regardless of bleeding</li><li class="fopt"><span class="mk">D</span>Rectal temperatures should be taken to avoid oral mucosal trauma</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that severe spontaneous internal hemorrhage &quot;usually does not occur until the platelet count is 20,000/mm3 or less,&quot; that spontaneous gum or nose bleeding appears below that level, and that for the most common bleeds — epistaxis and gingival bleeding — &quot;applying pressure at the site without disturbing clot formation is the general rule&quot; (pp. 1079–1080).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reverses a rule stated three times in this chapter, since the rectal area is prone to ulceration and rectal temperatures and suppositories are avoided; (C) over-treats, since platelet transfusions &quot;are generally reserved for active bleeding episodes that do not respond to local treatment.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infection and bleeding risk in the child with cancer</span><span class="chip t2">general</span></div>
+<div class="stem">16. A child with cancer has a platelet count of 85,000/mm3 and wants to ride his bicycle. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Avoid activities that might cause injury or bleeding while the count is below 100,000/mm3</li><li class="fopt"><span class="mk">B</span>Bicycle riding is safe at any platelet count above 20,000/mm3</li><li class="fopt"><span class="mk">C</span>All activity should be restricted until the count exceeds 150,000/mm3</li><li class="fopt"><span class="mk">D</span>Activity restriction applies only to contact sports at any count</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs that children with low platelet counts, usually below 100,000/mm3, &quot;should avoid activities that might cause injury or bleeding, such as riding bicycles or skateboards, skating, climbing trees or playground equipment, and contact sports,&quot; and that once the count rises &quot;these restrictions are not necessary&quot; (p. 1080).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies the spontaneous-bleeding threshold to an activity decision, and the chapter deliberately keeps four platelet numbers apart for four different decisions — 20,000 for spontaneous bleeding, 100,000 for activity, 40,000 with granulocytes of 500 for toothbrushing, and transfusion reserved for refractory active bleeding.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infection and bleeding risk in the child with cancer</span><span class="chip t2">general</span></div>
+<div class="stem">17. A child with cancer develops stomatitis. Which oral care measure does the chapter recommend?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A soft sponge toothbrush, avoiding lemon glycerin swabs and hydrogen peroxide</li><li class="fopt"><span class="mk">B</span>Viscous lidocaine for a young child before meals</li><li class="fopt"><span class="mk">C</span>Hydrogen peroxide rinses to debride the ulcerations</li><li class="fopt"><span class="mk">D</span>Lemon glycerin swabs to stimulate salivation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs a soft sponge toothbrush for stomatitis and states that lemon glycerin swabs and hydrogen peroxide are avoided for their drying effect and, for lemon, its acidity on eroded tissue (p. 1082).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names an agent the chapter rules out in young children, because viscous lidocaine &quot;may depress the gag reflex and increase aspiration risk&quot; and has been associated with seizures; toothettes are the fallback when counts fall below the 500 and 40,000 thresholds.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute leukemia in children</span><span class="chip t2">general</span></div>
+<div class="stem">18. A 4-year-old newly diagnosed with acute lymphoblastic leukemia presents with pallor, recurrent infections, and petechiae. What accounts for all three?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bone marrow infiltration producing anemia, infection from neutropenia, and bleeding from decreased platelet production</li><li class="fopt"><span class="mk">B</span>Direct organ infiltration by leukemic cells in the skin and lungs</li><li class="fopt"><span class="mk">C</span>A paraneoplastic autoimmune process</li><li class="fopt"><span class="mk">D</span>Side effects of induction chemotherapy, which has not yet begun</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names three main consequences of bone marrow infiltration: &quot;(1) anemia from decreased erythrocytes, (2) infection from neutropenia, and (3) bleeding from decreased platelet production&quot; (p. 1086).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) attributes the presentation to treatment that has not started, which is a common misreading when the findings resemble chemotherapy toxicity; sorting each presenting sign into one of the three categories is what makes this material tractable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute leukemia in children</span><span class="chip t2">general</span></div>
+<div class="stem">19. A child with acute lymphoblastic leukemia is entering the phase that begins immediately after diagnosis. What defines it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Induction, lasting 4 to 5 weeks, using corticosteroids, vincristine, and L-asparaginase, aiming for less than 5% blasts in the marrow</li><li class="fopt"><span class="mk">B</span>Maintenance, lasting 2 to 3 years, using daily mercaptopurine and weekly methotrexate</li><li class="fopt"><span class="mk">C</span>Consolidation, using cyclophosphamide, cytarabine, and mercaptopurine</li><li class="fopt"><span class="mk">D</span>Delayed intensification, repeating the induction drugs at higher doses</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that induction begins almost immediately after diagnosis and &quot;lasts for 4 to 5 weeks,&quot; that &quot;The principal drugs are the corticosteroids (dexamethasone or prednisone), vincristine, and L-asparaginase,&quot; and that complete remission is &quot;the presence of less than 5% blast cells in the bone marrow and no detectable leukemia in extramedullary sites&quot; (pp. 1086–1087).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the final phase, which runs 2 to 3 years; note that the period immediately after remission is critical, because myelosuppression leaves &quot;the body defenseless against invading organisms... and susceptible to spontaneous hemorrhage.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute leukemia in children</span><span class="chip t2">general</span></div>
+<div class="stem">20. Why does every child with acute lymphoblastic leukemia receive central nervous system prophylaxis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Leukemic cells in the central nervous system are protected by the blood-brain barrier from systemic chemotherapy</li><li class="fopt"><span class="mk">B</span>All children have detectable central nervous system disease at diagnosis</li><li class="fopt"><span class="mk">C</span>Cranial radiation is required in every case</li><li class="fopt"><span class="mk">D</span>The central nervous system is the most common site of the primary tumor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that because leukemic cells in the central nervous system are protected by the blood-brain barrier, &quot;all children receive CNS prophylactic therapy,&quot; delivered as intrathecal chemotherapy plus central nervous system–directed systemic chemotherapy, with cranial radiation reserved for those at highest risk of relapse (pp. 1086–1087).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) generalizes a treatment the chapter restricts to the highest-risk group; note that the central nervous system and the testes are the two named &quot;sanctuaries&quot; for leukemic cells requiring specific therapy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute leukemia in children</span><span class="chip t2">general</span></div>
+<div class="stem">21. A family asks why adherence matters so much during maintenance therapy. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Anything less than 95% adherence increases the risk of relapse</li><li class="fopt"><span class="mk">B</span>Missing occasional doses has no measurable effect on outcome</li><li class="fopt"><span class="mk">C</span>Adherence matters only during induction</li><li class="fopt"><span class="mk">D</span>Doses may be doubled to make up for missed ones</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;A critical challenge during maintenance therapy is medication adherence because it has been shown that anything less than 95% adherence increases the risk of relapse,&quot; with treatment continuing for 2 to 3 years (p. 1087).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) proposes a correction that would risk toxicity without restoring the missed exposure; the 95% figure is unusually specific and is the reason adherence is monitored rather than assumed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute leukemia in children</span><span class="chip t2">general</span></div>
+<div class="stem">22. A nurse is comparing acute lymphoblastic and acute myeloid leukemia. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>There is no established clinical staging system for acute myeloid leukemia, which is considered disseminated at diagnosis, and its treatment is more intense and shorter</li><li class="fopt"><span class="mk">B</span>Acute myeloid leukemia uses the same induction-through-maintenance sequence as lymphoblastic disease</li><li class="fopt"><span class="mk">C</span>Acute myeloid leukemia has a higher 5-year survival than lymphoblastic disease</li><li class="fopt"><span class="mk">D</span>Central nervous system irradiation is routine in acute myeloid leukemia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;There is no established clinical staging system for AML; it is considered disseminated at diagnosis,&quot; that &quot;Treatment for AML is generally more intense and of shorter duration than treatment for ALL,&quot; with maintenance not used in most regimens, and that &quot;CNS irradiation is not usually used in AML treatment&quot; (p. 1087).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the prognosis, since almost 80% of children with lymphoblastic disease live 5 years or longer while myeloid disease carries 68% 5-year survival under 15 years; note also the two distinctive myeloid skin findings, leukemia cutis in blue or purple and blue-green chloromas around the eyes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood lymphomas</span><span class="chip t2">general</span></div>
+<div class="stem">23. A lymph node biopsy in an adolescent shows Reed-Sternberg cells. What does this establish?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hodgkin lymphoma, since these cells are absent in the other lymphomas</li><li class="fopt"><span class="mk">B</span>Non-Hodgkin lymphoma, since these cells are characteristic of it</li><li class="fopt"><span class="mk">C</span>Either lymphoma, since the cells appear in both</li><li class="fopt"><span class="mk">D</span>Leukemia with nodal involvement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The presence of Hodgkin and Reed-Sternberg cells is considered diagnostic of Hodgkin disease because it is absent in the other lymphomas&quot; (p. 1089).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the finding, and the consequence is more than nomenclature — the staging system used for Hodgkin lymphoma &quot;is not used for NHL,&quot; so the diagnosis determines how the disease is staged as well as what it is called.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood lymphomas</span><span class="chip t2">general</span></div>
+<div class="stem">24. A nurse is comparing the epidemiology of the childhood lymphomas. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Non-Hodgkin lymphoma is more common in children overall, while Hodgkin disease shows a striking increase in ages 15 to 19</li><li class="fopt"><span class="mk">B</span>Hodgkin disease is more common in children than non-Hodgkin lymphoma at every age</li><li class="fopt"><span class="mk">C</span>Both peak in the preschool years</li><li class="fopt"><span class="mk">D</span>Hodgkin disease is most common before 5 years of age</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;In children NHL is more common than Hodgkin disease,&quot; and that &quot;Hodgkin disease is extremely rare before 5 years of age, [with] a striking increase in children ages 15 to 19&quot; (pp. 1088–1089).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the age distribution exactly — the rarity before 5 and the adolescent spike are what make age itself a useful discriminator when a lymphoma is suspected.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood lymphomas</span><span class="chip t2">general</span></div>
+<div class="stem">25. An adolescent with a mediastinal lymphoma develops facial swelling and dyspnea that worsen when lying flat. What should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Superior vena cava syndrome, requiring airway protection</li><li class="fopt"><span class="mk">B</span>Tumor lysis syndrome, requiring rasburicase</li><li class="fopt"><span class="mk">C</span>Spinal cord compression, requiring magnetic resonance imaging</li><li class="fopt"><span class="mk">D</span>Disseminated intravascular coagulation, requiring heparin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names space-occupying chest lesions &quot;especially from Hodgkin disease and NHL&quot; as the cause of superior vena cava syndrome, presenting with cyanosis and edema of the face, neck, and upper chest with distended veins, and directs airway protection (p. 1078).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the other structural emergency in this chapter, but its initial manifestation is back pain rather than facial swelling, and magnetic resonance imaging is its gold standard; the positional worsening here points to venous obstruction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood lymphomas</span><span class="chip t2">general</span></div>
+<div class="stem">26. A child with a lymphoma develops back pain, extremity weakness, and loss of bladder control. What is the priority action?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Obtain magnetic resonance imaging, which is the gold standard for diagnosing spinal cord compression</li><li class="fopt"><span class="mk">B</span>Begin physical therapy for the weakness</li><li class="fopt"><span class="mk">C</span>Obtain a lumbar puncture to assess for malignant cells</li><li class="fopt"><span class="mk">D</span>Schedule a bone scan for the following week</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names back pain as &quot;a common initial manifestation&quot; of spinal cord compression, with sensation change, extremity weakness, loss of bowel and bladder function, and respiratory insufficiency, and states that &quot;MRI is the gold standard for diagnosis,&quot; with high-dose steroids and emergent radiation or laminectomy if indicated (p. 1078).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) treats an emergency as routine follow-up, and the neurologic deficits here are time-critical; note that a lumbar puncture is also avoided in the presence of increased intracranial pressure elsewhere in this chapter.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood brain tumors</span><span class="chip t2">general</span></div>
+<div class="stem">27. A 6-year-old has headaches worst on awakening and vomiting unrelated to feeding, with ataxia and nystagmus. Which tumor location does this suggest?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Infratentorial, which accounts for about 60% of pediatric brain tumors</li><li class="fopt"><span class="mk">B</span>Supratentorial, which typically presents with seizures</li><li class="fopt"><span class="mk">C</span>Spinal, which presents with back pain</li><li class="fopt"><span class="mk">D</span>The location cannot be inferred from symptoms</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;the most common symptoms of infratentorial brain tumors are headache, especially on awakening, and vomiting that is not related to feeding,&quot; with cerebellar involvement producing nystagmus, ataxia, dysarthria, and dysmetria, and that about 60% of pediatric tumors are infratentorial (p. 1092).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the supratentorial picture, which &quot;more commonly include seizures, personality or behavioral changes, visual disturbances, and hemiparesis&quot;; the location matters because it determines the postoperative positioning order.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood brain tumors</span><span class="chip t2">general</span></div>
+<div class="stem">28. A child has just returned from resection of an infratentorial brain tumor. How should the nurse position the child?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Flat, on either side, but not on the operative side</li><li class="fopt"><span class="mk">B</span>With the head elevated above the level of the heart</li><li class="fopt"><span class="mk">C</span>In Trendelenburg position to promote venous return</li><li class="fopt"><span class="mk">D</span>Prone with the head turned to the operative side</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives site-specific positioning: infratentorial goes flat, on either side, not on the operative side; supratentorial goes with the head elevated above the heart (p. 1095).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is correct for the other site and is the swap this pair exists to catch; (C) is contraindicated after both types, and the chapter directs notifying the practitioner before lowering the head even for impending shock.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood brain tumors</span><span class="chip t2">general</span></div>
+<div class="stem">29. A nurse notes colorless drainage on the dressing of a child who had a craniotomy yesterday. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Report it immediately, since colorless drainage is cerebrospinal fluid</li><li class="fopt"><span class="mk">B</span>Reinforce the dressing and reassess at the end of the shift</li><li class="fopt"><span class="mk">C</span>Remove the dressing to inspect the wound</li><li class="fopt"><span class="mk">D</span>Document it as expected serous drainage</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs that colorless drainage on a craniotomy dressing is cerebrospinal fluid and is reported immediately, along with sluggish, dilated, or unequal pupils (p. 1094).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) violates a separate instruction — reinforce a soiled craniotomy dressing rather than removing it — so an option that combines the wrong urgency with the wrong technique is doubly wrong; (D) normalizes the one drainage characteristic that signals a dural leak.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood brain tumors</span><span class="chip t2">general</span></div>
+<div class="stem">30. A nurse is assessing a child with a brain tumor for signs of increased intracranial pressure. Which vital sign pattern is expected?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Decreased pulse and respirations, increased blood pressure, and decreased pulse pressure</li><li class="fopt"><span class="mk">B</span>Increased pulse and respirations, decreased blood pressure, and widened pulse pressure</li><li class="fopt"><span class="mk">C</span>Increased pulse with unchanged blood pressure</li><li class="fopt"><span class="mk">D</span>Decreased blood pressure with widened pulse pressure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 29.4 lists decreased pulse and respiration, increased blood pressure, decreased pulse pressure, and hypothermia or hyperthermia among the vital sign findings, directing that pulse and respirations be monitored for 1 full minute with the pulse pressure recorded (p. 1092).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the shock pattern, which runs the opposite way on every value; the vomiting in this setting is also distinctive — progressively projectile, worse in the morning, and relieved by moving about and changing position.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood brain tumors</span><span class="chip t2">general</span></div>
+<div class="stem">31. A child with a suspected brain tumor and signs of increased intracranial pressure is scheduled for diagnostic testing. Which test does the chapter identify as the gold standard, and which is avoided?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Magnetic resonance imaging is the gold standard, and lumbar puncture is avoided because of the danger of brainstem herniation</li><li class="fopt"><span class="mk">B</span>Computed tomography is the gold standard, and magnetic resonance imaging is avoided</li><li class="fopt"><span class="mk">C</span>Lumbar puncture is the gold standard, and imaging is avoided</li><li class="fopt"><span class="mk">D</span>Electroencephalography is the gold standard, and imaging is avoided</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The gold standard diagnostic procedure is MRI,&quot; with computed tomography used in urgent cases when magnetic resonance imaging is unavailable, and that &quot;In the presence of increased ICP, LP is avoided due to the danger of possible brainstem&quot; herniation (p. 1092).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) proposes the one procedure the chapter specifically warns against in this setting, and the reason is mechanical rather than diagnostic — removing fluid below an obstructed compartment invites herniation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroblastoma and wilms tumor</span><span class="chip t2">general</span></div>
+<div class="stem">32. A 2-year-old has a firm, nontender, irregular abdominal mass that crosses the midline. Which tumor does this suggest?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Neuroblastoma</li><li class="fopt"><span class="mk">B</span>Wilms tumor</li><li class="fopt"><span class="mk">C</span>Rhabdomyosarcoma</li><li class="fopt"><span class="mk">D</span>Hepatoblastoma</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that with abdominal tumors &quot;the most common presenting sign is a firm, nontender, irregular mass in the abdomen that crosses the midline (in contrast to Wilms tumor, which is usually confined to one side)&quot; (p. 1096).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the confusable partner, and midline crossing is the single discriminator the chapter gives explicitly; the median age also differs, about 19 months for neuroblastoma and 44 months for unilateral Wilms tumor.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroblastoma and wilms tumor</span><span class="chip t2">general</span></div>
+<div class="stem">33. A child is being evaluated for suspected neuroblastoma. Which laboratory study does the chapter name?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Urinary catecholamine metabolites, vanillylmandelic acid and homovanillic acid</li><li class="fopt"><span class="mk">B</span>Serum alpha-fetoprotein</li><li class="fopt"><span class="mk">C</span>Urinary protein and creatinine ratio</li><li class="fopt"><span class="mk">D</span>Serum renin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that because neuroblastomas excrete epinephrine and norepinephrine, &quot;urinary excretion of catecholamine metabolites (vanillylmandelic acid [VMA] and homovanillic acid [HVA]) is measured before therapy,&quot; and these markers monitor response and detect relapse (p. 1096).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) belongs to Wilms tumor, where hypertension arises from excess renin secretion; each tumor has its own biochemical signature, which is another way the two abdominal masses separate.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroblastoma and wilms tumor</span><span class="chip t2">general</span></div>
+<div class="stem">34. A 3-year-old is admitted with a suspected Wilms tumor. Which nursing action is essential?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Do not palpate the abdomen, and post a sign on the bed</li><li class="fopt"><span class="mk">B</span>Palpate the abdomen once each shift to track the mass size</li><li class="fopt"><span class="mk">C</span>Measure abdominal girth every 2 hours with deep palpation</li><li class="fopt"><span class="mk">D</span>Encourage the child to lie prone to reduce pressure on the mass</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;the most important&quot; preoperative concern is &quot;not to palpate the tumor unless absolutely necessary because manipulation of the mass may cause dissemination of cancer cells to adjacent and distant sites,&quot; and a Nursing Alert directs posting a sign on the bed reading &quot;Do not palpate abdomen&quot; (p. 1100).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are both ordinary nursing assessments that are specifically harmful here, which is what makes this the chapter's clearest single nursing action; careful bathing and handling also matter in preventing trauma to the tumor site.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroblastoma and wilms tumor</span><span class="chip t2">general</span></div>
+<div class="stem">35. A child with a Wilms tumor has a blood pressure of 132/86 mm Hg. What explains this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Excess renin secretion by the tumor</li><li class="fopt"><span class="mk">B</span>Pain from abdominal distention</li><li class="fopt"><span class="mk">C</span>Fluid overload from preoperative hydration</li><li class="fopt"><span class="mk">D</span>Catecholamine secretion by the tumor</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Hypertension, probably caused by secretion of excess amounts of renin by the tumor, occurs occasionally,&quot; and directs monitoring blood pressure preoperatively for this reason (pp. 1099–1100).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names the neuroblastoma mechanism; note that the mass in Wilms tumor is &quot;firm, nontender, confined to one side, and deep within the flank,&quot; and unlike the liver &quot;it does not move with respiration,&quot; while hematuria occurs in fewer than one-fourth of children.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroblastoma and wilms tumor</span><span class="chip t2">general</span></div>
+<div class="stem">36. A child is recovering from nephrectomy for Wilms tumor. Which assessment is a priority because of a specific treatment complication?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gastrointestinal activity, because vincristine-induced adynamic ileus can cause intestinal obstruction</li><li class="fopt"><span class="mk">B</span>Neurologic status, because of the risk of intracranial hemorrhage</li><li class="fopt"><span class="mk">C</span>Respiratory rate, because of the risk of pulmonary edema</li><li class="fopt"><span class="mk">D</span>Urine output only, since the remaining kidney is the sole concern</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs monitoring gastrointestinal activity — bowel movements, bowel sounds, distention, and vomiting — because of the risk of intestinal obstruction from vincristine-induced adynamic ileus, radiation-induced edema, and postsurgical adhesions, along with frequent blood pressure evaluation and observation for infection (p. 1100).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) narrows the assessment to the obvious organ and misses the drug effect, which is what makes this complication easy to overlook; the recovery period is otherwise described as usually rapid.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bone tumors and retinoblastoma</span><span class="chip t2">general</span></div>
+<div class="stem">37. An adolescent has localized pain in the distal femur that is relieved by holding the leg flexed. A radiograph shows a lesion in the metaphysis. Which tumor is most likely?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Osteosarcoma</li><li class="fopt"><span class="mk">B</span>Ewing sarcoma</li><li class="fopt"><span class="mk">C</span>Rhabdomyosarcoma</li><li class="fopt"><span class="mk">D</span>Osteomyelitis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter identifies osteosarcoma as &quot;the most common bone tumor in adolescents and young adults,&quot; arising from bone-forming mesenchyme in the metaphyseal region, most often the distal femur, and notes that bone tumor pain &quot;is often relieved by a flexed position, which relaxes the muscles overlying the stretched periosteum&quot; (p. 1097).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) arises &quot;in the marrow spaces of the bone rather than from osseous tissue,&quot; in the shaft rather than the metaphysis; note the shared trap that this pain is often attributed to trauma or dismissed as growing pains.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bone tumors and retinoblastoma</span><span class="chip t2">general</span></div>
+<div class="stem">38. A child with a bone tumor has fever and systemic symptoms in addition to localized pain. Which tumor does this favor, and how does treatment differ?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ewing sarcoma, which more often has systemic symptoms and is treated with radiation</li><li class="fopt"><span class="mk">B</span>Osteosarcoma, which more often has systemic symptoms and is treated with radiation</li><li class="fopt"><span class="mk">C</span>Ewing sarcoma, which is treated surgically without radiation</li><li class="fopt"><span class="mk">D</span>Osteosarcoma, which is treated with radiation rather than surgery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Systemic symptoms (such as fever) and other clinical symptoms (such as spinal cord compression and respiratory distress) are more frequent in patients with Ewing sarcoma,&quot; which is treated with radiation, unlike osteosarcoma (pp. 1097–1099).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) assigns radiation to the wrong tumor, which matters because the treatment difference is one of the two clean discriminators between them; the other is the site of origin, marrow space against osseous tissue.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bone tumors and retinoblastoma</span><span class="chip t2">general</span></div>
+<div class="stem">39. A 2-year-old's parents notice a whitish glow in one pupil in photographs, and the child has developed strabismus. What is the likely diagnosis and its usual prognosis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Retinoblastoma, with an overall 10-year survival near 90%</li><li class="fopt"><span class="mk">B</span>Congenital cataract, which does not affect survival</li><li class="fopt"><span class="mk">C</span>Retinoblastoma, with an overall survival below 50%</li><li class="fopt"><span class="mk">D</span>Optic glioma, which presents with proptosis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names leukocoria as the first sign of retinoblastoma and strabismus as &quot;The next most common sign... resulting from poor fixation of the visually impaired eye,&quot; and states that &quot;The overall 10-year survival rate is nearly 90% for unilateral and bilateral tumors&quot; (pp. 1102–1103).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) understates a prognosis that is among the best in this chapter; note that blindness is usually a late sign, and that retinoblastoma, like neuroblastoma, may spontaneously regress.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">bone tumors and retinoblastoma</span><span class="chip t2">general</span></div>
+<div class="stem">40. Parents of a child with retinoblastoma ask whether their other children are at risk. What should the nurse know about the hereditary pattern?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>About 25% are bilateral and hereditary and 15% are unilateral and hereditary, with a germline RB1 mutation present in the hereditary form</li><li class="fopt"><span class="mk">B</span>All cases are hereditary and all siblings will be affected</li><li class="fopt"><span class="mk">C</span>No cases are hereditary, so siblings carry no increased risk</li><li class="fopt"><span class="mk">D</span>Only bilateral cases can be hereditary, so unilateral disease carries no family risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;60% are unilateral and nonhereditary (also called sporadic), 25% are bilateral and hereditary, and 15% are unilateral and hereditary,&quot; with a germline RB1 mutation in the hereditary form, and that children with hereditary disease tend to be diagnosed at a younger age (p. 1102).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the intuitive assumption that bilaterality equals heritability, and the 15% unilateral-hereditary group is exactly what it misses; blood and tumor samples can be tested for the mutation, which is how that group is identified.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"cancer warning signs and diagnostic workup in children","subtopic":"general","stem":"A nurse is reviewing findings in a 4-year-old that would raise concern for a malignancy. Which are among the chapter's warning signs? Select all that apply.","options":["An unusual mass or swelling","Persistent, localized pain or limping","Prolonged, unexplained fever","Frequent headaches, often with vomiting","A single episode of epistaxis after a fall"],"correct":[0,1,2,3],"sata":true,"why":"Box 29.1 lists an unusual mass or swelling, unexplained paleness and loss of energy, easy bruising, persistent localized pain or limping, prolonged unexplained fever or illness, frequent headaches often with vomiting, sudden eye or vision changes, and unexplained rapid weight loss (p. 1078).","trap":"(E) lacks the qualifier every real entry carries — the chapter states that \"Cancers in children are often difficult to recognize. Therefore being alert to the persistence of possible signs and symptoms is essential,\" and the operative word throughout the box is persistence.","k":"6tjbwu1iiv8es"},{"topic":"cancer warning signs and diagnostic workup in children","subtopic":"general","stem":"A parent reports that her 5-year-old has a swollen lymph node. What additional findings would make this concerning for malignancy?","options":["Fever for more than 1 week, recent weight loss, or an abnormal chest radiograph","Any palpable node larger than 1 cm","Tenderness of the node on palpation","A node that has been present for 3 days"],"correct":[0],"sata":false,"why":"The chapter states that \"enlarged, firm lymph nodes in a child with fever for more than 1 week, a recent history of weight loss, or an abnormal chest x-ray film may indicate a serious disease and should be evaluated further\" (p. 1079).","trap":"(B) and (C) each treat a single node characteristic as sufficient, and a swollen node alone is not the cancer cue in this chapter — all three of the named qualifiers do the work, which is why they are stated together.","k":"82n3tl1s4kjwz"},{"topic":"cancer warning signs and diagnostic workup in children","subtopic":"general","stem":"A parent brings in a photograph showing a white glow in her toddler's pupil instead of the normal red reflex. What should the nurse recognize?","options":["Leukocoria, which can be a sign of retinoblastoma","A normal photographic artifact requiring no follow-up","Cataract, which is unrelated to malignancy","Strabismus, which is the most common presenting sign of eye tumors"],"correct":[0],"sata":false,"why":"The chapter describes leukocoria or white eye reflex as a yellow or whitish glow in the pupil, as opposed to the normal red pupillary reflex, noted in photographs, and states it can be a sign of retinoblastoma (pp. 1079, 1102).","trap":"(D) names the second most common sign rather than the first — strabismus results from poor fixation of the visually impaired eye — and (B) dismisses a finding whose \"fleeting nature... often results in a delayed diagnosis,\" which is precisely why a photograph matters.","k":"brwpmdmppg2v"},{"topic":"cancer warning signs and diagnostic workup in children","subtopic":"general","stem":"A nurse is explaining childhood cancer to a parent who asks what she could have done to prevent it. What is accurate?","options":["There are no generally recognized preventive measures for childhood cancer, because lifestyle risk factors drive adult rather than childhood cancer","Dietary changes in early childhood substantially reduce risk","Avoiding all environmental exposures prevents most childhood cancers","Childhood cancer is the leading cause of death in children ages 1 to 15"],"correct":[0],"sata":false,"why":"The chapter states that lifestyle risk factors drive adult cancer rather than childhood cancer, and that there are no generally recognized preventive measures for childhood cancer (pp. 1072–1073).","trap":"(D) overstates a real statistic, since cancer is the leading cause of death *from disease* in children ages 1 to 15 rather than the leading cause of death overall; the distinction matters when counseling families, and so does the fact that nothing they did or failed to do caused this.","k":"1eaxao53zd6rj"},{"topic":"chemotherapy administration and side-effect management","subtopic":"general","stem":"A nurse is preparing to handle chemotherapeutic agents. Which precautions does the chapter direct? Select all that apply.","options":["Prepare the drugs in a ventilated preparation room","Wear gloves and protective clothing","Use face and eye protection and a respirator when indicated","Place sterile gauze at every connection point","Recap needles carefully before disposal"],"correct":[0,1,2,3],"sata":true,"why":"The chapter's handling precautions name a ventilated preparation room, gloves and protective clothing, face and eye protection with a respirator when indicated, and sterile gauze at every connection point (p. 1076).","trap":"(E) reverses an explicit instruction — do not recap or break needles — and it is the kind of action that reads as careful while creating the exposure the whole list exists to prevent.","k":"oofv40wdfj3y"},{"topic":"chemotherapy administration and side-effect management","subtopic":"general","stem":"A nurse notes swelling and a lack of blood return at a peripheral intravenous site during a chemotherapy infusion. What should the nurse do first?","options":["Stop the infusion immediately","Slow the infusion and apply a warm compress","Flush the line with saline to confirm patency","Notify the practitioner before changing anything"],"correct":[0],"sata":false,"why":"The chapter directs stopping the chemotherapy infusion immediately at the first sign of infiltration (p. 1076).","trap":"(C) pushes more vesicant into the tissue while testing a line that has already failed; note that the action differs for a suspected hypersensitivity reaction, where the nurse discontinues the drug, flushes and maintains the line with saline, and monitors vital signs — infiltration means stop, hypersensitivity means stop and keep the line open.","k":"1mift3cpjykbm"},{"topic":"chemotherapy administration and side-effect management","subtopic":"general","stem":"A child is scheduled for chemotherapy known to cause nausea. When should antiemetics be given?","options":["On a schedule, before chemotherapy and around the clock for at least 24 hours after","As needed, once nausea develops","Only if vomiting occurs more than three times","After the infusion is complete, to avoid drug interactions"],"correct":[0],"sata":false,"why":"The chapter directs giving antiemetics on a schedule, before chemotherapy and around the clock for at least 24 hours after, rather than as needed, with the rationale of preventing anticipatory nausea (p. 1081).","trap":"(B) is standard practice for most symptoms and is specifically wrong here, because once anticipatory nausea is established it becomes conditioned and far harder to treat; note also that nausea and vomiting are usually not indications for stopping the chemotherapy itself.","k":"w4nvzoksnqmm"},{"topic":"chemotherapy administration and side-effect management","subtopic":"general","stem":"A child receiving vincristine has not had a bowel movement in 4 days. What should the nurse recommend?","options":["A stool softener, increased activity, and a laxative such as polyethylene glycol","Increased dietary fiber as the primary intervention","A rectal suppository for prompt relief","Fluid restriction to firm the stool"],"correct":[0],"sata":false,"why":"The chapter states that \"Increased fiber may not be effective because the increased bulk tends to increase fecal distention and discomfort without producing the necessary mechanical stimulation,\" directing stool softeners, activity, and laxatives such as polyethylene glycol instead (p. 1082).","trap":"(C) is contraindicated, since rectal temperatures and suppositories are avoided in the child with cancer — an instruction that appears three separate times in this chapter; (B) is the intuitive constipation answer and the one the chapter specifically rules out for this cause.","k":"t8eo7eczlac4"},{"topic":"pediatric oncologic emergencies","subtopic":"general","stem":"A child beginning induction for acute lymphoblastic leukemia develops flank pain, muscle cramps, and tetany. Which laboratory pattern should the nurse expect? Select all that apply.","options":["Hyperuricemia","Hyperphosphatemia","Hyperkalemia","Hypocalcemia","Hypercalcemia"],"correct":[0,1,2,3],"sata":true,"why":"The chapter defines tumor lysis syndrome by \"hyperuricemia, hypocalcemia, hyperphosphatemia, and hyperkalemia,\" resulting from rapid release of intracellular contents during lysis of malignant cells, typically during the initial treatment period (p. 1078).","trap":"(E) uses the pattern against the reader — three of the four values go up and calcium is the outlier that goes down, so an option offering the calcium in the same direction as the rest is the designed error.","k":"1vnghey11o25w4"},{"topic":"pediatric oncologic emergencies","subtopic":"general","stem":"A child with tumor lysis syndrome is at risk for acute renal failure. Which intervention addresses the mechanism?","options":["Aggressive intravenous fluids with allopurinol or rasburicase to reduce uric acid","Fluid restriction to reduce renal workload","Potassium supplementation to correct the electrolyte shift","Calcium restriction to prevent stone formation"],"correct":[0],"sata":false,"why":"The chapter states that \"The crystallization of uric acid that can occur with hyperuricemia can lead to acute renal failure,\" and directs frequent serum chemistries and urine pH, strict intake and output, aggressive intravenous fluids, and allopurinol, noting that hyperuricemia \"is now effectively treated with recombinant urate oxidase, or rasburicase,\" which converts uric acid to the more soluble allantoin (p. 1078).","trap":"(C) would worsen an already elevated potassium, and (B) removes the very intervention that clears the uric acid load; risk factors for this syndrome are a high white cell count at diagnosis, large tumor burden, chemosensitivity, and a high proliferative rate.","k":"8gwehr1yaqlvx"},{"topic":"pediatric oncologic emergencies","subtopic":"general","stem":"A child newly diagnosed with leukemia has a white blood cell count of 130,000/mm3 with respiratory distress and confusion. What is this, and what is the mechanism?","options":["Hyperleukocytosis, in which capillary obstruction and microinfarction produce organ dysfunction","Tumor lysis syndrome, in which electrolyte shifts produce neurologic change","Superior vena cava syndrome, in which a mediastinal mass obstructs venous return","Disseminated intravascular coagulation, in which microthrombi consume clotting factors"],"correct":[0],"sata":false,"why":"The chapter defines hyperleukocytosis as \"a peripheral white blood cell count greater than 100,000/mm3, [which] can lead to capillary obstruction, microinfarction, and organ dysfunction,\" with respiratory distress, cyanosis, and neurologic changes (p. 1078).","trap":"(B) is the other early-treatment emergency in the same patient and is a metabolic rather than a rheologic problem; the distinguishing feature here is the cell count itself, and management is rapid cytoreduction with hydration, urinary alkalinization, and allopurinol.","k":"1ql7naqgw4n24"},{"topic":"pediatric oncologic emergencies","subtopic":"general","stem":"A child with Hodgkin lymphoma develops cyanosis of the face and neck, facial and upper extremity edema, and distended neck and chest veins. What is the priority?","options":["Airway protection and alleviation of respiratory distress","Immediate lumbar puncture to assess for central nervous system involvement","Elevation of the lower extremities to improve venous return","Fluid bolus to improve perfusion"],"correct":[0],"sata":false,"why":"The chapter describes superior vena cava syndrome from space-occupying chest lesions, \"especially from Hodgkin disease and NHL,\" presenting with cyanosis of the face, neck, and upper chest, facial and upper extremity edema, and distended neck and chest veins, managed by \"Airway protection and alleviation of respiratory distress\" (p. 1078).","trap":"(D) treats the distention as hypovolemia when the problem is obstructed return; note that the second leading cause of this syndrome is thrombotic complications of implantable intravenous devices, so a child with a port belongs on this differential too.","k":"1w0z4j1b1fp1d"},{"topic":"infection and bleeding risk in the child with cancer","subtopic":"general","stem":"A child receiving chemotherapy has a white blood cell count of 1000/mm3, with 7% neutrophils and 7% bands. What is the absolute neutrophil count, and what does it mean?","options":["140/mm3, which places the child at high risk for overwhelming infection","1400/mm3, which is mildly reduced but not high risk","70/mm3, since only segmented neutrophils are counted","140/mm3, which is within normal limits during chemotherapy"],"correct":[0],"sata":false,"why":"The chapter's guideline directs determining the total percentage of neutrophils including polys or segs and bands, then multiplying the white cell count by that percentage — so 7% plus 7% is 14%, and 0.14 times 1000 is 140/mm3; the at-risk child is the one with fever and a count below 500/mm3 (p. 1079).","trap":"(C) drops the bands, which the calculation explicitly includes; (D) normalizes a value more than threefold below the risk threshold. Note the clinical trap in the same paragraph — the usual signs of inflammation may be absent, but \"fever will occur,\" so fever is the reliable sign precisely when redness and pus are not.","k":"1p3o4ewwv8tk"},{"topic":"infection and bleeding risk in the child with cancer","subtopic":"general","stem":"A child with an absolute neutrophil count of 300/mm3 is being cared for at home. Which instructions are correct? Select all that apply.","options":["Avoid crowded areas such as shopping centers","Report fever promptly, since it may be the only sign of infection","Siblings may receive live measles-mumps-rubella and varicella vaccines","Use acetaminophen rather than aspirin for fever or pain","Isolate the child from any sibling who has recently received a live vaccine"],"correct":[0,1,2,3],"sata":true,"why":"The chapter advises cautious isolation from crowded areas when the count falls below 500/mm3, notes that fever occurs even when other signs do not, states that siblings and family members \"can receive live MMR and varicella vaccine without risk to the child who is immunosuppressed,\" and substitutes acetaminophen for aspirin (pp. 1079–1080, 1084).","trap":"(E) over-applies the live-vaccine rule — the restriction is on the patient receiving them, not on the household, and isolating the child from a recently vaccinated sibling imposes a separation the chapter does not require.","k":"1verphv12q5wtt"},{"topic":"infection and bleeding risk in the child with cancer","subtopic":"general","stem":"A child receiving chemotherapy has a platelet count of 18,000/mm3. Which finding should the nurse expect, and which action is appropriate?","options":["Spontaneous gum or nose bleeding may occur, and pressure is applied at the site without disturbing clot formation","Spontaneous bleeding is not expected until the count falls below 5000/mm3","Prophylactic platelet transfusion should be given regardless of bleeding","Rectal temperatures should be taken to avoid oral mucosal trauma"],"correct":[0],"sata":false,"why":"The chapter states that severe spontaneous internal hemorrhage \"usually does not occur until the platelet count is 20,000/mm3 or less,\" that spontaneous gum or nose bleeding appears below that level, and that for the most common bleeds — epistaxis and gingival bleeding — \"applying pressure at the site without disturbing clot formation is the general rule\" (pp. 1079–1080).","trap":"(D) reverses a rule stated three times in this chapter, since the rectal area is prone to ulceration and rectal temperatures and suppositories are avoided; (C) over-treats, since platelet transfusions \"are generally reserved for active bleeding episodes that do not respond to local treatment.\"","k":"1vz50e41yphpc6"},{"topic":"infection and bleeding risk in the child with cancer","subtopic":"general","stem":"A child with cancer has a platelet count of 85,000/mm3 and wants to ride his bicycle. What should the nurse advise?","options":["Avoid activities that might cause injury or bleeding while the count is below 100,000/mm3","Bicycle riding is safe at any platelet count above 20,000/mm3","All activity should be restricted until the count exceeds 150,000/mm3","Activity restriction applies only to contact sports at any count"],"correct":[0],"sata":false,"why":"The chapter directs that children with low platelet counts, usually below 100,000/mm3, \"should avoid activities that might cause injury or bleeding, such as riding bicycles or skateboards, skating, climbing trees or playground equipment, and contact sports,\" and that once the count rises \"these restrictions are not necessary\" (p. 1080).","trap":"(B) applies the spontaneous-bleeding threshold to an activity decision, and the chapter deliberately keeps four platelet numbers apart for four different decisions — 20,000 for spontaneous bleeding, 100,000 for activity, 40,000 with granulocytes of 500 for toothbrushing, and transfusion reserved for refractory active bleeding.","k":"1v50x511od5abn"},{"topic":"infection and bleeding risk in the child with cancer","subtopic":"general","stem":"A child with cancer develops stomatitis. Which oral care measure does the chapter recommend?","options":["A soft sponge toothbrush, avoiding lemon glycerin swabs and hydrogen peroxide","Viscous lidocaine for a young child before meals","Hydrogen peroxide rinses to debride the ulcerations","Lemon glycerin swabs to stimulate salivation"],"correct":[0],"sata":false,"why":"The chapter directs a soft sponge toothbrush for stomatitis and states that lemon glycerin swabs and hydrogen peroxide are avoided for their drying effect and, for lemon, its acidity on eroded tissue (p. 1082).","trap":"(B) names an agent the chapter rules out in young children, because viscous lidocaine \"may depress the gag reflex and increase aspiration risk\" and has been associated with seizures; toothettes are the fallback when counts fall below the 500 and 40,000 thresholds.","k":"1fulx3w1gios5m"},{"topic":"acute leukemia in children","subtopic":"general","stem":"A 4-year-old newly diagnosed with acute lymphoblastic leukemia presents with pallor, recurrent infections, and petechiae. What accounts for all three?","options":["Bone marrow infiltration producing anemia, infection from neutropenia, and bleeding from decreased platelet production","Direct organ infiltration by leukemic cells in the skin and lungs","A paraneoplastic autoimmune process","Side effects of induction chemotherapy, which has not yet begun"],"correct":[0],"sata":false,"why":"The chapter names three main consequences of bone marrow infiltration: \"(1) anemia from decreased erythrocytes, (2) infection from neutropenia, and (3) bleeding from decreased platelet production\" (p. 1086).","trap":"(D) attributes the presentation to treatment that has not started, which is a common misreading when the findings resemble chemotherapy toxicity; sorting each presenting sign into one of the three categories is what makes this material tractable.","k":"1tqaauw47d18i"},{"topic":"acute leukemia in children","subtopic":"general","stem":"A child with acute lymphoblastic leukemia is entering the phase that begins immediately after diagnosis. What defines it?","options":["Induction, lasting 4 to 5 weeks, using corticosteroids, vincristine, and L-asparaginase, aiming for less than 5% blasts in the marrow","Maintenance, lasting 2 to 3 years, using daily mercaptopurine and weekly methotrexate","Consolidation, using cyclophosphamide, cytarabine, and mercaptopurine","Delayed intensification, repeating the induction drugs at higher doses"],"correct":[0],"sata":false,"why":"The chapter states that induction begins almost immediately after diagnosis and \"lasts for 4 to 5 weeks,\" that \"The principal drugs are the corticosteroids (dexamethasone or prednisone), vincristine, and L-asparaginase,\" and that complete remission is \"the presence of less than 5% blast cells in the bone marrow and no detectable leukemia in extramedullary sites\" (pp. 1086–1087).","trap":"(B) names the final phase, which runs 2 to 3 years; note that the period immediately after remission is critical, because myelosuppression leaves \"the body defenseless against invading organisms... and susceptible to spontaneous hemorrhage.\"","k":"1qihfqx9p8pjr"},{"topic":"acute leukemia in children","subtopic":"general","stem":"Why does every child with acute lymphoblastic leukemia receive central nervous system prophylaxis?","options":["Leukemic cells in the central nervous system are protected by the blood-brain barrier from systemic chemotherapy","All children have detectable central nervous system disease at diagnosis","Cranial radiation is required in every case","The central nervous system is the most common site of the primary tumor"],"correct":[0],"sata":false,"why":"The chapter states that because leukemic cells in the central nervous system are protected by the blood-brain barrier, \"all children receive CNS prophylactic therapy,\" delivered as intrathecal chemotherapy plus central nervous system–directed systemic chemotherapy, with cranial radiation reserved for those at highest risk of relapse (pp. 1086–1087).","trap":"(C) generalizes a treatment the chapter restricts to the highest-risk group; note that the central nervous system and the testes are the two named \"sanctuaries\" for leukemic cells requiring specific therapy.","k":"1qf68wv1a0exlh"},{"topic":"acute leukemia in children","subtopic":"general","stem":"A family asks why adherence matters so much during maintenance therapy. What should the nurse explain?","options":["Anything less than 95% adherence increases the risk of relapse","Missing occasional doses has no measurable effect on outcome","Adherence matters only during induction","Doses may be doubled to make up for missed ones"],"correct":[0],"sata":false,"why":"The chapter states that \"A critical challenge during maintenance therapy is medication adherence because it has been shown that anything less than 95% adherence increases the risk of relapse,\" with treatment continuing for 2 to 3 years (p. 1087).","trap":"(D) proposes a correction that would risk toxicity without restoring the missed exposure; the 95% figure is unusually specific and is the reason adherence is monitored rather than assumed.","k":"1kpaq11o5l5qz"},{"topic":"acute leukemia in children","subtopic":"general","stem":"A nurse is comparing acute lymphoblastic and acute myeloid leukemia. Which statement is accurate?","options":["There is no established clinical staging system for acute myeloid leukemia, which is considered disseminated at diagnosis, and its treatment is more intense and shorter","Acute myeloid leukemia uses the same induction-through-maintenance sequence as lymphoblastic disease","Acute myeloid leukemia has a higher 5-year survival than lymphoblastic disease","Central nervous system irradiation is routine in acute myeloid leukemia"],"correct":[0],"sata":false,"why":"The chapter states that \"There is no established clinical staging system for AML; it is considered disseminated at diagnosis,\" that \"Treatment for AML is generally more intense and of shorter duration than treatment for ALL,\" with maintenance not used in most regimens, and that \"CNS irradiation is not usually used in AML treatment\" (p. 1087).","trap":"(C) reverses the prognosis, since almost 80% of children with lymphoblastic disease live 5 years or longer while myeloid disease carries 68% 5-year survival under 15 years; note also the two distinctive myeloid skin findings, leukemia cutis in blue or purple and blue-green chloromas around the eyes.","k":"g741351901s9v"},{"topic":"childhood lymphomas","subtopic":"general","stem":"A lymph node biopsy in an adolescent shows Reed-Sternberg cells. What does this establish?","options":["Hodgkin lymphoma, since these cells are absent in the other lymphomas","Non-Hodgkin lymphoma, since these cells are characteristic of it","Either lymphoma, since the cells appear in both","Leukemia with nodal involvement"],"correct":[0],"sata":false,"why":"The chapter states that \"The presence of Hodgkin and Reed-Sternberg cells is considered diagnostic of Hodgkin disease because it is absent in the other lymphomas\" (p. 1089).","trap":"(B) reverses the finding, and the consequence is more than nomenclature — the staging system used for Hodgkin lymphoma \"is not used for NHL,\" so the diagnosis determines how the disease is staged as well as what it is called.","k":"qqc8a11r6mn3b"},{"topic":"childhood lymphomas","subtopic":"general","stem":"A nurse is comparing the epidemiology of the childhood lymphomas. Which statement is accurate?","options":["Non-Hodgkin lymphoma is more common in children overall, while Hodgkin disease shows a striking increase in ages 15 to 19","Hodgkin disease is more common in children than non-Hodgkin lymphoma at every age","Both peak in the preschool years","Hodgkin disease is most common before 5 years of age"],"correct":[0],"sata":false,"why":"The chapter states that \"In children NHL is more common than Hodgkin disease,\" and that \"Hodgkin disease is extremely rare before 5 years of age, [with] a striking increase in children ages 15 to 19\" (pp. 1088–1089).","trap":"(D) inverts the age distribution exactly — the rarity before 5 and the adolescent spike are what make age itself a useful discriminator when a lymphoma is suspected.","k":"zly7xbjp63z5"},{"topic":"childhood lymphomas","subtopic":"general","stem":"An adolescent with a mediastinal lymphoma develops facial swelling and dyspnea that worsen when lying flat. What should the nurse anticipate?","options":["Superior vena cava syndrome, requiring airway protection","Tumor lysis syndrome, requiring rasburicase","Spinal cord compression, requiring magnetic resonance imaging","Disseminated intravascular coagulation, requiring heparin"],"correct":[0],"sata":false,"why":"The chapter names space-occupying chest lesions \"especially from Hodgkin disease and NHL\" as the cause of superior vena cava syndrome, presenting with cyanosis and edema of the face, neck, and upper chest with distended veins, and directs airway protection (p. 1078).","trap":"(C) is the other structural emergency in this chapter, but its initial manifestation is back pain rather than facial swelling, and magnetic resonance imaging is its gold standard; the positional worsening here points to venous obstruction.","k":"w7g9h79hc9sx"},{"topic":"childhood lymphomas","subtopic":"general","stem":"A child with a lymphoma develops back pain, extremity weakness, and loss of bladder control. What is the priority action?","options":["Obtain magnetic resonance imaging, which is the gold standard for diagnosing spinal cord compression","Begin physical therapy for the weakness","Obtain a lumbar puncture to assess for malignant cells","Schedule a bone scan for the following week"],"correct":[0],"sata":false,"why":"The chapter names back pain as \"a common initial manifestation\" of spinal cord compression, with sensation change, extremity weakness, loss of bowel and bladder function, and respiratory insufficiency, and states that \"MRI is the gold standard for diagnosis,\" with high-dose steroids and emergent radiation or laminectomy if indicated (p. 1078).","trap":"(D) treats an emergency as routine follow-up, and the neurologic deficits here are time-critical; note that a lumbar puncture is also avoided in the presence of increased intracranial pressure elsewhere in this chapter.","k":"fiidmkqbbz0i"},{"topic":"childhood brain tumors","subtopic":"general","stem":"A 6-year-old has headaches worst on awakening and vomiting unrelated to feeding, with ataxia and nystagmus. Which tumor location does this suggest?","options":["Infratentorial, which accounts for about 60% of pediatric brain tumors","Supratentorial, which typically presents with seizures","Spinal, which presents with back pain","The location cannot be inferred from symptoms"],"correct":[0],"sata":false,"why":"The chapter states that \"the most common symptoms of infratentorial brain tumors are headache, especially on awakening, and vomiting that is not related to feeding,\" with cerebellar involvement producing nystagmus, ataxia, dysarthria, and dysmetria, and that about 60% of pediatric tumors are infratentorial (p. 1092).","trap":"(B) names the supratentorial picture, which \"more commonly include seizures, personality or behavioral changes, visual disturbances, and hemiparesis\"; the location matters because it determines the postoperative positioning order.","k":"159yq4w2m4mle"},{"topic":"childhood brain tumors","subtopic":"general","stem":"A child has just returned from resection of an infratentorial brain tumor. How should the nurse position the child?","options":["Flat, on either side, but not on the operative side","With the head elevated above the level of the heart","In Trendelenburg position to promote venous return","Prone with the head turned to the operative side"],"correct":[0],"sata":false,"why":"The chapter gives site-specific positioning: infratentorial goes flat, on either side, not on the operative side; supratentorial goes with the head elevated above the heart (p. 1095).","trap":"(B) is correct for the other site and is the swap this pair exists to catch; (C) is contraindicated after both types, and the chapter directs notifying the practitioner before lowering the head even for impending shock.","k":"1sifp7j1ihwfat"},{"topic":"childhood brain tumors","subtopic":"general","stem":"A nurse notes colorless drainage on the dressing of a child who had a craniotomy yesterday. What should the nurse do?","options":["Report it immediately, since colorless drainage is cerebrospinal fluid","Reinforce the dressing and reassess at the end of the shift","Remove the dressing to inspect the wound","Document it as expected serous drainage"],"correct":[0],"sata":false,"why":"The chapter directs that colorless drainage on a craniotomy dressing is cerebrospinal fluid and is reported immediately, along with sluggish, dilated, or unequal pupils (p. 1094).","trap":"(C) violates a separate instruction — reinforce a soiled craniotomy dressing rather than removing it — so an option that combines the wrong urgency with the wrong technique is doubly wrong; (D) normalizes the one drainage characteristic that signals a dural leak.","k":"1sc27pd25qbjb"},{"topic":"childhood brain tumors","subtopic":"general","stem":"A nurse is assessing a child with a brain tumor for signs of increased intracranial pressure. Which vital sign pattern is expected?","options":["Decreased pulse and respirations, increased blood pressure, and decreased pulse pressure","Increased pulse and respirations, decreased blood pressure, and widened pulse pressure","Increased pulse with unchanged blood pressure","Decreased blood pressure with widened pulse pressure"],"correct":[0],"sata":false,"why":"Table 29.4 lists decreased pulse and respiration, increased blood pressure, decreased pulse pressure, and hypothermia or hyperthermia among the vital sign findings, directing that pulse and respirations be monitored for 1 full minute with the pulse pressure recorded (p. 1092).","trap":"(B) is the shock pattern, which runs the opposite way on every value; the vomiting in this setting is also distinctive — progressively projectile, worse in the morning, and relieved by moving about and changing position.","k":"18c370h1uh5aif"},{"topic":"childhood brain tumors","subtopic":"general","stem":"A child with a suspected brain tumor and signs of increased intracranial pressure is scheduled for diagnostic testing. Which test does the chapter identify as the gold standard, and which is avoided?","options":["Magnetic resonance imaging is the gold standard, and lumbar puncture is avoided because of the danger of brainstem herniation","Computed tomography is the gold standard, and magnetic resonance imaging is avoided","Lumbar puncture is the gold standard, and imaging is avoided","Electroencephalography is the gold standard, and imaging is avoided"],"correct":[0],"sata":false,"why":"The chapter states that \"The gold standard diagnostic procedure is MRI,\" with computed tomography used in urgent cases when magnetic resonance imaging is unavailable, and that \"In the presence of increased ICP, LP is avoided due to the danger of possible brainstem\" herniation (p. 1092).","trap":"(C) proposes the one procedure the chapter specifically warns against in this setting, and the reason is mechanical rather than diagnostic — removing fluid below an obstructed compartment invites herniation.","k":"1u89tpk1rrrll6"},{"topic":"neuroblastoma and wilms tumor","subtopic":"general","stem":"A 2-year-old has a firm, nontender, irregular abdominal mass that crosses the midline. Which tumor does this suggest?","options":["Neuroblastoma","Wilms tumor","Rhabdomyosarcoma","Hepatoblastoma"],"correct":[0],"sata":false,"why":"The chapter states that with abdominal tumors \"the most common presenting sign is a firm, nontender, irregular mass in the abdomen that crosses the midline (in contrast to Wilms tumor, which is usually confined to one side)\" (p. 1096).","trap":"(B) is the confusable partner, and midline crossing is the single discriminator the chapter gives explicitly; the median age also differs, about 19 months for neuroblastoma and 44 months for unilateral Wilms tumor.","k":"1wty7vz5irax"},{"topic":"neuroblastoma and wilms tumor","subtopic":"general","stem":"A child is being evaluated for suspected neuroblastoma. Which laboratory study does the chapter name?","options":["Urinary catecholamine metabolites, vanillylmandelic acid and homovanillic acid","Serum alpha-fetoprotein","Urinary protein and creatinine ratio","Serum renin"],"correct":[0],"sata":false,"why":"The chapter states that because neuroblastomas excrete epinephrine and norepinephrine, \"urinary excretion of catecholamine metabolites (vanillylmandelic acid [VMA] and homovanillic acid [HVA]) is measured before therapy,\" and these markers monitor response and detect relapse (p. 1096).","trap":"(D) belongs to Wilms tumor, where hypertension arises from excess renin secretion; each tumor has its own biochemical signature, which is another way the two abdominal masses separate.","k":"12n8g02183blyo"},{"topic":"neuroblastoma and wilms tumor","subtopic":"general","stem":"A 3-year-old is admitted with a suspected Wilms tumor. Which nursing action is essential?","options":["Do not palpate the abdomen, and post a sign on the bed","Palpate the abdomen once each shift to track the mass size","Measure abdominal girth every 2 hours with deep palpation","Encourage the child to lie prone to reduce pressure on the mass"],"correct":[0],"sata":false,"why":"The chapter states that \"the most important\" preoperative concern is \"not to palpate the tumor unless absolutely necessary because manipulation of the mass may cause dissemination of cancer cells to adjacent and distant sites,\" and a Nursing Alert directs posting a sign on the bed reading \"Do not palpate abdomen\" (p. 1100).","trap":"(B) and (C) are both ordinary nursing assessments that are specifically harmful here, which is what makes this the chapter's clearest single nursing action; careful bathing and handling also matter in preventing trauma to the tumor site.","k":"5utvcoh5pt6"},{"topic":"neuroblastoma and wilms tumor","subtopic":"general","stem":"A child with a Wilms tumor has a blood pressure of 132/86 mm Hg. What explains this?","options":["Excess renin secretion by the tumor","Pain from abdominal distention","Fluid overload from preoperative hydration","Catecholamine secretion by the tumor"],"correct":[0],"sata":false,"why":"The chapter states that \"Hypertension, probably caused by secretion of excess amounts of renin by the tumor, occurs occasionally,\" and directs monitoring blood pressure preoperatively for this reason (pp. 1099–1100).","trap":"(D) names the neuroblastoma mechanism; note that the mass in Wilms tumor is \"firm, nontender, confined to one side, and deep within the flank,\" and unlike the liver \"it does not move with respiration,\" while hematuria occurs in fewer than one-fourth of children.","k":"1oz15aw1t1x5ea"},{"topic":"neuroblastoma and wilms tumor","subtopic":"general","stem":"A child is recovering from nephrectomy for Wilms tumor. Which assessment is a priority because of a specific treatment complication?","options":["Gastrointestinal activity, because vincristine-induced adynamic ileus can cause intestinal obstruction","Neurologic status, because of the risk of intracranial hemorrhage","Respiratory rate, because of the risk of pulmonary edema","Urine output only, since the remaining kidney is the sole concern"],"correct":[0],"sata":false,"why":"The chapter directs monitoring gastrointestinal activity — bowel movements, bowel sounds, distention, and vomiting — because of the risk of intestinal obstruction from vincristine-induced adynamic ileus, radiation-induced edema, and postsurgical adhesions, along with frequent blood pressure evaluation and observation for infection (p. 1100).","trap":"(D) narrows the assessment to the obvious organ and misses the drug effect, which is what makes this complication easy to overlook; the recovery period is otherwise described as usually rapid.","k":"etx2om3uh9a"},{"topic":"bone tumors and retinoblastoma","subtopic":"general","stem":"An adolescent has localized pain in the distal femur that is relieved by holding the leg flexed. A radiograph shows a lesion in the metaphysis. Which tumor is most likely?","options":["Osteosarcoma","Ewing sarcoma","Rhabdomyosarcoma","Osteomyelitis"],"correct":[0],"sata":false,"why":"The chapter identifies osteosarcoma as \"the most common bone tumor in adolescents and young adults,\" arising from bone-forming mesenchyme in the metaphyseal region, most often the distal femur, and notes that bone tumor pain \"is often relieved by a flexed position, which relaxes the muscles overlying the stretched periosteum\" (p. 1097).","trap":"(B) arises \"in the marrow spaces of the bone rather than from osseous tissue,\" in the shaft rather than the metaphysis; note the shared trap that this pain is often attributed to trauma or dismissed as growing pains.","k":"1x85ktke1b1cy"},{"topic":"bone tumors and retinoblastoma","subtopic":"general","stem":"A child with a bone tumor has fever and systemic symptoms in addition to localized pain. Which tumor does this favor, and how does treatment differ?","options":["Ewing sarcoma, which more often has systemic symptoms and is treated with radiation","Osteosarcoma, which more often has systemic symptoms and is treated with radiation","Ewing sarcoma, which is treated surgically without radiation","Osteosarcoma, which is treated with radiation rather than surgery"],"correct":[0],"sata":false,"why":"The chapter states that \"Systemic symptoms (such as fever) and other clinical symptoms (such as spinal cord compression and respiratory distress) are more frequent in patients with Ewing sarcoma,\" which is treated with radiation, unlike osteosarcoma (pp. 1097–1099).","trap":"(D) assigns radiation to the wrong tumor, which matters because the treatment difference is one of the two clean discriminators between them; the other is the site of origin, marrow space against osseous tissue.","k":"wh829a1gmk8yc"},{"topic":"bone tumors and retinoblastoma","subtopic":"general","stem":"A 2-year-old's parents notice a whitish glow in one pupil in photographs, and the child has developed strabismus. What is the likely diagnosis and its usual prognosis?","options":["Retinoblastoma, with an overall 10-year survival near 90%","Congenital cataract, which does not affect survival","Retinoblastoma, with an overall survival below 50%","Optic glioma, which presents with proptosis"],"correct":[0],"sata":false,"why":"The chapter names leukocoria as the first sign of retinoblastoma and strabismus as \"The next most common sign... resulting from poor fixation of the visually impaired eye,\" and states that \"The overall 10-year survival rate is nearly 90% for unilateral and bilateral tumors\" (pp. 1102–1103).","trap":"(C) understates a prognosis that is among the best in this chapter; note that blindness is usually a late sign, and that retinoblastoma, like neuroblastoma, may spontaneously regress.","k":"5rtbuj1rclt7h"},{"topic":"bone tumors and retinoblastoma","subtopic":"general","stem":"Parents of a child with retinoblastoma ask whether their other children are at risk. What should the nurse know about the hereditary pattern?","options":["About 25% are bilateral and hereditary and 15% are unilateral and hereditary, with a germline RB1 mutation present in the hereditary form","All cases are hereditary and all siblings will be affected","No cases are hereditary, so siblings carry no increased risk","Only bilateral cases can be hereditary, so unilateral disease carries no family risk"],"correct":[0],"sata":false,"why":"The chapter states that \"60% are unilateral and nonhereditary (also called sporadic), 25% are bilateral and hereditary, and 15% are unilateral and hereditary,\" with a germline RB1 mutation in the hereditary form, and that children with hereditary disease tend to be diagnosed at a younger age (p. 1102).","trap":"(D) is the intuitive assumption that bilaterality equals heritability, and the 15% unilateral-hereditary group is exactly what it misses; blood and tumor samples can be tested for the mutation, which is how that group is identified.","k":"1a8j03swrn5ba"}];
+const TITLE = "Chapter 29 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 29";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

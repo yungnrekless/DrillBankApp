@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 25 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 25</div><h1>Chapter 25 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute diarrhea and oral rehydration in children</span><span class="chip t2">general</span></div>
+<div class="stem">1. A 16-month-old is being discharged after 2 days of acute diarrhea and is now rehydrated. What diet should the nurse recommend?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A regular diet as the child's appetite warrants</li><li class="fopt"><span class="mk">B</span>The BRAT diet of bananas, rice, applesauce, and toast</li><li class="fopt"><span class="mk">C</span>Clear liquids for 24 hours, then advance slowly</li><li class="fopt"><span class="mk">D</span>Chicken or beef broth until the stools are formed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that early reintroduction of a normal diet &quot;has no adverse effects and actually lessens the severity and duration of the illness and improves weight gain when compared with the gradual reintroduction of foods,&quot; and that a regular diet including milk can generally be offered after rehydration (pp. 836–837).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>All three wrong options are named and rejected by the chapter's own Nursing Alert — the BRAT diet &quot;is contraindicated&quot; because it is low in energy, protein, and electrolytes; broth &quot;is not given&quot; because it has excessive sodium and inadequate carbohydrate; and clear fluids &quot;do not help diarrhea&quot; because of high carbohydrate content and high osmolality.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute diarrhea and oral rehydration in children</span><span class="chip t2">general</span></div>
+<div class="stem">2. A nurse is giving oral rehydration solution to a 2-year-old with moderate dehydration who has vomited twice. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Continue the solution in 5- to 10-ml increments every 1 to 5 minutes, since vomiting is not a contraindication</li><li class="fopt"><span class="mk">B</span>Stop oral rehydration and request intravenous fluids</li><li class="fopt"><span class="mk">C</span>Withhold all fluids for 2 hours to rest the stomach, then restart</li><li class="fopt"><span class="mk">D</span>Switch to a carbonated beverage, which is better tolerated when vomiting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;vomiting is not a contraindication&quot; to oral rehydration therapy and directs 5- to 10-ml increments every 1 to 5 minutes by spoon or small syringe for young children (p. 836).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reflex escalation the chapter's whole rehydration section exists to prevent, calling oral therapy &quot;more effective, safer, less painful, and less costly than IV rehydration&quot;; note that 10 ml/kg of solution is added for every loose stool or episode of vomiting.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute diarrhea and oral rehydration in children</span><span class="chip t2">general</span></div>
+<div class="stem">3. A nurse is teaching parents of a child with acute diarrhea. Which instructions are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Continue breastfeeding if it is already established</li><li class="fopt right"><span class="mk">&#10003;</span>Replace each diarrheal stool with about 10 ml/kg of oral rehydration solution</li><li class="fopt right"><span class="mk">&#10003;</span>Expect a slightly higher stool output initially when a normal diet is resumed</li><li class="fopt right"><span class="mk">&#10003;</span>Avoid caffeinated beverages</li><li class="fopt"><span class="mk">E</span>Offer fruit juice and gelatin, which supply fluid and calories</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs continuing breastfeeding, replacing ongoing stool losses with about 10 ml/kg of solution, warning parents that &quot;a slightly higher stool output initially occurs with continuation of a normal diet,&quot; and avoiding caffeinated beverages because caffeine is a mild diuretic (pp. 836–837).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) names two of the fluids the Nursing Alert rules out — fruit juices and gelatin have &quot;a high carbohydrate content, a very low electrolyte content, and a high osmolality&quot;; the chapter adds that the nutritional benefit of resuming a normal diet &quot;outweigh[s] the potential increase in stool frequency.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute diarrhea and oral rehydration in children</span><span class="chip t2">general</span></div>
+<div class="stem">4. A 10-month-old with acute diarrhea has no clinical signs of dehydration. What does the chapter direct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Oral rehydration therapy is not needed, but maintenance fluid and replacement of stool losses continue</li><li class="fopt"><span class="mk">B</span>Oral rehydration therapy at 50 ml/kg over 4 hours is still indicated</li><li class="fopt"><span class="mk">C</span>Intravenous fluids should be started prophylactically</li><li class="fopt"><span class="mk">D</span>All oral intake should be withheld for 12 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Infants without clinical signs of dehydration do not need ORT,&quot; and Table 25.4's footnote adds that &quot;If no signs of dehydration are present, rehydration therapy is not necessary,&quot; while maintenance therapy and stool-loss replacement continue (p. 836).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies the mild-dehydration protocol to a child who is not dehydrated, which over-treats; the 50 ml/kg over 4 hours figure belongs to mild dehydration at 5% to 6% and 100 ml/kg over 4 hours to moderate at 7% to 9%.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute diarrhea and oral rehydration in children</span><span class="chip t2">general</span></div>
+<div class="stem">5. A child's stool culture grows nontyphoidal *Salmonella*. The parents ask why no antibiotic has been prescribed. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Antibiotics are not given in uncomplicated cases because they prolong the carrier state</li><li class="fopt"><span class="mk">B</span>Antibiotics are withheld only until sensitivity results return</li><li class="fopt"><span class="mk">C</span>Antibiotics are ineffective against all bacterial causes of diarrhea</li><li class="fopt"><span class="mk">D</span>Antibiotics are withheld because the organism is resistant to all oral agents</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter notes that antibiotics &quot;may prolong the carrier period for bacteria such as *Salmonella*,&quot; reserving them for children under 3 months, those on immunosuppressive medication, or those with shock, severe malnutrition, dysentery, suspected cholera, or suspected giardiasis (p. 837).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) generalizes one organism's policy to all, which the chapter contradicts case by case — *Salmonella typhi* must be treated, *Shigella* antibiotics shorten illness and lower mortality, and erythromycin is the drug of choice for *Campylobacter*. Antimotility agents are wrong across essentially all of them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hirschsprung disease and childhood constipation</span><span class="chip t2">general</span></div>
+<div class="stem">6. A newborn has not passed meconium by 36 hours of age and has bilious vomiting with abdominal distention. What should the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hirschsprung disease, since 99% of term infants pass meconium within the first 48 hours</li><li class="fopt"><span class="mk">B</span>Hypertrophic pyloric stenosis, since vomiting and distention are present</li><li class="fopt"><span class="mk">C</span>Normal transition, since meconium may be delayed up to 5 days</li><li class="fopt"><span class="mk">D</span>Intussusception, since vomiting and distention are present</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 25.10 gives failure to pass meconium within 24 to 48 hours after birth as the newborn criterion, with refusal to feed, bilious vomiting, and abdominal distention, and the chapter notes that &quot;Typically, 99% of term infants pass meconium in the first 48 hours of life, whereas few infants with HD do so&quot; (p. 844).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is excluded by the bilious vomiting, since pyloric stenosis produces nonbilious vomiting and typically begins around 3 weeks rather than at birth; note that this chapter gives several different meconium thresholds for different conditions, so the disease named in the stem determines which number applies.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hirschsprung disease and childhood constipation</span><span class="chip t2">general</span></div>
+<div class="stem">7. A child is undergoing anorectal manometry for suspected Hirschsprung disease. Which finding supports the diagnosis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The external sphincter contracts normally, but the internal sphincter fails to relax</li><li class="fopt"><span class="mk">B</span>The internal sphincter relaxes normally, but the external sphincter fails to contract</li><li class="fopt"><span class="mk">C</span>Both sphincters fail to contract</li><li class="fopt"><span class="mk">D</span>Both sphincters relax simultaneously with rectal distention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that on anorectal manometry &quot;In HD the external sphincter contracts normally but the internal sphincter fails to relax&quot; (p. 845), which follows from the absence of ganglion cells and the resulting loss of the rectosphincteric reflex.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the two sphincters, which is the single likeliest error here; the underlying physiology is that normally &quot;when a stool bolus enters the rectum, the internal sphincter relaxes and the stool is evacuated,&quot; and in this disease it does not.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hirschsprung disease and childhood constipation</span><span class="chip t2">general</span></div>
+<div class="stem">8. A 7-month-old with known Hirschsprung disease develops explosive watery diarrhea and fever and appears significantly ill. What should the nurse recognize?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Enterocolitis, which is the most serious complication of the disease</li><li class="fopt"><span class="mk">B</span>Viral gastroenteritis, which is unrelated to the underlying disease</li><li class="fopt"><span class="mk">C</span>Resolution of the obstruction, since stool is now passing</li><li class="fopt"><span class="mk">D</span>An expected response to the preoperative low-fiber diet</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 25.10 lists &quot;signs of enterocolitis — explosive watery diarrhea, fever, appears significantly ill&quot; under infancy, and the chapter states that &quot;Enterocolitis is the most serious complication of HD&quot; (pp. 844–845).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reads diarrhea as improvement in a disease whose hallmark is obstruction, which is the dangerous misreading; the signs of bowel perforation to watch alongside this are fever, increasing distention, vomiting, increased tenderness, irritability, dyspnea, and cyanosis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hirschsprung disease and childhood constipation</span><span class="chip t2">general</span></div>
+<div class="stem">9. A 9-month-old with constipation is prescribed a stool softener. The parent asks about mineral oil, which worked for an older sibling. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Mineral oil is contraindicated under 1 year of age because of aspiration risk</li><li class="fopt"><span class="mk">B</span>Mineral oil is appropriate at any age if given with meals</li><li class="fopt"><span class="mk">C</span>Mineral oil is contraindicated because it causes electrolyte loss in infants</li><li class="fopt"><span class="mk">D</span>Mineral oil may be used if diluted in formula</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter identifies mineral oil as contraindicated under 1 year of age because of the risk of aspiration.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) supplies a plausible but different mechanism, and (D) proposes a route that increases rather than reduces the aspiration hazard; note that the chapter's general fiber recommendation for children is age in years plus 5 grams daily, and the toilet retraining sit is 5 to 10 minutes once or twice daily after a meal.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gastroesophageal reflux and its management</span><span class="chip t2">general</span></div>
+<div class="stem">10. A 5-month-old spits up after most feedings but is gaining weight well and has no respiratory symptoms. How should the nurse classify this, and what management does the chapter direct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gastroesophageal reflux, which is physiologic and needs no intervention in a thriving infant</li><li class="fopt"><span class="mk">B</span>Gastroesophageal reflux disease, requiring a proton pump inhibitor</li><li class="fopt"><span class="mk">C</span>Gastroesophageal reflux disease, requiring thickened feedings</li><li class="fopt"><span class="mk">D</span>Gastroesophageal reflux, requiring prone positioning for sleep</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter defines reflux as &quot;the transfer of gastric contents into the esophagus,&quot; calls it physiologic, and states that no treatment is needed &quot;for the infant who is thriving and has no respiratory complications&quot;; it becomes disease &quot;when complications such as failure to thrive, respiratory problems, or dysphagia develop&quot; (pp. 845–846).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) states a true fact and reaches a dangerous conclusion — prone positioning does decrease reflux episodes, but the chapter immediately adds that &quot;due to the risk of sudden infant death syndrome, all infants should sleep in the supine position.&quot; Reflux never outranks sudden infant death prevention.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gastroesophageal reflux and its management</span><span class="chip t2">general</span></div>
+<div class="stem">11. An overweight 4-month-old with reflux is being evaluated. The parents ask about adding rice cereal to the formula. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Thickened feedings benefit the infant who is underweight from reflux disease, and the additional calories are not beneficial for an infant who is overweight</li><li class="fopt"><span class="mk">B</span>Thickened feedings should be used for every infant with reflux regardless of weight</li><li class="fopt"><span class="mk">C</span>Thickened feedings are contraindicated at any weight because they worsen reflux</li><li class="fopt"><span class="mk">D</span>Thickened feedings should be made with 1 tablespoon of rice cereal per feeding regardless of volume</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs 1 teaspoon to 1 tablespoon of rice cereal per ounce of formula for the infant &quot;who is underweight as a result of GERD,&quot; and states that &quot;the additional calories are not beneficial among infants who are overweight,&quot; for whom prethickened formulas exist (p. 846).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) drops the per-ounce basis, which is what makes the amount scale to the feeding; the item turns on the fact that thickening is a calorie intervention as much as a mechanical one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gastroesophageal reflux and its management</span><span class="chip t2">general</span></div>
+<div class="stem">12. A child with reflux disease is prescribed metoclopramide by a covering provider. What should the nurse recognize?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Metoclopramide is no longer recommended for reflux disease in infants and children because of common side effects without significant benefit</li><li class="fopt"><span class="mk">B</span>Metoclopramide is the preferred prokinetic agent in children</li><li class="fopt"><span class="mk">C</span>Metoclopramide should be given only with a histamine-2 receptor antagonist</li><li class="fopt"><span class="mk">D</span>Metoclopramide is appropriate but requires electrocardiographic monitoring</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Use of metoclopramide for GERD in infants and children is no longer recommended due to the common incidence of side effects without significant benefit,&quot; naming histamine-2 receptor antagonists and proton pump inhibitors as the drug classes used (p. 846).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the older teaching and is what makes this worth drilling; the diet measures named alongside the drugs are avoiding caffeine, citrus, tomatoes, alcohol, peppermint, and spicy or fried foods.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">gastroesophageal reflux and its management</span><span class="chip t2">general</span></div>
+<div class="stem">13. A child who had a fundoplication now has dysphagia and gas-bloat. What does this suggest?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The wrap is too tight</li><li class="fopt"><span class="mk">B</span>The wrap is too loose</li><li class="fopt"><span class="mk">C</span>The wrap has failed completely and reflux has returned</li><li class="fopt"><span class="mk">D</span>Barrett esophagus has developed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names the two failure modes of fundoplication — &quot;a wrap that is too tight, causing dysphagia, small bowel obstruction, or gas-bloat; or a wrap that is too loose, causing continuation of symptoms&quot; (p. 846).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) both describe the opposite failure, which presents as persistent reflux rather than obstruction; the procedure itself is &quot;passage of the gastric fundus behind the esophagus to encircle the distal esophagus,&quot; reserved for recurrent aspiration pneumonia, apnea, severe esophagitis, failure to thrive, or failed medical therapy.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appendicitis and meckel diverticulum</span><span class="chip t2">general</span></div>
+<div class="stem">14. A 13-year-old reports periumbilical pain that began this morning, followed by nausea, and now points to the right lower quadrant. How does this sequence fit appendicitis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It fits, because the classic sequence is periumbilical pain first, then nausea, then right lower quadrant pain, and later vomiting with fever</li><li class="fopt"><span class="mk">B</span>It does not fit, because vomiting precedes pain in appendicitis</li><li class="fopt"><span class="mk">C</span>It does not fit, because appendicitis pain begins in the right lower quadrant</li><li class="fopt"><span class="mk">D</span>It fits only if rebound tenderness is also present</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Classically, the first symptom of appendicitis is periumbilical pain, followed by nausea, right lower quadrant pain, and, later, vomiting with fever,&quot; restating that &quot;Nausea, vomiting, and anorexia typically occur AFTER the pain starts&quot; (p. 848).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) requires a sign the chapter rules out as a criterion — &quot;Rebound tenderness is not a reliable sign and is extremely painful to the child,&quot; and it &quot;is not a finding specific to appendicitis&quot;; the most important physical finding is focal abdominal tenderness, classically at McBurney point.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appendicitis and meckel diverticulum</span><span class="chip t2">general</span></div>
+<div class="stem">15. A child with several hours of severe abdominal pain suddenly reports that the pain has stopped. Shortly afterward the pain returns, is diffuse, and the abdomen is rigid. What should the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Perforation with peritonitis, since sudden relief of pain after perforation is followed by diffuse pain with rigid guarding</li><li class="fopt"><span class="mk">B</span>Resolution of the appendicitis, since the pain briefly stopped</li><li class="fopt"><span class="mk">C</span>Intussusception, since pain is intermittent</li><li class="fopt"><span class="mk">D</span>Gastroenteritis, since the pain is now diffuse</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's Nursing Alert lists signs of peritonitis as &quot;sudden relief from pain after perforation; subsequent increase in pain, which is usually diffuse and accompanied by rigid guarding of the abdomen; progressive abdominal distention; tachycardia; rapid, shallow breathing as the child refrains from using abdominal muscles&quot; (p. 849).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the interpretation families and inexperienced clinicians most often make, and it is why the chapter names the transient relief explicitly; perforation can occur within about 48 hours of the initial complaint of pain, and occurs in up to 82% of children under 5.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appendicitis and meckel diverticulum</span><span class="chip t2">general</span></div>
+<div class="stem">16. A nurse needs to assess a frightened 5-year-old for abdominal tenderness. Which approach does the chapter recommend?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Use the bell of the stethoscope for initial palpation, then follow with gentle manual palpation without lifting the hand</li><li class="fopt"><span class="mk">B</span>Begin with deep palpation of the right lower quadrant to localize tenderness quickly</li><li class="fopt"><span class="mk">C</span>Test for rebound tenderness first, since it is the most specific sign</li><li class="fopt"><span class="mk">D</span>Defer the abdominal examination until imaging results are available</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Atraumatic Care box directs the nurse to &quot;use the bell piece for initial palpation of the abdomen for tenderness,&quot; since &quot;Children usually endure pressure from the stethoscope that they would not tolerate from a probing hand,&quot; followed by manual palpation &quot;using a gentle touch without lifting the hand from the abdomen&quot; (p. 850).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) leads with the maneuver the chapter calls unreliable and extremely painful; the chapter also offers heel-drop, hopping on one foot, and puffing out or pulling in the abdomen as ways to check for tenderness without probing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">appendicitis and meckel diverticulum</span><span class="chip t2">general</span></div>
+<div class="stem">17. A 20-month-old passes a large volume of painless, currant jelly–like stool and becomes pale. Ultrasound of the abdomen is unremarkable. Which diagnosis should the nurse anticipate being investigated?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Meckel diverticulum, with a technetium-99 pertechnetate scan</li><li class="fopt"><span class="mk">B</span>Intussusception, with a repeat ultrasound</li><li class="fopt"><span class="mk">C</span>Appendicitis, with computed tomography</li><li class="fopt"><span class="mk">D</span>Ulcerative colitis, with colonoscopy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The most common clinical presentation is rectal bleeding caused by ulceration at the junction of the ectopic gastric mucosa and normal ileal mucosa,&quot; that the bleeding is &quot;usually painless&quot; and may appear as bright red or currant jelly–like stools, and names the technetium-99 pertechnetate scan as &quot;the most effective diagnostic testing&quot; with sensitivity 80% to 90% and specificity 95% (p. 851).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) shares the currant jelly stool, which is exactly why this pair is confusable; the discriminator is that intussusception brings sudden colicky pain with the child drawing knees to chest, whereas this bleeding is painless. The rule of 2s places the diverticulum within 2 feet of the ileocecal valve and makes it more common before age 2.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">inflammatory bowel disease</span><span class="chip t2">general</span></div>
+<div class="stem">18. An adolescent has bloody diarrhea, and endoscopy shows continuous inflammation limited to the colon and rectum involving mucosa and submucosa. Which additional features are characteristic of this disease? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Rectal bleeding is common</li><li class="fopt right"><span class="mk">&#10003;</span>Anal and perianal lesions are rare</li><li class="fopt right"><span class="mk">&#10003;</span>Fistulas and strictures are rare</li><li class="fopt right"><span class="mk">&#10003;</span>Colectomy may cure the disease</li><li class="fopt"><span class="mk">E</span>Growth retardation is usually severe</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 25.6 assigns common rectal bleeding, rare anal and perianal lesions, and rare fistulas and strictures to ulcerative colitis, and the chapter states that &quot;Because UC is confined to the colon, a colectomy may cure UC&quot; (p. 853).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) belongs to Crohn disease, where growth retardation &quot;may be severe&quot; while in ulcerative colitis it is &quot;usually mild&quot;; the two cleanest discriminators overall are that rectal bleeding is common in colitis and uncommon in Crohn, and that fistulas and perianal lesions are rare in colitis and common in Crohn.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">inflammatory bowel disease</span><span class="chip t2">general</span></div>
+<div class="stem">19. A 14-year-old has been below the third percentile for height for 3 years with delayed puberty and only vague abdominal complaints. Which diagnosis should the nurse consider?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Crohn disease, since growth failure and delayed sexual maturation often precede overt gastrointestinal symptoms by several years</li><li class="fopt"><span class="mk">B</span>Ulcerative colitis, since growth failure is its earliest sign</li><li class="fopt"><span class="mk">C</span>Irritable bowel syndrome, since the abdominal complaints are vague</li><li class="fopt"><span class="mk">D</span>Celiac disease, since it presents in adolescence with growth failure alone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that in Crohn disease &quot;Growth failure and delayed sexual maturation are often present for several years before overt GI symptoms are present,&quot; and calls growth failure &quot;a common serious complication, especially in CD&quot; (p. 853).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the condition the chapter warns against confusing with inflammatory bowel disease in its opening sentence, and the red flags that move a child from irritable bowel to further workup are &quot;weight loss, rectal bleeding, or significant fatigue&quot; — this adolescent has the first of those.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">inflammatory bowel disease</span><span class="chip t2">general</span></div>
+<div class="stem">20. A child with moderate Crohn disease has been on prednisone for 6 weeks and the family asks about continuing it long term. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Corticosteroids are used for induction rather than maintenance, because of growth suppression, weight gain, and decreased bone density</li><li class="fopt"><span class="mk">B</span>Corticosteroids are the preferred maintenance therapy in children with Crohn disease</li><li class="fopt"><span class="mk">C</span>Corticosteroids may be continued indefinitely if the dose is below 10 mg daily</li><li class="fopt"><span class="mk">D</span>Corticosteroids are replaced by aminosalicylates, which are equally effective for maintenance in Crohn disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that corticosteroids are used for induction in moderate to severe disease and are &quot;not commonly used for maintenance therapy because of their long-term side effects including growth suppression (adrenal suppression), weight gain, and decreased bone density&quot; (pp. 853–855).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) overstates the role of aminosalicylates, which are induction and maintenance for mild to moderate ulcerative colitis and can induce remission in mild Crohn disease; the agents that have moved front-line for children with severe Crohn disease are the anti-tumor necrosis factor biologics, which have &quot;even improved linear growth in children.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">inflammatory bowel disease</span><span class="chip t2">general</span></div>
+<div class="stem">21. A child taking 6-mercaptopurine for inflammatory bowel disease requires which ongoing monitoring?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Regular complete blood count with differential, because of bone marrow toxicity</li><li class="fopt"><span class="mk">B</span>Regular ophthalmologic examination, because of cataract risk</li><li class="fopt"><span class="mk">C</span>Regular bone density scanning, because of osteoporosis risk</li><li class="fopt"><span class="mk">D</span>Regular pulmonary function testing, because of fibrosis risk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists the immunomodulator side effects as &quot;infection, pancreatitis, hepatitis, bone marrow toxicity, arthralgia, and malignancy,&quot; and states that these agents &quot;Require regular CBC and differential monitoring&quot; (pp. 853–855).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names a real concern that belongs to corticosteroids rather than to this class, which is what makes it the closest miss; note also that metronidazole and ciprofloxacin are the adjunctive antibiotics for perianal disease, with peripheral neuropathy, nausea, and a metallic taste as their named effects.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">inflammatory bowel disease</span><span class="chip t2">general</span></div>
+<div class="stem">22. A nurse is comparing endoscopic findings in inflammatory bowel disease. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Discrete ulcers are commonly seen in Crohn disease, whereas microulcers with diffuse abnormalities are seen in ulcerative colitis</li><li class="fopt"><span class="mk">B</span>Discrete ulcers are seen in ulcerative colitis and diffuse inflammation in Crohn disease</li><li class="fopt"><span class="mk">C</span>Both diseases produce identical endoscopic appearances</li><li class="fopt"><span class="mk">D</span>Endoscopy cannot distinguish the two and biopsy is always required</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Discrete ulcers are commonly seen in patients with CD, whereas microulcers and diffuse abnormalities and inflammation are seen in patients with UC&quot; (p. 853).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the two, which follows the same logic error as reversing continuous and skip lesions; the underlying anatomy is that Crohn disease is transmural with skip lesions while ulcerative colitis is mucosal and submucosal in continuous segments.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant obstructive disorders</span><span class="chip t2">general</span></div>
+<div class="stem">23. A 5-month-old with a birth weight of 7 pounds now weighs 8 pounds 10 ounces. His mother reports that he &quot;spits up a lot after eating and then is hungry again,&quot; and he has one or two brown stools daily. What should the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hypertrophic pyloric stenosis</li><li class="fopt"><span class="mk">B</span>Gastroesophageal reflux disease</li><li class="fopt"><span class="mk">C</span>Intussusception</li><li class="fopt"><span class="mk">D</span>Hirschsprung disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes the infant with pyloric stenosis as &quot;hungry, avid nurser; eagerly accepts a second feeding after vomiting episode,&quot; with nonbilious projectile vomiting 30 to 60 minutes after feeding and &quot;No evidence of pain or discomfort except that of chronic hunger&quot; (pp. 859–860).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) shares the spitting up but not the failure to thrive combined with persistent hunger, which is the signature here; (D) is excluded by the normal brown stools, since Hirschsprung disease in this age range produces constipation with ribbonlike foul-smelling stools.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant obstructive disorders</span><span class="chip t2">general</span></div>
+<div class="stem">24. A 4-week-old with projectile vomiting has laboratory studies drawn. Which findings does the chapter identify as of greatest diagnostic value? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A decreased serum chloride</li><li class="fopt right"><span class="mk">&#10003;</span>An increased serum pH</li><li class="fopt right"><span class="mk">&#10003;</span>An increased serum bicarbonate</li><li class="fopt"><span class="mk">D</span>A decreased serum sodium</li><li class="fopt"><span class="mk">E</span>A decreased serum potassium</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Of greater diagnostic value are a decrease in serum chloride levels and increases in pH and bicarbonate (carbon dioxide content), indicative of metabolic alkalosis&quot; (p. 860).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) and (E) are real findings the chapter also lists but qualifies — decreased sodium and potassium &quot;may be masked by the hemoconcentration,&quot; which is precisely why they are less useful diagnostically; note also that in cases diagnosed early &quot;laboratory findings may not be significant.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant obstructive disorders</span><span class="chip t2">general</span></div>
+<div class="stem">25. An infant with pyloric stenosis is dehydrated with a pH of 7.52. The family asks why surgery is not happening today. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The infant must be rehydrated and the metabolic alkalosis corrected first, which usually delays surgery 24 to 48 hours</li><li class="fopt"><span class="mk">B</span>Surgery is delayed until the infant reaches 5 kg</li><li class="fopt"><span class="mk">C</span>Surgery is delayed until vomiting has stopped for 24 hours</li><li class="fopt"><span class="mk">D</span>Surgery is not indicated, since the condition resolves spontaneously</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Preoperatively the infant must be rehydrated and metabolic alkalosis corrected with parenteral fluid and electrolyte administration. Replacement fluid therapy usually delays surgery for 24 to 48 hours&quot; (p. 860).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) misses that this is a surgical disease with an excellent prognosis and 0% to 0.5% mortality after pyloromyotomy; note also that postoperative vomiting is expected, since &quot;most infants, even with successful surgery, exhibit some vomiting during the first 24 to 48 hours.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant obstructive disorders</span><span class="chip t2">general</span></div>
+<div class="stem">26. A 9-month-old has episodes of screaming and drawing his knees to his chest, appears comfortable between episodes, and has passed a red currant jelly–like stool. What is the most likely diagnosis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Intussusception</li><li class="fopt"><span class="mk">B</span>Hypertrophic pyloric stenosis</li><li class="fopt"><span class="mk">C</span>Malrotation with volvulus</li><li class="fopt"><span class="mk">D</span>Meckel diverticulum</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 25.17 lists sudden acute abdominal pain, the child &quot;screaming and drawing the knees onto the chest,&quot; appearing normal and comfortable between episodes, and passage of red currant jelly–like stools, with a sausage-shaped mass in the upper right quadrant and an empty lower right quadrant (p. 861).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) also produces currant jelly stools, and the discriminator is the colicky pain pattern, which is absent in the diverticulum's painless bleeding; note that the classic triad of pain, mass, and bloody stools &quot;is present in less than 30% of children,&quot; and in atypical cases &quot;lethargy may be the primary symptom.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant obstructive disorders</span><span class="chip t2">general</span></div>
+<div class="stem">27. A child awaiting enema reduction for intussusception passes a normal brown stool. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Report it immediately, because it usually indicates the intussusception has reduced itself and may change the plan of care</li><li class="fopt"><span class="mk">B</span>Document it as a routine finding and continue preparation for the enema</li><li class="fopt"><span class="mk">C</span>Withhold the information until after the enema is performed</li><li class="fopt"><span class="mk">D</span>Recognize it as a sign of perforation and prepare for surgery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Nursing Alert states that &quot;Passage of a normal brown stool usually indicates that the intussusception has reduced itself. This is immediately reported to the practitioner, who may choose to alter the diagnostic and therapeutic care plan&quot; (p. 861).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats a finding that changes management as routine charting, which is the specific failure the alert exists to prevent; note separately that enema reduction is contraindicated once there are signs of shock, peritoneal irritation, or perforation, and that gas enema succeeds more often than hydrostatic enema at 83% versus 70%.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infant obstructive disorders</span><span class="chip t2">general</span></div>
+<div class="stem">28. A 3-week-old has intermittent bilious vomiting and recurrent abdominal pain. Which diagnosis carries the greatest urgency, and why?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Malrotation with volvulus, because it is the most serious type of intestinal obstruction and can cause necrosis, perforation, and death</li><li class="fopt"><span class="mk">B</span>Pyloric stenosis, because dehydration progresses rapidly</li><li class="fopt"><span class="mk">C</span>Hirschsprung disease, because enterocolitis may develop</li><li class="fopt"><span class="mk">D</span>Intussusception, because the bowel may become ischemic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Malrotation is the most serious type of intestinal obstruction&quot; because complete volvulus compromises blood supply, leading to &quot;intestinal necrosis, peritonitis, perforation, and death,&quot; with 80% presenting in the first month and intermittent bilious vomiting as the presentation (p. 862).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is excluded by the bilious vomiting, which pyloric stenosis does not produce because the obstruction is proximal to the ampulla; an upper gastrointestinal series is named as the most accurate imaging study, and short-bowel syndrome is a postoperative complication because of the extent of some lesions.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">celiac disease and short-bowel syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">29. A child is newly diagnosed with celiac disease. Which grains must be eliminated from the diet?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Wheat, rye, barley, and oats</li><li class="fopt"><span class="mk">B</span>Wheat only</li><li class="fopt"><span class="mk">C</span>Wheat, corn, and rice</li><li class="fopt"><span class="mk">D</span>Wheat and rye only</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that treatment eliminates wheat, rye, barley, and oats, and that &quot;Corn, rice, and millet are substitute grain foods&quot; (p. 862).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) are incomplete eliminations that would allow ongoing mucosal injury, and (C) removes two of the three safe substitutes; note that the chapter also warns that &quot;grains are frequently added to processed foods as thickeners or fillers&quot; and that gluten appears as hydrolyzed vegetable protein, so labels must be read carefully.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">celiac disease and short-bowel syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">30. A child with newly diagnosed celiac disease is at risk for which nutritional deficiencies? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Iron deficiency anemia</li><li class="fopt right"><span class="mk">&#10003;</span>Folic acid deficiency</li><li class="fopt right"><span class="mk">&#10003;</span>Fat-soluble vitamin deficiency involving vitamins A, D, E, and K</li><li class="fopt"><span class="mk">D</span>Vitamin B12 deficiency</li><li class="fopt"><span class="mk">E</span>Zinc deficiency</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's therapeutic management names exactly three deficiencies treated with supplements — &quot;iron, folic acid, and fat-soluble vitamins&quot; (pp. 862–863).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) and (E) belong to other conditions in this chapter — vitamin B12 is listed under Crohn disease and zinc under pica and Crohn disease — which is precisely why they appear as distractors in the chapter's own review question on this topic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">celiac disease and short-bowel syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">31. A parent reports she has already started a gluten-free diet after reading about celiac disease, and the serologic test has not yet been drawn. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gluten should not be excluded until the diagnostic evaluation is complete, so that proper identification can occur</li><li class="fopt"><span class="mk">B</span>Starting the diet early is helpful and the testing can proceed unchanged</li><li class="fopt"><span class="mk">C</span>The diet should be stopped for 24 hours before the blood draw</li><li class="fopt"><span class="mk">D</span>Serologic testing is unnecessary once symptoms improve on the diet</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Gluten should not be excluded from the diet until the diagnostic evaluation is complete so proper identification can occur,&quot; with serologic testing for tissue transglutaminase and antiendomyseal antibodies first, then endoscopy with biopsy if positive (p. 862).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) substitutes a dietary trial for a diagnosis that requires biopsy showing &quot;mucosal inflammation, crypt hyperplasia, and villous atrophy,&quot; and commits the child to a lifelong diet without confirming it is needed; serologic testing requires a minimum age of 18 months.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">celiac disease and short-bowel syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">32. A child with celiac disease is also found to be lactose intolerant. What should the nurse tell the family about the long-term diet?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Lactose intolerance usually improves as the mucosa heals with gluten withdrawal</li><li class="fopt"><span class="mk">B</span>Lactose must be avoided permanently alongside gluten</li><li class="fopt"><span class="mk">C</span>Lactose intolerance indicates the diagnosis is incorrect</li><li class="fopt"><span class="mk">D</span>Lactose intolerance will worsen as the gluten-free diet continues</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Children with untreated celiac disease may have lactose intolerance, especially if their mucosal lesions are extensive. Lactose intolerance usually improves as the mucosa heals with gluten withdrawal&quot; (pp. 862–863).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is over-treatment that adds an unnecessary lifelong restriction to one that is already demanding; note that the chapter also directs avoiding high-fiber foods such as nuts, raisins, raw vegetables, and raw fruits with skin until the inflammation subsides.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">celiac disease and short-bowel syndrome</span><span class="chip t2">general</span></div>
+<div class="stem">33. A 6-month-old with short-bowel syndrome has been totally dependent on parenteral nutrition through a central line. Which complication should the nurse observe for?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cholestasis</li><li class="fopt"><span class="mk">B</span>Failure to thrive</li><li class="fopt"><span class="mk">C</span>Chronic diarrhea</li><li class="fopt"><span class="mk">D</span>Hypoglycemia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Hepatic dysfunction and cholestasis may also occur&quot; and that infants and children with this condition &quot;die from PN-related problems, such as fulminant sepsis or severe PN cholestasis&quot; (p. 864).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are both true of short-bowel syndrome generally and are not what the detail about long-term parenteral nutrition through a central line is pointing at, which is what makes them the strongest distractors; note also that bacterial overgrowth is likely when the ileocecal valve is absent, and an intact valve improves the prognosis.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">viral hepatitis and biliary atresia</span><span class="chip t2">general</span></div>
+<div class="stem">34. A nurse is teaching a day care staff about hepatitis A. Which are routes of transmission as the chapter presents them? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ingestion of contaminated food</li><li class="fopt right"><span class="mk">&#10003;</span>The fecal-oral route</li><li class="fopt right"><span class="mk">&#10003;</span>Close contact with an infected person</li><li class="fopt"><span class="mk">D</span>Blood transfusion</li><li class="fopt"><span class="mk">E</span>Breast milk</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives the principal route as fecal-oral, with spread &quot;by ingestion of contaminated foods, direct exposure to infected fecal material, or close contact with an infected person,&quot; naming day care centers among the high-risk settings; the parenteral route is described as rare for this virus (p. 866).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) and (E) belong to hepatitis B, for which the parenteral route is principal and perinatal transmission can occur transplacentally, at delivery, or during breastfeeding &quot;especially if mother has cracked nipples&quot;; this is the distinction the chapter's own review question tests.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">viral hepatitis and biliary atresia</span><span class="chip t2">general</span></div>
+<div class="stem">35. A child with hepatitis A developed jaundice 3 days ago. When was the child most likely to have transmitted the virus?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>During the 2 weeks before jaundice appeared, while asymptomatic</li><li class="fopt"><span class="mk">B</span>Only after jaundice appeared</li><li class="fopt"><span class="mk">C</span>Only during the icteric phase and for 1 month afterward</li><li class="fopt"><span class="mk">D</span>The virus is not transmissible once symptoms begin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Fecal shedding of the virus can occur for 2 weeks before and for 1 week after the onset of jaundice. During this time, although the individual is asymptomatic, the virus is most likely to be transmitted&quot; (p. 866).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the intuitive assumption that visible illness marks contagiousness, and it is why outbreaks in day care settings are established before anyone is diagnosed; note also that infants with this infection &quot;are likely to be asymptomatic,&quot; while 70% of older children and adults develop icteric hepatitis lasting 7 to 14 days.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">viral hepatitis and biliary atresia</span><span class="chip t2">general</span></div>
+<div class="stem">36. An adolescent presents with insidious onset of fatigue, a rash, and arthralgia, and is found to have viral hepatitis. Which type does this picture suggest?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hepatitis B, since rash and arthralgia are common and onset is insidious</li><li class="fopt"><span class="mk">B</span>Hepatitis A, since rash and arthralgia are common in type A</li><li class="fopt"><span class="mk">C</span>Hepatitis A, since onset is usually rapid and acute</li><li class="fopt"><span class="mk">D</span>The clinical picture cannot distinguish the types</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 25.7 assigns rapid acute onset with common early fever and rare rash and arthralgia to type A, and more insidious onset with less frequent fever and common rash and arthralgia to type B (p. 866).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) keys the right feature to the wrong type; the cue worth carrying is that rash and arthralgia point away from type A. Note also that type A has no carrier state and no chronic infection, while B and C have both.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">viral hepatitis and biliary atresia</span><span class="chip t2">general</span></div>
+<div class="stem">37. A 6-week-old is still jaundiced, with a direct bilirubin of 6 mg/dl, dark urine, and gray stools. What should the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Biliary atresia, since jaundice persisting beyond 2 weeks with an elevated conjugated bilirubin warrants suspicion</li><li class="fopt"><span class="mk">B</span>Physiologic jaundice, which may persist up to 8 weeks in breastfed infants</li><li class="fopt"><span class="mk">C</span>Hemolytic disease, since the bilirubin is elevated</li><li class="fopt"><span class="mk">D</span>Hepatitis A acquired perinatally</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;If jaundice persists beyond 2 weeks of age, especially if the direct (conjugated) serum bilirubin is elevated, the nurse should suspect BA,&quot; with dark urine and stools that &quot;often become progressively acholic or gray, indicating absence of bile pigment&quot; (p. 870).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) both involve unconjugated bilirubin, and the conjugated fraction is the discriminator that separates this from physiologic or hemolytic jaundice; the liver is typically enlarged and firm on palpation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">viral hepatitis and biliary atresia</span><span class="chip t2">general</span></div>
+<div class="stem">38. An infant with biliary atresia has intense pruritus. Which medication should the nurse anticipate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ursodeoxycholic acid</li><li class="fopt"><span class="mk">B</span>Diphenhydramine</li><li class="fopt"><span class="mk">C</span>Loratadine</li><li class="fopt"><span class="mk">D</span>Ranitidine</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that ursodeoxycholic acid &quot;may be used to decrease cholestasis and the intense pruritus from jaundice&quot; (p. 870), and it is the answer to the chapter's own review question on this point.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are antihistamines, and they miss the mechanism entirely — the itch comes from retained bile salts rather than from histamine. Note also that the Kasai procedure &quot;improves the prognosis but is not a cure,&quot; with success up to 90% if performed before 2 months of age but only 20% survival at 20 years.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital gastrointestinal and abdominal wall defects</span><span class="chip t2">general</span></div>
+<div class="stem">39. A newborn has frothy saliva, drooling, and becomes cyanotic and apneic with the first feeding. Which preoperative measures are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Keep the infant nothing by mouth and start intravenous fluids</li><li class="fopt right"><span class="mk">&#10003;</span>Place a double-lumen catheter in the upper esophageal pouch on low suction</li><li class="fopt right"><span class="mk">&#10003;</span>Keep the head elevated on an inclined plane of at least 30 degrees</li><li class="fopt right"><span class="mk">&#10003;</span>Leave the gastrostomy tube open to gravity drainage</li><li class="fopt"><span class="mk">E</span>Begin gastrostomy tube feedings to maintain nutrition before surgery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs immediate nothing-by-mouth status with intravenous fluids, a double-lumen catheter into the upper esophageal pouch on intermittent or continuous low suction, the head kept upright on an inclined plane of at least 30 degrees, and a gastrostomy tube &quot;emptied by gravity drainage&quot; (p. 873).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is explicitly contraindicated — &quot;Feedings through the gastrostomy tube and irrigations with fluid are contraindicated before surgery in the infant with a distal TEF,&quot; because the tube is left open so air escaping through the fistula can vent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital gastrointestinal and abdominal wall defects</span><span class="chip t2">general</span></div>
+<div class="stem">40. A radiograph of a newborn with suspected esophageal atresia shows air in the stomach. What does this indicate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A connection exists between the trachea and the distal esophagus, as in types C, D, and E</li><li class="fopt"><span class="mk">B</span>No fistula is present, as in type A</li><li class="fopt"><span class="mk">C</span>The fistula involves only the upper esophageal segment, as in type B</li><li class="fopt"><span class="mk">D</span>The finding is nonspecific and does not narrow the type</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Films that show air in the stomach indicate a connection between the trachea and the distal esophagus in types C, D, and E. Complete absence of air in the stomach is seen in types A and B&quot; (pp. 872–873).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names the one fistula type that would not deliver air to the stomach, since it connects the trachea to the upper pouch only; type C is by far the most common at 80% to 90%, with a blind proximal pouch and the distal segment connected to the trachea.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital gastrointestinal and abdominal wall defects</span><span class="chip t2">general</span></div>
+<div class="stem">41. A newborn has abdominal contents protruding lateral to the umbilicus with no covering membrane. Which defect is this, and what does it imply about associated anomalies?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gastroschisis, with a 10% to 20% incidence of associated anomalies</li><li class="fopt"><span class="mk">B</span>Omphalocele, with a 50% to 70% incidence of associated anomalies</li><li class="fopt"><span class="mk">C</span>Gastroschisis, with a 50% to 70% incidence of associated anomalies</li><li class="fopt"><span class="mk">D</span>Omphalocele, with a 10% to 20% incidence of associated anomalies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Gastroschisis occurs lateral to the umbilical ring, &quot;usually to the right of the umbilicus,&quot; with no peritoneal sac, and is &quot;usually NOT associated with other major congenital anomalies (10% to 20% incidence),&quot; whereas omphalocele occurs through the umbilical ring with an intact sac and a &quot;50% to 70% incidence of anomalies&quot; (p. 875).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) keys the right defect with the wrong anomaly rate, which is the half-right answer this pair invites; the covering sac is the first discriminator and the associated-anomaly rate the second, and distractors typically reverse the second.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital gastrointestinal and abdominal wall defects</span><span class="chip t2">general</span></div>
+<div class="stem">42. A newborn arrives in the nursery with exposed bowel and no covering membrane. What is the priority nursing action?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cover the exposed contents with a bowel bag or moist dressings and a plastic drape</li><li class="fopt"><span class="mk">B</span>Apply a dry sterile dressing directly to the exposed bowel</li><li class="fopt"><span class="mk">C</span>Attempt to reduce the bowel into the abdominal cavity</li><li class="fopt"><span class="mk">D</span>Leave the bowel exposed to air to allow assessment before surgery</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs that when bowel is exposed, &quot;the exposed abdominal contents and membranes are covered with a bowel bag or moist dressings and a plastic drape to prevent excessive fluid loss, drying, and temperature instability&quot; (p. 875).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) uses a dry dressing on exposed viscera, which adds drying to the fluid loss it is meant to prevent; note also the chapter's warning that a small omphalocele may appear as a bulge in the cord, so &quot;it is imperative to inspect an unusually large umbilical cord for omphalocele before clamping.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital gastrointestinal and abdominal wall defects</span><span class="chip t2">general</span></div>
+<div class="stem">43. A 6-month-old has a reducible inguinal swelling that appears with crying. The parents ask whether it will close on its own as their neighbor's umbilical hernia did. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Inguinal hernias do not resolve spontaneously and are repaired promptly, unlike umbilical hernias, which usually resolve by 3 to 5 years</li><li class="fopt"><span class="mk">B</span>Both types usually resolve by 3 to 5 years of age</li><li class="fopt"><span class="mk">C</span>Inguinal hernias resolve by 1 year if the child avoids straining</li><li class="fopt"><span class="mk">D</span>Umbilical hernias require repair and inguinal hernias resolve spontaneously</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that umbilical hernias &quot;usually resolve spontaneously by 3 to 5 years of age&quot; while inguinal hernias require &quot;prompt, elective surgical repair in the healthy child as soon as the defect is diagnosed&quot; (pp. 876–877).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reverses the two entirely; the reason the distinction matters is incarceration, which is rare in umbilical hernias but &quot;occurs more often in infants under 12 months of age&quot; with inguinal hernias, at 3% to 16% and as high as 30% in premature infants. Taping or strapping an umbilical hernia &quot;does not aid in resolution and can produce skin irritation.&quot;</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"acute diarrhea and oral rehydration in children","subtopic":"general","stem":"A 16-month-old is being discharged after 2 days of acute diarrhea and is now rehydrated. What diet should the nurse recommend?","options":["A regular diet as the child's appetite warrants","The BRAT diet of bananas, rice, applesauce, and toast","Clear liquids for 24 hours, then advance slowly","Chicken or beef broth until the stools are formed"],"correct":[0],"sata":false,"why":"The chapter states that early reintroduction of a normal diet \"has no adverse effects and actually lessens the severity and duration of the illness and improves weight gain when compared with the gradual reintroduction of foods,\" and that a regular diet including milk can generally be offered after rehydration (pp. 836–837).","trap":"All three wrong options are named and rejected by the chapter's own Nursing Alert — the BRAT diet \"is contraindicated\" because it is low in energy, protein, and electrolytes; broth \"is not given\" because it has excessive sodium and inadequate carbohydrate; and clear fluids \"do not help diarrhea\" because of high carbohydrate content and high osmolality.","k":"zrmx15184knav"},{"topic":"acute diarrhea and oral rehydration in children","subtopic":"general","stem":"A nurse is giving oral rehydration solution to a 2-year-old with moderate dehydration who has vomited twice. What should the nurse do?","options":["Continue the solution in 5- to 10-ml increments every 1 to 5 minutes, since vomiting is not a contraindication","Stop oral rehydration and request intravenous fluids","Withhold all fluids for 2 hours to rest the stomach, then restart","Switch to a carbonated beverage, which is better tolerated when vomiting"],"correct":[0],"sata":false,"why":"The chapter states that \"vomiting is not a contraindication\" to oral rehydration therapy and directs 5- to 10-ml increments every 1 to 5 minutes by spoon or small syringe for young children (p. 836).","trap":"(B) is the reflex escalation the chapter's whole rehydration section exists to prevent, calling oral therapy \"more effective, safer, less painful, and less costly than IV rehydration\"; note that 10 ml/kg of solution is added for every loose stool or episode of vomiting.","k":"76zpwvib454l"},{"topic":"acute diarrhea and oral rehydration in children","subtopic":"general","stem":"A nurse is teaching parents of a child with acute diarrhea. Which instructions are correct? Select all that apply.","options":["Continue breastfeeding if it is already established","Replace each diarrheal stool with about 10 ml/kg of oral rehydration solution","Expect a slightly higher stool output initially when a normal diet is resumed","Avoid caffeinated beverages","Offer fruit juice and gelatin, which supply fluid and calories"],"correct":[0,1,2,3],"sata":true,"why":"The chapter directs continuing breastfeeding, replacing ongoing stool losses with about 10 ml/kg of solution, warning parents that \"a slightly higher stool output initially occurs with continuation of a normal diet,\" and avoiding caffeinated beverages because caffeine is a mild diuretic (pp. 836–837).","trap":"(E) names two of the fluids the Nursing Alert rules out — fruit juices and gelatin have \"a high carbohydrate content, a very low electrolyte content, and a high osmolality\"; the chapter adds that the nutritional benefit of resuming a normal diet \"outweigh[s] the potential increase in stool frequency.\"","k":"rvkm3x1oj21yv"},{"topic":"acute diarrhea and oral rehydration in children","subtopic":"general","stem":"A 10-month-old with acute diarrhea has no clinical signs of dehydration. What does the chapter direct?","options":["Oral rehydration therapy is not needed, but maintenance fluid and replacement of stool losses continue","Oral rehydration therapy at 50 ml/kg over 4 hours is still indicated","Intravenous fluids should be started prophylactically","All oral intake should be withheld for 12 hours"],"correct":[0],"sata":false,"why":"The chapter states that \"Infants without clinical signs of dehydration do not need ORT,\" and Table 25.4's footnote adds that \"If no signs of dehydration are present, rehydration therapy is not necessary,\" while maintenance therapy and stool-loss replacement continue (p. 836).","trap":"(B) applies the mild-dehydration protocol to a child who is not dehydrated, which over-treats; the 50 ml/kg over 4 hours figure belongs to mild dehydration at 5% to 6% and 100 ml/kg over 4 hours to moderate at 7% to 9%.","k":"q97wq81pqkuaa"},{"topic":"acute diarrhea and oral rehydration in children","subtopic":"general","stem":"A child's stool culture grows nontyphoidal *Salmonella*. The parents ask why no antibiotic has been prescribed. What should the nurse explain?","options":["Antibiotics are not given in uncomplicated cases because they prolong the carrier state","Antibiotics are withheld only until sensitivity results return","Antibiotics are ineffective against all bacterial causes of diarrhea","Antibiotics are withheld because the organism is resistant to all oral agents"],"correct":[0],"sata":false,"why":"The chapter notes that antibiotics \"may prolong the carrier period for bacteria such as *Salmonella*,\" reserving them for children under 3 months, those on immunosuppressive medication, or those with shock, severe malnutrition, dysentery, suspected cholera, or suspected giardiasis (p. 837).","trap":"(C) generalizes one organism's policy to all, which the chapter contradicts case by case — *Salmonella typhi* must be treated, *Shigella* antibiotics shorten illness and lower mortality, and erythromycin is the drug of choice for *Campylobacter*. Antimotility agents are wrong across essentially all of them.","k":"1oid6ho10mviq"},{"topic":"hirschsprung disease and childhood constipation","subtopic":"general","stem":"A newborn has not passed meconium by 36 hours of age and has bilious vomiting with abdominal distention. What should the nurse suspect?","options":["Hirschsprung disease, since 99% of term infants pass meconium within the first 48 hours","Hypertrophic pyloric stenosis, since vomiting and distention are present","Normal transition, since meconium may be delayed up to 5 days","Intussusception, since vomiting and distention are present"],"correct":[0],"sata":false,"why":"Box 25.10 gives failure to pass meconium within 24 to 48 hours after birth as the newborn criterion, with refusal to feed, bilious vomiting, and abdominal distention, and the chapter notes that \"Typically, 99% of term infants pass meconium in the first 48 hours of life, whereas few infants with HD do so\" (p. 844).","trap":"(B) is excluded by the bilious vomiting, since pyloric stenosis produces nonbilious vomiting and typically begins around 3 weeks rather than at birth; note that this chapter gives several different meconium thresholds for different conditions, so the disease named in the stem determines which number applies.","k":"u27ucl1wz92p7"},{"topic":"hirschsprung disease and childhood constipation","subtopic":"general","stem":"A child is undergoing anorectal manometry for suspected Hirschsprung disease. Which finding supports the diagnosis?","options":["The external sphincter contracts normally, but the internal sphincter fails to relax","The internal sphincter relaxes normally, but the external sphincter fails to contract","Both sphincters fail to contract","Both sphincters relax simultaneously with rectal distention"],"correct":[0],"sata":false,"why":"The chapter states that on anorectal manometry \"In HD the external sphincter contracts normally but the internal sphincter fails to relax\" (p. 845), which follows from the absence of ganglion cells and the resulting loss of the rectosphincteric reflex.","trap":"(B) reverses the two sphincters, which is the single likeliest error here; the underlying physiology is that normally \"when a stool bolus enters the rectum, the internal sphincter relaxes and the stool is evacuated,\" and in this disease it does not.","k":"1va4mo4nuoo4q"},{"topic":"hirschsprung disease and childhood constipation","subtopic":"general","stem":"A 7-month-old with known Hirschsprung disease develops explosive watery diarrhea and fever and appears significantly ill. What should the nurse recognize?","options":["Enterocolitis, which is the most serious complication of the disease","Viral gastroenteritis, which is unrelated to the underlying disease","Resolution of the obstruction, since stool is now passing","An expected response to the preoperative low-fiber diet"],"correct":[0],"sata":false,"why":"Box 25.10 lists \"signs of enterocolitis — explosive watery diarrhea, fever, appears significantly ill\" under infancy, and the chapter states that \"Enterocolitis is the most serious complication of HD\" (pp. 844–845).","trap":"(C) reads diarrhea as improvement in a disease whose hallmark is obstruction, which is the dangerous misreading; the signs of bowel perforation to watch alongside this are fever, increasing distention, vomiting, increased tenderness, irritability, dyspnea, and cyanosis.","k":"h164oy7oq26o"},{"topic":"hirschsprung disease and childhood constipation","subtopic":"general","stem":"A 9-month-old with constipation is prescribed a stool softener. The parent asks about mineral oil, which worked for an older sibling. What should the nurse advise?","options":["Mineral oil is contraindicated under 1 year of age because of aspiration risk","Mineral oil is appropriate at any age if given with meals","Mineral oil is contraindicated because it causes electrolyte loss in infants","Mineral oil may be used if diluted in formula"],"correct":[0],"sata":false,"why":"The chapter identifies mineral oil as contraindicated under 1 year of age because of the risk of aspiration.","trap":"(C) supplies a plausible but different mechanism, and (D) proposes a route that increases rather than reduces the aspiration hazard; note that the chapter's general fiber recommendation for children is age in years plus 5 grams daily, and the toilet retraining sit is 5 to 10 minutes once or twice daily after a meal.","k":"ynqwycqktrzi"},{"topic":"gastroesophageal reflux and its management","subtopic":"general","stem":"A 5-month-old spits up after most feedings but is gaining weight well and has no respiratory symptoms. How should the nurse classify this, and what management does the chapter direct?","options":["Gastroesophageal reflux, which is physiologic and needs no intervention in a thriving infant","Gastroesophageal reflux disease, requiring a proton pump inhibitor","Gastroesophageal reflux disease, requiring thickened feedings","Gastroesophageal reflux, requiring prone positioning for sleep"],"correct":[0],"sata":false,"why":"The chapter defines reflux as \"the transfer of gastric contents into the esophagus,\" calls it physiologic, and states that no treatment is needed \"for the infant who is thriving and has no respiratory complications\"; it becomes disease \"when complications such as failure to thrive, respiratory problems, or dysphagia develop\" (pp. 845–846).","trap":"(D) states a true fact and reaches a dangerous conclusion — prone positioning does decrease reflux episodes, but the chapter immediately adds that \"due to the risk of sudden infant death syndrome, all infants should sleep in the supine position.\" Reflux never outranks sudden infant death prevention.","k":"12qm4n717gctw5"},{"topic":"gastroesophageal reflux and its management","subtopic":"general","stem":"An overweight 4-month-old with reflux is being evaluated. The parents ask about adding rice cereal to the formula. What should the nurse explain?","options":["Thickened feedings benefit the infant who is underweight from reflux disease, and the additional calories are not beneficial for an infant who is overweight","Thickened feedings should be used for every infant with reflux regardless of weight","Thickened feedings are contraindicated at any weight because they worsen reflux","Thickened feedings should be made with 1 tablespoon of rice cereal per feeding regardless of volume"],"correct":[0],"sata":false,"why":"The chapter directs 1 teaspoon to 1 tablespoon of rice cereal per ounce of formula for the infant \"who is underweight as a result of GERD,\" and states that \"the additional calories are not beneficial among infants who are overweight,\" for whom prethickened formulas exist (p. 846).","trap":"(D) drops the per-ounce basis, which is what makes the amount scale to the feeding; the item turns on the fact that thickening is a calorie intervention as much as a mechanical one.","k":"c9cjlxz15fev"},{"topic":"gastroesophageal reflux and its management","subtopic":"general","stem":"A child with reflux disease is prescribed metoclopramide by a covering provider. What should the nurse recognize?","options":["Metoclopramide is no longer recommended for reflux disease in infants and children because of common side effects without significant benefit","Metoclopramide is the preferred prokinetic agent in children","Metoclopramide should be given only with a histamine-2 receptor antagonist","Metoclopramide is appropriate but requires electrocardiographic monitoring"],"correct":[0],"sata":false,"why":"The chapter states that \"Use of metoclopramide for GERD in infants and children is no longer recommended due to the common incidence of side effects without significant benefit,\" naming histamine-2 receptor antagonists and proton pump inhibitors as the drug classes used (p. 846).","trap":"(B) is the older teaching and is what makes this worth drilling; the diet measures named alongside the drugs are avoiding caffeine, citrus, tomatoes, alcohol, peppermint, and spicy or fried foods.","k":"16mgzlp15y4j6b"},{"topic":"gastroesophageal reflux and its management","subtopic":"general","stem":"A child who had a fundoplication now has dysphagia and gas-bloat. What does this suggest?","options":["The wrap is too tight","The wrap is too loose","The wrap has failed completely and reflux has returned","Barrett esophagus has developed"],"correct":[0],"sata":false,"why":"The chapter names the two failure modes of fundoplication — \"a wrap that is too tight, causing dysphagia, small bowel obstruction, or gas-bloat; or a wrap that is too loose, causing continuation of symptoms\" (p. 846).","trap":"(B) and (C) both describe the opposite failure, which presents as persistent reflux rather than obstruction; the procedure itself is \"passage of the gastric fundus behind the esophagus to encircle the distal esophagus,\" reserved for recurrent aspiration pneumonia, apnea, severe esophagitis, failure to thrive, or failed medical therapy.","k":"1f6pfy1a0fadw"},{"topic":"appendicitis and meckel diverticulum","subtopic":"general","stem":"A 13-year-old reports periumbilical pain that began this morning, followed by nausea, and now points to the right lower quadrant. How does this sequence fit appendicitis?","options":["It fits, because the classic sequence is periumbilical pain first, then nausea, then right lower quadrant pain, and later vomiting with fever","It does not fit, because vomiting precedes pain in appendicitis","It does not fit, because appendicitis pain begins in the right lower quadrant","It fits only if rebound tenderness is also present"],"correct":[0],"sata":false,"why":"The chapter states that \"Classically, the first symptom of appendicitis is periumbilical pain, followed by nausea, right lower quadrant pain, and, later, vomiting with fever,\" restating that \"Nausea, vomiting, and anorexia typically occur AFTER the pain starts\" (p. 848).","trap":"(D) requires a sign the chapter rules out as a criterion — \"Rebound tenderness is not a reliable sign and is extremely painful to the child,\" and it \"is not a finding specific to appendicitis\"; the most important physical finding is focal abdominal tenderness, classically at McBurney point.","k":"17eocq47krb8i"},{"topic":"appendicitis and meckel diverticulum","subtopic":"general","stem":"A child with several hours of severe abdominal pain suddenly reports that the pain has stopped. Shortly afterward the pain returns, is diffuse, and the abdomen is rigid. What should the nurse suspect?","options":["Perforation with peritonitis, since sudden relief of pain after perforation is followed by diffuse pain with rigid guarding","Resolution of the appendicitis, since the pain briefly stopped","Intussusception, since pain is intermittent","Gastroenteritis, since the pain is now diffuse"],"correct":[0],"sata":false,"why":"The chapter's Nursing Alert lists signs of peritonitis as \"sudden relief from pain after perforation; subsequent increase in pain, which is usually diffuse and accompanied by rigid guarding of the abdomen; progressive abdominal distention; tachycardia; rapid, shallow breathing as the child refrains from using abdominal muscles\" (p. 849).","trap":"(B) is the interpretation families and inexperienced clinicians most often make, and it is why the chapter names the transient relief explicitly; perforation can occur within about 48 hours of the initial complaint of pain, and occurs in up to 82% of children under 5.","k":"m5sln11w9w34b"},{"topic":"appendicitis and meckel diverticulum","subtopic":"general","stem":"A nurse needs to assess a frightened 5-year-old for abdominal tenderness. Which approach does the chapter recommend?","options":["Use the bell of the stethoscope for initial palpation, then follow with gentle manual palpation without lifting the hand","Begin with deep palpation of the right lower quadrant to localize tenderness quickly","Test for rebound tenderness first, since it is the most specific sign","Defer the abdominal examination until imaging results are available"],"correct":[0],"sata":false,"why":"The Atraumatic Care box directs the nurse to \"use the bell piece for initial palpation of the abdomen for tenderness,\" since \"Children usually endure pressure from the stethoscope that they would not tolerate from a probing hand,\" followed by manual palpation \"using a gentle touch without lifting the hand from the abdomen\" (p. 850).","trap":"(C) leads with the maneuver the chapter calls unreliable and extremely painful; the chapter also offers heel-drop, hopping on one foot, and puffing out or pulling in the abdomen as ways to check for tenderness without probing.","k":"1qcb7is1acgfei"},{"topic":"appendicitis and meckel diverticulum","subtopic":"general","stem":"A 20-month-old passes a large volume of painless, currant jelly–like stool and becomes pale. Ultrasound of the abdomen is unremarkable. Which diagnosis should the nurse anticipate being investigated?","options":["Meckel diverticulum, with a technetium-99 pertechnetate scan","Intussusception, with a repeat ultrasound","Appendicitis, with computed tomography","Ulcerative colitis, with colonoscopy"],"correct":[0],"sata":false,"why":"The chapter states that \"The most common clinical presentation is rectal bleeding caused by ulceration at the junction of the ectopic gastric mucosa and normal ileal mucosa,\" that the bleeding is \"usually painless\" and may appear as bright red or currant jelly–like stools, and names the technetium-99 pertechnetate scan as \"the most effective diagnostic testing\" with sensitivity 80% to 90% and specificity 95% (p. 851).","trap":"(B) shares the currant jelly stool, which is exactly why this pair is confusable; the discriminator is that intussusception brings sudden colicky pain with the child drawing knees to chest, whereas this bleeding is painless. The rule of 2s places the diverticulum within 2 feet of the ileocecal valve and makes it more common before age 2.","k":"1bx6k7x1qyk8cz"},{"topic":"inflammatory bowel disease","subtopic":"general","stem":"An adolescent has bloody diarrhea, and endoscopy shows continuous inflammation limited to the colon and rectum involving mucosa and submucosa. Which additional features are characteristic of this disease? Select all that apply.","options":["Rectal bleeding is common","Anal and perianal lesions are rare","Fistulas and strictures are rare","Colectomy may cure the disease","Growth retardation is usually severe"],"correct":[0,1,2,3],"sata":true,"why":"Table 25.6 assigns common rectal bleeding, rare anal and perianal lesions, and rare fistulas and strictures to ulcerative colitis, and the chapter states that \"Because UC is confined to the colon, a colectomy may cure UC\" (p. 853).","trap":"(E) belongs to Crohn disease, where growth retardation \"may be severe\" while in ulcerative colitis it is \"usually mild\"; the two cleanest discriminators overall are that rectal bleeding is common in colitis and uncommon in Crohn, and that fistulas and perianal lesions are rare in colitis and common in Crohn.","k":"b8yi7w13qa4zu"},{"topic":"inflammatory bowel disease","subtopic":"general","stem":"A 14-year-old has been below the third percentile for height for 3 years with delayed puberty and only vague abdominal complaints. Which diagnosis should the nurse consider?","options":["Crohn disease, since growth failure and delayed sexual maturation often precede overt gastrointestinal symptoms by several years","Ulcerative colitis, since growth failure is its earliest sign","Irritable bowel syndrome, since the abdominal complaints are vague","Celiac disease, since it presents in adolescence with growth failure alone"],"correct":[0],"sata":false,"why":"The chapter states that in Crohn disease \"Growth failure and delayed sexual maturation are often present for several years before overt GI symptoms are present,\" and calls growth failure \"a common serious complication, especially in CD\" (p. 853).","trap":"(C) is the condition the chapter warns against confusing with inflammatory bowel disease in its opening sentence, and the red flags that move a child from irritable bowel to further workup are \"weight loss, rectal bleeding, or significant fatigue\" — this adolescent has the first of those.","k":"h087pa1hmt9hk"},{"topic":"inflammatory bowel disease","subtopic":"general","stem":"A child with moderate Crohn disease has been on prednisone for 6 weeks and the family asks about continuing it long term. What should the nurse explain?","options":["Corticosteroids are used for induction rather than maintenance, because of growth suppression, weight gain, and decreased bone density","Corticosteroids are the preferred maintenance therapy in children with Crohn disease","Corticosteroids may be continued indefinitely if the dose is below 10 mg daily","Corticosteroids are replaced by aminosalicylates, which are equally effective for maintenance in Crohn disease"],"correct":[0],"sata":false,"why":"The chapter states that corticosteroids are used for induction in moderate to severe disease and are \"not commonly used for maintenance therapy because of their long-term side effects including growth suppression (adrenal suppression), weight gain, and decreased bone density\" (pp. 853–855).","trap":"(D) overstates the role of aminosalicylates, which are induction and maintenance for mild to moderate ulcerative colitis and can induce remission in mild Crohn disease; the agents that have moved front-line for children with severe Crohn disease are the anti-tumor necrosis factor biologics, which have \"even improved linear growth in children.\"","k":"na3u851wjq5av"},{"topic":"inflammatory bowel disease","subtopic":"general","stem":"A child taking 6-mercaptopurine for inflammatory bowel disease requires which ongoing monitoring?","options":["Regular complete blood count with differential, because of bone marrow toxicity","Regular ophthalmologic examination, because of cataract risk","Regular bone density scanning, because of osteoporosis risk","Regular pulmonary function testing, because of fibrosis risk"],"correct":[0],"sata":false,"why":"The chapter lists the immunomodulator side effects as \"infection, pancreatitis, hepatitis, bone marrow toxicity, arthralgia, and malignancy,\" and states that these agents \"Require regular CBC and differential monitoring\" (pp. 853–855).","trap":"(C) names a real concern that belongs to corticosteroids rather than to this class, which is what makes it the closest miss; note also that metronidazole and ciprofloxacin are the adjunctive antibiotics for perianal disease, with peripheral neuropathy, nausea, and a metallic taste as their named effects.","k":"8gwvtz13vx0bp"},{"topic":"inflammatory bowel disease","subtopic":"general","stem":"A nurse is comparing endoscopic findings in inflammatory bowel disease. Which statement is accurate?","options":["Discrete ulcers are commonly seen in Crohn disease, whereas microulcers with diffuse abnormalities are seen in ulcerative colitis","Discrete ulcers are seen in ulcerative colitis and diffuse inflammation in Crohn disease","Both diseases produce identical endoscopic appearances","Endoscopy cannot distinguish the two and biopsy is always required"],"correct":[0],"sata":false,"why":"The chapter states that \"Discrete ulcers are commonly seen in patients with CD, whereas microulcers and diffuse abnormalities and inflammation are seen in patients with UC\" (p. 853).","trap":"(B) reverses the two, which follows the same logic error as reversing continuous and skip lesions; the underlying anatomy is that Crohn disease is transmural with skip lesions while ulcerative colitis is mucosal and submucosal in continuous segments.","k":"e56y691xp25wn"},{"topic":"infant obstructive disorders","subtopic":"general","stem":"A 5-month-old with a birth weight of 7 pounds now weighs 8 pounds 10 ounces. His mother reports that he \"spits up a lot after eating and then is hungry again,\" and he has one or two brown stools daily. What should the nurse suspect?","options":["Hypertrophic pyloric stenosis","Gastroesophageal reflux disease","Intussusception","Hirschsprung disease"],"correct":[0],"sata":false,"why":"The chapter describes the infant with pyloric stenosis as \"hungry, avid nurser; eagerly accepts a second feeding after vomiting episode,\" with nonbilious projectile vomiting 30 to 60 minutes after feeding and \"No evidence of pain or discomfort except that of chronic hunger\" (pp. 859–860).","trap":"(B) shares the spitting up but not the failure to thrive combined with persistent hunger, which is the signature here; (D) is excluded by the normal brown stools, since Hirschsprung disease in this age range produces constipation with ribbonlike foul-smelling stools.","k":"1jg3tua1ckgodw"},{"topic":"infant obstructive disorders","subtopic":"general","stem":"A 4-week-old with projectile vomiting has laboratory studies drawn. Which findings does the chapter identify as of greatest diagnostic value? Select all that apply.","options":["A decreased serum chloride","An increased serum pH","An increased serum bicarbonate","A decreased serum sodium","A decreased serum potassium"],"correct":[0,1,2],"sata":true,"why":"The chapter states that \"Of greater diagnostic value are a decrease in serum chloride levels and increases in pH and bicarbonate (carbon dioxide content), indicative of metabolic alkalosis\" (p. 860).","trap":"(D) and (E) are real findings the chapter also lists but qualifies — decreased sodium and potassium \"may be masked by the hemoconcentration,\" which is precisely why they are less useful diagnostically; note also that in cases diagnosed early \"laboratory findings may not be significant.\"","k":"tlg289lqydr7"},{"topic":"infant obstructive disorders","subtopic":"general","stem":"An infant with pyloric stenosis is dehydrated with a pH of 7.52. The family asks why surgery is not happening today. What should the nurse explain?","options":["The infant must be rehydrated and the metabolic alkalosis corrected first, which usually delays surgery 24 to 48 hours","Surgery is delayed until the infant reaches 5 kg","Surgery is delayed until vomiting has stopped for 24 hours","Surgery is not indicated, since the condition resolves spontaneously"],"correct":[0],"sata":false,"why":"The chapter states that \"Preoperatively the infant must be rehydrated and metabolic alkalosis corrected with parenteral fluid and electrolyte administration. Replacement fluid therapy usually delays surgery for 24 to 48 hours\" (p. 860).","trap":"(D) misses that this is a surgical disease with an excellent prognosis and 0% to 0.5% mortality after pyloromyotomy; note also that postoperative vomiting is expected, since \"most infants, even with successful surgery, exhibit some vomiting during the first 24 to 48 hours.\"","k":"1l61rl21kaq8cc"},{"topic":"infant obstructive disorders","subtopic":"general","stem":"A 9-month-old has episodes of screaming and drawing his knees to his chest, appears comfortable between episodes, and has passed a red currant jelly–like stool. What is the most likely diagnosis?","options":["Intussusception","Hypertrophic pyloric stenosis","Malrotation with volvulus","Meckel diverticulum"],"correct":[0],"sata":false,"why":"Box 25.17 lists sudden acute abdominal pain, the child \"screaming and drawing the knees onto the chest,\" appearing normal and comfortable between episodes, and passage of red currant jelly–like stools, with a sausage-shaped mass in the upper right quadrant and an empty lower right quadrant (p. 861).","trap":"(D) also produces currant jelly stools, and the discriminator is the colicky pain pattern, which is absent in the diverticulum's painless bleeding; note that the classic triad of pain, mass, and bloody stools \"is present in less than 30% of children,\" and in atypical cases \"lethargy may be the primary symptom.\"","k":"1r5kyou3vsk"},{"topic":"infant obstructive disorders","subtopic":"general","stem":"A child awaiting enema reduction for intussusception passes a normal brown stool. What should the nurse do?","options":["Report it immediately, because it usually indicates the intussusception has reduced itself and may change the plan of care","Document it as a routine finding and continue preparation for the enema","Withhold the information until after the enema is performed","Recognize it as a sign of perforation and prepare for surgery"],"correct":[0],"sata":false,"why":"The Nursing Alert states that \"Passage of a normal brown stool usually indicates that the intussusception has reduced itself. This is immediately reported to the practitioner, who may choose to alter the diagnostic and therapeutic care plan\" (p. 861).","trap":"(B) treats a finding that changes management as routine charting, which is the specific failure the alert exists to prevent; note separately that enema reduction is contraindicated once there are signs of shock, peritoneal irritation, or perforation, and that gas enema succeeds more often than hydrostatic enema at 83% versus 70%.","k":"24ggykpc1s8m"},{"topic":"infant obstructive disorders","subtopic":"general","stem":"A 3-week-old has intermittent bilious vomiting and recurrent abdominal pain. Which diagnosis carries the greatest urgency, and why?","options":["Malrotation with volvulus, because it is the most serious type of intestinal obstruction and can cause necrosis, perforation, and death","Pyloric stenosis, because dehydration progresses rapidly","Hirschsprung disease, because enterocolitis may develop","Intussusception, because the bowel may become ischemic"],"correct":[0],"sata":false,"why":"The chapter states that \"Malrotation is the most serious type of intestinal obstruction\" because complete volvulus compromises blood supply, leading to \"intestinal necrosis, peritonitis, perforation, and death,\" with 80% presenting in the first month and intermittent bilious vomiting as the presentation (p. 862).","trap":"(B) is excluded by the bilious vomiting, which pyloric stenosis does not produce because the obstruction is proximal to the ampulla; an upper gastrointestinal series is named as the most accurate imaging study, and short-bowel syndrome is a postoperative complication because of the extent of some lesions.","k":"9ihh52dcgfxs"},{"topic":"celiac disease and short-bowel syndrome","subtopic":"general","stem":"A child is newly diagnosed with celiac disease. Which grains must be eliminated from the diet?","options":["Wheat, rye, barley, and oats","Wheat only","Wheat, corn, and rice","Wheat and rye only"],"correct":[0],"sata":false,"why":"The chapter states that treatment eliminates wheat, rye, barley, and oats, and that \"Corn, rice, and millet are substitute grain foods\" (p. 862).","trap":"(B) and (D) are incomplete eliminations that would allow ongoing mucosal injury, and (C) removes two of the three safe substitutes; note that the chapter also warns that \"grains are frequently added to processed foods as thickeners or fillers\" and that gluten appears as hydrolyzed vegetable protein, so labels must be read carefully.","k":"1kc99buykdgc"},{"topic":"celiac disease and short-bowel syndrome","subtopic":"general","stem":"A child with newly diagnosed celiac disease is at risk for which nutritional deficiencies? Select all that apply.","options":["Iron deficiency anemia","Folic acid deficiency","Fat-soluble vitamin deficiency involving vitamins A, D, E, and K","Vitamin B12 deficiency","Zinc deficiency"],"correct":[0,1,2],"sata":true,"why":"The chapter's therapeutic management names exactly three deficiencies treated with supplements — \"iron, folic acid, and fat-soluble vitamins\" (pp. 862–863).","trap":"(D) and (E) belong to other conditions in this chapter — vitamin B12 is listed under Crohn disease and zinc under pica and Crohn disease — which is precisely why they appear as distractors in the chapter's own review question on this topic.","k":"129ne58s4yo2m"},{"topic":"celiac disease and short-bowel syndrome","subtopic":"general","stem":"A parent reports she has already started a gluten-free diet after reading about celiac disease, and the serologic test has not yet been drawn. What should the nurse explain?","options":["Gluten should not be excluded until the diagnostic evaluation is complete, so that proper identification can occur","Starting the diet early is helpful and the testing can proceed unchanged","The diet should be stopped for 24 hours before the blood draw","Serologic testing is unnecessary once symptoms improve on the diet"],"correct":[0],"sata":false,"why":"The chapter states that \"Gluten should not be excluded from the diet until the diagnostic evaluation is complete so proper identification can occur,\" with serologic testing for tissue transglutaminase and antiendomyseal antibodies first, then endoscopy with biopsy if positive (p. 862).","trap":"(D) substitutes a dietary trial for a diagnosis that requires biopsy showing \"mucosal inflammation, crypt hyperplasia, and villous atrophy,\" and commits the child to a lifelong diet without confirming it is needed; serologic testing requires a minimum age of 18 months.","k":"xb4u7y1ft7aqs"},{"topic":"celiac disease and short-bowel syndrome","subtopic":"general","stem":"A child with celiac disease is also found to be lactose intolerant. What should the nurse tell the family about the long-term diet?","options":["Lactose intolerance usually improves as the mucosa heals with gluten withdrawal","Lactose must be avoided permanently alongside gluten","Lactose intolerance indicates the diagnosis is incorrect","Lactose intolerance will worsen as the gluten-free diet continues"],"correct":[0],"sata":false,"why":"The chapter states that \"Children with untreated celiac disease may have lactose intolerance, especially if their mucosal lesions are extensive. Lactose intolerance usually improves as the mucosa heals with gluten withdrawal\" (pp. 862–863).","trap":"(B) is over-treatment that adds an unnecessary lifelong restriction to one that is already demanding; note that the chapter also directs avoiding high-fiber foods such as nuts, raisins, raw vegetables, and raw fruits with skin until the inflammation subsides.","k":"1gjfrlc1qgk5xa"},{"topic":"celiac disease and short-bowel syndrome","subtopic":"general","stem":"A 6-month-old with short-bowel syndrome has been totally dependent on parenteral nutrition through a central line. Which complication should the nurse observe for?","options":["Cholestasis","Failure to thrive","Chronic diarrhea","Hypoglycemia"],"correct":[0],"sata":false,"why":"The chapter states that \"Hepatic dysfunction and cholestasis may also occur\" and that infants and children with this condition \"die from PN-related problems, such as fulminant sepsis or severe PN cholestasis\" (p. 864).","trap":"(B) and (C) are both true of short-bowel syndrome generally and are not what the detail about long-term parenteral nutrition through a central line is pointing at, which is what makes them the strongest distractors; note also that bacterial overgrowth is likely when the ileocecal valve is absent, and an intact valve improves the prognosis.","k":"1rem5w1w1y3su"},{"topic":"viral hepatitis and biliary atresia","subtopic":"general","stem":"A nurse is teaching a day care staff about hepatitis A. Which are routes of transmission as the chapter presents them? Select all that apply.","options":["Ingestion of contaminated food","The fecal-oral route","Close contact with an infected person","Blood transfusion","Breast milk"],"correct":[0,1,2],"sata":true,"why":"The chapter gives the principal route as fecal-oral, with spread \"by ingestion of contaminated foods, direct exposure to infected fecal material, or close contact with an infected person,\" naming day care centers among the high-risk settings; the parenteral route is described as rare for this virus (p. 866).","trap":"(D) and (E) belong to hepatitis B, for which the parenteral route is principal and perinatal transmission can occur transplacentally, at delivery, or during breastfeeding \"especially if mother has cracked nipples\"; this is the distinction the chapter's own review question tests.","k":"1dm4vrl1p149ln"},{"topic":"viral hepatitis and biliary atresia","subtopic":"general","stem":"A child with hepatitis A developed jaundice 3 days ago. When was the child most likely to have transmitted the virus?","options":["During the 2 weeks before jaundice appeared, while asymptomatic","Only after jaundice appeared","Only during the icteric phase and for 1 month afterward","The virus is not transmissible once symptoms begin"],"correct":[0],"sata":false,"why":"The chapter states that \"Fecal shedding of the virus can occur for 2 weeks before and for 1 week after the onset of jaundice. During this time, although the individual is asymptomatic, the virus is most likely to be transmitted\" (p. 866).","trap":"(B) is the intuitive assumption that visible illness marks contagiousness, and it is why outbreaks in day care settings are established before anyone is diagnosed; note also that infants with this infection \"are likely to be asymptomatic,\" while 70% of older children and adults develop icteric hepatitis lasting 7 to 14 days.","k":"mkrbbdsgb1gj"},{"topic":"viral hepatitis and biliary atresia","subtopic":"general","stem":"An adolescent presents with insidious onset of fatigue, a rash, and arthralgia, and is found to have viral hepatitis. Which type does this picture suggest?","options":["Hepatitis B, since rash and arthralgia are common and onset is insidious","Hepatitis A, since rash and arthralgia are common in type A","Hepatitis A, since onset is usually rapid and acute","The clinical picture cannot distinguish the types"],"correct":[0],"sata":false,"why":"Table 25.7 assigns rapid acute onset with common early fever and rare rash and arthralgia to type A, and more insidious onset with less frequent fever and common rash and arthralgia to type B (p. 866).","trap":"(C) keys the right feature to the wrong type; the cue worth carrying is that rash and arthralgia point away from type A. Note also that type A has no carrier state and no chronic infection, while B and C have both.","k":"h9gpca1i70uwo"},{"topic":"viral hepatitis and biliary atresia","subtopic":"general","stem":"A 6-week-old is still jaundiced, with a direct bilirubin of 6 mg/dl, dark urine, and gray stools. What should the nurse suspect?","options":["Biliary atresia, since jaundice persisting beyond 2 weeks with an elevated conjugated bilirubin warrants suspicion","Physiologic jaundice, which may persist up to 8 weeks in breastfed infants","Hemolytic disease, since the bilirubin is elevated","Hepatitis A acquired perinatally"],"correct":[0],"sata":false,"why":"The chapter states that \"If jaundice persists beyond 2 weeks of age, especially if the direct (conjugated) serum bilirubin is elevated, the nurse should suspect BA,\" with dark urine and stools that \"often become progressively acholic or gray, indicating absence of bile pigment\" (p. 870).","trap":"(B) and (C) both involve unconjugated bilirubin, and the conjugated fraction is the discriminator that separates this from physiologic or hemolytic jaundice; the liver is typically enlarged and firm on palpation.","k":"idce5a1ub6lok"},{"topic":"viral hepatitis and biliary atresia","subtopic":"general","stem":"An infant with biliary atresia has intense pruritus. Which medication should the nurse anticipate?","options":["Ursodeoxycholic acid","Diphenhydramine","Loratadine","Ranitidine"],"correct":[0],"sata":false,"why":"The chapter states that ursodeoxycholic acid \"may be used to decrease cholestasis and the intense pruritus from jaundice\" (p. 870), and it is the answer to the chapter's own review question on this point.","trap":"(B) and (C) are antihistamines, and they miss the mechanism entirely — the itch comes from retained bile salts rather than from histamine. Note also that the Kasai procedure \"improves the prognosis but is not a cure,\" with success up to 90% if performed before 2 months of age but only 20% survival at 20 years.","k":"mkwpbgfdtdsq"},{"topic":"congenital gastrointestinal and abdominal wall defects","subtopic":"general","stem":"A newborn has frothy saliva, drooling, and becomes cyanotic and apneic with the first feeding. Which preoperative measures are correct? Select all that apply.","options":["Keep the infant nothing by mouth and start intravenous fluids","Place a double-lumen catheter in the upper esophageal pouch on low suction","Keep the head elevated on an inclined plane of at least 30 degrees","Leave the gastrostomy tube open to gravity drainage","Begin gastrostomy tube feedings to maintain nutrition before surgery"],"correct":[0,1,2,3],"sata":true,"why":"The chapter directs immediate nothing-by-mouth status with intravenous fluids, a double-lumen catheter into the upper esophageal pouch on intermittent or continuous low suction, the head kept upright on an inclined plane of at least 30 degrees, and a gastrostomy tube \"emptied by gravity drainage\" (p. 873).","trap":"(E) is explicitly contraindicated — \"Feedings through the gastrostomy tube and irrigations with fluid are contraindicated before surgery in the infant with a distal TEF,\" because the tube is left open so air escaping through the fistula can vent.","k":"1tuives1opy7qq"},{"topic":"congenital gastrointestinal and abdominal wall defects","subtopic":"general","stem":"A radiograph of a newborn with suspected esophageal atresia shows air in the stomach. What does this indicate?","options":["A connection exists between the trachea and the distal esophagus, as in types C, D, and E","No fistula is present, as in type A","The fistula involves only the upper esophageal segment, as in type B","The finding is nonspecific and does not narrow the type"],"correct":[0],"sata":false,"why":"The chapter states that \"Films that show air in the stomach indicate a connection between the trachea and the distal esophagus in types C, D, and E. Complete absence of air in the stomach is seen in types A and B\" (pp. 872–873).","trap":"(C) names the one fistula type that would not deliver air to the stomach, since it connects the trachea to the upper pouch only; type C is by far the most common at 80% to 90%, with a blind proximal pouch and the distal segment connected to the trachea.","k":"1xlv4ip14cghun"},{"topic":"congenital gastrointestinal and abdominal wall defects","subtopic":"general","stem":"A newborn has abdominal contents protruding lateral to the umbilicus with no covering membrane. Which defect is this, and what does it imply about associated anomalies?","options":["Gastroschisis, with a 10% to 20% incidence of associated anomalies","Omphalocele, with a 50% to 70% incidence of associated anomalies","Gastroschisis, with a 50% to 70% incidence of associated anomalies","Omphalocele, with a 10% to 20% incidence of associated anomalies"],"correct":[0],"sata":false,"why":"Gastroschisis occurs lateral to the umbilical ring, \"usually to the right of the umbilicus,\" with no peritoneal sac, and is \"usually NOT associated with other major congenital anomalies (10% to 20% incidence),\" whereas omphalocele occurs through the umbilical ring with an intact sac and a \"50% to 70% incidence of anomalies\" (p. 875).","trap":"(C) keys the right defect with the wrong anomaly rate, which is the half-right answer this pair invites; the covering sac is the first discriminator and the associated-anomaly rate the second, and distractors typically reverse the second.","k":"1hejzh959s2cf"},{"topic":"congenital gastrointestinal and abdominal wall defects","subtopic":"general","stem":"A newborn arrives in the nursery with exposed bowel and no covering membrane. What is the priority nursing action?","options":["Cover the exposed contents with a bowel bag or moist dressings and a plastic drape","Apply a dry sterile dressing directly to the exposed bowel","Attempt to reduce the bowel into the abdominal cavity","Leave the bowel exposed to air to allow assessment before surgery"],"correct":[0],"sata":false,"why":"The chapter directs that when bowel is exposed, \"the exposed abdominal contents and membranes are covered with a bowel bag or moist dressings and a plastic drape to prevent excessive fluid loss, drying, and temperature instability\" (p. 875).","trap":"(B) uses a dry dressing on exposed viscera, which adds drying to the fluid loss it is meant to prevent; note also the chapter's warning that a small omphalocele may appear as a bulge in the cord, so \"it is imperative to inspect an unusually large umbilical cord for omphalocele before clamping.\"","k":"89l7bn1o8awuh"},{"topic":"congenital gastrointestinal and abdominal wall defects","subtopic":"general","stem":"A 6-month-old has a reducible inguinal swelling that appears with crying. The parents ask whether it will close on its own as their neighbor's umbilical hernia did. What should the nurse explain?","options":["Inguinal hernias do not resolve spontaneously and are repaired promptly, unlike umbilical hernias, which usually resolve by 3 to 5 years","Both types usually resolve by 3 to 5 years of age","Inguinal hernias resolve by 1 year if the child avoids straining","Umbilical hernias require repair and inguinal hernias resolve spontaneously"],"correct":[0],"sata":false,"why":"The chapter states that umbilical hernias \"usually resolve spontaneously by 3 to 5 years of age\" while inguinal hernias require \"prompt, elective surgical repair in the healthy child as soon as the defect is diagnosed\" (pp. 876–877).","trap":"(D) reverses the two entirely; the reason the distinction matters is incarceration, which is rare in umbilical hernias but \"occurs more often in infants under 12 months of age\" with inguinal hernias, at 3% to 16% and as high as 30% in premature infants. Taping or strapping an umbilical hernia \"does not aid in resolution and can produce skin irritation.\"","k":"1n05nil1x1kn47"}];
+const TITLE = "Chapter 25 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 25";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

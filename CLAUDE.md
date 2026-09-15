@@ -14,9 +14,26 @@ Each class lives under `courses/<slug>/`:
 - `courses/<slug>/sources/ChN_Fact_Bank.md` — source textbook fact banks (raw material, NOT questions)
 - `courses/<slug>/data/` — the three JSON files below
 
-There is no top-level `data/` or `drills/` any more. Current courses:
-`nur4353-community-and-culture` (802 questions) and
-`nur4351-research-consumer` (404).
+There is no top-level `data/` or `drills/` any more. Current courses, as of
+2026-09-14:
+
+| Slug | Course | Ch | Questions | Topics | Attempts |
+|---|---|---|---|---|---|
+| `nur3420-3421-pharm` | NUR 3420/1 Pharmacology I & II | 20 | 832 | 170 | 34 |
+| `nur4353-community-and-culture` | NUR 4353 Community/Public Health | 21 | 802 | 99 | 0 |
+| `nur4351-research-consumer` | NUR 4351 Consumer of Research | 14 | 404 | 92 | none |
+| `nur4226-4339-childrearing` | NUR 4226/4339 Childrearing Family | 31 | 1394 | 315 | none |
+| `nur4225-4334-childbearing` | NUR 4225/4334 Childbearing Family | 9 | 433 | 95 | 8 |
+
+**The Attempts column gates one real operation.** Where it is `none` or `0`,
+`questions.json` is still derivable from `drills/*.md` and a delete-and-reimport
+is safe. Where attempts exist, qids are load-bearing and history is keyed to
+them, so import additively and never regenerate — see "Never renumber or
+regenerate qids" below. That column only ever grows, so check it rather than
+assuming.
+
+Both childbearing and childrearing are partial: their chapter counts are what
+has been authored so far, not what the blueprint covers.
 
 The slug is shared with two sibling tools in the same parent directory —
 `factbank-tool/courses/<slug>/factbanks/` and `study-guides/<slug>/` — and
@@ -86,7 +103,7 @@ Topics must be **conceptual and lowercase** (`payment mechanisms`, `sampling
 methods`), never chapter-numbered. The dashboard tracks rolling accuracy per
 topic, so a red topic has to name something you can go restudy.
 
-Both current banks are hand-authored. `bridge/generate_drills.py` emits
+All five course banks are hand-authored. `bridge/generate_drills.py` emits
 `Topic: "Ch5: ..."` items, which would inject parallel duplicate topics
 alongside the authored conceptual ones and dilute the dashboard — use it only
 for brand-new unauthored chapters. For an authored course the loop is
@@ -111,7 +128,8 @@ drill → `bridge/sync_misses.py` → factbank regenerate.
 ## Attempts come back by hand — the published pages cannot phone home
 
 `docs/**` is standalone HTML on Pages with no backend to post to, so for a
-long time drilling on a phone left no trace at all: 1206 authored questions
+long time drilling on a phone left no trace at all: every authored question at
+the time — 1206 of them, across the two courses that then existed — sat
 against an empty `attempts_log.json`, which meant the dashboard, the scheduler
 and `bridge/sync_misses.py` had never had data to work on. The LT button in the
 page corner buffers graded answers in `localStorage`; `scripts/import-attempts.js`
@@ -171,9 +189,14 @@ cp docs/nur4351-research-consumer/ch5.html public/lt-check.html
 ```
 
 ## Rationale/trap text refers to options by letter — the runners must translate
-326 of the 1206 banked questions (300 of the 404 in `nur4351-research-consumer`)
-have a `Trap:` or `Rationale:` that names options by letter — "(B) and (E) look
-like rigor". Those letters are the **stored** option order, and all three
+**1874 of the 2770 banked questions** have a `Trap:` or `Rationale:` that names
+options by letter — "(B) and (E) look like rigor". Counted 2026-09-03; the
+proportion is now the majority of the corpus, not an edge case. Both forms are
+live and both must keep working: 1857 use the parenthesized `(B)` form, while
+`nur4353-community-and-culture` uses **only** the `Option A` form (17
+questions, zero parenthesized). Pharm and childrearing are at 100% and
+childbearing at 98% — so a regression here breaks nearly every question in them.
+Those letters are the **stored** option order, and all three
 runners reshuffle options before printing them, so a raw letter points at
 whatever landed in that slot, frequently the correct answer.
 

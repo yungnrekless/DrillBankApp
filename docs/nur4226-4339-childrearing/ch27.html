@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 27 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 27</div><h1>Chapter 27 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">cardiac catheterization nursing care</span><span class="chip t2">general</span></div>
+<div class="stem">1. A child has just returned from cardiac catheterization. Which assessments should the nurse perform? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Check pulses below the catheterization site for equality and symmetry</li><li class="fopt right"><span class="mk">&#10003;</span>Check the dressing for bleeding or hematoma in the femoral or antecubital area</li><li class="fopt right"><span class="mk">&#10003;</span>Assess temperature and color of the affected extremity</li><li class="fopt right"><span class="mk">&#10003;</span>Monitor blood pressure, especially for hypotension</li><li class="fopt"><span class="mk">E</span>Take vital signs every 30 to 45 minutes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists six postprocedural assessments: pulses especially below the site, temperature and color of the affected extremity because &quot;coolness or blanching may indicate arterial obstruction,&quot; vital signs as often as every 15 minutes, blood pressure &quot;especially for hypotension,&quot; the dressing, and fluid intake (p. 966).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) understates the frequency — the text says as often as every 15 minutes, and this is one of the two distractors the chapter's own review question plants; the other is ambulating the child, when the extremity is kept straight for 4 to 6 hours after venous and 6 to 8 hours after arterial catheterization.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cardiac catheterization nursing care</span><span class="chip t2">general</span></div>
+<div class="stem">2. Bleeding begins at a child's femoral catheterization site. Where should the nurse apply pressure?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>2.5 cm above the percutaneous skin site, to localize pressure over the vessel puncture</li><li class="fopt"><span class="mk">B</span>Directly over the skin puncture site</li><li class="fopt"><span class="mk">C</span>2.5 cm below the skin site, along the line of venous return</li><li class="fopt"><span class="mk">D</span>Over the femoral pulse distal to the site</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Nursing Alert states that &quot;If bleeding occurs, direct, continuous pressure is applied 2.5 cm (1 inch) above the percutaneous skin site to localize pressure over the vessel puncture&quot; (p. 966).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the intuitive location and misses the vessel entry point, which sits proximal to the skin entry because the catheter travels at an angle; the concern that makes this urgent is that hypotension may indicate hemorrhage from cardiac perforation or bleeding at the site.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cardiac catheterization nursing care</span><span class="chip t2">general</span></div>
+<div class="stem">3. A nurse is preparing a 10-month-old for cardiac catheterization. Which finding may be a reason to cancel the procedure?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Severe diaper rash, if femoral access is required</li><li class="fopt"><span class="mk">B</span>A resting heart rate of 130 beats per minute</li><li class="fopt"><span class="mk">C</span>A hemoglobin of 14 g/dl</li><li class="fopt"><span class="mk">D</span>Crying during the preoperative assessment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Severe diaper rash may be a reason to cancel the procedure if femoral access is required,&quot; and directs obtaining an accurate height, which is essential for correct catheter selection, plus a history of allergic reactions because some contrast agents are iodine based (p. 965).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is a normal infant rate, and (C) is a normal hemoglobin; the other preprocedural step most often missed is assessing and marking the pedal pulses before the child leaves for the catheterization room, so the postprocedural comparison is meaningful.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">cardiac catheterization nursing care</span><span class="chip t2">general</span></div>
+<div class="stem">4. A family is being discharged the day after cardiac catheterization. Which instruction is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Avoid tub baths for the first 3 days, and avoid strenuous exercise for several days, but the child may attend school</li><li class="fopt"><span class="mk">B</span>Keep the child on bed rest at home for 1 week</li><li class="fopt"><span class="mk">C</span>Keep the pressure dressing in place for 5 days</li><li class="fopt"><span class="mk">D</span>Restrict the diet to clear liquids for 24 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Family-Centered Care box directs removing the pressure dressing the day after, covering with an adhesive bandage for several days, avoiding tub baths for the first 3 days, avoiding strenuous exercise for several days while allowing school attendance, and a regular diet without restrictions (p. 966).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) both over-restrict a child the chapter returns to normal activity quickly; families are also told to watch for redness, swelling, drainage, bleeding, fever, and coolness of the catheterized leg.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heart failure in children</span><span class="chip t2">general</span></div>
+<div class="stem">5. A nurse is assessing a 3-month-old for heart failure. Which findings indicate it? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A sleeping heart rate above 160 beats per minute</li><li class="fopt right"><span class="mk">&#10003;</span>A respiratory rate above 60 breaths per minute</li><li class="fopt right"><span class="mk">&#10003;</span>Weight gain</li><li class="fopt right"><span class="mk">&#10003;</span>Periorbital edema</li><li class="fopt"><span class="mk">E</span>Distended neck veins</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names tachycardia with a sleeping heart rate above 160 in infants as &quot;One of the earliest signs of CHF,&quot; tachypnea above 60 breaths per minute, weight gain as &quot;The earliest sign&quot; of edema, and periorbital edema among the systemic venous congestion findings (pp. 969–970).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is a real manifestation in the wrong age group — &quot;Distended neck veins are difficult to detect in the short, fat necks of infants and are usually observed only in older children.&quot; Box 27.3 sorts every manifestation into impaired myocardial function, pulmonary congestion, or systemic venous congestion, and sorting first is what makes an all-or-nothing item survivable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heart failure in children</span><span class="chip t2">general</span></div>
+<div class="stem">6. A child with heart failure is receiving furosemide. Which nursing instruction is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Encourage high-potassium foods, because furosemide causes potassium excretion and hypokalemia may precipitate digitalis toxicity</li><li class="fopt"><span class="mk">B</span>Avoid potassium supplements, because furosemide is potassium sparing</li><li class="fopt"><span class="mk">C</span>Restrict fluids to 50% of maintenance in all cases</li><li class="fopt"><span class="mk">D</span>Give the drug at bedtime to minimize daytime urination</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 27.3 calls furosemide the &quot;Drug of choice in severe heart failure,&quot; notes that it causes excretion of chloride and potassium and that &quot;hypokalemia may precipitate digitalis toxicity,&quot; and directs encouraging high-potassium foods and observing for signs of digoxin toxicity (p. 970).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) describes spironolactone, whose instruction is the opposite — &quot;Do not administer potassium supplements&quot; — and giving potassium alongside spironolactone or an angiotensin-converting enzyme inhibitor is the hyperkalemia trap this pair exists to catch.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heart failure in children</span><span class="chip t2">general</span></div>
+<div class="stem">7. A nurse is reviewing the goals of heart failure management. Which set does the chapter state?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Improve cardiac function, remove accumulated fluid and sodium, decrease cardiac demands, and improve tissue oxygenation</li><li class="fopt"><span class="mk">B</span>Increase preload, increase afterload, increase contractility, and increase heart rate</li><li class="fopt"><span class="mk">C</span>Restrict all fluid, restrict all sodium, restrict all activity, and sedate the child</li><li class="fopt"><span class="mk">D</span>Correct the underlying defect surgically before any medical management</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter numbers four goals: &quot;(1) improve cardiac function (increase contractility and decrease afterload), (2) remove accumulated fluid and sodium (decrease preload and minimize fluid overload), (3) decrease cardiac demands, and (4) improve tissue oxygenation and decrease oxygen consumption&quot; (p. 970).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the hemodynamic direction on afterload and preload, which is the axis the whole treatment plan turns on; note that fluid restriction &quot;may be required in the acute stages&quot; but infants rarely need it, because heart failure already makes feeding hard enough that they struggle to take maintenance volumes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heart failure in children</span><span class="chip t2">general</span></div>
+<div class="stem">8. An infant with heart failure is being fed every 2 hours around the clock, and the parents wake the baby for each feeding. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>This does not provide enough rest between feedings, and care should be organized to allow uninterrupted periods of sleep</li><li class="fopt"><span class="mk">B</span>Continue, since frequent small feedings are the goal in heart failure</li><li class="fopt"><span class="mk">C</span>Increase to hourly feedings to reduce the work of each feeding</li><li class="fopt"><span class="mk">D</span>Switch to a low-sodium formula to reduce fluid retention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that feeding every 2 hours &quot;does not provide enough rest between feedings,&quot; and that nursing care is organized &quot;to allow for uninterrupted periods of sleep&quot; — this is the keyed statement in the chapter's own review question on reducing cardiac demands (p. 975).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reaches for a measure the chapter uses infrequently in infants, because &quot;infants need a normal sodium source to offset the sodium depletion of chronic diuretic therapy&quot;; the underlying principle is that rest is itself a treatment when the goal is decreasing cardiac demand.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">heart failure in children</span><span class="chip t2">general</span></div>
+<div class="stem">9. A nurse is explaining why the body's compensation for heart failure eventually fails. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Sympathetic stimulation raises heart rate, but tachycardia shortens diastole, increases myocardial oxygen consumption, and impairs coronary artery perfusion</li><li class="fopt"><span class="mk">B</span>Ventricular dilation increases contractile force without limit</li><li class="fopt"><span class="mk">C</span>Hypertrophy improves oxygenation of the heart muscle</li><li class="fopt"><span class="mk">D</span>Renin-angiotensin activation reduces preload over time</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes sympathetic stimulation as increasing force and rate in the short term while tachycardia &quot;shortens diastole, increases myocardial oxygen consumption, impairs coronary artery perfusion,&quot; and increased systemic vascular resistance increases afterload (pp. 968–969).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) omits the limit the chapter states — &quot;Beyond a certain amount of dilation, the force of contraction decreases and the heart fails&quot;; (C) reverses the cost of hypertrophy, where increased muscle mass impairs oxygenation of the heart muscle itself.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">digoxin administration and toxicity</span><span class="chip t2">general</span></div>
+<div class="stem">10. A nurse is about to give digoxin to a 5-month-old. The apical pulse is 96 beats per minute. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hold the dose and notify the practitioner, since the drug is withheld in infants and young children when the apical pulse is below 90 to 110</li><li class="fopt"><span class="mk">B</span>Give the dose, since 96 is above 90</li><li class="fopt"><span class="mk">C</span>Give the dose and recheck the pulse in 1 hour</li><li class="fopt"><span class="mk">D</span>Hold the dose only if the rate is below 60</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives age-tiered hold parameters: below 90 to 110 beats per minute in infants and young children, below 70 in older children, and below 60 in adults, with the apical rate counted for 1 full minute (p. 974).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) applies the adult threshold to an infant, which is the level-swap this table exists to prevent; the apical rate is used &quot;because a pulse deficit (radial pulse rate lower than apical) may be present with decreased cardiac output.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">digoxin administration and toxicity</span><span class="chip t2">general</span></div>
+<div class="stem">11. A child receiving digoxin has a serum potassium of 3.1 mmol/L. What is the significance?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A fall in serum potassium enhances the effects of digoxin and increases the risk of toxicity</li><li class="fopt"><span class="mk">B</span>A fall in serum potassium diminishes the effects of digoxin and reduces the risk of toxicity</li><li class="fopt"><span class="mk">C</span>Serum potassium does not interact with digoxin</li><li class="fopt"><span class="mk">D</span>The finding is expected and requires no action</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A Nursing Alert states that &quot;A fall in the serum potassium level enhances the effects of digoxin, increasing the risk of digoxin toxicity. Increased serum potassium levels diminish digoxin's effect. Therefore serum potassium levels (normal range, 3.5 to 5.5 mmol/L) must be carefully monitored&quot; (p. 971).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the exact reversal and reads plausibly, which is why the chapter states both directions in one alert; the practical consequence is that a child on furosemide and digoxin together needs potassium watched closely.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">digoxin administration and toxicity</span><span class="chip t2">general</span></div>
+<div class="stem">12. An infant on digoxin has vomited twice today, is refusing feeds, and has a heart rate of 88. What should the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Digoxin toxicity, since bradycardia, anorexia, nausea, and vomiting are its most common signs in infants and children</li><li class="fopt"><span class="mk">B</span>Gastroenteritis, since vomiting in infants is usually gastrointestinal</li><li class="fopt"><span class="mk">C</span>Heart failure worsening, since anorexia accompanies it</li><li class="fopt"><span class="mk">D</span>A normal response to the drug that requires no action</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The most common signs of digoxin toxicity in infants and children are bradycardia (although other dysrhythmias may occur), anorexia, nausea, and vomiting,&quot; and notes that vomiting from toxicity &quot;is often unrelated to feedings&quot; with the infant &quot;usually less interested in feeding&quot; (p. 974).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the competing explanation the chapter anticipates, which is why one episode of vomiting alone does not warrant stopping the drug; what shifts the reading here is the combination of repeated vomiting, decreased intake, and a low heart rate. The therapeutic serum range is 0.8 to 2 mcg/L.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">digoxin administration and toxicity</span><span class="chip t2">general</span></div>
+<div class="stem">13. A nurse is teaching parents to give digoxin at home. Which statements indicate correct understanding? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Give the drug at regular intervals, usually every 12 hours</li><li class="fopt right"><span class="mk">&#10003;</span>Direct it slowly to the side and back of the mouth</li><li class="fopt right"><span class="mk">&#10003;</span>If a dose is missed, do not give an extra dose</li><li class="fopt right"><span class="mk">&#10003;</span>If more than two consecutive doses are missed, notify the physician</li><li class="fopt"><span class="mk">E</span>If the baby vomits, give a second dose to replace it</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Family-Centered Care box directs giving the drug at regular intervals usually every 12 hours, administering it slowly directed to the side and back of the mouth, not giving an extra dose if one is missed, and notifying the physician if more than two consecutive doses have been missed (p. 975).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses an explicit instruction — &quot;If the child vomits, do not give a second dose.&quot; Note that the chapter's own review question keys three of the correct statements here as needing correction; these items follow the text rather than that key, and the two statements the text actually contradicts are repeating a dose after vomiting and mixing the drug into formula.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">digoxin administration and toxicity</span><span class="chip t2">general</span></div>
+<div class="stem">14. A parent asks whether the digoxin can be mixed into the baby's bottle to make it easier to give. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Do not mix the drug with foods or other fluids, because refusal to consume them would result in inaccurate intake</li><li class="fopt"><span class="mk">B</span>Mixing it into formula is acceptable if the full bottle is taken</li><li class="fopt"><span class="mk">C</span>Mixing it into a small amount of juice is preferred to reduce tooth decay</li><li class="fopt"><span class="mk">D</span>Mixing it into cereal is acceptable once solids are started</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs parents not to mix the drug with foods or other fluids, &quot;because refusal to consume them would result in inaccurate intake,&quot; and to give water afterward and brush the teeth &quot;to prevent tooth decay from the sweetened liquid&quot; (p. 975).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the most reasonable-sounding version of the error and still fails whenever the bottle is not finished, which is common in an infant with heart failure; the drug should also be kept in a safe place, preferably a locked cabinet.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypoxemia, cyanosis, and hypercyanotic spells</span><span class="chip t2">general</span></div>
+<div class="stem">15. A child with severe anemia has a PaO2 of 45 mm Hg but does not appear cyanotic. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cyanosis requires 5 g/dl or more of deoxygenated hemoglobin, so severe anemia can mask it despite significant hypoxemia</li><li class="fopt"><span class="mk">B</span>The absence of cyanosis means oxygenation is adequate</li><li class="fopt"><span class="mk">C</span>Anemia intensifies cyanosis, so another explanation should be sought</li><li class="fopt"><span class="mk">D</span>Cyanosis and hypoxemia always appear together</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that cyanosis &quot;results from the presence of deoxygenated hemoglobin... at a concentration of 5 g/dl of blood or more,&quot; is usually apparent when arterial saturation is 85% or lower, and that &quot;Children with severe anemia may not be cyanotic despite severe hypoxemia&quot; (p. 976).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the relationship; the mirror case is that &quot;Patients with polycythemia may appear cyanotic despite a near-normal PaO2,&quot; so appearance is unreliable in both directions — hypoxemia is a blood value, hypoxia is a tissue state, and cyanosis is only what you see.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypoxemia, cyanosis, and hypercyanotic spells</span><span class="chip t2">general</span></div>
+<div class="stem">16. An infant with tetralogy of Fallot becomes acutely cyanotic and hyperpneic while crying. What should the nurse do first?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Place the infant in the knee-chest position</li><li class="fopt"><span class="mk">B</span>Administer 100% oxygen by face mask</li><li class="fopt"><span class="mk">C</span>Give morphine through the existing intravenous line</li><li class="fopt"><span class="mk">D</span>Begin intravenous fluid replacement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Applying Evidence to Practice guidelines order the response: place the infant in knee-chest position, employ a calm comforting approach, administer 100% oxygen by face mask, give morphine, begin fluid replacement if needed, and repeat morphine (p. 977).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are both correct steps out of order, which is what this item tests; the knee-chest position works because it &quot;reduces the venous return from the legs (which is desaturated) and increases systemic vascular resistance, which diverts more blood into the pulmonary artery,&quot; and morphine reduces the infundibular spasm that started the spell.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypoxemia, cyanosis, and hypercyanotic spells</span><span class="chip t2">general</span></div>
+<div class="stem">17. A nurse is starting an intravenous infusion on a child with a right-to-left intracardiac shunt. Which precaution is essential?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Use filters on all intravenous lines, because air in the venous system can travel directly to the brain</li><li class="fopt"><span class="mk">B</span>Use only large-bore catheters to reduce turbulence</li><li class="fopt"><span class="mk">C</span>Warm all fluids to body temperature before infusion</li><li class="fopt"><span class="mk">D</span>Avoid dextrose-containing solutions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>A Nursing Alert states that intracardiac right-to-left shunting &quot;allows air in the venous system to go directly to the brain, which results in an air embolism. Therefore all IV lines should have filters in place to prevent air from entering the system,&quot; with tubing and flush syringes checked for air (p. 984).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the opposite of what these children often need, since infants and patients with polycythemia may need dextrose-containing fluids to prevent hypoglycemia; the embolism risk here is mechanical rather than metabolic.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hypoxemia, cyanosis, and hypercyanotic spells</span><span class="chip t2">general</span></div>
+<div class="stem">18. A child with chronic hypoxemia has a hematocrit of 62%. What does the chapter identify as the risks?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Increased blood viscosity with thromboembolic risk, crowding out of platelets and clotting factors, and increased postoperative bleeding</li><li class="fopt"><span class="mk">B</span>Improved oxygen delivery with no associated risk</li><li class="fopt"><span class="mk">C</span>A reduced risk of stroke because of the higher oxygen-carrying capacity</li><li class="fopt"><span class="mk">D</span>Decreased risk of postoperative bleeding because of the higher cell mass</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that persistent hypoxemia stimulates erythropoiesis, producing polycythemia that &quot;increases blood viscosity&quot; and crowds out platelets and coagulation factors, so it &quot;increases the likelihood of postoperative bleeding,&quot; with small venous clots able to cross a right-to-left shunt and reach the brain (pp. 976–977).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) both read a higher red cell mass as protective; the chapter's practical countermeasure is to keep the child well hydrated, treating fever, vomiting, and diarrhea promptly and keeping an oral electrolyte solution at home.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital heart defect classification</span><span class="chip t2">general</span></div>
+<div class="stem">19. A nurse is classifying congenital heart defects by hemodynamics. Which pairing is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Aortic stenosis and obstruction to blood flow out of the heart</li><li class="fopt"><span class="mk">B</span>Ventricular septal defect and decreased pulmonary blood flow</li><li class="fopt"><span class="mk">C</span>Tricuspid atresia and increased pulmonary blood flow</li><li class="fopt"><span class="mk">D</span>Atrioventricular canal defect and obstruction to blood flow</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter classifies defects into four hemodynamic groups — increased pulmonary blood flow, decreased pulmonary blood flow, obstructive, and mixed — placing aortic stenosis among the obstructive defects, ventricular septal defect and atrioventricular canal among those with increased pulmonary blood flow, and tricuspid atresia among those with decreased flow (pp. 979–987).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) each reverse the flow direction, and these four pairings are exactly the ones the chapter's own review question tests; note that the book calls the older cyanotic-versus-acyanotic split &quot;inadequate and misleading,&quot; so the hemodynamic axis is the testable one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital heart defect classification</span><span class="chip t2">general</span></div>
+<div class="stem">20. A newborn has high blood pressure and bounding pulses in the arms, weak femoral pulses, and cool lower extremities. Which defect does this describe?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Coarctation of the aorta</li><li class="fopt"><span class="mk">B</span>Patent ductus arteriosus</li><li class="fopt"><span class="mk">C</span>Tetralogy of Fallot</li><li class="fopt"><span class="mk">D</span>Transposition of the great arteries</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes coarctation as localized narrowing near the ductal insertion producing increased pressure proximally and decreased pressure distally, with &quot;high blood pressure and bounding pulses in the arms, weak or absent femoral pulses, and cool lower extremities with lower blood pressure&quot; (p. 979).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is characterized instead by a machinery-like murmur; note that coarctation repair needs no cardiopulmonary bypass because the defect lies outside the heart and pericardium, and elective surgery is advised within the first 2 years to prevent later hypertension.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital heart defect classification</span><span class="chip t2">general</span></div>
+<div class="stem">21. An infant has a defect described as an incomplete fusion of the endocardial cushions, with a low atrial septal defect continuous with a high ventricular septal defect and clefts of the mitral and tricuspid valves. Which chromosomal condition is most associated with it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Down syndrome</li><li class="fopt"><span class="mk">B</span>Turner syndrome</li><li class="fopt"><span class="mk">C</span>Trisomy 18</li><li class="fopt"><span class="mk">D</span>22q11 deletion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that atrioventricular canal defect &quot;is the most common cardiac defect in children with Down syndrome,&quot; and describes the anatomy exactly as the stem gives it, with moderate to severe heart failure usual (p. 979).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) belongs to truncus arteriosus, where &quot;Thirty-five percent of patients have 22q11 deletions&quot; — both are real chapter associations attached to different defects, which is what makes this set confusable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital heart defect classification</span><span class="chip t2">general</span></div>
+<div class="stem">22. A preterm infant has a patent ductus arteriosus. Which medical treatment does the chapter name?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Indomethacin, a prostaglandin inhibitor</li><li class="fopt"><span class="mk">B</span>Prostaglandin E1 infusion</li><li class="fopt"><span class="mk">C</span>Digoxin and furosemide alone</li><li class="fopt"><span class="mk">D</span>Balloon atrial septostomy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Administration of indomethacin (prostaglandin inhibitor) has proved successful in closing a patent ductus in premature infants and some newborns&quot; (p. 979).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) does the opposite and is used to *maintain* ductal patency in ductus-dependent lesions such as hypoplastic left heart syndrome; (D) is the Rashkind procedure used in transposition to increase mixing. Confusing the prostaglandin agonist with the inhibitor reverses the intended effect entirely.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">congenital heart defect classification</span><span class="chip t2">general</span></div>
+<div class="stem">23. A nurse is reviewing tetralogy of Fallot with a student. Which four defects make up the classic form?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Ventricular septal defect, pulmonic stenosis, overriding aorta, and right ventricular hypertrophy</li><li class="fopt"><span class="mk">B</span>Atrial septal defect, pulmonic stenosis, overriding aorta, and left ventricular hypertrophy</li><li class="fopt"><span class="mk">C</span>Ventricular septal defect, aortic stenosis, patent ductus arteriosus, and right ventricular hypertrophy</li><li class="fopt"><span class="mk">D</span>Atrial septal defect, ventricular septal defect, patent ductus arteriosus, and pulmonic stenosis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The classic form includes four defects: (1) ventricular septal defect (VSD), (2) pulmonic stenosis, (3) overriding aorta, and (4) right ventricular hypertrophy&quot; (p. 981).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) swaps two of the four, and both swaps are internally consistent-sounding — an atrial rather than ventricular defect, and left rather than right hypertrophy; the hypertrophy is right-sided precisely because the pulmonic stenosis obstructs right ventricular outflow.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">single ventricle palliation and postoperative cardiac care</span><span class="chip t2">general</span></div>
+<div class="stem">24. A nurse is explaining the staged repair of hypoplastic left heart syndrome. Which sequence is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Norwood in the first week, bidirectional Glenn at 3 to 8 months, Fontan at 2 to 4 years</li><li class="fopt"><span class="mk">B</span>Glenn in the first week, Norwood at 3 to 8 months, Fontan at 2 to 4 years</li><li class="fopt"><span class="mk">C</span>Fontan in the first week, Norwood at 6 months, Glenn at 2 years</li><li class="fopt"><span class="mk">D</span>Norwood at 6 months, Glenn at 2 years, Fontan at 5 years</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives stage I Norwood in &quot;first week of life,&quot; stage II bidirectional Glenn at &quot;3 to 8 months of age,&quot; and stage III Fontan at &quot;2 to 4 years of age,&quot; the last directing systemic venous return to the lungs &quot;without a ventricular pump&quot; (p. 987).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the first two stages, which cannot work because the Glenn depends on the low pulmonary vascular resistance the Norwood establishes; note also that the modified Fontan &quot;does not restore normal anatomy or hemodynamics.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">single ventricle palliation and postoperative cardiac care</span><span class="chip t2">general</span></div>
+<div class="stem">25. An infant with a modified Blalock-Taussig shunt has an oxygen saturation of 66%. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The shunt may be too small or narrowed, and surgical revision or an additional shunt may be needed</li><li class="fopt"><span class="mk">B</span>The shunt is too large, and diuretics should be started</li><li class="fopt"><span class="mk">C</span>This is the expected saturation after a shunt</li><li class="fopt"><span class="mk">D</span>The pulse oximeter is malfunctioning, since saturation cannot fall this low</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that saturations below 70% indicate a shunt that is too small or narrowed, with the newborn remaining severely hypoxemic, while saturations above 85% with heart failure signs indicate a shunt that is too large (p. 984).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the management for the opposite problem; both figures mark abnormalities in opposite directions, and acute cyanosis with signs of tissue hypoxia means shunt occlusion, which is a medical emergency.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">single ventricle palliation and postoperative cardiac care</span><span class="chip t2">general</span></div>
+<div class="stem">26. A child's chest tube drainage stops abruptly 6 hours after cardiac surgery, and the pulse pressure is narrowing. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Report it immediately, since these findings suggest cardiac tamponade</li><li class="fopt"><span class="mk">B</span>Document that the chest tube is functioning and drainage has resolved</li><li class="fopt"><span class="mk">C</span>Milk the tube and continue routine monitoring</li><li class="fopt"><span class="mk">D</span>Clamp the tube to prevent air entry</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter identifies an abrupt stop in chest tube drainage, paired with narrowing pulse pressure and rising, equalizing filling pressures, as the tamponade cue to report immediately (p. 992).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the plausible-but-wrong reading that treats the stoppage as the tube having done its job; at the other extreme, excessive drainage is quantified as more than 3 ml/kg/hr for more than 3 consecutive hours, or 5 to 10 ml/kg in any 1 hour.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">single ventricle palliation and postoperative cardiac care</span><span class="chip t2">general</span></div>
+<div class="stem">27. A child is 36 hours post cardiac surgery with a temperature of 100.2 degrees Fahrenheit. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Likely the inflammatory response to tissue trauma, which is expected in the first 24 to 48 hours</li><li class="fopt"><span class="mk">B</span>Certain evidence of surgical site infection requiring cultures now</li><li class="fopt"><span class="mk">C</span>Evidence of a transfusion reaction</li><li class="fopt"><span class="mk">D</span>Normal at any point in the postoperative course</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that a temperature to about 100 degrees Fahrenheit in the first 24 to 48 hours is the inflammatory response to tissue trauma, and that after that period fever &quot;is most likely infection&quot; (p. 990).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) removes the time dependence that makes the finding interpretable, which is the whole point — the same temperature means different things on day 1 and day 4.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infective endocarditis and its prophylaxis</span><span class="chip t2">general</span></div>
+<div class="stem">28. A child has an insidious onset of unexplained low-grade intermittent fever, malaise, anorexia, and a new murmur. What should the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Infective endocarditis</li><li class="fopt"><span class="mk">B</span>Acute rheumatic fever</li><li class="fopt"><span class="mk">C</span>Kawasaki disease</li><li class="fopt"><span class="mk">D</span>Viral myocarditis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes the onset of infective endocarditis as &quot;usually insidious, with unexplained low-grade, intermittent fever,&quot; plus malaise, anorexia, heart failure symptoms, arthralgias, and weight loss, with &quot;A new murmur or a change in an existing one&quot; frequently found (p. 994).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the confusable partner and differs on mechanism and timing — rheumatic fever is an abnormal immune response 2 to 6 weeks after streptococcal pharyngitis, diagnosed by Jones criteria and antistreptolysin O titers, while endocarditis is a direct infection diagnosed by blood culture plus echocardiography.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infective endocarditis and its prophylaxis</span><span class="chip t2">general</span></div>
+<div class="stem">29. Which children should receive antibiotic prophylaxis before dental procedures? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A child with an artificial heart valve</li><li class="fopt right"><span class="mk">&#10003;</span>A child with a previous diagnosis of infective endocarditis</li><li class="fopt right"><span class="mk">&#10003;</span>A child with unrepaired cyanotic congenital heart disease including palliative shunts</li><li class="fopt right"><span class="mk">&#10003;</span>A child with a ventricular septal defect repaired with prosthetic material 3 months ago</li><li class="fopt"><span class="mk">E</span>A child with a ventricular septal defect repaired without prosthetic material 4 years ago</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 27.9 limits prophylaxis to artificial heart valves, previous infective endocarditis, unrepaired cyanotic disease including palliative shunts and conduits, repaired disease using prosthetic material &quot;during the first 6 months after the procedure,&quot; residual defects adjacent to prosthetic material, and transplant recipients with valvulopathy (p. 995).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) falls outside every category — repaired without prosthetic material and well beyond any window — and the chapter states that &quot;Other than these high-risk patients, antibiotic prophylaxis is no longer routinely recommended&quot;; the 2015 statement shifted emphasis to excellent oral hygiene instead.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infective endocarditis and its prophylaxis</span><span class="chip t2">general</span></div>
+<div class="stem">30. How many blood cultures does the chapter recommend when infective endocarditis is suspected, and why?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Three, drawn with strict sterile technique because the common causative organisms live on the skin</li><li class="fopt"><span class="mk">B</span>One, since a single positive culture is diagnostic</li><li class="fopt"><span class="mk">C</span>Two, drawn at least 24 hours apart</li><li class="fopt"><span class="mk">D</span>Cultures are not useful, and diagnosis rests on echocardiography alone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs several blood specimens, &quot;three recommended,&quot; drawn with strict sterile technique because the common organisms live on the skin, and gives the Duke criteria as two major, or one major and three minor, or five minor criteria — the two major being positive blood cultures and echocardiographic evidence (pp. 994–995).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) discards half the major criteria; note that culture-negative endocarditis is reported in 5% to 10% of cases, which is another reason multiple specimens matter, and the most common organisms are *Streptococcus viridans* and *Staphylococcus aureus*.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">infective endocarditis and its prophylaxis</span><span class="chip t2">general</span></div>
+<div class="stem">31. The parent of a child at high risk for infective endocarditis asks what to watch for at home. What should the nurse emphasize?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Any unexplained fever, weight loss, or change in behavior such as lethargy, malaise, or anorexia must be reported</li><li class="fopt"><span class="mk">B</span>Only chest pain or palpitations need to be reported</li><li class="fopt"><span class="mk">C</span>Symptoms will always begin abruptly and be obvious</li><li class="fopt"><span class="mk">D</span>Routine monitoring is unnecessary once prophylaxis is prescribed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs that &quot;Any unexplained fever, weight loss, or change in behavior (lethargy, malaise, anorexia) must be brought to the practitioner's attention,&quot; and that children at risk &quot;should have blood drawn for culture if they have a fever without an obvious source&quot; (p. 995).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) contradicts the insidious onset the chapter describes, which is exactly why the vague symptoms in the correct option are the ones families must be taught to take seriously; note that endocarditis may follow routine bacteremia from ordinary activities such as brushing teeth.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute rheumatic fever and rheumatic heart disease</span><span class="chip t2">general</span></div>
+<div class="stem">32. A 9-year-old had streptococcal pharyngitis 3 weeks ago and now has migratory joint pain, a new murmur, and a fever of 38.8 degrees Celsius. How many Jones criteria does this satisfy, and is the diagnosis supported?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Two major manifestations, carditis and polyarthritis, which satisfies the requirement for diagnosis</li><li class="fopt"><span class="mk">B</span>One major and one minor, which does not satisfy the requirement</li><li class="fopt"><span class="mk">C</span>Three minor manifestations, which satisfies the requirement in all populations</li><li class="fopt"><span class="mk">D</span>No criteria, since fever alone is not diagnostic</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Patients must have two major manifestations or one major and two minor manifestations for diagnosis,&quot; listing carditis and polyarthritis among the five major manifestations; the arthritis is characteristically migratory, affecting &quot;one joint for 1 to 2 days, then another&quot; (pp. 996–997).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) miscounts the murmur, which represents carditis and is major rather than minor; the timing fits, since the disease develops after streptococcal infection &quot;usually within 2 to 6 weeks,&quot; and the age of 5 to 15 years with a preceding sore throat is itself a diagnostic clue.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute rheumatic fever and rheumatic heart disease</span><span class="chip t2">general</span></div>
+<div class="stem">33. Which manifestation of acute rheumatic fever leads to permanent damage?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Carditis</li><li class="fopt"><span class="mk">B</span>Polyarthritis</li><li class="fopt"><span class="mk">C</span>Chorea</li><li class="fopt"><span class="mk">D</span>Erythema marginatum</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Carditis is the only manifestation of ARF that leads to permanent damage,&quot; and that rheumatic heart disease is &quot;the most significant complication of ARF,&quot; occurring in more than half the cases, with the mitral valve most often affected (p. 996).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the most frequent major manifestation at 35% to 66% and leaves no permanent injury, which is what makes it a tempting choice; echocardiography is now recommended in all suspected and confirmed cases because it is more sensitive than auscultation for valve dysfunction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute rheumatic fever and rheumatic heart disease</span><span class="chip t2">general</span></div>
+<div class="stem">34. A child is diagnosed with acute rheumatic fever with carditis. How long should secondary prophylaxis continue?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>10 years or until age 21, whichever is longer</li><li class="fopt"><span class="mk">B</span>5 years or until age 21, whichever is longer</li><li class="fopt"><span class="mk">C</span>Until age 40 and possibly indefinitely</li><li class="fopt"><span class="mk">D</span>Until two negative throat cultures are obtained</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter tiers the duration by cardiac involvement: without carditis, 5 years or until age 21; with carditis, 10 years or until age 21; with established rheumatic heart disease, until age 40 and possibly indefinitely (p. 997).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are the adjacent tiers, and the tier is set by the extent of cardiac involvement rather than by symptom resolution; the preferred agent is intramuscular benzathine penicillin G every 28 days &quot;because it is most effective.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">acute rheumatic fever and rheumatic heart disease</span><span class="chip t2">general</span></div>
+<div class="stem">35. A child is being evaluated for possible acute rheumatic fever and is in pain from arthritis. What does the chapter say about starting aspirin?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The diagnosis must be confirmed before aspirin is started, so clinical signs are not masked by the therapy</li><li class="fopt"><span class="mk">B</span>Aspirin should be started immediately to prevent cardiac sequelae</li><li class="fopt"><span class="mk">C</span>Aspirin is contraindicated in rheumatic fever at any point</li><li class="fopt"><span class="mk">D</span>Prednisone should be started first in all cases</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that the diagnosis must be confirmed before aspirin therapy is started &quot;so clinical signs are not masked by the therapy,&quot; and adds that &quot;Neither salicylates nor prednisone has been shown to affect cardiac sequelae&quot; (p. 997).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) assigns aspirin a protective role the chapter explicitly denies it; prednisone is reserved for pericarditis, heart failure, or aspirin failure rather than used first line.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">kawasaki disease</span><span class="chip t2">general</span></div>
+<div class="stem">36. A 3-year-old has had fever for 6 days. Which findings would support a diagnosis of Kawasaki disease? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Bilateral bulbar conjunctival injection without exudate</li><li class="fopt right"><span class="mk">&#10003;</span>Red cracked lips and strawberry tongue</li><li class="fopt right"><span class="mk">&#10003;</span>Erythema of the palms and soles with edema of the hands and feet</li><li class="fopt right"><span class="mk">&#10003;</span>Unilateral cervical lymphadenopathy with a node larger than 1.5 cm</li><li class="fopt"><span class="mk">E</span>A loud pansystolic murmur with electrocardiographic changes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 27.11 requires fever for at least 5 days plus at least four of five criteria: changes in the extremities, polymorphous exanthem, bilateral bulbar conjunctival injection without exudate, erythema and cracking of the lips with strawberry tongue, and cervical lymphadenopathy with a node greater than 1.5 cm, usually unilateral (p. 999).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is not one of the five criteria at all, and cardiac findings are the distractor the chapter's own review question plants; note that the conjunctival reddening characteristically spares the limbus, clearing around the iris.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">kawasaki disease</span><span class="chip t2">general</span></div>
+<div class="stem">37. A child with Kawasaki disease develops peeling of the skin beginning under the fingertips. Which phase is this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Subacute</li><li class="fopt"><span class="mk">B</span>Acute</li><li class="fopt"><span class="mk">C</span>Convalescent</li><li class="fopt"><span class="mk">D</span>It occurs in all three phases equally</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter places periungual desquamation in the subacute phase, which begins with resolution of fever and lasts until outward clinical signs disappear, along with thrombocytosis peaking about 3 weeks after fever onset (p. 998).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the misassignment the chapter's own review question tests, since peeling feels like part of the dramatic acute illness; the acute phase is defined by the high fever unresponsive to antibiotics and antipyretics plus the five criteria, and the convalescent phase is complete when laboratory values normalize at 6 to 8 weeks.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">kawasaki disease</span><span class="chip t2">general</span></div>
+<div class="stem">38. A child with Kawasaki disease is receiving intravenous immunoglobulin. What is the single most important reason for giving it, and within what window?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It reduces the incidence of coronary abnormalities, and should be given within the first 10 days and optimally within the first 7</li><li class="fopt"><span class="mk">B</span>It controls fever, and may be given at any point in the illness</li><li class="fopt"><span class="mk">C</span>It prevents thrombocytosis, and should be given after the fever resolves</li><li class="fopt"><span class="mk">D</span>It replaces aspirin, which is no longer used in this disease</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that intravenous immunoglobulin reduces duration of fever and incidence of coronary abnormalities &quot;within the first 10 days of illness and optimally within the first 7 days,&quot; given as &quot;A single large infusion of 2 g/kg over 8 to 12 hours&quot; (p. 1000).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is wrong because aspirin remains in use — but note the chapter's explicit negative finding that moderate- or high-dose aspirin &quot;has not been shown to make a difference in the incidence of coronary artery sequelae.&quot; The coronary protection comes from the immunoglobulin; aspirin controls fever and inflammation, then drops to an antiplatelet dose of 3 to 5 mg/kg/day.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">kawasaki disease</span><span class="chip t2">general</span></div>
+<div class="stem">39. A nurse is monitoring an infant during an intravenous immunoglobulin infusion for Kawasaki disease. What is the priority assessment?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Cardiac status, because of the large fluid load, watching for decreased urine output, gallop rhythm, tachycardia, and respiratory distress</li><li class="fopt"><span class="mk">B</span>Neurologic status, because of the risk of aseptic meningitis</li><li class="fopt"><span class="mk">C</span>Renal function, because of the risk of acute tubular necrosis</li><li class="fopt"><span class="mk">D</span>Skin integrity, because of the risk of infusion site breakdown</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs monitoring cardiac status closely during the infusion &quot;because of the large fluid load, particularly in children under 1 year,&quot; watching for heart failure signs including decreased urinary output, gallop rhythm, tachycardia, and respiratory distress (p. 1001).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) name plausible immunoglobulin concerns the chapter does not emphasize here; note also the specific documentation instruction — record the temperature just before aspirin administration, &quot;because fever reflects ongoing inflammation and may indicate the need for further treatment.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">kawasaki disease</span><span class="chip t2">general</span></div>
+<div class="stem">40. A child is being discharged after Kawasaki disease treated with intravenous immunoglobulin. What should the nurse teach about immunizations?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Measles-mumps-rubella and varicella vaccines should be delayed for 11 months after the immunoglobulin</li><li class="fopt"><span class="mk">B</span>All vaccines should be given on schedule, since immunoglobulin does not interfere</li><li class="fopt"><span class="mk">C</span>Only inactivated vaccines should be delayed, for 3 months</li><li class="fopt"><span class="mk">D</span>Vaccines should be delayed indefinitely while the child takes aspirin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The administration of measles-mumps-rubella vaccine should be delayed for 11 months after the administration of IVIG,&quot; and that varicella vaccine also should not be given for at least 11 months (p. 1001).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) confuses two separate instructions — aspirin is temporarily discontinued and the practitioner notified if the child is exposed to chickenpox or influenza because of the Reye syndrome association, which is about exposure rather than about immunization timing. Parents should also be told irritability is a hallmark and may persist up to 2 months.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood hypertension and supraventricular tachycardia</span><span class="chip t2">general</span></div>
+<div class="stem">41. A 15-year-old has repeated blood pressures of 134/84 mm Hg. How should this be classified?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stage 1 hypertension, since for age 13 and older the range is 130 to 139 over 80 to 89</li><li class="fopt"><span class="mk">B</span>Elevated blood pressure, since the systolic is under 140</li><li class="fopt"><span class="mk">C</span>Stage 2 hypertension, since the diastolic exceeds 80</li><li class="fopt"><span class="mk">D</span>Normal, since adult thresholds do not apply to adolescents</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives categorical cut points for age 13 and older: elevated blood pressure at 120 to 129 over less than 80, stage 1 at 130 to 139 over 80 to 89, and stage 2 at 140 over 90 or above (p. 1002).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is wrong because the 2017 guideline specifically moved teenagers 13 and older to categorical cut points, while children 1 to 13 remain on percentile-based tiers — applying adult numbers to a 6-year-old is the error in the other direction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood hypertension and supraventricular tachycardia</span><span class="chip t2">general</span></div>
+<div class="stem">42. A 4-year-old is found to have stage 2 hypertension. What does the chapter suggest about the likely cause?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A secondary cause is likely, most commonly renal disease, since the younger the child and the more severe the hypertension, the more likely a secondary cause</li><li class="fopt"><span class="mk">B</span>Primary hypertension is most likely at any age</li><li class="fopt"><span class="mk">C</span>The cause is almost always endocrine in preschoolers</li><li class="fopt"><span class="mk">D</span>The finding is almost certainly white-coat hypertension</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states as a rule that &quot;the younger the child and the more severe the hypertension, the more likely it is to be due to a secondary cause,&quot; and that when secondary, &quot;the most common causes in young children is renal disease, followed by cardiovascular, endocrine, or some neurologic disorders&quot; (p. 1002).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a real phenomenon — blood pressure above the 95th percentile in the office but below it outside — which would not explain repeated stage 2 readings; note also that upper and lower extremity pressures should always be assessed when hypertension is suspected, because of possible undiagnosed coarctation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood hypertension and supraventricular tachycardia</span><span class="chip t2">general</span></div>
+<div class="stem">43. An infant has a heart rate of 260 beats per minute with a narrow QRS complex, absent P waves, and abrupt onset. The infant is alert with adequate perfusion. What is the first intervention?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Vagal maneuvers, such as applying ice to the face</li><li class="fopt"><span class="mk">B</span>Synchronized cardioversion</li><li class="fopt"><span class="mk">C</span>Intravenous adenosine</li><li class="fopt"><span class="mk">D</span>Intravenous digoxin</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives the treatment ladder as vagal maneuvers first — &quot;applying ice to the face, massaging the carotid artery (on one side of the neck only), or having an older child perform a Valsalva maneuver&quot; — then intravenous adenosine as &quot;the first-line pharmacologic measure,&quot; then synchronized cardioversion for hemodynamic instability (p. 1011).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the correct *drug* and not the first *intervention* in a stable child, which is what this item tests; (B) is reserved for instability, and the chapter states that &quot;Cardioversion should never be performed on a conscious patient&quot; without sedation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">childhood hypertension and supraventricular tachycardia</span><span class="chip t2">general</span></div>
+<div class="stem">44. A child with Wolff-Parkinson-White syndrome needs chronic management of supraventricular tachycardia. Which drug should be avoided?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Digoxin, because it can accelerate conduction across the accessory pathway</li><li class="fopt"><span class="mk">B</span>Propranolol, because it is too short-acting for children</li><li class="fopt"><span class="mk">C</span>Atenolol, because it is not approved in children</li><li class="fopt"><span class="mk">D</span>Adenosine, because it is ineffective in this syndrome</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Digoxin should not be used in patients with WPW syndrome because it can accelerate conduction across the accessory pathway,&quot; with a beta blocker as the alternative first line — propranolol for infants and atenolol for older children (p. 1011).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) misstates propranolol's role, since being shorter-acting is precisely why it is chosen for infants; note that radiofrequency ablation &quot;has become first-line therapy for some types of SVT,&quot; with success rates as high as 90%, and that a successful ablation is curative.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"cardiac catheterization nursing care","subtopic":"general","stem":"A child has just returned from cardiac catheterization. Which assessments should the nurse perform? Select all that apply.","options":["Check pulses below the catheterization site for equality and symmetry","Check the dressing for bleeding or hematoma in the femoral or antecubital area","Assess temperature and color of the affected extremity","Monitor blood pressure, especially for hypotension","Take vital signs every 30 to 45 minutes"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists six postprocedural assessments: pulses especially below the site, temperature and color of the affected extremity because \"coolness or blanching may indicate arterial obstruction,\" vital signs as often as every 15 minutes, blood pressure \"especially for hypotension,\" the dressing, and fluid intake (p. 966).","trap":"(E) understates the frequency — the text says as often as every 15 minutes, and this is one of the two distractors the chapter's own review question plants; the other is ambulating the child, when the extremity is kept straight for 4 to 6 hours after venous and 6 to 8 hours after arterial catheterization.","k":"1vqycbczcucv2"},{"topic":"cardiac catheterization nursing care","subtopic":"general","stem":"Bleeding begins at a child's femoral catheterization site. Where should the nurse apply pressure?","options":["2.5 cm above the percutaneous skin site, to localize pressure over the vessel puncture","Directly over the skin puncture site","2.5 cm below the skin site, along the line of venous return","Over the femoral pulse distal to the site"],"correct":[0],"sata":false,"why":"The Nursing Alert states that \"If bleeding occurs, direct, continuous pressure is applied 2.5 cm (1 inch) above the percutaneous skin site to localize pressure over the vessel puncture\" (p. 966).","trap":"(B) is the intuitive location and misses the vessel entry point, which sits proximal to the skin entry because the catheter travels at an angle; the concern that makes this urgent is that hypotension may indicate hemorrhage from cardiac perforation or bleeding at the site.","k":"u2v9x2189gctk"},{"topic":"cardiac catheterization nursing care","subtopic":"general","stem":"A nurse is preparing a 10-month-old for cardiac catheterization. Which finding may be a reason to cancel the procedure?","options":["Severe diaper rash, if femoral access is required","A resting heart rate of 130 beats per minute","A hemoglobin of 14 g/dl","Crying during the preoperative assessment"],"correct":[0],"sata":false,"why":"The chapter states that \"Severe diaper rash may be a reason to cancel the procedure if femoral access is required,\" and directs obtaining an accurate height, which is essential for correct catheter selection, plus a history of allergic reactions because some contrast agents are iodine based (p. 965).","trap":"(B) is a normal infant rate, and (C) is a normal hemoglobin; the other preprocedural step most often missed is assessing and marking the pedal pulses before the child leaves for the catheterization room, so the postprocedural comparison is meaningful.","k":"a1xbsys6n3e8"},{"topic":"cardiac catheterization nursing care","subtopic":"general","stem":"A family is being discharged the day after cardiac catheterization. Which instruction is correct?","options":["Avoid tub baths for the first 3 days, and avoid strenuous exercise for several days, but the child may attend school","Keep the child on bed rest at home for 1 week","Keep the pressure dressing in place for 5 days","Restrict the diet to clear liquids for 24 hours"],"correct":[0],"sata":false,"why":"The Family-Centered Care box directs removing the pressure dressing the day after, covering with an adhesive bandage for several days, avoiding tub baths for the first 3 days, avoiding strenuous exercise for several days while allowing school attendance, and a regular diet without restrictions (p. 966).","trap":"(B) and (D) both over-restrict a child the chapter returns to normal activity quickly; families are also told to watch for redness, swelling, drainage, bleeding, fever, and coolness of the catheterized leg.","k":"18bn7oi13t2lf4"},{"topic":"heart failure in children","subtopic":"general","stem":"A nurse is assessing a 3-month-old for heart failure. Which findings indicate it? Select all that apply.","options":["A sleeping heart rate above 160 beats per minute","A respiratory rate above 60 breaths per minute","Weight gain","Periorbital edema","Distended neck veins"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names tachycardia with a sleeping heart rate above 160 in infants as \"One of the earliest signs of CHF,\" tachypnea above 60 breaths per minute, weight gain as \"The earliest sign\" of edema, and periorbital edema among the systemic venous congestion findings (pp. 969–970).","trap":"(E) is a real manifestation in the wrong age group — \"Distended neck veins are difficult to detect in the short, fat necks of infants and are usually observed only in older children.\" Box 27.3 sorts every manifestation into impaired myocardial function, pulmonary congestion, or systemic venous congestion, and sorting first is what makes an all-or-nothing item survivable.","k":"1n1aari57nulw"},{"topic":"heart failure in children","subtopic":"general","stem":"A child with heart failure is receiving furosemide. Which nursing instruction is correct?","options":["Encourage high-potassium foods, because furosemide causes potassium excretion and hypokalemia may precipitate digitalis toxicity","Avoid potassium supplements, because furosemide is potassium sparing","Restrict fluids to 50% of maintenance in all cases","Give the drug at bedtime to minimize daytime urination"],"correct":[0],"sata":false,"why":"Table 27.3 calls furosemide the \"Drug of choice in severe heart failure,\" notes that it causes excretion of chloride and potassium and that \"hypokalemia may precipitate digitalis toxicity,\" and directs encouraging high-potassium foods and observing for signs of digoxin toxicity (p. 970).","trap":"(B) describes spironolactone, whose instruction is the opposite — \"Do not administer potassium supplements\" — and giving potassium alongside spironolactone or an angiotensin-converting enzyme inhibitor is the hyperkalemia trap this pair exists to catch.","k":"1cgfgac1cmjzl2"},{"topic":"heart failure in children","subtopic":"general","stem":"A nurse is reviewing the goals of heart failure management. Which set does the chapter state?","options":["Improve cardiac function, remove accumulated fluid and sodium, decrease cardiac demands, and improve tissue oxygenation","Increase preload, increase afterload, increase contractility, and increase heart rate","Restrict all fluid, restrict all sodium, restrict all activity, and sedate the child","Correct the underlying defect surgically before any medical management"],"correct":[0],"sata":false,"why":"The chapter numbers four goals: \"(1) improve cardiac function (increase contractility and decrease afterload), (2) remove accumulated fluid and sodium (decrease preload and minimize fluid overload), (3) decrease cardiac demands, and (4) improve tissue oxygenation and decrease oxygen consumption\" (p. 970).","trap":"(B) inverts the hemodynamic direction on afterload and preload, which is the axis the whole treatment plan turns on; note that fluid restriction \"may be required in the acute stages\" but infants rarely need it, because heart failure already makes feeding hard enough that they struggle to take maintenance volumes.","k":"1ijt44bc5a70t"},{"topic":"heart failure in children","subtopic":"general","stem":"An infant with heart failure is being fed every 2 hours around the clock, and the parents wake the baby for each feeding. What should the nurse advise?","options":["This does not provide enough rest between feedings, and care should be organized to allow uninterrupted periods of sleep","Continue, since frequent small feedings are the goal in heart failure","Increase to hourly feedings to reduce the work of each feeding","Switch to a low-sodium formula to reduce fluid retention"],"correct":[0],"sata":false,"why":"The chapter states that feeding every 2 hours \"does not provide enough rest between feedings,\" and that nursing care is organized \"to allow for uninterrupted periods of sleep\" — this is the keyed statement in the chapter's own review question on reducing cardiac demands (p. 975).","trap":"(D) reaches for a measure the chapter uses infrequently in infants, because \"infants need a normal sodium source to offset the sodium depletion of chronic diuretic therapy\"; the underlying principle is that rest is itself a treatment when the goal is decreasing cardiac demand.","k":"1c11d856a2n13"},{"topic":"heart failure in children","subtopic":"general","stem":"A nurse is explaining why the body's compensation for heart failure eventually fails. Which statement is accurate?","options":["Sympathetic stimulation raises heart rate, but tachycardia shortens diastole, increases myocardial oxygen consumption, and impairs coronary artery perfusion","Ventricular dilation increases contractile force without limit","Hypertrophy improves oxygenation of the heart muscle","Renin-angiotensin activation reduces preload over time"],"correct":[0],"sata":false,"why":"The chapter describes sympathetic stimulation as increasing force and rate in the short term while tachycardia \"shortens diastole, increases myocardial oxygen consumption, impairs coronary artery perfusion,\" and increased systemic vascular resistance increases afterload (pp. 968–969).","trap":"(B) omits the limit the chapter states — \"Beyond a certain amount of dilation, the force of contraction decreases and the heart fails\"; (C) reverses the cost of hypertrophy, where increased muscle mass impairs oxygenation of the heart muscle itself.","k":"1k1hl1ziaeurp"},{"topic":"digoxin administration and toxicity","subtopic":"general","stem":"A nurse is about to give digoxin to a 5-month-old. The apical pulse is 96 beats per minute. What should the nurse do?","options":["Hold the dose and notify the practitioner, since the drug is withheld in infants and young children when the apical pulse is below 90 to 110","Give the dose, since 96 is above 90","Give the dose and recheck the pulse in 1 hour","Hold the dose only if the rate is below 60"],"correct":[0],"sata":false,"why":"The chapter gives age-tiered hold parameters: below 90 to 110 beats per minute in infants and young children, below 70 in older children, and below 60 in adults, with the apical rate counted for 1 full minute (p. 974).","trap":"(D) applies the adult threshold to an infant, which is the level-swap this table exists to prevent; the apical rate is used \"because a pulse deficit (radial pulse rate lower than apical) may be present with decreased cardiac output.\"","k":"14kw7mrhprw51"},{"topic":"digoxin administration and toxicity","subtopic":"general","stem":"A child receiving digoxin has a serum potassium of 3.1 mmol/L. What is the significance?","options":["A fall in serum potassium enhances the effects of digoxin and increases the risk of toxicity","A fall in serum potassium diminishes the effects of digoxin and reduces the risk of toxicity","Serum potassium does not interact with digoxin","The finding is expected and requires no action"],"correct":[0],"sata":false,"why":"A Nursing Alert states that \"A fall in the serum potassium level enhances the effects of digoxin, increasing the risk of digoxin toxicity. Increased serum potassium levels diminish digoxin's effect. Therefore serum potassium levels (normal range, 3.5 to 5.5 mmol/L) must be carefully monitored\" (p. 971).","trap":"(B) is the exact reversal and reads plausibly, which is why the chapter states both directions in one alert; the practical consequence is that a child on furosemide and digoxin together needs potassium watched closely.","k":"18o77g810ywdja"},{"topic":"digoxin administration and toxicity","subtopic":"general","stem":"An infant on digoxin has vomited twice today, is refusing feeds, and has a heart rate of 88. What should the nurse suspect?","options":["Digoxin toxicity, since bradycardia, anorexia, nausea, and vomiting are its most common signs in infants and children","Gastroenteritis, since vomiting in infants is usually gastrointestinal","Heart failure worsening, since anorexia accompanies it","A normal response to the drug that requires no action"],"correct":[0],"sata":false,"why":"The chapter states that \"The most common signs of digoxin toxicity in infants and children are bradycardia (although other dysrhythmias may occur), anorexia, nausea, and vomiting,\" and notes that vomiting from toxicity \"is often unrelated to feedings\" with the infant \"usually less interested in feeding\" (p. 974).","trap":"(B) is the competing explanation the chapter anticipates, which is why one episode of vomiting alone does not warrant stopping the drug; what shifts the reading here is the combination of repeated vomiting, decreased intake, and a low heart rate. The therapeutic serum range is 0.8 to 2 mcg/L.","k":"u373qjwzxasl"},{"topic":"digoxin administration and toxicity","subtopic":"general","stem":"A nurse is teaching parents to give digoxin at home. Which statements indicate correct understanding? Select all that apply.","options":["Give the drug at regular intervals, usually every 12 hours","Direct it slowly to the side and back of the mouth","If a dose is missed, do not give an extra dose","If more than two consecutive doses are missed, notify the physician","If the baby vomits, give a second dose to replace it"],"correct":[0,1,2,3],"sata":true,"why":"The Family-Centered Care box directs giving the drug at regular intervals usually every 12 hours, administering it slowly directed to the side and back of the mouth, not giving an extra dose if one is missed, and notifying the physician if more than two consecutive doses have been missed (p. 975).","trap":"(E) reverses an explicit instruction — \"If the child vomits, do not give a second dose.\" Note that the chapter's own review question keys three of the correct statements here as needing correction; these items follow the text rather than that key, and the two statements the text actually contradicts are repeating a dose after vomiting and mixing the drug into formula.","k":"zrul7d9vav8n"},{"topic":"digoxin administration and toxicity","subtopic":"general","stem":"A parent asks whether the digoxin can be mixed into the baby's bottle to make it easier to give. What should the nurse advise?","options":["Do not mix the drug with foods or other fluids, because refusal to consume them would result in inaccurate intake","Mixing it into formula is acceptable if the full bottle is taken","Mixing it into a small amount of juice is preferred to reduce tooth decay","Mixing it into cereal is acceptable once solids are started"],"correct":[0],"sata":false,"why":"The chapter directs parents not to mix the drug with foods or other fluids, \"because refusal to consume them would result in inaccurate intake,\" and to give water afterward and brush the teeth \"to prevent tooth decay from the sweetened liquid\" (p. 975).","trap":"(B) is the most reasonable-sounding version of the error and still fails whenever the bottle is not finished, which is common in an infant with heart failure; the drug should also be kept in a safe place, preferably a locked cabinet.","k":"nrputmfhrqo"},{"topic":"hypoxemia, cyanosis, and hypercyanotic spells","subtopic":"general","stem":"A child with severe anemia has a PaO2 of 45 mm Hg but does not appear cyanotic. How should the nurse interpret this?","options":["Cyanosis requires 5 g/dl or more of deoxygenated hemoglobin, so severe anemia can mask it despite significant hypoxemia","The absence of cyanosis means oxygenation is adequate","Anemia intensifies cyanosis, so another explanation should be sought","Cyanosis and hypoxemia always appear together"],"correct":[0],"sata":false,"why":"The chapter states that cyanosis \"results from the presence of deoxygenated hemoglobin... at a concentration of 5 g/dl of blood or more,\" is usually apparent when arterial saturation is 85% or lower, and that \"Children with severe anemia may not be cyanotic despite severe hypoxemia\" (p. 976).","trap":"(C) reverses the relationship; the mirror case is that \"Patients with polycythemia may appear cyanotic despite a near-normal PaO2,\" so appearance is unreliable in both directions — hypoxemia is a blood value, hypoxia is a tissue state, and cyanosis is only what you see.","k":"1k2hvo113p88yr"},{"topic":"hypoxemia, cyanosis, and hypercyanotic spells","subtopic":"general","stem":"An infant with tetralogy of Fallot becomes acutely cyanotic and hyperpneic while crying. What should the nurse do first?","options":["Place the infant in the knee-chest position","Administer 100% oxygen by face mask","Give morphine through the existing intravenous line","Begin intravenous fluid replacement"],"correct":[0],"sata":false,"why":"The Applying Evidence to Practice guidelines order the response: place the infant in knee-chest position, employ a calm comforting approach, administer 100% oxygen by face mask, give morphine, begin fluid replacement if needed, and repeat morphine (p. 977).","trap":"(B) and (C) are both correct steps out of order, which is what this item tests; the knee-chest position works because it \"reduces the venous return from the legs (which is desaturated) and increases systemic vascular resistance, which diverts more blood into the pulmonary artery,\" and morphine reduces the infundibular spasm that started the spell.","k":"xok7f817qy7j6"},{"topic":"hypoxemia, cyanosis, and hypercyanotic spells","subtopic":"general","stem":"A nurse is starting an intravenous infusion on a child with a right-to-left intracardiac shunt. Which precaution is essential?","options":["Use filters on all intravenous lines, because air in the venous system can travel directly to the brain","Use only large-bore catheters to reduce turbulence","Warm all fluids to body temperature before infusion","Avoid dextrose-containing solutions"],"correct":[0],"sata":false,"why":"A Nursing Alert states that intracardiac right-to-left shunting \"allows air in the venous system to go directly to the brain, which results in an air embolism. Therefore all IV lines should have filters in place to prevent air from entering the system,\" with tubing and flush syringes checked for air (p. 984).","trap":"(D) is the opposite of what these children often need, since infants and patients with polycythemia may need dextrose-containing fluids to prevent hypoglycemia; the embolism risk here is mechanical rather than metabolic.","k":"nhaydyikrc4o"},{"topic":"hypoxemia, cyanosis, and hypercyanotic spells","subtopic":"general","stem":"A child with chronic hypoxemia has a hematocrit of 62%. What does the chapter identify as the risks?","options":["Increased blood viscosity with thromboembolic risk, crowding out of platelets and clotting factors, and increased postoperative bleeding","Improved oxygen delivery with no associated risk","A reduced risk of stroke because of the higher oxygen-carrying capacity","Decreased risk of postoperative bleeding because of the higher cell mass"],"correct":[0],"sata":false,"why":"The chapter states that persistent hypoxemia stimulates erythropoiesis, producing polycythemia that \"increases blood viscosity\" and crowds out platelets and coagulation factors, so it \"increases the likelihood of postoperative bleeding,\" with small venous clots able to cross a right-to-left shunt and reach the brain (pp. 976–977).","trap":"(C) and (D) both read a higher red cell mass as protective; the chapter's practical countermeasure is to keep the child well hydrated, treating fever, vomiting, and diarrhea promptly and keeping an oral electrolyte solution at home.","k":"1uaotbyna3s8"},{"topic":"congenital heart defect classification","subtopic":"general","stem":"A nurse is classifying congenital heart defects by hemodynamics. Which pairing is correct?","options":["Aortic stenosis and obstruction to blood flow out of the heart","Ventricular septal defect and decreased pulmonary blood flow","Tricuspid atresia and increased pulmonary blood flow","Atrioventricular canal defect and obstruction to blood flow"],"correct":[0],"sata":false,"why":"The chapter classifies defects into four hemodynamic groups — increased pulmonary blood flow, decreased pulmonary blood flow, obstructive, and mixed — placing aortic stenosis among the obstructive defects, ventricular septal defect and atrioventricular canal among those with increased pulmonary blood flow, and tricuspid atresia among those with decreased flow (pp. 979–987).","trap":"(B) and (C) each reverse the flow direction, and these four pairings are exactly the ones the chapter's own review question tests; note that the book calls the older cyanotic-versus-acyanotic split \"inadequate and misleading,\" so the hemodynamic axis is the testable one.","k":"1qwgajyicr6go"},{"topic":"congenital heart defect classification","subtopic":"general","stem":"A newborn has high blood pressure and bounding pulses in the arms, weak femoral pulses, and cool lower extremities. Which defect does this describe?","options":["Coarctation of the aorta","Patent ductus arteriosus","Tetralogy of Fallot","Transposition of the great arteries"],"correct":[0],"sata":false,"why":"The chapter describes coarctation as localized narrowing near the ductal insertion producing increased pressure proximally and decreased pressure distally, with \"high blood pressure and bounding pulses in the arms, weak or absent femoral pulses, and cool lower extremities with lower blood pressure\" (p. 979).","trap":"(B) is characterized instead by a machinery-like murmur; note that coarctation repair needs no cardiopulmonary bypass because the defect lies outside the heart and pericardium, and elective surgery is advised within the first 2 years to prevent later hypertension.","k":"1xoz5621rp7t3g"},{"topic":"congenital heart defect classification","subtopic":"general","stem":"An infant has a defect described as an incomplete fusion of the endocardial cushions, with a low atrial septal defect continuous with a high ventricular septal defect and clefts of the mitral and tricuspid valves. Which chromosomal condition is most associated with it?","options":["Down syndrome","Turner syndrome","Trisomy 18","22q11 deletion"],"correct":[0],"sata":false,"why":"The chapter states that atrioventricular canal defect \"is the most common cardiac defect in children with Down syndrome,\" and describes the anatomy exactly as the stem gives it, with moderate to severe heart failure usual (p. 979).","trap":"(D) belongs to truncus arteriosus, where \"Thirty-five percent of patients have 22q11 deletions\" — both are real chapter associations attached to different defects, which is what makes this set confusable.","k":"q3hu0hmmhmvf"},{"topic":"congenital heart defect classification","subtopic":"general","stem":"A preterm infant has a patent ductus arteriosus. Which medical treatment does the chapter name?","options":["Indomethacin, a prostaglandin inhibitor","Prostaglandin E1 infusion","Digoxin and furosemide alone","Balloon atrial septostomy"],"correct":[0],"sata":false,"why":"The chapter states that \"Administration of indomethacin (prostaglandin inhibitor) has proved successful in closing a patent ductus in premature infants and some newborns\" (p. 979).","trap":"(B) does the opposite and is used to *maintain* ductal patency in ductus-dependent lesions such as hypoplastic left heart syndrome; (D) is the Rashkind procedure used in transposition to increase mixing. Confusing the prostaglandin agonist with the inhibitor reverses the intended effect entirely.","k":"xxg931jffj61"},{"topic":"congenital heart defect classification","subtopic":"general","stem":"A nurse is reviewing tetralogy of Fallot with a student. Which four defects make up the classic form?","options":["Ventricular septal defect, pulmonic stenosis, overriding aorta, and right ventricular hypertrophy","Atrial septal defect, pulmonic stenosis, overriding aorta, and left ventricular hypertrophy","Ventricular septal defect, aortic stenosis, patent ductus arteriosus, and right ventricular hypertrophy","Atrial septal defect, ventricular septal defect, patent ductus arteriosus, and pulmonic stenosis"],"correct":[0],"sata":false,"why":"The chapter states that \"The classic form includes four defects: (1) ventricular septal defect (VSD), (2) pulmonic stenosis, (3) overriding aorta, and (4) right ventricular hypertrophy\" (p. 981).","trap":"(B) swaps two of the four, and both swaps are internally consistent-sounding — an atrial rather than ventricular defect, and left rather than right hypertrophy; the hypertrophy is right-sided precisely because the pulmonic stenosis obstructs right ventricular outflow.","k":"ru89a0g47x2m"},{"topic":"single ventricle palliation and postoperative cardiac care","subtopic":"general","stem":"A nurse is explaining the staged repair of hypoplastic left heart syndrome. Which sequence is correct?","options":["Norwood in the first week, bidirectional Glenn at 3 to 8 months, Fontan at 2 to 4 years","Glenn in the first week, Norwood at 3 to 8 months, Fontan at 2 to 4 years","Fontan in the first week, Norwood at 6 months, Glenn at 2 years","Norwood at 6 months, Glenn at 2 years, Fontan at 5 years"],"correct":[0],"sata":false,"why":"The chapter gives stage I Norwood in \"first week of life,\" stage II bidirectional Glenn at \"3 to 8 months of age,\" and stage III Fontan at \"2 to 4 years of age,\" the last directing systemic venous return to the lungs \"without a ventricular pump\" (p. 987).","trap":"(B) reverses the first two stages, which cannot work because the Glenn depends on the low pulmonary vascular resistance the Norwood establishes; note also that the modified Fontan \"does not restore normal anatomy or hemodynamics.\"","k":"30l1hv1f1xf9"},{"topic":"single ventricle palliation and postoperative cardiac care","subtopic":"general","stem":"An infant with a modified Blalock-Taussig shunt has an oxygen saturation of 66%. How should the nurse interpret this?","options":["The shunt may be too small or narrowed, and surgical revision or an additional shunt may be needed","The shunt is too large, and diuretics should be started","This is the expected saturation after a shunt","The pulse oximeter is malfunctioning, since saturation cannot fall this low"],"correct":[0],"sata":false,"why":"The chapter states that saturations below 70% indicate a shunt that is too small or narrowed, with the newborn remaining severely hypoxemic, while saturations above 85% with heart failure signs indicate a shunt that is too large (p. 984).","trap":"(B) names the management for the opposite problem; both figures mark abnormalities in opposite directions, and acute cyanosis with signs of tissue hypoxia means shunt occlusion, which is a medical emergency.","k":"sojxy016knyfe"},{"topic":"single ventricle palliation and postoperative cardiac care","subtopic":"general","stem":"A child's chest tube drainage stops abruptly 6 hours after cardiac surgery, and the pulse pressure is narrowing. What should the nurse do?","options":["Report it immediately, since these findings suggest cardiac tamponade","Document that the chest tube is functioning and drainage has resolved","Milk the tube and continue routine monitoring","Clamp the tube to prevent air entry"],"correct":[0],"sata":false,"why":"The chapter identifies an abrupt stop in chest tube drainage, paired with narrowing pulse pressure and rising, equalizing filling pressures, as the tamponade cue to report immediately (p. 992).","trap":"(B) is the plausible-but-wrong reading that treats the stoppage as the tube having done its job; at the other extreme, excessive drainage is quantified as more than 3 ml/kg/hr for more than 3 consecutive hours, or 5 to 10 ml/kg in any 1 hour.","k":"8hkf0t1jn3zgf"},{"topic":"single ventricle palliation and postoperative cardiac care","subtopic":"general","stem":"A child is 36 hours post cardiac surgery with a temperature of 100.2 degrees Fahrenheit. How should the nurse interpret this?","options":["Likely the inflammatory response to tissue trauma, which is expected in the first 24 to 48 hours","Certain evidence of surgical site infection requiring cultures now","Evidence of a transfusion reaction","Normal at any point in the postoperative course"],"correct":[0],"sata":false,"why":"The chapter states that a temperature to about 100 degrees Fahrenheit in the first 24 to 48 hours is the inflammatory response to tissue trauma, and that after that period fever \"is most likely infection\" (p. 990).","trap":"(D) removes the time dependence that makes the finding interpretable, which is the whole point — the same temperature means different things on day 1 and day 4.","k":"gx3nf01x8cq5a"},{"topic":"infective endocarditis and its prophylaxis","subtopic":"general","stem":"A child has an insidious onset of unexplained low-grade intermittent fever, malaise, anorexia, and a new murmur. What should the nurse suspect?","options":["Infective endocarditis","Acute rheumatic fever","Kawasaki disease","Viral myocarditis"],"correct":[0],"sata":false,"why":"The chapter describes the onset of infective endocarditis as \"usually insidious, with unexplained low-grade, intermittent fever,\" plus malaise, anorexia, heart failure symptoms, arthralgias, and weight loss, with \"A new murmur or a change in an existing one\" frequently found (p. 994).","trap":"(B) is the confusable partner and differs on mechanism and timing — rheumatic fever is an abnormal immune response 2 to 6 weeks after streptococcal pharyngitis, diagnosed by Jones criteria and antistreptolysin O titers, while endocarditis is a direct infection diagnosed by blood culture plus echocardiography.","k":"1qfieri143e22g"},{"topic":"infective endocarditis and its prophylaxis","subtopic":"general","stem":"Which children should receive antibiotic prophylaxis before dental procedures? Select all that apply.","options":["A child with an artificial heart valve","A child with a previous diagnosis of infective endocarditis","A child with unrepaired cyanotic congenital heart disease including palliative shunts","A child with a ventricular septal defect repaired with prosthetic material 3 months ago","A child with a ventricular septal defect repaired without prosthetic material 4 years ago"],"correct":[0,1,2,3],"sata":true,"why":"Box 27.9 limits prophylaxis to artificial heart valves, previous infective endocarditis, unrepaired cyanotic disease including palliative shunts and conduits, repaired disease using prosthetic material \"during the first 6 months after the procedure,\" residual defects adjacent to prosthetic material, and transplant recipients with valvulopathy (p. 995).","trap":"(E) falls outside every category — repaired without prosthetic material and well beyond any window — and the chapter states that \"Other than these high-risk patients, antibiotic prophylaxis is no longer routinely recommended\"; the 2015 statement shifted emphasis to excellent oral hygiene instead.","k":"41em1r1fk3zx1"},{"topic":"infective endocarditis and its prophylaxis","subtopic":"general","stem":"How many blood cultures does the chapter recommend when infective endocarditis is suspected, and why?","options":["Three, drawn with strict sterile technique because the common causative organisms live on the skin","One, since a single positive culture is diagnostic","Two, drawn at least 24 hours apart","Cultures are not useful, and diagnosis rests on echocardiography alone"],"correct":[0],"sata":false,"why":"The chapter directs several blood specimens, \"three recommended,\" drawn with strict sterile technique because the common organisms live on the skin, and gives the Duke criteria as two major, or one major and three minor, or five minor criteria — the two major being positive blood cultures and echocardiographic evidence (pp. 994–995).","trap":"(D) discards half the major criteria; note that culture-negative endocarditis is reported in 5% to 10% of cases, which is another reason multiple specimens matter, and the most common organisms are *Streptococcus viridans* and *Staphylococcus aureus*.","k":"12op28t10328fb"},{"topic":"infective endocarditis and its prophylaxis","subtopic":"general","stem":"The parent of a child at high risk for infective endocarditis asks what to watch for at home. What should the nurse emphasize?","options":["Any unexplained fever, weight loss, or change in behavior such as lethargy, malaise, or anorexia must be reported","Only chest pain or palpitations need to be reported","Symptoms will always begin abruptly and be obvious","Routine monitoring is unnecessary once prophylaxis is prescribed"],"correct":[0],"sata":false,"why":"The chapter directs that \"Any unexplained fever, weight loss, or change in behavior (lethargy, malaise, anorexia) must be brought to the practitioner's attention,\" and that children at risk \"should have blood drawn for culture if they have a fever without an obvious source\" (p. 995).","trap":"(C) contradicts the insidious onset the chapter describes, which is exactly why the vague symptoms in the correct option are the ones families must be taught to take seriously; note that endocarditis may follow routine bacteremia from ordinary activities such as brushing teeth.","k":"1yobrmp1j31qb3"},{"topic":"acute rheumatic fever and rheumatic heart disease","subtopic":"general","stem":"A 9-year-old had streptococcal pharyngitis 3 weeks ago and now has migratory joint pain, a new murmur, and a fever of 38.8 degrees Celsius. How many Jones criteria does this satisfy, and is the diagnosis supported?","options":["Two major manifestations, carditis and polyarthritis, which satisfies the requirement for diagnosis","One major and one minor, which does not satisfy the requirement","Three minor manifestations, which satisfies the requirement in all populations","No criteria, since fever alone is not diagnostic"],"correct":[0],"sata":false,"why":"The chapter states that \"Patients must have two major manifestations or one major and two minor manifestations for diagnosis,\" listing carditis and polyarthritis among the five major manifestations; the arthritis is characteristically migratory, affecting \"one joint for 1 to 2 days, then another\" (pp. 996–997).","trap":"(B) miscounts the murmur, which represents carditis and is major rather than minor; the timing fits, since the disease develops after streptococcal infection \"usually within 2 to 6 weeks,\" and the age of 5 to 15 years with a preceding sore throat is itself a diagnostic clue.","k":"rbum1mljsjwc"},{"topic":"acute rheumatic fever and rheumatic heart disease","subtopic":"general","stem":"Which manifestation of acute rheumatic fever leads to permanent damage?","options":["Carditis","Polyarthritis","Chorea","Erythema marginatum"],"correct":[0],"sata":false,"why":"The chapter states that \"Carditis is the only manifestation of ARF that leads to permanent damage,\" and that rheumatic heart disease is \"the most significant complication of ARF,\" occurring in more than half the cases, with the mitral valve most often affected (p. 996).","trap":"(B) is the most frequent major manifestation at 35% to 66% and leaves no permanent injury, which is what makes it a tempting choice; echocardiography is now recommended in all suspected and confirmed cases because it is more sensitive than auscultation for valve dysfunction.","k":"1gl64ka1re55ak"},{"topic":"acute rheumatic fever and rheumatic heart disease","subtopic":"general","stem":"A child is diagnosed with acute rheumatic fever with carditis. How long should secondary prophylaxis continue?","options":["10 years or until age 21, whichever is longer","5 years or until age 21, whichever is longer","Until age 40 and possibly indefinitely","Until two negative throat cultures are obtained"],"correct":[0],"sata":false,"why":"The chapter tiers the duration by cardiac involvement: without carditis, 5 years or until age 21; with carditis, 10 years or until age 21; with established rheumatic heart disease, until age 40 and possibly indefinitely (p. 997).","trap":"(B) and (C) are the adjacent tiers, and the tier is set by the extent of cardiac involvement rather than by symptom resolution; the preferred agent is intramuscular benzathine penicillin G every 28 days \"because it is most effective.\"","k":"1r5zrzk1lsx07q"},{"topic":"acute rheumatic fever and rheumatic heart disease","subtopic":"general","stem":"A child is being evaluated for possible acute rheumatic fever and is in pain from arthritis. What does the chapter say about starting aspirin?","options":["The diagnosis must be confirmed before aspirin is started, so clinical signs are not masked by the therapy","Aspirin should be started immediately to prevent cardiac sequelae","Aspirin is contraindicated in rheumatic fever at any point","Prednisone should be started first in all cases"],"correct":[0],"sata":false,"why":"The chapter states that the diagnosis must be confirmed before aspirin therapy is started \"so clinical signs are not masked by the therapy,\" and adds that \"Neither salicylates nor prednisone has been shown to affect cardiac sequelae\" (p. 997).","trap":"(B) assigns aspirin a protective role the chapter explicitly denies it; prednisone is reserved for pericarditis, heart failure, or aspirin failure rather than used first line.","k":"1mgebrv13omu4h"},{"topic":"kawasaki disease","subtopic":"general","stem":"A 3-year-old has had fever for 6 days. Which findings would support a diagnosis of Kawasaki disease? Select all that apply.","options":["Bilateral bulbar conjunctival injection without exudate","Red cracked lips and strawberry tongue","Erythema of the palms and soles with edema of the hands and feet","Unilateral cervical lymphadenopathy with a node larger than 1.5 cm","A loud pansystolic murmur with electrocardiographic changes"],"correct":[0,1,2,3],"sata":true,"why":"Box 27.11 requires fever for at least 5 days plus at least four of five criteria: changes in the extremities, polymorphous exanthem, bilateral bulbar conjunctival injection without exudate, erythema and cracking of the lips with strawberry tongue, and cervical lymphadenopathy with a node greater than 1.5 cm, usually unilateral (p. 999).","trap":"(E) is not one of the five criteria at all, and cardiac findings are the distractor the chapter's own review question plants; note that the conjunctival reddening characteristically spares the limbus, clearing around the iris.","k":"1t1sr9a1pnk74o"},{"topic":"kawasaki disease","subtopic":"general","stem":"A child with Kawasaki disease develops peeling of the skin beginning under the fingertips. Which phase is this?","options":["Subacute","Acute","Convalescent","It occurs in all three phases equally"],"correct":[0],"sata":false,"why":"The chapter places periungual desquamation in the subacute phase, which begins with resolution of fever and lasts until outward clinical signs disappear, along with thrombocytosis peaking about 3 weeks after fever onset (p. 998).","trap":"(B) is the misassignment the chapter's own review question tests, since peeling feels like part of the dramatic acute illness; the acute phase is defined by the high fever unresponsive to antibiotics and antipyretics plus the five criteria, and the convalescent phase is complete when laboratory values normalize at 6 to 8 weeks.","k":"j7p55eb19eb0"},{"topic":"kawasaki disease","subtopic":"general","stem":"A child with Kawasaki disease is receiving intravenous immunoglobulin. What is the single most important reason for giving it, and within what window?","options":["It reduces the incidence of coronary abnormalities, and should be given within the first 10 days and optimally within the first 7","It controls fever, and may be given at any point in the illness","It prevents thrombocytosis, and should be given after the fever resolves","It replaces aspirin, which is no longer used in this disease"],"correct":[0],"sata":false,"why":"The chapter states that intravenous immunoglobulin reduces duration of fever and incidence of coronary abnormalities \"within the first 10 days of illness and optimally within the first 7 days,\" given as \"A single large infusion of 2 g/kg over 8 to 12 hours\" (p. 1000).","trap":"(D) is wrong because aspirin remains in use — but note the chapter's explicit negative finding that moderate- or high-dose aspirin \"has not been shown to make a difference in the incidence of coronary artery sequelae.\" The coronary protection comes from the immunoglobulin; aspirin controls fever and inflammation, then drops to an antiplatelet dose of 3 to 5 mg/kg/day.","k":"mxgszxwew06j"},{"topic":"kawasaki disease","subtopic":"general","stem":"A nurse is monitoring an infant during an intravenous immunoglobulin infusion for Kawasaki disease. What is the priority assessment?","options":["Cardiac status, because of the large fluid load, watching for decreased urine output, gallop rhythm, tachycardia, and respiratory distress","Neurologic status, because of the risk of aseptic meningitis","Renal function, because of the risk of acute tubular necrosis","Skin integrity, because of the risk of infusion site breakdown"],"correct":[0],"sata":false,"why":"The chapter directs monitoring cardiac status closely during the infusion \"because of the large fluid load, particularly in children under 1 year,\" watching for heart failure signs including decreased urinary output, gallop rhythm, tachycardia, and respiratory distress (p. 1001).","trap":"(B) and (C) name plausible immunoglobulin concerns the chapter does not emphasize here; note also the specific documentation instruction — record the temperature just before aspirin administration, \"because fever reflects ongoing inflammation and may indicate the need for further treatment.\"","k":"p5i41yaqssjo"},{"topic":"kawasaki disease","subtopic":"general","stem":"A child is being discharged after Kawasaki disease treated with intravenous immunoglobulin. What should the nurse teach about immunizations?","options":["Measles-mumps-rubella and varicella vaccines should be delayed for 11 months after the immunoglobulin","All vaccines should be given on schedule, since immunoglobulin does not interfere","Only inactivated vaccines should be delayed, for 3 months","Vaccines should be delayed indefinitely while the child takes aspirin"],"correct":[0],"sata":false,"why":"The chapter states that \"The administration of measles-mumps-rubella vaccine should be delayed for 11 months after the administration of IVIG,\" and that varicella vaccine also should not be given for at least 11 months (p. 1001).","trap":"(D) confuses two separate instructions — aspirin is temporarily discontinued and the practitioner notified if the child is exposed to chickenpox or influenza because of the Reye syndrome association, which is about exposure rather than about immunization timing. Parents should also be told irritability is a hallmark and may persist up to 2 months.","k":"w8w5e5lh13g7"},{"topic":"childhood hypertension and supraventricular tachycardia","subtopic":"general","stem":"A 15-year-old has repeated blood pressures of 134/84 mm Hg. How should this be classified?","options":["Stage 1 hypertension, since for age 13 and older the range is 130 to 139 over 80 to 89","Elevated blood pressure, since the systolic is under 140","Stage 2 hypertension, since the diastolic exceeds 80","Normal, since adult thresholds do not apply to adolescents"],"correct":[0],"sata":false,"why":"The chapter gives categorical cut points for age 13 and older: elevated blood pressure at 120 to 129 over less than 80, stage 1 at 130 to 139 over 80 to 89, and stage 2 at 140 over 90 or above (p. 1002).","trap":"(D) is wrong because the 2017 guideline specifically moved teenagers 13 and older to categorical cut points, while children 1 to 13 remain on percentile-based tiers — applying adult numbers to a 6-year-old is the error in the other direction.","k":"1hmdeyb721ge5"},{"topic":"childhood hypertension and supraventricular tachycardia","subtopic":"general","stem":"A 4-year-old is found to have stage 2 hypertension. What does the chapter suggest about the likely cause?","options":["A secondary cause is likely, most commonly renal disease, since the younger the child and the more severe the hypertension, the more likely a secondary cause","Primary hypertension is most likely at any age","The cause is almost always endocrine in preschoolers","The finding is almost certainly white-coat hypertension"],"correct":[0],"sata":false,"why":"The chapter states as a rule that \"the younger the child and the more severe the hypertension, the more likely it is to be due to a secondary cause,\" and that when secondary, \"the most common causes in young children is renal disease, followed by cardiovascular, endocrine, or some neurologic disorders\" (p. 1002).","trap":"(D) names a real phenomenon — blood pressure above the 95th percentile in the office but below it outside — which would not explain repeated stage 2 readings; note also that upper and lower extremity pressures should always be assessed when hypertension is suspected, because of possible undiagnosed coarctation.","k":"1mlgv87ncra6h"},{"topic":"childhood hypertension and supraventricular tachycardia","subtopic":"general","stem":"An infant has a heart rate of 260 beats per minute with a narrow QRS complex, absent P waves, and abrupt onset. The infant is alert with adequate perfusion. What is the first intervention?","options":["Vagal maneuvers, such as applying ice to the face","Synchronized cardioversion","Intravenous adenosine","Intravenous digoxin"],"correct":[0],"sata":false,"why":"The chapter gives the treatment ladder as vagal maneuvers first — \"applying ice to the face, massaging the carotid artery (on one side of the neck only), or having an older child perform a Valsalva maneuver\" — then intravenous adenosine as \"the first-line pharmacologic measure,\" then synchronized cardioversion for hemodynamic instability (p. 1011).","trap":"(C) is the correct *drug* and not the first *intervention* in a stable child, which is what this item tests; (B) is reserved for instability, and the chapter states that \"Cardioversion should never be performed on a conscious patient\" without sedation.","k":"235lv78zv7nt"},{"topic":"childhood hypertension and supraventricular tachycardia","subtopic":"general","stem":"A child with Wolff-Parkinson-White syndrome needs chronic management of supraventricular tachycardia. Which drug should be avoided?","options":["Digoxin, because it can accelerate conduction across the accessory pathway","Propranolol, because it is too short-acting for children","Atenolol, because it is not approved in children","Adenosine, because it is ineffective in this syndrome"],"correct":[0],"sata":false,"why":"The chapter states that \"Digoxin should not be used in patients with WPW syndrome because it can accelerate conduction across the accessory pathway,\" with a beta blocker as the alternative first line — propranolol for infants and atenolol for older children (p. 1011).","trap":"(B) misstates propranolol's role, since being shorter-acting is precisely why it is chosen for infants; note that radiofrequency ablation \"has become first-line therapy for some types of SVT,\" with success rates as high as 90%, and that a successful ablation is curative.","k":"1c95lfkdfazcq"}];
+const TITLE = "Chapter 27 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 27";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 22 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 22</div><h1>Chapter 22 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">informed consent and assent in pediatric care</span><span class="chip t2">general</span></div>
+<div class="stem">1. A nurse is reviewing what makes consent for a child's procedure valid. Which conditions does the chapter require? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The person must be capable of giving consent, being over the age of majority and competent</li><li class="fopt right"><span class="mk">&#10003;</span>The person must receive the information needed to make an intelligent decision</li><li class="fopt right"><span class="mk">&#10003;</span>The person must act voluntarily, without force, fraud, deceit, duress, or coercion</li><li class="fopt"><span class="mk">D</span>The person must sign the consent form in the presence of the performing physician</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter numbers exactly three conditions: capacity, adequate information, and voluntariness, defining the third as acting &quot;voluntarily when exercising freedom of choice without force, fraud, deceit, duress, or other forms of constraint or coercion&quot; (p. 678).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) confuses the evidence with the act, and the chapter separates them — &quot;A signed consent form is the legal document that signifies that the process of informed consent has occurred&quot; (p. 679); the condition most often dropped from recall is voluntariness, because it reads as too obvious to state.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">informed consent and assent in pediatric care</span><span class="chip t2">general</span></div>
+<div class="stem">2. A 9-year-old scheduled for a bone marrow aspiration says he does not want it done. His mother has signed the consent. What is accurate about his role in the decision?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>His assent should be sought, but assent is an ethical requirement rather than a legal one</li><li class="fopt"><span class="mk">B</span>His refusal is legally binding and the procedure cannot proceed</li><li class="fopt"><span class="mk">C</span>Assent is not sought until adolescence, so his objection has no formal standing</li><li class="fopt"><span class="mk">D</span>His silence during the explanation would have constituted assent if he had not spoken</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that assent applies to children &quot;greater than 7 years with appropriate age, maturity, and psychologic state&quot; (p. 678) and that &quot;Assent is not a legal requirement but an ethical one to protect the rights of children&quot; (p. 679).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the misreading the chapter forecloses in one sentence — &quot;If the child or adolescent merely fails to object, this does not equate assent&quot; (p. 678); (C) pushes the age cue to adolescence when the chapter's threshold is greater than 7 years.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">informed consent and assent in pediatric care</span><span class="chip t2">general</span></div>
+<div class="stem">3. A surgeon has explained a procedure to a child's parents and left the unit. The mother tells the nurse she is not sure what the alternatives were. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Notify the surgeon, since explaining the procedure, risks, benefits, and alternatives is the physician's legal responsibility</li><li class="fopt"><span class="mk">B</span>Explain the alternatives, since reinforcing the explanation is within the nurse's role</li><li class="fopt"><span class="mk">C</span>Witness the signature and document that the mother had questions</li><li class="fopt"><span class="mk">D</span>Ask the mother to sign and arrange for the surgeon to answer questions postoperatively</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter assigns the roles explicitly: &quot;It is the physician's legal responsibility to explain the procedure, risks, benefits, and alternatives,&quot; while the nurse &quot;witnesses the patient's, parent's, or legal guardian's signature on the consent form and may reinforce what the patient has been told&quot; (p. 679).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) stretches &quot;reinforce what the patient has been told&quot; into supplying information that was never given, which is the boundary this item tests; (C) and (D) both proceed to a signature while a condition of valid consent — adequate information — is unmet.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">informed consent and assent in pediatric care</span><span class="chip t2">general</span></div>
+<div class="stem">4. A 16-year-old arrives at the clinic alone. Which circumstance would make her an emancipated minor under the chapter's account?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>She is married</li><li class="fopt"><span class="mk">B</span>She is 16, which in a few states meets the mature minor threshold</li><li class="fopt"><span class="mk">C</span>She has a part-time job and contributes to household expenses</li><li class="fopt"><span class="mk">D</span>She has a signed note from her parents authorizing treatment</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names the emancipating circumstances as &quot;pregnancy, marriage, high school graduation, independent living, or military service&quot; (p. 679).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the confusable pair — the mature minor exception is recognized in a few states &quot;for children 14 years and older&quot; and may require legal action, while emancipation follows from a named circumstance and carries no age; (D) describes consent by proxy, which is a different mechanism entirely.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">age-specific preparation for procedures</span><span class="chip t2">general</span></div>
+<div class="stem">5. A nurse is choosing words to explain an upcoming test to a 4-year-old. Which substitution is consistent with the chapter's guidance?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Say &quot;medicine to help the place in your body show up on a picture&quot; instead of &quot;dye&quot;</li><li class="fopt"><span class="mk">B</span>Say &quot;we will fix your heart&quot; instead of naming the surgery</li><li class="fopt"><span class="mk">C</span>Say &quot;the cuff will squeeze your arm tightly&quot; instead of &quot;check your pressure&quot;</li><li class="fopt"><span class="mk">D</span>Say &quot;we will put you to sleep&quot; to describe anesthesia gently</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 22.1 lists &quot;dye&quot; among the words to avoid, with that exact substitution (p. 680); the table's organizing logic is that each avoided word carries a second, frightening meaning.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) uses a word that is on the avoid list — &quot;fix&quot; implies the child is broken, and it is the entry most often misread as acceptable because it sounds gentle; (D) is also on the list, because it is what happens to a pet, and the substitution is &quot;different kind of sleep so you won't feel anything&quot;; (C) replaces the suggested &quot;hug your arm&quot; with a threat.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">age-specific preparation for procedures</span><span class="chip t2">general</span></div>
+<div class="stem">6. A nurse plans to demonstrate an upcoming procedure on a doll for a 2-year-old. Which doll should be used?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A doll from the unit's supply, because the child may believe her own favorite doll is really feeling the procedure</li><li class="fopt"><span class="mk">B</span>The child's own favorite doll, because familiarity makes the demonstration more meaningful</li><li class="fopt"><span class="mk">C</span>No doll, because toddlers cannot generalize from a demonstration</li><li class="fopt"><span class="mk">D</span>A doll chosen by the parents from home, since it will be more comforting</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The toddler preparation guidance directs the nurse to &quot;Use play; demonstrate on doll but avoid child's favorite doll because child may think doll is really&quot; feeling the procedure (p. 680), which is animism applied to the comfort object.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) both reach for the familiar object, which is right for almost every other comfort intervention in this chapter and wrong here; note the toddler's session should also be about 5 to 10 minutes and given shortly or immediately before the procedure, not a day ahead.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">age-specific preparation for procedures</span><span class="chip t2">general</span></div>
+<div class="stem">7. A nurse has drawn blood from a 4-year-old and the bleeding has stopped. Why does the chapter direct applying an adhesive bandage over the puncture site?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Because the preschooler fears that the body's contents will leak out through the opening</li><li class="fopt"><span class="mk">B</span>Because it prevents contamination of the site with skin flora</li><li class="fopt"><span class="mk">C</span>Because it marks the site for the next shift</li><li class="fopt"><span class="mk">D</span>Because bandages are a form of positive reinforcement after a procedure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Apply an adhesive bandage over puncture site&quot; appears under the preschooler's &quot;Fears of Bodily Harm, Intrusion, and Castration&quot; (p. 680); the related instruction in the same block is to &quot;Emphasize that no other body part will be involved.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is a true statement about bandages that does not answer a developmental stem, which is what makes it the strongest distractor; note also the chapter's competing caution that adhesive bandages are an aspiration hazard in young children (p. 706), so the resolution is age and supervision rather than one rule for all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">age-specific preparation for procedures</span><span class="chip t2">general</span></div>
+<div class="stem">8. A 10-month-old cries and struggles as soon as the nurse carrying a syringe enters the room, before anything has been done. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Older infants may associate objects, places, or persons with prior painful experiences and resist at the sight of them</li><li class="fopt"><span class="mk">B</span>This is stranger anxiety, which is unrelated to any previous procedure</li><li class="fopt"><span class="mk">C</span>Infants do not retain memories of past experiences, so the reaction must be to the nurse's manner</li><li class="fopt"><span class="mk">D</span>This indicates the infant is in pain from an unrecognized source</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter makes &quot;Memory for Past Experiences&quot; a developmental characteristic of infancy and builds four interventions on it, beginning &quot;Realize that older infants may associate objects, places, or persons with prior painful experiences and will cry and resist at the sight of them&quot; (p. 680).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the claim the chapter's own review item keys as wrong, and it is widely believed; the interventions that follow from the correct reading are to keep frightening objects out of view and to perform painful procedures in a separate room rather than in the crib.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preoperative care and malignant hyperthermia</span><span class="chip t2">general</span></div>
+<div class="stem">9. A 5-month-old is scheduled for elective surgery at 10:00. Her mother asks how late she may breastfeed and whether formula would be different. What should the nurse tell her?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Breast milk requires a 4-hour fast and formula requires 6 hours, because nonhuman milk empties from the stomach like a solid</li><li class="fopt"><span class="mk">B</span>Both require a 4-hour fast, since both are liquids</li><li class="fopt"><span class="mk">C</span>Both require a 6-hour fast, since both are milk</li><li class="fopt"><span class="mk">D</span>Breast milk may be given up to 2 hours before, since it is treated as a clear liquid</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 22.2 gives clear liquids greater than 2 hours, breast milk 4 hours, and infant formula, nonhuman milk, and a light meal 6 hours, with the footnote explaining that &quot;Because nonhuman milk is similar to solids in gastric emptying time, the amount ingested must be considered&quot; (p. 686).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) collapse the two intervals, which is the most common error; note also that the fasting periods &quot;apply to all ages&quot; and are not scaled for a neonate, and that fasting too long is itself a harm — discomfort, headache, dehydration, hypoglycemia, and delayed discharge.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preoperative care and malignant hyperthermia</span><span class="chip t2">general</span></div>
+<div class="stem">10. The parents of a child scheduled for surgery mention that an uncle had a dangerous reaction to anesthesia, but say their son had his tonsils out last year with no problem. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>He may still be susceptible to malignant hyperthermia, because a previous uneventful anesthetic does not exclude it</li><li class="fopt"><span class="mk">B</span>The uneventful prior surgery effectively rules out susceptibility</li><li class="fopt"><span class="mk">C</span>The family history is relevant only if the affected relative was a parent or sibling</li><li class="fopt"><span class="mk">D</span>Susceptibility is determined by preoperative laboratory screening rather than history</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that a family or previous history of sudden high fever with surgery increases risk and adds directly that &quot;Children who have successfully undergone prior surgery without adverse effects may still be considered susceptible&quot; (p. 687).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the single most inviting wrong answer in this section, because a clean prior anesthetic feels like the strongest possible reassurance; the disorder is described as &quot;a potentially fatal pharmacogenetic disorder of muscle metabolism&quot; triggered by inhaled anesthetics and succinylcholine.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preoperative care and malignant hyperthermia</span><span class="chip t2">general</span></div>
+<div class="stem">11. During surgery, end-tidal carbon dioxide begins climbing and the child develops tachycardia and muscle rigidity. Which action comes first?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Immediate discontinuation of the triggering agent</li><li class="fopt"><span class="mk">B</span>Application of ice packs to the groin, axillae, and neck</li><li class="fopt"><span class="mk">C</span>Administration of intravenous dantrolene sodium</li><li class="fopt"><span class="mk">D</span>Transfer to the intensive care unit</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter orders treatment as discontinuation of the triggering agent, hyperventilation with 100% oxygen, intravenous dantrolene sodium, cooling measures if hyperthermic, and then intensive care for at least 36 hours (p. 687).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names the definitive drug and is still not first, which is what this item turns on; (B) leads with cooling, which is step 4 and only if the child is actually hyperthermic — note that the symptom list leads with rising carbon dioxide, so temperature is the later finding despite the name of the disorder.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">preoperative care and malignant hyperthermia</span><span class="chip t2">general</span></div>
+<div class="stem">12. A nurse is preparing three children for surgery: a 6-month-old, a 3-year-old, and a 16-year-old. Which fears does the chapter attach to each?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stranger anxiety in the infant, separation anxiety in the preschooler, and fear of injury or death in the adolescent</li><li class="fopt"><span class="mk">B</span>Separation anxiety in the infant, fear of injury in the preschooler, and stranger anxiety in the adolescent</li><li class="fopt"><span class="mk">C</span>Fear of death in all three, differing only in how it is expressed</li><li class="fopt"><span class="mk">D</span>Fear of the mask at induction in all three, which is the chapter's single named stress point</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that children are at higher anesthetic and recovery risk &quot;because of higher anxiety in the preoperative period associated with stranger anxiety (infants), separation anxiety (toddlers and preschoolers), and fear of injury or death (adolescents)&quot; (p. 686).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a real stress point and makes it the only one, when the chapter lists six — admission, blood tests, preoperative medication, transport to the operating room, the mask at induction, and the postanesthesia care unit; note also that underpants or pajama bottoms are worn into the operating room and removed after induction.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fever versus hyperthermia and their management</span><span class="chip t2">general</span></div>
+<div class="stem">13. A nurse is explaining why the same intervention does not work for every elevated temperature. What distinguishes fever from hyperthermia?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Fever raises the hypothalamic set point, so antipyretics work; in hyperthermia the set point is normal, so only cooling works</li><li class="fopt"><span class="mk">B</span>Fever is infectious and hyperthermia is not, which is why only fever responds to antipyretics</li><li class="fopt"><span class="mk">C</span>Fever exceeds 38 degrees Celsius and hyperthermia exceeds 40 degrees Celsius</li><li class="fopt"><span class="mk">D</span>Fever is regulated and self-limiting, so neither antipyretics nor cooling are indicated</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter defines fever as &quot;An elevation in set point such that body temperature is regulated at a higher level&quot; and hyperthermia as &quot;Body temperature exceeding the set point,&quot; and states that &quot;Because the set point is normal in hyperthermia but increased in fever, different approaches must be used&quot; (pp. 693–694).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) turns a mechanism into a number, and (B) uses etiology where the chapter uses physiology; the practical consequence is stated plainly — &quot;antipyretics are of no value in hyperthermia because the set point is already normal.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fever versus hyperthermia and their management</span><span class="chip t2">general</span></div>
+<div class="stem">14. A 3-year-old has a fever of 39.2 degrees Celsius and received acetaminophen 15 minutes ago. Her father is applying a cool wet washcloth and she has begun shivering. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stop the cooling measure, and explain that environmental measures are applied about 1 hour after the antipyretic so the set point has come down</li><li class="fopt"><span class="mk">B</span>Continue the cooling measure, since shivering indicates the temperature is falling</li><li class="fopt"><span class="mk">C</span>Add a tepid sponge bath, which is the most effective measure for a febrile child</li><li class="fopt"><span class="mk">D</span>Remove all clothing and lower the room temperature until the shivering stops</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter says traditional cooling measures &quot;are effective if used approximately 1 hour after an antipyretic is given so the set point is lowered,&quot; and that shivering &quot;is the body's way of maintaining the elevated set point by producing heat,&quot; greatly increasing metabolic requirements (p. 693).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the single most reliable distractor in the chapter, because tepid sponging for fever is what most people were taught — the chapter calls it ineffective for febrile children and adds the parenthesis that &quot;these measures are effective for hyperthermia&quot;; the metabolic cost of shivering is three to five times baseline.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fever versus hyperthermia and their management</span><span class="chip t2">general</span></div>
+<div class="stem">15. The mother of a 2-year-old with a viral illness asks how often she may give acetaminophen and whether aspirin would work better. What should the nurse teach?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Acetaminophen may be given every 4 hours but no more than five times in 24 hours because of hepatotoxicity, and aspirin is not given to children because of its association with Reye syndrome</li><li class="fopt"><span class="mk">B</span>Acetaminophen may be given every 4 hours around the clock, and aspirin is an acceptable alternative if acetaminophen is unavailable</li><li class="fopt"><span class="mk">C</span>Ibuprofen should replace both, since it is approved from birth</li><li class="fopt"><span class="mk">D</span>Antipyretics should be given on a schedule until the temperature normalizes, whatever the child's comfort</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names acetaminophen the preferred drug with that interval and ceiling, states that aspirin &quot;should not be given to children because of its association in children with influenza virus or chickenpox and Reye syndrome,&quot; and approves ibuprofen from 6 months (p. 693).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is six doses, which exceeds the ceiling the hepatotoxicity warning sets; (D) inverts the chapter's endpoint, which is that &quot;The child's level of discomfort is the best indication for continued treatment&quot; and that the temperature &quot;should not be repeatedly measured.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">fever versus hyperthermia and their management</span><span class="chip t2">general</span></div>
+<div class="stem">16. A 2-year-old had a 3-minute generalized seizure with a fever. The parents ask whether he has brain damage and whether scheduled acetaminophen will prevent another one. What should the nurse tell them?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A simple febrile seizure lasting less than 10 minutes does not cause brain damage, and evidence does not support antipyretics or anticonvulsants to prevent a second one</li><li class="fopt"><span class="mk">B</span>Brain damage is unlikely, and scheduled antipyretics are the standard preventive measure</li><li class="fopt"><span class="mk">C</span>A single febrile seizure predicts epilepsy, so anticonvulsant prophylaxis should be started</li><li class="fopt"><span class="mk">D</span>Recurrence is rare, occurring in fewer than 5% of children</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Simple febrile seizures lasting less than 10 minutes do not cause brain damage or other debilitating effects&quot; and that evidence does not support &quot;antipyretic drugs or anticonvulsants to prevent a second febrile seizure&quot; (p. 694).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the intervention most families expect and most clinicians once gave; (D) misstates the figure, since about 30% to 50% of children have subsequent febrile seizures — the 2% to 5% figure is the incidence of febrile seizures at all, in children 6 months to 5 years.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hospital safety, falls, and infection control precautions</span><span class="chip t2">general</span></div>
+<div class="stem">17. A nurse is assigning precautions for newly admitted children. Which conditions require Airborne Precautions? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Measles</li><li class="fopt right"><span class="mk">&#10003;</span>Varicella, including disseminated zoster</li><li class="fopt right"><span class="mk">&#10003;</span>Tuberculosis</li><li class="fopt"><span class="mk">D</span>Invasive Neisseria meningitidis disease</li><li class="fopt"><span class="mk">E</span>Respiratory syncytial virus in an infant</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 22.2 places measles, varicella including disseminated zoster, and tuberculosis under Airborne Precautions, which are for &quot;serious illnesses transmitted by airborne droplet nuclei&quot; (p. 696).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is Droplet and (E) is Contact, and varicella is the member most often misassigned — chickenpox lesions are also a contact hazard, which is why the box notes that precautions &quot;may be combined for diseases that have multiple routes of transmission&quot;; the same organism can also split by site, as pharyngeal diphtheria is Droplet while cutaneous diphtheria is Contact.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hospital safety, falls, and infection control precautions</span><span class="chip t2">general</span></div>
+<div class="stem">18. A child is placed on Droplet Precautions. What does the nurse need to know about the room?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Special air handling and ventilation are not required, because droplets do not remain suspended in the air</li><li class="fopt"><span class="mk">B</span>A negative-pressure room is required, as with any transmission-based precaution</li><li class="fopt"><span class="mk">C</span>Droplet Precautions replace Standard Precautions for the duration of the illness</li><li class="fopt"><span class="mk">D</span>Droplets travel about 20 feet, so visitors must remain outside the room</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that large-particle droplets travel &quot;usually 3 feet or less but up to 10 feet&quot; and that &quot;Because droplets do not remain suspended in the air, special air handling and ventilation are not required to prevent droplet transmission&quot; (p. 696).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the more dangerous error and the chapter forecloses it directly — Transmission-Based Precautions &quot;are to be used in addition to Standard Precautions&quot;; (B) applies the airborne requirement, which exists precisely because those particles do stay suspended.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hospital safety, falls, and infection control precautions</span><span class="chip t2">general</span></div>
+<div class="stem">19. A nurse is completing fall precautions for a hospitalized 6-year-old who walked independently at home. Which action is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Assist the child with ambulation anyway, and keep dim lights on while she sleeps</li><li class="fopt"><span class="mk">B</span>Allow independent ambulation to the bathroom, since she walked well before admission</li><li class="fopt"><span class="mk">C</span>Turn all lights off at night to support normal sleep rhythms</li><li class="fopt"><span class="mk">D</span>Keep the door closed at night so hallway noise does not wake her</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs the nurse to &quot;Assist the child with ambulation even though he or she may have ambulated well before hospitalization,&quot; to &quot;Keep lights on at all times, including dim lights while sleeping,&quot; and to &quot;Keep the patient's door open unless isolation status prohibits&quot; (p. 696).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reasons from the child's baseline rather than from her current state, when postoperative status, sedation, and new lines all appear on the risk list; note the chapter also names the family daybed as a fall hazard, and instructs that patients who have been lying down &quot;need to get up slowly, sitting on the side of the bed before standing.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hospital safety, falls, and infection control precautions</span><span class="chip t2">general</span></div>
+<div class="stem">20. A nurse is about to change an infant's wet diaper with ordinary stool. Which action is consistent with the chapter's guidance?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Change the diaper without gloves, since the plastic lining is a sufficient barrier, and perform hand hygiene afterward</li><li class="fopt"><span class="mk">B</span>Wear gloves for every diaper change without exception</li><li class="fopt"><span class="mk">C</span>Wear gloves, and skip hand hygiene afterward since the hands stayed covered</li><li class="fopt"><span class="mk">D</span>Wear a gown and gloves, since all diaper changes involve body substances</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter says that for loose or explosive stools the nurse should &quot;wear gloves and possibly gowns&quot; but that &quot;Otherwise, the plastic lining of disposable diapers provides a sufficient barrier between the hands and body substances&quot; (p. 696), while requiring hand hygiene after glove removal because &quot;gloves fail to provide complete protection.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the substitution the chapter rules out, noting that &quot;The absence of visible leaks does not indicate that gloves are intact&quot;; (B) and (D) are the over-cautious answers, and the discriminating cue the chapter gives is the character of the stool. Note also its Nursing Alert that the stethoscope is itself a vector.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">restraints and safety devices</span><span class="chip t2">general</span></div>
+<div class="stem">21. A nurse is auditing the unit for restraint use. Which of the following are NOT considered restraints under the chapter's definition? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An armboard securing a peripheral intravenous line, not tied to the bed</li><li class="fopt right"><span class="mk">&#10003;</span>Hand mitts that are not tied down and not paired with a wrist restraint</li><li class="fopt right"><span class="mk">&#10003;</span>Crib side rails and a crib dome on an infant's bed</li><li class="fopt right"><span class="mk">&#10003;</span>A mummy wrap used only for the duration of a throat examination</li><li class="fopt"><span class="mk">E</span>Tight tucking of sheets to prevent a child from moving in bed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter excludes an armboard &quot;unless it is tied down to the bed or immobilizes the entire limb,&quot; hand mitts &quot;unless tied down to the bed or used in conjunction with a wrist restraint,&quot; developmentally age-appropriate safety devices including crib side rails and crib domes, and a mummy wrap &quot;When used only for the duration of the test or procedure&quot; (pp. 698–699).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is on the chapter's own list of restraints, alongside limb, elbow, and vest restraints, and it is the one that does not look like a device; each of the four correct options carries a condition that flips it, which is why this list is worth learning as conditions rather than as items.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">restraints and safety devices</span><span class="chip t2">general</span></div>
+<div class="stem">22. A 7-year-old requires a behavioral restraint for violent behavior. How often must the order be renewed?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Every 1 hour</li><li class="fopt"><span class="mk">B</span>Every 2 hours</li><li class="fopt"><span class="mk">C</span>Every 4 hours</li><li class="fopt"><span class="mk">D</span>Every 15 minutes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that unless state law is more restrictive, behavioral restraints &quot;must be reordered every 15 minutes for a personal restraint, every 1 hour for children under 9 years of age, and every 2 hours for children 9 to 17 years old; orders for adults 18 and older are required every 4 hours&quot; (p. 698).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is the interval for a personal restraint, meaning a physical hold, rather than for a mechanical one; the chapter's own review item shifts these intervals up one step and is keyed wrong, and note separately that an in-person evaluation is required within 1 hour and at least every 24 hours.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">restraints and safety devices</span><span class="chip t2">general</span></div>
+<div class="stem">23. A nurse is applying wrist restraints to a child. Which technique is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Secure the ties to the stationary bed frame, leave one finger breadth between the skin and the device, and use knots that allow quick release</li><li class="fopt"><span class="mk">B</span>Secure the ties to the side rails so the restraint moves with the rail</li><li class="fopt"><span class="mk">C</span>Leave two finger breadths of slack and use a secure knot that will not loosen</li><li class="fopt"><span class="mk">D</span>Place limb restraints above the level of the intravenous site so the line is protected</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs that &quot;Restraints with ties must be secured to the stationary bed or crib frame, not the side rails,&quot; and describes &quot;leaving one finger breadth between skin and the device and tying knots that allow for quick release&quot; (p. 699).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the error with the clearest mechanism — lowering the rail then drags the limb; (C) is the adult teaching for some devices and defeats emergency release; (D) reverses the instruction to place limb restraints &quot;distal to the IV.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">restraints and safety devices</span><span class="chip t2">general</span></div>
+<div class="stem">24. A restraint order for a child expires in 40 minutes, and the child is now calm, oriented, and cooperative. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Discontinue the restraint now, because release occurs as soon as it is safe even if the order timeframe has not expired</li><li class="fopt"><span class="mk">B</span>Maintain the restraint until the order expires, then reassess</li><li class="fopt"><span class="mk">C</span>Maintain the restraint and obtain a new order for the remaining time</li><li class="fopt"><span class="mk">D</span>Loosen the restraint but leave it applied until the provider evaluates the child</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Discontinuation of restraints should occur as soon as it is safe, even if the order timeframe has not expired&quot; (p. 698), and separately that the nurse &quot;is responsible for selecting the least restrictive type of restraint&quot; and must document alternatives considered first.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats the order as a duration rather than a ceiling, which is the most common misreading; the alternatives the chapter names — bringing the child to the nurses' station, diversional activities such as music, and parental participation — are what should have been tried and documented before the restraint went on.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specimen collection and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">25. A nurse is performing a heelstick on a 3-day-old. Which technique prevents necrotizing osteochondritis of the calcaneus?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Puncture no deeper than 2 mm, at the outer aspect of the heel, using an automatic lancet device</li><li class="fopt"><span class="mk">B</span>Puncture no deeper than 1 mm, at the inner aspect of the heel</li><li class="fopt"><span class="mk">C</span>Puncture at the center of the heel pad, where the tissue is thickest</li><li class="fopt"><span class="mk">D</span>Use a surgical blade for a controlled incision depth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;To avoid osteochondritis, the puncture should be no deeper than 2 mm and should be made at the outer aspect of the heel,&quot; and that an automatic device &quot;delivers a more precise puncture depth and is less painful than using a manual lancet&quot; (p. 706).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the chapter's own review-item distractor, wrong on both numbers; (D) is an absolute contraindication — &quot;A surgical blade of any kind is contraindicated&quot; — and the long-term consequence of repeated trauma to the walking surface is fibrosis and scarring that interferes with locomotion.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specimen collection and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">26. A nurse is preparing to draw blood from a school-age child and wants to minimize pain. Which measures does the chapter endorse? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Apply EMLA cream if more than 60 minutes are available, or LMX cream if only 30 minutes are available</li><li class="fopt right"><span class="mk">&#10003;</span>Use the smallest-gauge needle that permits free flow of blood</li><li class="fopt right"><span class="mk">&#10003;</span>Keep all equipment out of sight until it is used</li><li class="fopt right"><span class="mk">&#10003;</span>Limit attempts to two operators with two attempts each before escalating</li><li class="fopt"><span class="mk">E</span>Have the child steady the finger firmly against the bedside table during a fingerstick</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Atraumatic Care guidelines specify the EMLA and LMX application times, the smallest-gauge needle, keeping equipment out of sight, and a two-try-only policy meaning two operators with two attempts each, after which alternative access should be considered (p. 706).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) reverses an instruction in the same box — press the lancet device lightly against the skin and &quot;avoid steadying the finger against a hard surface&quot;; note also that the whole finger is massaged to maintain flow and the tip is never squeezed, because squeezing hemolyzes the sample and dilutes it with tissue fluid.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specimen collection and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">27. A nurse plans to apply EMLA cream before a newborn's heelstick. What should the nurse know?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>EMLA has been found to be no more effective than placebo for heelsticks, while breastfeeding during the procedure has been more effective than sucrose in some studies</li><li class="fopt"><span class="mk">B</span>EMLA is the most effective option for heelsticks and should be applied 30 minutes beforehand</li><li class="fopt"><span class="mk">C</span>EMLA is contraindicated in preterm infants at any dose</li><li class="fopt"><span class="mk">D</span>Sucrose is more effective than breastfeeding and should be given 30 minutes before the stick</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that EMLA, &quot;Although safe for use in preterm infants when applied correctly, has been found to be no more effective than placebo in preventing pain during heelsticks,&quot; and that &quot;Breastfeeding during a neonatal heelstick is effective in reducing pain and has been found to be more effective than sucrose in some studies&quot; (p. 706).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the comparison and the timing, since sucrose is given as 2 ml to the tongue 2 minutes before the procedure; kangaroo care is the other endorsed measure and begins 10 to 15 minutes before the stick rather than afterward as comfort.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">specimen collection and blood sampling</span><span class="chip t2">general</span></div>
+<div class="stem">28. After an antecubital venipuncture on a 7-year-old, what should the nurse have the child do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hold pressure with the arm extended, because flexing the elbow increases bruising</li><li class="fopt"><span class="mk">B</span>Flex the elbow firmly to compress the site</li><li class="fopt"><span class="mk">C</span>Raise the arm above the head for 2 minutes</li><li class="fopt"><span class="mk">D</span>Apply a cold compress immediately to prevent hematoma</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs applying pressure with the arm extended after an antecubital draw, since flexing increases bruising, and adds that if a hematoma does develop, &quot;applying warm compresses to the ecchymotic area increases circulation, helps remove extravasated blood, and decreases pain&quot; (p. 706).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is standard adult practice and is what most learners will do by reflex; (D) reverses the temperature, since the chapter names warm compresses rather than cold for an established bruise. Note also the volume ceiling of 3 ml/kg in 24 hours, and less if the child is ill.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">oral and intramuscular medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">29. A parent asks how to measure 3 ml of an antibiotic suspension at home. What should the nurse recommend?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A calibrated oral syringe, which is the most accurate device for small amounts</li><li class="fopt"><span class="mk">B</span>A household teaspoon, which families find easiest to use consistently</li><li class="fopt"><span class="mk">C</span>A dropper, emptied into a medicine cup for a more exact reading</li><li class="fopt"><span class="mk">D</span>A molded plastic medicine cup, which is calibrated for pediatric doses</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The most accurate means for measuring small amounts of medication is the plastic disposable calibrated oral syringe,&quot; and the American Academy of Pediatrics position that &quot;Syringes are the preferred device for dosing accuracy,&quot; with liquid medications &quot;dosed only in milliliters and never in teaspoons or other nonmetric units&quot; (p. 709).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) compounds two errors the chapter names separately — the dropper &quot;varies to a greater extent than the teaspoon or measuring cup,&quot; and &quot;Emptying dropper contents into a medicine cup invites additional error&quot; because liquid clings to the sides; (D) fails because families in one study &quot;could not measure a 5-ml dose within 0.5 ml.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">oral and intramuscular medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">30. A toddler refuses a bitter liquid medication. Which approach does the chapter recommend?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Mix it with about 5 ml of a sweet-tasting substance such as jam or applesauce, avoiding essential food items</li><li class="fopt"><span class="mk">B</span>Mix it into the child's full bottle of formula so the whole dose is taken</li><li class="fopt"><span class="mk">C</span>Mix it into the child's usual milk, which masks bitterness best</li><li class="fopt"><span class="mk">D</span>Add it to a full serving of the child's favorite food so the taste is diluted</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The Atraumatic Care guidance is to &quot;Mix the drug with a small amount (about 5 ml) of a sweet-tasting substance, such as flavored syrups, jam, fruit purees, sherbet, or applesauce; avoid essential food items because the child may later refuse to eat them&quot; (p. 709).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) both use dairy, which the same box rules out &quot;due to risk of interfering with absorption,&quot; and (B) additionally risks an incomplete dose if the bottle is not finished; (D) violates the small-amount rule and the essential-food rule at once.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">oral and intramuscular medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">31. A nurse is teaching a new graduate to give intramuscular injections to children. Which principles should be included? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Immunizations at the ventrogluteal site have been found to have fewer local and systemic reactions</li><li class="fopt right"><span class="mk">&#10003;</span>Placing the child supine on a parent's lap makes distraction and prevention of unexpected movement easier for the ventrogluteal site</li><li class="fopt right"><span class="mk">&#10003;</span>The deltoid produces less pain and fewer side effects from the injectate than the vastus lateralis</li><li class="fopt"><span class="mk">D</span>Aspiration before an intramuscular vaccine is always required</li><li class="fopt"><span class="mk">E</span>Usually 2 ml is the maximum volume for a single site in small children and older infants</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states each of the three keyed points directly, and reports that aspiration &quot;is no longer recommended by the Centers for Disease Control and Prevention, World Health Organization, American Academy of Pediatrics, or Immunization Action Coalition&quot; (pp. 711–712).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) fails on the word always — aspiration may still be indicated for medications such as penicillin into larger muscle groups, so the absolute is what makes it wrong; (E) doubles the narrative limit, which is &quot;Usually 1 ml is the maximum volume that should be administered in a single IM site to small children and older infants.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">oral and intramuscular medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">32. A nurse must give an intramuscular injection to a 2-month-old. What is the maximum volume for a single site?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>0.5 ml, because the muscles of small infants may not tolerate more</li><li class="fopt"><span class="mk">B</span>1 ml, which is the pediatric maximum at any age</li><li class="fopt"><span class="mk">C</span>2 ml, as given in the site table for the vastus lateralis</li><li class="fopt"><span class="mk">D</span>There is no volume limit provided the muscle is large enough</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The muscles of small infants may not tolerate more than 0.5 ml,&quot; while 1 ml is the usual maximum &quot;to small children and older infants&quot; (p. 711).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) quotes Table 22.5's &quot;0.5 ml [infant] to 2.0 ml [child]&quot; range and applies its upper figure to an infant; the two figures are one page apart and both are the chapter's, but a stem naming an infant takes the narrative limit. The governing principle is that &quot;the larger the amount of solution, the larger the muscle at the injection site must be.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">oral and intramuscular medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">33. A nurse is selecting an intramuscular site for a 9-month-old receiving an immunization. Which site is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The vastus lateralis, which is the site recommended for infants by the major immunization authorities</li><li class="fopt"><span class="mk">B</span>The deltoid, which produces the least pain and fewest local reactions</li><li class="fopt"><span class="mk">C</span>The dorsogluteal, which has the largest muscle mass</li><li class="fopt"><span class="mk">D</span>Any of the three, since the site table lists no age restrictions</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The IM immunization site recommended by the Centers for Disease Control and Prevention, World Health Organization, and American Academy of Pediatrics for infants is the anterolateral thigh or vastus lateralis&quot; (p. 711).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) states a true advantage of the deltoid and ignores its age floor — it &quot;can be used for small volumes of fluid in children as young as 18 months of age&quot;; (C) names a site the chapter rules out under 10 years and does not include in its site table at all, except as the comparison the ventrogluteal beats on subcutaneous thickness.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral intravenous complications</span><span class="chip t2">general</span></div>
+<div class="stem">34. A vesicant medication has leaked into the tissue around a child's intravenous catheter. How is this classified, and what distinguishes it?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Extravasation, because the agent is a vesicant; infiltration is the same event with a nonvesicant solution</li><li class="fopt"><span class="mk">B</span>Infiltration, because the volume is small; extravasation refers to larger leaks</li><li class="fopt"><span class="mk">C</span>Phlebitis, because any leakage inflames the vessel wall</li><li class="fopt"><span class="mk">D</span>Extravasation, because it is defined by the degree of tissue swelling rather than the drug</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter separates the two by the agent: infiltration is a nonvesicant solution or medication into the tissue, while extravasation involves a vesicant, and &quot;A vesicant or sclerosing agent causes varying degrees of cellular damage when even minute amounts escape into surrounding tissue&quot; (p. 722).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) both define extravasation by size or severity, which is the intuitive and wrong reading — even minute amounts of a vesicant cause damage, which is exactly why the drug rather than the volume names the event.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral intravenous complications</span><span class="chip t2">general</span></div>
+<div class="stem">35. A nurse observes blanching, edema, and streaking along the vein at a child's intravenous site during an infusion. What is the first action?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stop the infusion</li><li class="fopt"><span class="mk">B</span>Notify the provider</li><li class="fopt"><span class="mk">C</span>Elevate the extremity</li><li class="fopt"><span class="mk">D</span>Apply the ordered antidote</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's Nursing Alert gives the sequence: &quot;immediately stop the infusion, elevate the extremity, notify the provider, and initiate the ordered treatment as soon as possible&quot; (p. 722).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the action nurses reach for under pressure, and it keeps the vesicant flowing while the call is placed; (C) and (D) are both real steps in the wrong position. The signs the alert lists are erythema, pain, edema, blanching, streaking along the vein, and a darkened area at the insertion site.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral intravenous complications</span><span class="chip t2">general</span></div>
+<div class="stem">36. A nurse obtains a good blood return from a 4-month-old's peripheral catheter and concludes the line is patent. What should the nurse know?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A good blood return does not always indicate an intact line in small infants, and dependent areas such as the palm, the underside of the extremity, and behind the ears must be inspected</li><li class="fopt"><span class="mk">B</span>A good blood return reliably confirms patency at any age</li><li class="fopt"><span class="mk">C</span>Absence of a blood return always indicates infiltration</li><li class="fopt"><span class="mk">D</span>Infiltration is easier to detect in infants than in adults because their tissues are thinner</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;A good blood return, or lack thereof, is not always an indicator of infiltration in small infants&quot; and directs that &quot;Dependent areas, such as the palm and undersides of the extremity or the occiput and behind the ears, should be examined because infiltrations in these areas may not be readily visible&quot; (p. 722).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) inverts the chapter's explanation, which is that &quot;The increased amount of subcutaneous fat and the amount of tape used to secure the catheter often obscure the early signs of infiltration&quot;; note also the instruction never to place the identification band on the same extremity as the intravenous site, because it can act as a tourniquet.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">peripheral intravenous complications</span><span class="chip t2">general</span></div>
+<div class="stem">37. A nurse notes erythema at a child's intravenous insertion site. The child denies pain. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Erythema is the initial sign of phlebitis, and pain may or may not be present</li><li class="fopt"><span class="mk">B</span>Without pain, the finding is not phlebitis and the line may be left in place</li><li class="fopt"><span class="mk">C</span>The finding indicates catheter-related bloodstream infection until proven otherwise</li><li class="fopt"><span class="mk">D</span>Phlebitis is diagnosed only when a palpable cord is present along the vein</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The initial sign of phlebitis is erythema (redness) at the insertion site&quot; and adds the caution that &quot;Pain may or may not be present&quot; (p. 722).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) waits for a sign that may never come; (C) overcalls it, since the chapter describes phlebitis as &quot;largely a mechanical rather than infectious process&quot; while still naming a bacterial type alongside mechanical and chemical causes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eye, ear, and nose medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">38. A nurse is instilling ear drops in a 2-year-old. How should the auditory canal be straightened?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gently pull the pinna downward and straight back</li><li class="fopt"><span class="mk">B</span>Gently pull the pinna upward and back</li><li class="fopt"><span class="mk">C</span>Pull the pinna straight out from the head</li><li class="fopt"><span class="mk">D</span>No manipulation is needed before instillation in young children</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs that &quot;For children younger than 3 years of age, the external auditory canal is straightened by gently pulling the pinna downward and straight back,&quot; while &quot;The pinna is pulled upward and back in children older than 3 years of age&quot; (p. 724).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the adult and older-child technique and is the reflex answer, and it does not straighten a young child's canal; the cutoff is 3 years, not 4 and not 5. After instillation the child lies on the unaffected side so the treated ear stays up.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eye, ear, and nose medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">39. A child is ordered both eye drops and eye ointment. What is the correct sequence?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Give the drops first, wait 3 minutes, then apply the ointment</li><li class="fopt"><span class="mk">B</span>Apply the ointment first so it holds the drops in place</li><li class="fopt"><span class="mk">C</span>Give them simultaneously to reduce the number of interventions</li><li class="fopt"><span class="mk">D</span>Give the drops first and apply the ointment immediately afterward</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's Drug Alert states, &quot;If both eye ointment and drops are ordered, give drops first, wait 3 minutes, and then apply the ointment to allow each drug to work&quot; (p. 724).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) blocks the drops from reaching the conjunctiva, and (D) drops the interval that lets each drug act. Note also that both preparations go into the conjunctival sac formed by pulling the lower lid down, never directly onto the eyeball, and ointment is applied inner canthus outward.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eye, ear, and nose medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">40. After instilling eye drops in a 5-year-old, the nurse wants to keep the child from tasting the medication. What should the nurse do?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Apply finger pressure to the lacrimal punctum at the inner aspect of the eyelid for 1 minute</li><li class="fopt"><span class="mk">B</span>Have the child rinse her mouth with water immediately</li><li class="fopt"><span class="mk">C</span>Wipe the eye from the outer canthus inward</li><li class="fopt"><span class="mk">D</span>Have the child keep the eye open until the drop is absorbed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's Nursing Tip directs the nurse to &quot;Apply finger pressure to the lacrimal punctum at the inner aspect of the eyelid for 1 minute to prevent drainage of medication to the nasopharynx&quot; and the tasting of the drug (p. 723).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the wiping direction, which runs inner canthus outward to prevent contaminating the other eye; (D) reverses the instruction to &quot;Gently close the eyelids to prevent expression of the medication.&quot; The parallel tip for ear drops is to warm refrigerated medication to room temperature, which prevents vertigo.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">eye, ear, and nose medication administration</span><span class="chip t2">general</span></div>
+<div class="stem">41. A nurse is giving nose drops to a 3-year-old who complains of a choking feeling. Which positioning prevents this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Position the child with the head hyperextended over the edge of the bed or a pillow, and keep that position for 1 minute afterward</li><li class="fopt"><span class="mk">B</span>Sit the child upright with the chin tucked so the drops run forward</li><li class="fopt"><span class="mk">C</span>Place the child prone with the head turned to the side</li><li class="fopt"><span class="mk">D</span>Position the child supine with the head flat and neutral</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs that &quot;Unpleasant sensations associated with medicated nose drops are minimized when care is taken to position the child with the head extended well over the edge of the bed or pillow,&quot; and that after instillation &quot;the child should remain in position for 1 minute to allow the drops to come in contact with the nasal surfaces&quot; (pp. 723–724).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) both send the drops down the throat, producing precisely the strangling sensation the position exists to prevent; the same tip lists hyperextension as the route-specific measure for the nose, just as punctum pressure is for the eye and warming is for the ear.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube feeding and placement verification</span><span class="chip t2">general</span></div>
+<div class="stem">42. A nurse must verify nasogastric tube placement before each feeding. Which methods does the chapter support? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Testing the pH of the aspirate, where a value of 5 or less supports gastric placement</li><li class="fopt right"><span class="mk">&#10003;</span>Visual inspection of the aspirate color</li><li class="fopt right"><span class="mk">&#10003;</span>Carbon dioxide monitoring to determine whether the tube is in the respiratory tract</li><li class="fopt right"><span class="mk">&#10003;</span>Measuring the external tube length against the measurement recorded at insertion</li><li class="fopt"><span class="mk">E</span>Gastric auscultation used by itself</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that a pH of 5 or less supports gastric location, that aspirate colors are specific to the intended location though less accurate than pH, that carbon dioxide monitoring reliably detects respiratory placement, and that the external length should be measured at insertion and rechecked before each feeding (pp. 726, 728).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the method that cannot stand alone — &quot;Auscultation as a verification tool is reliable only 60% to 80% of the time and should not be used without additional methods&quot; — and the chapter notes it &quot;is still widely used by nurses,&quot; which is why it is the distractor here rather than an outright absurdity.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube feeding and placement verification</span><span class="chip t2">general</span></div>
+<div class="stem">43. A nurse aspirates fluid from a child's feeding tube and obtains a pH of 7. What does this indicate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A pH greater than 5 does not reliably predict correct distal tip location and may indicate respiratory or esophageal placement or acid-suppressing medication</li><li class="fopt"><span class="mk">B</span>The tube is definitively in the respiratory tract and must be removed at once</li><li class="fopt"><span class="mk">C</span>The tube is correctly placed, since gastric pH is normally neutral in children</li><li class="fopt"><span class="mk">D</span>The result is uninterpretable and radiography is the only remaining option</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;A pH greater than 5 does not reliably predict correct distal tip location&quot; and that &quot;This may indicate respiratory or esophageal placement or the presence of medications to suppress acid secretion&quot; (p. 726).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) overreads a nonspecific result, and (D) reaches for radiography when the chapter's own conclusion is that combining verification methods raises accuracy to 97% to 99%, close to radiography's 99%, and does so without repeated radiation exposure.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube feeding and placement verification</span><span class="chip t2">general</span></div>
+<div class="stem">44. A nurse is giving a gavage feeding to a 6-week-old infant. Which technique is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Give a gentle push with the plunger to start the flow, then remove the plunger and let the formula flow in by gravity</li><li class="fopt"><span class="mk">B</span>Use steady pressure on the plunger throughout to control the rate precisely</li><li class="fopt"><span class="mk">C</span>Infuse the feeding over 5 minutes to reduce the time the infant is disturbed</li><li class="fopt"><span class="mk">D</span>Warm the formula in the microwave to body temperature before the feeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs the nurse to &quot;Pour formula into the barrel of the syringe attached to the feeding tube. To start the flow, give a gentle push with the plunger but then remove the plunger and allow the fluid to flow into the stomach by gravity,&quot; with rate regulated by adjusting the height of the syringe (p. 728).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is flatly forbidden — &quot;Warm the formula to room temperature. Do not microwave!&quot;; (C) compresses a feeding the chapter allows 15 to 30 minutes for, and the rate ceiling is 5 ml every 5 to 10 minutes in premature and very small infants and 10 ml per minute in older infants and children, to prevent nausea and regurgitation.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">enteral tube feeding and placement verification</span><span class="chip t2">general</span></div>
+<div class="stem">45. A gavage feeding has just been completed for a 3-month-old. How should the nurse position the infant?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>With the head elevated 30 to 45 degrees or on the right side for 30 to 60 minutes</li><li class="fopt"><span class="mk">B</span>Flat and supine for 30 minutes to reduce the risk of falls</li><li class="fopt"><span class="mk">C</span>Prone with the head turned to the side for 1 hour</li><li class="fopt"><span class="mk">D</span>Upright and held for 5 minutes, then flat in the crib</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs the nurse to &quot;Position the child with the head elevated 30 to 45 degrees or on the right side for 30 to 60 minutes in the same manner as after any infant feeding to minimize the possibility of regurgitation and aspiration&quot; (p. 728).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) both place the infant in positions the safe-sleep and aspiration rules argue against; note also that the tube is stabilized by taping to the cheek rather than to the nose or forehead, because of possible damage to the nostril.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"informed consent and assent in pediatric care","subtopic":"general","stem":"A nurse is reviewing what makes consent for a child's procedure valid. Which conditions does the chapter require? Select all that apply.","options":["The person must be capable of giving consent, being over the age of majority and competent","The person must receive the information needed to make an intelligent decision","The person must act voluntarily, without force, fraud, deceit, duress, or coercion","The person must sign the consent form in the presence of the performing physician"],"correct":[0,1,2],"sata":true,"why":"The chapter numbers exactly three conditions: capacity, adequate information, and voluntariness, defining the third as acting \"voluntarily when exercising freedom of choice without force, fraud, deceit, duress, or other forms of constraint or coercion\" (p. 678).","trap":"(D) confuses the evidence with the act, and the chapter separates them — \"A signed consent form is the legal document that signifies that the process of informed consent has occurred\" (p. 679); the condition most often dropped from recall is voluntariness, because it reads as too obvious to state.","k":"lgp89hblb6uv"},{"topic":"informed consent and assent in pediatric care","subtopic":"general","stem":"A 9-year-old scheduled for a bone marrow aspiration says he does not want it done. His mother has signed the consent. What is accurate about his role in the decision?","options":["His assent should be sought, but assent is an ethical requirement rather than a legal one","His refusal is legally binding and the procedure cannot proceed","Assent is not sought until adolescence, so his objection has no formal standing","His silence during the explanation would have constituted assent if he had not spoken"],"correct":[0],"sata":false,"why":"The chapter states that assent applies to children \"greater than 7 years with appropriate age, maturity, and psychologic state\" (p. 678) and that \"Assent is not a legal requirement but an ethical one to protect the rights of children\" (p. 679).","trap":"(D) is the misreading the chapter forecloses in one sentence — \"If the child or adolescent merely fails to object, this does not equate assent\" (p. 678); (C) pushes the age cue to adolescence when the chapter's threshold is greater than 7 years.","k":"1g7jz291kq269r"},{"topic":"informed consent and assent in pediatric care","subtopic":"general","stem":"A surgeon has explained a procedure to a child's parents and left the unit. The mother tells the nurse she is not sure what the alternatives were. What should the nurse do?","options":["Notify the surgeon, since explaining the procedure, risks, benefits, and alternatives is the physician's legal responsibility","Explain the alternatives, since reinforcing the explanation is within the nurse's role","Witness the signature and document that the mother had questions","Ask the mother to sign and arrange for the surgeon to answer questions postoperatively"],"correct":[0],"sata":false,"why":"The chapter assigns the roles explicitly: \"It is the physician's legal responsibility to explain the procedure, risks, benefits, and alternatives,\" while the nurse \"witnesses the patient's, parent's, or legal guardian's signature on the consent form and may reinforce what the patient has been told\" (p. 679).","trap":"(B) stretches \"reinforce what the patient has been told\" into supplying information that was never given, which is the boundary this item tests; (C) and (D) both proceed to a signature while a condition of valid consent — adequate information — is unmet.","k":"wbpzsyxytp3s"},{"topic":"informed consent and assent in pediatric care","subtopic":"general","stem":"A 16-year-old arrives at the clinic alone. Which circumstance would make her an emancipated minor under the chapter's account?","options":["She is married","She is 16, which in a few states meets the mature minor threshold","She has a part-time job and contributes to household expenses","She has a signed note from her parents authorizing treatment"],"correct":[0],"sata":false,"why":"The chapter names the emancipating circumstances as \"pregnancy, marriage, high school graduation, independent living, or military service\" (p. 679).","trap":"(B) is the confusable pair — the mature minor exception is recognized in a few states \"for children 14 years and older\" and may require legal action, while emancipation follows from a named circumstance and carries no age; (D) describes consent by proxy, which is a different mechanism entirely.","k":"65xxszjbuwcx"},{"topic":"age-specific preparation for procedures","subtopic":"general","stem":"A nurse is choosing words to explain an upcoming test to a 4-year-old. Which substitution is consistent with the chapter's guidance?","options":["Say \"medicine to help the place in your body show up on a picture\" instead of \"dye\"","Say \"we will fix your heart\" instead of naming the surgery","Say \"the cuff will squeeze your arm tightly\" instead of \"check your pressure\"","Say \"we will put you to sleep\" to describe anesthesia gently"],"correct":[0],"sata":false,"why":"Table 22.1 lists \"dye\" among the words to avoid, with that exact substitution (p. 680); the table's organizing logic is that each avoided word carries a second, frightening meaning.","trap":"(B) uses a word that is on the avoid list — \"fix\" implies the child is broken, and it is the entry most often misread as acceptable because it sounds gentle; (D) is also on the list, because it is what happens to a pet, and the substitution is \"different kind of sleep so you won't feel anything\"; (C) replaces the suggested \"hug your arm\" with a threat.","k":"1jx1t941s5qlde"},{"topic":"age-specific preparation for procedures","subtopic":"general","stem":"A nurse plans to demonstrate an upcoming procedure on a doll for a 2-year-old. Which doll should be used?","options":["A doll from the unit's supply, because the child may believe her own favorite doll is really feeling the procedure","The child's own favorite doll, because familiarity makes the demonstration more meaningful","No doll, because toddlers cannot generalize from a demonstration","A doll chosen by the parents from home, since it will be more comforting"],"correct":[0],"sata":false,"why":"The toddler preparation guidance directs the nurse to \"Use play; demonstrate on doll but avoid child's favorite doll because child may think doll is really\" feeling the procedure (p. 680), which is animism applied to the comfort object.","trap":"(B) and (D) both reach for the familiar object, which is right for almost every other comfort intervention in this chapter and wrong here; note the toddler's session should also be about 5 to 10 minutes and given shortly or immediately before the procedure, not a day ahead.","k":"1hnjx9k1oka0na"},{"topic":"age-specific preparation for procedures","subtopic":"general","stem":"A nurse has drawn blood from a 4-year-old and the bleeding has stopped. Why does the chapter direct applying an adhesive bandage over the puncture site?","options":["Because the preschooler fears that the body's contents will leak out through the opening","Because it prevents contamination of the site with skin flora","Because it marks the site for the next shift","Because bandages are a form of positive reinforcement after a procedure"],"correct":[0],"sata":false,"why":"\"Apply an adhesive bandage over puncture site\" appears under the preschooler's \"Fears of Bodily Harm, Intrusion, and Castration\" (p. 680); the related instruction in the same block is to \"Emphasize that no other body part will be involved.\"","trap":"(B) is a true statement about bandages that does not answer a developmental stem, which is what makes it the strongest distractor; note also the chapter's competing caution that adhesive bandages are an aspiration hazard in young children (p. 706), so the resolution is age and supervision rather than one rule for all.","k":"18hgunfm1bbop"},{"topic":"age-specific preparation for procedures","subtopic":"general","stem":"A 10-month-old cries and struggles as soon as the nurse carrying a syringe enters the room, before anything has been done. How should the nurse interpret this?","options":["Older infants may associate objects, places, or persons with prior painful experiences and resist at the sight of them","This is stranger anxiety, which is unrelated to any previous procedure","Infants do not retain memories of past experiences, so the reaction must be to the nurse's manner","This indicates the infant is in pain from an unrecognized source"],"correct":[0],"sata":false,"why":"The chapter makes \"Memory for Past Experiences\" a developmental characteristic of infancy and builds four interventions on it, beginning \"Realize that older infants may associate objects, places, or persons with prior painful experiences and will cry and resist at the sight of them\" (p. 680).","trap":"(C) is the claim the chapter's own review item keys as wrong, and it is widely believed; the interventions that follow from the correct reading are to keep frightening objects out of view and to perform painful procedures in a separate room rather than in the crib.","k":"1cuulkhcr3m97"},{"topic":"preoperative care and malignant hyperthermia","subtopic":"general","stem":"A 5-month-old is scheduled for elective surgery at 10:00. Her mother asks how late she may breastfeed and whether formula would be different. What should the nurse tell her?","options":["Breast milk requires a 4-hour fast and formula requires 6 hours, because nonhuman milk empties from the stomach like a solid","Both require a 4-hour fast, since both are liquids","Both require a 6-hour fast, since both are milk","Breast milk may be given up to 2 hours before, since it is treated as a clear liquid"],"correct":[0],"sata":false,"why":"Table 22.2 gives clear liquids greater than 2 hours, breast milk 4 hours, and infant formula, nonhuman milk, and a light meal 6 hours, with the footnote explaining that \"Because nonhuman milk is similar to solids in gastric emptying time, the amount ingested must be considered\" (p. 686).","trap":"(B) and (C) collapse the two intervals, which is the most common error; note also that the fasting periods \"apply to all ages\" and are not scaled for a neonate, and that fasting too long is itself a harm — discomfort, headache, dehydration, hypoglycemia, and delayed discharge.","k":"iq6dfy1xdggs0"},{"topic":"preoperative care and malignant hyperthermia","subtopic":"general","stem":"The parents of a child scheduled for surgery mention that an uncle had a dangerous reaction to anesthesia, but say their son had his tonsils out last year with no problem. How should the nurse interpret this?","options":["He may still be susceptible to malignant hyperthermia, because a previous uneventful anesthetic does not exclude it","The uneventful prior surgery effectively rules out susceptibility","The family history is relevant only if the affected relative was a parent or sibling","Susceptibility is determined by preoperative laboratory screening rather than history"],"correct":[0],"sata":false,"why":"The chapter states that a family or previous history of sudden high fever with surgery increases risk and adds directly that \"Children who have successfully undergone prior surgery without adverse effects may still be considered susceptible\" (p. 687).","trap":"(B) is the single most inviting wrong answer in this section, because a clean prior anesthetic feels like the strongest possible reassurance; the disorder is described as \"a potentially fatal pharmacogenetic disorder of muscle metabolism\" triggered by inhaled anesthetics and succinylcholine.","k":"1vrurzm1d2sda0"},{"topic":"preoperative care and malignant hyperthermia","subtopic":"general","stem":"During surgery, end-tidal carbon dioxide begins climbing and the child develops tachycardia and muscle rigidity. Which action comes first?","options":["Immediate discontinuation of the triggering agent","Application of ice packs to the groin, axillae, and neck","Administration of intravenous dantrolene sodium","Transfer to the intensive care unit"],"correct":[0],"sata":false,"why":"The chapter orders treatment as discontinuation of the triggering agent, hyperventilation with 100% oxygen, intravenous dantrolene sodium, cooling measures if hyperthermic, and then intensive care for at least 36 hours (p. 687).","trap":"(C) names the definitive drug and is still not first, which is what this item turns on; (B) leads with cooling, which is step 4 and only if the child is actually hyperthermic — note that the symptom list leads with rising carbon dioxide, so temperature is the later finding despite the name of the disorder.","k":"14vehvgsmjk0i"},{"topic":"preoperative care and malignant hyperthermia","subtopic":"general","stem":"A nurse is preparing three children for surgery: a 6-month-old, a 3-year-old, and a 16-year-old. Which fears does the chapter attach to each?","options":["Stranger anxiety in the infant, separation anxiety in the preschooler, and fear of injury or death in the adolescent","Separation anxiety in the infant, fear of injury in the preschooler, and stranger anxiety in the adolescent","Fear of death in all three, differing only in how it is expressed","Fear of the mask at induction in all three, which is the chapter's single named stress point"],"correct":[0],"sata":false,"why":"The chapter states that children are at higher anesthetic and recovery risk \"because of higher anxiety in the preoperative period associated with stranger anxiety (infants), separation anxiety (toddlers and preschoolers), and fear of injury or death (adolescents)\" (p. 686).","trap":"(D) names a real stress point and makes it the only one, when the chapter lists six — admission, blood tests, preoperative medication, transport to the operating room, the mask at induction, and the postanesthesia care unit; note also that underpants or pajama bottoms are worn into the operating room and removed after induction.","k":"1qbjg2t145q59v"},{"topic":"fever versus hyperthermia and their management","subtopic":"general","stem":"A nurse is explaining why the same intervention does not work for every elevated temperature. What distinguishes fever from hyperthermia?","options":["Fever raises the hypothalamic set point, so antipyretics work; in hyperthermia the set point is normal, so only cooling works","Fever is infectious and hyperthermia is not, which is why only fever responds to antipyretics","Fever exceeds 38 degrees Celsius and hyperthermia exceeds 40 degrees Celsius","Fever is regulated and self-limiting, so neither antipyretics nor cooling are indicated"],"correct":[0],"sata":false,"why":"The chapter defines fever as \"An elevation in set point such that body temperature is regulated at a higher level\" and hyperthermia as \"Body temperature exceeding the set point,\" and states that \"Because the set point is normal in hyperthermia but increased in fever, different approaches must be used\" (pp. 693–694).","trap":"(C) turns a mechanism into a number, and (B) uses etiology where the chapter uses physiology; the practical consequence is stated plainly — \"antipyretics are of no value in hyperthermia because the set point is already normal.\"","k":"1u0fmf812nee7m"},{"topic":"fever versus hyperthermia and their management","subtopic":"general","stem":"A 3-year-old has a fever of 39.2 degrees Celsius and received acetaminophen 15 minutes ago. Her father is applying a cool wet washcloth and she has begun shivering. What should the nurse do?","options":["Stop the cooling measure, and explain that environmental measures are applied about 1 hour after the antipyretic so the set point has come down","Continue the cooling measure, since shivering indicates the temperature is falling","Add a tepid sponge bath, which is the most effective measure for a febrile child","Remove all clothing and lower the room temperature until the shivering stops"],"correct":[0],"sata":false,"why":"The chapter says traditional cooling measures \"are effective if used approximately 1 hour after an antipyretic is given so the set point is lowered,\" and that shivering \"is the body's way of maintaining the elevated set point by producing heat,\" greatly increasing metabolic requirements (p. 693).","trap":"(C) is the single most reliable distractor in the chapter, because tepid sponging for fever is what most people were taught — the chapter calls it ineffective for febrile children and adds the parenthesis that \"these measures are effective for hyperthermia\"; the metabolic cost of shivering is three to five times baseline.","k":"f86afvxqfr4l"},{"topic":"fever versus hyperthermia and their management","subtopic":"general","stem":"The mother of a 2-year-old with a viral illness asks how often she may give acetaminophen and whether aspirin would work better. What should the nurse teach?","options":["Acetaminophen may be given every 4 hours but no more than five times in 24 hours because of hepatotoxicity, and aspirin is not given to children because of its association with Reye syndrome","Acetaminophen may be given every 4 hours around the clock, and aspirin is an acceptable alternative if acetaminophen is unavailable","Ibuprofen should replace both, since it is approved from birth","Antipyretics should be given on a schedule until the temperature normalizes, whatever the child's comfort"],"correct":[0],"sata":false,"why":"The chapter names acetaminophen the preferred drug with that interval and ceiling, states that aspirin \"should not be given to children because of its association in children with influenza virus or chickenpox and Reye syndrome,\" and approves ibuprofen from 6 months (p. 693).","trap":"(B) is six doses, which exceeds the ceiling the hepatotoxicity warning sets; (D) inverts the chapter's endpoint, which is that \"The child's level of discomfort is the best indication for continued treatment\" and that the temperature \"should not be repeatedly measured.\"","k":"tp6sb05mb12q"},{"topic":"fever versus hyperthermia and their management","subtopic":"general","stem":"A 2-year-old had a 3-minute generalized seizure with a fever. The parents ask whether he has brain damage and whether scheduled acetaminophen will prevent another one. What should the nurse tell them?","options":["A simple febrile seizure lasting less than 10 minutes does not cause brain damage, and evidence does not support antipyretics or anticonvulsants to prevent a second one","Brain damage is unlikely, and scheduled antipyretics are the standard preventive measure","A single febrile seizure predicts epilepsy, so anticonvulsant prophylaxis should be started","Recurrence is rare, occurring in fewer than 5% of children"],"correct":[0],"sata":false,"why":"The chapter states that \"Simple febrile seizures lasting less than 10 minutes do not cause brain damage or other debilitating effects\" and that evidence does not support \"antipyretic drugs or anticonvulsants to prevent a second febrile seizure\" (p. 694).","trap":"(B) is the intervention most families expect and most clinicians once gave; (D) misstates the figure, since about 30% to 50% of children have subsequent febrile seizures — the 2% to 5% figure is the incidence of febrile seizures at all, in children 6 months to 5 years.","k":"17ydv0pq7lhv3"},{"topic":"hospital safety, falls, and infection control precautions","subtopic":"general","stem":"A nurse is assigning precautions for newly admitted children. Which conditions require Airborne Precautions? Select all that apply.","options":["Measles","Varicella, including disseminated zoster","Tuberculosis","Invasive Neisseria meningitidis disease","Respiratory syncytial virus in an infant"],"correct":[0,1,2],"sata":true,"why":"Box 22.2 places measles, varicella including disseminated zoster, and tuberculosis under Airborne Precautions, which are for \"serious illnesses transmitted by airborne droplet nuclei\" (p. 696).","trap":"(D) is Droplet and (E) is Contact, and varicella is the member most often misassigned — chickenpox lesions are also a contact hazard, which is why the box notes that precautions \"may be combined for diseases that have multiple routes of transmission\"; the same organism can also split by site, as pharyngeal diphtheria is Droplet while cutaneous diphtheria is Contact.","k":"153q41f1g45lnh"},{"topic":"hospital safety, falls, and infection control precautions","subtopic":"general","stem":"A child is placed on Droplet Precautions. What does the nurse need to know about the room?","options":["Special air handling and ventilation are not required, because droplets do not remain suspended in the air","A negative-pressure room is required, as with any transmission-based precaution","Droplet Precautions replace Standard Precautions for the duration of the illness","Droplets travel about 20 feet, so visitors must remain outside the room"],"correct":[0],"sata":false,"why":"The chapter states that large-particle droplets travel \"usually 3 feet or less but up to 10 feet\" and that \"Because droplets do not remain suspended in the air, special air handling and ventilation are not required to prevent droplet transmission\" (p. 696).","trap":"(C) is the more dangerous error and the chapter forecloses it directly — Transmission-Based Precautions \"are to be used in addition to Standard Precautions\"; (B) applies the airborne requirement, which exists precisely because those particles do stay suspended.","k":"1zf9rl1mjij0j"},{"topic":"hospital safety, falls, and infection control precautions","subtopic":"general","stem":"A nurse is completing fall precautions for a hospitalized 6-year-old who walked independently at home. Which action is correct?","options":["Assist the child with ambulation anyway, and keep dim lights on while she sleeps","Allow independent ambulation to the bathroom, since she walked well before admission","Turn all lights off at night to support normal sleep rhythms","Keep the door closed at night so hallway noise does not wake her"],"correct":[0],"sata":false,"why":"The chapter directs the nurse to \"Assist the child with ambulation even though he or she may have ambulated well before hospitalization,\" to \"Keep lights on at all times, including dim lights while sleeping,\" and to \"Keep the patient's door open unless isolation status prohibits\" (p. 696).","trap":"(B) reasons from the child's baseline rather than from her current state, when postoperative status, sedation, and new lines all appear on the risk list; note the chapter also names the family daybed as a fall hazard, and instructs that patients who have been lying down \"need to get up slowly, sitting on the side of the bed before standing.\"","k":"2xs4g31p9ibu5"},{"topic":"hospital safety, falls, and infection control precautions","subtopic":"general","stem":"A nurse is about to change an infant's wet diaper with ordinary stool. Which action is consistent with the chapter's guidance?","options":["Change the diaper without gloves, since the plastic lining is a sufficient barrier, and perform hand hygiene afterward","Wear gloves for every diaper change without exception","Wear gloves, and skip hand hygiene afterward since the hands stayed covered","Wear a gown and gloves, since all diaper changes involve body substances"],"correct":[0],"sata":false,"why":"The chapter says that for loose or explosive stools the nurse should \"wear gloves and possibly gowns\" but that \"Otherwise, the plastic lining of disposable diapers provides a sufficient barrier between the hands and body substances\" (p. 696), while requiring hand hygiene after glove removal because \"gloves fail to provide complete protection.\"","trap":"(C) is the substitution the chapter rules out, noting that \"The absence of visible leaks does not indicate that gloves are intact\"; (B) and (D) are the over-cautious answers, and the discriminating cue the chapter gives is the character of the stool. Note also its Nursing Alert that the stethoscope is itself a vector.","k":"1blf64b19b4xfl"},{"topic":"restraints and safety devices","subtopic":"general","stem":"A nurse is auditing the unit for restraint use. Which of the following are NOT considered restraints under the chapter's definition? Select all that apply.","options":["An armboard securing a peripheral intravenous line, not tied to the bed","Hand mitts that are not tied down and not paired with a wrist restraint","Crib side rails and a crib dome on an infant's bed","A mummy wrap used only for the duration of a throat examination","Tight tucking of sheets to prevent a child from moving in bed"],"correct":[0,1,2,3],"sata":true,"why":"The chapter excludes an armboard \"unless it is tied down to the bed or immobilizes the entire limb,\" hand mitts \"unless tied down to the bed or used in conjunction with a wrist restraint,\" developmentally age-appropriate safety devices including crib side rails and crib domes, and a mummy wrap \"When used only for the duration of the test or procedure\" (pp. 698–699).","trap":"(E) is on the chapter's own list of restraints, alongside limb, elbow, and vest restraints, and it is the one that does not look like a device; each of the four correct options carries a condition that flips it, which is why this list is worth learning as conditions rather than as items.","k":"1bxt38h1gutkxj"},{"topic":"restraints and safety devices","subtopic":"general","stem":"A 7-year-old requires a behavioral restraint for violent behavior. How often must the order be renewed?","options":["Every 1 hour","Every 2 hours","Every 4 hours","Every 15 minutes"],"correct":[0],"sata":false,"why":"The chapter states that unless state law is more restrictive, behavioral restraints \"must be reordered every 15 minutes for a personal restraint, every 1 hour for children under 9 years of age, and every 2 hours for children 9 to 17 years old; orders for adults 18 and older are required every 4 hours\" (p. 698).","trap":"(D) is the interval for a personal restraint, meaning a physical hold, rather than for a mechanical one; the chapter's own review item shifts these intervals up one step and is keyed wrong, and note separately that an in-person evaluation is required within 1 hour and at least every 24 hours.","k":"ahoqpa1haj3lw"},{"topic":"restraints and safety devices","subtopic":"general","stem":"A nurse is applying wrist restraints to a child. Which technique is correct?","options":["Secure the ties to the stationary bed frame, leave one finger breadth between the skin and the device, and use knots that allow quick release","Secure the ties to the side rails so the restraint moves with the rail","Leave two finger breadths of slack and use a secure knot that will not loosen","Place limb restraints above the level of the intravenous site so the line is protected"],"correct":[0],"sata":false,"why":"The chapter directs that \"Restraints with ties must be secured to the stationary bed or crib frame, not the side rails,\" and describes \"leaving one finger breadth between skin and the device and tying knots that allow for quick release\" (p. 699).","trap":"(B) is the error with the clearest mechanism — lowering the rail then drags the limb; (C) is the adult teaching for some devices and defeats emergency release; (D) reverses the instruction to place limb restraints \"distal to the IV.\"","k":"chy0ks24d0oi"},{"topic":"restraints and safety devices","subtopic":"general","stem":"A restraint order for a child expires in 40 minutes, and the child is now calm, oriented, and cooperative. What should the nurse do?","options":["Discontinue the restraint now, because release occurs as soon as it is safe even if the order timeframe has not expired","Maintain the restraint until the order expires, then reassess","Maintain the restraint and obtain a new order for the remaining time","Loosen the restraint but leave it applied until the provider evaluates the child"],"correct":[0],"sata":false,"why":"The chapter states that \"Discontinuation of restraints should occur as soon as it is safe, even if the order timeframe has not expired\" (p. 698), and separately that the nurse \"is responsible for selecting the least restrictive type of restraint\" and must document alternatives considered first.","trap":"(B) treats the order as a duration rather than a ceiling, which is the most common misreading; the alternatives the chapter names — bringing the child to the nurses' station, diversional activities such as music, and parental participation — are what should have been tried and documented before the restraint went on.","k":"18yu3gb1fu8nt"},{"topic":"specimen collection and blood sampling","subtopic":"general","stem":"A nurse is performing a heelstick on a 3-day-old. Which technique prevents necrotizing osteochondritis of the calcaneus?","options":["Puncture no deeper than 2 mm, at the outer aspect of the heel, using an automatic lancet device","Puncture no deeper than 1 mm, at the inner aspect of the heel","Puncture at the center of the heel pad, where the tissue is thickest","Use a surgical blade for a controlled incision depth"],"correct":[0],"sata":false,"why":"The chapter states that \"To avoid osteochondritis, the puncture should be no deeper than 2 mm and should be made at the outer aspect of the heel,\" and that an automatic device \"delivers a more precise puncture depth and is less painful than using a manual lancet\" (p. 706).","trap":"(B) is the chapter's own review-item distractor, wrong on both numbers; (D) is an absolute contraindication — \"A surgical blade of any kind is contraindicated\" — and the long-term consequence of repeated trauma to the walking surface is fibrosis and scarring that interferes with locomotion.","k":"juittl1lmrlsn"},{"topic":"specimen collection and blood sampling","subtopic":"general","stem":"A nurse is preparing to draw blood from a school-age child and wants to minimize pain. Which measures does the chapter endorse? Select all that apply.","options":["Apply EMLA cream if more than 60 minutes are available, or LMX cream if only 30 minutes are available","Use the smallest-gauge needle that permits free flow of blood","Keep all equipment out of sight until it is used","Limit attempts to two operators with two attempts each before escalating","Have the child steady the finger firmly against the bedside table during a fingerstick"],"correct":[0,1,2,3],"sata":true,"why":"The Atraumatic Care guidelines specify the EMLA and LMX application times, the smallest-gauge needle, keeping equipment out of sight, and a two-try-only policy meaning two operators with two attempts each, after which alternative access should be considered (p. 706).","trap":"(E) reverses an instruction in the same box — press the lancet device lightly against the skin and \"avoid steadying the finger against a hard surface\"; note also that the whole finger is massaged to maintain flow and the tip is never squeezed, because squeezing hemolyzes the sample and dilutes it with tissue fluid.","k":"jlun0a95an1k"},{"topic":"specimen collection and blood sampling","subtopic":"general","stem":"A nurse plans to apply EMLA cream before a newborn's heelstick. What should the nurse know?","options":["EMLA has been found to be no more effective than placebo for heelsticks, while breastfeeding during the procedure has been more effective than sucrose in some studies","EMLA is the most effective option for heelsticks and should be applied 30 minutes beforehand","EMLA is contraindicated in preterm infants at any dose","Sucrose is more effective than breastfeeding and should be given 30 minutes before the stick"],"correct":[0],"sata":false,"why":"The chapter states that EMLA, \"Although safe for use in preterm infants when applied correctly, has been found to be no more effective than placebo in preventing pain during heelsticks,\" and that \"Breastfeeding during a neonatal heelstick is effective in reducing pain and has been found to be more effective than sucrose in some studies\" (p. 706).","trap":"(D) inverts the comparison and the timing, since sucrose is given as 2 ml to the tongue 2 minutes before the procedure; kangaroo care is the other endorsed measure and begins 10 to 15 minutes before the stick rather than afterward as comfort.","k":"6ohlsl1hrwbwz"},{"topic":"specimen collection and blood sampling","subtopic":"general","stem":"After an antecubital venipuncture on a 7-year-old, what should the nurse have the child do?","options":["Hold pressure with the arm extended, because flexing the elbow increases bruising","Flex the elbow firmly to compress the site","Raise the arm above the head for 2 minutes","Apply a cold compress immediately to prevent hematoma"],"correct":[0],"sata":false,"why":"The chapter directs applying pressure with the arm extended after an antecubital draw, since flexing increases bruising, and adds that if a hematoma does develop, \"applying warm compresses to the ecchymotic area increases circulation, helps remove extravasated blood, and decreases pain\" (p. 706).","trap":"(B) is standard adult practice and is what most learners will do by reflex; (D) reverses the temperature, since the chapter names warm compresses rather than cold for an established bruise. Note also the volume ceiling of 3 ml/kg in 24 hours, and less if the child is ill.","k":"m2zo78ryrlc2"},{"topic":"oral and intramuscular medication administration","subtopic":"general","stem":"A parent asks how to measure 3 ml of an antibiotic suspension at home. What should the nurse recommend?","options":["A calibrated oral syringe, which is the most accurate device for small amounts","A household teaspoon, which families find easiest to use consistently","A dropper, emptied into a medicine cup for a more exact reading","A molded plastic medicine cup, which is calibrated for pediatric doses"],"correct":[0],"sata":false,"why":"The chapter states that \"The most accurate means for measuring small amounts of medication is the plastic disposable calibrated oral syringe,\" and the American Academy of Pediatrics position that \"Syringes are the preferred device for dosing accuracy,\" with liquid medications \"dosed only in milliliters and never in teaspoons or other nonmetric units\" (p. 709).","trap":"(C) compounds two errors the chapter names separately — the dropper \"varies to a greater extent than the teaspoon or measuring cup,\" and \"Emptying dropper contents into a medicine cup invites additional error\" because liquid clings to the sides; (D) fails because families in one study \"could not measure a 5-ml dose within 0.5 ml.\"","k":"11e3xab1jubr7t"},{"topic":"oral and intramuscular medication administration","subtopic":"general","stem":"A toddler refuses a bitter liquid medication. Which approach does the chapter recommend?","options":["Mix it with about 5 ml of a sweet-tasting substance such as jam or applesauce, avoiding essential food items","Mix it into the child's full bottle of formula so the whole dose is taken","Mix it into the child's usual milk, which masks bitterness best","Add it to a full serving of the child's favorite food so the taste is diluted"],"correct":[0],"sata":false,"why":"The Atraumatic Care guidance is to \"Mix the drug with a small amount (about 5 ml) of a sweet-tasting substance, such as flavored syrups, jam, fruit purees, sherbet, or applesauce; avoid essential food items because the child may later refuse to eat them\" (p. 709).","trap":"(B) and (C) both use dairy, which the same box rules out \"due to risk of interfering with absorption,\" and (B) additionally risks an incomplete dose if the bottle is not finished; (D) violates the small-amount rule and the essential-food rule at once.","k":"1cm3h4f1hdsctp"},{"topic":"oral and intramuscular medication administration","subtopic":"general","stem":"A nurse is teaching a new graduate to give intramuscular injections to children. Which principles should be included? Select all that apply.","options":["Immunizations at the ventrogluteal site have been found to have fewer local and systemic reactions","Placing the child supine on a parent's lap makes distraction and prevention of unexpected movement easier for the ventrogluteal site","The deltoid produces less pain and fewer side effects from the injectate than the vastus lateralis","Aspiration before an intramuscular vaccine is always required","Usually 2 ml is the maximum volume for a single site in small children and older infants"],"correct":[0,1,2],"sata":true,"why":"The chapter states each of the three keyed points directly, and reports that aspiration \"is no longer recommended by the Centers for Disease Control and Prevention, World Health Organization, American Academy of Pediatrics, or Immunization Action Coalition\" (pp. 711–712).","trap":"(D) fails on the word always — aspiration may still be indicated for medications such as penicillin into larger muscle groups, so the absolute is what makes it wrong; (E) doubles the narrative limit, which is \"Usually 1 ml is the maximum volume that should be administered in a single IM site to small children and older infants.\"","k":"138090wtjeibe"},{"topic":"oral and intramuscular medication administration","subtopic":"general","stem":"A nurse must give an intramuscular injection to a 2-month-old. What is the maximum volume for a single site?","options":["0.5 ml, because the muscles of small infants may not tolerate more","1 ml, which is the pediatric maximum at any age","2 ml, as given in the site table for the vastus lateralis","There is no volume limit provided the muscle is large enough"],"correct":[0],"sata":false,"why":"The chapter states that \"The muscles of small infants may not tolerate more than 0.5 ml,\" while 1 ml is the usual maximum \"to small children and older infants\" (p. 711).","trap":"(C) quotes Table 22.5's \"0.5 ml [infant] to 2.0 ml [child]\" range and applies its upper figure to an infant; the two figures are one page apart and both are the chapter's, but a stem naming an infant takes the narrative limit. The governing principle is that \"the larger the amount of solution, the larger the muscle at the injection site must be.\"","k":"1tvfts01wxm2hm"},{"topic":"oral and intramuscular medication administration","subtopic":"general","stem":"A nurse is selecting an intramuscular site for a 9-month-old receiving an immunization. Which site is correct?","options":["The vastus lateralis, which is the site recommended for infants by the major immunization authorities","The deltoid, which produces the least pain and fewest local reactions","The dorsogluteal, which has the largest muscle mass","Any of the three, since the site table lists no age restrictions"],"correct":[0],"sata":false,"why":"The chapter states that \"The IM immunization site recommended by the Centers for Disease Control and Prevention, World Health Organization, and American Academy of Pediatrics for infants is the anterolateral thigh or vastus lateralis\" (p. 711).","trap":"(B) states a true advantage of the deltoid and ignores its age floor — it \"can be used for small volumes of fluid in children as young as 18 months of age\"; (C) names a site the chapter rules out under 10 years and does not include in its site table at all, except as the comparison the ventrogluteal beats on subcutaneous thickness.","k":"1fqncpk1pqotfy"},{"topic":"peripheral intravenous complications","subtopic":"general","stem":"A vesicant medication has leaked into the tissue around a child's intravenous catheter. How is this classified, and what distinguishes it?","options":["Extravasation, because the agent is a vesicant; infiltration is the same event with a nonvesicant solution","Infiltration, because the volume is small; extravasation refers to larger leaks","Phlebitis, because any leakage inflames the vessel wall","Extravasation, because it is defined by the degree of tissue swelling rather than the drug"],"correct":[0],"sata":false,"why":"The chapter separates the two by the agent: infiltration is a nonvesicant solution or medication into the tissue, while extravasation involves a vesicant, and \"A vesicant or sclerosing agent causes varying degrees of cellular damage when even minute amounts escape into surrounding tissue\" (p. 722).","trap":"(B) and (D) both define extravasation by size or severity, which is the intuitive and wrong reading — even minute amounts of a vesicant cause damage, which is exactly why the drug rather than the volume names the event.","k":"15bqprd1j1g4cj"},{"topic":"peripheral intravenous complications","subtopic":"general","stem":"A nurse observes blanching, edema, and streaking along the vein at a child's intravenous site during an infusion. What is the first action?","options":["Stop the infusion","Notify the provider","Elevate the extremity","Apply the ordered antidote"],"correct":[0],"sata":false,"why":"The chapter's Nursing Alert gives the sequence: \"immediately stop the infusion, elevate the extremity, notify the provider, and initiate the ordered treatment as soon as possible\" (p. 722).","trap":"(B) is the action nurses reach for under pressure, and it keeps the vesicant flowing while the call is placed; (C) and (D) are both real steps in the wrong position. The signs the alert lists are erythema, pain, edema, blanching, streaking along the vein, and a darkened area at the insertion site.","k":"1kulcm11kmpcaj"},{"topic":"peripheral intravenous complications","subtopic":"general","stem":"A nurse obtains a good blood return from a 4-month-old's peripheral catheter and concludes the line is patent. What should the nurse know?","options":["A good blood return does not always indicate an intact line in small infants, and dependent areas such as the palm, the underside of the extremity, and behind the ears must be inspected","A good blood return reliably confirms patency at any age","Absence of a blood return always indicates infiltration","Infiltration is easier to detect in infants than in adults because their tissues are thinner"],"correct":[0],"sata":false,"why":"The chapter states that \"A good blood return, or lack thereof, is not always an indicator of infiltration in small infants\" and directs that \"Dependent areas, such as the palm and undersides of the extremity or the occiput and behind the ears, should be examined because infiltrations in these areas may not be readily visible\" (p. 722).","trap":"(D) inverts the chapter's explanation, which is that \"The increased amount of subcutaneous fat and the amount of tape used to secure the catheter often obscure the early signs of infiltration\"; note also the instruction never to place the identification band on the same extremity as the intravenous site, because it can act as a tourniquet.","k":"12a5vfghtdyee"},{"topic":"peripheral intravenous complications","subtopic":"general","stem":"A nurse notes erythema at a child's intravenous insertion site. The child denies pain. How should this be interpreted?","options":["Erythema is the initial sign of phlebitis, and pain may or may not be present","Without pain, the finding is not phlebitis and the line may be left in place","The finding indicates catheter-related bloodstream infection until proven otherwise","Phlebitis is diagnosed only when a palpable cord is present along the vein"],"correct":[0],"sata":false,"why":"The chapter states that \"The initial sign of phlebitis is erythema (redness) at the insertion site\" and adds the caution that \"Pain may or may not be present\" (p. 722).","trap":"(B) waits for a sign that may never come; (C) overcalls it, since the chapter describes phlebitis as \"largely a mechanical rather than infectious process\" while still naming a bacterial type alongside mechanical and chemical causes.","k":"1rclos11w6hvz3"},{"topic":"eye, ear, and nose medication administration","subtopic":"general","stem":"A nurse is instilling ear drops in a 2-year-old. How should the auditory canal be straightened?","options":["Gently pull the pinna downward and straight back","Gently pull the pinna upward and back","Pull the pinna straight out from the head","No manipulation is needed before instillation in young children"],"correct":[0],"sata":false,"why":"The chapter directs that \"For children younger than 3 years of age, the external auditory canal is straightened by gently pulling the pinna downward and straight back,\" while \"The pinna is pulled upward and back in children older than 3 years of age\" (p. 724).","trap":"(B) is the adult and older-child technique and is the reflex answer, and it does not straighten a young child's canal; the cutoff is 3 years, not 4 and not 5. After instillation the child lies on the unaffected side so the treated ear stays up.","k":"3hnmjtvpb4nb"},{"topic":"eye, ear, and nose medication administration","subtopic":"general","stem":"A child is ordered both eye drops and eye ointment. What is the correct sequence?","options":["Give the drops first, wait 3 minutes, then apply the ointment","Apply the ointment first so it holds the drops in place","Give them simultaneously to reduce the number of interventions","Give the drops first and apply the ointment immediately afterward"],"correct":[0],"sata":false,"why":"The chapter's Drug Alert states, \"If both eye ointment and drops are ordered, give drops first, wait 3 minutes, and then apply the ointment to allow each drug to work\" (p. 724).","trap":"(B) blocks the drops from reaching the conjunctiva, and (D) drops the interval that lets each drug act. Note also that both preparations go into the conjunctival sac formed by pulling the lower lid down, never directly onto the eyeball, and ointment is applied inner canthus outward.","k":"1ow1ibjgdfurd"},{"topic":"eye, ear, and nose medication administration","subtopic":"general","stem":"After instilling eye drops in a 5-year-old, the nurse wants to keep the child from tasting the medication. What should the nurse do?","options":["Apply finger pressure to the lacrimal punctum at the inner aspect of the eyelid for 1 minute","Have the child rinse her mouth with water immediately","Wipe the eye from the outer canthus inward","Have the child keep the eye open until the drop is absorbed"],"correct":[0],"sata":false,"why":"The chapter's Nursing Tip directs the nurse to \"Apply finger pressure to the lacrimal punctum at the inner aspect of the eyelid for 1 minute to prevent drainage of medication to the nasopharynx\" and the tasting of the drug (p. 723).","trap":"(C) reverses the wiping direction, which runs inner canthus outward to prevent contaminating the other eye; (D) reverses the instruction to \"Gently close the eyelids to prevent expression of the medication.\" The parallel tip for ear drops is to warm refrigerated medication to room temperature, which prevents vertigo.","k":"12rjo0e6k6dp0"},{"topic":"eye, ear, and nose medication administration","subtopic":"general","stem":"A nurse is giving nose drops to a 3-year-old who complains of a choking feeling. Which positioning prevents this?","options":["Position the child with the head hyperextended over the edge of the bed or a pillow, and keep that position for 1 minute afterward","Sit the child upright with the chin tucked so the drops run forward","Place the child prone with the head turned to the side","Position the child supine with the head flat and neutral"],"correct":[0],"sata":false,"why":"The chapter directs that \"Unpleasant sensations associated with medicated nose drops are minimized when care is taken to position the child with the head extended well over the edge of the bed or pillow,\" and that after instillation \"the child should remain in position for 1 minute to allow the drops to come in contact with the nasal surfaces\" (pp. 723–724).","trap":"(B) and (D) both send the drops down the throat, producing precisely the strangling sensation the position exists to prevent; the same tip lists hyperextension as the route-specific measure for the nose, just as punctum pressure is for the eye and warming is for the ear.","k":"o4tlklchv8rv"},{"topic":"enteral tube feeding and placement verification","subtopic":"general","stem":"A nurse must verify nasogastric tube placement before each feeding. Which methods does the chapter support? Select all that apply.","options":["Testing the pH of the aspirate, where a value of 5 or less supports gastric placement","Visual inspection of the aspirate color","Carbon dioxide monitoring to determine whether the tube is in the respiratory tract","Measuring the external tube length against the measurement recorded at insertion","Gastric auscultation used by itself"],"correct":[0,1,2,3],"sata":true,"why":"The chapter states that a pH of 5 or less supports gastric location, that aspirate colors are specific to the intended location though less accurate than pH, that carbon dioxide monitoring reliably detects respiratory placement, and that the external length should be measured at insertion and rechecked before each feeding (pp. 726, 728).","trap":"(E) is the method that cannot stand alone — \"Auscultation as a verification tool is reliable only 60% to 80% of the time and should not be used without additional methods\" — and the chapter notes it \"is still widely used by nurses,\" which is why it is the distractor here rather than an outright absurdity.","k":"l59zlzsh8ort"},{"topic":"enteral tube feeding and placement verification","subtopic":"general","stem":"A nurse aspirates fluid from a child's feeding tube and obtains a pH of 7. What does this indicate?","options":["A pH greater than 5 does not reliably predict correct distal tip location and may indicate respiratory or esophageal placement or acid-suppressing medication","The tube is definitively in the respiratory tract and must be removed at once","The tube is correctly placed, since gastric pH is normally neutral in children","The result is uninterpretable and radiography is the only remaining option"],"correct":[0],"sata":false,"why":"The chapter states that \"A pH greater than 5 does not reliably predict correct distal tip location\" and that \"This may indicate respiratory or esophageal placement or the presence of medications to suppress acid secretion\" (p. 726).","trap":"(B) overreads a nonspecific result, and (D) reaches for radiography when the chapter's own conclusion is that combining verification methods raises accuracy to 97% to 99%, close to radiography's 99%, and does so without repeated radiation exposure.","k":"1jyvfnhfja7e3"},{"topic":"enteral tube feeding and placement verification","subtopic":"general","stem":"A nurse is giving a gavage feeding to a 6-week-old infant. Which technique is correct?","options":["Give a gentle push with the plunger to start the flow, then remove the plunger and let the formula flow in by gravity","Use steady pressure on the plunger throughout to control the rate precisely","Infuse the feeding over 5 minutes to reduce the time the infant is disturbed","Warm the formula in the microwave to body temperature before the feeding"],"correct":[0],"sata":false,"why":"The chapter directs the nurse to \"Pour formula into the barrel of the syringe attached to the feeding tube. To start the flow, give a gentle push with the plunger but then remove the plunger and allow the fluid to flow into the stomach by gravity,\" with rate regulated by adjusting the height of the syringe (p. 728).","trap":"(D) is flatly forbidden — \"Warm the formula to room temperature. Do not microwave!\"; (C) compresses a feeding the chapter allows 15 to 30 minutes for, and the rate ceiling is 5 ml every 5 to 10 minutes in premature and very small infants and 10 ml per minute in older infants and children, to prevent nausea and regurgitation.","k":"1t63wsv1mi954l"},{"topic":"enteral tube feeding and placement verification","subtopic":"general","stem":"A gavage feeding has just been completed for a 3-month-old. How should the nurse position the infant?","options":["With the head elevated 30 to 45 degrees or on the right side for 30 to 60 minutes","Flat and supine for 30 minutes to reduce the risk of falls","Prone with the head turned to the side for 1 hour","Upright and held for 5 minutes, then flat in the crib"],"correct":[0],"sata":false,"why":"The chapter directs the nurse to \"Position the child with the head elevated 30 to 45 degrees or on the right side for 30 to 60 minutes in the same manner as after any infant feeding to minimize the possibility of regurgitation and aspiration\" (p. 728).","trap":"(B) and (C) both place the infant in positions the safe-sleep and aspiration rules argue against; note also that the tube is stabilized by taping to the cheek rather than to the nose or forehead, because of possible damage to the nostril.","k":"rt7meh8pybk3"}];
+const TITLE = "Chapter 22 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 22";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

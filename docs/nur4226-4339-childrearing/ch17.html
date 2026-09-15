@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 17 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 17</div><h1>Chapter 17 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">the three phases of adolescence</span><span class="chip t2">general</span></div>
+<div class="stem">1. A 16-year-old shows the greatest push for emancipation, a peer-dominant orientation, and what the parents describe as the low point of their relationship with him. Which phase of adolescence does this describe?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>Early adolescence, ages 11 to 14 years</li><li class="fopt right"><span class="mk">&#10003;</span>Middle adolescence, ages 15 to 17 years</li><li class="fopt"><span class="mk">C</span>Late adolescence, ages 18 to 22 years</li><li class="fopt"><span class="mk">D</span>Preadolescence, ending at the thirteenth birthday</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The three phases are early adolescence at 11 to 14 years, middle at 15 to 17 years, and late at 18 to 22 years. Early adolescence is dominated by the physical changes of puberty and the emotional reaction to them; middle adolescence brings the shift to a peer-dominant orientation, experimentation, the greatest push for emancipation, and the low point in the parent-child relationship; late adolescence brings full maturation, stable intimate relationships, and independent management of health care.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is chosen by anyone who associates conflict with the onset of adolescence. The turbulence peaks in the middle phase rather than at the beginning, when the adolescent's attention is still largely on the physical changes themselves.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the three phases of adolescence</span><span class="chip t2">general</span></div>
+<div class="stem">2. A nurse is teaching about self-esteem across adolescence. Which pattern does the chapter describe?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Self-esteem falls in early adolescence and rises in late adolescence</li><li class="fopt"><span class="mk">B</span>Self-esteem improves steadily throughout adolescence</li><li class="fopt"><span class="mk">C</span>Self-esteem is highest in early adolescence and declines thereafter</li><li class="fopt"><span class="mk">D</span>Self-esteem is stable across all three phases</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 17.1 states both directions explicitly: self-esteem falls in early adolescence and rises in late adolescence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the reassuring trajectory adults expect as a teenager matures, and it misses the early dip entirely. That dip coincides with the phase in which the physical changes of puberty and the emotional reaction to them dominate, which is what makes it worth knowing.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">the three phases of adolescence</span><span class="chip t2">general</span></div>
+<div class="stem">3. A 12-year-old has recently become preoccupied with her changing body and emotionally reactive to comments about her appearance, but still relies mainly on her family rather than peers. Which phase does this fit?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Early adolescence, in which the physical changes of puberty and the emotional reaction to them predominate</li><li class="fopt"><span class="mk">B</span>Middle adolescence, in which peer orientation predominates</li><li class="fopt"><span class="mk">C</span>Late adolescence, in which intimate relationships stabilize</li><li class="fopt"><span class="mk">D</span>School age, since peer orientation has not yet emerged</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Early adolescence, at 11 to 14 years, is characterized by the physical changes of puberty and the emotional reaction to them. The shift to a peer-dominant orientation belongs to middle adolescence, and stable intimate relationships with independent management of health care belong to late adolescence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reads continued family orientation as evidence the adolescent phase has not begun. The marker of early adolescence is the pubertal change and the response to it, not the point at which peers displace parents — that displacement is the *next* phase.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroendocrine events of puberty</span><span class="chip t2">general</span></div>
+<div class="stem">4. A nursing student asks what actually triggers puberty. Which explanation is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The pituitary gland and gonads are capable of mature function at any age; what changes at puberty is that the hypothalamus loses its negative sensitivity, releasing gonadotropin-releasing hormone from inhibition</li><li class="fopt"><span class="mk">B</span>The pituitary gland matures at puberty and becomes able to secrete gonadotropins for the first time</li><li class="fopt"><span class="mk">C</span>The gonads mature first and then signal the hypothalamus</li><li class="fopt"><span class="mk">D</span>Puberty begins when the adrenal glands first produce androgens in adolescence</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;The pituitary gland and gonads are capable of mature function… at any age.&quot; What changes is that &quot;the hypothalamus loses this negative sensitivity,&quot; which releases gonadotropin-releasing hormone from inhibition and begins the cascade.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) describes maturation of a gland that was already competent, which is the intuitive but incorrect model. The change is the removal of an inhibition rather than the acquisition of a capability, and that distinction is what the chapter states in its own sentence.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroendocrine events of puberty</span><span class="chip t2">general</span></div>
+<div class="stem">5. A nurse is explaining the roles of follicle-stimulating hormone and luteinizing hormone in an adolescent girl. Which description is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Follicle-stimulating hormone drives follicle growth and estrogen production, while luteinizing hormone drives ovulation, corpus luteum formation, and progesterone production</li><li class="fopt"><span class="mk">B</span>Luteinizing hormone drives follicle growth and estrogen, while follicle-stimulating hormone drives ovulation</li><li class="fopt"><span class="mk">C</span>Both hormones act only on the adrenal cortex in girls</li><li class="fopt"><span class="mk">D</span>Follicle-stimulating hormone produces progesterone directly</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In girls, follicle-stimulating hormone stimulates follicle growth and estrogen production, while luteinizing hormone triggers ovulation, corpus luteum formation, and progesterone production.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) swaps the two hormones, which is the commonest inversion in this material because the name &quot;follicle-stimulating&quot; is the only mnemonic anchoring either one. Luteinizing hormone is named for the corpus luteum it produces, which is the anchor for the other half.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroendocrine events of puberty</span><span class="chip t2">general</span></div>
+<div class="stem">6. A nurse is explaining the same two hormones in an adolescent boy. Which description is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Luteinizing hormone stimulates the Leydig cells to produce testosterone, and follicle-stimulating hormone, together with luteinizing hormone, drives sperm production</li><li class="fopt"><span class="mk">B</span>Follicle-stimulating hormone stimulates the Leydig cells to produce testosterone</li><li class="fopt"><span class="mk">C</span>Luteinizing hormone has no role in the male</li><li class="fopt"><span class="mk">D</span>Testosterone is produced by the pituitary gland in response to gonadotropin-releasing hormone</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>In boys, luteinizing hormone stimulates the Leydig cells to produce testosterone, and follicle-stimulating hormone acting with luteinizing hormone drives sperm production.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error of the previous item, carried across sexes. The same two hormones act in both sexes with different targets, so an item can test either sex and the distractor is always the other hormone's job.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroendocrine events of puberty</span><span class="chip t2">general</span></div>
+<div class="stem">7. A nurse is asked why girls typically stop growing earlier than boys. Which explanation does the chapter give?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Estrogen stimulates skeletal growth at low levels and inhibits it at high levels, so rising estrogen eventually closes the growth process</li><li class="fopt"><span class="mk">B</span>Estrogen inhibits skeletal growth at every concentration</li><li class="fopt"><span class="mk">C</span>Girls produce less growth hormone than boys throughout puberty</li><li class="fopt"><span class="mk">D</span>Testosterone has no effect on skeletal growth</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Estrogen stimulates skeletal growth at low levels and inhibits it at high levels. This dose-dependent reversal explains why girls stop growing sooner, and the chapter states it in a single sentence.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) takes half the relationship and generalizes it, which loses the mechanism entirely — a hormone that only inhibited growth could not also have driven the growth spurt that preceded the inhibition.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neuroendocrine events of puberty</span><span class="chip t2">general</span></div>
+<div class="stem">8. A 12-year-old girl has just had her first menstrual period, and a 13-year-old boy has had a first ejaculation. Both families ask about fertility. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>An adolescent should be considered potentially fertile with a first menstrual period or a first ejaculation</li><li class="fopt"><span class="mk">B</span>Girls are not fertile for about a year after menarche, because ova are not yet mature enough to be released</li><li class="fopt"><span class="mk">C</span>Boys are not fertile until viable sperm appear months after first ejaculation</li><li class="fopt"><span class="mk">D</span>Fertility cannot be assumed until Tanner stage 5 is reached</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states the clinical rule flatly: &quot;an adolescent should be considered potentially fertile with a first menstrual period or a first ejaculation.&quot; It also notes that at menarche &quot;ova still do not generally mature enough to be released,&quot; and that viable sperm follow first ejaculation.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) both quote the chapter's own physiology correctly and draw the wrong clinical conclusion from it. The physiology is deliberately the distractor here: the counseling rule is set at the earliest possible point rather than at the average one, because an individual adolescent's timing cannot be known in advance.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual maturation and its variations</span><span class="chip t2">general</span></div>
+<div class="stem">9. An 11-year-old girl's mother reports that the first change she noticed was a small firm lump under one nipple. Which statement is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The first visible change in girls is nipple and areolar change with a breast bud, called thelarche; pubarche typically follows, although many girls have underarm or pubic hair before breast development</li><li class="fopt"><span class="mk">B</span>Pubic hair development always precedes breast development in girls</li><li class="fopt"><span class="mk">C</span>A unilateral breast bud is abnormal and requires evaluation</li><li class="fopt"><span class="mk">D</span>Menarche is the first sign of puberty in girls</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The first visible change in girls is nipple and areolar change with a breast bud, or thelarche. Pubarche &quot;typically follows,&quot; but &quot;many have strands of underarm and/or pubic hair before breast development.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is too absolute, and the chapter deliberately qualifies the sequence rather than fixing it. The usual order is thelarche then pubarche, but reversal is common enough that the book names it, so an option asserting an invariable order is wrong.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual maturation and its variations</span><span class="chip t2">general</span></div>
+<div class="stem">10. A 12-year-old boy is being assessed for the earliest signs of puberty. Which finding appears first?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Testicular enlargement, accompanied by thinning, reddening, and increasing looseness of the scrotum</li><li class="fopt"><span class="mk">B</span>Voice change</li><li class="fopt"><span class="mk">C</span>Facial hair</li><li class="fopt"><span class="mk">D</span>Pubic hair</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The first pubescent change in boys is testicular enlargement &quot;accompanied by thinning, reddening, and increasing looseness of the scrotum.&quot; Voice change and facial hair are mid-to-late events.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are the changes families notice and comment on, which is why they feel like the beginning. They arrive well after the process has started, so an assessment waiting for them would miss the first year or more of puberty.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual maturation and its variations</span><span class="chip t2">general</span></div>
+<div class="stem">11. A 13-year-old girl and her mother are worried about a clear-to-white vaginal discharge that has been present for several months without itching, odor, or dysuria. What is the nurse's best response?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Reassure them that physiologic leukorrhea is normal and a sign that her body is maturing</li><li class="fopt"><span class="mk">B</span>Obtain a culture and begin empiric treatment for candidiasis</li><li class="fopt"><span class="mk">C</span>Advise douching to reduce the discharge</li><li class="fopt"><span class="mk">D</span>Refer for gynecologic evaluation of possible infection</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Girls or parents &quot;may be concerned that this vaginal discharge is a sign of infection.&quot; The nursing response is reassurance that &quot;the discharge is normal and a sign that their body is maturing.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (D) both treat a normal maturational finding as pathology, and the stem gives the discriminators that rule infection out — no itching, odor, or dysuria. Physiologic leukorrhea is a reassurance item, not a workup item.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual maturation and its variations</span><span class="chip t2">general</span></div>
+<div class="stem">12. A 14-year-old boy is distressed by tender breast tissue that developed over the past several months. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Gynecomastia occurs in up to 70% of boys in midpuberty and usually disappears within 2 years, although it may persist in obese individuals; reassurance is appropriate</li><li class="fopt"><span class="mk">B</span>This finding requires endocrine referral in all cases</li><li class="fopt"><span class="mk">C</span>Gynecomastia in adolescent boys is rare and always pathologic</li><li class="fopt"><span class="mk">D</span>The tissue should be expected to persist permanently</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Gynecomastia affects up to 70% of boys, &quot;disappears within 2 years,&quot; and &quot;may persist in obese individuals.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) medicalizes a finding that occurs in most boys and resolves on its own, and the referral itself communicates to an already self-conscious adolescent that something is wrong. The prevalence figure is what makes reassurance defensible rather than dismissive.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual maturation and its variations</span><span class="chip t2">general</span></div>
+<div class="stem">13. A nurse reviews thresholds for abnormal pubertal timing. Which statements are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Precocious puberty is the appearance of secondary sexual characteristics before 8 years of age in either sex</li><li class="fopt right"><span class="mk">&#10003;</span>Delayed puberty in girls includes no breast development by age 13</li><li class="fopt right"><span class="mk">&#10003;</span>Delayed puberty in girls includes no menarche by age 15</li><li class="fopt right"><span class="mk">&#10003;</span>Delayed puberty in boys includes no testicular or scrotal change by age 14</li><li class="fopt"><span class="mk">E</span>Precocious puberty is defined as onset before age 10 in girls and 12 in boys</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Precocious puberty is the appearance of secondary sexual characteristics before 8 years old in both sexes. Delayed puberty in girls is no breast development by 13 or no menarche by 15; in boys it is no testicular or scrotal change by 14.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one option from the wrong side of the sort, and it substitutes the *average* ages of pubertal onset for the *abnormal* threshold. Those average figures are real — from Chapter 15, puberty generally begins at 10 in girls and 12 in boys — which is exactly what makes them a convincing wrong answer here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent physical growth patterns</span><span class="chip t2">general</span></div>
+<div class="stem">14. A 12-year-old girl has just experienced her peak height velocity. Her mother asks how much more she will grow. Which response is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Peak height velocity in girls occurs at about 12 years, 6 to 12 months before menarche, and few girls grow more than 5 cm, about 2 inches, after menarche</li><li class="fopt"><span class="mk">B</span>Peak height velocity follows menarche by about a year in girls</li><li class="fopt"><span class="mk">C</span>Most girls gain another 15 cm after menarche</li><li class="fopt"><span class="mk">D</span>Growth in girls continues at the same rate until age 18</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Peak height velocity in girls occurs at about 12 years, 6 to 12 months before menarche, and &quot;Few girls grow more than 5 cm (2 inches) after menarche.&quot; Growth in height usually ceases 2 to 2½ years after menarche.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) inverts the order of the two events, which matters clinically because it changes what a parent should expect. Menarche is a late marker in the growth sequence rather than an early one, so a girl who has begun menstruating has already completed most of her linear growth.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent physical growth patterns</span><span class="chip t2">general</span></div>
+<div class="stem">15. A 14-year-old boy is at his peak height velocity. Where does this fall relative to his other pubertal changes?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Peak height velocity in boys occurs at about 14 years, after testicular and penile growth and after axillary and mature pubic hair</li><li class="fopt"><span class="mk">B</span>Peak height velocity in boys precedes all genital development</li><li class="fopt"><span class="mk">C</span>Peak height velocity in boys and girls occurs at the same age</li><li class="fopt"><span class="mk">D</span>Boys reach peak height velocity before menarche-equivalent maturation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Peak height velocity in boys occurs at about 14 years, after testicular and penile growth and after axillary and mature pubic hair.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the mirror error of the previous item applied to boys. In girls the growth spurt comes early in the sequence and precedes menarche; in boys it comes late, after the genital changes, which is why boys often appear to mature genitally before they visibly grow.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent physical growth patterns</span><span class="chip t2">general</span></div>
+<div class="stem">16. A nurse compares weight and height spurts in adolescent boys and girls. Which statement is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Peak weight velocity occurs about 6 months after peak height velocity in girls, whereas weight and height spurts occur simultaneously for boys</li><li class="fopt"><span class="mk">B</span>Peak weight velocity precedes peak height velocity in girls</li><li class="fopt"><span class="mk">C</span>Weight and height spurts occur simultaneously in girls and sequentially in boys</li><li class="fopt"><span class="mk">D</span>Weight gain is not a measured component of the pubertal growth spurt</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Peak weight velocity occurs about 6 months after PHV in girls. In contrast, weight and height spurts occur simultaneously for boys.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses which sex shows the lag. The practical consequence is that a girl who has just finished her height spurt is still expected to gain weight, and mistaking that expected gain for excess is a common source of unnecessary dieting at exactly the wrong age.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent physical growth patterns</span><span class="chip t2">general</span></div>
+<div class="stem">17. A 13-year-old suddenly needs longer pants but the same shirt size, and his parent wonders whether this is abnormal. Which changes reflect the expected adolescent growth sequence? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Leg length increases before trunk length, by about 6 to 9 months</li><li class="fopt right"><span class="mk">&#10003;</span>Shoulder and chest growth follows leg growth by about a year</li><li class="fopt right"><span class="mk">&#10003;</span>Heart rate decreases through adolescence while systolic blood pressure increases</li><li class="fopt right"><span class="mk">&#10003;</span>Boys gain more in red cell mass, hemoglobin, hematocrit, and serum iron than girls</li><li class="fopt"><span class="mk">E</span>Trunk and shoulder growth precede leg growth, so shirt size changes first</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Leg length precedes trunk growth by 6 to 9 months, and shoulders and chest by about a year. Heart rate decreases while systolic blood pressure increases through adolescence, and boys gain more in red cell mass, hemoglobin, hematocrit, and serum iron because of greater muscle mass. Girls run a higher pulse and lower systolic pressure than boys.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one option from the wrong side of the sort and reverses the sequence in the stem. The order is shoes, then pants, then shirts — a teenager outgrowing footwear and trouser length while shirts still fit is following the normal pattern, not deviating from it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent cognition and its distortions</span><span class="chip t2">general</span></div>
+<div class="stem">18. A 16-year-old can reason abstractly about hypothetical situations in class but makes an impulsive decision about drinking at a party. Which understanding does the chapter offer?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Formal operational thought emerges at 11 to 14 years, but under stress, time pressure, sleep deprivation, or peer pressure adolescents abandon their rational thought processes, and most risky health decisions occur under exactly those conditions</li><li class="fopt"><span class="mk">B</span>An adolescent with formal operational thought will reason reliably in any setting</li><li class="fopt"><span class="mk">C</span>Formal operational thought does not develop until age 18</li><li class="fopt"><span class="mk">D</span>Risky decisions indicate the adolescent has not reached formal operations</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Formal operational thought emerges at 11 to 14 years, but under &quot;stress, time pressure, sleep deprivation, or peer pressure,&quot; adolescents &quot;abandon their rational thought processes,&quot; and most risky health decisions occur precisely under those conditions.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) assumes capacity equals performance, which is the assumption behind a great deal of ineffective adolescent health education. The reasoning ability is genuinely present; the conditions under which risk decisions get made are the conditions that suspend it.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent cognition and its distortions</span><span class="chip t2">general</span></div>
+<div class="stem">19. A 15-year-old with newly diagnosed diabetes refuses to use an insulin pump at school because &quot;everyone will notice it.&quot; Which cognitive distortion does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The imaginary audience — the belief that everybody will notice</li><li class="fopt"><span class="mk">B</span>The personal fable — the belief that it cannot happen to me</li><li class="fopt"><span class="mk">C</span>Formal operational reasoning</li><li class="fopt"><span class="mk">D</span>Concrete operational thinking</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The imaginary audience is the belief that &quot;everybody will notice,&quot; and the chapter's own clinical example is the teen with diabetes refusing to use an insulin pump at school. The discriminator is the theme of being watched.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the paired construct and the one most often substituted, because both involve a distorted sense of the self's importance. Being watched points to the imaginary audience; being exempt or unique points to the personal fable.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent cognition and its distortions</span><span class="chip t2">general</span></div>
+<div class="stem">20. A 17-year-old does not use condoms, explaining that &quot;other people get sexually transmitted infections, but not me.&quot; Which cognitive distortion does this illustrate?</div>
+
+<ul class="fopts"><li class="fopt"><span class="mk">A</span>The imaginary audience</li><li class="fopt right"><span class="mk">&#10003;</span>The personal fable — the belief that it cannot happen to me, or that others simply do not understand</li><li class="fopt"><span class="mk">C</span>Deferred imitation</li><li class="fopt"><span class="mk">D</span>Conservation failure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The personal fable is the belief that &quot;it can't happen to me,&quot; illustrated by the teen not using condoms because &quot;other people get STDs, but not me,&quot; or by the statement &quot;you just don't understand.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(A) is the mirror error of the previous item. Nothing in this stem concerns being observed; the distortion is a claimed exemption from a risk the adolescent acknowledges applies to others, which is the personal fable's signature.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent cognition and its distortions</span><span class="chip t2">general</span></div>
+<div class="stem">21. A nurse is told that adolescent egocentrism is uniformly harmful. Which response reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Narcissistic egocentrism may be an important developmental mechanism leading to positive mental health in mature adults; the harmful form is specifically feeling invincible to danger, while psychological invulnerability is associated with better mastery and coping skills</li><li class="fopt"><span class="mk">B</span>All forms of adolescent egocentrism predict delinquency and drug use</li><li class="fopt"><span class="mk">C</span>Adolescent egocentrism has no relationship to later mental health</li><li class="fopt"><span class="mk">D</span>Psychological invulnerability and invincibility to danger are the same construct</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Narcissistic egocentrism &quot;may be an important developmental mechanism that leads to positive mental health among mature adults.&quot; The harmful form is invulnerability to danger specifically: &quot;teens who feel invincible to danger have more delinquent behaviors and drug use, whereas teens with psychological invulnerability have better mastery and coping skills.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) collapses the distinction the chapter draws, and it is the distinction that makes the finding useful. One form predicts risk behavior and the other predicts resilience, so treating them as one construct loses the clinical signal in both directions.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent cognition and its distortions</span><span class="chip t2">general</span></div>
+<div class="stem">22. A nurse is assessing an adolescent's moral reasoning. Which statement reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Different levels of reasoning are used at different times and in different situations, and Gilligan's caring orientation is an equally valid alternative to Kohlberg's justice orientation, with both sexes capable of both</li><li class="fopt"><span class="mk">B</span>Adolescents reason consistently at the postconventional level</li><li class="fopt"><span class="mk">C</span>Gilligan's caring orientation represents a lower stage than Kohlberg's justice orientation</li><li class="fopt"><span class="mk">D</span>Girls reason from care and boys from justice, without overlap</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Different levels of reasoning are used at different times and in different situations,&quot; so both conventional and principled reasoning coexist in adolescence. Gilligan's caring orientation is an equally valid alternative to Kohlberg's justice orientation rather than a lesser stage, and both sexes are capable of both.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) assigns adolescents cleanly to one level, which is tidier than the evidence supports. (D) makes the two orientations sex-specific, which the chapter denies explicitly.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent autonomy and identity</span><span class="chip t2">general</span></div>
+<div class="stem">23. A 15-year-old no longer confides in her parents, has developed an intense admiration for a teacher, and invests most of her emotional energy outside the family. Which type of autonomy does this describe?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Emotional autonomy, which involves changes in close relationships</li><li class="fopt"><span class="mk">B</span>Behavioral autonomy, which is the capacity to make independent decisions and follow through</li><li class="fopt"><span class="mk">C</span>Value autonomy, which consolidates between ages 18 and 20</li><li class="fopt"><span class="mk">D</span>Cognitive autonomy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Emotional autonomy involves changes in close relationships — no longer running to parents, developing crushes on other adults, and investing outside the family. Behavioral autonomy is the capacity to make independent decisions and follow through.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the paired construct, and the discriminator is what is changing: relationships point to emotional autonomy, and decisions point to behavioral autonomy. The two develop on different timelines, so an adolescent can be well advanced in one and not the other.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent autonomy and identity</span><span class="chip t2">general</span></div>
+<div class="stem">24. A 19-year-old has begun articulating a personal value system that differs from her parents' in considered ways. When does the chapter say this typically consolidates?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Relatively late in adolescence, between the ages of 18 and 20 years</li><li class="fopt"><span class="mk">B</span>In early adolescence, by age 13</li><li class="fopt"><span class="mk">C</span>In middle adolescence, between 15 and 17</li><li class="fopt"><span class="mk">D</span>Not until the mid-twenties</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Behavioral independence expands earlier, but the personal value system consolidates &quot;relatively late in adolescence, between the ages of 18 and 20 years.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) attaches value autonomy to the phase of greatest outward rebellion, which is when the adolescent most loudly asserts different values. Asserting a different position and holding a consolidated value system are different achievements, and the second arrives years after the first.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent autonomy and identity</span><span class="chip t2">general</span></div>
+<div class="stem">25. Parents of a 16-year-old ask whether they should step back entirely, since &quot;teenagers need to rebel.&quot; Which response reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>In contrast to popular stereotypes, autonomy does not always involve rebellion, and problems are often understandable reactions to excessively controlling circumstances or to absent expectations; abandonment during this phase is harmful</li><li class="fopt"><span class="mk">B</span>Complete withdrawal of parental involvement is the healthiest approach</li><li class="fopt"><span class="mk">C</span>Rebellion is a necessary stage that parents should not interfere with</li><li class="fopt"><span class="mk">D</span>Parents should increase control to counter the drive for autonomy</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;In contrast to popular stereotypes,&quot; autonomy &quot;does not always involve rebellion,&quot; and problems are &quot;often understandable reactions to excessively controlling circumstances&quot; or to absent expectations. Abandonment during this phase is harmful.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the question in the stem restated as advice, and the chapter answers it directly: absent expectations produce problems just as excessive control does. (D) is the opposite error and is named as the other source of the same difficulties.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent autonomy and identity</span><span class="chip t2">general</span></div>
+<div class="stem">26. A 17-year-old attends religious services far less often than she did at 12, but describes her beliefs as more personally important than ever. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Adolescent beliefs become more oriented toward spiritual and ideological matters and less toward rituals, practice, and strict observance, with the emphasis shifting from attendance to belief; greater religiosity and spirituality are associated with protective, health-promoting behaviors</li><li class="fopt"><span class="mk">B</span>Declining attendance indicates loss of faith</li><li class="fopt"><span class="mk">C</span>Religiosity has no documented relationship to adolescent health behaviors</li><li class="fopt"><span class="mk">D</span>Adolescents typically increase ritual observance while abandoning belief</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Adolescent beliefs become &quot;more oriented toward spiritual and ideological matters&quot; and less toward &quot;rituals, practice, and the strict observance,&quot; with the emphasis shifting from attendance to belief. &quot;Greater levels of religiosity and spirituality are associated with protective, health-promoting behaviors.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) uses the most visible measure — attendance — as a proxy for the internal one, and the chapter separates them deliberately. The direction of travel is inward, so the observable behavior can fall while the belief it once expressed strengthens.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent relationships, sexuality, and peer influence</span><span class="chip t2">general</span></div>
+<div class="stem">27. A 16-year-old tells the nurse he has had sexual contact with male partners but identifies as heterosexual and reports attraction to girls. How should the nurse understand this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Sexual orientation has three dimensions — identity, attraction, and behavior — that need not agree with one another</li><li class="fopt"><span class="mk">B</span>Behavior is the definitive indicator, so the adolescent's stated identity should be disregarded</li><li class="fopt"><span class="mk">C</span>The adolescent is confused and should be counseled toward a consistent identity</li><li class="fopt"><span class="mk">D</span>Identity always determines both attraction and behavior</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Sexual orientation has three dimensions: identity, or how one defines oneself; attraction, or who one is drawn to; and behavior, or who one has sex with. The chapter's own example has all three disagreeing.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) infers orientation from behavior alone, which the chapter specifically rules out. The clinical consequence matters: a nurse who assumes identity from behavior will counsel the wrong risks and may damage the trust the confidentiality discussion was meant to establish.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent relationships, sexuality, and peer influence</span><span class="chip t2">general</span></div>
+<div class="stem">28. A parent worries that their 14-year-old has close friendships but no romantic relationships. Which response reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Intimate relationships are distinct from sexual relationships and either can exist without the other; same-gender peer intimacy develops first, and opposite-gender intimacy comes relatively late</li><li class="fopt"><span class="mk">B</span>Absence of romantic relationships at 14 indicates delayed social development</li><li class="fopt"><span class="mk">C</span>Intimacy and sexual activity develop together and cannot be separated</li><li class="fopt"><span class="mk">D</span>Opposite-gender intimacy normally precedes same-gender friendship</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Intimate relationships are distinct from sexual relationships,&quot; and one can exist without the other in either direction. Same-gender peer intimacy develops first, and opposite-gender intimacy comes &quot;relatively late.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) fuses the two, which is the assumption behind both parental worry and a good deal of adolescent risk. A teenager can be intimately connected without sexual activity, and sexually active without intimacy, and the chapter treats those as independent axes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent relationships, sexuality, and peer influence</span><span class="chip t2">general</span></div>
+<div class="stem">29. Parents ask the nurse about dating for their 13-year-old. Which guidance does the chapter give?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Mixed-gender group activities are positive for young teens, and a moderate degree of dating with serious relationships delayed until late adolescence may be the ideal pattern; one-on-one dating with a lot of time alone in early adolescence may lead to sexual intimacy before the teen is ready</li><li class="fopt"><span class="mk">B</span>Early exclusive pair dating builds relationship skills and should be encouraged</li><li class="fopt"><span class="mk">C</span>All dating should be prohibited until age 18</li><li class="fopt"><span class="mk">D</span>The amount and type of dating has no bearing on outcomes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;A moderate degree of dating, with serious relationships delayed until late adolescence, may be the ideal pattern.&quot; Mixed-gender group activities are positive for young teens, while &quot;one-on-one dating with a lot of time alone in early adolescence&quot; may lead to sexual intimacy before a teen is ready.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) is the protective extreme, and the chapter's recommendation is moderation rather than prohibition — some dating is part of the ideal pattern. The variable that matters is the format and the amount of unsupervised time alone, not whether dating occurs.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent relationships, sexuality, and peer influence</span><span class="chip t2">general</span></div>
+<div class="stem">30. A 16-year-old works 30 hours a week during the school year. What does the chapter say about adolescent employment?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Work can build skills and provide mentors, but detrimental effects are more likely for adolescents who work more than 20 hours a week</li><li class="fopt"><span class="mk">B</span>Any employment during high school is detrimental</li><li class="fopt"><span class="mk">C</span>Employment has benefits at every level of hours worked</li><li class="fopt"><span class="mk">D</span>The threshold for detrimental effects is 40 hours a week</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Below the threshold, work can build skills and provide mentors; &quot;detrimental effects are more likely for adolescents who work more than 20 hours a week.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) uses the adult full-time standard, which is the intuitive anchor and roughly double the adolescent threshold. This teen is 10 hours past the point at which the chapter expects harm rather than benefit.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent mortality and health screening</span><span class="chip t2">general</span></div>
+<div class="stem">31. A nurse is preparing an adolescent health presentation. Which are the leading causes of death in this age group? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Motor vehicle crashes</li><li class="fopt right"><span class="mk">&#10003;</span>Other accidental injuries</li><li class="fopt right"><span class="mk">&#10003;</span>Homicide</li><li class="fopt right"><span class="mk">&#10003;</span>Suicide</li><li class="fopt"><span class="mk">E</span>Congenital anomalies and chronic illness</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Motor vehicle crashes, other accidental injuries, homicide, and suicide together account for more than 70% — approximately 71% — of adolescent deaths. Suicide is second among Caucasian adolescents, while homicide is the most likely cause among older African American adolescents.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one option from the wrong side of the sort and names the disease-based causes that dominate in younger children. The striking feature of adolescent mortality is that none of the four leading causes is a disease, which is what makes the entire chapter's emphasis on risk behavior rather than pathology coherent.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent mortality and health screening</span><span class="chip t2">general</span></div>
+<div class="stem">32. A 16-year-old asks whether what she tells the nurse will be reported to her parents. Which response reflects the chapter's guidance?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Assure her of confidentiality and explain its limits, which include abuse reporting and suicidality, since adolescents are unwilling to seek care for sensitive topics if their parents will know and are often unaware they can receive confidential care</li><li class="fopt"><span class="mk">B</span>Tell her that everything discussed will be reported to her parents</li><li class="fopt"><span class="mk">C</span>Promise unconditional confidentiality with no exceptions</li><li class="fopt"><span class="mk">D</span>Defer the question until a parent can join the discussion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Adolescents are &quot;unwilling to seek health care related to sensitive topics if their parents will know,&quot; and often &quot;are unaware of their ability to receive confidential health care.&quot; The guideline pairs the assurance with its limits — abuse reporting and suicidality.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) makes a promise that cannot be kept and that will have to be broken at precisely the moment the adolescent is most at risk. The two halves of this answer are inseparable: confidentiality is what opens the conversation, and its stated limits are what keep the promise honest.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent mortality and health screening</span><span class="chip t2">general</span></div>
+<div class="stem">33. A nurse plans an adolescent visit and considers whether to involve the parents. Which approach is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Interview the adolescent alone while still engaging the parents, since efforts to exclude parents from adolescent health services are both unrealistic and unwise, balancing the adolescent's growing autonomy against the parents' diminishing control</li><li class="fopt"><span class="mk">B</span>Exclude parents entirely from all adolescent health encounters</li><li class="fopt"><span class="mk">C</span>Conduct the entire visit with the parents present</li><li class="fopt"><span class="mk">D</span>Allow the adolescent to decide whether parents are informed of every finding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Efforts to exclude parents from adolescent health services are both unrealistic and unwise.&quot; The correct approach balances &quot;the adolescent's growing autonomy&quot; against &quot;the parents' diminishing control&quot; — interview the teen alone, and still engage the parents.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) takes the confidentiality principle to an extreme the chapter names as unwise. Confidentiality governs what is disclosed from the private portion of the visit; it does not mean the parents are removed from their child's health care.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent mortality and health screening</span><span class="chip t2">general</span></div>
+<div class="stem">34. A nurse begins a health interview with a 15-year-old. Which sequence is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Begin with less sensitive issues and open-ended questions, move to directive questions only if necessary, and preface sexual questions with their purpose and the limits of confidentiality</li><li class="fopt"><span class="mk">B</span>Begin with the sexual history, to establish that no topic is off limits</li><li class="fopt"><span class="mk">C</span>Use closed, directive questions throughout to obtain precise answers</li><li class="fopt"><span class="mk">D</span>Avoid sexual topics unless the adolescent raises them</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Begin with less sensitive issues, use open-ended questions, move to directive questions only if necessary, and preface sexual questions with their purpose and the confidentiality limits.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is sequenced backward and is the commonest error in adolescent interviewing. Opening with the most sensitive material before rapport exists produces guarded answers to everything that follows, which costs more information than it gains.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent mortality and health screening</span><span class="chip t2">general</span></div>
+<div class="stem">35. A nurse uses the HEEADSSS framework for an adolescent psychosocial assessment. Which domains does it include? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Home, and Education or employment</li><li class="fopt right"><span class="mk">&#10003;</span>Eating, and Activities</li><li class="fopt right"><span class="mk">&#10003;</span>Drugs, under which caffeine is assessed</li><li class="fopt right"><span class="mk">&#10003;</span>Sexuality, Suicide or depression, and Safety, under which texting and guns are assessed</li><li class="fopt"><span class="mk">E</span>Hearing and vision screening</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>HEEADSSS covers eight domains: Home, Education or employment, Eating, Activities, Drugs, Sexuality, Suicide or depression, and Safety. Caffeine is assessed under Drugs, and texting and guns under Safety.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one option from the wrong side of the sort. It names legitimate adolescent screening, but the framework is a psychosocial one, and three of its eight domains begin with S — sexuality, suicide, and safety — which is the part of the mnemonic most often miscounted.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual health and contraception counseling</span><span class="chip t2">general</span></div>
+<div class="stem">36. A 17-year-old taking combined oral contraceptives says she no longer needs condoms. Which response is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hormonal contraception does not protect against sexually transmitted infections, so barrier protection is still needed</li><li class="fopt"><span class="mk">B</span>Oral contraceptives provide partial protection against sexually transmitted infections</li><li class="fopt"><span class="mk">C</span>Condoms are unnecessary once a reliable contraceptive is in use</li><li class="fopt"><span class="mk">D</span>Barrier protection is needed only with new partners</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Hormonal contraception does not protect against sexually transmitted infections. The real-world figures underline the gap: approximately 57% of sexually active adolescents used a condom at last intercourse, and fewer than 5% use long-acting reversible contraception.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) conflates the two purposes of protection, which is the single most consequential misunderstanding in adolescent contraceptive counseling. Pregnancy prevention and infection prevention are separate goals requiring separate methods, and a highly effective contraceptive can leave infection risk entirely unaddressed.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual health and contraception counseling</span><span class="chip t2">general</span></div>
+<div class="stem">37. A school board is considering an abstinence-only sexual education program. Which statement reflects the chapter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Abstinence-only programs do not delay sexual initiation and may increase unprotected sex, although abstinence itself is still counseled as one of the responsible sexual behaviors deserving positive reinforcement</li><li class="fopt"><span class="mk">B</span>Abstinence-only programs reliably delay first intercourse</li><li class="fopt"><span class="mk">C</span>Abstinence should not be discussed with adolescents at all</li><li class="fopt"><span class="mk">D</span>Abstinence-only programs and comprehensive programs produce equivalent outcomes</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Abstinence-only programs do not delay sex and may increase unprotected sex, but abstinence itself is still counseled as one of the &quot;responsible sexual behaviors&quot; deserving positive reinforcement.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overreads the evidence against the program as evidence against the behavior, and the chapter separates them deliberately. What the data indict is an exclusive curriculum, not the choice an individual adolescent makes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual health and contraception counseling</span><span class="chip t2">general</span></div>
+<div class="stem">38. A nurse asks a 15-year-old, &quot;Do any of your friends drink alcohol?&quot; A colleague questions why. Which rationale is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Questions about peers give information that typically reflects similar behaviors of the teen, so this is an interviewing technique rather than small talk</li><li class="fopt"><span class="mk">B</span>The question is irrelevant to the adolescent's own risk</li><li class="fopt"><span class="mk">C</span>The question is intended only to build rapport</li><li class="fopt"><span class="mk">D</span>Peer behavior has no documented relationship to adolescent behavior</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Asking &quot;Do any of your friends drink?&quot; gives &quot;information that typically reflects similar behaviors of the teen.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) treats a deliberate assessment technique as a conversational warm-up. It does build rapport, but the reason it appears in the interviewing guidance is that the answer is diagnostically informative about the adolescent in the room.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent sexual health and contraception counseling</span><span class="chip t2">general</span></div>
+<div class="stem">39. A nurse is counseling a sexually active 16-year-old about contraception. Which finding reflects the chapter's data on adolescent practice?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Approximately 57% of sexually active adolescents used a condom at last intercourse, and fewer than 5% use long-acting reversible contraception</li><li class="fopt"><span class="mk">B</span>More than 90% of sexually active adolescents use condoms consistently</li><li class="fopt"><span class="mk">C</span>Long-acting reversible contraception is the most commonly used adolescent method</li><li class="fopt"><span class="mk">D</span>Adolescent contraceptive use has not been measured</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Approximately 57% of sexually active adolescents used a condom at last intercourse, and fewer than 5% use long-acting reversible contraception.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) reverses the actual uptake of the most effective category. The gap between how effective long-acting reversible contraception is and how rarely adolescents use it is exactly what makes it worth raising in counseling rather than assuming.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent depression, suicide risk, and injury prevention</span><span class="chip t2">general</span></div>
+<div class="stem">40. A 16-year-old is brought in for fatigue. He is well groomed, makes eye contact, and jokes with the nurse. When asked, &quot;Have you been feeling down or blue lately?&quot; he answers yes. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Most adolescents who are depressed respond affirmatively to that question although they may not necessarily look depressed, so the affirmative answer should be pursued</li><li class="fopt"><span class="mk">B</span>His presentation rules out depression, so the answer can be discounted</li><li class="fopt"><span class="mk">C</span>The question is too general to yield useful information</li><li class="fopt"><span class="mk">D</span>Depression should be assessed only when the adolescent appears sad</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>&quot;Most adolescents who are depressed respond affirmatively to 'Have you been feeling down or blue lately?' although they may not necessarily 'look' depressed.&quot;</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) weighs the appearance over the answer, and the chapter names that mismatch specifically. An adolescent who presents well and reports low mood is the typical case rather than a contradictory one.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent depression, suicide risk, and injury prevention</span><span class="chip t2">general</span></div>
+<div class="stem">41. A depressed 17-year-old denies any thoughts of harming herself. A second adolescent describes a specific plan and has access to the means. How should the nurse triage each?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The nonsuicidal adolescent is referred for evaluation and treatment; the adolescent with a specific plan requires immediate acute intervention</li><li class="fopt"><span class="mk">B</span>Both require immediate acute intervention regardless of plan</li><li class="fopt"><span class="mk">C</span>Both can be referred for routine outpatient follow-up</li><li class="fopt"><span class="mk">D</span>Neither requires intervention unless a previous attempt has occurred</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The triage splits on the presence of a plan: a nonsuicidal depressed adolescent is referred, while an adolescent with a specific plan requires immediate acute intervention.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) makes a prior attempt the threshold for acting, which would leave the adolescent in this stem — plan and means in place, no prior attempt — without intervention. The plan is the trigger, and it does not require a history to be taken seriously.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent depression, suicide risk, and injury prevention</span><span class="chip t2">general</span></div>
+<div class="stem">42. A nurse reviews adolescent suicide statistics. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Girls both consider and attempt suicide more often — 23.4% of females versus 12.2% of males considered, and 11.6% of girls versus 5.5% of boys attempted — but feeling sad or hopeless for 2 weeks or longer was reported by 34% of boys and 22% of girls</li><li class="fopt"><span class="mk">B</span>Boys both consider and attempt suicide more often than girls</li><li class="fopt"><span class="mk">C</span>Rates of considering and attempting suicide are equal between the sexes</li><li class="fopt"><span class="mk">D</span>Girls report feeling sad or hopeless more often than boys</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Considered suicide: 23.4% of females versus 12.2% of males. Attempted: 11.6% of girls versus 5.5% of boys. But feeling sad or hopeless for 2 weeks or longer was reported by 34% of boys and 22% of girls.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) applies the direction of the first two figures to the third, and the third runs the other way. That reversal is the reason this cluster is worth drilling as one item: two of the three measures favor one direction and the third does not, so a learner holding a single rule will get one of them wrong.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent depression, suicide risk, and injury prevention</span><span class="chip t2">general</span></div>
+<div class="stem">43. A nurse is completing a health supervision visit with a 15-year-old whose family has no history of violence. Should firearm access be assessed?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Yes — assess all families for the presence of a gun in the home, regardless of history</li><li class="fopt"><span class="mk">B</span>Only if the adolescent has a history of aggression or depression</li><li class="fopt"><span class="mk">C</span>Only in households known to hunt or collect firearms</li><li class="fopt"><span class="mk">D</span>No, since asking may offend families with no risk factors</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The directive is to &quot;Assess all families for the presence of a gun in the home.&quot; Storage teaching has three parts: the gun is never loaded, it is locked up, and the ammunition is locked separately.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) makes the assessment conditional on the risk factors it exists to detect, which is the logic that leaves unrecognized risk unaddressed. Given that suicide is among the four leading causes of adolescent death, universal assessment is what makes the screening meaningful.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent depression, suicide risk, and injury prevention</span><span class="chip t2">general</span></div>
+<div class="stem">44. A nurse teaches a family about safe firearm storage. Which instructions are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The firearm is stored unloaded</li><li class="fopt right"><span class="mk">&#10003;</span>The firearm is locked up</li><li class="fopt right"><span class="mk">&#10003;</span>Ammunition is locked in a separate location</li><li class="fopt right"><span class="mk">&#10003;</span>All families should be assessed for the presence of a gun in the home</li><li class="fopt"><span class="mk">E</span>Storing an unloaded firearm in a locked cabinet with its ammunition is sufficient</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Storage teaching has three parts: the firearm is never loaded, it is locked up, and the ammunition is locked separately. All families are assessed for the presence of a gun in the home regardless of history.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is the one option from the wrong side of the sort and satisfies two of the three requirements while dropping the third. It is the most plausible wrong answer here because storing the ammunition with the locked gun feels like reasonable practice; separating them is what prevents the firearm from being made ready in a single step.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">adolescent depression, suicide risk, and injury prevention</span><span class="chip t2">general</span></div>
+<div class="stem">45. A 16-year-old needs a tetanus booster and received a tetanus-diphtheria vaccine 3 years ago. Which immunization statements are correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>When used as a booster, the tetanus-diphtheria-acellular pertussis vaccine may be administered earlier than the previous 5-year interval, regardless of interval from the last tetanus-diphtheria dose; meningococcal vaccine is given at 11 to 12 years with a booster before 16, or as one dose at 13 to 18 if previously unvaccinated</li><li class="fopt"><span class="mk">B</span>The 5-year interval must elapse before a tetanus-diphtheria-acellular pertussis booster</li><li class="fopt"><span class="mk">C</span>Meningococcal vaccine is given only once, with no booster</li><li class="fopt"><span class="mk">D</span>Varicella vaccine at 13 years or older is a single dose</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>When used as a booster, the tetanus-diphtheria-acellular pertussis vaccine &quot;may be administered earlier than the previous 5-year interval… regardless of interval from the last Td dose.&quot; Meningococcal vaccine is given at 11 to 12 years with a booster before 16, or as one dose at 13 to 18 for the previously unvaccinated. Varicella at 13 years or older is two doses 4 or more weeks apart.</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) applies the superseded interval, which is the reason the chapter states the exception explicitly — the 5-year rule is familiar enough that it gets applied where it no longer governs. (D) halves the varicella schedule for older adolescents, which is the dose count most often missed.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"the three phases of adolescence","subtopic":"general","stem":"A 16-year-old shows the greatest push for emancipation, a peer-dominant orientation, and what the parents describe as the low point of their relationship with him. Which phase of adolescence does this describe?","options":["Early adolescence, ages 11 to 14 years","Middle adolescence, ages 15 to 17 years","Late adolescence, ages 18 to 22 years","Preadolescence, ending at the thirteenth birthday"],"correct":[1],"sata":false,"why":"The three phases are early adolescence at 11 to 14 years, middle at 15 to 17 years, and late at 18 to 22 years. Early adolescence is dominated by the physical changes of puberty and the emotional reaction to them; middle adolescence brings the shift to a peer-dominant orientation, experimentation, the greatest push for emancipation, and the low point in the parent-child relationship; late adolescence brings full maturation, stable intimate relationships, and independent management of health care.","trap":"(A) is chosen by anyone who associates conflict with the onset of adolescence. The turbulence peaks in the middle phase rather than at the beginning, when the adolescent's attention is still largely on the physical changes themselves.","k":"qzvlsqe2kq4k"},{"topic":"the three phases of adolescence","subtopic":"general","stem":"A nurse is teaching about self-esteem across adolescence. Which pattern does the chapter describe?","options":["Self-esteem falls in early adolescence and rises in late adolescence","Self-esteem improves steadily throughout adolescence","Self-esteem is highest in early adolescence and declines thereafter","Self-esteem is stable across all three phases"],"correct":[0],"sata":false,"why":"Table 17.1 states both directions explicitly: self-esteem falls in early adolescence and rises in late adolescence.","trap":"(B) is the reassuring trajectory adults expect as a teenager matures, and it misses the early dip entirely. That dip coincides with the phase in which the physical changes of puberty and the emotional reaction to them dominate, which is what makes it worth knowing.","k":"z72gsc7j5uba"},{"topic":"the three phases of adolescence","subtopic":"general","stem":"A 12-year-old has recently become preoccupied with her changing body and emotionally reactive to comments about her appearance, but still relies mainly on her family rather than peers. Which phase does this fit?","options":["Early adolescence, in which the physical changes of puberty and the emotional reaction to them predominate","Middle adolescence, in which peer orientation predominates","Late adolescence, in which intimate relationships stabilize","School age, since peer orientation has not yet emerged"],"correct":[0],"sata":false,"why":"Early adolescence, at 11 to 14 years, is characterized by the physical changes of puberty and the emotional reaction to them. The shift to a peer-dominant orientation belongs to middle adolescence, and stable intimate relationships with independent management of health care belong to late adolescence.","trap":"(D) reads continued family orientation as evidence the adolescent phase has not begun. The marker of early adolescence is the pubertal change and the response to it, not the point at which peers displace parents — that displacement is the *next* phase.","k":"14okpe21eyjcf4"},{"topic":"neuroendocrine events of puberty","subtopic":"general","stem":"A nursing student asks what actually triggers puberty. Which explanation is correct?","options":["The pituitary gland and gonads are capable of mature function at any age; what changes at puberty is that the hypothalamus loses its negative sensitivity, releasing gonadotropin-releasing hormone from inhibition","The pituitary gland matures at puberty and becomes able to secrete gonadotropins for the first time","The gonads mature first and then signal the hypothalamus","Puberty begins when the adrenal glands first produce androgens in adolescence"],"correct":[0],"sata":false,"why":"\"The pituitary gland and gonads are capable of mature function… at any age.\" What changes is that \"the hypothalamus loses this negative sensitivity,\" which releases gonadotropin-releasing hormone from inhibition and begins the cascade.","trap":"(B) describes maturation of a gland that was already competent, which is the intuitive but incorrect model. The change is the removal of an inhibition rather than the acquisition of a capability, and that distinction is what the chapter states in its own sentence.","k":"pte4nw1jxpnlu"},{"topic":"neuroendocrine events of puberty","subtopic":"general","stem":"A nurse is explaining the roles of follicle-stimulating hormone and luteinizing hormone in an adolescent girl. Which description is correct?","options":["Follicle-stimulating hormone drives follicle growth and estrogen production, while luteinizing hormone drives ovulation, corpus luteum formation, and progesterone production","Luteinizing hormone drives follicle growth and estrogen, while follicle-stimulating hormone drives ovulation","Both hormones act only on the adrenal cortex in girls","Follicle-stimulating hormone produces progesterone directly"],"correct":[0],"sata":false,"why":"In girls, follicle-stimulating hormone stimulates follicle growth and estrogen production, while luteinizing hormone triggers ovulation, corpus luteum formation, and progesterone production.","trap":"(B) swaps the two hormones, which is the commonest inversion in this material because the name \"follicle-stimulating\" is the only mnemonic anchoring either one. Luteinizing hormone is named for the corpus luteum it produces, which is the anchor for the other half.","k":"c1kj3ssqq37u"},{"topic":"neuroendocrine events of puberty","subtopic":"general","stem":"A nurse is explaining the same two hormones in an adolescent boy. Which description is correct?","options":["Luteinizing hormone stimulates the Leydig cells to produce testosterone, and follicle-stimulating hormone, together with luteinizing hormone, drives sperm production","Follicle-stimulating hormone stimulates the Leydig cells to produce testosterone","Luteinizing hormone has no role in the male","Testosterone is produced by the pituitary gland in response to gonadotropin-releasing hormone"],"correct":[0],"sata":false,"why":"In boys, luteinizing hormone stimulates the Leydig cells to produce testosterone, and follicle-stimulating hormone acting with luteinizing hormone drives sperm production.","trap":"(B) is the mirror error of the previous item, carried across sexes. The same two hormones act in both sexes with different targets, so an item can test either sex and the distractor is always the other hormone's job.","k":"195vqs9cj2kqb"},{"topic":"neuroendocrine events of puberty","subtopic":"general","stem":"A nurse is asked why girls typically stop growing earlier than boys. Which explanation does the chapter give?","options":["Estrogen stimulates skeletal growth at low levels and inhibits it at high levels, so rising estrogen eventually closes the growth process","Estrogen inhibits skeletal growth at every concentration","Girls produce less growth hormone than boys throughout puberty","Testosterone has no effect on skeletal growth"],"correct":[0],"sata":false,"why":"Estrogen stimulates skeletal growth at low levels and inhibits it at high levels. This dose-dependent reversal explains why girls stop growing sooner, and the chapter states it in a single sentence.","trap":"(B) takes half the relationship and generalizes it, which loses the mechanism entirely — a hormone that only inhibited growth could not also have driven the growth spurt that preceded the inhibition.","k":"1qtefoimzgle4"},{"topic":"neuroendocrine events of puberty","subtopic":"general","stem":"A 12-year-old girl has just had her first menstrual period, and a 13-year-old boy has had a first ejaculation. Both families ask about fertility. Which response is correct?","options":["An adolescent should be considered potentially fertile with a first menstrual period or a first ejaculation","Girls are not fertile for about a year after menarche, because ova are not yet mature enough to be released","Boys are not fertile until viable sperm appear months after first ejaculation","Fertility cannot be assumed until Tanner stage 5 is reached"],"correct":[0],"sata":false,"why":"The chapter states the clinical rule flatly: \"an adolescent should be considered potentially fertile with a first menstrual period or a first ejaculation.\" It also notes that at menarche \"ova still do not generally mature enough to be released,\" and that viable sperm follow first ejaculation.","trap":"(B) and (C) both quote the chapter's own physiology correctly and draw the wrong clinical conclusion from it. The physiology is deliberately the distractor here: the counseling rule is set at the earliest possible point rather than at the average one, because an individual adolescent's timing cannot be known in advance.","k":"1t2xzgd1ffna83"},{"topic":"adolescent sexual maturation and its variations","subtopic":"general","stem":"An 11-year-old girl's mother reports that the first change she noticed was a small firm lump under one nipple. Which statement is correct?","options":["The first visible change in girls is nipple and areolar change with a breast bud, called thelarche; pubarche typically follows, although many girls have underarm or pubic hair before breast development","Pubic hair development always precedes breast development in girls","A unilateral breast bud is abnormal and requires evaluation","Menarche is the first sign of puberty in girls"],"correct":[0],"sata":false,"why":"The first visible change in girls is nipple and areolar change with a breast bud, or thelarche. Pubarche \"typically follows,\" but \"many have strands of underarm and/or pubic hair before breast development.\"","trap":"(B) is too absolute, and the chapter deliberately qualifies the sequence rather than fixing it. The usual order is thelarche then pubarche, but reversal is common enough that the book names it, so an option asserting an invariable order is wrong.","k":"qe87b470jey2"},{"topic":"adolescent sexual maturation and its variations","subtopic":"general","stem":"A 12-year-old boy is being assessed for the earliest signs of puberty. Which finding appears first?","options":["Testicular enlargement, accompanied by thinning, reddening, and increasing looseness of the scrotum","Voice change","Facial hair","Pubic hair"],"correct":[0],"sata":false,"why":"The first pubescent change in boys is testicular enlargement \"accompanied by thinning, reddening, and increasing looseness of the scrotum.\" Voice change and facial hair are mid-to-late events.","trap":"(B) and (C) are the changes families notice and comment on, which is why they feel like the beginning. They arrive well after the process has started, so an assessment waiting for them would miss the first year or more of puberty.","k":"v43p7ct417ge"},{"topic":"adolescent sexual maturation and its variations","subtopic":"general","stem":"A 13-year-old girl and her mother are worried about a clear-to-white vaginal discharge that has been present for several months without itching, odor, or dysuria. What is the nurse's best response?","options":["Reassure them that physiologic leukorrhea is normal and a sign that her body is maturing","Obtain a culture and begin empiric treatment for candidiasis","Advise douching to reduce the discharge","Refer for gynecologic evaluation of possible infection"],"correct":[0],"sata":false,"why":"Girls or parents \"may be concerned that this vaginal discharge is a sign of infection.\" The nursing response is reassurance that \"the discharge is normal and a sign that their body is maturing.\"","trap":"(B) and (D) both treat a normal maturational finding as pathology, and the stem gives the discriminators that rule infection out — no itching, odor, or dysuria. Physiologic leukorrhea is a reassurance item, not a workup item.","k":"1xr4liu18gitm0"},{"topic":"adolescent sexual maturation and its variations","subtopic":"general","stem":"A 14-year-old boy is distressed by tender breast tissue that developed over the past several months. Which response is correct?","options":["Gynecomastia occurs in up to 70% of boys in midpuberty and usually disappears within 2 years, although it may persist in obese individuals; reassurance is appropriate","This finding requires endocrine referral in all cases","Gynecomastia in adolescent boys is rare and always pathologic","The tissue should be expected to persist permanently"],"correct":[0],"sata":false,"why":"Gynecomastia affects up to 70% of boys, \"disappears within 2 years,\" and \"may persist in obese individuals.\"","trap":"(B) medicalizes a finding that occurs in most boys and resolves on its own, and the referral itself communicates to an already self-conscious adolescent that something is wrong. The prevalence figure is what makes reassurance defensible rather than dismissive.","k":"xoyrane9a62p"},{"topic":"adolescent sexual maturation and its variations","subtopic":"general","stem":"A nurse reviews thresholds for abnormal pubertal timing. Which statements are correct? Select all that apply.","options":["Precocious puberty is the appearance of secondary sexual characteristics before 8 years of age in either sex","Delayed puberty in girls includes no breast development by age 13","Delayed puberty in girls includes no menarche by age 15","Delayed puberty in boys includes no testicular or scrotal change by age 14","Precocious puberty is defined as onset before age 10 in girls and 12 in boys"],"correct":[0,1,2,3],"sata":true,"why":"Precocious puberty is the appearance of secondary sexual characteristics before 8 years old in both sexes. Delayed puberty in girls is no breast development by 13 or no menarche by 15; in boys it is no testicular or scrotal change by 14.","trap":"(E) is the one option from the wrong side of the sort, and it substitutes the *average* ages of pubertal onset for the *abnormal* threshold. Those average figures are real — from Chapter 15, puberty generally begins at 10 in girls and 12 in boys — which is exactly what makes them a convincing wrong answer here.","k":"1ti1v5911dff2v"},{"topic":"adolescent physical growth patterns","subtopic":"general","stem":"A 12-year-old girl has just experienced her peak height velocity. Her mother asks how much more she will grow. Which response is accurate?","options":["Peak height velocity in girls occurs at about 12 years, 6 to 12 months before menarche, and few girls grow more than 5 cm, about 2 inches, after menarche","Peak height velocity follows menarche by about a year in girls","Most girls gain another 15 cm after menarche","Growth in girls continues at the same rate until age 18"],"correct":[0],"sata":false,"why":"Peak height velocity in girls occurs at about 12 years, 6 to 12 months before menarche, and \"Few girls grow more than 5 cm (2 inches) after menarche.\" Growth in height usually ceases 2 to 2½ years after menarche.","trap":"(B) inverts the order of the two events, which matters clinically because it changes what a parent should expect. Menarche is a late marker in the growth sequence rather than an early one, so a girl who has begun menstruating has already completed most of her linear growth.","k":"18afse15xh878"},{"topic":"adolescent physical growth patterns","subtopic":"general","stem":"A 14-year-old boy is at his peak height velocity. Where does this fall relative to his other pubertal changes?","options":["Peak height velocity in boys occurs at about 14 years, after testicular and penile growth and after axillary and mature pubic hair","Peak height velocity in boys precedes all genital development","Peak height velocity in boys and girls occurs at the same age","Boys reach peak height velocity before menarche-equivalent maturation"],"correct":[0],"sata":false,"why":"Peak height velocity in boys occurs at about 14 years, after testicular and penile growth and after axillary and mature pubic hair.","trap":"(B) is the mirror error of the previous item applied to boys. In girls the growth spurt comes early in the sequence and precedes menarche; in boys it comes late, after the genital changes, which is why boys often appear to mature genitally before they visibly grow.","k":"rattd11fwer1b"},{"topic":"adolescent physical growth patterns","subtopic":"general","stem":"A nurse compares weight and height spurts in adolescent boys and girls. Which statement is correct?","options":["Peak weight velocity occurs about 6 months after peak height velocity in girls, whereas weight and height spurts occur simultaneously for boys","Peak weight velocity precedes peak height velocity in girls","Weight and height spurts occur simultaneously in girls and sequentially in boys","Weight gain is not a measured component of the pubertal growth spurt"],"correct":[0],"sata":false,"why":"\"Peak weight velocity occurs about 6 months after PHV in girls. In contrast, weight and height spurts occur simultaneously for boys.\"","trap":"(C) reverses which sex shows the lag. The practical consequence is that a girl who has just finished her height spurt is still expected to gain weight, and mistaking that expected gain for excess is a common source of unnecessary dieting at exactly the wrong age.","k":"hsgl141hgosbe"},{"topic":"adolescent physical growth patterns","subtopic":"general","stem":"A 13-year-old suddenly needs longer pants but the same shirt size, and his parent wonders whether this is abnormal. Which changes reflect the expected adolescent growth sequence? Select all that apply.","options":["Leg length increases before trunk length, by about 6 to 9 months","Shoulder and chest growth follows leg growth by about a year","Heart rate decreases through adolescence while systolic blood pressure increases","Boys gain more in red cell mass, hemoglobin, hematocrit, and serum iron than girls","Trunk and shoulder growth precede leg growth, so shirt size changes first"],"correct":[0,1,2,3],"sata":true,"why":"Leg length precedes trunk growth by 6 to 9 months, and shoulders and chest by about a year. Heart rate decreases while systolic blood pressure increases through adolescence, and boys gain more in red cell mass, hemoglobin, hematocrit, and serum iron because of greater muscle mass. Girls run a higher pulse and lower systolic pressure than boys.","trap":"(E) is the one option from the wrong side of the sort and reverses the sequence in the stem. The order is shoes, then pants, then shirts — a teenager outgrowing footwear and trouser length while shirts still fit is following the normal pattern, not deviating from it.","k":"1li2ijtstlegn"},{"topic":"adolescent cognition and its distortions","subtopic":"general","stem":"A 16-year-old can reason abstractly about hypothetical situations in class but makes an impulsive decision about drinking at a party. Which understanding does the chapter offer?","options":["Formal operational thought emerges at 11 to 14 years, but under stress, time pressure, sleep deprivation, or peer pressure adolescents abandon their rational thought processes, and most risky health decisions occur under exactly those conditions","An adolescent with formal operational thought will reason reliably in any setting","Formal operational thought does not develop until age 18","Risky decisions indicate the adolescent has not reached formal operations"],"correct":[0],"sata":false,"why":"Formal operational thought emerges at 11 to 14 years, but under \"stress, time pressure, sleep deprivation, or peer pressure,\" adolescents \"abandon their rational thought processes,\" and most risky health decisions occur precisely under those conditions.","trap":"(B) assumes capacity equals performance, which is the assumption behind a great deal of ineffective adolescent health education. The reasoning ability is genuinely present; the conditions under which risk decisions get made are the conditions that suspend it.","k":"18crfqj2qhssh"},{"topic":"adolescent cognition and its distortions","subtopic":"general","stem":"A 15-year-old with newly diagnosed diabetes refuses to use an insulin pump at school because \"everyone will notice it.\" Which cognitive distortion does this illustrate?","options":["The imaginary audience — the belief that everybody will notice","The personal fable — the belief that it cannot happen to me","Formal operational reasoning","Concrete operational thinking"],"correct":[0],"sata":false,"why":"The imaginary audience is the belief that \"everybody will notice,\" and the chapter's own clinical example is the teen with diabetes refusing to use an insulin pump at school. The discriminator is the theme of being watched.","trap":"(B) is the paired construct and the one most often substituted, because both involve a distorted sense of the self's importance. Being watched points to the imaginary audience; being exempt or unique points to the personal fable.","k":"s46t814yqqcr"},{"topic":"adolescent cognition and its distortions","subtopic":"general","stem":"A 17-year-old does not use condoms, explaining that \"other people get sexually transmitted infections, but not me.\" Which cognitive distortion does this illustrate?","options":["The imaginary audience","The personal fable — the belief that it cannot happen to me, or that others simply do not understand","Deferred imitation","Conservation failure"],"correct":[1],"sata":false,"why":"The personal fable is the belief that \"it can't happen to me,\" illustrated by the teen not using condoms because \"other people get STDs, but not me,\" or by the statement \"you just don't understand.\"","trap":"(A) is the mirror error of the previous item. Nothing in this stem concerns being observed; the distortion is a claimed exemption from a risk the adolescent acknowledges applies to others, which is the personal fable's signature.","k":"ook5hp1jgp877"},{"topic":"adolescent cognition and its distortions","subtopic":"general","stem":"A nurse is told that adolescent egocentrism is uniformly harmful. Which response reflects the chapter?","options":["Narcissistic egocentrism may be an important developmental mechanism leading to positive mental health in mature adults; the harmful form is specifically feeling invincible to danger, while psychological invulnerability is associated with better mastery and coping skills","All forms of adolescent egocentrism predict delinquency and drug use","Adolescent egocentrism has no relationship to later mental health","Psychological invulnerability and invincibility to danger are the same construct"],"correct":[0],"sata":false,"why":"Narcissistic egocentrism \"may be an important developmental mechanism that leads to positive mental health among mature adults.\" The harmful form is invulnerability to danger specifically: \"teens who feel invincible to danger have more delinquent behaviors and drug use, whereas teens with psychological invulnerability have better mastery and coping skills.\"","trap":"(D) collapses the distinction the chapter draws, and it is the distinction that makes the finding useful. One form predicts risk behavior and the other predicts resilience, so treating them as one construct loses the clinical signal in both directions.","k":"ouvb1d1vyt70z"},{"topic":"adolescent cognition and its distortions","subtopic":"general","stem":"A nurse is assessing an adolescent's moral reasoning. Which statement reflects the chapter?","options":["Different levels of reasoning are used at different times and in different situations, and Gilligan's caring orientation is an equally valid alternative to Kohlberg's justice orientation, with both sexes capable of both","Adolescents reason consistently at the postconventional level","Gilligan's caring orientation represents a lower stage than Kohlberg's justice orientation","Girls reason from care and boys from justice, without overlap"],"correct":[0],"sata":false,"why":"\"Different levels of reasoning are used at different times and in different situations,\" so both conventional and principled reasoning coexist in adolescence. Gilligan's caring orientation is an equally valid alternative to Kohlberg's justice orientation rather than a lesser stage, and both sexes are capable of both.","trap":"(B) assigns adolescents cleanly to one level, which is tidier than the evidence supports. (D) makes the two orientations sex-specific, which the chapter denies explicitly.","k":"1w409aa1v796c8"},{"topic":"adolescent autonomy and identity","subtopic":"general","stem":"A 15-year-old no longer confides in her parents, has developed an intense admiration for a teacher, and invests most of her emotional energy outside the family. Which type of autonomy does this describe?","options":["Emotional autonomy, which involves changes in close relationships","Behavioral autonomy, which is the capacity to make independent decisions and follow through","Value autonomy, which consolidates between ages 18 and 20","Cognitive autonomy"],"correct":[0],"sata":false,"why":"Emotional autonomy involves changes in close relationships — no longer running to parents, developing crushes on other adults, and investing outside the family. Behavioral autonomy is the capacity to make independent decisions and follow through.","trap":"(B) is the paired construct, and the discriminator is what is changing: relationships point to emotional autonomy, and decisions point to behavioral autonomy. The two develop on different timelines, so an adolescent can be well advanced in one and not the other.","k":"1gvnz5j1dzizqh"},{"topic":"adolescent autonomy and identity","subtopic":"general","stem":"A 19-year-old has begun articulating a personal value system that differs from her parents' in considered ways. When does the chapter say this typically consolidates?","options":["Relatively late in adolescence, between the ages of 18 and 20 years","In early adolescence, by age 13","In middle adolescence, between 15 and 17","Not until the mid-twenties"],"correct":[0],"sata":false,"why":"Behavioral independence expands earlier, but the personal value system consolidates \"relatively late in adolescence, between the ages of 18 and 20 years.\"","trap":"(C) attaches value autonomy to the phase of greatest outward rebellion, which is when the adolescent most loudly asserts different values. Asserting a different position and holding a consolidated value system are different achievements, and the second arrives years after the first.","k":"1w8hownoh928l"},{"topic":"adolescent autonomy and identity","subtopic":"general","stem":"Parents of a 16-year-old ask whether they should step back entirely, since \"teenagers need to rebel.\" Which response reflects the chapter?","options":["In contrast to popular stereotypes, autonomy does not always involve rebellion, and problems are often understandable reactions to excessively controlling circumstances or to absent expectations; abandonment during this phase is harmful","Complete withdrawal of parental involvement is the healthiest approach","Rebellion is a necessary stage that parents should not interfere with","Parents should increase control to counter the drive for autonomy"],"correct":[0],"sata":false,"why":"\"In contrast to popular stereotypes,\" autonomy \"does not always involve rebellion,\" and problems are \"often understandable reactions to excessively controlling circumstances\" or to absent expectations. Abandonment during this phase is harmful.","trap":"(B) is the question in the stem restated as advice, and the chapter answers it directly: absent expectations produce problems just as excessive control does. (D) is the opposite error and is named as the other source of the same difficulties.","k":"1j12ahs1l8a6wy"},{"topic":"adolescent autonomy and identity","subtopic":"general","stem":"A 17-year-old attends religious services far less often than she did at 12, but describes her beliefs as more personally important than ever. How should the nurse interpret this?","options":["Adolescent beliefs become more oriented toward spiritual and ideological matters and less toward rituals, practice, and strict observance, with the emphasis shifting from attendance to belief; greater religiosity and spirituality are associated with protective, health-promoting behaviors","Declining attendance indicates loss of faith","Religiosity has no documented relationship to adolescent health behaviors","Adolescents typically increase ritual observance while abandoning belief"],"correct":[0],"sata":false,"why":"Adolescent beliefs become \"more oriented toward spiritual and ideological matters\" and less toward \"rituals, practice, and the strict observance,\" with the emphasis shifting from attendance to belief. \"Greater levels of religiosity and spirituality are associated with protective, health-promoting behaviors.\"","trap":"(B) uses the most visible measure — attendance — as a proxy for the internal one, and the chapter separates them deliberately. The direction of travel is inward, so the observable behavior can fall while the belief it once expressed strengthens.","k":"34s9671qd42a9"},{"topic":"adolescent relationships, sexuality, and peer influence","subtopic":"general","stem":"A 16-year-old tells the nurse he has had sexual contact with male partners but identifies as heterosexual and reports attraction to girls. How should the nurse understand this?","options":["Sexual orientation has three dimensions — identity, attraction, and behavior — that need not agree with one another","Behavior is the definitive indicator, so the adolescent's stated identity should be disregarded","The adolescent is confused and should be counseled toward a consistent identity","Identity always determines both attraction and behavior"],"correct":[0],"sata":false,"why":"Sexual orientation has three dimensions: identity, or how one defines oneself; attraction, or who one is drawn to; and behavior, or who one has sex with. The chapter's own example has all three disagreeing.","trap":"(B) infers orientation from behavior alone, which the chapter specifically rules out. The clinical consequence matters: a nurse who assumes identity from behavior will counsel the wrong risks and may damage the trust the confidentiality discussion was meant to establish.","k":"heb7njwjzc15"},{"topic":"adolescent relationships, sexuality, and peer influence","subtopic":"general","stem":"A parent worries that their 14-year-old has close friendships but no romantic relationships. Which response reflects the chapter?","options":["Intimate relationships are distinct from sexual relationships and either can exist without the other; same-gender peer intimacy develops first, and opposite-gender intimacy comes relatively late","Absence of romantic relationships at 14 indicates delayed social development","Intimacy and sexual activity develop together and cannot be separated","Opposite-gender intimacy normally precedes same-gender friendship"],"correct":[0],"sata":false,"why":"\"Intimate relationships are distinct from sexual relationships,\" and one can exist without the other in either direction. Same-gender peer intimacy develops first, and opposite-gender intimacy comes \"relatively late.\"","trap":"(C) fuses the two, which is the assumption behind both parental worry and a good deal of adolescent risk. A teenager can be intimately connected without sexual activity, and sexually active without intimacy, and the chapter treats those as independent axes.","k":"14hc58u1e38qs0"},{"topic":"adolescent relationships, sexuality, and peer influence","subtopic":"general","stem":"Parents ask the nurse about dating for their 13-year-old. Which guidance does the chapter give?","options":["Mixed-gender group activities are positive for young teens, and a moderate degree of dating with serious relationships delayed until late adolescence may be the ideal pattern; one-on-one dating with a lot of time alone in early adolescence may lead to sexual intimacy before the teen is ready","Early exclusive pair dating builds relationship skills and should be encouraged","All dating should be prohibited until age 18","The amount and type of dating has no bearing on outcomes"],"correct":[0],"sata":false,"why":"\"A moderate degree of dating, with serious relationships delayed until late adolescence, may be the ideal pattern.\" Mixed-gender group activities are positive for young teens, while \"one-on-one dating with a lot of time alone in early adolescence\" may lead to sexual intimacy before a teen is ready.","trap":"(C) is the protective extreme, and the chapter's recommendation is moderation rather than prohibition — some dating is part of the ideal pattern. The variable that matters is the format and the amount of unsupervised time alone, not whether dating occurs.","k":"1q7f7x3m9v5lt"},{"topic":"adolescent relationships, sexuality, and peer influence","subtopic":"general","stem":"A 16-year-old works 30 hours a week during the school year. What does the chapter say about adolescent employment?","options":["Work can build skills and provide mentors, but detrimental effects are more likely for adolescents who work more than 20 hours a week","Any employment during high school is detrimental","Employment has benefits at every level of hours worked","The threshold for detrimental effects is 40 hours a week"],"correct":[0],"sata":false,"why":"Below the threshold, work can build skills and provide mentors; \"detrimental effects are more likely for adolescents who work more than 20 hours a week.\"","trap":"(D) uses the adult full-time standard, which is the intuitive anchor and roughly double the adolescent threshold. This teen is 10 hours past the point at which the chapter expects harm rather than benefit.","k":"uxpko2kppv8w"},{"topic":"adolescent mortality and health screening","subtopic":"general","stem":"A nurse is preparing an adolescent health presentation. Which are the leading causes of death in this age group? Select all that apply.","options":["Motor vehicle crashes","Other accidental injuries","Homicide","Suicide","Congenital anomalies and chronic illness"],"correct":[0,1,2,3],"sata":true,"why":"Motor vehicle crashes, other accidental injuries, homicide, and suicide together account for more than 70% — approximately 71% — of adolescent deaths. Suicide is second among Caucasian adolescents, while homicide is the most likely cause among older African American adolescents.","trap":"(E) is the one option from the wrong side of the sort and names the disease-based causes that dominate in younger children. The striking feature of adolescent mortality is that none of the four leading causes is a disease, which is what makes the entire chapter's emphasis on risk behavior rather than pathology coherent.","k":"buypx8k1gfea"},{"topic":"adolescent mortality and health screening","subtopic":"general","stem":"A 16-year-old asks whether what she tells the nurse will be reported to her parents. Which response reflects the chapter's guidance?","options":["Assure her of confidentiality and explain its limits, which include abuse reporting and suicidality, since adolescents are unwilling to seek care for sensitive topics if their parents will know and are often unaware they can receive confidential care","Tell her that everything discussed will be reported to her parents","Promise unconditional confidentiality with no exceptions","Defer the question until a parent can join the discussion"],"correct":[0],"sata":false,"why":"Adolescents are \"unwilling to seek health care related to sensitive topics if their parents will know,\" and often \"are unaware of their ability to receive confidential health care.\" The guideline pairs the assurance with its limits — abuse reporting and suicidality.","trap":"(C) makes a promise that cannot be kept and that will have to be broken at precisely the moment the adolescent is most at risk. The two halves of this answer are inseparable: confidentiality is what opens the conversation, and its stated limits are what keep the promise honest.","k":"1ovtu4y5i1ef4"},{"topic":"adolescent mortality and health screening","subtopic":"general","stem":"A nurse plans an adolescent visit and considers whether to involve the parents. Which approach is correct?","options":["Interview the adolescent alone while still engaging the parents, since efforts to exclude parents from adolescent health services are both unrealistic and unwise, balancing the adolescent's growing autonomy against the parents' diminishing control","Exclude parents entirely from all adolescent health encounters","Conduct the entire visit with the parents present","Allow the adolescent to decide whether parents are informed of every finding"],"correct":[0],"sata":false,"why":"\"Efforts to exclude parents from adolescent health services are both unrealistic and unwise.\" The correct approach balances \"the adolescent's growing autonomy\" against \"the parents' diminishing control\" — interview the teen alone, and still engage the parents.","trap":"(B) takes the confidentiality principle to an extreme the chapter names as unwise. Confidentiality governs what is disclosed from the private portion of the visit; it does not mean the parents are removed from their child's health care.","k":"8fe8mgzkpkm6"},{"topic":"adolescent mortality and health screening","subtopic":"general","stem":"A nurse begins a health interview with a 15-year-old. Which sequence is correct?","options":["Begin with less sensitive issues and open-ended questions, move to directive questions only if necessary, and preface sexual questions with their purpose and the limits of confidentiality","Begin with the sexual history, to establish that no topic is off limits","Use closed, directive questions throughout to obtain precise answers","Avoid sexual topics unless the adolescent raises them"],"correct":[0],"sata":false,"why":"Begin with less sensitive issues, use open-ended questions, move to directive questions only if necessary, and preface sexual questions with their purpose and the confidentiality limits.","trap":"(B) is sequenced backward and is the commonest error in adolescent interviewing. Opening with the most sensitive material before rapport exists produces guarded answers to everything that follows, which costs more information than it gains.","k":"d0z9u6f5fpd4"},{"topic":"adolescent mortality and health screening","subtopic":"general","stem":"A nurse uses the HEEADSSS framework for an adolescent psychosocial assessment. Which domains does it include? Select all that apply.","options":["Home, and Education or employment","Eating, and Activities","Drugs, under which caffeine is assessed","Sexuality, Suicide or depression, and Safety, under which texting and guns are assessed","Hearing and vision screening"],"correct":[0,1,2,3],"sata":true,"why":"HEEADSSS covers eight domains: Home, Education or employment, Eating, Activities, Drugs, Sexuality, Suicide or depression, and Safety. Caffeine is assessed under Drugs, and texting and guns under Safety.","trap":"(E) is the one option from the wrong side of the sort. It names legitimate adolescent screening, but the framework is a psychosocial one, and three of its eight domains begin with S — sexuality, suicide, and safety — which is the part of the mnemonic most often miscounted.","k":"h8r2zl1s1d737"},{"topic":"adolescent sexual health and contraception counseling","subtopic":"general","stem":"A 17-year-old taking combined oral contraceptives says she no longer needs condoms. Which response is correct?","options":["Hormonal contraception does not protect against sexually transmitted infections, so barrier protection is still needed","Oral contraceptives provide partial protection against sexually transmitted infections","Condoms are unnecessary once a reliable contraceptive is in use","Barrier protection is needed only with new partners"],"correct":[0],"sata":false,"why":"Hormonal contraception does not protect against sexually transmitted infections. The real-world figures underline the gap: approximately 57% of sexually active adolescents used a condom at last intercourse, and fewer than 5% use long-acting reversible contraception.","trap":"(C) conflates the two purposes of protection, which is the single most consequential misunderstanding in adolescent contraceptive counseling. Pregnancy prevention and infection prevention are separate goals requiring separate methods, and a highly effective contraceptive can leave infection risk entirely unaddressed.","k":"194p5r110a7m57"},{"topic":"adolescent sexual health and contraception counseling","subtopic":"general","stem":"A school board is considering an abstinence-only sexual education program. Which statement reflects the chapter?","options":["Abstinence-only programs do not delay sexual initiation and may increase unprotected sex, although abstinence itself is still counseled as one of the responsible sexual behaviors deserving positive reinforcement","Abstinence-only programs reliably delay first intercourse","Abstinence should not be discussed with adolescents at all","Abstinence-only programs and comprehensive programs produce equivalent outcomes"],"correct":[0],"sata":false,"why":"Abstinence-only programs do not delay sex and may increase unprotected sex, but abstinence itself is still counseled as one of the \"responsible sexual behaviors\" deserving positive reinforcement.","trap":"(C) overreads the evidence against the program as evidence against the behavior, and the chapter separates them deliberately. What the data indict is an exclusive curriculum, not the choice an individual adolescent makes.","k":"ebgnc61tvtii4"},{"topic":"adolescent sexual health and contraception counseling","subtopic":"general","stem":"A nurse asks a 15-year-old, \"Do any of your friends drink alcohol?\" A colleague questions why. Which rationale is correct?","options":["Questions about peers give information that typically reflects similar behaviors of the teen, so this is an interviewing technique rather than small talk","The question is irrelevant to the adolescent's own risk","The question is intended only to build rapport","Peer behavior has no documented relationship to adolescent behavior"],"correct":[0],"sata":false,"why":"Asking \"Do any of your friends drink?\" gives \"information that typically reflects similar behaviors of the teen.\"","trap":"(C) treats a deliberate assessment technique as a conversational warm-up. It does build rapport, but the reason it appears in the interviewing guidance is that the answer is diagnostically informative about the adolescent in the room.","k":"1w206v165ry35"},{"topic":"adolescent sexual health and contraception counseling","subtopic":"general","stem":"A nurse is counseling a sexually active 16-year-old about contraception. Which finding reflects the chapter's data on adolescent practice?","options":["Approximately 57% of sexually active adolescents used a condom at last intercourse, and fewer than 5% use long-acting reversible contraception","More than 90% of sexually active adolescents use condoms consistently","Long-acting reversible contraception is the most commonly used adolescent method","Adolescent contraceptive use has not been measured"],"correct":[0],"sata":false,"why":"Approximately 57% of sexually active adolescents used a condom at last intercourse, and fewer than 5% use long-acting reversible contraception.","trap":"(C) reverses the actual uptake of the most effective category. The gap between how effective long-acting reversible contraception is and how rarely adolescents use it is exactly what makes it worth raising in counseling rather than assuming.","k":"5o1p3cjumk9y"},{"topic":"adolescent depression, suicide risk, and injury prevention","subtopic":"general","stem":"A 16-year-old is brought in for fatigue. He is well groomed, makes eye contact, and jokes with the nurse. When asked, \"Have you been feeling down or blue lately?\" he answers yes. How should the nurse interpret this?","options":["Most adolescents who are depressed respond affirmatively to that question although they may not necessarily look depressed, so the affirmative answer should be pursued","His presentation rules out depression, so the answer can be discounted","The question is too general to yield useful information","Depression should be assessed only when the adolescent appears sad"],"correct":[0],"sata":false,"why":"\"Most adolescents who are depressed respond affirmatively to 'Have you been feeling down or blue lately?' although they may not necessarily 'look' depressed.\"","trap":"(B) weighs the appearance over the answer, and the chapter names that mismatch specifically. An adolescent who presents well and reports low mood is the typical case rather than a contradictory one.","k":"e48ad6qpjaww"},{"topic":"adolescent depression, suicide risk, and injury prevention","subtopic":"general","stem":"A depressed 17-year-old denies any thoughts of harming herself. A second adolescent describes a specific plan and has access to the means. How should the nurse triage each?","options":["The nonsuicidal adolescent is referred for evaluation and treatment; the adolescent with a specific plan requires immediate acute intervention","Both require immediate acute intervention regardless of plan","Both can be referred for routine outpatient follow-up","Neither requires intervention unless a previous attempt has occurred"],"correct":[0],"sata":false,"why":"The triage splits on the presence of a plan: a nonsuicidal depressed adolescent is referred, while an adolescent with a specific plan requires immediate acute intervention.","trap":"(D) makes a prior attempt the threshold for acting, which would leave the adolescent in this stem — plan and means in place, no prior attempt — without intervention. The plan is the trigger, and it does not require a history to be taken seriously.","k":"tnhou11498y93"},{"topic":"adolescent depression, suicide risk, and injury prevention","subtopic":"general","stem":"A nurse reviews adolescent suicide statistics. Which statement is accurate?","options":["Girls both consider and attempt suicide more often — 23.4% of females versus 12.2% of males considered, and 11.6% of girls versus 5.5% of boys attempted — but feeling sad or hopeless for 2 weeks or longer was reported by 34% of boys and 22% of girls","Boys both consider and attempt suicide more often than girls","Rates of considering and attempting suicide are equal between the sexes","Girls report feeling sad or hopeless more often than boys"],"correct":[0],"sata":false,"why":"Considered suicide: 23.4% of females versus 12.2% of males. Attempted: 11.6% of girls versus 5.5% of boys. But feeling sad or hopeless for 2 weeks or longer was reported by 34% of boys and 22% of girls.","trap":"(D) applies the direction of the first two figures to the third, and the third runs the other way. That reversal is the reason this cluster is worth drilling as one item: two of the three measures favor one direction and the third does not, so a learner holding a single rule will get one of them wrong.","k":"1cel435wz70v3"},{"topic":"adolescent depression, suicide risk, and injury prevention","subtopic":"general","stem":"A nurse is completing a health supervision visit with a 15-year-old whose family has no history of violence. Should firearm access be assessed?","options":["Yes — assess all families for the presence of a gun in the home, regardless of history","Only if the adolescent has a history of aggression or depression","Only in households known to hunt or collect firearms","No, since asking may offend families with no risk factors"],"correct":[0],"sata":false,"why":"The directive is to \"Assess all families for the presence of a gun in the home.\" Storage teaching has three parts: the gun is never loaded, it is locked up, and the ammunition is locked separately.","trap":"(B) makes the assessment conditional on the risk factors it exists to detect, which is the logic that leaves unrecognized risk unaddressed. Given that suicide is among the four leading causes of adolescent death, universal assessment is what makes the screening meaningful.","k":"1eoobtr1e43v4t"},{"topic":"adolescent depression, suicide risk, and injury prevention","subtopic":"general","stem":"A nurse teaches a family about safe firearm storage. Which instructions are correct? Select all that apply.","options":["The firearm is stored unloaded","The firearm is locked up","Ammunition is locked in a separate location","All families should be assessed for the presence of a gun in the home","Storing an unloaded firearm in a locked cabinet with its ammunition is sufficient"],"correct":[0,1,2,3],"sata":true,"why":"Storage teaching has three parts: the firearm is never loaded, it is locked up, and the ammunition is locked separately. All families are assessed for the presence of a gun in the home regardless of history.","trap":"(E) is the one option from the wrong side of the sort and satisfies two of the three requirements while dropping the third. It is the most plausible wrong answer here because storing the ammunition with the locked gun feels like reasonable practice; separating them is what prevents the firearm from being made ready in a single step.","k":"cnzy5k140b01q"},{"topic":"adolescent depression, suicide risk, and injury prevention","subtopic":"general","stem":"A 16-year-old needs a tetanus booster and received a tetanus-diphtheria vaccine 3 years ago. Which immunization statements are correct?","options":["When used as a booster, the tetanus-diphtheria-acellular pertussis vaccine may be administered earlier than the previous 5-year interval, regardless of interval from the last tetanus-diphtheria dose; meningococcal vaccine is given at 11 to 12 years with a booster before 16, or as one dose at 13 to 18 if previously unvaccinated","The 5-year interval must elapse before a tetanus-diphtheria-acellular pertussis booster","Meningococcal vaccine is given only once, with no booster","Varicella vaccine at 13 years or older is a single dose"],"correct":[0],"sata":false,"why":"When used as a booster, the tetanus-diphtheria-acellular pertussis vaccine \"may be administered earlier than the previous 5-year interval… regardless of interval from the last Td dose.\" Meningococcal vaccine is given at 11 to 12 years with a booster before 16, or as one dose at 13 to 18 for the previously unvaccinated. Varicella at 13 years or older is two doses 4 or more weeks apart.","trap":"(B) applies the superseded interval, which is the reason the chapter states the exception explicitly — the 5-year rule is familiar enough that it gets applied where it no longer governs. (D) halves the varicella schedule for older adolescents, which is the dose count most often missed.","k":"dvwyoq2hr698"}];
+const TITLE = "Chapter 17 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 17";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chapter 28 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23F6F2E9'/><rect x='2' y='3' width='12' height='2' fill='%23B23A2E'/><rect x='2' y='7' width='12' height='2' fill='%232F6F6A'/><rect x='2' y='11' width='8' height='2' fill='%23B8892B'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#16283B;--accent:#B23A2E;--teal:#2F6F6A;--gold:#B8892B;--paper:#F6F2E9;--paper2:#EFE8D8;--line:#C9BFA8;--soft:#33475C}
+body{background:var(--paper);color:var(--navy);font-family:Georgia,'Times New Roman',serif;line-height:1.5;padding:16px;max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:21px;letter-spacing:-.01em}
+.sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.score{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--soft);text-align:right}
+.score b{color:var(--navy);font-size:15px}
+.bar{height:5px;background:var(--paper2);margin-bottom:16px;border:1px solid var(--line)}
+.bar>div{height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);background:var(--paper2);color:var(--soft)}
+.chip.t1{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.t2{background:var(--gold);color:#fff;border-color:var(--gold)}
+.stem{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:600}
+.sa{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.opt{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;background:#fff;border:1.5px solid var(--line);font-family:Georgia,serif;font-size:15px;color:var(--navy);cursor:pointer;transition:.12s;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--navy);transform:translateX(2px)}
+.opt:disabled{cursor:default}
+.opt.sel{border-color:var(--navy);background:var(--paper2)}
+.opt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.opt.wrong{border-color:var(--accent);background:rgba(178,58,46,.11)}
+.opt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.opt.right .mk{color:var(--teal)}
+.opt.wrong .mk{color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+button.btn{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:var(--navy);color:var(--paper);cursor:pointer}
+button.btn.alt{background:transparent;color:var(--navy)}
+button.btn:disabled{opacity:.35;cursor:default}
+.rev{margin-top:14px;border-left:3px solid var(--teal);background:var(--paper2);padding:12px 14px}
+.rev.no{border-left-color:var(--accent)}
+.rev .lb{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.rev.no .lb{color:var(--accent)}
+.rev p{font-size:14.5px;line-height:1.5;color:var(--soft)}
+.trap{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.trap .lb2{font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.done{text-align:center;padding:26px 16px}
+.done h2{font-size:26px;margin-bottom:8px}
+.pct{font-size:52px;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace;line-height:1}
+.brk{margin:18px 0;text-align:left}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.brow .n{font-family:ui-monospace,monospace;font-size:12.5px}
+.brow.weak .n{color:var(--accent);font-weight:700}
+.hint{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:14px}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-bottom:14px}
+.fallback-note{font-size:13px;color:var(--soft);background:var(--paper2);border-left:3px solid var(--gold);padding:11px 13px;margin-bottom:20px;line-height:1.45}
+.fq{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.fq:last-child{border-bottom:none}
+.fopts{list-style:none;margin-bottom:12px}
+.fopt{padding:9px 13px;margin-bottom:6px;background:#fff;border:1.5px solid var(--line);font-size:15px;line-height:1.35}
+.fopt.right{border-color:var(--teal);background:rgba(47,111,106,.13)}
+.fopt .mk{font-family:ui-monospace,monospace;font-size:11px;font-weight:700;margin-right:7px}
+.fopt.right .mk{color:var(--teal)}
+@media print{.fallback-note{display:none}.fq{page-break-inside:avoid}}
+
+.lt{position:fixed;right:14px;bottom:14px;z-index:40;font-family:ui-monospace,Menlo,Consolas,monospace}
+.lt-b{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);color:var(--soft);font:inherit;font-size:10px;letter-spacing:.14em;padding:6px 9px;cursor:pointer;opacity:.5;transition:.12s}
+.lt-b:hover{opacity:1;border-color:var(--navy);color:var(--navy)}
+.lt.on .lt-b{opacity:1;border-color:var(--teal);color:var(--teal);background:#fff}
+.lt-n{background:var(--teal);color:#fff;padding:1px 5px;font-size:9px;letter-spacing:.06em}
+.lt-p{display:none;position:absolute;right:0;bottom:36px;width:244px;background:#fff;border:1.5px solid var(--navy);padding:13px;box-shadow:0 8px 24px rgba(22,40,59,.18)}
+.lt.open .lt-p{display:block}
+.lt-h{font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:7px}
+.lt-t{font-family:Georgia,serif;font-size:13px;color:var(--navy);line-height:1.45;margin-bottom:10px}
+.lt-t b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.lt-a{display:flex;flex-wrap:wrap;gap:6px}
+.lt-a button{flex:1 1 auto;background:var(--paper2);border:1px solid var(--line);color:var(--navy);font:inherit;font-size:10px;letter-spacing:.1em;padding:6px 8px;cursor:pointer}
+.lt-a button:hover:not(:disabled){border-color:var(--navy)}
+.lt-a button:disabled{opacity:.4;cursor:default}
+.lt-a .warn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+@media print{.lt{display:none}}
+
+</style>
+</head>
+<body>
+<div id="app"><div class="top">
+<div><div class="sub">Chapter 28</div><h1>Chapter 28 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)</h1></div>
+</div>
+<div class="fallback-note"><b>Answer key view.</b> The interactive drill needs JavaScript, which this
+viewer has not run &mdash; some preview panes and mail clients block it. To drill the questions with
+answers hidden, save this file and open it directly in a browser. Otherwise everything is below,
+with the correct answers marked &#10003; &mdash; it prints cleanly as a study sheet.</div>
+<article class="fq">
+<div class="meta"><span class="chip t1">anemia recognition and blood transfusion safety</span><span class="chip t2">general</span></div>
+<div class="stem">1. A nurse is assessing a child with moderate iron deficiency anemia and notes pallor and fatigue but no cyanosis. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Expected, because anemia is caused by decreased hemoglobin rather than inadequate oxygen saturation of existing hemoglobin</li><li class="fopt"><span class="mk">B</span>Unexpected, since cyanosis accompanies all significant anemias</li><li class="fopt"><span class="mk">C</span>Unexpected, and pulse oximetry should be obtained immediately to confirm hypoxemia</li><li class="fopt"><span class="mk">D</span>Expected only if the hemoglobin is above 10 g/dl</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Anemia is caused by decreased levels of hemoglobin or RBCs, not inadequate oxygen saturation of existing hemoglobin,&quot; and that cyanosis &quot;is typically not evident&quot; (p. 1025).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the option the chapter's own review question plants, and it substitutes the wrong mechanism — cyanosis requires a quantity of deoxygenated hemoglobin that an anemic child may not have enough hemoglobin to produce at all.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anemia recognition and blood transfusion safety</span><span class="chip t2">general</span></div>
+<div class="stem">2. A nurse is sorting the signs of anemia by mechanism. Which findings belong to the increased-destruction group? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Jaundice</li><li class="fopt right"><span class="mk">&#10003;</span>Icteric sclera</li><li class="fopt right"><span class="mk">&#10003;</span>Dark urine</li><li class="fopt right"><span class="mk">&#10003;</span>Splenomegaly</li><li class="fopt"><span class="mk">E</span>Cool skin with decreased peripheral pulses</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Box 28.2 sorts the signs of anemia into three etiologic groups — decreased production, increased destruction, and increased loss — placing jaundice, icteric sclera, dark urine, and splenomegaly in the destruction column (p. 1025).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) belongs only to the increased-loss column, where volume depletion produces cool skin and diminished peripheral pulses; sorting each option into its group before answering is what makes an all-or-nothing item survivable here.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anemia recognition and blood transfusion safety</span><span class="chip t2">general</span></div>
+<div class="stem">3. Fifteen minutes into a transfusion, a child develops chills, flank pain, and red urine. What should the nurse do first?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Stop the transfusion</li><li class="fopt"><span class="mk">B</span>Slow the transfusion rate and reassess in 15 minutes</li><li class="fopt"><span class="mk">C</span>Notify the practitioner and await orders</li><li class="fopt"><span class="mk">D</span>Administer acetaminophen and continue the infusion</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives a fixed action order for a suspected reaction: stop the transfusion, take vital signs, maintain a patent intravenous line with normal saline and new tubing, notify the practitioner, and do not restart until the child has been medically evaluated (p. 1030).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the plausible-but-wrong option, because slowing keeps incompatible blood entering the circulation; the findings described — chills, flank pain, and red or black urine — are those of a hemolytic reaction, and ABO incompatibility &quot;remains the most common cause of death from blood transfusion, and human error is usually responsible.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anemia recognition and blood transfusion safety</span><span class="chip t2">general</span></div>
+<div class="stem">4. A nurse is starting a unit of packed red blood cells on a 4-year-old. Which action is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Administer the first 50 ml or initial 20% of the volume slowly and stay with the child</li><li class="fopt"><span class="mk">B</span>Begin at the full rate and check on the child in 30 minutes</li><li class="fopt"><span class="mk">C</span>Prime the line with 5% dextrose in water before connecting the blood</li><li class="fopt"><span class="mk">D</span>Return unused blood to the unit refrigerator for later use</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs administering &quot;the first 50 ml of blood or initial 20% of volume (whichever is smaller) slowly and stay with the child,&quot; with vital signs before, 15 minutes after initiation, hourly while infusing, and on completion (p. 1030).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) violates the rule against infusing solutions other than normal saline in the line with red cells, and (D) violates the instruction not to store blood in a regular unit refrigerator — blood is used within 30 minutes of arrival and each unit infused within 4 hours.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">anemia recognition and blood transfusion safety</span><span class="chip t2">general</span></div>
+<div class="stem">5. A child receiving a transfusion develops dyspnea, a dry cough, distended neck veins, and hypertension. Which reaction is this, and what positioning helps?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Circulatory overload, and the child is placed upright with the feet dependent to increase venous resistance</li><li class="fopt"><span class="mk">B</span>Hemolytic reaction, and the child is placed flat with legs elevated</li><li class="fopt"><span class="mk">C</span>Allergic reaction, and the child is placed in a side-lying position</li><li class="fopt"><span class="mk">D</span>Air embolism, and the child is placed in Trendelenburg position</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 28.2 lists precordial pain, dyspnea, rales, cyanosis, dry cough, distended neck veins, and hypertension as circulatory overload, directing the nurse to &quot;Place child upright with feet in dependent position to increase venous resistance&quot; (pp. 1027–1029).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the most feared reaction, whose signs are chills, flank pain, and red or black urine rather than congestion; note that the distinguishing feature here is hypertension with distended neck veins, which points to too much volume rather than to incompatibility.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iron deficiency anemia</span><span class="chip t2">general</span></div>
+<div class="stem">6. A 14-month-old drinks about 1.5 liters of whole milk daily, eats few solids, is above the ninetieth percentile for weight, and is pale. What should the nurse suspect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Iron deficiency anemia, since &quot;milk baby&quot; infants are overweight yet anemic</li><li class="fopt"><span class="mk">B</span>Iron deficiency is unlikely, since the child is well nourished and gaining weight</li><li class="fopt"><span class="mk">C</span>Lactose intolerance, since milk intake is high</li><li class="fopt"><span class="mk">D</span>Physiologic anemia, which resolves without intervention</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that although infants with iron deficiency anemia &quot;tend to be underweight,&quot; many &quot;are overweight because of excessive milk ingestion (known as milk baby),&quot; because milk is a poor iron source given almost to the exclusion of solids, and because &quot;Increased fecal loss of blood occurs in 50% of iron deficient infants fed cow's milk&quot; (p. 1031).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats good weight gain as reassurance, which is exactly the bait; (D) confuses two entities the chapter separates explicitly — &quot;Physiologic anemia should not be confused with iron deficiency anemia resulting from nutritional causes.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iron deficiency anemia</span><span class="chip t2">general</span></div>
+<div class="stem">7. Which laboratory finding confirms iron deficiency anemia?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>A total iron-binding capacity elevated above the normal range</li><li class="fopt"><span class="mk">B</span>A total iron-binding capacity below the normal range</li><li class="fopt"><span class="mk">C</span>A markedly elevated reticulocyte count</li><li class="fopt"><span class="mk">D</span>Decreased blood pressure as an early sign</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;In iron deficiency anemia TIBC is elevated above the normal range,&quot; an elevation that &quot;represents the body's compensatory mechanism to absorb more iron&quot; (p. 1031).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the compensation, which is the error this pair exists to catch — serum iron falls while binding capacity rises. (C) misstates the reticulocyte count, which is &quot;usually normal or slightly reduced,&quot; and (D) misplaces decreased blood pressure, which is a late rather than early sign.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iron deficiency anemia</span><span class="chip t2">general</span></div>
+<div class="stem">8. A nurse is teaching a parent to give oral iron to a toddler. Which instruction is correct?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Give it between meals with a citrus juice, and expect green-black stools</li><li class="fopt"><span class="mk">B</span>Give it with milk to reduce stomach upset</li><li class="fopt"><span class="mk">C</span>Give it with tea to improve absorption</li><li class="fopt"><span class="mk">D</span>Stop the iron as soon as the hemoglobin returns to normal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs giving iron between meals because free hydrochloric acid is greatest then, notes that ascorbic acid enhances absorption while tannins in tea bind nonheme iron, and describes green-black stool as an expected effect whose absence is a compliance clue (p. 1033).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) stops too early — iron therapy continues &quot;2 to 3 months after blood values normalize&quot; to replenish stores; (B) and (C) each name a substance that impairs absorption, and milk is already the likely cause of the deficiency.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">iron deficiency anemia</span><span class="chip t2">general</span></div>
+<div class="stem">9. A nurse is giving anticipatory guidance to the parents of a healthy 5-month-old about preventing iron deficiency. What should be included?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Iron supplementation of 1 mg/kg/day by 4 to 6 months, breast milk or iron-fortified formula only for the first 12 months, and no fresh cow's milk before 12 months</li><li class="fopt"><span class="mk">B</span>Introduce fresh cow's milk at 6 months to increase calcium and iron intake</li><li class="fopt"><span class="mk">C</span>No supplementation is needed, since maternal iron stores last through the first year</li><li class="fopt"><span class="mk">D</span>Limit all solid foods until 12 months to avoid displacing formula</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter gives iron supplementation of 1 mg/kg/day by 4 to 6 months in full-term infants, breast milk or iron-fortified formula only for the first 12 months, formula limited to no more than 1 L/day to encourage iron-rich solids, and states that &quot;Infants younger than 12 months old should not be given fresh cow's milk&quot; (p. 1032).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) overstates the duration of maternal stores, which &quot;are adequate for the first 5 to 6 months in the full-term infant but for only about 2 to 3 months in premature infants or infants of multiple births&quot;; universal screening for anemia occurs at approximately 12 months.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease pathophysiology and crises</span><span class="chip t2">general</span></div>
+<div class="stem">10. A nurse is teaching the parents of a child with sickle cell anemia what triggers sickling. Which conditions does the chapter name?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Dehydration, acidosis, hypoxia, and temperature elevation</li><li class="fopt"><span class="mk">B</span>Dehydration, alkalosis, hyperoxia, and hypothermia</li><li class="fopt"><span class="mk">C</span>Infection alone, since sickling is otherwise spontaneous</li><li class="fopt"><span class="mk">D</span>Physical exertion alone, since sickling is exercise induced</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Under conditions of dehydration, acidosis, hypoxia, and temperature elevation, the relatively insoluble HgbS changes its molecular structure to form long, slender crystals&quot; (p. 1034).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses three of the four, and the reason the list matters is that these four conditions are the whole prevention plan in one sentence; sickling is reversible under adequate oxygenation and hydration until repeated cycles make the cells irreversibly sickled.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease pathophysiology and crises</span><span class="chip t2">general</span></div>
+<div class="stem">11. Parents ask why their newborn with sickle cell anemia has no symptoms. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The newborn is protected by fetal hemoglobin, which is 60% to 80% at birth and falls rapidly during the first year</li><li class="fopt"><span class="mk">B</span>Symptoms never appear before school age in this disease</li><li class="fopt"><span class="mk">C</span>The diagnosis is probably incorrect, since symptoms are present at birth</li><li class="fopt"><span class="mk">D</span>Symptoms are absent because the spleen is still functioning normally</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;The newborn with SCD is generally asymptomatic because of the protective effect of HgbF (60% to 80%), but this rapidly decreases during the first year, so the child is at risk for sickle cell-related complications&quot; (p. 1034).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) names a real fact at the wrong time — the spleen is indeed functioning at birth, but it is progressively infarcted until &quot;by the age of 5 years, the spleen has decreased in size and has been totally replaced by a fibrous mass (functional asplenia),&quot; which is a later development rather than the reason for newborn protection.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease pathophysiology and crises</span><span class="chip t2">general</span></div>
+<div class="stem">12. A 3-year-old with sickle cell anemia develops sudden profound anemia, rapidly enlarging spleen, and hypotension. Which crisis is this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Splenic sequestration</li><li class="fopt"><span class="mk">B</span>Vasoocclusive crisis</li><li class="fopt"><span class="mk">C</span>Aplastic crisis</li><li class="fopt"><span class="mk">D</span>Hyperhemolytic crisis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes sequestration as &quot;pooling of large quantities of blood, usually in the spleen... which causes a decrease in blood volume and ultimately shock,&quot; occurring &quot;most commonly in children between 2 months and 5 years of age&quot; and potentially resulting in &quot;death from profound anemia and cardiovascular collapse&quot; (p. 1037).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) also produces profound anemia, but through diminished red cell production &quot;usually triggered by infection with a virus (especially the human parvovirus)&quot; rather than through pooling and shock — the enlarging spleen and hypotension are what separate them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease pathophysiology and crises</span><span class="chip t2">general</span></div>
+<div class="stem">13. A child with sickle cell disease has a new pulmonary infiltrate on chest radiograph with chest pain, fever, and hypoxia. What is this, and why does it matter?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Acute chest syndrome, which is clinically similar to pneumonia and may cause restrictive lung disease and pulmonary hypertension if repeated</li><li class="fopt"><span class="mk">B</span>Vasoocclusive crisis, which is the most common and non-life-threatening type</li><li class="fopt"><span class="mk">C</span>Aplastic crisis, which follows parvovirus infection</li><li class="fopt"><span class="mk">D</span>Simple pneumonia, which requires no different management than in other children</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter defines acute chest syndrome as &quot;a new pulmonary infiltrate on chest x-ray of a SCD patient that may be accompanied by chest pain, fever, cough, tachypnea, wheezing, and hypoxia,&quot; clinically similar to pneumonia, with repeated episodes causing restrictive lung disease and pulmonary hypertension (p. 1037).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) is dangerous because exchange transfusion is specifically used in this syndrome and after stroke; note that overwhelming infection with *Streptococcus pneumoniae* and *Haemophilus influenzae* type b &quot;is the major cause of death in children with SCD under the age of 5 years.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease pathophysiology and crises</span><span class="chip t2">general</span></div>
+<div class="stem">14. A screening Sickledex test is positive in a 6-year-old. What does the nurse tell the family?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hemoglobin electrophoresis is needed, because the screening test cannot distinguish trait from disease</li><li class="fopt"><span class="mk">B</span>The child has sickle cell anemia, since the test is positive</li><li class="fopt"><span class="mk">C</span>The child has sickle cell trait, since disease would have presented earlier</li><li class="fopt"><span class="mk">D</span>The test should be repeated in 6 months before further workup</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that the sickle turbidity test &quot;can be performed on blood from a finger or heel stick and yields accurate results in 3 minutes,&quot; but that &quot;Hemoglobin electrophoresis is necessary to distinguish between those children with the trait and those with the disease&quot; (p. 1037).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) each convert a screen into a diagnosis in opposite directions; note the separate rule that &quot;Whenever sickle cells are found, diagnostic test results are usually positive for SCA, not sickle cell trait,&quot; so a smear showing sickled cells points to disease.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease management and prevention</span><span class="chip t2">general</span></div>
+<div class="stem">15. A child is admitted in vasoocclusive crisis. Which interventions should the nurse expect? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Intravenous fluids started and oral fluids encouraged</li><li class="fopt right"><span class="mk">&#10003;</span>Antibiotics to treat any existing infection</li><li class="fopt right"><span class="mk">&#10003;</span>Analgesia for severe pain</li><li class="fopt right"><span class="mk">&#10003;</span>Bed rest to minimize energy expenditure</li><li class="fopt"><span class="mk">E</span>Cold compresses applied to painful joints</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter lists six objectives: bed rest, hydration through oral and intravenous therapy, electrolyte replacement, analgesia, blood replacement, and antibiotic therapy to treat any existing infection (p. 1039).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is affirmatively contraindicated — &quot;Cold compresses are not applied to the area because doing so enhances vasoconstriction and occlusion&quot; — and it is the distractor in the chapter's own review question; the other planted wrong option there is meperidine.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease management and prevention</span><span class="chip t2">general</span></div>
+<div class="stem">16. A child in sickle cell crisis is prescribed meperidine for pain. What should the nurse recognize?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Meperidine is contraindicated, because normeperidine accumulates and causes seizures</li><li class="fopt"><span class="mk">B</span>Meperidine is the preferred opioid in this disease</li><li class="fopt"><span class="mk">C</span>Meperidine is acceptable if given with an antiemetic</li><li class="fopt"><span class="mk">D</span>Meperidine is acceptable for doses under 24 hours</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that meperidine &quot;is not recommended&quot; in sickle cell disease because the metabolite normeperidine accumulates and causes seizures (p. 1041).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) both look for a safe window that does not exist for this drug in this population; the underlying point is that severe vasoocclusive pain requires adequate opioid analgesia, just not this opioid.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease management and prevention</span><span class="chip t2">general</span></div>
+<div class="stem">17. A nurse is asked to apply oxygen to a child in vasoocclusive crisis who has a saturation of 97%. What should the nurse understand?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Oxygen is of little value unless the child is hypoxic, does not reverse sickling, and with prolonged use decreases erythropoiesis</li><li class="fopt"><span class="mk">B</span>Oxygen should be applied to all children in crisis to prevent further sickling</li><li class="fopt"><span class="mk">C</span>Oxygen reverses sickling within 30 minutes in most children</li><li class="fopt"><span class="mk">D</span>Oxygen is contraindicated in sickle cell disease at any saturation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Oxygen therapy is of little therapeutic value unless the patient is hypoxic,&quot; that it &quot;is usually not effective in reversing sickling or reducing pain because the oxygen is not able to reach the enmeshed sickled RBCs through the clogged vessels,&quot; and that prolonged therapy aggravates the anemia (pp. 1039, 1041).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) overcorrects into a contraindication the chapter does not state — oxygen is appropriate for a hypoxic child; what is wrong is treating it as a routine crisis intervention.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease management and prevention</span><span class="chip t2">general</span></div>
+<div class="stem">18. The parents of an infant newly diagnosed with sickle cell anemia ask what will protect their child from infection. What should the nurse explain?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Penicillin prophylaxis started by 2 months of age, plus pneumococcal, *Haemophilus influenzae* type b, and meningococcal vaccines</li><li class="fopt"><span class="mk">B</span>Vaccines alone, since prophylactic antibiotics promote resistance</li><li class="fopt"><span class="mk">C</span>Penicillin prophylaxis beginning at school entry</li><li class="fopt"><span class="mk">D</span>No specific prophylaxis is needed until the spleen is removed</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Penicillin prophylaxis is started by 2 months of age&quot; and that pneumococcal, *Haemophilus influenzae* type b, and meningococcal vaccines are recommended because of functional asplenia (p. 1038).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) waits for a splenectomy that does not occur in this disease, since the spleen is destroyed by repeated infarction rather than removed; parents should seek care for a fever of 101.3 degrees Fahrenheit or higher, an increase in spleen size, or severe pallor, and most experts recommend stopping prophylaxis after age 5.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">sickle cell disease management and prevention</span><span class="chip t2">general</span></div>
+<div class="stem">19. A 9-year-old with sickle cell disease wants to join a sports team and take a family trip. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Avoid contact sports if the spleen is enlarged, and avoid low-oxygen environments such as high altitudes or nonpressurized flights</li><li class="fopt"><span class="mk">B</span>Avoid all physical activity permanently</li><li class="fopt"><span class="mk">C</span>Sports and travel carry no additional risk in this disease</li><li class="fopt"><span class="mk">D</span>Avoid air travel entirely, including commercial pressurized flights</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs avoiding contact sports if the spleen is enlarged &quot;because rupture will cause massive internal hemorrhage,&quot; and avoiding &quot;environments with low oxygen concentration, such as high altitudes or nonpressurized airplane flights,&quot; along with frequent rest breaks during activity (p. 1041).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) removes activity the chapter accommodates with rest breaks; (D) overextends the restriction, since the named hazard is the nonpressurized flight. Note also that enuresis in this disease is a complication of impaired urine concentration rather than a behavior problem, so restricting nighttime fluids is the wrong response.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">beta-thalassemia and aplastic anemia</span><span class="chip t2">general</span></div>
+<div class="stem">20. A nurse suggests checking the iron level of a child with beta-thalassemia &quot;to make sure he is not anemic.&quot; How should this be corrected?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>These children are treated for iron overload with chelation, so the concern is too much iron rather than too little</li><li class="fopt"><span class="mk">B</span>Iron levels are not measurable in thalassemia</li><li class="fopt"><span class="mk">C</span>The suggestion is correct, since thalassemia is an iron deficiency disorder</li><li class="fopt"><span class="mk">D</span>Iron supplementation should be started empirically instead</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter's trap note and its own review question turn on this reversal: children with thalassemia receive repeated transfusions and are managed with chelation for iron overload, so the direction of the problem is excess rather than deficiency (pp. 1045–1046).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) and (D) both act on the deficiency assumption, and (D) would actively worsen the overload; the anemia in thalassemia arises from defective globin chain synthesis rather than from a lack of available iron.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">beta-thalassemia and aplastic anemia</span><span class="chip t2">general</span></div>
+<div class="stem">21. A child with beta-thalassemia has excess iron storage without tissue injury. Which term applies?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hemosiderosis</li><li class="fopt"><span class="mk">B</span>Hemochromatosis</li><li class="fopt"><span class="mk">C</span>Hemolysis</li><li class="fopt"><span class="mk">D</span>Hemarthrosis</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter defines hemosiderosis as excess iron storage &quot;but without associated tissue injury,&quot; and hemochromatosis as excess storage &quot;that results in cellular damage&quot; (p. 1046).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the same process one step further along, and the single word separating them is damage; the two are routinely used interchangeably in speech, which is why the chapter distinguishes them.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">beta-thalassemia and aplastic anemia</span><span class="chip t2">general</span></div>
+<div class="stem">22. A bone marrow aspirate in a child with pancytopenia shows a hypoplastic marrow. Which diagnosis does this support?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Aplastic anemia</li><li class="fopt"><span class="mk">B</span>Leukemia</li><li class="fopt"><span class="mk">C</span>Iron deficiency anemia</li><li class="fopt"><span class="mk">D</span>Immune thrombocytopenia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter contrasts the two directly: &quot;In leukemia the bone marrow is hyperplastic (producing increased numbers of cells), whereas in aplastic anemia the bone marrow is hypoplastic... or aplastic&quot; (p. 1026).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) produces the same peripheral pancytopenia by a different marrow mechanism, which is why marrow examination rather than the blood count settles it; (D) shows normal marrow with normal or increased immature megakaryocytes.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">beta-thalassemia and aplastic anemia</span><span class="chip t2">general</span></div>
+<div class="stem">23. A child is being evaluated for severe aplastic anemia. Which findings would meet the criteria the chapter names?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Marrow cellularity under 25% plus at least two of neutrophils under 500, platelets under 20,000, and absolute reticulocytes under 40,000</li><li class="fopt"><span class="mk">B</span>Marrow cellularity under 50% alone</li><li class="fopt"><span class="mk">C</span>A hemoglobin under 7 g/dl alone</li><li class="fopt"><span class="mk">D</span>Pancytopenia of any degree with a normal marrow</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Camitta's criteria for severe aplastic anemia require marrow cellularity below 25% plus at least two of an absolute neutrophil count below 500/mm3, platelets below 20,000/mm3, and absolute reticulocytes below 40,000/mm3, with moderate disease defined by cellularity below 50% (p. 1048).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names the moderate threshold as though it were the severe one; (D) describes a picture inconsistent with the diagnosis, since a normal marrow points away from marrow failure.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemophilia and von willebrand disease</span><span class="chip t2">general</span></div>
+<div class="stem">24. A 2-year-old boy has recurrent bleeding into the knees and ankles but no petechiae. Which disorder does this pattern suggest, and why do petechiae not appear?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Hemophilia, because repair of small hemorrhages depends on platelet function rather than on clotting mechanisms</li><li class="fopt"><span class="mk">B</span>Immune thrombocytopenia, because platelet counts are low</li><li class="fopt"><span class="mk">C</span>Von Willebrand disease, because mucous membrane bleeding predominates</li><li class="fopt"><span class="mk">D</span>Henoch-Schönlein purpura, because joints are involved</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Petechiae are uncommon in persons with hemophilia because repair of small hemorrhages depends on platelet function, not on blood-clotting mechanisms,&quot; and names hemarthrosis &quot;the most frequent form of internal bleeding,&quot; especially knees, elbows, and ankles (pp. 1051–1052).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) names the right family of disorders with the wrong bleeding site, since von Willebrand disease is characterized by mucous membrane bleeding, most commonly nosebleeds; this one sentence about petechiae is the whole hemophilia-versus-thrombocytopenia discriminator.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemophilia and von willebrand disease</span><span class="chip t2">general</span></div>
+<div class="stem">25. A child has factor VIII activity of 0.5%. What bleeding pattern should the nurse expect?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Spontaneous bleeding without trauma</li><li class="fopt"><span class="mk">B</span>Bleeding only with severe trauma or surgery</li><li class="fopt"><span class="mk">C</span>Bleeding only with moderate trauma</li><li class="fopt"><span class="mk">D</span>No abnormal bleeding</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>Table 28.6 grades severity by factor activity: below 1% is severe with &quot;Spontaneous bleeding without trauma,&quot; 1% to 5% is moderate with bleeding after trauma, and above 5% to 40% is mild with bleeding after severe trauma or surgery (p. 1051).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) describes the mild band; note that 60% to 70% of children with hemophilia have the severe form, so spontaneous bleeding is the common presentation rather than the exception.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemophilia and von willebrand disease</span><span class="chip t2">general</span></div>
+<div class="stem">26. A child with hemophilia has an acute hemarthrosis of the knee. Which measures are appropriate? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Factor replacement</li><li class="fopt right"><span class="mk">&#10003;</span>Rest, ice, compression, and elevation</li><li class="fopt right"><span class="mk">&#10003;</span>Active range-of-motion exercises once bleeding is controlled</li><li class="fopt right"><span class="mk">&#10003;</span>Acetaminophen for pain</li><li class="fopt"><span class="mk">E</span>Passive range-of-motion exercises to preserve joint mobility</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names factor replacement as primary therapy, describes the RICE mnemonic as a supportive measure, directs that &quot;Active range-of-motion exercises are best so that the patient can gauge his or her own pain tolerance,&quot; and names acetaminophen as the aspirin substitute (pp. 1052–1054).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) is forbidden by a Nursing Alert — &quot;Passive range-of-motion exercises should never be part of an exercise regimen after an acute episode because the joint capsule could easily be stretched and bleeding could recur.&quot; Note also that the supportive measures &quot;do not take the place of factor replacement,&quot; which is the option the chapter's own review question plants.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemophilia and von willebrand disease</span><span class="chip t2">general</span></div>
+<div class="stem">27. An adolescent girl has frequent nosebleeds and heavy menses, and her father has the same bleeding pattern. Which disorder does this suggest?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Von Willebrand disease, which is autosomal dominant and affects both males and females</li><li class="fopt"><span class="mk">B</span>Hemophilia A, which is X-linked recessive</li><li class="fopt"><span class="mk">C</span>Hemophilia B, which is X-linked recessive</li><li class="fopt"><span class="mk">D</span>Immune thrombocytopenia, which is acquired</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;Unlike hemophilia, vWD affects both males and females because its inheritance shows an autosomal dominant pattern,&quot; with mucous membrane bleeding, most commonly nosebleeds, as its characteristic feature (p. 1055).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are both X-linked recessive, so an affected father transmitting to a daughter in this pattern does not fit; the two clues doing the work here are the sex distribution and the bleeding site.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">hemophilia and von willebrand disease</span><span class="chip t2">general</span></div>
+<div class="stem">28. A child with mild hemophilia A is scheduled for a dental extraction. Which treatment does the chapter identify as the treatment of choice?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Desmopressin, if the child responds with a threefold to fourfold rise in factor VIII activity</li><li class="fopt"><span class="mk">B</span>Cryoprecipitate, which remains the standard for factor VIII deficiency</li><li class="fopt"><span class="mk">C</span>Aspirin for procedural pain</li><li class="fopt"><span class="mk">D</span>Fresh frozen plasma as the primary replacement</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter names desmopressin &quot;the treatment of choice in mild hemophilia and vWD (types I and IIA only)&quot; if the child responds, with a threefold to fourfold rise in factor VIII activity expected, noting that patients with moderate deficiency do not benefit because the goal is to raise the level at least 30% (p. 1052).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is ruled out by a Drug Alert — &quot;Cryoprecipitate is no longer recommended for use in treating factor VIII deficiency&quot; — because it cannot be treated to safely eliminate hepatitis or human immunodeficiency virus; (C) names a drug contraindicated in this disease.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immune thrombocytopenia and henoch-schonlein purpura</span><span class="chip t2">general</span></div>
+<div class="stem">29. A 4-year-old develops petechiae and easy bruising 2 weeks after a viral illness, with a platelet count of 18,000/mm3 and a normal bone marrow. What is the likely diagnosis?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Immune thrombocytopenia</li><li class="fopt"><span class="mk">B</span>Aplastic anemia</li><li class="fopt"><span class="mk">C</span>Hemophilia</li><li class="fopt"><span class="mk">D</span>Disseminated intravascular coagulation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes immune thrombocytopenia as an acquired disorder with thrombocytopenia and &quot;normal bone marrow with a normal or increased number of immature megakaryocytes,&quot; usually presenting 1 to 4 weeks after a viral illness with peak incidence between ages 1 and 6, and notes that &quot;Symptomatic bleeding does not usually occur until the platelet count is lower than 20,000/mm3&quot; (p. 1055).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) shares the low platelet count but has a hypoplastic marrow and involves all three cell lines; the normal marrow in the stem is what separates a destruction problem from a production problem.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immune thrombocytopenia and henoch-schonlein purpura</span><span class="chip t2">general</span></div>
+<div class="stem">30. A nurse is teaching the family of a child with immune thrombocytopenia whose platelet count is 38,000/mm3. Which instructions are correct? Select all that apply.</div>
+<div class="sa">Select all that apply &middot; scored all or nothing</div>
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Restrict contact sports while the platelet count is below 50,000/mm3</li><li class="fopt right"><span class="mk">&#10003;</span>Avoid bike riding, skateboarding, and gymnastics</li><li class="fopt right"><span class="mk">&#10003;</span>Seek prompt medical evaluation for head or abdominal trauma</li><li class="fopt right"><span class="mk">&#10003;</span>Use acetaminophen rather than aspirin or other nonsteroidal drugs for pain</li><li class="fopt"><span class="mk">E</span>Use ibuprofen for fever, since it is safer than aspirin in this disorder</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs &quot;restriction of contact sports while the child's platelet count is less than 50,000/mm3,&quot; lists bike riding, skateboarding, in-line skating, gymnastics, climbing, and running among restricted activities, directs prompt evaluation for head or abdominal trauma, and names acetaminophen as the substitute (p. 1056).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(E) names a nonsteroidal drug, which a Drug Alert rules out along with aspirin because both &quot;have critical harmful effects for these children&quot;; note that 50,000 governs activity while 20,000 governs when symptomatic bleeding begins — two numbers for two different decisions.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immune thrombocytopenia and henoch-schonlein purpura</span><span class="chip t2">general</span></div>
+<div class="stem">31. A child with immune thrombocytopenia is actively bleeding. Which treatment is inappropriate at this moment?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Anti-D antibody, because the platelet count does not rise until approximately 48 hours after infusion</li><li class="fopt"><span class="mk">B</span>Intravenous immunoglobulin</li><li class="fopt"><span class="mk">C</span>Prednisone</li><li class="fopt"><span class="mk">D</span>Platelet transfusion for severe hemorrhage</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that with anti-D antibody the platelet count rises &quot;approximately 48 hours after infusion; therefore it is not appropriate therapy for patients who are actively bleeding&quot; (p. 1055).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) and (C) are the two agents that pull hardest, because both are standard options in this disorder and neither carries the delay that disqualifies the keyed answer here; anti-D antibody otherwise has real advantages, a single dose over 5 to 10 minutes and significantly less expense than immunoglobulin, which is exactly why the timing caveat is worth holding. None of the three &quot;are curative therapies,&quot; and the disorder is otherwise managed supportively.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">immune thrombocytopenia and henoch-schonlein purpura</span><span class="chip t2">general</span></div>
+<div class="stem">32. A 5-year-old has symmetric purpura on the buttocks and lower extremities, knee and ankle arthritis, colicky abdominal pain, and a normal platelet count. What is the likely diagnosis, and what is the most serious long-term concern?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Henoch-Schönlein purpura, with renal involvement occurring in up to 50% of affected children</li><li class="fopt"><span class="mk">B</span>Immune thrombocytopenia, with intracranial hemorrhage</li><li class="fopt"><span class="mk">C</span>Hemophilia, with joint destruction</li><li class="fopt"><span class="mk">D</span>Disseminated intravascular coagulation, with organ failure</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter describes Henoch-Schönlein purpura as a nonthrombocytopenic purpura with arthritis, nephritis, and abdominal pain, with &quot;a symmetric purpura that involves the buttocks and lower extremities,&quot; and states that &quot;Renal involvement occurs in up to 50% of affected children and is potentially the most serious long-term complication&quot; (pp. 1057–1059).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) is the confusable partner, and the normal platelet count is the discriminator — the purpura here comes from vasculitis rather than from too few platelets. Increased immunoglobulin A levels are a frequent finding, and children with nephritis need long-term follow-up.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neutropenia in children</span><span class="chip t2">general</span></div>
+<div class="stem">33. A 3-year-old has an absolute neutrophil count of 1200/mm3. How should this be classified?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Neutropenia, since the threshold for children older than 1 year is below 1500/mm3</li><li class="fopt"><span class="mk">B</span>Severe neutropenia, since the count is below 1500/mm3</li><li class="fopt"><span class="mk">C</span>Normal, since the threshold is below 1000/mm3 at all ages</li><li class="fopt"><span class="mk">D</span>Normal, since only counts below 500/mm3 are abnormal</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter defines neutropenia as an absolute neutrophil count below 1000/mm3 in infants 2 weeks to 1 year and below 1500/mm3 in children older than 1 year, with severe neutropenia below 500/mm3 &quot;with an increased risk of life-threatening infection&quot; (p. 1057).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) jumps to the severe tier, which is a threefold lower number and carries a different level of concern; the count is calculated by multiplying the total white blood cell count by the percentage of neutrophils and bands in the differential.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neutropenia in children</span><span class="chip t2">general</span></div>
+<div class="stem">34. An African American child has an absolute neutrophil count 400/mm3 below the usual reference range but is well. How should the nurse interpret this?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>This may be a normal variant, since African American counts run 200 to 600/mm3 lower</li><li class="fopt"><span class="mk">B</span>This confirms chronic benign neutropenia and requires treatment</li><li class="fopt"><span class="mk">C</span>This requires immediate bone marrow biopsy</li><li class="fopt"><span class="mk">D</span>This requires prophylactic antibiotics</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that &quot;African Americans have ANCs that are 200 to 600/mm3 lower than those of Caucasians,&quot; which is a normal-variant consideration rather than a disease (p. 1057).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B), (C), and (D) each escalate a finding that may require nothing; note that in chronic benign neutropenia specifically, &quot;most children have no infections despite the markedly reduced ANC,&quot; and therapy to increase the count &quot;is rarely required.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neutropenia in children</span><span class="chip t2">general</span></div>
+<div class="stem">35. A child with chronic benign neutropenia is due for routine immunizations. What should the nurse advise?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Give the routine childhood immunizations, since these children have normal cellular immunity</li><li class="fopt"><span class="mk">B</span>Withhold all immunizations until the count normalizes</li><li class="fopt"><span class="mk">C</span>Give only inactivated vaccines</li><li class="fopt"><span class="mk">D</span>Withhold immunizations permanently</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that children with chronic benign neutropenia &quot;have normal cellular immunity, therefore they should receive their routine childhood immunizations&quot; (p. 1057).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(C) applies the live-vaccine caution that belongs to true immunodeficiency; the distinction is that this disorder affects neutrophil numbers without impairing the cellular immunity that determines live vaccine safety.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">neutropenia in children</span><span class="chip t2">general</span></div>
+<div class="stem">36. A nurse is teaching the family of a child with neutropenia when to seek care. What should be emphasized?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Seek medical attention for a fever of 101.3 degrees Fahrenheit or higher, or if skin lesions develop</li><li class="fopt"><span class="mk">B</span>Seek care only if the fever exceeds 103 degrees Fahrenheit</li><li class="fopt"><span class="mk">C</span>Seek care only if the child appears ill regardless of temperature</li><li class="fopt"><span class="mk">D</span>Fever in neutropenia is expected and does not require evaluation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter directs seeking medical attention for a fever of 101.3 degrees Fahrenheit or higher or if skin lesions develop, and notes that &quot;Oral ulcerations and skin infections are the most common manifestation of chronic benign neutropenia&quot; (p. 1057).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) raises a threshold that recurs throughout this chapter — the same 101.3 degrees appears for postsplenectomy patients, sickle cell patients on penicillin prophylaxis, and neutropenic children; families are also taught to avoid large indoor crowds and ill contacts.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric hiv infection</span><span class="chip t2">general</span></div>
+<div class="stem">37. A 6-month-old born to a mother with human immunodeficiency virus has a positive antibody test. How should this be interpreted?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>The result likely reflects maternal antibodies, which may persist up to 18 months, so polymerase chain reaction for proviral DNA is needed</li><li class="fopt"><span class="mk">B</span>The infant is infected, since the antibody test is definitive at any age</li><li class="fopt"><span class="mk">C</span>The infant is uninfected, since antibody tests are unreliable in infancy</li><li class="fopt"><span class="mk">D</span>The test should be repeated at 24 months before any further evaluation</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that in children younger than 18 months antibody tests are positive from maternal antibodies, that &quot;Maternal antibodies may persist in the infant for up to 18 months,&quot; and directs using &quot;the HIV polymerase chain reaction (PCR) for detection of proviral DNA&quot; (p. 1062).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) treats a maternal marker as an infant diagnosis, which would misclassify most exposed but uninfected infants; (D) delays a diagnosis that can be made now with the correct test.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric hiv infection</span><span class="chip t2">general</span></div>
+<div class="stem">38. A nurse is explaining how the human immunodeficiency virus causes disease. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>It primarily infects CD4+ T cells, suppressing cell-mediated immunity and producing opportunistic infection, and also causes B-cell dysfunction</li><li class="fopt"><span class="mk">B</span>It primarily infects B cells, suppressing humoral immunity alone</li><li class="fopt"><span class="mk">C</span>It primarily infects neutrophils, producing bacterial infection</li><li class="fopt"><span class="mk">D</span>It destroys red cells, producing hemolytic anemia</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that the virus &quot;primarily infects a specific subset of T lymphocytes, the CD4+ T cells,&quot; rendering them dysfunctional, that suppression of cell-mediated immunity brings opportunistic infection, and that the virus also causes B-cell dysfunction suppressing humoral immunity (p. 1061).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) names only the second and later effect; the ordering matters clinically, because the opportunistic infections that define the illness follow from the cell-mediated arm failing first.</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric hiv infection</span><span class="chip t2">general</span></div>
+<div class="stem">39. A nurse is reviewing how pediatric human immunodeficiency virus differs from adult disease. Which statement is accurate?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>Recurrent bacterial infections, parotitis, lymphoid interstitial pneumonitis, and early neurologic deterioration characterize children but are rare in adults</li><li class="fopt"><span class="mk">B</span>Kaposi sarcoma is more common in children than in adults</li><li class="fopt"><span class="mk">C</span>Receptive language is more impaired than expressive language in children</li><li class="fopt"><span class="mk">D</span>Latency is longer in perinatally infected children than in adults</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that recurrent bacterial infections, parotitis, lymphoid interstitial pneumonitis, and early progressive neurologic deterioration &quot;are characteristic of children with HIV infection but are rarely seen in affected adults&quot; (p. 1061).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(B) reverses the finding, since Kaposi sarcoma is &quot;found in fewer than 1% of affected children&quot;; (C) reverses the language pattern, since expressive language is more frequently impaired; and (D) reverses the course, since &quot;A more rapid progression of disease tend to occur in perinatally infected children.&quot;</p></div></div>
+</article>
+<article class="fq">
+<div class="meta"><span class="chip t1">pediatric hiv infection</span><span class="chip t2">general</span></div>
+<div class="stem">40. A pregnant woman with human immunodeficiency virus asks about the risk to her baby. What should the nurse tell her?</div>
+
+<ul class="fopts"><li class="fopt right"><span class="mk">&#10003;</span>With combination antiretroviral therapy, elective cesarean delivery, and avoidance of breastfeeding, perinatal transmission falls to less than 1% to 2%</li><li class="fopt"><span class="mk">B</span>Transmission is unavoidable and occurs in all pregnancies</li><li class="fopt"><span class="mk">C</span>Transmission risk is unaffected by treatment during pregnancy</li><li class="fopt"><span class="mk">D</span>Breastfeeding reduces transmission by providing maternal antibodies</li></ul>
+<div class="rev"><div class="lb">Rationale</div><p>The chapter states that untreated transmission rates were 12% to 30% in the United States and Europe, and that with combination antiretroviral therapy, elective cesarean delivery, and avoidance of breastfeeding, perinatal transmission fell to &quot;less than 1% to 2%&quot; (p. 1061).</p>
+<div class="trap"><div class="lb2">Watch for</div><p>(D) reverses the role of breastfeeding, which is a transmission route rather than a protective one here; note that &quot;Perinatal transmission accounts for almost all HIV infections in young children in the United States,&quot; which is why this counseling matters so much.</p></div></div>
+</article></div>
+<script>
+const Q = [{"topic":"anemia recognition and blood transfusion safety","subtopic":"general","stem":"A nurse is assessing a child with moderate iron deficiency anemia and notes pallor and fatigue but no cyanosis. How should this be interpreted?","options":["Expected, because anemia is caused by decreased hemoglobin rather than inadequate oxygen saturation of existing hemoglobin","Unexpected, since cyanosis accompanies all significant anemias","Unexpected, and pulse oximetry should be obtained immediately to confirm hypoxemia","Expected only if the hemoglobin is above 10 g/dl"],"correct":[0],"sata":false,"why":"The chapter states that \"Anemia is caused by decreased levels of hemoglobin or RBCs, not inadequate oxygen saturation of existing hemoglobin,\" and that cyanosis \"is typically not evident\" (p. 1025).","trap":"(B) is the option the chapter's own review question plants, and it substitutes the wrong mechanism — cyanosis requires a quantity of deoxygenated hemoglobin that an anemic child may not have enough hemoglobin to produce at all.","k":"hmh6t21f7cz8w"},{"topic":"anemia recognition and blood transfusion safety","subtopic":"general","stem":"A nurse is sorting the signs of anemia by mechanism. Which findings belong to the increased-destruction group? Select all that apply.","options":["Jaundice","Icteric sclera","Dark urine","Splenomegaly","Cool skin with decreased peripheral pulses"],"correct":[0,1,2,3],"sata":true,"why":"Box 28.2 sorts the signs of anemia into three etiologic groups — decreased production, increased destruction, and increased loss — placing jaundice, icteric sclera, dark urine, and splenomegaly in the destruction column (p. 1025).","trap":"(E) belongs only to the increased-loss column, where volume depletion produces cool skin and diminished peripheral pulses; sorting each option into its group before answering is what makes an all-or-nothing item survivable here.","k":"4vb8nffvy7qd"},{"topic":"anemia recognition and blood transfusion safety","subtopic":"general","stem":"Fifteen minutes into a transfusion, a child develops chills, flank pain, and red urine. What should the nurse do first?","options":["Stop the transfusion","Slow the transfusion rate and reassess in 15 minutes","Notify the practitioner and await orders","Administer acetaminophen and continue the infusion"],"correct":[0],"sata":false,"why":"The chapter gives a fixed action order for a suspected reaction: stop the transfusion, take vital signs, maintain a patent intravenous line with normal saline and new tubing, notify the practitioner, and do not restart until the child has been medically evaluated (p. 1030).","trap":"(B) is the plausible-but-wrong option, because slowing keeps incompatible blood entering the circulation; the findings described — chills, flank pain, and red or black urine — are those of a hemolytic reaction, and ABO incompatibility \"remains the most common cause of death from blood transfusion, and human error is usually responsible.\"","k":"zna1apeutnpz"},{"topic":"anemia recognition and blood transfusion safety","subtopic":"general","stem":"A nurse is starting a unit of packed red blood cells on a 4-year-old. Which action is correct?","options":["Administer the first 50 ml or initial 20% of the volume slowly and stay with the child","Begin at the full rate and check on the child in 30 minutes","Prime the line with 5% dextrose in water before connecting the blood","Return unused blood to the unit refrigerator for later use"],"correct":[0],"sata":false,"why":"The chapter directs administering \"the first 50 ml of blood or initial 20% of volume (whichever is smaller) slowly and stay with the child,\" with vital signs before, 15 minutes after initiation, hourly while infusing, and on completion (p. 1030).","trap":"(C) violates the rule against infusing solutions other than normal saline in the line with red cells, and (D) violates the instruction not to store blood in a regular unit refrigerator — blood is used within 30 minutes of arrival and each unit infused within 4 hours.","k":"8exkas5opu9e"},{"topic":"anemia recognition and blood transfusion safety","subtopic":"general","stem":"A child receiving a transfusion develops dyspnea, a dry cough, distended neck veins, and hypertension. Which reaction is this, and what positioning helps?","options":["Circulatory overload, and the child is placed upright with the feet dependent to increase venous resistance","Hemolytic reaction, and the child is placed flat with legs elevated","Allergic reaction, and the child is placed in a side-lying position","Air embolism, and the child is placed in Trendelenburg position"],"correct":[0],"sata":false,"why":"Table 28.2 lists precordial pain, dyspnea, rales, cyanosis, dry cough, distended neck veins, and hypertension as circulatory overload, directing the nurse to \"Place child upright with feet in dependent position to increase venous resistance\" (pp. 1027–1029).","trap":"(B) names the most feared reaction, whose signs are chills, flank pain, and red or black urine rather than congestion; note that the distinguishing feature here is hypertension with distended neck veins, which points to too much volume rather than to incompatibility.","k":"1rrx1buwjb1vw"},{"topic":"iron deficiency anemia","subtopic":"general","stem":"A 14-month-old drinks about 1.5 liters of whole milk daily, eats few solids, is above the ninetieth percentile for weight, and is pale. What should the nurse suspect?","options":["Iron deficiency anemia, since \"milk baby\" infants are overweight yet anemic","Iron deficiency is unlikely, since the child is well nourished and gaining weight","Lactose intolerance, since milk intake is high","Physiologic anemia, which resolves without intervention"],"correct":[0],"sata":false,"why":"The chapter states that although infants with iron deficiency anemia \"tend to be underweight,\" many \"are overweight because of excessive milk ingestion (known as milk baby),\" because milk is a poor iron source given almost to the exclusion of solids, and because \"Increased fecal loss of blood occurs in 50% of iron deficient infants fed cow's milk\" (p. 1031).","trap":"(B) treats good weight gain as reassurance, which is exactly the bait; (D) confuses two entities the chapter separates explicitly — \"Physiologic anemia should not be confused with iron deficiency anemia resulting from nutritional causes.\"","k":"1akood91be40r3"},{"topic":"iron deficiency anemia","subtopic":"general","stem":"Which laboratory finding confirms iron deficiency anemia?","options":["A total iron-binding capacity elevated above the normal range","A total iron-binding capacity below the normal range","A markedly elevated reticulocyte count","Decreased blood pressure as an early sign"],"correct":[0],"sata":false,"why":"The chapter states that \"In iron deficiency anemia TIBC is elevated above the normal range,\" an elevation that \"represents the body's compensatory mechanism to absorb more iron\" (p. 1031).","trap":"(B) reverses the compensation, which is the error this pair exists to catch — serum iron falls while binding capacity rises. (C) misstates the reticulocyte count, which is \"usually normal or slightly reduced,\" and (D) misplaces decreased blood pressure, which is a late rather than early sign.","k":"1vyx1zzn2an41"},{"topic":"iron deficiency anemia","subtopic":"general","stem":"A nurse is teaching a parent to give oral iron to a toddler. Which instruction is correct?","options":["Give it between meals with a citrus juice, and expect green-black stools","Give it with milk to reduce stomach upset","Give it with tea to improve absorption","Stop the iron as soon as the hemoglobin returns to normal"],"correct":[0],"sata":false,"why":"The chapter directs giving iron between meals because free hydrochloric acid is greatest then, notes that ascorbic acid enhances absorption while tannins in tea bind nonheme iron, and describes green-black stool as an expected effect whose absence is a compliance clue (p. 1033).","trap":"(D) stops too early — iron therapy continues \"2 to 3 months after blood values normalize\" to replenish stores; (B) and (C) each name a substance that impairs absorption, and milk is already the likely cause of the deficiency.","k":"1h7gqx4wxvfhq"},{"topic":"iron deficiency anemia","subtopic":"general","stem":"A nurse is giving anticipatory guidance to the parents of a healthy 5-month-old about preventing iron deficiency. What should be included?","options":["Iron supplementation of 1 mg/kg/day by 4 to 6 months, breast milk or iron-fortified formula only for the first 12 months, and no fresh cow's milk before 12 months","Introduce fresh cow's milk at 6 months to increase calcium and iron intake","No supplementation is needed, since maternal iron stores last through the first year","Limit all solid foods until 12 months to avoid displacing formula"],"correct":[0],"sata":false,"why":"The chapter gives iron supplementation of 1 mg/kg/day by 4 to 6 months in full-term infants, breast milk or iron-fortified formula only for the first 12 months, formula limited to no more than 1 L/day to encourage iron-rich solids, and states that \"Infants younger than 12 months old should not be given fresh cow's milk\" (p. 1032).","trap":"(C) overstates the duration of maternal stores, which \"are adequate for the first 5 to 6 months in the full-term infant but for only about 2 to 3 months in premature infants or infants of multiple births\"; universal screening for anemia occurs at approximately 12 months.","k":"quwsru8qsj3s"},{"topic":"sickle cell disease pathophysiology and crises","subtopic":"general","stem":"A nurse is teaching the parents of a child with sickle cell anemia what triggers sickling. Which conditions does the chapter name?","options":["Dehydration, acidosis, hypoxia, and temperature elevation","Dehydration, alkalosis, hyperoxia, and hypothermia","Infection alone, since sickling is otherwise spontaneous","Physical exertion alone, since sickling is exercise induced"],"correct":[0],"sata":false,"why":"The chapter states that \"Under conditions of dehydration, acidosis, hypoxia, and temperature elevation, the relatively insoluble HgbS changes its molecular structure to form long, slender crystals\" (p. 1034).","trap":"(B) reverses three of the four, and the reason the list matters is that these four conditions are the whole prevention plan in one sentence; sickling is reversible under adequate oxygenation and hydration until repeated cycles make the cells irreversibly sickled.","k":"wvnh8wkfoope"},{"topic":"sickle cell disease pathophysiology and crises","subtopic":"general","stem":"Parents ask why their newborn with sickle cell anemia has no symptoms. What should the nurse explain?","options":["The newborn is protected by fetal hemoglobin, which is 60% to 80% at birth and falls rapidly during the first year","Symptoms never appear before school age in this disease","The diagnosis is probably incorrect, since symptoms are present at birth","Symptoms are absent because the spleen is still functioning normally"],"correct":[0],"sata":false,"why":"The chapter states that \"The newborn with SCD is generally asymptomatic because of the protective effect of HgbF (60% to 80%), but this rapidly decreases during the first year, so the child is at risk for sickle cell-related complications\" (p. 1034).","trap":"(D) names a real fact at the wrong time — the spleen is indeed functioning at birth, but it is progressively infarcted until \"by the age of 5 years, the spleen has decreased in size and has been totally replaced by a fibrous mass (functional asplenia),\" which is a later development rather than the reason for newborn protection.","k":"13larrfhmnmkt"},{"topic":"sickle cell disease pathophysiology and crises","subtopic":"general","stem":"A 3-year-old with sickle cell anemia develops sudden profound anemia, rapidly enlarging spleen, and hypotension. Which crisis is this?","options":["Splenic sequestration","Vasoocclusive crisis","Aplastic crisis","Hyperhemolytic crisis"],"correct":[0],"sata":false,"why":"The chapter describes sequestration as \"pooling of large quantities of blood, usually in the spleen... which causes a decrease in blood volume and ultimately shock,\" occurring \"most commonly in children between 2 months and 5 years of age\" and potentially resulting in \"death from profound anemia and cardiovascular collapse\" (p. 1037).","trap":"(C) also produces profound anemia, but through diminished red cell production \"usually triggered by infection with a virus (especially the human parvovirus)\" rather than through pooling and shock — the enlarging spleen and hypotension are what separate them.","k":"1yho37a1bb4r44"},{"topic":"sickle cell disease pathophysiology and crises","subtopic":"general","stem":"A child with sickle cell disease has a new pulmonary infiltrate on chest radiograph with chest pain, fever, and hypoxia. What is this, and why does it matter?","options":["Acute chest syndrome, which is clinically similar to pneumonia and may cause restrictive lung disease and pulmonary hypertension if repeated","Vasoocclusive crisis, which is the most common and non-life-threatening type","Aplastic crisis, which follows parvovirus infection","Simple pneumonia, which requires no different management than in other children"],"correct":[0],"sata":false,"why":"The chapter defines acute chest syndrome as \"a new pulmonary infiltrate on chest x-ray of a SCD patient that may be accompanied by chest pain, fever, cough, tachypnea, wheezing, and hypoxia,\" clinically similar to pneumonia, with repeated episodes causing restrictive lung disease and pulmonary hypertension (p. 1037).","trap":"(D) is dangerous because exchange transfusion is specifically used in this syndrome and after stroke; note that overwhelming infection with *Streptococcus pneumoniae* and *Haemophilus influenzae* type b \"is the major cause of death in children with SCD under the age of 5 years.\"","k":"39t4cw2k5ydu"},{"topic":"sickle cell disease pathophysiology and crises","subtopic":"general","stem":"A screening Sickledex test is positive in a 6-year-old. What does the nurse tell the family?","options":["Hemoglobin electrophoresis is needed, because the screening test cannot distinguish trait from disease","The child has sickle cell anemia, since the test is positive","The child has sickle cell trait, since disease would have presented earlier","The test should be repeated in 6 months before further workup"],"correct":[0],"sata":false,"why":"The chapter states that the sickle turbidity test \"can be performed on blood from a finger or heel stick and yields accurate results in 3 minutes,\" but that \"Hemoglobin electrophoresis is necessary to distinguish between those children with the trait and those with the disease\" (p. 1037).","trap":"(B) and (C) each convert a screen into a diagnosis in opposite directions; note the separate rule that \"Whenever sickle cells are found, diagnostic test results are usually positive for SCA, not sickle cell trait,\" so a smear showing sickled cells points to disease.","k":"xrle2o1i45hpu"},{"topic":"sickle cell disease management and prevention","subtopic":"general","stem":"A child is admitted in vasoocclusive crisis. Which interventions should the nurse expect? Select all that apply.","options":["Intravenous fluids started and oral fluids encouraged","Antibiotics to treat any existing infection","Analgesia for severe pain","Bed rest to minimize energy expenditure","Cold compresses applied to painful joints"],"correct":[0,1,2,3],"sata":true,"why":"The chapter lists six objectives: bed rest, hydration through oral and intravenous therapy, electrolyte replacement, analgesia, blood replacement, and antibiotic therapy to treat any existing infection (p. 1039).","trap":"(E) is affirmatively contraindicated — \"Cold compresses are not applied to the area because doing so enhances vasoconstriction and occlusion\" — and it is the distractor in the chapter's own review question; the other planted wrong option there is meperidine.","k":"1fm2lgl14e3k4n"},{"topic":"sickle cell disease management and prevention","subtopic":"general","stem":"A child in sickle cell crisis is prescribed meperidine for pain. What should the nurse recognize?","options":["Meperidine is contraindicated, because normeperidine accumulates and causes seizures","Meperidine is the preferred opioid in this disease","Meperidine is acceptable if given with an antiemetic","Meperidine is acceptable for doses under 24 hours"],"correct":[0],"sata":false,"why":"The chapter states that meperidine \"is not recommended\" in sickle cell disease because the metabolite normeperidine accumulates and causes seizures (p. 1041).","trap":"(C) and (D) both look for a safe window that does not exist for this drug in this population; the underlying point is that severe vasoocclusive pain requires adequate opioid analgesia, just not this opioid.","k":"c4e9wa144a9t8"},{"topic":"sickle cell disease management and prevention","subtopic":"general","stem":"A nurse is asked to apply oxygen to a child in vasoocclusive crisis who has a saturation of 97%. What should the nurse understand?","options":["Oxygen is of little value unless the child is hypoxic, does not reverse sickling, and with prolonged use decreases erythropoiesis","Oxygen should be applied to all children in crisis to prevent further sickling","Oxygen reverses sickling within 30 minutes in most children","Oxygen is contraindicated in sickle cell disease at any saturation"],"correct":[0],"sata":false,"why":"The chapter states that \"Oxygen therapy is of little therapeutic value unless the patient is hypoxic,\" that it \"is usually not effective in reversing sickling or reducing pain because the oxygen is not able to reach the enmeshed sickled RBCs through the clogged vessels,\" and that prolonged therapy aggravates the anemia (pp. 1039, 1041).","trap":"(D) overcorrects into a contraindication the chapter does not state — oxygen is appropriate for a hypoxic child; what is wrong is treating it as a routine crisis intervention.","k":"1aesjs9f41dsv"},{"topic":"sickle cell disease management and prevention","subtopic":"general","stem":"The parents of an infant newly diagnosed with sickle cell anemia ask what will protect their child from infection. What should the nurse explain?","options":["Penicillin prophylaxis started by 2 months of age, plus pneumococcal, *Haemophilus influenzae* type b, and meningococcal vaccines","Vaccines alone, since prophylactic antibiotics promote resistance","Penicillin prophylaxis beginning at school entry","No specific prophylaxis is needed until the spleen is removed"],"correct":[0],"sata":false,"why":"The chapter states that \"Penicillin prophylaxis is started by 2 months of age\" and that pneumococcal, *Haemophilus influenzae* type b, and meningococcal vaccines are recommended because of functional asplenia (p. 1038).","trap":"(D) waits for a splenectomy that does not occur in this disease, since the spleen is destroyed by repeated infarction rather than removed; parents should seek care for a fever of 101.3 degrees Fahrenheit or higher, an increase in spleen size, or severe pallor, and most experts recommend stopping prophylaxis after age 5.","k":"2v69yv12ufn8t"},{"topic":"sickle cell disease management and prevention","subtopic":"general","stem":"A 9-year-old with sickle cell disease wants to join a sports team and take a family trip. What should the nurse advise?","options":["Avoid contact sports if the spleen is enlarged, and avoid low-oxygen environments such as high altitudes or nonpressurized flights","Avoid all physical activity permanently","Sports and travel carry no additional risk in this disease","Avoid air travel entirely, including commercial pressurized flights"],"correct":[0],"sata":false,"why":"The chapter directs avoiding contact sports if the spleen is enlarged \"because rupture will cause massive internal hemorrhage,\" and avoiding \"environments with low oxygen concentration, such as high altitudes or nonpressurized airplane flights,\" along with frequent rest breaks during activity (p. 1041).","trap":"(B) removes activity the chapter accommodates with rest breaks; (D) overextends the restriction, since the named hazard is the nonpressurized flight. Note also that enuresis in this disease is a complication of impaired urine concentration rather than a behavior problem, so restricting nighttime fluids is the wrong response.","k":"2ftgum1913j3c"},{"topic":"beta-thalassemia and aplastic anemia","subtopic":"general","stem":"A nurse suggests checking the iron level of a child with beta-thalassemia \"to make sure he is not anemic.\" How should this be corrected?","options":["These children are treated for iron overload with chelation, so the concern is too much iron rather than too little","Iron levels are not measurable in thalassemia","The suggestion is correct, since thalassemia is an iron deficiency disorder","Iron supplementation should be started empirically instead"],"correct":[0],"sata":false,"why":"The chapter's trap note and its own review question turn on this reversal: children with thalassemia receive repeated transfusions and are managed with chelation for iron overload, so the direction of the problem is excess rather than deficiency (pp. 1045–1046).","trap":"(C) and (D) both act on the deficiency assumption, and (D) would actively worsen the overload; the anemia in thalassemia arises from defective globin chain synthesis rather than from a lack of available iron.","k":"yubc6h1gwky6r"},{"topic":"beta-thalassemia and aplastic anemia","subtopic":"general","stem":"A child with beta-thalassemia has excess iron storage without tissue injury. Which term applies?","options":["Hemosiderosis","Hemochromatosis","Hemolysis","Hemarthrosis"],"correct":[0],"sata":false,"why":"The chapter defines hemosiderosis as excess iron storage \"but without associated tissue injury,\" and hemochromatosis as excess storage \"that results in cellular damage\" (p. 1046).","trap":"(B) is the same process one step further along, and the single word separating them is damage; the two are routinely used interchangeably in speech, which is why the chapter distinguishes them.","k":"r8hziv1cfd9gl"},{"topic":"beta-thalassemia and aplastic anemia","subtopic":"general","stem":"A bone marrow aspirate in a child with pancytopenia shows a hypoplastic marrow. Which diagnosis does this support?","options":["Aplastic anemia","Leukemia","Iron deficiency anemia","Immune thrombocytopenia"],"correct":[0],"sata":false,"why":"The chapter contrasts the two directly: \"In leukemia the bone marrow is hyperplastic (producing increased numbers of cells), whereas in aplastic anemia the bone marrow is hypoplastic... or aplastic\" (p. 1026).","trap":"(B) produces the same peripheral pancytopenia by a different marrow mechanism, which is why marrow examination rather than the blood count settles it; (D) shows normal marrow with normal or increased immature megakaryocytes.","k":"1ehg2vd1s3vfbb"},{"topic":"beta-thalassemia and aplastic anemia","subtopic":"general","stem":"A child is being evaluated for severe aplastic anemia. Which findings would meet the criteria the chapter names?","options":["Marrow cellularity under 25% plus at least two of neutrophils under 500, platelets under 20,000, and absolute reticulocytes under 40,000","Marrow cellularity under 50% alone","A hemoglobin under 7 g/dl alone","Pancytopenia of any degree with a normal marrow"],"correct":[0],"sata":false,"why":"Camitta's criteria for severe aplastic anemia require marrow cellularity below 25% plus at least two of an absolute neutrophil count below 500/mm3, platelets below 20,000/mm3, and absolute reticulocytes below 40,000/mm3, with moderate disease defined by cellularity below 50% (p. 1048).","trap":"(B) names the moderate threshold as though it were the severe one; (D) describes a picture inconsistent with the diagnosis, since a normal marrow points away from marrow failure.","k":"rnifyop80ed6"},{"topic":"hemophilia and von willebrand disease","subtopic":"general","stem":"A 2-year-old boy has recurrent bleeding into the knees and ankles but no petechiae. Which disorder does this pattern suggest, and why do petechiae not appear?","options":["Hemophilia, because repair of small hemorrhages depends on platelet function rather than on clotting mechanisms","Immune thrombocytopenia, because platelet counts are low","Von Willebrand disease, because mucous membrane bleeding predominates","Henoch-Schönlein purpura, because joints are involved"],"correct":[0],"sata":false,"why":"The chapter states that \"Petechiae are uncommon in persons with hemophilia because repair of small hemorrhages depends on platelet function, not on blood-clotting mechanisms,\" and names hemarthrosis \"the most frequent form of internal bleeding,\" especially knees, elbows, and ankles (pp. 1051–1052).","trap":"(C) names the right family of disorders with the wrong bleeding site, since von Willebrand disease is characterized by mucous membrane bleeding, most commonly nosebleeds; this one sentence about petechiae is the whole hemophilia-versus-thrombocytopenia discriminator.","k":"1hixd98165ibwq"},{"topic":"hemophilia and von willebrand disease","subtopic":"general","stem":"A child has factor VIII activity of 0.5%. What bleeding pattern should the nurse expect?","options":["Spontaneous bleeding without trauma","Bleeding only with severe trauma or surgery","Bleeding only with moderate trauma","No abnormal bleeding"],"correct":[0],"sata":false,"why":"Table 28.6 grades severity by factor activity: below 1% is severe with \"Spontaneous bleeding without trauma,\" 1% to 5% is moderate with bleeding after trauma, and above 5% to 40% is mild with bleeding after severe trauma or surgery (p. 1051).","trap":"(B) describes the mild band; note that 60% to 70% of children with hemophilia have the severe form, so spontaneous bleeding is the common presentation rather than the exception.","k":"wuvi0n143vn3l"},{"topic":"hemophilia and von willebrand disease","subtopic":"general","stem":"A child with hemophilia has an acute hemarthrosis of the knee. Which measures are appropriate? Select all that apply.","options":["Factor replacement","Rest, ice, compression, and elevation","Active range-of-motion exercises once bleeding is controlled","Acetaminophen for pain","Passive range-of-motion exercises to preserve joint mobility"],"correct":[0,1,2,3],"sata":true,"why":"The chapter names factor replacement as primary therapy, describes the RICE mnemonic as a supportive measure, directs that \"Active range-of-motion exercises are best so that the patient can gauge his or her own pain tolerance,\" and names acetaminophen as the aspirin substitute (pp. 1052–1054).","trap":"(E) is forbidden by a Nursing Alert — \"Passive range-of-motion exercises should never be part of an exercise regimen after an acute episode because the joint capsule could easily be stretched and bleeding could recur.\" Note also that the supportive measures \"do not take the place of factor replacement,\" which is the option the chapter's own review question plants.","k":"1mk0t1415u7z32"},{"topic":"hemophilia and von willebrand disease","subtopic":"general","stem":"An adolescent girl has frequent nosebleeds and heavy menses, and her father has the same bleeding pattern. Which disorder does this suggest?","options":["Von Willebrand disease, which is autosomal dominant and affects both males and females","Hemophilia A, which is X-linked recessive","Hemophilia B, which is X-linked recessive","Immune thrombocytopenia, which is acquired"],"correct":[0],"sata":false,"why":"The chapter states that \"Unlike hemophilia, vWD affects both males and females because its inheritance shows an autosomal dominant pattern,\" with mucous membrane bleeding, most commonly nosebleeds, as its characteristic feature (p. 1055).","trap":"(B) and (C) are both X-linked recessive, so an affected father transmitting to a daughter in this pattern does not fit; the two clues doing the work here are the sex distribution and the bleeding site.","k":"o4qou41s3banu"},{"topic":"hemophilia and von willebrand disease","subtopic":"general","stem":"A child with mild hemophilia A is scheduled for a dental extraction. Which treatment does the chapter identify as the treatment of choice?","options":["Desmopressin, if the child responds with a threefold to fourfold rise in factor VIII activity","Cryoprecipitate, which remains the standard for factor VIII deficiency","Aspirin for procedural pain","Fresh frozen plasma as the primary replacement"],"correct":[0],"sata":false,"why":"The chapter names desmopressin \"the treatment of choice in mild hemophilia and vWD (types I and IIA only)\" if the child responds, with a threefold to fourfold rise in factor VIII activity expected, noting that patients with moderate deficiency do not benefit because the goal is to raise the level at least 30% (p. 1052).","trap":"(B) is ruled out by a Drug Alert — \"Cryoprecipitate is no longer recommended for use in treating factor VIII deficiency\" — because it cannot be treated to safely eliminate hepatitis or human immunodeficiency virus; (C) names a drug contraindicated in this disease.","k":"9ugljiu412bw"},{"topic":"immune thrombocytopenia and henoch-schonlein purpura","subtopic":"general","stem":"A 4-year-old develops petechiae and easy bruising 2 weeks after a viral illness, with a platelet count of 18,000/mm3 and a normal bone marrow. What is the likely diagnosis?","options":["Immune thrombocytopenia","Aplastic anemia","Hemophilia","Disseminated intravascular coagulation"],"correct":[0],"sata":false,"why":"The chapter describes immune thrombocytopenia as an acquired disorder with thrombocytopenia and \"normal bone marrow with a normal or increased number of immature megakaryocytes,\" usually presenting 1 to 4 weeks after a viral illness with peak incidence between ages 1 and 6, and notes that \"Symptomatic bleeding does not usually occur until the platelet count is lower than 20,000/mm3\" (p. 1055).","trap":"(B) shares the low platelet count but has a hypoplastic marrow and involves all three cell lines; the normal marrow in the stem is what separates a destruction problem from a production problem.","k":"wquz8lll5n47"},{"topic":"immune thrombocytopenia and henoch-schonlein purpura","subtopic":"general","stem":"A nurse is teaching the family of a child with immune thrombocytopenia whose platelet count is 38,000/mm3. Which instructions are correct? Select all that apply.","options":["Restrict contact sports while the platelet count is below 50,000/mm3","Avoid bike riding, skateboarding, and gymnastics","Seek prompt medical evaluation for head or abdominal trauma","Use acetaminophen rather than aspirin or other nonsteroidal drugs for pain","Use ibuprofen for fever, since it is safer than aspirin in this disorder"],"correct":[0,1,2,3],"sata":true,"why":"The chapter directs \"restriction of contact sports while the child's platelet count is less than 50,000/mm3,\" lists bike riding, skateboarding, in-line skating, gymnastics, climbing, and running among restricted activities, directs prompt evaluation for head or abdominal trauma, and names acetaminophen as the substitute (p. 1056).","trap":"(E) names a nonsteroidal drug, which a Drug Alert rules out along with aspirin because both \"have critical harmful effects for these children\"; note that 50,000 governs activity while 20,000 governs when symptomatic bleeding begins — two numbers for two different decisions.","k":"4ov8ol2k6wtv"},{"topic":"immune thrombocytopenia and henoch-schonlein purpura","subtopic":"general","stem":"A child with immune thrombocytopenia is actively bleeding. Which treatment is inappropriate at this moment?","options":["Anti-D antibody, because the platelet count does not rise until approximately 48 hours after infusion","Intravenous immunoglobulin","Prednisone","Platelet transfusion for severe hemorrhage"],"correct":[0],"sata":false,"why":"The chapter states that with anti-D antibody the platelet count rises \"approximately 48 hours after infusion; therefore it is not appropriate therapy for patients who are actively bleeding\" (p. 1055).","trap":"(B) and (C) are the two agents that pull hardest, because both are standard options in this disorder and neither carries the delay that disqualifies the keyed answer here; anti-D antibody otherwise has real advantages, a single dose over 5 to 10 minutes and significantly less expense than immunoglobulin, which is exactly why the timing caveat is worth holding. None of the three \"are curative therapies,\" and the disorder is otherwise managed supportively.","k":"p42kw11ec7c8j"},{"topic":"immune thrombocytopenia and henoch-schonlein purpura","subtopic":"general","stem":"A 5-year-old has symmetric purpura on the buttocks and lower extremities, knee and ankle arthritis, colicky abdominal pain, and a normal platelet count. What is the likely diagnosis, and what is the most serious long-term concern?","options":["Henoch-Schönlein purpura, with renal involvement occurring in up to 50% of affected children","Immune thrombocytopenia, with intracranial hemorrhage","Hemophilia, with joint destruction","Disseminated intravascular coagulation, with organ failure"],"correct":[0],"sata":false,"why":"The chapter describes Henoch-Schönlein purpura as a nonthrombocytopenic purpura with arthritis, nephritis, and abdominal pain, with \"a symmetric purpura that involves the buttocks and lower extremities,\" and states that \"Renal involvement occurs in up to 50% of affected children and is potentially the most serious long-term complication\" (pp. 1057–1059).","trap":"(B) is the confusable partner, and the normal platelet count is the discriminator — the purpura here comes from vasculitis rather than from too few platelets. Increased immunoglobulin A levels are a frequent finding, and children with nephritis need long-term follow-up.","k":"1fu1d971gvr969"},{"topic":"neutropenia in children","subtopic":"general","stem":"A 3-year-old has an absolute neutrophil count of 1200/mm3. How should this be classified?","options":["Neutropenia, since the threshold for children older than 1 year is below 1500/mm3","Severe neutropenia, since the count is below 1500/mm3","Normal, since the threshold is below 1000/mm3 at all ages","Normal, since only counts below 500/mm3 are abnormal"],"correct":[0],"sata":false,"why":"The chapter defines neutropenia as an absolute neutrophil count below 1000/mm3 in infants 2 weeks to 1 year and below 1500/mm3 in children older than 1 year, with severe neutropenia below 500/mm3 \"with an increased risk of life-threatening infection\" (p. 1057).","trap":"(B) jumps to the severe tier, which is a threefold lower number and carries a different level of concern; the count is calculated by multiplying the total white blood cell count by the percentage of neutrophils and bands in the differential.","k":"89q1n2d0dbzo"},{"topic":"neutropenia in children","subtopic":"general","stem":"An African American child has an absolute neutrophil count 400/mm3 below the usual reference range but is well. How should the nurse interpret this?","options":["This may be a normal variant, since African American counts run 200 to 600/mm3 lower","This confirms chronic benign neutropenia and requires treatment","This requires immediate bone marrow biopsy","This requires prophylactic antibiotics"],"correct":[0],"sata":false,"why":"The chapter states that \"African Americans have ANCs that are 200 to 600/mm3 lower than those of Caucasians,\" which is a normal-variant consideration rather than a disease (p. 1057).","trap":"(B), (C), and (D) each escalate a finding that may require nothing; note that in chronic benign neutropenia specifically, \"most children have no infections despite the markedly reduced ANC,\" and therapy to increase the count \"is rarely required.\"","k":"1gaq1sj1l37p1l"},{"topic":"neutropenia in children","subtopic":"general","stem":"A child with chronic benign neutropenia is due for routine immunizations. What should the nurse advise?","options":["Give the routine childhood immunizations, since these children have normal cellular immunity","Withhold all immunizations until the count normalizes","Give only inactivated vaccines","Withhold immunizations permanently"],"correct":[0],"sata":false,"why":"The chapter states that children with chronic benign neutropenia \"have normal cellular immunity, therefore they should receive their routine childhood immunizations\" (p. 1057).","trap":"(C) applies the live-vaccine caution that belongs to true immunodeficiency; the distinction is that this disorder affects neutrophil numbers without impairing the cellular immunity that determines live vaccine safety.","k":"10h0f621ybkdow"},{"topic":"neutropenia in children","subtopic":"general","stem":"A nurse is teaching the family of a child with neutropenia when to seek care. What should be emphasized?","options":["Seek medical attention for a fever of 101.3 degrees Fahrenheit or higher, or if skin lesions develop","Seek care only if the fever exceeds 103 degrees Fahrenheit","Seek care only if the child appears ill regardless of temperature","Fever in neutropenia is expected and does not require evaluation"],"correct":[0],"sata":false,"why":"The chapter directs seeking medical attention for a fever of 101.3 degrees Fahrenheit or higher or if skin lesions develop, and notes that \"Oral ulcerations and skin infections are the most common manifestation of chronic benign neutropenia\" (p. 1057).","trap":"(B) raises a threshold that recurs throughout this chapter — the same 101.3 degrees appears for postsplenectomy patients, sickle cell patients on penicillin prophylaxis, and neutropenic children; families are also taught to avoid large indoor crowds and ill contacts.","k":"uzcyt11tn16w7"},{"topic":"pediatric hiv infection","subtopic":"general","stem":"A 6-month-old born to a mother with human immunodeficiency virus has a positive antibody test. How should this be interpreted?","options":["The result likely reflects maternal antibodies, which may persist up to 18 months, so polymerase chain reaction for proviral DNA is needed","The infant is infected, since the antibody test is definitive at any age","The infant is uninfected, since antibody tests are unreliable in infancy","The test should be repeated at 24 months before any further evaluation"],"correct":[0],"sata":false,"why":"The chapter states that in children younger than 18 months antibody tests are positive from maternal antibodies, that \"Maternal antibodies may persist in the infant for up to 18 months,\" and directs using \"the HIV polymerase chain reaction (PCR) for detection of proviral DNA\" (p. 1062).","trap":"(B) treats a maternal marker as an infant diagnosis, which would misclassify most exposed but uninfected infants; (D) delays a diagnosis that can be made now with the correct test.","k":"w6r4431mupt6d"},{"topic":"pediatric hiv infection","subtopic":"general","stem":"A nurse is explaining how the human immunodeficiency virus causes disease. Which statement is accurate?","options":["It primarily infects CD4+ T cells, suppressing cell-mediated immunity and producing opportunistic infection, and also causes B-cell dysfunction","It primarily infects B cells, suppressing humoral immunity alone","It primarily infects neutrophils, producing bacterial infection","It destroys red cells, producing hemolytic anemia"],"correct":[0],"sata":false,"why":"The chapter states that the virus \"primarily infects a specific subset of T lymphocytes, the CD4+ T cells,\" rendering them dysfunctional, that suppression of cell-mediated immunity brings opportunistic infection, and that the virus also causes B-cell dysfunction suppressing humoral immunity (p. 1061).","trap":"(B) names only the second and later effect; the ordering matters clinically, because the opportunistic infections that define the illness follow from the cell-mediated arm failing first.","k":"q7zef964gvrj"},{"topic":"pediatric hiv infection","subtopic":"general","stem":"A nurse is reviewing how pediatric human immunodeficiency virus differs from adult disease. Which statement is accurate?","options":["Recurrent bacterial infections, parotitis, lymphoid interstitial pneumonitis, and early neurologic deterioration characterize children but are rare in adults","Kaposi sarcoma is more common in children than in adults","Receptive language is more impaired than expressive language in children","Latency is longer in perinatally infected children than in adults"],"correct":[0],"sata":false,"why":"The chapter states that recurrent bacterial infections, parotitis, lymphoid interstitial pneumonitis, and early progressive neurologic deterioration \"are characteristic of children with HIV infection but are rarely seen in affected adults\" (p. 1061).","trap":"(B) reverses the finding, since Kaposi sarcoma is \"found in fewer than 1% of affected children\"; (C) reverses the language pattern, since expressive language is more frequently impaired; and (D) reverses the course, since \"A more rapid progression of disease tend to occur in perinatally infected children.\"","k":"1d0145fk8mdqp"},{"topic":"pediatric hiv infection","subtopic":"general","stem":"A pregnant woman with human immunodeficiency virus asks about the risk to her baby. What should the nurse tell her?","options":["With combination antiretroviral therapy, elective cesarean delivery, and avoidance of breastfeeding, perinatal transmission falls to less than 1% to 2%","Transmission is unavoidable and occurs in all pregnancies","Transmission risk is unaffected by treatment during pregnancy","Breastfeeding reduces transmission by providing maternal antibodies"],"correct":[0],"sata":false,"why":"The chapter states that untreated transmission rates were 12% to 30% in the United States and Europe, and that with combination antiretroviral therapy, elective cesarean delivery, and avoidance of breastfeeding, perinatal transmission fell to \"less than 1% to 2%\" (p. 1061).","trap":"(D) reverses the role of breastfeeding, which is a transmission route rather than a protective one here; note that \"Perinatal transmission accounts for almost all HIV infections in young children in the United States,\" which is why this counseling matters so much.","k":"15lq0on1fobcot"}];
+const TITLE = "Chapter 28 — NUR 4226 10 / NUR 4339 03 — Childrearing Family - practicum (4226) + didactic (4339)";
+const SUBTITLE = "Chapter 28";
+const NOTE = "Answer order is reshuffled every run. Select-all items are scored all or nothing, the same as on the exam.";
+const COURSE = "nur4226-4339-childrearing";
+
+let order = [...Q.keys()], i = 0, sel = [], locked = false, score = 0, log = [], shown = [];
+const app = document.getElementById('app');
+// Keep the static answer key so a runtime failure restores something readable
+// instead of wiping the page to blank.
+const FALLBACK = app.innerHTML;
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// Inlined verbatim from src/relabel.js so the tested copy is the shipped one.
+function relabelLetters(text, order) {
+  if (!text || !Array.isArray(order)) return text;
+  const REF = /\(([A-H])\)|\b((?:[Oo]ption|[Cc]hoice)s?\s+)([A-H](?:\s*(?:,|and|or|&)\s*[A-H])*)\b/g;
+
+  // 'B' means stored index 1; find the slot that index is being drawn in.
+  const slotOf = (letter) => {
+    const slot = order.indexOf(letter.charCodeAt(0) - 65);
+    return slot < 0 ? null : String.fromCharCode(65 + slot);
+  };
+
+  const remap = (run) => {
+    let resolved = true;
+    const out = run.replace(/[A-H]/g, (letter) => {
+      const to = slotOf(letter);
+      if (to === null) resolved = false;
+      return to === null ? letter : to;
+    });
+    return resolved ? out : null;
+  };
+
+  return text.replace(REF, (match, paren, lead, run) => {
+    if (paren !== undefined) {
+      const to = remap(paren);
+      return to === null ? match : `(${to})`;
+    }
+    const to = remap(run);
+    return to === null ? match : lead + to;
+  });
+}
+shuffle(order);
+
+function render(){
+  if (i >= order.length) return done();
+  const q = Q[order[i]];
+  // Answer order is reshuffled per question, so the letters the rationale and
+  // trap were written against no longer name the right options. relabelLetters
+  // translates them at reveal time; "shown" is the slot -> stored-index map it
+  // needs, so it has to stay in scope until grade() runs.
+  shown = shuffle([...q.options.keys()]);
+  app.innerHTML =
+   '<div class="top">' +
+     '<div><div class="sub">' + esc(SUBTITLE) + '</div><h1>Question ' + (i+1) + ' of ' + order.length + '</h1></div>' +
+     '<div class="score">CORRECT<br><b>' + score + ' / ' + i + '</b></div>' +
+   '</div>' +
+   '<div class="bar"><div style="width:' + (i/order.length)*100 + '%"></div></div>' +
+   (i === 0 && NOTE ? '<div class="note">' + esc(NOTE) + '</div>' : '') +
+   '<div class="meta">' +
+     '<span class="chip t1">' + esc(q.topic) + '</span>' +
+     '<span class="chip t2">' + esc(q.subtopic) + '</span>' +
+   '</div>' +
+   (q.sata ? '<div class="sa">Select all that apply &middot; scored all or nothing</div>' : '') +
+   '<div class="stem">' + esc(q.stem) + '</div>' +
+   '<div id="opts"></div>' +
+   '<div class="actions">' +
+     (q.sata ? '<button class="btn" id="sub">Submit</button>' : '') +
+     '<button class="btn alt" id="next" disabled>Next &rarr;</button>' +
+   '</div>' +
+   '<div id="rev"></div>';
+
+  const ob = document.getElementById('opts');
+  shown.forEach((realIdx, slot) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.dataset.k = realIdx;
+    b.innerHTML = '<span class="mk">' + String.fromCharCode(65 + slot) + '</span>' + esc(q.options[realIdx]);
+    b.onclick = () => pick(realIdx);
+    ob.appendChild(b);
+  });
+  if (q.sata) document.getElementById('sub').onclick = () => grade();
+  document.getElementById('next').onclick = () => { i++; sel = []; locked = false; render(); };
+}
+
+function pick(k){
+  if (locked) return;
+  const q = Q[order[i]];
+  if (q.sata) {
+    sel = sel.includes(k) ? sel.filter(x => x !== k) : sel.concat(k);
+    [...document.querySelectorAll('.opt')].forEach(b => b.classList.toggle('sel', sel.includes(+b.dataset.k)));
+  } else {
+    sel = [k];
+    grade();
+  }
+}
+
+function grade(){
+  if (locked || !sel.length) return;
+  locked = true;
+  const q = Q[order[i]];
+  const key = [...q.correct].sort((a,b) => a-b);
+  const got = [...sel].sort((a,b) => a-b);
+  const ok = got.length === key.length && got.every((v,n) => v === key[n]);
+  if (ok) score++;
+  log.push({ topic: q.topic, ok });
+  ltRecord(q, ok, sel);
+
+  [...document.querySelectorAll('.opt')].forEach(b => {
+    const k = +b.dataset.k;
+    b.disabled = true;
+    b.classList.remove('sel');
+    if (q.correct.includes(k)) { b.classList.add('right'); b.querySelector('.mk').textContent = '\u2713'; }
+    else if (sel.includes(k)) { b.classList.add('wrong'); b.querySelector('.mk').textContent = '\u2717'; }
+  });
+
+  const sb = document.getElementById('sub');
+  if (sb) sb.disabled = true;
+
+  document.getElementById('rev').innerHTML =
+    '<div class="rev ' + (ok ? '' : 'no') + '">' +
+      '<div class="lb">' + (ok ? 'Correct' : (q.sata ? 'Not quite &mdash; all or nothing' : 'Not quite')) + '</div>' +
+      '<p>' + esc(relabelLetters(q.why, shown)) + '</p>' +
+      (q.trap ? '<div class="trap"><div class="lb2">Watch for</div><p>' + esc(relabelLetters(q.trap, shown)) + '</p></div>' : '') +
+    '</div>';
+
+  const sc = document.querySelector('.score');
+  if (sc) sc.innerHTML = 'CORRECT<br><b>' + score + ' / ' + (i+1) + '</b>';
+  const nx = document.getElementById('next');
+  nx.disabled = false;
+  nx.focus();
+}
+
+function done(){
+  const pct = Math.round(score / order.length * 100);
+  const by = {};
+  log.forEach(r => { by[r.topic] = by[r.topic] || {c:0,t:0}; by[r.topic].t++; if (r.ok) by[r.topic].c++; });
+  const rows = Object.entries(by)
+    .sort((a,b) => (a[1].c/a[1].t) - (b[1].c/b[1].t))
+    .map(([t,v]) => '<div class="brow ' + ((v.c/v.t) < 0.7 ? 'weak' : '') + '"><span>' + esc(t) + '</span><span class="n">' + v.c + '/' + v.t + '</span></div>')
+    .join('');
+  app.innerHTML =
+    '<div class="done">' +
+      '<div class="sub">Session complete</div>' +
+      '<div class="pct">' + pct + '%</div>' +
+      '<h2>' + score + ' of ' + order.length + ' correct</h2>' +
+      '<div class="brk">' + rows + '</div>' +
+      '<p class="hint">Topics in red are below 70% &mdash; those are where your remaining study time pays off most.</p>' +
+      '<div class="actions" style="justify-content:center">' +
+        '<button class="btn" onclick="location.reload()">Run again (reshuffled)</button>' +
+      '</div>' +
+    '</div>';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const nx = document.getElementById('next');
+  if (nx && !nx.disabled) { e.preventDefault(); nx.click(); return; }
+  const sb = document.getElementById('sub');
+  if (sb && !sb.disabled) { e.preventDefault(); sb.click(); }
+});
+
+
+var LT_STORE = 'drillbank.lt.' + COURSE, LT_FLAG = 'drillbank.lt.on.' + COURSE;
+var LT_SESSION = 'pub-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+function ltLoad(){ try { var v = JSON.parse(localStorage.getItem(LT_STORE)); return Array.isArray(v) ? v : [] } catch (e) { return [] } }
+function ltSave(a){ try { localStorage.setItem(LT_STORE, JSON.stringify(a)); return true } catch (e) { return false } }
+function ltOn(){ try { return localStorage.getItem(LT_FLAG) === '1' } catch (e) { return false } }
+function ltSetOn(v){ try { localStorage.setItem(LT_FLAG, v ? '1' : '0') } catch (e) {} }
+
+// Called from grade() for every question, whichever runner is driving.
+function ltRecord(q, ok, picked){
+  if (!ltOn() || !q || !q.k) return;
+  var a = ltLoad();
+  a.push({ k: q.k, correct: !!ok, timestamp: new Date().toISOString(), session_id: LT_SESSION, selected: picked.slice().sort(function(x,y){return x-y}) });
+  ltSave(a);
+  ltPaint();
+}
+
+function ltBlob(){
+  return JSON.stringify({ course: COURSE, exported: new Date().toISOString(), attempts: ltLoad() }, null, 1);
+}
+
+function ltPaint(){
+  var wrap = document.getElementById('lt');
+  if (!wrap) return;
+  var n = ltLoad().length, on = ltOn();
+  wrap.className = 'lt' + (on ? ' on' : '') + (wrap.classList.contains('open') ? ' open' : '');
+  document.getElementById('lt-count').innerHTML = n ? '<span class="lt-n">' + n + '</span>' : '';
+  document.getElementById('lt-state').innerHTML = on
+    ? 'Recording to this browser. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' held.'
+    : (n ? 'Paused. <b>' + n + '</b> answer' + (n === 1 ? '' : 's') + ' still held.' : 'Off. Answers are not being kept.');
+  document.getElementById('lt-toggle').textContent = on ? 'PAUSE' : 'START';
+  document.getElementById('lt-copy').disabled = !n;
+  document.getElementById('lt-save').disabled = !n;
+  document.getElementById('lt-clear').disabled = !n;
+}
+
+function ltMount(){
+  var wrap = document.createElement('div');
+  wrap.id = 'lt';
+  wrap.className = 'lt';
+  wrap.innerHTML =
+    '<div class="lt-p">' +
+      '<div class="lt-h">LONG-TERM TRACKING</div>' +
+      '<div class="lt-t" id="lt-state"></div>' +
+      '<div class="lt-a">' +
+        '<button id="lt-toggle"></button>' +
+        '<button id="lt-copy">COPY</button>' +
+        '<button id="lt-save">FILE</button>' +
+        '<button id="lt-clear" class="warn">CLEAR</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lt-b" id="lt-btn">LT<span id="lt-count"></span></button>';
+  document.body.appendChild(wrap);
+
+  document.getElementById('lt-btn').onclick = function(){ wrap.classList.toggle('open'); ltPaint() };
+  document.getElementById('lt-toggle').onclick = function(){ ltSetOn(!ltOn()); ltPaint() };
+
+  document.getElementById('lt-copy').onclick = function(){
+    var text = ltBlob(), btn = this;
+    var done = function(){ btn.textContent = 'COPIED'; setTimeout(function(){ btn.textContent = 'COPY' }, 1400) };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ ltFallbackCopy(text, done) });
+    } else ltFallbackCopy(text, done);
+  };
+
+  document.getElementById('lt-save').onclick = function(){
+    var url = URL.createObjectURL(new Blob([ltBlob()], { type: 'application/json' }));
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'drillbank-' + COURSE + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  };
+
+  document.getElementById('lt-clear').onclick = function(){
+    if (!confirm('Discard the answers held in this browser? Import them first if you want them counted.')) return;
+    ltSave([]); ltPaint();
+  };
+
+  ltPaint();
+}
+
+function ltFallbackCopy(text, done){
+  var t = document.createElement('textarea');
+  t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done() } catch (e) {}
+  t.remove();
+}
+
+
+try {
+  render();
+} catch (err) {
+  app.innerHTML = '<div class="fallback-note"><b>The interactive drill could not start.</b> ' +
+    esc(err && err.message ? err.message : String(err)) +
+    ' The full answer key is below.</div>' + FALLBACK;
+}
+
+// Mounted separately from render() and swallowed on failure: tracking is a
+// convenience, and it must never be the reason the drill does not come up.
+// Only on published course pages — a standalone file handed to someone else
+// has no course to file attempts against.
+try { if (COURSE) ltMount(); } catch (err) {}
+</script>
+</body>
+</html>
