@@ -12,9 +12,9 @@
     "correct": [
       1
     ],
-    "rationale": "The chapter names exactly one lab and one reason: \"A recent platelet count should be reviewed before administering a spinal or epidural, as thrombocytopenia could cause a hematoma.\" A hematoma in the epidural space can compress the cauda equina or the spinal cord, which is why the count is checked and not merely noted.",
+    "rationale": "The chapter ties exactly one lab to a stated reason: \"A recent platelet count should be reviewed before administering a spinal or epidural, as thrombocytopenia could cause a hematoma.\" A hematoma in the epidural space can compress the cauda equina or the spinal cord, which is why the count is checked and not merely noted. Box 17.6's pre-block checklist also says to \"obtain laboratory results (hematocrit or hemoglobin level, other tests as ordered)\" (p. 354), but gives no reason for it.",
     "type": "single",
-    "trap": "(A) and (C) are adjacent labs that feel like reasonable pre-procedure workup, and hemoglobin in particular pulls because hemorrhage is separately a contraindication. The chapter names only the platelet count here.",
+    "trap": "(A) names a lab the chapter does list (Box 17.6's hematocrit or hemoglobin) but attaches a reason the chapter never gives; the hematoma rationale belongs to the platelet count alone. (C) is an adjacent lab the chapter does not name for this purpose.",
     "source": "ch17.md"
   },
   "q_0002": {
@@ -486,7 +486,7 @@
     ],
     "rationale": "The MEDICATION ALERT states that an opioid antagonist \"is contraindicated for opioid-dependent women because it may precipitate abstinence syndrome (withdrawal symptoms). For the same reason, opioid agonist-antagonist analgesics such as butorphanol (Stadol) and nalbuphine (Nubain) should not be given to opioid-dependent women.\"",
     "type": "single",
-    "trap": "(C) is the near-miss that gets the second half right and the first half backwards. The rule is one rule covering both drug groups, and extending it past naloxone to the agonist-antagonists is what makes it testable. Maternal withdrawal presents as weakness, fatigue and drowsiness, nausea and vomiting, diarrhea and abdominal cramps, and bone and muscle pain with muscle spasms and kicking movements.",
+    "trap": "(C) is the near-miss that gets the second half right and the first half backwards. The rule is one rule covering both drug groups, and extending it past naloxone to the agonist-antagonists is what makes it testable. The Opioid Abstinence Syndrome box lists yawning, rhinorrhea, sweating, lacrimation and mydriasis, anorexia, irritability and restlessness, tremors, chills and hot flashes, piloerection, violent sneezing, weakness and drowsiness, nausea and vomiting, diarrhea and abdominal cramps, and bone and muscle pain with muscle spasms and kicking movements (p. 341).",
     "source": "ch17.md"
   },
   "q_0028": {
@@ -3789,7 +3789,7 @@
     "correct": [
       1
     ],
-    "rationale": "\"For newborns who are clinically stable and appear well, early and frequent oral feedings are suggested.\" Intravenous fluids are reserved for infants \"at an increased risk for aspiration, have poor perfusion, or are thought to have a bowel obstruction,\" who \"are not enterally fed.\" A glucose of 42 also sits within the standard 40 to 60 mg/dL range for an infant one day old or less.",
+    "rationale": "\"For newborns who are clinically stable and appear well, early and frequent oral feedings are suggested.\" Intravenous fluids are reserved for infants \"at an increased risk for aspiration, have poor perfusion, or are thought to have a bowel obstruction,\" who \"are not enterally fed.\" A glucose of 42 sits within the 40 to 60 mg/dL reference range for an infant one day old or less, though the chapter's prose notes the lower limit is often cited as 40 to 45 mg/dL; the deciding factor here is that the infant is clinically stable and appears well.",
     "type": "single",
     "trap": "(A) escalates to an intravenous route in a stable feeding infant, and it pulls because the number looks low against adult expectations. (C) withholds the intervention the chapter recommends. Before drawing that glucose, recall that a cool extremity can make the heelstick result falsely low.",
     "source": "ch24.md"
@@ -4426,7 +4426,7 @@
     "subtopic": "perimenopause and menopause",
     "stem": "A patient using a urine luteinizing hormone predictor kit gets her first positive result this morning and asks what it means about the timing of ovulation. Which response is accurate?",
     "options": [
-      "The surge precedes expulsion of the ovum by about 24 to 36 hours, so ovulation has not yet occurred",
+      "The surge precedes expulsion of the ovum, so ovulation has not yet occurred",
       "The surge occurs at the moment of ovulation, so the ovum is being released now",
       "The surge follows ovulation by about 24 hours, so ovulation has already happened",
       "The surge occurs about 5 days before ovulation, so intercourse can be deferred"
@@ -4434,7 +4434,7 @@
     "correct": [
       0
     ],
-    "rationale": "A marked surge of luteinizing hormone, together with a smaller peak of estrogen on day 12, precedes \"the expulsion of the ovum from the graafian follicle by about 24 to 36 hours. LH peaks at about day 13 or 14 of a 28-day cycle\" (p. 53).",
+    "rationale": "A marked surge of luteinizing hormone, together with a smaller peak of estrogen on day 12, precedes \"the expulsion of the ovum from the graafian follicle by about 24 to 36 hours. LH peaks at about day 13 or 14 of a 28-day cycle\" (p. 53). The interval itself is not asked here because Lowdermilk is split on it: the Chapter 8 passage on ovulation predictor kits puts the surge \"approximately 12 to 24 hours before ovulation\" (p. 148), and the course conflicts register rules that a kit stem takes the kit figure. Both readings agree on the direction, which is what this item keys.",
     "type": "single",
     "trap": "(B) is the reflex answer and the fact bank flags it: a stem saying ovulation occurs at the moment of the luteinizing hormone peak is wrong by about a day. The surge and the release are close enough to feel simultaneous, which is exactly why the interval is asked.",
     "source": "ch4.md"
@@ -5098,7 +5098,7 @@
     "correct": [
       0
     ],
-    "rationale": "The Medication Alert states that \"over-the-counter medications as well as some herbal supplements (such as St. John's wort) can alter the effectiveness of COCs,\" and women should be asked about their use when combined oral contraceptives are prescribed (p. 155).",
+    "rationale": "The Medication Alert states that \"over-the-counter medications as well as some herbal supplements (such as St. John's wort) can alter the effectiveness of COCs,\" and \"women should be asked about their use when COCs are being considered for contraception\" (p. 155).",
     "type": "single",
     "trap": "The other three are real supplements with real interactions elsewhere, which makes them plausible, but St. John's wort is the one this chapter names. The clinical reason the question matters is that the patient's presenting complaint, breakthrough bleeding, is also an early sign that contraceptive coverage may have been lost.",
     "source": "ch8.md"
@@ -7655,7 +7655,7 @@
       "Vitamin B12, since its food sources are milk and milk products, eggs, meats, and liver, with fortified soy milk the only plant source named",
       "Vitamin C, since plant diets are low in ascorbic acid",
       "Folate, since plant foods contain no folate",
-      "Vitamin E, since vegetable oils are the only source"
+      "Vitamin B6, since whole grains contain none"
     ],
     "correct": [
       0
@@ -10244,7 +10244,7 @@
     ],
     "rationale": "Box 18.9's basic interventions are lateral positioning and increasing the primary IV rate, which \"improve uterine and intervillous space blood flow and increase maternal cardiac output.\" The box then adds measures for maternal hypotension, for uterine tachysystole, and for an abnormal pattern during the second stage.",
     "type": "sata",
-    "trap": "(C) is the one to leave unselected, and it reflects long-standing practice rather than current guidance. Oxygen does not appear anywhere in Box 18.9.",
+    "trap": "(C) is the one to leave unselected: oxygen does not appear anywhere in Box 18.9, and routine oxygen for intrauterine resuscitation in a woman with normal saturation is no longer recommended (ACOG 2022). The book's Chapter 32 tachysystole box still prints 10 L/min by nonrebreather as a protocol step, but it is not one of Box 18.9's basic measures.",
     "source": "ch18.md"
   },
   "q_0559": {
@@ -12984,7 +12984,7 @@
     "correct": [
       0
     ],
-    "rationale": "\"Low-dose aspirin has been found to reduce preeclampsia and adverse outcomes in selected high-risk women,\" with the recommendation that high-risk women \"begin daily low-dose (81 mg/day) aspirin therapy between 12 and 28 weeks of gestation (ideally before 16 weeks).\" One high-risk factor is enough; moderate-risk factors prompt consideration when more than one is present.",
+    "rationale": "\"Low-dose aspirin has been found to reduce preeclampsia and adverse outcomes in selected high-risk women,\" with the recommendation that high-risk women \"begin daily low-dose (81 mg/day) aspirin therapy between 12 and 28 weeks of gestation (ideally before 16 weeks).\" One high-risk factor is enough, and with one or more moderate-risk factors aspirin \"should be considered\" (p. 589).",
     "type": "single",
     "trap": "(B) and (C) are on the list of interventions that \"demonstrated minimal to no benefit,\" along with zinc, magnesium, fish oil, diuretics, other antihypertensives, and heparin.",
     "source": "ch27.md"
@@ -20309,7 +20309,7 @@
     "correct": [
       0
     ],
-    "rationale": "Box 33.1's third group lists all of these.",
+    "rationale": "Box 33.1 lists all of these after its uterine atony and trauma groups; the extracted box prints this third list without a group heading of its own.",
     "type": "single",
     "trap": "(B) narrows a long list whose value is its breadth — magnesium sulfate, for instance, is given for a different problem entirely and relaxes smooth muscle as a side effect.",
     "source": "ch33.md"
@@ -20795,17 +20795,17 @@
     "subtopic": "doses and other agents",
     "stem": "When is tranexamic acid used in postpartum hemorrhage, and what is its main contraindication?",
     "options": [
-      "It is an antifibrinolytic that may be used if initial medical therapy is not effective, given as 1 g by slow IV injection or diluted and administered over 10 minutes; it is contraindicated with a history or risk of thromboembolic disease",
-      "It is the first-line agent for all postpartum hemorrhage",
+      "It is an antifibrinolytic added to the usual care for postpartum hemorrhage (the prose says if initial medical therapy is not effective; WHO recommends it within 3 hours of birth), given as 1 g IV over 10 minutes; it is contraindicated with a history or risk of thromboembolic disease",
+      "It replaces fundal massage and oxytocin as the first-line treatment for atony",
       "It is contraindicated in asthma",
       "It replaces blood product transfusion"
     ],
     "correct": [
       0
     ],
-    "rationale": "Tranexamic acid, \"an antifibrinolytic agent, may be used in some settings if initial medical therapy is not effective.\" The guide gives \"1 g slow IV injection or diluted in 50- or 100-mL IV fluid; administer over 10 min,\" with contraindications of \"history or risk of thromboembolic disease\" and caution in renal impairment, and directs the nurse to \"monitor hemodynamics and assess for thromboembolic events.\"",
+    "rationale": "Tranexamic acid, \"an antifibrinolytic agent, may be used in some settings if initial medical therapy is not effective.\" The guide gives \"1 g slow IV injection or diluted in 50- or 100-mL IV fluid; administer over 10 min,\" with contraindications of \"history or risk of thromboembolic disease\" and caution in renal impairment, and directs the nurse to \"monitor hemodynamics and assess for thromboembolic events.\" The Evidence-Based Practice box goes further: WHO recommends IV TXA \"within 3 h of birth in addition to the usual care for PPH,\" it \"should be used in all cases of PPH,\" a second 1 g dose may follow if bleeding has not stopped in 30 min, and it \"does not pose a barrier to breastfeeding\" (p. 734).",
     "type": "single",
-    "trap": "(C) borrows carboprost's contraindication. Each uterotonic in this guide has its own, and mixing them is how a contraindicated drug gets given.",
+    "trap": "(C) borrows carboprost's contraindication. Each drug in this guide has its own, and mixing them is how a contraindicated drug gets given. (B) fails because TXA is not a uterotonic: it is added to atony care, not substituted for massage and oxytocin.",
     "source": "ch33.md"
   },
   "q_1124": {
@@ -22029,7 +22029,7 @@
       2,
       3
     ],
-    "rationale": "Box 34.2 lists apnea, bradycardia, central cyanosis, coagulation defects such as pulmonary hemorrhage, hypoglycemia, hypotonia, hypoxia, feeding intolerance, increased metabolic rate, irritability, lethargy, metabolic acidosis, peripheral vasoconstriction, poor weight gain with chronic hypothermia, and shivering in mature infants with severe hypothermia.",
+    "rationale": "Box 34.2's hypothermia column lists apnea, bradycardia, central cyanosis, coagulation defects such as pulmonary hemorrhage, hypoglycemia, hypotonia, hypoxia, feeding intolerance, increased metabolic rate, irritability, lethargy, metabolic acidosis, peripheral vasoconstriction, poor weight gain with chronic hypothermia, shivering in mature infants with severe hypothermia, and weak cry or suck. The box prints hyperthermia signs beside them, and apnea, irritability, and lethargy appear in both columns.",
     "type": "sata",
     "trap": "(E) names the finding that is conspicuously absent from the box as an early sign. The infant compensates first by burning glucose and oxygen, so the metabolic consequences appear before the temperature falls.",
     "source": "ch34.md"
@@ -22907,7 +22907,7 @@
     "correct": [
       0
     ],
-    "rationale": "\"Hand hygiene is the single most important measure in preventing the spread of infection,\" with the other measures as listed. Newborn care procedures intended to prevent infection include \"instilling antibiotic ointment in newborns' eyes 1 to 2 hours after birth, bathing, and cord care.\"",
+    "rationale": "\"Hand hygiene is the single most important measure in preventing the spread of infection,\" with the other measures as listed. Newborn care procedures intended to prevent infection include \"instilling antibiotic ointment in newborns' eyes 1 to 2 hours after birth, bathing, and cord care.\" The gonorrhea paragraph gives a tighter window for the same ointment, 0.5% erythromycin \"during the first hour after birth\" (p. 784); if a stem hinges on the exact window, Chapter 24's Medication Guide governs timing.",
     "type": "single",
     "trap": "(D) is specifically cautioned against: \"routine suctioning is not recommended and can further compromise the infant's immune status as well as cause hypoxia and increase ICP,\" and secretions being suctioned \"may be infected.\"",
     "source": "ch35.md"
@@ -24352,7 +24352,7 @@
     ],
     "rationale": "\"All women who present with depressive symptoms should be screened for bipolar disorder,\" and \"medical causes (e.g., thyroid disease) of depressive symptoms should be ruled out.\"",
     "type": "single",
-    "trap": "(D) would start an antidepressant in a woman whose symptoms might be thyroid disease or the depressed phase of bipolar disorder — two conditions for which that treatment is wrong.",
+    "trap": "(D) skips both rule-outs the chapter requires: the symptoms might have a medical cause such as thyroid disease, or be the first sign of bipolar disorder, and postpartum psychosis is most commonly bipolar.",
     "source": "ch31.md"
   },
   "q_1314": {
@@ -25285,6 +25285,953 @@
     "rationale": "\"A sensitive and respectful approach for taking the fetus or infant to the morgue is the use of a burial cradle, which makes the process more dignified for parents and the nursing staff. A burial cradle is a miniature casket usually made of Styrofoam or wood.\" The Joint Commission \"requires that appropriate care be offered to the body after death,\" and \"nurses can find that providing postmortem care helps them in their own grief related to a perinatal loss.\"",
     "type": "single",
     "trap": "(D) omits the staff half of the point, which is the chapter's acknowledgment that the nurses who provided the care are grieving too.",
+    "source": "ch37.md"
+  },
+  "q_1364": {
+    "topic": "preventing bladder distention",
+    "subtopic": "the first void and the 150-ml rule",
+    "stem": "A woman gave birth vaginally with epidural anesthesia 7 hours ago and has not yet voided. Which statement reflects the chapter's guidance?",
+    "options": [
+      "She should void spontaneously within 6 to 8 hours after birth, so the nurse helps her try to void now, starting with assisting her to the bathroom or onto a bedpan",
+      "Voiding is not expected until diuresis begins about 12 hours after birth, so the nurse waits",
+      "The nurse catheterizes her now, because epidural anesthesia makes a spontaneous void unlikely",
+      "Not voiding for 24 hours after an epidural is expected and needs no action"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"The mother should void spontaneously within 6 to 8 hours after giving birth.\" Epidural anesthesia is a listed risk factor for urinary retention, and the ladder starts with \"The first priority is to assist the woman to the bathroom or onto a bedpan if she is unable to ambulate\"; a catheter is inserted only \"If these measures are unsuccessful.\"",
+    "type": "single",
+    "trap": "(B) confuses the diuresis timing in Table 21.1 (\"Diuresis begins ≈12 h after birth\") with the first-void deadline. (C) is right that the epidural raises her risk but jumps to the last rung of the ladder.",
+    "source": "ch21.md"
+  },
+  "q_1365": {
+    "topic": "preventing bladder distention",
+    "subtopic": "the first void and the 150-ml rule",
+    "stem": "Over the next 2 hours the same woman voids three times: 60 mL, 80 mL, and 70 mL. Her fundus is above the umbilicus and to the right of midline. How should the nurse interpret this?",
+    "options": [
+      "Each void falls short of the at least 150 mL expected, so adequate emptying has not been documented, and the displaced fundus suggests a distended bladder",
+      "Three voids show that the bladder is working, so no further assessment is needed",
+      "Small, frequent voids are the expected pattern of postpartum diuresis",
+      "The fundus is displaced by afterpains, which are unrelated to bladder function"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"The first several voids should be measured to document adequate emptying of the bladder. A volume of at least 150 mL is expected for each voiding.\" \"A full bladder causes the uterus to be displaced above the umbilicus and well to one side of midline in the abdomen. It also prevents the uterus from contracting normally,\" which is why \"Uterine atony and excessive bleeding after birth can be the result of bladder distention.\"",
+    "type": "single",
+    "trap": "(B) counts voids instead of measuring them. Small amounts do not show that the bladder has emptied, and the chapter's stated reason for measuring is to document that it has.",
+    "source": "ch21.md"
+  },
+  "q_1366": {
+    "topic": "perineal care and infection prevention",
+    "subtopic": "extreme perineal pain",
+    "stem": "On postpartum day 1, a woman reports extreme perineal pain an hour after receiving her ordered analgesic. What is the nurse's first action?",
+    "options": [
+      "Assess the perineum, because a hematoma or perineal infection may be causing the pain",
+      "Give the next ordered dose early, since the first dose was not enough",
+      "Apply an ice pack and reassess the pain in 4 hours",
+      "Reassure her that perineal pain is expected after a vaginal birth"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "The Safety Alert: \"If a postpartum woman reports extreme perineal pain, especially after having received pain medication, the first action by the nurse should be to assess the perineum. There may be a hematoma or perineal infection that is causing the pain. Although rare, an unusual degree of pain can be a sign of serious complications including perineal cellulitis, necrotizing fasciitis, or angioedema.\" Table 21.1's timeline separates the two common causes: excessive discomfort in the first 1 to 2 days points to a hematoma, after day 3 to infection.",
+    "type": "single",
+    "trap": "(B) treats the pain as a dosing problem. The alert exists because pain that persists after medication is a finding to look at, not a reason to medicate again.",
+    "source": "ch21.md"
+  },
+  "q_1367": {
+    "topic": "postpartum ambulation and fall prevention",
+    "subtopic": "orthostatic hypotension",
+    "stem": "A nurse is planning care to prevent falls from orthostatic hypotension caused by splanchnic engorgement. At which moments does the chapter say a woman who has recently given birth is most likely to become light-headed? Select all that apply.",
+    "options": [
+      "When she sits or stands up",
+      "When she first ambulates",
+      "When she takes a warm shower",
+      "When she takes a sitz bath",
+      "When she breastfeeds lying on her side"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "\"The rapid decrease in intraabdominal pressure after birth results in a dilation of blood vessels supplying the intestines (splanchnic engorgement) and causes blood to pool in the viscera.\" This \"contributes to the development of orthostatic hypotension when the woman who has recently given birth sits or stands up, first ambulates, or takes a warm shower or sitz bath.\" Before helping her up, the nurse considers \"the baseline blood pressure; amount of blood loss; and type, amount, and timing of analgesic or anesthetic medications administered.\"",
+    "type": "sata",
+    "trap": "(E) is not among the four moments the chapter names, which are all position changes or warm water. Dizziness at those moments is expected; a rising pulse, heavy lochia, or a boggy fundus is what turns it into a hemorrhage question.",
+    "source": "ch21.md"
+  },
+  "q_1368": {
+    "topic": "postpartum ambulation and fall prevention",
+    "subtopic": "after regional anesthesia",
+    "stem": "Four hours after a birth with epidural anesthesia, a woman wants to walk to the bathroom. Which assessment does the chapter describe before she ambulates?",
+    "options": [
+      "In bed she bends both knees, places both feet flat, and lifts her buttocks off the bed without assistance; then she stands unassisted beside the bed, bends both knees slightly, and stands with knees locked",
+      "She dangles her legs at the bedside for 1 minute, and if she is not dizzy she may walk alone",
+      "Her blood pressure is checked lying and standing, and if it is stable no other assessment is needed",
+      "She is asked whether she can feel her legs, and if she says yes she may walk with her partner"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "The factors to consider are \"the time lapse since epidural or spinal medication was given; the woman's ability to bend both knees, place both feet flat on the bed, and lift buttocks off the bed without assistance; medications since birth; vital signs; and estimated blood loss with birth.\" Then: \"Before allowing the woman to ambulate, the nurse assesses the ability of the woman to stand unassisted beside her bed, simultaneously bending both knees slightly, and then standing with knees locked. If the woman is unable to balance herself, she can be safely eased back into bed without injury.\"",
+    "type": "single",
+    "trap": "(D) trades a motor test for a self-report and hands the first walk to the partner. Women who have had regional anesthesia \"can experience slow return of sensory and motor function in their lower extremities, increasing the risk for falls with early ambulation.\"",
+    "source": "ch21.md"
+  },
+  "q_1369": {
+    "topic": "postpartum ambulation and fall prevention",
+    "subtopic": "after regional anesthesia",
+    "stem": "A woman's vital signs have been stable for 2 hours, and her partner offers to walk her to the bathroom for the first time since the birth. What does the Safety Alert direct?",
+    "options": [
+      "A nurse or ancillary staff member is present the first time she gets out of bed; she is told to call for help before getting up the first time and any time she feels dizzy or weak, and the partner is instructed as well",
+      "The partner may assist her, because stable vital signs show she is not at risk of fainting",
+      "She may walk alone if she has already voided once on a bedpan",
+      "Staff need to be present for the first ambulation only after a cesarean birth"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"To promote safety and prevent injury, it is important to have a nurse or ancillary staff (e.g., nursing assistant) present the first time the woman gets out of bed after birth because she can feel weak, dizzy, faint, or light-headed. The nurse instructs the woman to call for assistance before getting out of bed the first time and any time thereafter if she feels dizzy or weak. The partner or family members who are present are instructed as well.\"",
+    "type": "single",
+    "trap": "(B) is the reflex: stable vital signs and a willing partner feel like enough. The alert requires staff at the first ambulation regardless, and the partner is taught, not delegated to.",
+    "source": "ch21.md"
+  },
+  "q_1370": {
+    "topic": "postpartum vte prevention",
+    "subtopic": "in bed, and walking",
+    "stem": "A woman receiving postpartum magnesium sulfate for preeclampsia has been in bed for 10 hours. What does the chapter direct for preventing venous thromboembolism?",
+    "options": [
+      "A leg-exercise routine: alternate flexion and extension of the feet, ankle circles, alternate flexion and extension of the legs, and pressing the backs of the knees to the bed, because she has been in bed longer than 8 hours",
+      "No action until she can walk, because exercise in bed does not affect clotting",
+      "Massaging her calves every 2 hours to keep the blood moving",
+      "Moving her to a chair to sit for most of the day instead of walking"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Preventing VTE is important. Blood is hypercoagulable in the postpartum period, especially during the first 48 hours after birth,\" and \"Women who must remain in bed after giving birth are at increased risk.\" \"If a woman remains in bed longer than 8 hours (e.g., for postpartum magnesium sulfate therapy for preeclampsia), exercise to promote circulation in the legs is indicated.\" Antiembolic stockings or SCD boots \"may be ordered prophylactically,\" and a woman susceptible to VTE \"is encouraged to walk about actively for true ambulation and is discouraged from sitting immobile in a chair.\"",
+    "type": "single",
+    "trap": "(D) sounds like progress out of bed, but the chapter discourages sitting immobile in a chair; the rule for the woman at risk is walk, not sit. (C) is not part of the chapter's routine.",
+    "source": "ch21.md"
+  },
+  "q_1371": {
+    "topic": "postpartum vte prevention",
+    "subtopic": "in bed, and walking",
+    "stem": "On postpartum day 2, a woman who has been walking the halls reports warmth, redness, and tenderness in her left calf. What should the nurse do?",
+    "options": [
+      "Notify the obstetric health care provider, and meanwhile keep her in bed with the affected leg elevated on pillows",
+      "Encourage her to walk more, because early ambulation reduces the risk of VTE",
+      "Massage the calf to relieve the tenderness",
+      "Apply antiembolic stockings and continue her routine ambulation"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"If a thrombus is suspected, as evidenced by warmth, redness, or tenderness in the affected leg, the obstetric HCP should be notified. Meanwhile the woman should be confined to bed, with the affected limb elevated on pillows.\" Early ambulation \"is associated with a reduced incidence of venous thromboembolism (VTE),\" which is why it is encouraged before a thrombus is suspected.",
+    "type": "single",
+    "trap": "(B) is the mirror error of the previous item. Ambulation prevents VTE, but once a thrombus is suspected the rule reverses to bed rest with the limb elevated.",
+    "source": "ch21.md"
+  },
+  "q_1372": {
+    "topic": "vitamin K and newborn coagulation",
+    "subtopic": "the first-week bleeding watch",
+    "stem": "A male newborn is circumcised on day 2, before discharge from the birth facility. Why does the chapter direct careful monitoring for bleeding?",
+    "options": [
+      "For the first week of life, neonates are at risk for bleeding until the coagulation factors are well established",
+      "Newborn platelet counts stay low until about 9 months of age",
+      "The vitamin K injection temporarily keeps the blood from clotting",
+      "The bleeding risk ends once vitamin K has been given, so the monitoring is a formality"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"For the first week of life, neonates are at risk for bleeding until the coagulation factors are well established. Male newborns who are circumcised before discharge from the birth facility must be monitored carefully for bleeding.\" And \"Any bleeding problems noted in the newborn should be reported immediately and tests for clotting ordered.\"",
+    "type": "single",
+    "trap": "(B) misplaces both the defect and the clock. The platelet count \"is essentially the same in newborns as in adults,\" and 9 months is when the coagulation factors reach adult levels; the bleeding risk is a factor problem, not a platelet problem.",
+    "source": "ch23.md"
+  },
+  "q_1373": {
+    "topic": "vitamin K and newborn coagulation",
+    "subtopic": "the first-week bleeding watch",
+    "stem": "Which pairing of each time with its coagulation event is accurate?",
+    "options": [
+      "Days 2 to 5: transient vitamin K deficiency; first week: risk for bleeding until coagulation factors are well established; 9 months: coagulation factors reach adult levels",
+      "Days 2 to 5: coagulation factors reach adult levels; first week: vitamin K deficiency; 9 months: the bleeding risk ends",
+      "First 24 hours: vitamin K deficiency; days 2 to 5: the bleeding watch; 1 year: adult factor levels",
+      "First week: platelets reach adult levels; 9 months: vitamin K deficiency resolves"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"The lack of intestinal bacteria needed to synthesize vitamin K results in transient blood coagulation deficiency between the second and fifth days of life.\" \"For the first week of life, neonates are at risk for bleeding until the coagulation factors are well established.\" \"The levels of coagulation factors slowly increase to reach adult levels by 9 months of age.\"",
+    "type": "single",
+    "trap": "(B) keeps the three numbers and swaps the events, which is the move an exam makes with clocks this close together. Days 2 to 5 is the deficiency window, and 9 months is adult levels.",
+    "source": "ch23.md"
+  },
+  "q_1374": {
+    "topic": "newborn phototherapy",
+    "subtopic": "eye protection",
+    "stem": "A newborn is about to be placed under phototherapy lights. How should the eye mask be applied and managed?",
+    "options": [
+      "Close the eyes gently first, cover them completely without occluding the nares, and remove the mask periodically and during feedings so the eyes can be assessed and cleansed and the parents can see the infant",
+      "Apply the mask over open eyes so the nurse can check them through it, and leave it on continuously until phototherapy ends",
+      "Cover the eyes and the nose together so the mask cannot slip down",
+      "Apply a mask only when a fiberoptic blanket is used alone, since overhead lights are too far away to harm the eyes"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "The Safety Alert: \"When phototherapy is used, the infant's eyes must be protected by a special opaque mask that is designed to prevent retinal damage. The eye shield should cover the eyes completely but not occlude the nares. Before the mask is applied, the infant's eyes should be closed gently to prevent excoriation of the corneas. The mask should be removed periodically and during infant feedings so that the eyes can be assessed and cleansed with water and the parents can have visual contact with the infant.\"",
+    "type": "single",
+    "trap": "(B) breaks two stated steps at once: the eyes are closed before the mask goes on, to protect the corneas, and the mask comes off for feedings. (D) inverts the device rule; with fiberoptic devices, eye patches depend on whether the device is used alone or with phototherapy lights.",
+    "source": "ch24.md"
+  },
+  "q_1375": {
+    "topic": "newborn phototherapy",
+    "subtopic": "care under the lights",
+    "stem": "Which actions are part of the nursing care of an infant under phototherapy lights? Select all that apply.",
+    "options": [
+      "Reposition the infant at least every 2 to 3 hours",
+      "Monitor the temperature for both hypothermia and hyperthermia",
+      "Clean the buttocks after each stool",
+      "Monitor urine output as an indicator of hydration",
+      "Apply lotion to dry or peeling skin to protect it under the lights",
+      "Offer glucose water between feedings to replace fluid lost to the lights"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "\"Infants under phototherapy lights need to be repositioned at least every 2 to 3 hours to maximize skin exposure.\" \"The infant's temperature should be closely monitored for hypothermia and hyperthermia.\" Loose stools can cause skin breakdown, so \"The infant's buttocks must be cleaned after each stool,\" and \"The nurse closely monitors urinary output as an indicator of hydration status.\" The Safety Alert: \"no ointments, creams, or lotions should be applied to the newborn's skin because they can absorb heat and cause burns.\" And \"Feedings of glucose water or plain water should not be used because these liquids do not promote excretion of bilirubin in the stools.\"",
+    "type": "sata",
+    "trap": "(E) and (F) both sound protective and both are forbidden. Lotion can absorb heat and burn, and water or glucose water does not carry bilirubin out in the stool; the lights do raise insensible water loss, but the answer is adequate milk feedings.",
+    "source": "ch24.md"
+  },
+  "q_1376": {
+    "topic": "newborn phototherapy",
+    "subtopic": "care under the lights",
+    "stem": "On the second day of phototherapy, a parent is worried about the infant's frequent loose stools, dark gold urine, and a tan on the infant's skin. How should the nurse respond?",
+    "options": [
+      "These are expected effects: bilirubin is excreted primarily in stool and its breakdown increases gastric motility, the urine can look dark gold or brown, and transient tanning can occur",
+      "Loose stools mean the lights have dehydrated the infant, so phototherapy must be stopped at once",
+      "Dark gold urine signals liver failure and needs urgent evaluation",
+      "The tan is bronze baby syndrome, which shows that treatment has reached its endpoint"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Bilirubin is excreted primarily through the stool, so it is important that the infant is having bowel movements. Bilirubin breakdown increases gastric motility, which can result in loose stools.\" \"Urine output can be decreased or unaltered; the urine can have a dark gold or brown appearance.\" \"Transient skin rashes or tanning of the skin can occur during phototherapy,\" and rarely \"bronze baby syndrome, in which the skin appears grayish brown.\"",
+    "type": "single",
+    "trap": "(D) confuses expected, transient tanning with rare bronze baby syndrome, and the chapter's stopping rule is a serum bilirubin rule, not a skin finding.",
+    "source": "ch24.md"
+  },
+  "q_1377": {
+    "topic": "newborn phototherapy",
+    "subtopic": "is it working, and when to stop",
+    "stem": "An infant began phototherapy at 30 hours of age. The serum bilirubin began falling within 5 hours and is now 2.5 mg/dL below the threshold at which treatment was started. What is the plan?",
+    "options": [
+      "Phototherapy can be discontinued, since the level is at least 2 mg/dL below the starting threshold; because it began before 48 hours of age, rebound is more likely, and the level is rechecked 6 to 12 hours after stopping and again the next day",
+      "Phototherapy continues until the serum bilirubin returns to zero",
+      "Phototherapy is stopped, and no further levels are needed because the level is falling",
+      "Phototherapy continues until the skin no longer looks yellow"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"If phototherapy is effective, the bilirubin level should begin to decrease within 4 to 6 hours after phototherapy is initiated and should decrease by 30% to 40% within 24 hours.\" \"Phototherapy is discontinued when the TSB has declined by a minimum of 2 mg/dL below the phototherapy threshold for initiating treatment.\" \"Infants may be likely to experience rebound hyperbilirubinemia if they were <48 hours old when phototherapy began, are < 38 weeks gestational age, or have hemolytic disease. TSB levels are rechecked 6 to 12 hours after discontinuation of phototherapy and again the next day.\"",
+    "type": "single",
+    "trap": "(C) stops on the right rule and then skips the recheck, which matters most for an infant who started treatment before 48 hours of age. (D) uses a skin sign to make a serum-level decision.",
+    "source": "ch24.md"
+  },
+  "q_1378": {
+    "topic": "breastfeeding rates and benefits",
+    "subtopic": "the aap recommendation",
+    "stem": "A mother says she plans to breastfeed \"for the first few weeks, then switch to formula,\" and asks what is recommended. What does the AAP recommend?",
+    "options": [
+      "Exclusive breastfeeding for the first 6 months, continuing as complementary foods are introduced at about 6 months, and continuing as long as mother and child both desire, until the child is 2 years or older",
+      "Exclusive breastfeeding for the first 12 months, with no complementary foods before 1 year",
+      "Breastfeeding for at least 6 weeks, after which formula is nutritionally equivalent",
+      "Exclusive breastfeeding for 4 months, with weaning completed by 1 year"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"AAP recommends exclusive breastfeeding for the first 6 months of life, continuing breastfeeding as complementary foods are introduced at about 6 months, and continuing breastfeeding as long as mutually desired by the mother and child, until the child is 2 years or older,\" which is \"consistent with the recommendations from the World Health Organization (WHO).\" The Dietary Guidelines for Americans set a shorter floor: human milk exclusively for the first 6 months and \"for at least the first year, and longer as desired.\"",
+    "type": "single",
+    "trap": "(B) stretches exclusivity to a year, but the AAP has complementary foods starting at about 6 months while breastfeeding continues. The \"at least the first year\" figure belongs to the Dietary Guidelines, not the AAP, whose horizon is 2 years or older.",
+    "source": "ch25.md"
+  },
+  "q_1379": {
+    "topic": "baby-friendly ten steps",
+    "subtopic": "key clinical practices",
+    "stem": "A hospital is working toward Baby-Friendly designation. Which of these appear among the Key Clinical Practices of Box 25.2's Ten Steps? Select all that apply.",
+    "options": [
+      "Facilitate immediate and uninterrupted skin-to-skin contact and support mothers to initiate breastfeeding as soon as possible after birth",
+      "Do not provide breastfed newborns any food or fluids other than breast milk, unless medically indicated",
+      "Enable mothers and their infants to remain together and to practice rooming-in 24 hours a day",
+      "Support mothers to recognize and respond to their infants' cues for feeding",
+      "Have a written infant feeding policy that is routinely communicated to staff and parents"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Box 25.2 divides the Ten Steps (revised 2018) into Critical Management Procedures, steps 1a to 2, and Key Clinical Practices, steps 3 to 10. Steps 4, 6, 7, and 8 are skin-to-skin contact and early initiation, no food or fluids other than breast milk unless medically indicated, rooming-in 24 h/day, and responding to feeding cues. \"When a hospital or birthing facility achieves the Ten Steps to Successful Breastfeeding for Hospitals, it is recognized as Baby-Friendly,\" and \"Women are more likely to achieve their goals for exclusive breastfeeding if they give birth in facilities where all or most of the 10 steps are in place.\"",
+    "type": "sata",
+    "trap": "(E) is in Box 25.2, which is why it pulls, but it is step 1b, one of the Critical Management Procedures rather than a Key Clinical Practice. The box sorts the steps into those two groups.",
+    "source": "ch25.md"
+  },
+  "q_1380": {
+    "topic": "baby-friendly ten steps",
+    "subtopic": "step 9",
+    "stem": "A nurse on a Baby-Friendly unit tells a new mother that pacifiers are forbidden there. What does step 9 of the Ten Steps actually say?",
+    "options": [
+      "Counsel mothers on the use and risks of feeding bottles, teats, and pacifiers",
+      "Never allow pacifiers or bottles for any breastfed infant during the hospital stay",
+      "Offer a pacifier after every feeding to reduce nonnutritive sucking at the breast",
+      "Allow pacifiers only after the infant has been discharged"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Step 9 of Box 25.2 reads \"Counsel mothers on the use and risks of feeding bottles, teats, and pacifiers.\" The revised 2018 steps place it among the Key Clinical Practices, alongside rooming-in and responding to feeding cues.",
+    "type": "single",
+    "trap": "(B) overstates the step. The 2018 wording counsels mothers about bottles and pacifiers rather than banning them, so a nurse who tells a mother they are forbidden has turned counseling into a prohibition.",
+    "source": "ch25.md"
+  },
+  "q_1381": {
+    "topic": "donor milk and milk banking",
+    "subtopic": "milk sharing",
+    "stem": "The parent of a preterm infant says a friend has a freezer full of breast milk to share, and that milk can also be bought online. What does the Safety Alert direct the nurse to do?",
+    "options": [
+      "Direct the parents to an HMBANA milk bank, and caution them about the safety risks of feeding donor milk from another source",
+      "Encourage the friend's milk, since milk from someone they know is safer than banked milk",
+      "Recommend buying milk online, since internet sellers screen their donors",
+      "Tell the parents that donor milk of any kind is unsafe for a preterm infant"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Parents who indicate an interest in obtaining donor human milk for their infant should be directed to one of the HMBANA milk banks and should be cautioned about the safety risks associated with feeding donor milk from an alternative source.\" With informal sharing \"there is a lack of screening of milk donors in terms of diseases, medications, or illicit substances,\" the FDA \"warns against milk sharing,\" and internet samples \"have been shown to have high overall bacterial growth and contamination with pathogenic bacteria.\" Banked milk is screened, pasteurized, and \"dispensed only by prescription.\"",
+    "type": "single",
+    "trap": "(B) pulls because a friend feels safer than a stranger, but informal sharing has none of the screening and heat processing that banked milk has. (D) overcorrects; the AAP recommends pasteurized donor milk for high-risk infants when the mother's own milk is not available.",
+    "source": "ch25.md"
+  },
+  "q_1382": {
+    "topic": "substance use screening with 4ps plus and crafft",
+    "subtopic": "4ps plus",
+    "stem": "At her first prenatal visit, a 28-year-old is screened with the 4Ps Plus. Why does the tool ask how much she smoked and drank in the month before she knew she was pregnant?",
+    "options": [
+      "Women frequently deny or greatly underreport use when asked about consumption during pregnancy, so asking about use before pregnancy is often an effective screening method",
+      "Only use before pregnancy can harm the fetus, so use during pregnancy is not asked about",
+      "The tool was designed for nonpregnant women, so it cannot ask about pregnancy",
+      "Asking about use during pregnancy is prohibited by law"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"The 4Ps Plus is a screening tool designed specifically to identify pregnant women who need in-depth assessment.\" \"It consists of five questions and takes less than 1 minute to complete.\" \"Because women frequently deny or greatly underreport usage when asked about drug or alcohol consumption during pregnancy, asking about substance use before pregnancy is often an effective screening method.\" Box 31.1's four items are Parents, Partner, Past, and Pregnancy, and the Pregnancy item asks about the month before she knew she was pregnant.",
+    "type": "single",
+    "trap": "(C) inverts the tool's purpose; it was designed specifically for pregnant women. The question about the month before pregnancy is a strategy against underreporting, not a sign that pregnancy is off-limits.",
+    "source": "ch31.md"
+  },
+  "q_1383": {
+    "topic": "substance use screening with 4ps plus and crafft",
+    "subtopic": "crafft",
+    "stem": "A 16-year-old answers yes to two CRAFFT questions: whether she uses alcohol to relax and whether she uses it when she is alone. What does the result mean?",
+    "options": [
+      "A yes answer to two or more questions suggests a serious problem and indicates a need for further assessment",
+      "A positive screen requires at least three yes answers, so no follow-up is needed",
+      "CRAFFT is meant for adults over 21, so the result is not valid for her",
+      "Each yes answer confirms a substance use disorder diagnosis"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"CRAFFT is a substance abuse screening tool designed specifically for use with individuals aged 12 to 21.\" \"It consists of six questions,\" covering Car, Relax, Alone, Forget, Family or Friends, and Trouble, and a yes \"answer to two or more questions suggests a serious problem and indicates a need for further assessment.\"",
+    "type": "single",
+    "trap": "(D) treats a screening result as a diagnosis; the stated consequence of two or more yes answers is further assessment. (C) has the age range backward.",
+    "source": "ch31.md"
+  },
+  "q_1384": {
+    "topic": "substance use screening with 4ps plus and crafft",
+    "subtopic": "crafft",
+    "stem": "A 30-year-old at her first prenatal visit and a 17-year-old in an adolescent clinic both need substance use screening. Which pairing of tools does the chapter support?",
+    "options": [
+      "The 4Ps Plus for the pregnant 30-year-old, since it was designed for pregnant women, and CRAFFT for the 17-year-old, since it was designed for ages 12 to 21",
+      "CRAFFT for the pregnant 30-year-old and the 4Ps Plus for the 17-year-old",
+      "The Edinburgh Postnatal Depression Scale for both, since it screens for substance use as well as depression",
+      "CRAFFT for both, since it is the only validated substance use tool the chapter names"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "The 4Ps Plus is \"designed specifically to identify pregnant women who need in-depth assessment,\" and CRAFFT is \"designed specifically for use with individuals aged 12 to 21.\" The chapter's depression, anxiety, and PTSD screens, including the EPDS, are a separate family of tools.",
+    "type": "single",
+    "trap": "(B) is the mirror swap of the two tools. (C) reaches for the other family of screening tools on the blueprint; the EPDS screens for depression and anxiety, not substance use.",
+    "source": "ch31.md"
+  },
+  "q_1385": {
+    "topic": "ppd versus postpartum psychosis",
+    "subtopic": "postpartum psychosis",
+    "stem": "Ten days after the birth of her first child, a woman has not slept for two nights, says a voice is telling her the baby has special powers, and accuses the staff of poisoning her infant. How should the nurse interpret this?",
+    "options": [
+      "Postpartum psychosis, a psychiatric emergency that is most commonly associated with bipolar disorder and occurs most often in the first 2 to 4 weeks after birth",
+      "Postpartum blues, which are expected in the second week and resolve without treatment",
+      "Postpartum depression with obsessive thoughts, which she is unlikely to act on",
+      "Sleep deprivation, which will resolve once the infant sleeps for longer stretches"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Postpartum psychosis \"is most commonly associated with\" bipolar disorder, \"occurs most often in the first 2 to 4 weeks after birth,\" and \"is more common among primiparous women.\" \"When delusions are present, they are often related to the infant. The mother may think the infant is possessed by evil, has special powers, or is destined for a terrible fate,\" and \"Some women will insist that something is wrong with the baby or accuse health care professionals or family members of hurting or poisoning their child.\" It \"is a psychiatric emergency associated with inability for self-care or infant care and can lead to suicide or infanticide.\"",
+    "type": "single",
+    "trap": "(C) is the depression side of the chapter's most important distinction. A woman with postpartum depression does not act on her obsessive thoughts, but women with psychosis \"are likely to act on their thoughts,\" and hallucinations and delusions about the infant mark this as psychosis.",
+    "source": "ch31.md"
+  },
+  "q_1386": {
+    "topic": "ppd versus postpartum psychosis",
+    "subtopic": "postpartum psychosis",
+    "stem": "While caring for the woman with suspected postpartum psychosis, what does the Nursing Alert require the nurse to do?",
+    "options": [
+      "Ask her specifically whether she has had thoughts about harming her baby",
+      "Wait for her to raise any thoughts of harm herself, so as not to suggest them",
+      "Avoid the subject of harm, since asking about it could worsen the psychosis",
+      "Ask only her partner, since a woman with psychosis cannot answer reliably"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Because mothers with postpartum psychosis can harm their infants, extra caution is needed in assessment and intervention. The nurse needs to ask specifically if the mother has had thoughts about harming her baby.\" The chapter adds that nurses \"cannot depend on women to volunteer unsolicited information.\"",
+    "type": "single",
+    "trap": "(B) sounds tactful and is the error the alert is written against: waiting for her to volunteer it means it may never be said.",
+    "source": "ch31.md"
+  },
+  "q_1387": {
+    "topic": "ppd versus postpartum psychosis",
+    "subtopic": "postpartum psychosis",
+    "stem": "The woman is admitted to an inpatient psychiatric unit and asks to see her baby. What does the chapter say about contact?",
+    "options": [
+      "Contact with her baby is usually advantageous if she desires it, but visits must be closely supervised and she should never be left alone with her baby",
+      "All contact is prohibited until the psychosis has fully resolved",
+      "She may room in with the baby unsupervised once she appears calm",
+      "Contact is limited to photographs until her medications are stopped"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"It is usually advantageous for the mother to have contact with her baby if she so desires, but visits must be closely supervised. She should never be left alone with her baby.\" Treatment is \"Antipsychotics, mood stabilizers, and benzodiazepines,\" with electroconvulsive therapy for women who do not respond, and \"A medication regimen is continued for at least a year.\" The illness \"is likely to recur in approximately one-third of women after subsequent births.\"",
+    "type": "single",
+    "trap": "(B) and (C) are the two opposite errors: banning contact entirely loses its benefit, and leaving the pair alone because she seems calm ignores the stated rule that she should never be left alone with her baby.",
+    "source": "ch31.md"
+  },
+  "q_1388": {
+    "topic": "rewarming and hyperthermia in the preterm infant",
+    "subtopic": "the other column of box 34.2",
+    "stem": "A preterm infant in an incubator is found warm to the touch, flushed, and irritable. Which findings would the nurse expect if the infant is hyperthermic, according to Box 34.2? Select all that apply.",
+    "options": [
+      "Tachycardia",
+      "Tachypnea",
+      "Hypernatremia",
+      "Dehydration from increased insensible water loss",
+      "Seizures",
+      "Metabolic acidosis"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "rationale": "Box 34.2's hyperthermia column lists apnea, central nervous system depression, \"Dehydration (increased insensible water loss),\" flushed or red skin, hypernatremia, irritability, lethargy, poor feeding, seizures, sweating, tachycardia, tachypnea, warm to touch, and a weak or absent cry. The chapter explains why it matters: \"Hyperthermia is also detrimental, as it results in an increase in oxygen and calorie consumption. The preterm infant is not able to sweat and thus dissipate heat.\"",
+    "type": "sata",
+    "trap": "(F) comes from the other column of the same box: metabolic acidosis, like hypoglycemia and bradycardia, is a cold-stress sign. Apnea, irritability, and lethargy sit in both columns, so they cannot tell the two apart; tachycardia, tachypnea, flushing, dehydration, and hypernatremia can.",
+    "source": "ch34.md"
+  },
+  "q_1389": {
+    "topic": "rewarming and hyperthermia in the preterm infant",
+    "subtopic": "rewarming and servo control",
+    "stem": "A preterm infant's temperature is found to be mildly low. How should the nurse rewarm the infant?",
+    "options": [
+      "Begin immediately with an external heat source slightly warmer than the skin temperature, and increase it gradually until the infant's temperature is within the neutral thermal environment range",
+      "Raise the incubator to its highest setting so the temperature corrects within minutes",
+      "Delay rewarming until a glucose level has been obtained, since hypoglycemia is treated first",
+      "Hold rewarming until the infant begins to shiver, since shivering confirms true hypothermia"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"When an infant becomes hypothermic, rewarming should begin immediately by providing external heat. However, rapid changes in body temperature can cause apnea and acidosis. For the infant with mild hypothermia, slow rewarming is recommended.\" \"External heat sources should be slightly warmer than skin temperature and increased gradually until the infant's temperature is within the range of NTE.\"",
+    "type": "single",
+    "trap": "(B) is the instinct to warm a cold baby fast, and it is the error the chapter warns against: rapid change causes apnea and acidosis. (D) waits for a sign Box 34.2 lists only for \"mature infants in presence of severe hypothermia.\"",
+    "source": "ch34.md"
+  },
+  "q_1390": {
+    "topic": "rewarming and hyperthermia in the preterm infant",
+    "subtopic": "rewarming and servo control",
+    "stem": "A preterm infant is placed in an incubator on servo control. What does servo control mean, and what body temperature is the goal?",
+    "options": [
+      "The infant acts as a thermostat that regulates the amount of heat supplied by the external source; the goal is a body temperature of 36.5°C to 37°C (97.9°F to 99°F)",
+      "The nurse sets a fixed air temperature that does not change with the infant; the goal is a body temperature of 37.5°C to 38°C",
+      "The incubator cools the infant whenever skin temperature rises above 36°C; the goal is a body temperature of 35.5°C to 36°C",
+      "The infant's heart rate controls the heater output; the goal is a body temperature of 38°C"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"The infant acts as a thermostat to regulate the amount of heat supplied by the external source.\" \"The goal of this environment is to maintain an infant's body temperature between 36.5°C and 37°C (97.9 °F and 99 °F).\" The extremely low-birth-weight infant also goes into a polyethylene bag at birth \"to decrease heat and water loss.\"",
+    "type": "single",
+    "trap": "(B) describes the opposite of servo control, a setting that ignores the infant's own temperature, and pairs it with a target above the stated range.",
+    "source": "ch34.md"
+  },
+  "q_1391": {
+    "topic": "surfactant replacement therapy",
+    "subtopic": "route and sequence",
+    "stem": "A 27-week infant on CPAP continues to need high levels of oxygen, and surfactant is ordered. Which statement about its administration is accurate?",
+    "options": [
+      "It is given through an endotracheal tube, or by a minimally invasive approach through a small catheter placed in the trachea, as an adjunct to oxygen and ventilation therapy",
+      "It is given intravenously, and once it is in, oxygen and ventilation can be discontinued",
+      "It is nebulized into the CPAP circuit so that the trachea is never entered",
+      "It is given to the mother before birth, as an alternative to antenatal steroids"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Exogenous surfactant is given through an endotracheal tube or, with a minimally invasive approach, through a small catheter placed in the trachea.\" \"Surfactant can be administered as an adjunct to oxygen and ventilation therapy.\" The Medication Guide gives the sequence: \"Typically, surfactant is given after a trial period on continuous positive airway pressure.\" And the threshold: \"Before 28 weeks of gestation, most infants do not produce adequate amounts of surfactant.\"",
+    "type": "single",
+    "trap": "(D) confuses the two halves of RDS prevention. Antenatal steroids go to the mother and surfactant goes to the infant; the chapter credits \"antenatal steroids to the mother and surfactant replacement\" together. (B) turns an adjunct into a replacement.",
+    "source": "ch34.md"
+  },
+  "q_1392": {
+    "topic": "surfactant replacement therapy",
+    "subtopic": "the medication guide",
+    "stem": "The parents of a preterm infant who needs surfactant are observant Muslims. What does the Medication Guide direct before the drug is given?",
+    "options": [
+      "Informed consent from the parents is essential, because the bovine and porcine products can be objectionable for religious or cultural reasons; lucinactant is the synthetic product",
+      "Consent is implied in a neonatal emergency, so the source of the product does not need to be discussed",
+      "All four surfactants are synthetic, so religious objections do not arise",
+      "Only calfactant is animal-derived, so it is the one product to avoid"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "The guide's footnote: \"Bovine and porcine products can be objectionable to parents because of religious or cultural beliefs (e.g., Jewish, Islam, Hindu); informed consent from parents is essential before administering surfactant to the infant.\" Beractant (Survanta) is bovine lung extract, poractant alfa (Curosurf) is porcine, calfactant (Infasurf) comes from calf lung lavage, and lucinactant (Surfaxin) is synthetic. Its listed adverse events \"are most often related to the administration procedure and include oxygen desaturation, transient bradycardia, alterations in blood pressure, and drug reflux, which can obstruct the endotracheal tube.\"",
+    "type": "single",
+    "trap": "(D) undercounts: three of the four products are animal-derived, not one. (B) skips the step the guide calls essential.",
+    "source": "ch34.md"
+  },
+  "q_1393": {
+    "topic": "respiratory distress syndrome in the preterm infant",
+    "subtopic": "risk factors in both directions",
+    "stem": "Which maternal and fetal conditions does the chapter associate with an increased risk of respiratory distress syndrome? Select all that apply.",
+    "options": [
+      "Male sex",
+      "Maternal diabetes",
+      "Second-born twin",
+      "Cesarean birth without labor",
+      "Perinatal asphyxia",
+      "Prolonged rupture of membranes"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "rationale": "\"Perinatal asphyxia, male sex, White race, maternal diabetes (types 1 and 2), second-born twin, familial predisposition, and cesarean birth without labor place an infant at increased risk for RDS.\" On the other side, conditions \"associated with a decreased incidence and severity of RDS include Black race, maternal gestational hypertension, illicit drug exposure, maternal steroid therapy (betamethasone or dexamethasone), chronic retroplacental abruption, prolonged rupture of membranes, and intrauterine growth restriction (IUGR).\"",
+    "type": "sata",
+    "trap": "(F) is from the other list. Prolonged rupture of membranes is associated with a decreased incidence and severity of RDS, and the intuition that a complicated pregnancy must endanger the lungs runs backward for it, as it does for gestational hypertension and growth restriction.",
+    "source": "ch34.md"
+  },
+  "q_1394": {
+    "topic": "respiratory distress syndrome in the preterm infant",
+    "subtopic": "onset and course",
+    "stem": "A preterm infant whose mother had risk factors for infection develops crackles, retractions, and poor air exchange 2 hours after birth. The x-ray shows a uniform reticulogranular appearance with air bronchograms. What course does the chapter describe, and why are a blood culture and antibiotics ordered?",
+    "options": [
+      "RDS is self-limiting and usually abates after 72 hours as type 2 cells begin producing surfactant; antibiotics are started until cultures return because neonatal pneumonia can look the same",
+      "RDS is a chronic disease lasting weeks; antibiotics are given because RDS is caused by infection",
+      "RDS peaks at about 2 weeks of age; antibiotics are given to prevent bronchopulmonary dysplasia",
+      "RDS resolves within 6 hours of birth; antibiotics are given only if the infant becomes febrile"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Clinical symptoms of RDS usually appear immediately after or within 6 hours of birth,\" with \"crackles, poor air exchange, pallor, the use of accessory muscles (retractions), and occasionally apnea,\" and \"Radiographic findings include a uniform reticulogranular appearance and air bronchograms.\" \"RDS is a self-limiting disease that usually abates after 72 hours. The disappearance of respiratory signs coincides with the production of surfactant in the type 2 cells of the alveoli.\" A sepsis evaluation \"may be done in infants with RDS and risk factors to rule out neonatal pneumonia. Broad-spectrum antibiotics are begun until the results of cultures are available.\"",
+    "type": "single",
+    "trap": "(B) describes bronchopulmonary dysplasia, the chronic condition, and misreads the antibiotics as treating the cause; they are there because pneumonia and RDS can look alike. (D) mistakes the 6-hour onset window for the course.",
+    "source": "ch34.md"
+  },
+  "q_1395": {
+    "topic": "respiratory distress syndrome in the preterm infant",
+    "subtopic": "two oxygen saturation numbers",
+    "stem": "An infant with RDS has an arterial blood gas drawn. Which set of values does Table 34.2 give as normal for a neonate?",
+    "options": [
+      "pH 7.35 to 7.45, PaO2 60 to 80 mm Hg, PaCO2 35 to 45 mm Hg, oxygen saturation 92% to 94%",
+      "pH 7.25 to 7.35, PaO2 80 to 100 mm Hg, PaCO2 45 to 55 mm Hg, oxygen saturation 98% to 100%",
+      "pH 7.35 to 7.45, PaO2 80 to 100 mm Hg, PaCO2 35 to 45 mm Hg, oxygen saturation 90% to 95%",
+      "pH 7.45 to 7.55, PaO2 40 to 60 mm Hg, PaCO2 25 to 35 mm Hg, oxygen saturation 85% to 90%"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Table 34.2, Normal Arterial Blood Gas Values for Neonates, gives pH 7.35–7.45, PaO2 60–80 mm Hg, PaCO2 35–45 mm Hg, bicarbonate 18–26 mEq/L, base excess −5 to +5, and oxygen saturation 92%–94%. \"Pulse oximetry documents trends in oxygenation. Arterial blood gases provide more detailed information on the infant's oxygenation status.\"",
+    "type": "single",
+    "trap": "(C) is the near miss: it pairs a higher PaO2 with 90% to 95%, which is the Safety Alert's target range for preventing ROP and BPD, not Table 34.2's normal value. Both numbers are in the chapter, so match the number to the question.",
+    "source": "ch34.md"
+  },
+  "q_1396": {
+    "topic": "respiratory distress syndrome in the preterm infant",
+    "subtopic": "two oxygen saturation numbers",
+    "stem": "A nurse is adjusting oxygen for an extremely low-birth-weight infant on a ventilator. Which saturation range does the chapter's Safety Alert give, and why?",
+    "options": [
+      "Carefully targeted saturation of 90% to 95%, because rates of retinopathy of prematurity and bronchopulmonary dysplasia are reduced; target ranges are individualized for each ELBW infant",
+      "100%, because a fully saturated infant cannot develop retinal or lung injury",
+      "92% to 94% for every infant, because that is the normal neonatal value",
+      "85% to 90%, because any saturation above that causes retinopathy of prematurity"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Rates of retinopathy of prematurity and bronchopulmonary dysplasia are reduced when arterial oxygen saturation is carefully targeted (90%–95%).\" \"Individualized target saturation ranges should be determined for each ELBW infant.\" The oxygen-therapy section says the same thing plainly: \"The indiscriminate use of oxygen can be hazardous. Possible complications of oxygen therapy include ROP and BPD.\"",
+    "type": "single",
+    "trap": "(C) is the mirror error of the previous item: 92% to 94% is Table 34.2's normal value, while the target range is 90% to 95% and is individualized. (B) is the \"keep it at 100 to be safe\" reflex that the Safety Alert exists to stop.",
+    "source": "ch34.md"
+  },
+  "q_1397": {
+    "topic": "the late preterm infant",
+    "subtopic": "looks term, is not",
+    "stem": "A 35-week infant weighing 2400 g looks and acts much like the term infants in the newborn nursery. Why does the chapter warn about this infant?",
+    "options": [
+      "Late preterm infants are often cared for as if they were term infants, yet they are at increased risk for problems with thermoregulation, hypoglycemia, hyperbilirubinemia, feeding, sepsis, and respiratory function",
+      "Late preterm infants who weigh more than 2000 g carry the same risks as term infants",
+      "The only added risk is respiratory, so routine term care is appropriate once breathing is normal",
+      "The added risks apply only to infants born before 34 weeks, so this infant needs routine care"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"LPIs are infants born between 34 0/7 and 36 6/7 weeks of gestation.\" Because their birth weights \"often range from 2000 g (4.4 lb.) to 2500 g (5.5 lb.)\" and they appear relatively mature, \"they are often cared for as if they are normal term infants. Risk factors for LPIs can easily be overlooked.\" \"Compared with term infants, LPIs are at increased risk for problems with thermoregulation, hypoglycemia, hyperbilirubinemia, feeding problems, sepsis, and respiratory function.\" \"Discharge before 48 hours after birth is not recommended,\" and \"Hyperbilirubinemia is the most frequent reason for hospital readmission during the first week of life.\"",
+    "type": "single",
+    "trap": "(B) is the error the chapter is written against: the weight and the mature appearance are exactly what make these risks easy to overlook.",
+    "source": "ch34.md"
+  },
+  "q_1398": {
+    "topic": "the late preterm infant",
+    "subtopic": "table 34.3",
+    "stem": "Which interventions does Table 34.3 list for the late preterm infant? Select all that apply.",
+    "options": [
+      "Bathe only after thermal stability has been maintained for 1 hour",
+      "Provide skin-to-skin care immediately after birth for a stable infant",
+      "Initiate early feedings of human milk or formula",
+      "Monitor transcutaneous bilirubin and note the risk zone on the hour-specific nomogram",
+      "Give dextrose water feedings to correct a low glucose"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rationale": "Table 34.3 gives, for thermal instability, \"Provide skin-to-skin care immediately after birth for stable infant; implement measures to prevent excess heat loss (adjust environmental temperature, avoid drafts); bathe only after thermal stability has been maintained for 1 h\"; for hypoglycemia, \"Initiate early feedings of human milk or formula; avoid dextrose water or water feedings; provide intravenous dextrose as necessary for hypoglycemia\"; and for jaundice, \"Monitor transcutaneous bilirubin, and note risk zone on hour-specific nomogram.\"",
+    "type": "sata",
+    "trap": "(E) is the reflex response to a low glucose, and Table 34.3 says the opposite: avoid dextrose water or water feedings, and give intravenous dextrose if treatment is needed.",
+    "source": "ch34.md"
+  },
+  "q_1399": {
+    "topic": "infant of a diabetic mother",
+    "subtopic": "glucose early, calcium late",
+    "stem": "Two hours after birth, an LGA infant of a mother with poorly controlled diabetes is sleeping quietly and shows no jitteriness. The parent asks why the nurse is doing another heelstick glucose. What is the basis for the check?",
+    "options": [
+      "The infant's own hyperinsulinism continues after the cord is clamped; hypoglycemia most often occurs 1 to 6 hours after birth, many hypoglycemic infants are asymptomatic, and asymptomatic hypoglycemia can be just as concerning",
+      "Glucose is checked only once an infant shows jitteriness or apnea, so this check is a formality",
+      "Maternal insulin crossed the placenta before birth and is now lowering the infant's glucose",
+      "Hypoglycemia in these infants usually appears at 48 to 72 hours, so early checks only set a baseline"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Increased glucose crosses the placenta and stimulates the fetal pancreas to release insulin; \"hyperplasia of the fetal pancreas occurs, resulting in hyperinsulinemia. Disruption of the maternal glucose supply occurs with the clamping of the umbilical cord, and the neonate's blood glucose level decreases rapidly in the presence of fetal hyperinsulinism.\" \"Hypoglycemia most frequently occurs within the first 1 to 6 hours after birth.\" \"Many infants with hypoglycemia remain asymptomatic,\" and \"Asymptomatic hypoglycemia can be just as concerning as symptomatic hypoglycemia.\" It \"is most common in the macrosomic or large-for-gestational-age (LGA) infant,\" and the lower limit in the first 72 hours \"is often cited as 40 to 45 mg/dL.\"",
+    "type": "single",
+    "trap": "(C) gets the source of the insulin wrong: it is glucose that crosses, and the fetus makes its own insulin in response. (D) borrows the 48-to-72-hour window, which belongs to hypocalcemia and hypomagnesemia.",
+    "source": "ch35.md"
+  },
+  "q_1400": {
+    "topic": "infant of a diabetic mother",
+    "subtopic": "glucose early, calcium late",
+    "stem": "On day 3, an infant of a mother with insulin-dependent diabetes, whose glucose values have been normal since the first day, develops tremors. What does the chapter point the nurse toward?",
+    "options": [
+      "Hypocalcemia or hypomagnesemia, which are not usually present until 48 to 72 hours after birth and whose most common physical sign is tremors",
+      "Hypoglycemia, which in these infants usually first appears on day 3",
+      "Hypertrophic cardiomyopathy, which first presents as tremors",
+      "Polycythemia, which presents as tremors once the hematocrit peaks"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Hypocalcemia and hypomagnesemia can occur in infants of mothers with insulin-dependent diabetes, although they are not usually present until 48 to 72 hours after birth.\" \"The most common physical sign is tremors. Supplemental calcium therapy may be required. Magnesium levels usually return to normal without treatment.\" Hypocalcemia \"is often associated with preterm birth, birth trauma, and perinatal asphyxia.\"",
+    "type": "single",
+    "trap": "(B) is the mirror error of the previous item. Hypoglycemia is the early problem, within 1 to 6 hours; tremors on day 2 or 3, after normal glucose values, point toward calcium.",
+    "source": "ch35.md"
+  },
+  "q_1401": {
+    "topic": "infant of a diabetic mother",
+    "subtopic": "size is not maturity",
+    "stem": "A newborn of a mother with diabetes weighs 3900 g, which is above the 90th percentile for the infant's gestational age. How is the infant classified?",
+    "options": [
+      "LGA but not macrosomic, because LGA is a relative term meaning a birth weight above the 90th percentile for gestational age, while macrosomia is an absolute birth weight greater than 4000 g",
+      "Macrosomic, because any infant of a diabetic mother above the 90th percentile is macrosomic",
+      "Either term, because macrosomia and LGA are synonyms",
+      "Neither, because these classifications are based on head circumference"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Macrosomia is an absolute value defined as a birth weight greater than 4000 g (8 lb 13 oz). LGA is a relative term defined as a birth weight greater than the 90th percentile for gestational age.\" \"Approximately 35% of infants of mothers with diabetes will be macrosomic or LGA,\" because \"Insulin is considered the primary growth hormone for intrauterine development.\"",
+    "type": "single",
+    "trap": "(C) treats the two terms as interchangeable, which is the confusion this distinction exists to catch: one is a fixed weight and the other is a percentile.",
+    "source": "ch35.md"
+  },
+  "q_1402": {
+    "topic": "infant of a diabetic mother",
+    "subtopic": "size is not maturity",
+    "stem": "The same infant has a round face, a plethoric complexion, and extra fat around the shoulders, and is feeding poorly. A parent says, \"At least he's big, so he must be strong and mature.\" What does the chapter say?",
+    "options": [
+      "Infants of mothers with diabetes can be LGA but physiologically immature; their internal organs are enlarged, but head size is normal because the brain is the only organ that is not enlarged",
+      "A large infant is more mature than an average-size infant and needs less monitoring",
+      "Size predicts lung maturity, so this infant is at no added risk of respiratory distress",
+      "Large size protects against hypoglycemia, because the infant has more glycogen stored"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"At birth the typical LGA infant has a round face, a chubby body, and a plethoric or flushed complexion. The infant has enlarged internal organs (hepatosplenomegaly, splanchnomegaly, cardiomegaly) and increased body fat, especially around the shoulders.\" \"These infants have normal head size; the brain is the only organ that is not enlarged,\" and \"Infants of mothers with diabetes can be LGA but physiologically immature.\" Not every IDM is large: \"women with vascular complications are more likely to have infants who are small for gestational age (SGA).\"",
+    "type": "single",
+    "trap": "(D) inverts the risk: hypoglycemia \"is most common in the macrosomic or large-for-gestational-age (LGA) infant.\" (B) is the parent's intuition that size means maturity, which the chapter contradicts directly.",
+    "source": "ch35.md"
+  },
+  "q_1403": {
+    "topic": "infant of a diabetic mother",
+    "subtopic": "anomalies and the polycythemia chain",
+    "stem": "One pregnant woman has had type 1 diabetes for 10 years and had poor glucose control at conception. Another developed gestational diabetes diagnosed at 28 weeks and has no other risk factors. Which statement about congenital anomaly risk is accurate?",
+    "options": [
+      "The first woman's infant has three to five times the usual risk, because glucose was elevated during organogenesis at 5 to 8 weeks; gestational diabetes diagnosed in mid- to late pregnancy is usually not associated with more anomalies",
+      "Both infants carry the same increased risk, because any maternal diabetes raises the anomaly rate equally",
+      "The second infant's risk is higher, because her diabetes was undetected during the first trimester",
+      "Neither infant has an increased risk if both mothers' glucose is controlled by the third trimester"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"The incidence of congenital anomalies among mothers with pregestational diabetes is three to five times that of pregnant women who do not have diabetes,\" and the risk \"is related to elevated glucose levels during the period of organogenesis that occurs between 5 and 8 weeks of gestation.\" \"Gestational diabetes that is diagnosed in mid- to late pregnancy is usually not associated with an increased incidence of congenital anomalies.\" The exceptions are women \"diagnosed with gestational diabetes before 20 weeks' gestation, who had a previous pregnancy complicated by gestational diabetes, or who are obese.\" The most frequent anomalies \"are cardiac, renal, central nervous system (CNS), musculoskeletal, and gastrointestinal (GI) anomalies.\"",
+    "type": "single",
+    "trap": "(B) ignores timing: anomalies track glucose during organogenesis, not the diagnosis label. (D) moves the window to the wrong end of pregnancy; control matters before conception and early in pregnancy.",
+    "source": "ch35.md"
+  },
+  "q_1404": {
+    "topic": "infant of a diabetic mother",
+    "subtopic": "anomalies and the polycythemia chain",
+    "stem": "An infant of a diabetic mother has a high hematocrit and becomes jaundiced, with bruising from a difficult birth. Which chain does the chapter give for this picture?",
+    "options": [
+      "Hyperinsulinism raises the metabolic rate and oxygen demand, causing mild hypoxia that stimulates red cell production; more red cells to hemolyze raise the bilirubin load, and birth bruising adds to it",
+      "Maternal glucose damages the infant's liver, which then cannot conjugate bilirubin",
+      "Hypoglycemia triggers red cell breakdown, which lowers the hematocrit and raises bilirubin",
+      "Extra red cells transfer from the mother at cord clamping and are destroyed by maternal antibodies"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Hyperinsulinism increases the newborn's metabolic rate, which increases oxygen demand leading to a mild hypoxia. This state of hypoxia stimulates the production of red blood cells, also known as polycythemia.\" \"Polycythemia increases blood viscosity, thereby impairing circulation. In addition, this greater number of red blood cells to be hemolyzed increases the potential bilirubin load that the neonate must clear, thus increasing the likelihood of hyperbilirubinemia. Bruising associated with birth of a macrosomic or LGA infant further increases the overall bilirubin load.\"",
+    "type": "single",
+    "trap": "(C) has the hematocrit moving the wrong way; the chain begins with too many red cells, not too few. The insulin, not the glucose, is what drives every step.",
+    "source": "ch35.md"
+  },
+  "q_1405": {
+    "topic": "erythromycin and neonatal eye infection",
+    "subtopic": "what prophylaxis does and does not do",
+    "stem": "A parent asks whether the erythromycin ointment their newborn just received means the baby is protected from gonorrhea. What should the nurse explain?",
+    "options": [
+      "The 0.5% erythromycin ophthalmic ointment helps prevent gonococcal eye infection, but eye prophylaxis alone does not prevent systemic infection; an infant who develops a gonococcal eye infection receives one dose of ceftriaxone and is evaluated for disseminated infection",
+      "The ointment prevents both eye and systemic gonococcal infection, so no further evaluation is ever needed",
+      "The ointment treats gonococcal infection already present in the infant's bloodstream",
+      "The ointment is given only when the mother has tested positive for gonorrhea"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Screening during pregnancy and universal administration of neonatal eye prophylaxis (0.5% erythromycin ophthalmic ointment) during the first hour after birth have helped reduce the rates of neonatal infection.\" \"Eye prophylaxis alone does not prevent systemic infection; therefore, infants with a gonococcal eye infection should receive one dose of ceftriaxone. These infants are hospitalized and evaluated for disseminated infection (e.g., sepsis, meningitis).\" The infection \"manifests 2 to 5 days after birth and most often involves the eyes, causing ophthalmia neonatorum.\"",
+    "type": "single",
+    "trap": "(B) stretches a topical prophylaxis into a systemic one, which is the exact limit the chapter states. (D) misses that the prophylaxis is universal, given to every newborn.",
+    "source": "ch35.md"
+  },
+  "q_1406": {
+    "topic": "erythromycin and neonatal eye infection",
+    "subtopic": "oral erythromycin and the pyloric stenosis warning",
+    "stem": "A 3-week-old has chlamydial conjunctivitis, with red eyes, swollen eyelids, and minimal discharge, and is started on oral erythromycin. What must the parents be taught?",
+    "options": [
+      "To watch for feeding intolerance, projectile vomiting, and abdominal distention, because erythromycin in infants younger than 6 weeks is associated with an increased risk of infantile hypertrophic pyloric stenosis",
+      "That the eye ointment given at birth should have prevented this, so the infant needs testing for drug resistance",
+      "That oral treatment is unnecessary, because chlamydial conjunctivitis lasts only 1 to 2 weeks and resolves on its own",
+      "To stop the drug if the infant has a loose stool, because diarrhea is the warning sign the chapter names"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Chlamydial conjunctivitis is treated with oral erythromycin or azithromycin.\" \"Erythromycin administration in infants younger than 6 weeks has been associated with an increased risk of infantile hypertrophic pyloric stenosis; therefore, parents should be educated about the symptoms of the condition (feeding intolerance, projectile vomiting, and abdominal distention).\" The conjunctivitis \"develops within a few days to several weeks after birth and usually lasts 1 to 2 weeks. If untreated, it can progress to chronic follicular conjunctivitis with conjunctival scarring and corneal microgranulations.\"",
+    "type": "single",
+    "trap": "(C) borrows the 1-to-2-week duration and drops the warning that untreated infection can progress to scarring. (B) assumes the birth ointment covers chlamydia, which it does not; this infection is treated with oral drugs.",
+    "source": "ch35.md"
+  },
+  "q_1407": {
+    "topic": "drug treatment of the opioid-exposed newborn",
+    "subtopic": "the drug never to give",
+    "stem": "A newborn whose mother has opioid use disorder is sleepy and slow to breathe after birth, and a new nurse reaches for naloxone. What does the chapter's Medication Alert say?",
+    "options": [
+      "Naloxone is contraindicated in infants born to mothers addicted to opioids, because it can cause severe signs and symptoms of neonatal abstinence syndrome and even seizures",
+      "Naloxone is the drug of choice, because it reverses the opioid the infant was exposed to",
+      "Naloxone is safe for these infants if it is given at half the usual dose",
+      "Naloxone is contraindicated only if the mother was taking methadone rather than heroin"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"The use of naloxone (Narcan) is contraindicated in infants born to opioid addicts because it can cause severe signs and symptoms of neonatal abstinence syndrome and even seizures.\"",
+    "type": "single",
+    "trap": "(B) is the reflex answer for opioid-related respiratory depression, and for this infant it is the wrong one: the alert names the harm it causes in an opioid-exposed newborn. (D) invents a distinction the alert does not make.",
+    "source": "ch35.md"
+  },
+  "q_1408": {
+    "topic": "drug treatment of the opioid-exposed newborn",
+    "subtopic": "the drug never to give",
+    "stem": "An opioid-exposed infant's withdrawal signs worsen despite nonpharmacologic care, and medication is ordered. Which drugs does the chapter name as most commonly used to treat opioid withdrawal in the newborn?",
+    "options": [
+      "Methadone and morphine",
+      "Naloxone and morphine",
+      "Naloxone and methadone",
+      "Naloxone alone, titrated to the withdrawal score"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"The most commonly used medications to treat opioid withdrawal are methadone and morphine.\" The Eat, Sleep, Console model maximizes nonpharmacologic therapies and family involvement, \"using pharmacologic treatment such as morphine on an as-needed basis.\"",
+    "type": "single",
+    "trap": "(B), (C), and (D) each slip in naloxone, the mirror error of the previous item: it is the drug the Medication Alert forbids for this infant, not one of the two used to treat the withdrawal.",
+    "source": "ch35.md"
+  },
+  "q_1409": {
+    "topic": "grief concepts and theories",
+    "subtopic": "the stage model and nonlinear grief",
+    "stem": "Two days after a stillbirth, a mother is angry with the staff in the morning and calmly planning a memorial service by afternoon. That evening she says she still cannot believe her baby is gone. A student nurse says the mother is \"going backward through the stages\" and should be watched for abnormal grieving. Which response by the nurse is accurate?",
+    "options": [
+      "Grief is now understood as a nonlinear process; people do not move uniformly through stages in a particular order, and a response is not abnormal because it does not fit the stages",
+      "The student is right; the five stages run in a fixed order, and a return to denial after acceptance is a sign of complicated grief",
+      "The mother has not yet begun to grieve, because grieving starts only after the denial stage has ended",
+      "The order matters less than the timing; each stage should be completed within the first 2 weeks after the loss"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Kübler-Ross \"described five stages of grief—denial, anger, bargaining, depression, and acceptance,\" but \"Most researchers and clinicians who now study or work with dying clients and their families understand grief as a nonlinear process (i.e., people do not move uniformly through stages in a particular order at a specific time).\" The chapter names the failure directly: \"the problem occurs when responses of grieving individuals are considered out of sequence or, worse, abnormal when they do not fit these stages as she described them.\" Grief is also iterative: \"people may return to earlier states of grief over time and somewhat unpredictably.\"",
+    "type": "single",
+    "trap": "(B) is the reflex pick because Kübler-Ross is the grief model most students already know, and the chapter names her stages only to qualify them. Treating an out-of-order response as abnormal is exactly the problem the chapter describes.",
+    "source": "ch37.md"
+  },
+  "q_1410": {
+    "topic": "grief concepts and theories",
+    "subtopic": "four words for loss",
+    "stem": "A family asks the nurse about the wake, the prayers, and the period of wearing dark clothing that their tradition calls for after their newborn's death. Which term does the chapter use for these practices?",
+    "options": [
+      "Mourning",
+      "Bereavement",
+      "Grief",
+      "Ambiguous loss"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Mourning, another word often associated with loss, involves culturally mandated traditions and rituals in the period after a death occurs,\" and these \"can vary greatly across families, religions, ethnicities, regions, and nationalities.\" By contrast, \"Bereavement is the state of being without a valued other, especially by death,\" and \"Grief is recognized as a process through which bereaved persons work to make meaning of and come to terms with their loss.\"",
+    "type": "single",
+    "trap": "(B) is the reflex pick because \"the bereaved\" is the everyday name for a family after a death, but bereavement names the state of being without someone, not what the family does. Mourning is the only one of the four terms defined by culture and ritual.",
+    "source": "ch37.md"
+  },
+  "q_1411": {
+    "topic": "grief concepts and theories",
+    "subtopic": "ambiguous, disenfranchised, and complicated grief",
+    "stem": "A woman had a miscarriage at 10 weeks, before she had told anyone but her partner that she was pregnant. Back at work, her coworkers treat her as if nothing has happened, and she tells the nurse she feels completely alone. Which concept fits what she is experiencing, and where can it lead?",
+    "options": [
+      "Disenfranchised grief, because her responses to the loss are not openly acknowledged or mourned publicly, which limits social support; it can result in complicated grief",
+      "Complicated grief, because grief that other people cannot see is chronic by definition",
+      "Restoration-oriented coping, because returning to work is a focus on the future",
+      "Denial, because she has chosen not to tell her coworkers about the loss"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "Disenfranchised grief \"occurs when a person's responses to loss are not openly acknowledged and mourned publicly, thereby limiting social support, which can lead to a sense of isolation in bereaved persons.\" The chapter links the concepts in order: \"Perinatal losses may be ambiguous because the loss is undefined or unseen, and thus the ensuing grief is disenfranchised because the sadness of bereaved women, partners, and other family members is unacknowledged.\" And \"This can result in complicated grief, a complex situation in which grief may not resolve over time and the bereaved person grieves chronically.\"",
+    "type": "single",
+    "trap": "(B) collapses a chain into a synonym. Ambiguous loss leads to disenfranchised grief, which can lead to complicated grief; complicated grief is marked by \"intense pain, yearning and longing for the deceased, detachment, and difficulty with normal daily activities,\" none of which this stem describes yet.",
+    "source": "ch37.md"
+  },
+  "q_1412": {
+    "topic": "grief concepts and theories",
+    "subtopic": "continuing bonds and the dual process model",
+    "stem": "Hours after her baby dies at birth, a mother stops crying, asks for a meal, showers, and phones her sister about plans for the week. When the nurse asks, she talks about her baby by name. A float nurse wants to chart \"denial; no grief response.\" What should the charge nurse explain?",
+    "options": [
+      "This is a restoration-oriented moment in the dual process model; she is conscious of the loss and seeking temporary relief from profound grief, which is not denial",
+      "Denial is the correct label, because she is avoiding grief and focusing on the future",
+      "She has moved past the acute phase of grief and no longer needs bereavement support",
+      "This is an absent grief response, which predicts complicated grief and calls for a mental health referral"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "This is the chapter's own worked example: \"a mother whose baby died at birth may stop crying soon thereafter, ask for food, take a shower, and talk on the phone. This is not a sign that she is not grieving or that she is in denial. She may be alleviating her profound grief by focusing for a while on less dramatic day-to-day activities.\" Grieving people \"can oscillate rapidly\" between loss-oriented and restoration-oriented behavior. Denial removes a reality \"from conscious awareness\"; restoration is behavior \"in which the person is conscious of the loss but is seeking temporary relief from the expression of profound grief.\"",
+    "type": "single",
+    "trap": "(B) pulls because the book's own wording for restoration-oriented behavior is \"focusing on the future, avoiding grief,\" which sounds like denial. The difference is awareness: she names her baby, so the loss is in conscious awareness, and the chapter warns that nurses \"may be confused by what they construe as denial.\"",
+    "source": "ch37.md"
+  },
+  "q_1413": {
+    "topic": "grief concepts and theories",
+    "subtopic": "continuing bonds and the dual process model",
+    "stem": "A father tells the nurse that relatives keep urging the couple to \"let go and move on\" after their son's neonatal death, and asks whether keeping their son's photographs out means they are not healing. According to continuing bonds theory, what does the resolution of grief look like?",
+    "options": [
+      "Not detachment, but the incorporation of the loved one who has died into the bereaved person's own life",
+      "Detaching from the infant within the first year, so that new attachments can form",
+      "Closure, which is reached once the memory-making keepsakes have been put away",
+      "A return to usual functioning once the distress of the death is gone"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"the continuing bonds theory maintains that bonds of attachment forged in life continue into the survivors' future.\" \"Because these bonds continue, the full resolution of grief is not detachment but the incorporation of the loved one who has died into the bereaved person's own life.\" Perinatal bonds are \"newly formed, and time is often short to create meaningful memories,\" which is why so much of the nursing care after a stillbirth or neonatal death is oriented around creating meaningful experiences with the family.",
+    "type": "single",
+    "trap": "(B) is the \"letting go\" model the relatives are voicing, and it is the intuitive answer; the theory says the bond continues rather than ends. (D) also misstates Miles' reorganization, in which usual functioning returns \"although the distress associated with the death remains.\"",
+    "source": "ch37.md"
+  },
+  "q_1414": {
+    "topic": "grief concepts and theories",
+    "subtopic": "swanson's caring theory",
+    "stem": "Before a stillborn baby is brought to the room, the nurse explains to the parents that they may see the baby, hold the baby, or decline either, and asks what they would like. Which concept in Swanson's caring theory is the nurse using?",
+    "options": [
+      "Enabling",
+      "Knowing",
+      "Being with",
+      "Maintaining belief"
+    ],
+    "correct": [
+      0
+    ],
+    "rationale": "\"Enabling occurs when the nurse offers the woman and her family options for care,\" which helps \"the family to feel more in control of a situation in which they can feel out of control.\" In knowing, the nurse assesses how the family perceives the loss and what it means to them; being with is the nurse's caring presence; doing for is physical care, comfort, and safety; and \"Maintaining belief involves encouraging the woman and her family to believe in their ability to survive their loss.\"",
+    "type": "single",
+    "trap": "(B) pulls because the nurse is learning the parents' wishes, but knowing is the assessment of what the loss means to them. Laying out choices so the family can decide is the defining act of enabling.",
     "source": "ch37.md"
   }
 }

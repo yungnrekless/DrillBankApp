@@ -396,12 +396,12 @@ Rationale: "Low blood levels of these ovarian hormones stimulate the hypothalamu
 Trap: (B) is the reflex pick for a reader who assumes every falling hormone level must be inhibitory. This loop runs the other way: it is the fall in ovarian hormones that releases the hypothalamus to start the next cycle. (C) puts the right hormone in the wrong gland, which is the commonest structural error in this loop.
 
 Q: A patient using a urine luteinizing hormone predictor kit gets her first positive result this morning and asks what it means about the timing of ovulation. Which response is accurate?
-A) The surge precedes expulsion of the ovum by about 24 to 36 hours, so ovulation has not yet occurred
+A) The surge precedes expulsion of the ovum, so ovulation has not yet occurred
 B) The surge occurs at the moment of ovulation, so the ovum is being released now
 C) The surge follows ovulation by about 24 hours, so ovulation has already happened
 D) The surge occurs about 5 days before ovulation, so intercourse can be deferred
 Answer: A
-Rationale: A marked surge of luteinizing hormone, together with a smaller peak of estrogen on day 12, precedes "the expulsion of the ovum from the graafian follicle by about 24 to 36 hours. LH peaks at about day 13 or 14 of a 28-day cycle" (p. 53).
+Rationale: A marked surge of luteinizing hormone, together with a smaller peak of estrogen on day 12, precedes "the expulsion of the ovum from the graafian follicle by about 24 to 36 hours. LH peaks at about day 13 or 14 of a 28-day cycle" (p. 53). The interval itself is not asked here because Lowdermilk is split on it: the Chapter 8 passage on ovulation predictor kits puts the surge "approximately 12 to 24 hours before ovulation" (p. 148), and the course conflicts register rules that a kit stem takes the kit figure. Both readings agree on the direction, which is what this item keys.
 Trap: (B) is the reflex answer and the fact bank flags it: a stem saying ovulation occurs at the moment of the luteinizing hormone peak is wrong by about a day. The surge and the release are close enough to feel simultaneous, which is exactly why the interval is asked.
 
 Q: Follicle-stimulating hormone and luteinizing hormone are released by the anterior pituitary. What is their target tissue, and what does that tissue then do?

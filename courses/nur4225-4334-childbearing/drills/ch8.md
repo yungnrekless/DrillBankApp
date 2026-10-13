@@ -304,7 +304,7 @@ B) Echinacea
 C) Ginkgo biloba
 D) Saw palmetto
 Answer: A
-Rationale: The Medication Alert states that "over-the-counter medications as well as some herbal supplements (such as St. John's wort) can alter the effectiveness of COCs," and women should be asked about their use when combined oral contraceptives are prescribed (p. 155).
+Rationale: The Medication Alert states that "over-the-counter medications as well as some herbal supplements (such as St. John's wort) can alter the effectiveness of COCs," and "women should be asked about their use when COCs are being considered for contraception" (p. 155).
 Trap: The other three are real supplements with real interactions elsewhere, which makes them plausible, but St. John's wort is the one this chapter names. The clinical reason the question matters is that the patient's presenting complaint, breakthrough bleeding, is also an early sign that contraceptive coverage may have been lost.
 
 Topic: induced abortion definitions and law

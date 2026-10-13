@@ -1710,7 +1710,7 @@
     "subtopic": "vision",
     "stem": "A 7-month-old cries as soon as the parent walks out of the examination room and settles when the parent returns. Which phenomenon is this, and what makes it possible?",
     "options": [
-      "Separation anxiety, which develops between 4 and 8 months as object permanence makes the parent's absence knowable",
+      "Separation anxiety, which develops as object permanence makes the parent's absence knowable",
       "Stranger fear, which develops between 6 and 8 months as the infant discriminates familiar from unfamiliar people",
       "Reactive attachment disorder, which appears when comfort seeking repeatedly fails",
       "Separation anxiety, which does not develop until 11 to 12 months"
@@ -1718,7 +1718,7 @@
     "correct": [
       0
     ],
-    "rationale": "Separation anxiety develops between 4 and 8 months, when \"the infant progresses through the first stage of separation-individuation\" and object permanence makes the absent parent still real. By 11 to 12 months infants \"are able to anticipate her imminent departure by watching her behaviors, and they begin to protest before she leaves\" — which is a later refinement, not the onset.",
+    "rationale": "Separation anxiety develops between 4 and 8 months, when \"the infant progresses through the first stage of separation-individuation\" and object permanence makes the absent parent still real (p. 349); the chapter's object-permanence passage dates it more narrowly, \"separation anxiety at 6 to 8 months of age\" (p. 347), and a 7-month-old falls inside both windows. By 11 to 12 months infants \"are able to anticipate her imminent departure by watching her behaviors, and they begin to protest before she leaves\" — which is a later refinement, not the onset.",
     "type": "single",
     "trap": "(B) is the companion phenomenon with a heavily overlapping age window, which is exactly why the two are confused. It is triggered by a stranger's presence, not by the parent's absence. (D) mistakes the anticipatory stage for the onset.",
     "source": "ch10.md"
@@ -17262,7 +17262,7 @@
     ],
     "rationale": "The Nursing Alert directs an internal temperature of at least 74 degrees Celsius measured with a thermometer, warns that \"Cooking the ground beef until no pink color is seen may not be sufficient to kill the bacteria,\" and discourages unpasteurized apple juice and unwashed raw vegetables (p. 801).",
     "type": "sata",
-    "trap": "(E) is the action the same alert discourages, and the reason is mechanistic — slowing transit keeps the Shiga toxin in contact with the gut. The organism responsible in more than 90% of cases is Shiga toxin–producing *Escherichia coli*, most often O157:H7.",
+    "trap": "(E) is the action the same alert discourages, and the reason is mechanistic — slowing transit keeps the Shiga toxin in contact with the gut. The organism responsible in more than 90% of cases is Shiga toxin–producing *Escherichia coli*, most often O157:H7. Chapter 25's food-safety alert gives a lower figure, 71 degrees Celsius (160 degrees Fahrenheit), with a fork check for pink; for a hemolytic uremic syndrome stem, answer from this chapter's 74 degrees Celsius and thermometer rule.",
     "source": "ch24.md"
   },
   "q_0938": {
