@@ -67,14 +67,14 @@ Answer: B
 Rationale: Complementary medicine is "alternative medicine when used simultaneously with, rather than instead of, standard Western medicine," and the chapter adds that this practice "is also referred to as integrative medicine."
 Trap: (A) is the reflex pick because acupuncture and massage are themselves alternative therapies, and the option matches the therapy rather than the pattern. The axis this term names is not what the therapy is but what it is used with, and this patient is still receiving chemotherapy.
 
-Q: A second patient declines the recommended chemotherapy entirely and treats the diagnosis with herbal preparations alone. Which term names what this patient is doing?
+Q: A patient declines the recommended chemotherapy entirely and treats the diagnosis with herbal preparations alone. Which term names what this patient is doing?
 A) Complementary medicine
 B) Integrative medicine
 C) Alternative medicine
 D) Conventional medicine
 Answer: C
 Rationale: Alternative medicine is "herbal medicine, chiropractic, acupuncture, massage, reflexology, and any other therapies traditionally not emphasized in Western medical schools." It becomes complementary only when used simultaneously with, rather than instead of, standard Western medicine.
-Trap: (A) is the mirror error of the previous item — this patient stopped the conventional therapy, so nothing is being complemented. (B) fails a second way: integrative is simply the chapter's other name for complementary, so whenever both appear as options the discriminator lies elsewhere in the stem.
+Trap: (A) fits a patient who adds herbs to conventional therapy — this patient stopped the conventional therapy, so nothing is being complemented. (B) fails a second way: integrative is simply the chapter's other name for complementary, so whenever both appear as options the discriminator lies elsewhere in the stem.
 
 Subtopic: herbs, phytochemicals, and iatrogenic effects
 
@@ -174,7 +174,7 @@ C) It does not qualify, because Box 7.1 requires a high therapeutic index and a 
 D) It does not qualify, because Box 7.1 bars reclassification of any drug that ever required a prescription
 Answer: C
 Rationale: Box 7.1's safety profile requires a "high therapeutic index," the ratio of toxic to therapeutic dosage, and its practicality heading requires drugs that are "easy to use" and "easy to monitor." A narrow margin requiring serum levels fails both headings at once.
-Trap: (B) is the mirror error of the previous item, reading a narrow margin as tight control rather than as no room for error. (D) overshoots in the opposite direction: "more than 40 medications that were previously available by prescription only have been reclassified to OTC status," so prior prescription status is the starting point of the process rather than a disqualifier.
+Trap: (B) is the mirror error of the high-therapeutic-index rule, reading a narrow margin as tight control rather than as no room for error. (D) overshoots in the opposite direction: "more than 40 medications that were previously available by prescription only have been reclassified to OTC status," so prior prescription status is the starting point of the process rather than a disqualifier.
 
 Q: A nurse is asked what evidence the FDA relies on when deciding whether to reclassify a drug to OTC status. Which answer is accurate?
 A) Clinical trials and postmarketing safety surveillance data submitted by the manufacturer
@@ -215,7 +215,7 @@ C) Reye syndrome
 D) Rebound congestion and dependency
 Answer: B
 Rationale: The chapter associates NSAIDs with "gastrointestinal ulceration, kidney dysfunction, myocardial infarction, and stroke." In 2009 the FDA began requiring specific labeling for acetaminophen, aspirin, and NSAIDs, which is the regulatory response to this cluster of risks.
-Trap: (A) is the mirror error of the previous item — liver failure is the acetaminophen profile, and the chapter never assigns it to NSAIDs. (C) is a third, separate profile: aspirin alone is tied to Reye syndrome, and only in children.
+Trap: (A) is the mirror error, crossing the two drug profiles — liver failure is the acetaminophen profile, and the chapter never assigns it to NSAIDs. (C) is a third, separate profile: aspirin alone is tied to Reye syndrome, and only in children.
 
 Subtopic: the otc hazards catalog
 
@@ -275,7 +275,7 @@ C) Overall costs are unaffected, because the same drugs are consumed either way
 D) Overall costs decrease, because insurers begin covering the OTC versions
 Answer: B
 Rationale: The chapter states that "overall health care costs tend to decrease ... due to a direct reduction in drug costs, elimination of prescriber office visits, and avoidance of pharmacy dispensing fees."
-Trap: (D) is the mirror error of the previous item: third-party payers usually do not cover OTC products at all, and that is precisely why the patient's own cost rises while the system's falls. (A) confuses volume of purchases with total cost.
+Trap: (D) has the right direction for the wrong reason: third-party payers usually do not cover OTC products at all, and that is precisely why the patient's own cost rises while the system's falls. (A) confuses volume of purchases with total cost.
 
 Subtopic: symptom relief versus addressing the cause
 
@@ -328,7 +328,7 @@ C) It increases central nervous system depression when taken with sedatives
 D) It decreases the elimination of renally excreted drugs
 Answer: B
 Rationale: Table 7.3's ginger root row reads "at high dosages, possible interference with cardiac, antidiabetic, or anticoagulant drugs." No other row in the table is dose-conditional, so the qualifier belongs to ginger alone.
-Trap: (A) is the mirror error of the previous item, crossing hawthorn's glycoside effect onto ginger and stripping off the dose qualifier that distinguishes them. (C) is valerian's row and (D) is cranberry's.
+Trap: (A) is the mirror error, crossing hawthorn's glycoside effect onto ginger and stripping off the dose qualifier that distinguishes them. (C) is valerian's row and (D) is cranberry's.
 
 Q: A patient taking a renally excreted drug begins drinking large amounts of cranberry juice daily. What does Table 7.3 predict?
 A) Decreased elimination of the drug, so drug levels rise
@@ -346,7 +346,7 @@ C) Grapefruit decreases the renal elimination of the statin
 D) Grapefruit has no listed interaction in Table 7.3
 Answer: B
 Rationale: Table 7.3's grapefruit row states that it "decreases metabolism of drugs used for erectile dysfunction, estrogens, and some psychotherapeutic drugs" and "increases risk for toxicity of immunosuppressants, HMG-CoA reductase inhibitors, and some psychotherapeutic drugs." The same row notes that grapefruit "increases intensity and duration of effects of caffeine."
-Trap: (A) is the reflex inversion, because the word "decreases" sitting next to "juice" fools people into predicting a weaker drug effect; decreased metabolism means more drug and a stronger effect. (C) is the mirror error of the previous item, handing grapefruit cranberry's renal mechanism.
+Trap: (A) is the reflex inversion, because the word "decreases" sitting next to "juice" fools people into predicting a weaker drug effect; decreased metabolism means more drug and a stronger effect. (C) is the mirror error, handing grapefruit cranberry's renal mechanism.
 
 Subtopic: central nervous system and serotonergic interactions
 
@@ -387,7 +387,7 @@ C) It received only a consumer-warning letter and is still available under anoth
 D) DSHEA prohibited all weight-loss supplements in 1994
 Answer: B
 Rationale: The chapter states that ephedra carries "possible cardiovascular and stroke risks" and was "officially banned by the FDA in April 2004." That ban is one of the chapter's demonstrations that the FDA is not powerless over supplements.
-Trap: (C) is the mirror error of the previous item — a warning letter that left the product on the market is kava's outcome, not ephedra's. (A) moves kava's organ onto ephedra while keeping ephedra's removal from the market.
+Trap: (C) is the mirror error — a warning letter that left the product on the market is kava's outcome, not ephedra's. (A) moves kava's organ onto ephedra while keeping ephedra's removal from the market.
 
 Subtopic: the natural equals safe fallacy
 

@@ -317,7 +317,7 @@ C) Pneumococcal
 D) MMR
 Answer: C
 Rationale: This is the chapter's own NCLEX question 4. Page 175 names "localized infections, such as otitis media, sinusitis, and pneumonia" among those caused by "Streptococcal pneumococci."
-Trap: (B) is the strongest distractor and is the previous item's answer — both vaccines prevent otitis media and pneumonia, so the overlap does not discriminate. The tells are **epiglottitis and meningitis** for Hib and **sinusitis plus the word streptococcal** for pneumococcal. Read the organism named in the stem.
+Trap: (B) is the strongest distractor because Hib and pneumococcal coverage overlap — both vaccines prevent otitis media and pneumonia, so the overlap does not discriminate. The tells are **epiglottitis and meningitis** for Hib and **sinusitis plus the word streptococcal** for pneumococcal. Read the organism named in the stem.
 
 Q: An infant is born to a mother who is hepatitis B surface antigen positive. What is required, and in what time frame?
 A) Hepatitis B vaccine alone, within 24 hours
@@ -412,7 +412,7 @@ C) The tongue remains unchanged throughout
 D) The tongue becomes coated only after antibiotics are started
 Answer: B
 Rationale: The white strawberry tongue is coated with red swollen papillae on days 1 to 2; the red strawberry tongue follows on days 4 to 5, when the coat has sloughed and the papillae are prominent (p. 185).
-Trap: (A) reverses the sequence, which is the only way this pair is tested. The logic is in the word: the coating comes off, so the **white** stage is the earlier one.
+Trap: (A) reverses the sequence, which is the only way the white and red strawberry tongues are tested. The logic is in the word: the coating comes off, so the **white** stage is the earlier one.
 
 Q: A child with chickenpox has a fever of 38.8° C. The parent asks about giving aspirin. What should the nurse teach?
 A) Aspirin is acceptable for fever in chickenpox

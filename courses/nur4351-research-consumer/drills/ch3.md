@@ -63,7 +63,7 @@ Answer: B
 Rationale: The emic approach studies behaviors from within the culture and recognizes the uniqueness of the individual, and it is the typical goal of ethnography. Ethnography requires immersion; early researchers spent a year or longer in another culture.
 Trap: Morgan-Trimmer and Wood argue for using both emic and etic perspectives, which makes the two-sided options attractive, but that recommendation does not change which one the chapter names as typical.
 
-Q: A second researcher on the same night-shift study deliberately stands back and analyzes the unit's elements as a naive outsider would. This describes which approach?
+Q: On a year-long ethnographic study of a hospital night shift, a researcher deliberately stands back and analyzes the unit's elements as a naive outsider would. This describes which approach?
 A) Etic
 B) Emic
 C) Bracketing

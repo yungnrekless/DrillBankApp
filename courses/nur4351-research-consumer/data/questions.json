@@ -1418,7 +1418,7 @@
     ],
     "rationale": "The alpha value, set before the study, reveals whether the probability value met the cutoff point; alpha is the probability level at which results are judged to indicate a statistically significant difference between groups.",
     "type": "single",
-    "trap": "This is the mirror of the previous item. Sort it by timing: alpha is chosen in advance and is a threshold; p comes out of the analysis and is a risk estimate.",
+    "trap": "(B) swaps p for alpha, the mirror of attaching Type I risk to the wrong value. Sort it by timing: alpha is chosen in advance and is a threshold; p comes out of the analysis and is a risk estimate.",
     "source": "ch11.md"
   },
   "q_0076": {
@@ -1515,7 +1515,7 @@
     ],
     "rationale": "A Type II error occurs when the null hypothesis is regarded as true but is in fact false — saying something is not significant when it is. It is symbolized by beta.",
     "type": "single",
-    "trap": "This is the mirror of the previous item. Alpha belongs to Type I, beta to Type II; pairing the right error name with the wrong Greek letter is the standard half-credit trap.",
+    "trap": "Type II is the mirror of Type I. Alpha belongs to Type I, beta to Type II; pairing the right error name with the wrong Greek letter is the standard half-credit trap.",
     "source": "ch11.md"
   },
   "q_0081": {
@@ -1569,7 +1569,7 @@
     ],
     "rationale": "At alpha = 0.05 the chance of a Type I error is 5 in 100, versus 1 in 100 at 0.01; Type II risk moves in the opposite direction and is greater at 0.01.",
     "type": "single",
-    "trap": "This is the same tradeoff run backward from the previous item. (D) misapplies a true statement — significance is dichotomous, but that says nothing about error risk across different alpha levels.",
+    "trap": "This is the same tradeoff as tightening alpha from 0.05 to 0.01, run backward. (D) misapplies a true statement — significance is dichotomous, but that says nothing about error risk across different alpha levels.",
     "source": "ch11.md"
   },
   "q_0084": {
@@ -2189,7 +2189,7 @@
   "q_0116": {
     "topic": "principles of critical appraisal",
     "subtopic": "strengths and weaknesses",
-    "stem": "A second nurse appraises the same study, reports that it has no weaknesses at all, and recommends an immediate practice change. Compared with an appraisal that lists only weaknesses, how does this one rate?",
+    "stem": "One nurse's appraisal of a study lists only weaknesses and calls it worthless; a second nurse appraises the same study, reports no weaknesses at all, and recommends an immediate practice change. How does the second appraisal rate compared with the first?",
     "options": [
       "Stronger, because it identifies strengths as the principles require",
       "Stronger, because it discusses usefulness of the findings for practice as the principles require",
@@ -2202,7 +2202,10 @@
     "rationale": "The principles state that all studies have strengths and weaknesses and that the appraiser should be objective and realistic, neither overly critical in identifying weaknesses nor overly flattering in identifying strengths.",
     "type": "single",
     "trap": "(B) misuses a real principle. Discussing usefulness for practice is required, but it does not license skipping the weaknesses, and this is the mirror image of the only-weaknesses appraisal, not an improvement on it.",
-    "source": "ch12.md"
+    "source": "ch12.md",
+    "aliases": [
+      "A second nurse appraises the same study, reports that it has no weaknesses at all, and recommends an immediate practice change. Compared with an appraisal that lists only weaknesses, how does this one rate?"
+    ]
   },
   "q_0117": {
     "topic": "principles of critical appraisal",
@@ -2852,7 +2855,7 @@
   "q_0151": {
     "topic": "mixed methods designs",
     "subtopic": "exploratory versus explanatory sequential",
-    "stem": "The qualitative arm of the explanatory sequential PTSD study used grounded theory coding. What was the stated reason?",
+    "stem": "An explanatory sequential mixed methods study of an intensive outpatient PTSD program used grounded theory coding in its qualitative arm. What was the stated reason?",
     "options": [
       "The researchers lacked resources for a comparison or control group",
       "The goal of the qualitative arm was to generate a tentative theory",
@@ -2865,7 +2868,10 @@
     "rationale": "The qualitative arm used grounded theory coding because the goal was to generate a tentative theory.",
     "type": "single",
     "trap": "(A) is true of that study — the missing control group is why qualitative data were added to supplement the quantitative estimates of treatment effects — but it does not explain the choice of grounded theory coding in particular.",
-    "source": "ch14.md"
+    "source": "ch14.md",
+    "aliases": [
+      "The qualitative arm of the explanatory sequential PTSD study used grounded theory coding. What was the stated reason?"
+    ]
   },
   "q_0152": {
     "topic": "mixed methods designs",
@@ -3873,7 +3879,7 @@
     ],
     "rationale": "A conceptual definition provides a variable or concept with theoretical meaning, is derived from a theorist's definition or a concept analysis, and links the study framework to the study variables.",
     "type": "single",
-    "trap": "(C) is the mirror-image error to the previous item. It carries the conceptual label but describes operational work, and naming an instrument is always operational no matter which label the option attaches to it.",
+    "trap": "(C) is the mirror-image error of calling a measured, scored variable a conceptual definition. It carries the conceptual label but describes operational work, and naming an instrument is always operational no matter which label the option attaches to it.",
     "source": "ch2.md"
   },
   "q_0205": {
@@ -3995,7 +4001,7 @@
   "q_0211": {
     "topic": "qualitative approaches",
     "subtopic": "ethnography",
-    "stem": "A second researcher on the same night-shift study deliberately stands back and analyzes the unit's elements as a naive outsider would. This describes which approach?",
+    "stem": "On a year-long ethnographic study of a hospital night shift, a researcher deliberately stands back and analyzes the unit's elements as a naive outsider would. This describes which approach?",
     "options": [
       "Etic",
       "Emic",
@@ -4008,7 +4014,10 @@
     "rationale": "The etic approach views the culture as a naive outsider and analyzes its elements as a researcher.",
     "type": "single",
     "trap": "(C) is tempting because bracketing also involves holding the researcher's own frame at a distance, but bracketing belongs to Husserlian phenomenology, not to ethnography, and the word naive appears in both definitions.",
-    "source": "ch3.md"
+    "source": "ch3.md",
+    "aliases": [
+      "A second researcher on the same night-shift study deliberately stands back and analyzes the unit's elements as a naive outsider would. This describes which approach?"
+    ]
   },
   "q_0212": {
     "topic": "qualitative approaches",
@@ -4462,7 +4471,7 @@
     ],
     "rationale": "Nontherapeutic research is conducted to generate knowledge for science; the results may help future patients but are not expected to benefit those acting as research participants.",
     "type": "single",
-    "trap": "This is the mirror of the previous item, and (D) is the dangerous option because it reaches the right label by the wrong route. Health status is not the criterion; a study can enroll sick patients and still be nontherapeutic.",
+    "trap": "Nontherapeutic research mirrors therapeutic research on the question of who benefits, and (D) is the dangerous option because it reaches the right label by the wrong route. Health status is not the criterion; a study can enroll sick patients and still be nontherapeutic.",
     "source": "ch4.md"
   },
   "q_0236": {
@@ -4712,7 +4721,7 @@
     ],
     "rationale": "Persons with diminished autonomy because of legal or mental incompetence or confinement to an institution are not legally competent to consent, and investigators must report the competence of subjects and the consent process used.",
     "type": "single",
-    "trap": "(D) swaps competence for comprehension. Readable language supports understanding, but competence is the prior question of whether the person is capable of weighing benefits and risks at all.",
+    "trap": "(D) swaps competence for comprehension. Readable language supports understanding, but competence is the more basic question of whether the person is capable of weighing benefits and risks at all.",
     "source": "ch4.md"
   },
   "q_0249": {
@@ -4967,7 +4976,7 @@
   "q_0262": {
     "topic": "research objectives and questions",
     "subtopic": "declarative versus interrogative",
-    "stem": "The same report includes the statement: \"What coping strategies do family caregivers of persons with dementia use?\" Which element is this, and what identifies it?",
+    "stem": "A study report includes the statement: \"What coping strategies do family caregivers of persons with dementia use?\" Which element is this, and what identifies it?",
     "options": [
       "A research objective, because objectives are interrogative",
       "The research purpose, because it identifies the study's goal",
@@ -4979,8 +4988,11 @@
     ],
     "rationale": "A research question is a clear, concise, interrogative statement worded in the present tense that includes one or more variables and is expressed to guide the implementation of studies.",
     "type": "single",
-    "trap": "(A) swaps the grammatical forms, which is the whole point of this pair. Objective and question are separated by declarative versus interrogative, not by tense — both are present tense.",
-    "source": "ch5.md"
+    "trap": "(A) swaps the grammatical forms that separate objectives from questions. Objective and question are separated by declarative versus interrogative, not by tense — both are present tense.",
+    "source": "ch5.md",
+    "aliases": [
+      "The same report includes the statement: \"What coping strategies do family caregivers of persons with dementia use?\" Which element is this, and what identifies it?"
+    ]
   },
   "q_0263": {
     "topic": "research objectives and questions",
@@ -5765,7 +5777,7 @@
   "q_0304": {
     "topic": "levels of abstraction",
     "subtopic": "construct, concept, and variable",
-    "stem": "In that same framework, emotional support is scored by summing a three-item subscale of the Functional Social Support Questionnaire. What is emotional support?",
+    "stem": "A research team diagrams its framework with resources at the top, social support and household income beneath it, and emotional support beneath those; emotional support is scored by summing a three-item subscale of the Functional Social Support Questionnaire. What is emotional support?",
     "options": [
       "The construct",
       "The concept",
@@ -5777,8 +5789,11 @@
     ],
     "rationale": "A variable is defined so that it is measurable and its numerical values can vary from one instance to another, and it is more specific than a concept. Emotional support is the variable; the FSSQ subscale is the measurement method.",
     "type": "single",
-    "trap": "This is the mirror image of the construct item. Sort the three by breadth, not by which term appears in the sentence: construct is broadest, concept sits under it, variable is the narrow measurable one.",
-    "source": "ch7.md"
+    "trap": "(A) and (B) name the broader levels of this same framework. Sort the three by breadth, not by which term appears in the sentence: construct is broadest, concept sits under it, variable is the narrow measurable one.",
+    "source": "ch7.md",
+    "aliases": [
+      "In that same framework, emotional support is scored by summing a three-item subscale of the Functional Social Support Questionnaire. What is emotional support?"
+    ]
   },
   "q_0305": {
     "topic": "levels of abstraction",
@@ -6849,7 +6864,7 @@
   "q_0361": {
     "topic": "population and sampling terminology",
     "subtopic": "the population funnel",
-    "stem": "That same researcher can realistically recruit only from patients with type 2 diabetes admitted to one acute care hospital in Dallas, Texas. Those Dallas patients constitute which group?",
+    "stem": "A researcher studying adult males 18 years and older who have type 2 diabetes and have been hospitalized with a lower-extremity infection can realistically recruit only from patients with type 2 diabetes admitted to one acute care hospital in Dallas, Texas. Those Dallas patients constitute which group?",
     "options": [
       "The target population",
       "The element",
@@ -6861,8 +6876,11 @@
     ],
     "rationale": "The accessible population is the portion of the target population to which the researcher has reasonable access.",
     "type": "single",
-    "trap": "This is the mirror image of the previous item. Sort it by the question the stem is asking: everyone who meets criteria is the target; whoever the researcher can actually get to is the accessible population.",
-    "source": "ch9.md"
+    "trap": "(A) is tempting because the Dallas patients do meet the study's description. Sort it by the question the stem is asking: everyone who meets criteria is the target; whoever the researcher can actually get to is the accessible population.",
+    "source": "ch9.md",
+    "aliases": [
+      "That same researcher can realistically recruit only from patients with type 2 diabetes admitted to one acute care hospital in Dallas, Texas. Those Dallas patients constitute which group?"
+    ]
   },
   "q_0362": {
     "topic": "population and sampling terminology",
@@ -6963,7 +6981,7 @@
   "q_0367": {
     "topic": "sampling criteria",
     "subtopic": "inclusion versus exclusion criteria",
-    "stem": "A 68-year-old who speaks and reads English is scheduled for replacement of one knee joint but carries a diagnosis of dementia. How is this person best described for that study?",
+    "stem": "A knee-replacement teaching study includes adults 60 or older who speak and read English and are undergoing replacement of one knee joint, and lists dementia among its exclusion criteria. How is a 68-year-old English speaker scheduled for one knee replacement who has dementia best described for that study?",
     "options": [
       "A member of the accessible but not the target population",
       "Someone who meets the inclusion criteria but is removed by an exclusion criterion",
@@ -6976,7 +6994,10 @@
     "rationale": "Exclusion criteria are the characteristics that cause a person who meets the inclusion criteria to be excluded or removed from the target population. This person satisfies all three inclusion criteria and is then removed by one exclusion criterion.",
     "type": "single",
     "trap": "(C) is the common misread. Failing an inclusion criterion and being caught by an exclusion criterion are two different events, and this person fails no inclusion criterion.",
-    "source": "ch9.md"
+    "source": "ch9.md",
+    "aliases": [
+      "A 68-year-old who speaks and reads English is scheduled for replacement of one knee joint but carries a diagnosis of dementia. How is this person best described for that study?"
+    ]
   },
   "q_0368": {
     "topic": "sampling criteria",
@@ -7070,7 +7091,7 @@
   "q_0373": {
     "topic": "sample representativeness",
     "subtopic": "random versus systematic variation",
-    "stem": "In another study, participants' scores fall above and below the mean in both directions by the amount expected among different people from the same sample. What is this, and what does a larger sample do to it?",
+    "stem": "In a study, participants' scores fall above and below the mean in both directions by the amount expected among different people from the same sample. What is this, and what does a larger sample do to it?",
     "options": [
       "Systematic bias; a larger sample will not change it",
       "Sampling error; a larger sample has no effect",
@@ -7082,8 +7103,11 @@
     ],
     "rationale": "Random variation is the expected difference in values that occurs when different participants from the same sample are examined, scattering both above and below the mean. Increasing sample size decreases it and improves representativeness.",
     "type": "single",
-    "trap": "This is the mirror of the previous item. Read the direction word in the stem: scattered both ways means random; mostly one direction means systematic.",
-    "source": "ch9.md"
+    "trap": "(A) and (C) describe systematic variation. Read the direction word in the stem: scattered both ways means random; mostly one direction means systematic.",
+    "source": "ch9.md",
+    "aliases": [
+      "In another study, participants' scores fall above and below the mean in both directions by the amount expected among different people from the same sample. What is this, and what does a larger sample do to it?"
+    ]
   },
   "q_0374": {
     "topic": "sample representativeness",
@@ -7144,7 +7168,7 @@
   "q_0377": {
     "topic": "sampling rates and attrition",
     "subtopic": "calculating the four rates",
-    "stem": "In that same study, 76 of the 80 patients approached consented. What is the acceptance rate, and how should it be appraised?",
+    "stem": "Investigators approached 80 eligible patients about a preoperative teaching study, and 76 of them consented. What is the acceptance rate, and how should it be appraised?",
     "options": [
       "76%, a study weakness",
       "5%, a study strength",
@@ -7157,12 +7181,15 @@
     "rationale": "Acceptance rate equals the number accepting divided by the number approached — 76 divided by 80 equals 95%, which the chapter identifies as a study strength. Acceptance rate also equals 100% minus the refusal rate.",
     "type": "single",
     "trap": "(A) uses the raw count of acceptors as if it were a percentage. The denominator is always the number approached, not 100.",
-    "source": "ch9.md"
+    "source": "ch9.md",
+    "aliases": [
+      "In that same study, 76 of the 80 patients approached consented. What is the acceptance rate, and how should it be appraised?"
+    ]
   },
   "q_0378": {
     "topic": "sampling rates and attrition",
     "subtopic": "calculating the four rates",
-    "stem": "That study began with a sample of 76 participants, and 31 of them withdrew before completion. What is the attrition rate?",
+    "stem": "A preoperative teaching study began with a sample of 76 participants, and 31 of them withdrew before completion. What is the attrition rate?",
     "options": [
       "31%",
       "39%",
@@ -7175,12 +7202,15 @@
     "rationale": "Attrition rate equals the number withdrawing divided by the sample size, times 100 — 31 divided by 76 equals 41%.",
     "type": "single",
     "trap": "(A) treats the raw number withdrawing as the percentage, and (D) is the retention rate. Attrition and retention are complements, so having one does not mean you may report the other figure as the answer.",
-    "source": "ch9.md"
+    "source": "ch9.md",
+    "aliases": [
+      "That study began with a sample of 76 participants, and 31 of them withdrew before completion. What is the attrition rate?"
+    ]
   },
   "q_0379": {
     "topic": "sampling rates and attrition",
     "subtopic": "calculating the four rates",
-    "stem": "Of the 76 participants who entered that study, 45 completed it. What is the retention rate?",
+    "stem": "Of the 76 participants who entered a preoperative teaching study, 45 completed it. What is the retention rate?",
     "options": [
       "59%",
       "41%",
@@ -7192,7 +7222,10 @@
     ],
     "rationale": "Retention rate equals the number completing divided by the sample size — 45 divided by 76 equals 59%, which is also 100% minus the 41% attrition rate.",
     "type": "single",
-    "source": "ch9.md"
+    "source": "ch9.md",
+    "aliases": [
+      "Of the 76 participants who entered that study, 45 completed it. What is the retention rate?"
+    ]
   },
   "q_0380": {
     "topic": "sampling rates and attrition",

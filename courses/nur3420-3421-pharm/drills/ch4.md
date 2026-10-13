@@ -55,7 +55,7 @@ C) Adherence
 D) Bias
 Answer: A
 Rationale: Pharmacogenomics is "the study of genetics in drug response." The chapter cross-references Chapter 8 for it. Ethnopharmacology is the broader field, defined as the effect of ethnicity on absorption, metabolism, distribution, and excretion as well as genetic variation.
-Trap: (B) is the mirror error of the previous item. The key-term definition of polymorphism lists age, sex, size, and body composition, not genes, so a stem naming a specific gene variant is not asking about polymorphism.
+Trap: (B) is the mirror error, naming drug polymorphism for the study of a gene variant. The key-term definition of polymorphism lists age, sex, size, and body composition, not genes, so a stem naming a specific gene variant is not asking about polymorphism.
 
 Subtopic: acetylator status
 
@@ -68,14 +68,14 @@ Answer: D
 Rationale: The chapter states that rapid acetylators "metabolize drugs more quickly, which predisposes the patient to subtherapeutic drug concentrations and may require higher drug dosages." Its clinical pearl on the same page reads, "Ethnicity can have an impact on drug metabolism."
 Trap: (A) is the reflex pick for anyone who reads "rapid metabolism" as "more drug in the body." Faster metabolism clears the drug faster, so levels fall rather than rise, and the dose goes up rather than down.
 
-Q: A slow acetylator is prescribed that same drug at a standard dose. Which risk is the nurse monitoring for?
+Q: A slow acetylator is prescribed a drug that undergoes acetylation, at a standard dose. Which risk is the nurse monitoring for?
 A) Toxicity from drug accumulation
 B) Subtherapeutic levels from rapid clearance
 C) Failure of the drug to be absorbed at all
 D) An allergic reaction to the acetyl group
 Answer: A
 Rationale: Slow acetylation is decreased metabolism, so the drug accumulates and toxicity is the risk. Chapter 2 lists the same pair in its Table 2.6, fast acetylator with increased metabolism and slow acetylator with decreased, and Chapter 38 names slow acetylation as one of its two genetic host factors alongside G6PD deficiency.
-Trap: (B) is the mirror error of the previous item. Slow acetylation is the accumulation side of this pair; rapid clearance and subtherapeutic levels belong to the fast acetylator.
+Trap: (B) attaches the rapid acetylator's risk to the slow acetylator. Slow acetylation is the accumulation side of this pair; rapid clearance and subtherapeutic levels belong to the fast acetylator.
 
 Subtopic: racial and ethnic differences in drug response
 
@@ -158,7 +158,7 @@ C) The Federal Food, Drug, and Cosmetic Act of 1938, establishing the investigat
 D) The Kefauver-Harris Amendments of 1962, requiring manufacturers to demonstrate both therapeutic efficacy and safety
 Answer: D
 Rationale: Table 4.1 pairs the Kefauver-Harris Amendments with the thalidomide tragedy and states they required manufacturers to "demonstrate both therapeutic efficacy and safety" of new drugs.
-Trap: (C) is the mirror error of the previous item. An option crediting Kefauver-Harris with the investigational new drug process has the two acts crossed; that process came from the 1938 act, and efficacy is what 1962 added on top of safety.
+Trap: (C) is the mirror error: it pairs the thalidomide tragedy with the 1938 act, which the sulfanilamide elixir tragedy produced. An option crediting Kefauver-Harris with the investigational new drug process has the two acts crossed; that process came from the 1938 act, and efficacy is what 1962 added on top of safety.
 
 Subtopic: labeling, privacy, and supplements
 
@@ -201,14 +201,14 @@ Answer: D
 Rationale: Phase I uses "small numbers of healthy subjects rather than those who have the disease" and is designed "to determine the optimal dosage range and the pharmacokinetics of the drug and to ascertain if further testing is needed." Blood tests, urinalyses, vital signs, and specific monitoring tests are performed. All of this follows preclinical in vitro and animal studies, which rule many compounds out before any human is dosed.
 Trap: (A) is the reflex pick, and it is the single most counterintuitive fact in the sequence: the first humans to receive a new drug do not have the disease it treats. Volunteers who have the disease enter at phase II.
 
-Q: The same drug moves on to a study enrolling a small number of volunteers who actually have hypertension. What is this phase determining?
+Q: A new antihypertensive that has completed testing in small numbers of healthy subjects moves on to a study enrolling a small number of volunteers who actually have hypertension. What is this phase determining?
 A) The optimal dosage range and pharmacokinetics in healthy volunteers
 B) The drug's effectiveness and any adverse effects, with therapeutic dosage ranges refined
 C) Infrequent or rare adverse effects in large numbers of patients
 D) Postmarketing comparison against another drug in the same therapeutic category
 Answer: B
 Rationale: Phase II uses "small numbers of volunteers who have the disease that the drug is designed to diagnose or treat," to "determine the drug's effectiveness and identify any adverse effects," and "therapeutic dosage ranges are refined during this phase."
-Trap: (A) is the mirror error of the previous item. The switch from healthy subjects to subjects who have the disease is the boundary between phases I and II, and the change in purpose follows from it.
+Trap: (A) is the phase I answer. The switch from healthy subjects to subjects who have the disease is the boundary between phases I and II, and the change in purpose follows from it.
 
 Subtopic: reaching the market and staying watched
 
@@ -242,14 +242,14 @@ Answer: C
 Rationale: The key term defines a blinded study as one in which "the subjects are purposely unaware" of whether they receive the drug or a placebo, and states that this "serves to minimize bias on the part of research subjects." The body text confirms that in a blinded study the subject does not know but "the investigator does know."
 Trap: (A) is the reflex pick because both terms contain the word blind. Count who is unaware: one party is blinded, two parties is double-blind.
 
-Q: In a second study, neither the research staff nor the subjects know which subjects receive the real drug. What is this design called, and what does it add?
+Q: In a drug study, neither the research staff nor the subjects know which subjects receive the real drug. What is this design called, and what does it add over a design in which only the subjects are unaware?
 A) A double-blind investigational drug study, minimizing bias on the part of both the investigator and the subject
 B) A blinded investigational drug study, minimizing bias on the part of the subject only
 C) A placebo-free design, since blinding removes the need for a placebo
 D) A preclinical design, since the researchers are not yet involved
 Answer: A
 Rationale: The key term defines a double-blind study as one in which "both the investigator(s) and the subjects" are purposely unaware, minimizing bias "on the part of both." Dosage forms often look identical except for a secret code, which is revealed at the end of the study and can be broken earlier by the principal investigator in a clinical emergency.
-Trap: (B) is the mirror error of the previous item. Both definitions turn on the word bias, which is why the chapter gives bias its own key term, defined as "any systematic error in a measurement process."
+Trap: (B) is the single-blind answer. Both definitions turn on the word bias, which is why the chapter gives bias its own key term, defined as "any systematic error in a measurement process."
 
 Subtopic: what informed consent requires
 
@@ -310,7 +310,7 @@ C) Class II
 D) Class IV
 Answer: A
 Rationale: Class III is the least severe recall class, defined as use that "is not likely to result in any significant health problems." The chapter gives three recall classes, not four.
-Trap: (B) is the mirror error of the previous item. (D) invents a fourth class by borrowing the length of the five-schedule controlled substance list; the recall system stops at three.
+Trap: (B) is the mirror error, putting the least serious recall at class I, which is the most serious. (D) invents a fourth class by borrowing the length of the five-schedule controlled substance list; the recall system stops at three.
 
 Q: A nurse observes an unexpected adverse event with a recently approved drug. Which program does the chapter name for reporting it, and what kind of program is it?
 A) MedWatch, a mandatory federal reporting system carrying penalties for nonreporting
@@ -400,7 +400,7 @@ C) Malpractice, because it happened inside a health care facility
 D) Neither, because only documented acts create liability
 Answer: A
 Rationale: Negligence is the failure to act in a reasonable and prudent manner, and nothing in that definition requires professional status. Malpractice is the narrower subset committed by "a professional and/or individual with specialized education and training."
-Trap: (B) is the mirror error of the previous item: harm alone does not convert a failure into malpractice, the actor's professional standing does. (C) substitutes the setting for the actor, which is the same mistake in different clothing.
+Trap: (B) is the mirror error, reading malpractice into a layperson's negligence: harm alone does not convert a failure into malpractice, the actor's professional standing does. (C) substitutes the setting for the actor, which is the same mistake in different clothing.
 
 Subtopic: elements and categories of liability
 
@@ -451,7 +451,7 @@ C) Confidentiality
 D) Autonomy
 Answer: B
 Rationale: Beneficence is "the ethical principle of doing or actively promoting good," with its related nursing action given as "determining how the patient is best served."
-Trap: (A) is the mirror error of the previous item. Doing good and refraining from harm are separate duties, which is why the box lists them as two principles rather than one.
+Trap: (A) is the mirror error, naming nonmaleficence, the duty to do no harm, for an act of actively promoting good. Doing good and refraining from harm are separate duties, which is why the box lists them as two principles rather than one.
 
 Q: A patient with late-stage cancer says he wants to live to see his granddaughter's graduation but wants no extra treatments after that, and the nurse supports his decision. Which principle is being upheld?
 A) Veracity

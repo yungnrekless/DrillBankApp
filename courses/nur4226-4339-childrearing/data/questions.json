@@ -20,7 +20,7 @@
   "q_0002": {
     "topic": "national health promotion initiatives for children",
     "subtopic": "screen time and media guidance",
-    "stem": "The same mother returns two years later with the child, now 3 years old, and asks the same question. What is the accurate response?",
+    "stem": "A mother asks whether letting her 3-year-old watch cartoons on a tablet is acceptable. Based on the 2016 AAP media guidelines, what is the accurate response?",
     "options": [
       "No screen time is recommended until 5 years of age",
       "Screen time may now be unlimited as long as a parent is in the room",
@@ -32,8 +32,11 @@
     ],
     "rationale": "The same guidance continues past 18 months in a different form: \"Parents should be advised to use technology sparingly before 5 years of age and to always participate during screen-time viewing\" (p. 2).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — it carries the under-18-month prohibition forward to an age where the rule has changed to sparing, co-viewed use. (B) drops the \"sparingly\" half and keeps only the participation half.",
-    "source": "ch1.md"
+    "trap": "(A) is the mirror error — it carries the under-18-month prohibition forward to an age where the rule has changed to sparing, co-viewed use. (B) drops the \"sparingly\" half and keeps only the participation half.",
+    "source": "ch1.md",
+    "aliases": [
+      "The same mother returns two years later with the child, now 3 years old, and asks the same question. What is the accurate response?"
+    ]
   },
   "q_0003": {
     "topic": "national health promotion initiatives for children",
@@ -110,7 +113,7 @@
   "q_0007": {
     "topic": "obesity and overweight bmi definitions",
     "subtopic": "nutrition and oral health promotion",
-    "stem": "A sibling of that child plots at the 88th percentile. How is this classified?",
+    "stem": "A child's BMI plots at the 88th percentile for age and sex. How is this classified?",
     "options": [
       "Obese",
       "Overweight",
@@ -122,8 +125,11 @@
     ],
     "rationale": "Overweight is \"a BMI at or above the 85th percentile and below the 95th percentile for children and teens of the same age and sex\" (p. 3). The 88th percentile falls inside that band.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the fact bank names it the classic one — a distractor placing obesity at the 85th percentile. The 85th percentile opens the overweight band; it does not reach obesity.",
-    "source": "ch1.md"
+    "trap": "(A) is the classic error the fact bank names — a distractor placing obesity at the 85th percentile. The 85th percentile opens the overweight band; it does not reach obesity.",
+    "source": "ch1.md",
+    "aliases": [
+      "A sibling of that child plots at the 88th percentile. How is this classified?"
+    ]
   },
   "q_0008": {
     "topic": "obesity and overweight bmi definitions",
@@ -230,7 +236,7 @@
     ],
     "rationale": "Table 1.1 ranks motor vehicle first for females ages 1 to 4 at 2.4 per 100,000, ahead of drowning at 1.8.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. The 1-to-4 band is the one interval in Table 1.1 where the leading injury differs by sex — drowning in males, motor vehicle in females — so carrying the male answer across is the error the pair is built to catch.",
+    "trap": "(B) is the mirror error: it demotes motor vehicle to second, carrying across the male ranking in which drowning leads. The 1-to-4 band is the one interval in Table 1.1 where the leading injury differs by sex — drowning in males, motor vehicle in females — so carrying the male answer across is the error this distinction is built to catch.",
     "source": "ch1.md"
   },
   "q_0014": {
@@ -404,7 +410,7 @@
   "q_0023": {
     "topic": "violence and mental health epidemiology",
     "subtopic": "who gets injured",
-    "stem": "The same parent asks about the risk of homicide. By approximately how much does a gun in the household raise it?",
+    "stem": "A parent who keeps a handgun in the home asks about the risk of homicide. By approximately how much does a gun in the household raise it?",
     "options": [
       "Threefold",
       "Fivefold",
@@ -414,10 +420,13 @@
     "correct": [
       0
     ],
-    "rationale": "The same sentence gives homicide risk as increased \"by about threefold\" (pp. 5–6).",
+    "rationale": "\"The presence of a gun in a household increases the risk of suicide by about fivefold and the risk of homicide by about threefold\" (pp. 5–6).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, and it is the more dangerous direction to hold backwards because the larger multiplier attaches to the outcome parents are less likely to anticipate.",
-    "source": "ch1.md"
+    "trap": "(B) is the suicide multiplier swapped onto homicide, and it is the more dangerous direction to hold backwards because the larger multiplier attaches to the outcome parents are less likely to anticipate.",
+    "source": "ch1.md",
+    "aliases": [
+      "The same parent asks about the risk of homicide. By approximately how much does a gun in the household raise it?"
+    ]
   },
   "q_0024": {
     "topic": "violence and mental health epidemiology",
@@ -506,7 +515,7 @@
     ],
     "rationale": "Postneonatal mortality covers deaths from \"28 days to 11 months\"; the 2014 rate was 1.88 per 1000 live births (p. 6).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — the boundary between the two subdivisions is 28 days, not 6 months, and both are subdivisions of the same infant mortality rate.",
+    "trap": "(A) is the mirror error, filing a 6-month-old death under neonatal mortality — the boundary between the two subdivisions is 28 days, not 6 months, and both are subdivisions of the same infant mortality rate.",
     "source": "ch1.md"
   },
   "q_0029": {
@@ -696,7 +705,7 @@
   "q_0039": {
     "topic": "family-centered care as a philosophy of care",
     "subtopic": "causes and disparities",
-    "stem": "The same parents later tell the nurse they finally feel in charge of their child's care again and can see that their own efforts made the difference. Which concept does this illustrate?",
+    "stem": "Parents whom a nurse trained in their child's home dressing changes later say they finally feel in charge of their child's care again and can see that their own efforts made the difference. Which concept does this illustrate?",
     "options": [
       "Enabling",
       "Empowerment",
@@ -708,8 +717,11 @@
     ],
     "rationale": "Empowerment \"describes the interaction of professionals with families in such a way that families maintain or acquire a sense of control over their family lives and acknowledge positive changes that result from helping behaviors that foster their own strengths, abilities, and actions\" (p. 7).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The tell is the sense of control residing in the family and the family recognizing its own contribution — that is empowerment, not the opportunity that made it possible.",
-    "source": "ch1.md"
+    "trap": "(A) is the mirror error — enabling describes the nurse's training sessions, not the parents' sense of control. The tell is the sense of control residing in the family and the family recognizing its own contribution — that is empowerment, not the opportunity that made it possible.",
+    "source": "ch1.md",
+    "aliases": [
+      "The same parents later tell the nurse they finally feel in charge of their child's care again and can see that their own efforts made the difference. Which concept does this illustrate?"
+    ]
   },
   "q_0040": {
     "topic": "family-centered care as a philosophy of care",
@@ -876,7 +888,7 @@
     ],
     "rationale": "The underinvolvement column names nurses who \"restrict parent or visitor access to children, using excuses such as the unit is too busy\" and who focus on technical aspects and lose \"sight of the person who is the patient.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and (C) is the more tempting one — the fact bank warns that a distractor treating only overinvolvement as a problem misses half the concept. Both directions are nontherapeutic.",
+    "trap": "(A) is the mirror error, labeling an underinvolvement pattern as overinvolvement, and (C) is the more tempting one — the fact bank warns that a distractor treating only overinvolvement as a problem misses half the concept. Both directions are nontherapeutic.",
     "source": "ch1.md"
   },
   "q_0049": {
@@ -1006,7 +1018,7 @@
     ],
     "rationale": "Clinical nurse specialists are \"master's-prepared nurses who function in a variety of settings in both the direct and indirect role. They model expert direct family-centered patient care\" (p. 8).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Both roles are advanced practice and both work across settings; the printed discriminators are prescribing for the PNP and the direct-plus-indirect modeling role for the CNS.",
+    "trap": "(A) is the mirror error, giving the clinical nurse specialist's description to the pediatric nurse practitioner. Both roles are advanced practice and both work across settings; the printed discriminators are prescribing for the PNP and the direct-plus-indirect modeling role for the CNS.",
     "source": "ch1.md"
   },
   "q_0056": {
@@ -1030,7 +1042,7 @@
   "q_0057": {
     "topic": "pediatric nurse roles and ethical decision making",
     "subtopic": "ethical decision making",
-    "stem": "The same team initiates a therapy expected to substantially improve a child's function. Which moral value most directly underlies this decision?",
+    "stem": "A team initiates a therapy expected to substantially improve a child's function. Which moral value most directly underlies this decision?",
     "options": [
       "Nonmaleficence",
       "Beneficence",
@@ -1040,10 +1052,13 @@
     "correct": [
       1
     ],
-    "rationale": "Beneficence is \"the obligation to promote the patient's well-being\" (p. 10). The other two of the four values are autonomy, \"the patient's right to be self-governing,\" and justice, \"the concept of fairness.\"",
+    "rationale": "Beneficence is \"the obligation to promote the patient's well-being\" (p. 10), and nonmaleficence is \"the obligation to minimize or prevent harm.\" The other two of the four values are autonomy, \"the patient's right to be self-governing,\" and justice, \"the concept of fairness.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Both items describe defensible care; the axis is whether the obligation being met is to avoid harm or to produce good.",
-    "source": "ch1.md"
+    "trap": "(A) is the mirror error: withholding a treatment to prevent suffering would be nonmaleficence. Both describe defensible care; the axis is whether the obligation being met is to avoid harm or to produce good.",
+    "source": "ch1.md",
+    "aliases": [
+      "The same team initiates a therapy expected to substantially improve a child's function. Which moral value most directly underlies this decision?"
+    ]
   },
   "q_0058": {
     "topic": "pediatric nurse roles and ethical decision making",
@@ -1102,7 +1117,7 @@
   "q_0061": {
     "topic": "evidence-based practice and the grade criteria",
     "subtopic": "ethical decision making",
-    "stem": "A second guideline rests on unsystematic clinical observations for one of its critical outcomes. How is this rated on the GRADE criteria?",
+    "stem": "A practice guideline rests on unsystematic clinical observations for one of its critical outcomes. How is this rated on the GRADE criteria?",
     "options": [
       "Low quality",
       "Very low quality",
@@ -1114,8 +1129,11 @@
     ],
     "rationale": "Table 1.4 defines very low quality as \"Evidence for at least one of the critical outcomes from unsystematic clinical observations or very indirect evidence.\" Low quality requires at least observational studies, RCTs with serious flaws, or indirect evidence.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item and is the near neighbor on the scale. The discriminator is *unsystematic* observation, which drops it below the low tier.",
-    "source": "ch1.md"
+    "trap": "(A) is the near neighbor on the scale. The discriminator is *unsystematic* observation, which drops it below the low tier.",
+    "source": "ch1.md",
+    "aliases": [
+      "A second guideline rests on unsystematic clinical observations for one of its critical outcomes. How is this rated on the GRADE criteria?"
+    ]
   },
   "q_0062": {
     "topic": "evidence-based practice and the grade criteria",
@@ -1210,7 +1228,7 @@
   "q_0067": {
     "topic": "clinical reasoning and the nursing process",
     "subtopic": "ethical decision making",
-    "stem": "The same child now has fever, erythema at the insertion site, and a rising white count. How does the diagnosis change, and what drives interventions now?",
+    "stem": "A child with a new central line, diagnosed as Risk for Infection, now has fever, erythema at the insertion site, and a rising white count. How does the diagnosis change, and what drives interventions now?",
     "options": [
       "It remains a risk diagnosis, and interventions continue to target risk factors",
       "It becomes an actual problem, supported by signs and symptoms — a cluster of cues and defining characteristics — and interventions target illness management",
@@ -1222,8 +1240,11 @@
     ],
     "rationale": "Signs and symptoms are \"a cluster of cues and defining characteristics that are derived from patient assessment and indicate actual health problems,\" whereas risk factors \"predispose a child and family to a dysfunctional health pattern and are limited to individuals at greater risk than the population as a whole\" (p. 11).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — carrying the risk framing forward after defining characteristics have appeared. The presence of cues, not the presence of a culture result, is what converts a risk state to an actual problem.",
-    "source": "ch1.md"
+    "trap": "(A) carries the risk framing forward after defining characteristics have appeared. The presence of cues, not the presence of a culture result, is what converts a risk state to an actual problem.",
+    "source": "ch1.md",
+    "aliases": [
+      "The same child now has fever, erythema at the insertion site, and a rising white count. How does the diagnosis change, and what drives interventions now?"
+    ]
   },
   "q_0068": {
     "topic": "clinical reasoning and the nursing process",
@@ -1322,7 +1343,7 @@
   "q_0073": {
     "topic": "pediatric quality outcome measures",
     "subtopic": "ethical decision making",
-    "stem": "A second measure in the same report tracks children 2 to 18 years diagnosed with pharyngitis who were ordered an antibiotic. What does the measure require in addition?",
+    "stem": "A pediatric quality report tracks children 2 to 18 years diagnosed with pharyngitis who were ordered an antibiotic. What does the measure require in addition?",
     "options": [
       "That a follow-up visit occurred within 3 days",
       "That a group A streptococcus test was received for the episode",
@@ -1334,8 +1355,11 @@
     ],
     "rationale": "Table 1.5 defines appropriate testing for children with pharyngitis as the percentage \"who were diagnosed with pharyngitis, ordered an antibiotic, and received a group A streptococcus (strep) test for the episode.\"",
     "type": "single",
-    "trap": "(C) is clinically sensible antibiotic stewardship and is not what this measure counts. The pharyngitis measure is about confirming the indication, while the URI measure is about avoiding the prescription entirely.",
-    "source": "ch1.md"
+    "trap": "(C) is clinically sensible antibiotic stewardship and is not what this measure counts. The pharyngitis measure is about confirming the indication, while the companion upper respiratory infection measure is about avoiding the prescription entirely.",
+    "source": "ch1.md",
+    "aliases": [
+      "A second measure in the same report tracks children 2 to 18 years diagnosed with pharyngitis who were ordered an antibiotic. What does the measure require in addition?"
+    ]
   },
   "q_0074": {
     "topic": "pediatric quality outcome measures",
@@ -1388,7 +1412,7 @@
     ],
     "rationale": "\"By 1 year of age the infant's birth weight has tripled, to an average of 9.75 kg (21.5 lb),\" \"birth length has increased by almost 50%,\" and \"The chest circumference approximately equals head circumference by the end of the first year.\" Head circumference increases by almost 33% over the same period, which is the figure (C) misattributes to length.",
     "type": "single",
-    "trap": "(A) carries the 5-month doubling figure forward to 12 months, which is the mirror error of the previous item. (C) keeps the correct weight and moves the chest past the head a year early; the two are approximately equal at 1 year, and the chest exceeds the head only afterward.",
+    "trap": "(A) carries the 5-month doubling figure forward to 12 months, which is the mirror error of putting the 1-year tripling at 5 months. (C) keeps the correct weight and moves the chest past the head a year early; the two are approximately equal at 1 year, and the chest exceeds the head only afterward.",
     "source": "ch10.md"
   },
   "q_0077": {
@@ -1496,7 +1520,7 @@
     ],
     "rationale": "Whole cow's milk \"can cause iron deficiency anemia in infants, possibly as a result of occult gastrointestinal blood loss,\" and is \"deficient in iron, zinc, and vitamin C.\" Physiologic anemia occurs at 3 to 6 months from shortened red cell survival and \"is not affected by an adequate iron supply.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, attaching the iron-independence to the wrong anemia. (D) swaps the two age windows, which works on anyone who memorized both numbers without their owners.",
+    "trap": "(A) is the mirror error, attaching the iron-independence to the wrong anemia. (D) swaps the two age windows, which works on anyone who memorized both numbers without their owners.",
     "source": "ch10.md"
   },
   "q_0083": {
@@ -1684,7 +1708,7 @@
     ],
     "rationale": "In stage IV, 9 to 12 months, infants \"learn from the object itself. This is in contrast to the second stage, in which infants learn from the type of interaction between objects or individuals.\" The stage brings \"beginning of intellectual reasoning,\" actively searching for a hidden object, and distinguishing end products from their means so as to remove barriers.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. (C) is stage I, use of reflexes, and it is the answer chosen when \"reflexes\" is remembered as the Piaget keyword for infancy generally rather than for the first month specifically.",
+    "trap": "(A) is the mirror error: it gives stage IV the stage II pattern of learning from interaction, when stage IV infants learn from the object itself. (C) is stage I, use of reflexes, and it is the answer chosen when \"reflexes\" is remembered as the Piaget keyword for infancy generally rather than for the first month specifically.",
     "source": "ch10.md"
   },
   "q_0093": {
@@ -1726,7 +1750,7 @@
   "q_0095": {
     "topic": "infant attachment, separation anxiety, and stranger fear",
     "subtopic": "vision",
-    "stem": "The same 7-month-old cries and turns away when an unfamiliar nurse approaches, even while sitting on the parent's lap. Which phenomenon is this, and what does it require?",
+    "stem": "A 7-month-old cries and turns away when an unfamiliar nurse approaches, even while sitting on the parent's lap. Which phenomenon is this, and what does it require?",
     "options": [
       "Separation anxiety, which requires object permanence",
       "Stranger fear, which requires the ability to discriminate between familiar and unfamiliar people",
@@ -1738,8 +1762,11 @@
     ],
     "rationale": "\"Between ages 6 and 8 months fear of strangers and stranger anxiety become prominent and are related to infants' ability to discriminate between familiar and unfamiliar people,\" shown as \"clinging to the parent, crying, and turning away from strangers.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — the parent has not left, so nothing here is a separation. (C) inverts the behavior entirely, describing an infant who approaches unfamiliar adults with no suspicion at all.",
-    "source": "ch10.md"
+    "trap": "(A) is the mirror error — separation anxiety is triggered by the parent's absence, and the parent has not left, so nothing here is a separation. (C) inverts the behavior entirely, describing an infant who approaches unfamiliar adults with no suspicion at all.",
+    "source": "ch10.md",
+    "aliases": [
+      "The same 7-month-old cries and turns away when an unfamiliar nurse approaches, even while sitting on the parent's lap. Which phenomenon is this, and what does it require?"
+    ]
   },
   "q_0096": {
     "topic": "infant attachment, separation anxiety, and stranger fear",
@@ -1846,7 +1873,7 @@
     ],
     "rationale": "Readiness at 4 to 6 months is marked by a gastrointestinal tract that \"has matured sufficiently,\" tooth eruption that \"facilitates biting and chewing,\" disappearance of the extrusion reflex, head control permitting sitting with support and turning away to refuse, and voluntary grasp allowing self-feeding.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, carrying the \"not before 4 to 6 months\" rule past its own endpoint; 12 months is when well-cooked table foods may be served, not when solids begin. (C) confuses readiness for solids with the separate 12-month gate on whole cow's milk.",
+    "trap": "(B) is the mirror of starting solids too early, carrying the \"not before 4 to 6 months\" rule past its own endpoint; 12 months is when well-cooked table foods may be served, not when solids begin. (C) confuses readiness for solids with the separate 12-month gate on whole cow's milk.",
     "source": "ch10.md"
   },
   "q_0102": {
@@ -2214,7 +2241,7 @@
   "q_0121": {
     "topic": "severe acute malnutrition and protein-energy deficiency",
     "subtopic": "general",
-    "stem": "A 4-month-old in the same clinic shows gradual wasting and atrophy of body tissues, especially subcutaneous fat, with no edema, after breastfeeding was unsuccessful. Which form of severe acute malnutrition is this?",
+    "stem": "A 4-month-old seen in a refugee clinic shows gradual wasting and atrophy of body tissues, especially subcutaneous fat, with no edema, after breastfeeding was unsuccessful. Which form of severe acute malnutrition is this?",
     "options": [
       "Kwashiorkor, from protein deficiency with adequate calories",
       "Marasmus, from general malnutrition of both calories and protein",
@@ -2226,8 +2253,11 @@
     ],
     "rationale": "Marasmus \"results from general malnutrition of both calories and protein\" and is \"characterized by gradual wasting and atrophy of body tissues, especially of subcutaneous fat.\" It may appear \"in infants as young as 3 months of age if breastfeeding is unsuccessful,\" and it carries no edema.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Absence of edema is the discriminating finding at the bedside, and the age here — months rather than years — points the same way.",
-    "source": "ch11.md"
+    "trap": "(A) is the mirror error, applying kwashiorkor to an infant with marasmus. Absence of edema is the discriminating finding at the bedside, and the age here — months rather than years — points the same way.",
+    "source": "ch11.md",
+    "aliases": [
+      "A 4-month-old in the same clinic shows gradual wasting and atrophy of body tissues, especially subcutaneous fat, with no edema, after breastfeeding was unsuccessful. Which form of severe acute malnutrition is this?"
+    ]
   },
   "q_0122": {
     "topic": "severe acute malnutrition and protein-energy deficiency",
@@ -3232,7 +3262,7 @@
   "q_0176": {
     "topic": "preoperational thought and toddler cognition",
     "subtopic": "object permanence in sensorimotor stages V and VI",
-    "stem": "A 22-month-old watches the same sequence and searches the first hiding place, then the second, then a third location entirely. Which stage does this represent?",
+    "stem": "A 22-month-old watches a nurse hide a toy under a blanket and then move it to a second hiding place, and searches the first hiding place, then the second, then a third location entirely. Which stage does this represent?",
     "options": [
       "Stage V, tertiary circular reactions",
       "Stage VI, invention of new means through mental combinations, with awareness of object permanence regardless of the number of invisible displacements",
@@ -3244,8 +3274,11 @@
     ],
     "rationale": "Stage VI, at 19 to 24 months, brings \"Awareness of object permanence regardless of number of invisible displacements,\" so the child \"Searches for object through several hiding places.\" Its other listed behaviors are domestic mimicry, referring to self by name, parallel play with awareness of ownership, and concern with a ritualistic, routinized schedule.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The discriminator is not whether the child searches but whether the search survives being wrong the first time.",
-    "source": "ch12.md"
+    "trap": "(A) is the neighbouring stage, in which the child finds hidden objects but only in the first location. The discriminator is not whether the child searches but whether the search survives being wrong the first time.",
+    "source": "ch12.md",
+    "aliases": [
+      "A 22-month-old watches the same sequence and searches the first hiding place, then the second, then a third location entirely. Which stage does this represent?"
+    ]
   },
   "q_0177": {
     "topic": "preoperational thought and toddler cognition",
@@ -4109,7 +4142,7 @@
     ],
     "rationale": "Animism, \"ascribing lifelike qualities to inanimate objects,\" is what \"helps explain why children fear objects.\" The chapter gives this exact example: a child \"may refuse to use the toilet after watching a television commercial in which the toilet bowl is portrayed as turning into a monster.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Nothing here turns on the child's own thoughts causing an event; the fear is of the object itself, which is what makes it animism.",
+    "trap": "(A) is the mirror error, labeling animism as magical thinking. Nothing here turns on the child's own thoughts causing an event; the fear is of the object itself, which is what makes it animism.",
     "source": "ch13.md"
   },
   "q_0224": {
@@ -5023,7 +5056,7 @@
   "q_0273": {
     "topic": "time-out and corporal punishment",
     "subtopic": "developmental theory and Duvall's stages",
-    "stem": "The same parent reports that her son screams for the first several minutes of every time-out, and asks whether that time counts. What is the correct guidance?",
+    "stem": "A parent reports that her 4-year-old son screams for the first several minutes of every time-out, and asks whether that time counts. What is the correct guidance?",
     "options": [
       "The time counts from the moment the child is sent, regardless of behavior",
       "The time-out period begins after the child quiets down",
@@ -5036,7 +5069,10 @@
     "rationale": "The published procedure states: \"If they cry, refuse, or display any disruptive behavior, the time-out period will begin after they quiet down,\" and \"When they are quiet for the duration of the time, they can then leave the room\" (p. 23).",
     "type": "single",
     "trap": "(A) is the mechanic most often gotten wrong, and it is what makes time-out fail for exactly this child — a 4-year-old who screams for five minutes serves no quiet time at all. Note also that the audible kitchen timer is specified rather than a watch, so the endpoint is signalled objectively rather than by the parent.",
-    "source": "ch2.md"
+    "source": "ch2.md",
+    "aliases": [
+      "The same parent reports that her son screams for the first several minutes of every time-out, and asks whether that time counts. What is the correct guidance?"
+    ]
   },
   "q_0274": {
     "topic": "time-out and corporal punishment",
@@ -5179,7 +5215,7 @@
     ],
     "rationale": "In joint legal custody \"the children reside with one parent, but both parents are the children's legal guardians, and both participate in childrearing\" (p. 27).",
     "type": "single",
-    "trap": "(B) is the mirror error of the next item's arrangement and the swap the fact bank flags. The discriminating word is in the name: physical custody is about where the child physically lives, and in joint physical custody \"the parents alternate the physical care and control of the children on an agreed-on basis.\"",
+    "trap": "(B) trades joint legal custody for joint physical custody, which is the swap the fact bank flags. The discriminating word is in the name: physical custody is about where the child physically lives, and in joint physical custody \"the parents alternate the physical care and control of the children on an agreed-on basis.\"",
     "source": "ch2.md"
   },
   "q_0282": {
@@ -5479,7 +5515,7 @@
     ],
     "rationale": "Cultural humility is \"the process of self-reflection to promote honest and trustworthy relationships\" — \"knowing one's self better in order to know others\" — and is \"best defined not as a discrete end point but as a commitment and active engagement in a lifelong process.\" It \"reminds us of power differentials that influence health care encounters,\" holds that \"people are often the experts in their own experiences,\" and \"cannot be collapsed into a class or education offering\" (p. 37).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the pair is the cleanest confusable set in the second half of the chapter. Competence is a skill set and an endpoint built on knowledge about groups; humility is an ongoing process that locates expertise in the patient. Note also that culture here \"is not only race and ethnicity, but also social class, age, sexual orientation, sexuality, gender, ability, and professional discipline,\" so a distractor limiting culture to race, ethnicity, and religion is wrong on scope as well.",
+    "trap": "(A) is the mirror error, mistaking humility for competence, and competence versus humility is the cleanest confusable set in the second half of the chapter. Competence is a skill set and an endpoint built on knowledge about groups; humility is an ongoing process that locates expertise in the patient. Note also that culture here \"is not only race and ethnicity, but also social class, age, sexual orientation, sexuality, gender, ability, and professional discipline,\" so a distractor limiting culture to race, ethnicity, and religion is wrong on scope as well.",
     "source": "ch2.md"
   },
   "q_0298": {
@@ -5809,7 +5845,7 @@
   "q_0316": {
     "topic": "autosomal inheritance patterns",
     "subtopic": "autosomal dominant",
-    "stem": "The same couple has three children, all affected, and asks whether the fourth is therefore safe. What is the accurate response?",
+    "stem": "A man with achondroplasia and his genotypically normal partner have three children, all affected, and ask whether a fourth is therefore safe. What is the accurate response?",
     "options": [
       "The fourth child is very unlikely to be affected, since three of four already are",
       "Each pregnancy carries the same 50% chance; 50% of offspring do not necessarily inherit the gene mutation, and chance has no memory",
@@ -5822,7 +5858,10 @@
     "rationale": "The achondroplasia pedigree in the chapter \"demonstrates that although an affected parent has a 50% chance with each pregnancy of transmitting the gene mutation associated with achondroplasia, 50% of offspring do not necessarily inherit the gene mutation\" (p. 52). The Nursing Alert states it for recessive disease in the same words: \"Chance has no memory\" (p. 72).",
     "type": "single",
     "trap": "(A) is the gambler's-fallacy answer and the most common misconception families bring. Fifty percent is a per-pregnancy probability, not a quota — four children of an affected parent can all be affected or all be unaffected.",
-    "source": "ch3.md"
+    "source": "ch3.md",
+    "aliases": [
+      "The same couple has three children, all affected, and asks whether the fourth is therefore safe. What is the accurate response?"
+    ]
   },
   "q_0317": {
     "topic": "autosomal inheritance patterns",
@@ -5965,7 +6004,7 @@
     ],
     "rationale": "\"Sons of carrier females have a 50% chance of inheriting the mutant allele and being affected (hemizygous). Daughters have a 50% risk of inheriting the mutant allele and being (heterozygous) carriers\" (Box 3.4, p. 58).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — the affected-father pattern applied to a carrier mother. Holding the two matings as a pair is what makes an X-linked recessive pedigree readable at a glance.",
+    "trap": "(A) is the mirror error — the affected-father pattern applied to a carrier mother. Holding the affected-father and carrier-mother matings side by side is what makes an X-linked recessive pedigree readable at a glance.",
     "source": "ch3.md"
   },
   "q_0325": {
@@ -6935,7 +6974,7 @@
   "q_0377": {
     "topic": "blood pressure measurement and interpretation",
     "subtopic": "working through an interpreter",
-    "stem": "The correctly sized cuff is unavailable and the nurse must choose between one that is too small and one that is too large. Which should be used, and what error will result?",
+    "stem": "When measuring a child's blood pressure, the correctly sized cuff is unavailable and the nurse must choose between one that is too small and one that is too large. Which should be used, and what error will result?",
     "options": [
       "The undersized cuff, which will read falsely low",
       "The oversized cuff, accepting a falsely low reading — the chapter directs using an oversized cuff rather than an undersized one",
@@ -6948,7 +6987,10 @@
     "rationale": "\"If the cuff size is too small, the reading on the device is falsely high. If the cuff size is too large, the reading is falsely low,\" and the Nursing Alert directs: \"When the correct size is not available, use an oversized cuff rather than an undersized one\" (p. 108).",
     "type": "single",
     "trap": "(A) is the mirror error and the fact bank calls this the single most swapped pair in the chapter. Note why the direction of the preference makes sense clinically: an oversized cuff underestimates, so it will not manufacture a false diagnosis of hypertension — but it can mask a real one, which is why size selection is called the most important factor.",
-    "source": "ch4.md"
+    "source": "ch4.md",
+    "aliases": [
+      "The correctly sized cuff is unavailable and the nurse must choose between one that is too small and one that is too large. Which should be used, and what error will result?"
+    ]
   },
   "q_0378": {
     "topic": "blood pressure measurement and interpretation",
@@ -7397,7 +7439,7 @@
     ],
     "rationale": "The Faces Pain Scale–Revised uses \"six cartoon faces ranging from neutral face for 'no pain' to grimacing face 'worst possible pain'\" and is for children 5–17 (p. 146).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the starting face is the entire discriminator between these two scales — smiling for Wong-Baker, neutral for the revised scale. Both have six faces and both are cartoons, so nothing else separates them at a glance.",
+    "trap": "(A) is the mirror error, naming Wong-Baker FACES, which starts at a smiling face, and the starting face is the entire discriminator between these two scales — smiling for Wong-Baker, neutral for the revised scale. Both have six faces and both are cartoons, so nothing else separates them at a glance.",
     "source": "ch5.md"
   },
   "q_0403": {
@@ -8476,7 +8518,7 @@
     ],
     "rationale": "This is the chapter's own NCLEX question 4. Page 175 names \"localized infections, such as otitis media, sinusitis, and pneumonia\" among those caused by \"Streptococcal pneumococci.\"",
     "type": "single",
-    "trap": "(B) is the strongest distractor and is the previous item's answer — both vaccines prevent otitis media and pneumonia, so the overlap does not discriminate. The tells are epiglottitis and meningitis for Hib and sinusitis plus the word streptococcal for pneumococcal. Read the organism named in the stem.",
+    "trap": "(B) is the strongest distractor because Hib and pneumococcal coverage overlap — both vaccines prevent otitis media and pneumonia, so the overlap does not discriminate. The tells are epiglottitis and meningitis for Hib and sinusitis plus the word streptococcal for pneumococcal. Read the organism named in the stem.",
     "source": "ch6.md"
   },
   "q_0462": {
@@ -8660,7 +8702,7 @@
     ],
     "rationale": "The white strawberry tongue is coated with red swollen papillae on days 1 to 2; the red strawberry tongue follows on days 4 to 5, when the coat has sloughed and the papillae are prominent (p. 185).",
     "type": "single",
-    "trap": "(A) reverses the sequence, which is the only way this pair is tested. The logic is in the word: the coating comes off, so the white stage is the earlier one.",
+    "trap": "(A) reverses the sequence, which is the only way the white and red strawberry tongues are tested. The logic is in the word: the coating comes off, so the white stage is the earlier one.",
     "source": "ch6.md"
   },
   "q_0472": {
@@ -8804,7 +8846,7 @@
     ],
     "rationale": "A nightmare is \"A scary dream; takes place during REM sleep and is followed by full waking,\" occurring \"in second half of night, when dreams are most intense,\" with distress \"after dream is over.\" Return to sleep \"may be considerably delayed because of persistent fear.\" The interventions are to \"Accept dream as real fear\" and \"Sit with child; offer comfort, assurance, and sense of protection.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and applying the sleep-terror response here would leave a fully awake, frightened child without the comfort that works. The chapter also directs avoiding \"forcing child back to his or her own bed,\" which is what (C) does.",
+    "trap": "(A) is the mirror error, labeling a nightmare as a sleep terror, and applying the sleep-terror response here would leave a fully awake, frightened child without the comfort that works. The chapter also directs avoiding \"forcing child back to his or her own bed,\" which is what (C) does.",
     "source": "ch14.md"
   },
   "q_0480": {
@@ -8858,7 +8900,7 @@
     ],
     "rationale": "Parents are advised \"to call the poison control center (PCC) before initiating any intervention,\" and to post the PCC number, 800-222-1222, near each phone. Based on that telephone assessment, the PCC \"counsels the parents to begin treatment at home or to take the child to an emergency facility.\"",
     "type": "single",
-    "trap": "(B) is the obsolete reflex — the American Academy of Pediatrics \"no longer recommends\" syrup of ipecac for routine poison treatment. Read the setting carefully on items like this: for a parent at home the first action is to call the PCC, while for a nurse at the bedside the governing principle is different, as the next item shows.",
+    "trap": "(B) is the obsolete reflex — the American Academy of Pediatrics \"no longer recommends\" syrup of ipecac for routine poison treatment. Read the setting carefully on items like this: for a parent at home the first action is to call the PCC, while for a nurse at the bedside the governing principle is to treat the child first, not the poison.",
     "source": "ch14.md"
   },
   "q_0483": {
@@ -9726,7 +9768,7 @@
   "q_0530": {
     "topic": "concrete operations and conservation in the school-age child",
     "subtopic": "general",
-    "stem": "A second child, shown the same flattened clay, says, \"It's wider, but it's a lot thinner too.\" Which concept is this, and what ability does it demonstrate?",
+    "stem": "A child shown two identical balls of clay, one flattened into a pancake, says, \"It's wider, but it's a lot thinner too.\" Which concept is this, and what ability does it demonstrate?",
     "options": [
       "Identity, demonstrating that nothing was added or removed",
       "Reciprocity, demonstrating the ability to deal with two dimensions at the same time and to comprehend that a change in one dimension compensates for a change in another",
@@ -9738,8 +9780,11 @@
     ],
     "rationale": "Reciprocity is the justification that \"Although the pancake appears larger in circumference, the ball is much thicker.\" The child \"demonstrates the ability to deal with two dimensions at the same time and to comprehend that a change in one dimension compensates for a change in another.\" Once children can use all three concepts, \"they can conserve along any physical dimension.\"",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item. Nothing in this child's reasoning refers to undoing the change; the reasoning tracks two dimensions simultaneously, which is the cognitive step reciprocity names.",
-    "source": "ch15.md"
+    "trap": "(C) is reversibility, the justification that the clay could be rolled back into a ball. Nothing in this child's reasoning refers to undoing the change; the reasoning tracks two dimensions simultaneously, which is the cognitive step reciprocity names.",
+    "source": "ch15.md",
+    "aliases": [
+      "A second child, shown the same flattened clay, says, \"It's wider, but it's a lot thinner too.\" Which concept is this, and what ability does it demonstrate?"
+    ]
   },
   "q_0531": {
     "topic": "concrete operations and conservation in the school-age child",
@@ -10500,7 +10545,7 @@
     ],
     "rationale": "Blount disease is \"overgrowth of the medial aspect of the proximal tibial metaphysis that causes the lower leg to angle inward (tibia vara),\" and the chapter notes \"a dose-response relationship between BMI and Blount disease.\" Orthopedic referral is the named pathway for it.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Both conditions share obesity as the driver and differ only in which joint is affected, so an item on this pair always turns on the anatomic site named in the stem.",
+    "trap": "(A) is the mirror error, naming the hip disorder for a lower-leg finding. Both conditions share obesity as the driver and differ only in which joint is affected, so an item on slipped capital femoral epiphysis versus Blount disease always turns on the anatomic site named in the stem.",
     "source": "ch16.md"
   },
   "q_0572": {
@@ -10536,7 +10581,7 @@
     ],
     "rationale": "\"Limiting sedentary screen time behaviors… is the most effective way to encourage physical activity.\" The paired figures are 60 minutes or more of physical activity per day and less than 2 hours of screen time, with a daily target of 10,000 to 15,000 steps.",
     "type": "single",
-    "trap": "(C) is addressed separately and with an age restriction, as the next item shows. (D) names a real target but adopts it in isolation; the pedometer measures the activity that removing screen time makes room for.",
+    "trap": "(C) is addressed separately and with an age restriction: weight training is not generally recommended for prepubertal children until they have reached physical and skeletal maturity. (D) names a real target but adopts it in isolation; the pedometer measures the activity that removing screen time makes room for.",
     "source": "ch16.md"
   },
   "q_0574": {
@@ -10984,7 +11029,7 @@
     ],
     "rationale": "A 504 plan provides accommodations for access and academic success, while an individualized education program provides specialized instruction and related services. Extended time and seating change the conditions of access rather than the instruction itself.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and (D) states the assumption behind it — that a documented disability automatically calls for the more intensive framework. What decides between them is the nature of the support needed, not the presence of a diagnosis.",
+    "trap": "(A) is the mirror error, assigning an individualized education program to a child who needs only accommodations, and (D) states the assumption behind it — that a documented disability automatically calls for the more intensive framework. What decides between them is the nature of the support needed, not the presence of a diagnosis.",
     "source": "ch16.md"
   },
   "q_0598": {
@@ -11242,7 +11287,7 @@
   "q_0612": {
     "topic": "neuroendocrine events of puberty",
     "subtopic": "general",
-    "stem": "A nurse is explaining the same two hormones in an adolescent boy. Which description is correct?",
+    "stem": "A nurse is explaining the roles of follicle-stimulating hormone and luteinizing hormone in an adolescent boy. Which description is correct?",
     "options": [
       "Luteinizing hormone stimulates the Leydig cells to produce testosterone, and follicle-stimulating hormone, together with luteinizing hormone, drives sperm production",
       "Follicle-stimulating hormone stimulates the Leydig cells to produce testosterone",
@@ -11254,8 +11299,11 @@
     ],
     "rationale": "In boys, luteinizing hormone stimulates the Leydig cells to produce testosterone, and follicle-stimulating hormone acting with luteinizing hormone drives sperm production.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, carried across sexes. The same two hormones act in both sexes with different targets, so an item can test either sex and the distractor is always the other hormone's job.",
-    "source": "ch17.md"
+    "trap": "(B) is the hormone swap, carried across sexes. The same two hormones act in both sexes with different targets, so an item can test either sex and the distractor is always the other hormone's job.",
+    "source": "ch17.md",
+    "aliases": [
+      "A nurse is explaining the same two hormones in an adolescent boy. Which description is correct?"
+    ]
   },
   "q_0613": {
     "topic": "neuroendocrine events of puberty",
@@ -11420,7 +11468,7 @@
     ],
     "rationale": "Peak height velocity in boys occurs at about 14 years, after testicular and penile growth and after axillary and mature pubic hair.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item applied to boys. In girls the growth spurt comes early in the sequence and precedes menarche; in boys it comes late, after the genital changes, which is why boys often appear to mature genitally before they visibly grow.",
+    "trap": "(B) is the mirror error, applying the girls' sequence to boys. In girls the growth spurt comes early in the sequence and precedes menarche; in boys it comes late, after the genital changes, which is why boys often appear to mature genitally before they visibly grow.",
     "source": "ch17.md"
   },
   "q_0622": {
@@ -11514,7 +11562,7 @@
     ],
     "rationale": "The personal fable is the belief that \"it can't happen to me,\" illustrated by the teen not using condoms because \"other people get STDs, but not me,\" or by the statement \"you just don't understand.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Nothing in this stem concerns being observed; the distortion is a claimed exemption from a risk the adolescent acknowledges applies to others, which is the personal fable's signature.",
+    "trap": "(A) is the mirror error, labeling a personal fable as the imaginary audience. Nothing in this stem concerns being observed; the distortion is a claimed exemption from a risk the adolescent acknowledges applies to others, which is the personal fable's signature.",
     "source": "ch17.md"
   },
   "q_0627": {
@@ -12000,7 +12048,7 @@
   "q_0653": {
     "topic": "testicular torsion and male reproductive conditions",
     "subtopic": "general",
-    "stem": "The same adolescent presents 3 hours after the onset of pain. What is the appropriate management?",
+    "stem": "A 14-year-old boy with suspected testicular torsion presents 3 hours after the onset of sudden severe scrotal pain. What is the appropriate management?",
     "options": [
       "Manual detorsion may be attempted within 6 hours; beyond 6 hours, or after a failed manual attempt, prompt surgery is required",
       "Schedule an outpatient ultrasound for the following morning",
@@ -12013,7 +12061,10 @@
     "rationale": "Under 6 hours, manual detorsion may be attempted; beyond 6 hours, or after a failed manual attempt, prompt surgery is indicated. The Nursing Alert calls for immediate medical evaluation of a red, painful, swollen scrotum.",
     "type": "single",
     "trap": "(B), (C), and (D) all introduce delay, and each is plausible as ordinary clinical caution. Torsion is the one condition in this chapter where scheduling anything is the wrong answer — the 6-hour window is the whole reason the evaluation is immediate.",
-    "source": "ch18.md"
+    "source": "ch18.md",
+    "aliases": [
+      "The same adolescent presents 3 hours after the onset of pain. What is the appropriate management?"
+    ]
   },
   "q_0654": {
     "topic": "testicular torsion and male reproductive conditions",
@@ -12869,7 +12920,7 @@
   "q_0700": {
     "topic": "approach and avoidance coping in chronic illness",
     "subtopic": "sorting a single behavior",
-    "stem": "At the same visit, the mother of a different child with cystic fibrosis describes in detail the college she has already chosen for her daughter, but cannot say what the current treatment plan is. The nurse should interpret this as:",
+    "stem": "During a clinic visit, the mother of a child with cystic fibrosis describes in detail the college she has already chosen for her daughter, but cannot say what the current treatment plan is. The nurse should interpret this as:",
     "options": [
       "An avoidance behavior, because the future plans carry little emphasis on the present",
       "An approach behavior, because planning realistically for the future is adaptive",
@@ -12881,8 +12932,11 @@
     ],
     "rationale": "The list pairs \"Plans realistically for the future\" as an approach behavior against \"Entertains unrealistic future plans for child with little emphasis on the present\" as an avoidance behavior (p. 594); the discriminator is the absent present, not the presence of a plan.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item — the surface topic is identical and only the direction differs, which is exactly how this list builds its own distractors; (C) borrows the chapter's real definition of hopefulness (p. 598) to make the wrong answer sound sourced.",
-    "source": "ch19.md"
+    "trap": "(B) is the mirror error — realistic future planning is the paired approach behavior, and only the direction differs, which is exactly how this list builds its own distractors; (C) borrows the chapter's real definition of hopefulness (p. 598) to make the wrong answer sound sourced.",
+    "source": "ch19.md",
+    "aliases": [
+      "At the same visit, the mother of a different child with cystic fibrosis describes in detail the college she has already chosen for her daughter, but cannot say what the current treatment plan is. The nurse should interpret this as:"
+    ]
   },
   "q_0701": {
     "topic": "approach and avoidance coping in chronic illness",
@@ -12962,7 +13016,7 @@
   "q_0705": {
     "topic": "parental reactions to a child's chronic condition",
     "subtopic": "sorting a single behavior",
-    "stem": "A different mother of a 6-year-old with a seizure disorder expects him to dress himself and carry his plate to the sink, gives him the same bedtime as his sister, and has enrolled him in a swim class with a helmet policy. Which parental reaction does this describe?",
+    "stem": "The mother of a 6-year-old with a seizure disorder expects him to dress himself and carry his plate to the sink, gives him the same bedtime as his sister, and has enrolled him in a swim class with a helmet policy. Which parental reaction does this describe?",
     "options": [
       "Gradual acceptance",
       "Overprotection",
@@ -12974,8 +13028,11 @@
     ],
     "rationale": "Gradual acceptance is defined as parents who \"place necessary and realistic restrictions on the child, encourage self-care activities, and promote reasonable physical and social abilities\" (p. 595), and it is the only one of the four reactions the chapter treats as adaptive.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item — a reader who has just keyed overprotection looks for the opposite extreme and lands on denial, reading the ordinary expectations as a parent acting \"as if the disorder does not exist\" (p. 595); the helmet policy is what rules that out.",
-    "source": "ch19.md"
+    "trap": "(C) is the mirror error of overprotection — a reader who has ruled out overprotection looks for the opposite extreme and lands on denial, reading the ordinary expectations as a parent acting \"as if the disorder does not exist\" (p. 595); the helmet policy is what rules that out.",
+    "source": "ch19.md",
+    "aliases": [
+      "A different mother of a 6-year-old with a seizure disorder expects him to dress himself and carry his plate to the sink, gives him the same bedtime as his sister, and has enrolled him in a swim class with a helmet policy. Which parental reaction does this describe?"
+    ]
   },
   "q_0706": {
     "topic": "parental reactions to a child's chronic condition",
@@ -13038,7 +13095,7 @@
   "q_0709": {
     "topic": "normalization and mainstreaming in chronic illness",
     "subtopic": "sorting a single behavior",
-    "stem": "A nurse arranges for the same 11-year-old to be responsible for drawing up and recording his own evening medication, and includes him in the discussion of when the home treatments will be scheduled. Which element of normalization does this represent?",
+    "stem": "A nurse arranges for an 11-year-old with a chronic illness to be responsible for drawing up and recording his own evening medication, and includes him in the discussion of when the home treatments will be scheduled. Which element of normalization does this represent?",
     "options": [
       "Participation",
       "Control",
@@ -13050,8 +13107,11 @@
     ],
     "rationale": "Participation is defined as including the child \"in as many decisions as possible, especially those relating to his or her care regimen,\" with the example that \"The child is responsible for taking medications or scheduling home treatments\" (p. 601).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item — the two elements differ by what the child is being given, a role in the regimen versus a domain of his own, and the example here is verbatim from the Participation row.",
-    "source": "ch19.md"
+    "trap": "(B) is the mirror error, since Control and Participation are the pair this chapter flags as most confusable — the two elements differ by what the child is being given, a role in the regimen versus a domain of his own, and the example here is verbatim from the Participation row.",
+    "source": "ch19.md",
+    "aliases": [
+      "A nurse arranges for the same 11-year-old to be responsible for drawing up and recording his own evening medication, and includes him in the discussion of when the home treatments will be scheduled. Which element of normalization does this represent?"
+    ]
   },
   "q_0710": {
     "topic": "normalization and mainstreaming in chronic illness",
@@ -13251,7 +13311,7 @@
     ],
     "rationale": "Hospice is defined as \"a community health care program that specializes in the care of dying patients by combining the hospice philosophy with the principles of palliative care\" (p. 613), and its bereavement care \"may continue for a year or more\" (p. 613).",
     "type": "single",
-    "trap": "This is the mirror of the previous item, and (D) is the hardest distractor because it is the verbatim definition of concurrent care (p. 606), which is a palliative-care concept; the cue words are 6 months, community program, and bereavement care afterward for hospice, from diagnosis and regardless of treatment for palliative care.",
+    "trap": "(D) is the hardest distractor because it is the verbatim definition of concurrent care (p. 606), which is a palliative-care concept; the cue words are 6 months, community program, and bereavement care afterward for hospice, from diagnosis and regardless of treatment for palliative care.",
     "source": "ch19.md"
   },
   "q_0721": {
@@ -13617,7 +13677,7 @@
     ],
     "rationale": "The American Association on Intellectual and Developmental Disabilities defines intellectual disability as consisting of \"three components: (1) intellectual functioning, (2) adaptive behavior, and (3) age younger than 18 years at time of diagnosis\" (p. 632).",
     "type": "single",
-    "trap": "(B) pulls because the chapter spends most of its length on identifiable syndromes, but the definition is functional rather than etiologic; (C) is the error the next item addresses, since no intelligence quotient cutoff is attached to any level anywhere in this chapter.",
+    "trap": "(B) pulls because the chapter spends most of its length on identifiable syndromes, but the definition is functional rather than etiologic; (C) is the common error of diagnosing by score alone, since no intelligence quotient cutoff is attached to any level anywhere in this chapter.",
     "source": "ch20.md"
   },
   "q_0741": {
@@ -13663,7 +13723,7 @@
   "q_0743": {
     "topic": "cognitive impairment definition and diagnosis",
     "subtopic": "general",
-    "stem": "The same mother adds, \"My sister says I should stop comparing my children.\" How should the nurse respond?",
+    "stem": "The mother of a 9-month-old says the baby \"just is not like my first one,\" then adds, \"My sister says I should stop comparing my children.\" How should the nurse respond?",
     "options": [
       "Take the comparison seriously and proceed with developmental assessment of this child",
       "Reassure the mother that all children develop differently and comparison can be harmful",
@@ -13676,7 +13736,10 @@
     "rationale": "The chapter states that \"Parental concerns, such as delayed development compared with siblings, need to be taken seriously\" (p. 633), and the same rule recurs for hearing and for vision — parental concern is sufficient grounds for evaluation at any age (pp. 642, 647).",
     "type": "single",
     "trap": "(B) is the reflex reassurance and is the one this chapter names and rejects; it sounds supportive and it ends the assessment, which is why it is the keyed distractor in the chapter's own review item.",
-    "source": "ch20.md"
+    "source": "ch20.md",
+    "aliases": [
+      "The same mother adds, \"My sister says I should stop comparing my children.\" How should the nurse respond?"
+    ]
   },
   "q_0744": {
     "topic": "teaching and discipline for the child with cognitive impairment",
@@ -14003,7 +14066,7 @@
     ],
     "rationale": "Conductive loss \"results from interference of transmission of sound to the middle ear,\" is \"the most common of all types of hearing loss and most frequently a result of recurrent serous otitis media,\" and \"involves mainly interference with loudness of sound\" (p. 641); chronic otitis media is also named as the most common cause of impaired hearing overall (p. 644).",
     "type": "single",
-    "trap": "(D) misdescribes mixed loss, which involves the middle ear *and* the neural pathways; the practical consequence of keying conductive is that amplification helps, which is what the next item turns on.",
+    "trap": "(D) misdescribes mixed loss, which involves the middle ear *and* the neural pathways; the practical consequence of keying conductive is that amplification helps, which does not hold for a sensorineural loss.",
     "source": "ch20.md"
   },
   "q_0762": {
@@ -14021,7 +14084,7 @@
     ],
     "rationale": "Sensorineural loss \"results in distortion of sound and problems in discrimination,\" and the chapter explains that \"conventional hearing aids only amplify sound that may not be processed by a damaged inner ear,\" so some children \"require a referral for a cochlear implant\" (pp. 641, 642).",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, applying the conductive rule to a sensorineural loss; (B) names a real problem — improper ear mold fit causes acoustic feedback, the annoying whistling sound — but that is not what this scenario describes.",
+    "trap": "(C) is the mirror error, applying the conductive rule that loss mainly affects loudness to a sensorineural loss; (B) names a real problem — improper ear mold fit causes acoustic feedback, the annoying whistling sound — but that is not what this scenario describes.",
     "source": "ch20.md"
   },
   "q_0763": {
@@ -14515,7 +14578,7 @@
   "q_0789": {
     "topic": "the three stages of separation anxiety",
     "subtopic": "general",
-    "stem": "On the third hospital day, the same toddler has stopped crying. He lies quietly, will not play, refuses meals, and has begun sucking his thumb again. A staff member remarks that he has finally settled in. How should the nurse interpret this?",
+    "stem": "On the third hospital day, an 18-month-old who screamed and tried to follow his mother on admission has stopped crying. He lies quietly, will not play, refuses meals, and has begun sucking his thumb again. A staff member remarks that he has finally settled in. How should the nurse interpret this?",
     "options": [
       "These are despair behaviors, and the child's physical condition may deteriorate from refusal to eat, drink, or move",
       "These are detachment behaviors, indicating the child has formed new attachments on the unit",
@@ -14527,8 +14590,11 @@
     ],
     "rationale": "In despair \"the crying stops and depression is evident. The child is much less active, is uninterested in play or food, and withdraws from others,\" with regression to earlier behavior, and Box 21.1 notes the child's \"physical condition may deteriorate from refusal to eat, drink, or move\" (p. 658).",
     "type": "single",
-    "trap": "(C) and (D) act on the misreading the chapter names outright — staff \"may think that the child is finally settling in to the new surroundings\" (p. 658) — and (C) compounds it by reducing the very parental contact that is the intervention; this is the mirror of the previous item, where the same child's loud protest was misread as bad behavior.",
-    "source": "ch21.md"
+    "trap": "(C) and (D) act on the misreading the chapter names outright — staff \"may think that the child is finally settling in to the new surroundings\" (p. 658) — and (C) compounds it by reducing the very parental contact that is the intervention; protest may cease only with physical exhaustion, which is what makes this stage look like improvement.",
+    "source": "ch21.md",
+    "aliases": [
+      "On the third hospital day, the same toddler has stopped crying. He lies quietly, will not play, refuses meals, and has begun sucking his thumb again. A staff member remarks that he has finally settled in. How should the nurse interpret this?"
+    ]
   },
   "q_0790": {
     "topic": "the three stages of separation anxiety",
@@ -16851,7 +16917,7 @@
     ],
     "rationale": "The chapter directs escharotomy or fasciotomy for constricting circumferential eschar, with fasciotomy done only \"if the escharotomy is not sufficient\" (p. 765).",
     "type": "single",
-    "trap": "(B) is the correct second step presented as the first, which is what this pair tests; note that positioning matters for the same reason — children with burns assume flexion, which \"encourages the formation of contractures and loss of function,\" so splinting and positioning are in extension.",
+    "trap": "(B) is the correct second step presented as the first, which is what the escharotomy-fasciotomy distinction tests; note that positioning matters for the same reason — children with burns assume flexion, which \"encourages the formation of contractures and loss of function,\" so splinting and positioning are in extension.",
     "source": "ch23.md"
   },
   "q_0916": {
@@ -19783,7 +19849,7 @@
     ],
     "rationale": "Table 27.3 calls furosemide the \"Drug of choice in severe heart failure,\" notes that it causes excretion of chloride and potassium and that \"hypokalemia may precipitate digitalis toxicity,\" and directs encouraging high-potassium foods and observing for signs of digoxin toxicity (p. 970).",
     "type": "single",
-    "trap": "(B) describes spironolactone, whose instruction is the opposite — \"Do not administer potassium supplements\" — and giving potassium alongside spironolactone or an angiotensin-converting enzyme inhibitor is the hyperkalemia trap this pair exists to catch.",
+    "trap": "(B) describes spironolactone, whose instruction is the opposite — \"Do not administer potassium supplements\" — and giving potassium alongside spironolactone or an angiotensin-converting enzyme inhibitor is the hyperkalemia trap the furosemide-spironolactone distinction exists to catch.",
     "source": "ch27.md"
   },
   "q_1074": {
@@ -20609,7 +20675,7 @@
     ],
     "rationale": "The chapter states that \"In iron deficiency anemia TIBC is elevated above the normal range,\" an elevation that \"represents the body's compensatory mechanism to absorb more iron\" (p. 1031).",
     "type": "single",
-    "trap": "(B) reverses the compensation, which is the error this pair exists to catch — serum iron falls while binding capacity rises. (C) misstates the reticulocyte count, which is \"usually normal or slightly reduced,\" and (D) misplaces decreased blood pressure, which is a late rather than early sign.",
+    "trap": "(B) reverses the compensation, which is the central error on this finding — serum iron falls while binding capacity rises. (C) misstates the reticulocyte count, which is \"usually normal or slightly reduced,\" and (D) misplaces decreased blood pressure, which is a late rather than early sign.",
     "source": "ch28.md"
   },
   "q_1119": {
@@ -21735,7 +21801,7 @@
     ],
     "rationale": "The chapter gives site-specific positioning: infratentorial goes flat, on either side, not on the operative side; supratentorial goes with the head elevated above the heart (p. 1095).",
     "type": "single",
-    "trap": "(B) is correct for the other site and is the swap this pair exists to catch; (C) is contraindicated after both types, and the chapter directs notifying the practitioner before lowering the head even for impending shock.",
+    "trap": "(B) is correct for the supratentorial site and is the swap this distinction exists to catch; (C) is contraindicated after both types, and the chapter directs notifying the practitioner before lowering the head even for impending shock.",
     "source": "ch29.md"
   },
   "q_1180": {
@@ -22121,7 +22187,7 @@
     ],
     "rationale": "The chapter states that vigorous cooling is \"needed to prevent brain damage if the rectal temperature exceeds 104°F (40°C),\" and that \"Antipyretics are the method of choice for fever reduction; cooling devices are used for hyperthermia\" (pp. 1119, 1121).",
     "type": "single",
-    "trap": "(C) reverses the two methods, which is the swap this pair exists to catch — the set point determines which works, exactly as in the fever chapter earlier in the book.",
+    "trap": "(C) reverses the two methods, which is the swap the fever-hyperthermia distinction exists to catch — the set point determines which works, exactly as in the fever chapter earlier in the book.",
     "source": "ch30.md"
   },
   "q_1201": {
@@ -24927,7 +24993,7 @@
     ],
     "rationale": "\"School-aged children should attend school, even on days when there is joint pain. Staying home will not improve arthritis\" (p. 1291). \"Application of heat has been beneficial to children with arthritis. Moist heat is best for relieving pain and stiffness, and the most efficient and practical method is via the bathtub\" (p. 1291). \"Unless there is a specific risk of injury related to arthritis, the child should not be restricted from regular play, dance, exercise programs, and even individual and team sports\" (p. 1290), and \"Daytime naps are discouraged, especially because inactivity provokes stiffness.\"",
     "type": "sata",
-    "trap": "(E) is the wrong option and it is correct for a different problem in the same chapter, since ice belongs to acute soft tissue injury under RICE (p. 1269) while chronic arthritis calls for heat. Reaching for the familiar sports-injury measure is the error this pairing is designed to catch.",
+    "trap": "(E) is the wrong option and it is correct for a different problem in the same chapter, since ice belongs to acute soft tissue injury under RICE (p. 1269) while chronic arthritis calls for heat. Reaching for the familiar sports-injury measure is the error the heat-versus-ice distinction is designed to catch.",
     "source": "ch33.md"
   },
   "q_1352": {

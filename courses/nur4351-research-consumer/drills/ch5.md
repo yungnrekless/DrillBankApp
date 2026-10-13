@@ -53,14 +53,14 @@ Answer: B
 Rationale: A research objective, sometimes called an aim, is a clear, concise, declarative statement expressed in the present tense that identifies the goals of the study.
 Trap: (C) is tempting because the statement names both variables and a population, but a hypothesis must predict an expected relationship between variables. Nothing here predicts anything.
 
-Q: The same report includes the statement: "What coping strategies do family caregivers of persons with dementia use?" Which element is this, and what identifies it?
+Q: A study report includes the statement: "What coping strategies do family caregivers of persons with dementia use?" Which element is this, and what identifies it?
 A) A research objective, because objectives are interrogative
 B) The research purpose, because it identifies the study's goal
 C) A nondirectional hypothesis, because no direction is predicted
 D) A research question, because it is an interrogative statement worded in the present tense
 Answer: D
 Rationale: A research question is a clear, concise, interrogative statement worded in the present tense that includes one or more variables and is expressed to guide the implementation of studies.
-Trap: (A) swaps the grammatical forms, which is the whole point of this pair. Objective and question are separated by declarative versus interrogative, not by tense — both are present tense.
+Trap: (A) swaps the grammatical forms that separate objectives from questions. Objective and question are separated by declarative versus interrogative, not by tense — both are present tense.
 
 Subtopic: quantitative and qualitative aims
 

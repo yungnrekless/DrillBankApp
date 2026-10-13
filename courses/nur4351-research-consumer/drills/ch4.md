@@ -91,7 +91,7 @@ C) Nontherapeutic research, because it generates knowledge for science and is no
 D) Nontherapeutic research, because the volunteers are healthy rather than ill
 Answer: C
 Rationale: Nontherapeutic research is conducted to generate knowledge for science; the results may help future patients but are not expected to benefit those acting as research participants.
-Trap: This is the mirror of the previous item, and (D) is the dangerous option because it reaches the right label by the wrong route. Health status is not the criterion; a study can enroll sick patients and still be nontherapeutic.
+Trap: Nontherapeutic research mirrors therapeutic research on the question of who benefits, and (D) is the dangerous option because it reaches the right label by the wrong route. Health status is not the criterion; a study can enroll sick patients and still be nontherapeutic.
 
 Subtopic: sequence of the major standards
 
@@ -237,7 +237,7 @@ C) Consent is unnecessary because the facility administrator authorizes particip
 D) Their consent is valid as long as the form is written in plain, understandable language
 Answer: B
 Rationale: Persons with diminished autonomy because of legal or mental incompetence or confinement to an institution are not legally competent to consent, and investigators must report the competence of subjects and the consent process used.
-Trap: (D) swaps competence for comprehension. Readable language supports understanding, but competence is the prior question of whether the person is capable of weighing benefits and risks at all.
+Trap: (D) swaps competence for comprehension. Readable language supports understanding, but competence is the more basic question of whether the person is capable of weighing benefits and risks at all.
 
 Subtopic: disclosure under the revised common rule
 

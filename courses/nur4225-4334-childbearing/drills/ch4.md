@@ -120,14 +120,14 @@ Answer: A
 Rationale: The fundus is the "dome-shaped top of the uterus" and is the "site at which the uterine tubes (fallopian tubes) enter" the uterus (p. 48).
 Trap: (C) is the near miss rather than a wrong region — the corpus is the upper triangular portion as a whole, and the fundus is its dome-shaped top. A stem that specifies where the tubes enter is asking for the more precise of the two.
 
-Q: The same nurse is then asked which uterine division is the short constricted portion separating the corpus from the cervix, known in obstetrics as the lower uterine segment. Which division does this describe?
+Q: A nurse reviewing pelvic anatomy is asked which uterine division is the short constricted portion separating the corpus from the cervix, known in obstetrics as the lower uterine segment. Which division does this describe?
 A) The isthmus
 B) The fundus
 C) The internal os
 D) The ampulla
 Answer: A
 Rationale: "The isthmus, or lower uterine segment, is a short constricted portion that separates the corpus from the cervix" (p. 48).
-Trap: (B) is the mirror error of the previous item, swapping the top of the uterus for the constriction at its base. (D) is the trap the fact bank warns about directly: isthmus is used twice in this chapter, once for the uterus and once for a section of the uterine tube, so read which organ the stem names before matching a name to a location.
+Trap: (B) swaps the constriction at the base of the uterus for its dome-shaped top, where the uterine tubes enter. (D) is the trap the fact bank warns about directly: isthmus is used twice in this chapter, once for the uterus and once for a section of the uterine tube, so read which organ the stem names before matching a name to a location.
 
 Subtopic: myometrial layers
 
@@ -147,7 +147,7 @@ C) The outer layer, whose longitudinal fibers are concentrated in the fundus
 D) The peritoneal layer, which covers the uterus externally
 Answer: A
 Rationale: The inner myometrial fibers, arranged around where the tubes enter and around the internal cervical os, "help keep the cervix closed during pregnancy" and "prevent menstrual blood from flowing back into the uterine tubes during menstruation" (pp. 48–49).
-Trap: (C) is the mirror error of the previous item's trap — the outer longitudinal layer expels the fetus, which is the opposite of keeping the cervix closed. All three layers are plausible only until you match each to its stated function.
+Trap: (C) is the outer longitudinal layer, the same layer that tempts a reader asked which layer ligates the placental-site vessels — the outer longitudinal layer expels the fetus, which is the opposite of keeping the cervix closed. All three layers are plausible only until you match each to its stated function.
 
 Subtopic: endometrial layers
 
@@ -172,14 +172,14 @@ Answer: A
 Rationale: "The ovum is usually fertilized by the sperm in the ampulla portion of one of the tubes" (p. 49). The four sections run, uterus to ovary: interstitial, isthmus, ampulla, infundibulum.
 Trap: (B) is the reflex pick because the infundibulum is the end that captures the ovum, so it feels like the place where sperm and ovum would first meet. Capture and fertilization happen at different points along the tube, and the order of the four sections is what this item is testing.
 
-Q: The same patient asks what actually draws the released ovum into the tube in the first place. Which structure and section should the nurse name?
+Q: A patient with a history of tubal surgery asks what actually draws the released ovum into the uterine tube in the first place. Which structure and section should the nurse name?
 A) The fimbriae, the fringed ends of the infundibulum
 B) The fimbriae, the fringed ends of the ampulla
 C) The cilia of the interstitial portion, which sweep the ovum inward
 D) The rhythmic contractions of the isthmus, which create suction at the ovary
 Answer: A
 Rationale: "The infundibulum has fimbriated (fringed) ends, which pull the ovum into the tube" (p. 49). Once inside, the ovum is moved "by rhythmic contractions of muscles of the tubes and by the current produced by the movement of the cilia that line the tubes."
-Trap: (B) is the mirror error of the previous item, attaching the right structure to the wrong section. (C) and (D) name the two real transport mechanisms but assign them the job of capture, which belongs to the fimbriae alone.
+Trap: (B) attaches the right structure to the wrong section: the fimbriae belong to the infundibulum, while the ampulla is where fertilization usually occurs. (C) and (D) name the two real transport mechanisms but assign them the job of capture, which belongs to the fimbriae alone.
 
 Q: On pelvic examination of a healthy 24-year-old, the ovaries are described as nodular rather than smooth. How should the nurse interpret this?
 A) It is an expected finding after menarche, caused by repeated rupture of follicles at ovulation
@@ -219,7 +219,7 @@ C) Perimenopause
 D) The follicular phase
 Answer: A
 Rationale: Puberty "denotes the entire transitional stage between childhood and sexual maturity"; menarche "denotes first menstruation" and is a single event within it (p. 51).
-Trap: (B) is the mirror error of the previous item. Working the same distinction from the other end is the point: a learner who holds these two backwards will answer one of the pair correctly by luck and the other wrongly, and only the pair reveals it.
+Trap: (B) is the mirror error: it names the whole transition with menarche, the word for the single event of first menstruation. Working the distinction from both ends is the point: a learner who holds these two terms backwards can get it right by luck when it is asked from one end and wrong when it is asked from the other.
 
 Q: A 12-year-old whose periods began four months ago tells the nurse that her cycles have been irregular and unpredictable, and asks whether that means she cannot get pregnant yet. Which response is accurate?
 A) Early cycles are commonly irregular and anovulatory, but pregnancy can occur at any time after the onset of menses
@@ -248,7 +248,7 @@ C) Menarche
 D) The luteal phase
 Answer: A
 Rationale: The climacteric is "a transitional phase during which ovarian function and hormone production decline. This phase spans the years from the onset of premenopausal ovarian decline to the postmenopausal time when symptoms stop" (p. 54), whereas menopause "refers only to the last menstrual period."
-Trap: (B) is the mirror error of the previous item and completes the analogy the fact bank draws: menarche is to puberty as menopause is to climacteric. In both pairs, the everyday word names a single event and the technical word names the transition containing it.
+Trap: (B) is the mirror error: it names the whole transition with menopause, which refers only to the last menstrual period. It completes the analogy the fact bank draws: menarche is to puberty as menopause is to climacteric. In both pairs, the everyday word names a single event and the technical word names the transition containing it.
 
 Q: Three patients report irregular, unpredictable bleeding: a 13-year-old whose periods began eight months ago, a 28-year-old with previously regular cycles, and a 48-year-old whose cycles have been shortening. Which patient's finding most warrants evaluation rather than reassurance?
 A) The 28-year-old, because anovulatory irregular bleeding is expected only at the two ends of the reproductive years
@@ -440,7 +440,7 @@ C) Cervical mucus that is thick and viscous, which indicates peak fertility
 D) The cessation of all cervical mucus, which marks the fertile window
 Answer: A
 Rationale: "At the time of ovulation, cervical mucus is thin and clear. It looks, feels, and stretches like egg white," and this stretchable quality is spinnbarkeit (p. 53). "Preovulatory and postovulatory mucus is viscous (thick) so that sperm penetration is discouraged."
-Trap: (B) is the mirror error of the previous item: the temperature sign confirms ovulation after the fact and is the wrong tool for timing intercourse, while the mucus sign is the prospective one. (C) inverts the source in the way the fact bank flags — thick mucus is the sperm-hostile state, not the fertile one.
+Trap: (B) is the mirror error: the temperature sign confirms ovulation after the fact and is the wrong tool for timing intercourse, while the mucus sign is the prospective one. (C) inverts the source in the way the fact bank flags — thick mucus is the sperm-hostile state, not the fertile one.
 
 Q: A 22-year-old reports one-sided lower abdominal pain that occurs around the middle of each cycle and lasts a few hours, sometimes with light spotting. She is afebrile, with a soft abdomen and no rebound tenderness. What is the nurse's priority action?
 A) Reassure her that this is mittelschmerz, a normal ovulatory finding, and provide education

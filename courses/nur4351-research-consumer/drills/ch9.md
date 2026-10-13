@@ -22,14 +22,14 @@ Answer: B
 Rationale: The target population is the entire set of individuals or elements who meet the sampling criteria, regardless of whether the researcher can reach them.
 Trap: (A) is the reflex answer because the description sounds like the group being studied. The accessible population is only the portion the researcher can reasonably reach.
 
-Q: That same researcher can realistically recruit only from patients with type 2 diabetes admitted to one acute care hospital in Dallas, Texas. Those Dallas patients constitute which group?
+Q: A researcher studying adult males 18 years and older who have type 2 diabetes and have been hospitalized with a lower-extremity infection can realistically recruit only from patients with type 2 diabetes admitted to one acute care hospital in Dallas, Texas. Those Dallas patients constitute which group?
 A) The target population
 B) The element
 C) The accessible population
 D) The stratum
 Answer: C
 Rationale: The accessible population is the portion of the target population to which the researcher has reasonable access.
-Trap: This is the mirror image of the previous item. Sort it by the question the stem is asking: everyone who meets criteria is the target; whoever the researcher can actually get to is the accessible population.
+Trap: (A) is tempting because the Dallas patients do meet the study's description. Sort it by the question the stem is asking: everyone who meets criteria is the target; whoever the researcher can actually get to is the accessible population.
 
 Q: A study of central line care treats each individual intravenous catheter as one unit of study. What is each catheter called?
 A) An element
@@ -84,7 +84,7 @@ Answer: B, D, E
 Rationale: The inclusion criteria were adults 60 years or older, able to speak and read English, undergoing surgical replacement of one knee joint.
 Trap: (A) and (C) are the exclusion criteria from the same study, along with debilitating chronic muscle disease. Both lists come from one worked example, which is exactly why they get blended together.
 
-Q: A 68-year-old who speaks and reads English is scheduled for replacement of one knee joint but carries a diagnosis of dementia. How is this person best described for that study?
+Q: A knee-replacement teaching study includes adults 60 or older who speak and read English and are undergoing replacement of one knee joint, and lists dementia among its exclusion criteria. How is a 68-year-old English speaker scheduled for one knee replacement who has dementia best described for that study?
 A) A member of the accessible but not the target population
 B) Someone who meets the inclusion criteria but is removed by an exclusion criterion
 C) Someone who fails to meet the inclusion criteria
@@ -140,14 +140,14 @@ Answer: A
 Rationale: Increasing the sample size decreases random variation and improves representativeness, but increasing the sample size has no effect on systematic variation.
 Trap: (B) is the reflex answer because a bigger sample feels like it fixes everything. This is the chapter's sharpest point: a biased selection process is not diluted by adding more people selected the same biased way.
 
-Q: In another study, participants' scores fall above and below the mean in both directions by the amount expected among different people from the same sample. What is this, and what does a larger sample do to it?
+Q: In a study, participants' scores fall above and below the mean in both directions by the amount expected among different people from the same sample. What is this, and what does a larger sample do to it?
 A) Systematic bias; a larger sample will not change it
 B) Sampling error; a larger sample has no effect
 C) Systematic variation; a larger sample increases it
 D) Random variation; a larger sample decreases it, placing more values near the mean and improving representativeness
 Answer: D
 Rationale: Random variation is the expected difference in values that occurs when different participants from the same sample are examined, scattering both above and below the mean. Increasing sample size decreases it and improves representativeness.
-Trap: This is the mirror of the previous item. Read the direction word in the stem: scattered both ways means random; mostly one direction means systematic.
+Trap: (A) and (C) describe systematic variation. Read the direction word in the stem: scattered both ways means random; mostly one direction means systematic.
 
 Q: Why is systematic bias especially dangerous in quasi-experimental and experimental studies?
 A) It lowers the acceptance rate below the acceptable range
@@ -180,7 +180,7 @@ D) 20%
 Answer: B
 Rationale: Refusal rate equals the number refusing divided by the number approached, times 100 — 4 divided by 80 equals 5%.
 
-Q: In that same study, 76 of the 80 patients approached consented. What is the acceptance rate, and how should it be appraised?
+Q: Investigators approached 80 eligible patients about a preoperative teaching study, and 76 of them consented. What is the acceptance rate, and how should it be appraised?
 A) 76%, a study weakness
 B) 5%, a study strength
 C) 95%, but it cannot be appraised without the retention rate
@@ -189,7 +189,7 @@ Answer: D
 Rationale: Acceptance rate equals the number accepting divided by the number approached — 76 divided by 80 equals 95%, which the chapter identifies as a study strength. Acceptance rate also equals 100% minus the refusal rate.
 Trap: (A) uses the raw count of acceptors as if it were a percentage. The denominator is always the number approached, not 100.
 
-Q: That study began with a sample of 76 participants, and 31 of them withdrew before completion. What is the attrition rate?
+Q: A preoperative teaching study began with a sample of 76 participants, and 31 of them withdrew before completion. What is the attrition rate?
 A) 31%
 B) 39%
 C) 41%
@@ -198,7 +198,7 @@ Answer: C
 Rationale: Attrition rate equals the number withdrawing divided by the sample size, times 100 — 31 divided by 76 equals 41%.
 Trap: (A) treats the raw number withdrawing as the percentage, and (D) is the retention rate. Attrition and retention are complements, so having one does not mean you may report the other figure as the answer.
 
-Q: Of the 76 participants who entered that study, 45 completed it. What is the retention rate?
+Q: Of the 76 participants who entered a preoperative teaching study, 45 completed it. What is the retention rate?
 A) 59%
 B) 41%
 C) 45%

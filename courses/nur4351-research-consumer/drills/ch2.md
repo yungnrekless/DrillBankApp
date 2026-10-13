@@ -234,7 +234,7 @@ C) A conceptual definition, which specifies the instrument used to measure the v
 D) An operational definition, which is derived from a theorist's definition or a concept analysis
 Answer: A
 Rationale: A conceptual definition provides a variable or concept with theoretical meaning, is derived from a theorist's definition or a concept analysis, and links the study framework to the study variables.
-Trap: (C) is the mirror-image error to the previous item. It carries the conceptual label but describes operational work, and naming an instrument is always operational no matter which label the option attaches to it.
+Trap: (C) is the mirror-image error of calling a measured, scored variable a conceptual definition. It carries the conceptual label but describes operational work, and naming an instrument is always operational no matter which label the option attaches to it.
 
 Topic: nursing process versus research process
 Subtopic: comparing the two processes

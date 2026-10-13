@@ -242,7 +242,7 @@ Answer: A
 Rationale: "A rule for the length of time-out is 1 minute per year of age; use a kitchen timer with an audible bell to record the time rather than a watch" (p. 23).
 Trap: (C) is the reflex pick because scaling punishment to severity feels like fairness, and the chapter's Flexibility principle does mention severity — but that principle governs which *strategy* is chosen, not the length of a time-out. The duration rule is fixed to age.
 
-Q: The same parent reports that her son screams for the first several minutes of every time-out, and asks whether that time counts. What is the correct guidance?
+Q: A parent reports that her 4-year-old son screams for the first several minutes of every time-out, and asks whether that time counts. What is the correct guidance?
 A) The time counts from the moment the child is sent, regardless of behavior
 B) The time-out period begins after the child quiets down
 C) The time-out should be ended early if the child becomes upset
@@ -325,7 +325,7 @@ C) Divided custody
 D) Sole custody
 Answer: A
 Rationale: In joint legal custody "the children reside with one parent, but both parents are the children's legal guardians, and both participate in childrearing" (p. 27).
-Trap: (B) is the mirror error of the next item's arrangement and the swap the fact bank flags. The discriminating word is in the name: **physical** custody is about where the child physically lives, and in joint physical custody "the parents alternate the physical care and control of the children on an agreed-on basis."
+Trap: (B) trades joint legal custody for joint physical custody, which is the swap the fact bank flags. The discriminating word is in the name: **physical** custody is about where the child physically lives, and in joint physical custody "the parents alternate the physical care and control of the children on an agreed-on basis."
 
 Q: Parents who live a few blocks apart alternate their son's residence week by week and share parenting responsibilities legally. For which families does the chapter say this arrangement works well?
 A) Families in which one parent has substantially greater financial resources
@@ -483,4 +483,4 @@ C) Ethnocentrism
 D) Family-centered care
 Answer: B
 Rationale: Cultural humility is "the process of self-reflection to promote honest and trustworthy relationships" — "knowing one's self better in order to know others" — and is "best defined not as a discrete end point but as a commitment and active engagement in a lifelong process." It "reminds us of power differentials that influence health care encounters," holds that "people are often the experts in their own experiences," and "cannot be collapsed into a class or education offering" (p. 37).
-Trap: (A) is the mirror error of the previous item, and the pair is the cleanest confusable set in the second half of the chapter. Competence is a skill set and an endpoint built on knowledge about groups; humility is an ongoing process that locates expertise in the patient. Note also that culture here "is not only race and ethnicity, but also social class, age, sexual orientation, sexuality, gender, ability, and professional discipline," so a distractor limiting culture to race, ethnicity, and religion is wrong on scope as well.
+Trap: (A) is the mirror error, mistaking humility for competence, and competence versus humility is the cleanest confusable set in the second half of the chapter. Competence is a skill set and an endpoint built on knowledge about groups; humility is an ongoing process that locates expertise in the patient. Note also that culture here "is not only race and ethnicity, but also social class, age, sexual orientation, sexuality, gender, ability, and professional discipline," so a distractor limiting culture to race, ethnicity, and religion is wrong on scope as well.

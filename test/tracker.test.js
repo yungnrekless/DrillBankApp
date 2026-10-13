@@ -50,6 +50,26 @@ test('keyIndex reports collisions rather than silently overwriting', () => {
   assert.equal(byKey.size, 2);
 });
 
+test('keyIndex maps a reworded question\'s old stems to the same qid', () => {
+  // Answers buffered on a page built before the rewording carry the old key.
+  const { byKey, collisions } = keyIndex({
+    q_0001: { stem: 'A second woman receives bupivacaine. In contrast?', aliases: ['Old wording?'] },
+    q_0002: { stem: 'Something else?' },
+  });
+  assert.deepEqual(collisions, []);
+  assert.equal(byKey.get(stemKey('Old wording?')), 'q_0001');
+  assert.equal(byKey.get(stemKey('A second woman receives bupivacaine. In contrast?')), 'q_0001');
+  assert.equal(byKey.size, 3);
+});
+
+test('keyIndex treats an alias that matches another question as a collision', () => {
+  const { collisions } = keyIndex({
+    q_0001: { stem: 'New stem?', aliases: ['Something else?'] },
+    q_0002: { stem: 'Something else?' },
+  });
+  assert.equal(collisions.length, 1);
+});
+
 test('buffered records are mapped to qids and appended', () => {
   const byKey = new Map([['aaa', 'q_0001'], ['bbb', 'q_0002']]);
   const { log, added, unmatched } = mergeAttempts([], [

@@ -21,6 +21,8 @@ export const QUESTION_TYPES = ['single', 'sata'];
  * @property {string}   [trap]     why the tempting wrong answer is wrong
  * @property {'single'|'sata'} type
  * @property {string}   [source]   file the question was imported from
+ * @property {string[]} [aliases]  earlier stems of a question reworded in place;
+ *                                 keyIndex maps their stem keys to this qid
  */
 
 /**

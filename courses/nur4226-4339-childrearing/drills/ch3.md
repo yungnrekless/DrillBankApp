@@ -216,7 +216,7 @@ Answer: B
 Rationale: "Children of an affected parent have a 50% chance of inheriting the mutant allele and being affected" (Box 3.2, p. 44). The chapter states the assumption before giving the number: "if one parent is affected, he or she is much more likely to be heterozygous (have one mutant allele) than homozygous," and an individual with two dominant mutant alleles "will experience physical or cognitive abnormalities at a much more severe level" (p. 50).
 Trap: (C) confuses penetrance with transmission. The achondroplasia mutation is 100% penetrant, meaning anyone who inherits it will show it — not that everyone inherits it. Only the rare affected-homozygote mating gives 100% affected offspring.
 
-Q: The same couple has three children, all affected, and asks whether the fourth is therefore safe. What is the accurate response?
+Q: A man with achondroplasia and his genotypically normal partner have three children, all affected, and ask whether a fourth is therefore safe. What is the accurate response?
 A) The fourth child is very unlikely to be affected, since three of four already are
 B) Each pregnancy carries the same 50% chance; 50% of offspring do not necessarily inherit the gene mutation, and chance has no memory
 C) The risk rises with each affected child
@@ -299,7 +299,7 @@ C) 25% of sons are affected
 D) All sons are affected
 Answer: B
 Rationale: "Sons of carrier females have a 50% chance of inheriting the mutant allele and being affected (hemizygous). Daughters have a 50% risk of inheriting the mutant allele and being (heterozygous) carriers" (Box 3.4, p. 58).
-Trap: (A) is the mirror error of the previous item — the affected-father pattern applied to a carrier mother. Holding the two matings as a pair is what makes an X-linked recessive pedigree readable at a glance.
+Trap: (A) is the mirror error — the affected-father pattern applied to a carrier mother. Holding the affected-father and carrier-mother matings side by side is what makes an X-linked recessive pedigree readable at a glance.
 
 Q: A man has an X-linked dominant disorder. What is the risk to his daughters?
 A) All are carriers and none is affected

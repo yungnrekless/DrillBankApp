@@ -366,7 +366,7 @@ Answer: B
 Rationale: "the most important factor in accurately measuring BP is the use of an appropriately sized cuff (cuff size refers only to the inner inflatable bladder, not the cloth covering)." Choose "a cuff with a bladder width that is approximately 40% of the arm circumference midway between the olecranon and the acromion," which usually gives "a cuff bladder length that covers 80% to 100% of the circumference of the arm" (p. 108).
 Trap: (C) swaps the two percentages between width and length. (A) is ruled out by name: "Do not choose a cuff based on the name of the cuff (e.g., an 'infant' cuff may be too small for some infants)."
 
-Q: The correctly sized cuff is unavailable and the nurse must choose between one that is too small and one that is too large. Which should be used, and what error will result?
+Q: When measuring a child's blood pressure, the correctly sized cuff is unavailable and the nurse must choose between one that is too small and one that is too large. Which should be used, and what error will result?
 A) The undersized cuff, which will read falsely low
 B) The oversized cuff, accepting a falsely low reading — the chapter directs using an oversized cuff rather than an undersized one
 C) The undersized cuff, accepting a falsely high reading

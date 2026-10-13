@@ -69,14 +69,14 @@ Answer: A
 Rationale: Family planning is "the conscious decision on when to conceive or to avoid pregnancy throughout the reproductive years" (p. 143). The patient has described a decision about timing across her reproductive years, not a method.
 Trap: (C) is the reflex pick because the three terms are used interchangeably in ordinary speech. The fact bank gives the cue that separates them: if the option describes a choice or a plan it is family planning, and if it describes a thing you use it is birth control.
 
-Q: The same patient then asks the nurse to explain what the phrase "birth control" specifically refers to. Which response is accurate?
+Q: A patient planning to wait four years before trying to conceive asks the nurse to explain what the phrase "birth control" specifically refers to. Which response is accurate?
 A) The device or practice used to decrease the risk of conceiving or bearing offspring
 B) The conscious decision on when to conceive or to avoid pregnancy
 C) The intentional prevention of pregnancy during sexual intercourse
 D) The percentage of users expected to conceive during the first year of use
 Answer: A
 Rationale: Birth control is "the device and/or practice used to decrease the risk of conceiving or bearing offspring" (p. 143). It names the thing used, not the decision behind it or the outcome sought.
-Trap: (B) is the mirror error of the previous item, handing back the decision when the device was asked for. (D) defines the contraceptive failure rate, which is a separate term from the same page cluster.
+Trap: (B) defines family planning, handing back the decision when the device was asked for. (D) defines the contraceptive failure rate, which is a separate term from the same page cluster.
 
 Q: A nursing student is asked which term names the intentional prevention of pregnancy during sexual intercourse. Which term is it?
 A) Contraception
@@ -200,7 +200,7 @@ C) Perfect-use effectiveness
 D) The ideal contraceptive standard
 Answer: A
 Rationale: Typical effectiveness is "how effective the method is with typical use," as against theoretic effectiveness, which is perfect use (p. 144).
-Trap: (B) is the mirror error of the previous item, and (C) is the same error wearing the correct term's own definition as its name — perfect use is the theoretic figure, so an option calling it perfect-use effectiveness is naming theoretic effectiveness in different words.
+Trap: (B) is the mirror error, naming the perfect-use figure when the stem asks how the method performs in real users' hands, and (C) is the same error wearing the correct term's own definition as its name — perfect use is the theoretic figure, so an option calling it perfect-use effectiveness is naming theoretic effectiveness in different words.
 
 Q: A patient asks what the "7% failure rate" printed in her pill pamphlet actually counts. Which explanation is accurate?
 A) The percentage of users expected to have an unplanned pregnancy during the first year of use, even when they use the method consistently and correctly
@@ -335,7 +335,7 @@ C) Induced abortion at the woman's request
 D) Spontaneous abortion
 Answer: A
 Rationale: "If performed for reasons of maternal or fetal health or disease, the term therapeutic abortion applies" (p. 161), as distinct from elective or induced abortion, which is performed at the woman's request.
-Trap: (B) is the mirror error of the previous item. Both procedures may be identical technically, so the term is decided entirely by the indication, and a stem that supplies a medical indication has already answered the question.
+Trap: (B) is the mirror error: elective abortion is the term for a termination performed at the woman's request, not for one performed for maternal or fetal health. Both procedures may be identical technically, so the term is decided entirely by the indication, and a stem that supplies a medical indication has already answered the question.
 
 Q: A patient asks the nurse what the legal status of abortion is now. Which response reflects the chapter?
 A) The 2022 Dobbs vs. Jackson Women's Health decision overturned Roe vs. Wade, so each state can determine its own abortion legislation
@@ -422,14 +422,14 @@ Answer: A
 Rationale: Misoprostol (Cytotec) is "a prostaglandin analog" that acts "directly on the cervix to soften and dilate" and "on the uterine muscle to stimulate contractions" (p. 162).
 Trap: (B) is the pick for anyone matching on the first three letters, which is exactly why the pair is confusable. The two drugs are given together and do entirely different things, so the mechanism in the stem is the only reliable discriminator.
 
-Q: The second drug in the same regimen works by binding to progesterone receptors and blocking the action of progesterone. Which drug is this, and how is the regimen sequenced?
+Q: A patient undergoing medical abortion receives a two-drug regimen, one of which works by binding to progesterone receptors and blocking the action of progesterone. Which drug is this, and how is the regimen sequenced?
 A) Mifepristone, formerly known as RU 486, given orally first, followed by buccal or vaginal misoprostol
 B) Misoprostol, formerly known as RU 486, given first, followed by oral mifepristone
 C) Mifepristone, given after misoprostol has softened the cervix
 D) Methotrexate, given as a single agent without a second drug
 Answer: A
 Rationale: Mifepristone, "formerly known as RU 486, works by binding to progesterone receptors and blocking the action of progesterone, which is necessary for maintaining pregnancy." The FDA-approved regimen is "mifepristone orally, followed by buccal (in the pouch of the cheek) or vaginal misoprostol," and the combination is 95% effective in resulting in a complete abortion over a 24- to 72-hour period (p. 162).
-Trap: (C) is the mirror error of the previous item, and it is attractive because softening the cervix first sounds like the logical order. The sequence runs the other way: the progesterone blockade comes first, and the prostaglandin follows. Note also that the side effects of nausea, vomiting, diarrhea, headache, dizziness, fever, and chills are attributed to misoprostol, not to mifepristone.
+Trap: (C) reverses the sequence, and it is attractive because softening the cervix first sounds like the logical order. The sequence runs the other way: the progesterone blockade comes first, and the prostaglandin follows. Note also that the side effects of nausea, vomiting, diarrhea, headache, dizziness, fever, and chills are attributed to misoprostol, not to mifepristone.
 
 Q: A patient at 15 weeks of gestation is scheduled for a dilation and evacuation. Which statements about this procedure are accurate?
 A) It accounts for almost all second-trimester abortions, requires more cervical dilation because the products of conception are larger, and is preceded by osmotic dilators or misoprostol applied to the cervix

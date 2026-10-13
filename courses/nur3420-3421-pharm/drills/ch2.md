@@ -43,14 +43,14 @@ Answer: C
 Rationale: Pharmacokinetics is the study of what happens to a drug from the time it is put into the body until the parent drug and all metabolites have left it — absorption into, distribution and metabolism within, and excretion from the body. How much drug survives hepatic metabolism is a kinetic fact.
 Trap: (A) is the reflex pick because the two words differ by four letters. Pharmacokinetics is what the body does to the drug; pharmacodynamics is what the drug does to the body.
 
-Q: The same monograph states that the drug slows heart rate by binding beta-1 receptors and reducing the rate at which cardiac cells contract. Which branch of pharmacology does that statement belong to?
+Q: A drug monograph states that the drug slows heart rate by binding beta-1 receptors and reducing the rate at which cardiac cells contract. Which branch of pharmacology does that statement belong to?
 A) Pharmacokinetics
 B) Pharmacodynamics
 C) Pharmaceutics
 D) Pharmacognosy
 Answer: B
 Rationale: Pharmacodynamics is the study of the biochemical and physiologic interactions of drugs at their sites of activity; it examines the effect of the drug on the body. Receptor binding at the site of action is the definition case.
-Trap: (A) is the mirror error of the previous item. Nothing here describes the drug's journey through the body — it describes what the drug does once it has arrived.
+Trap: (A) is the kinetics-dynamics swap. Nothing here describes the drug's journey through the body — it describes what the drug does once it has arrived.
 
 Subtopic: pharmaceutics as its own phase
 
@@ -75,14 +75,14 @@ Answer: B
 Rationale: The trade or proprietary name is the drug's registered trademark, indicating that its commercial use is restricted to the owner of the patent. Trade names are created with marketability in mind, which is why they are shorter and easier to pronounce than generic names.
 Trap: (A) is chosen by students who assume the name printed first is the official, protected one. The generic name is the official compendium name and is explicitly not protected by trademark.
 
-Q: The same patient asks who decides what a drug's generic name will be. Which response is accurate?
+Q: A patient asks who decides what a drug's generic name will be. Which response is accurate?
 A) The manufacturer chooses it, with marketability in mind
 B) The United States Adopted Names Council assigns it, and it is not protected by trademark
 C) The FDA assigns it at approval and protects it for the life of the patent
 D) It is derived from the drug's chemical composition and molecular structure
 Answer: B
 Rationale: The generic or nonproprietary name is given to a drug by the United States Adopted Names Council. It is much shorter and simpler than the chemical name and is not protected by trademark.
-Trap: (A) is the mirror error of the previous item — marketability drives the trade name, not the generic one. (D) describes the chemical name, which is the one that states composition and molecular structure.
+Trap: (A) confuses the generic name with the trade name — marketability drives the trade name, not the generic one. (D) describes the chemical name, which is the one that states composition and molecular structure.
 
 Subtopic: bioequivalence versus therapeutic equivalence
 
@@ -137,7 +137,7 @@ Answer: B
 Rationale: Table 2.1 ranks oral disintegration forms, buccal tablets, and oral soluble wafers as the fastest-absorbed oral preparations, ahead of liquids and elixirs, suspensions, powders, capsules, tablets, coated tablets, and enteric-coated tablets.
 Trap: (C) is the strong second choice, because liquids are already dissolved and genuinely do beat every solid form. The wafer beats the liquid because nothing has to dissolve at all.
 
-Q: Of those same four formulations, which will be absorbed most slowly?
+Q: Four oral formulations of the same drug are stocked. Which will be absorbed most slowly?
 A) Enteric-coated tablet
 B) Oral soluble wafer
 C) Suspension
@@ -266,7 +266,7 @@ C) A small volume of distribution and low blood concentrations
 D) Distribution confined to the intravascular space
 Answer: B
 Rationale: Fat-soluble drugs have a larger volume of distribution and low blood concentrations, because they disperse out of the blood into fat and other tissues.
-Trap: (A) is the mirror error of the previous item. The relationship is inverse in both directions, and the practical danger is reading a low blood level on a lipophilic drug as "not enough drug on board."
+Trap: (A) is the mirror error: it gives the lipophilic drug the hydrophilic pattern of a small volume of distribution and high blood concentrations. The relationship is inverse in both directions, and the practical danger is reading a low blood level on a lipophilic drug as "not enough drug on board."
 
 Subtopic: sites that are hard to reach
 
@@ -298,7 +298,7 @@ C) Ketoconazole increased the drug's volume of distribution
 D) Ketoconazole increased renal excretion of the drug
 Answer: B
 Rationale: Ketoconazole is the chapter's named P-450 inhibitor. Decreases in drug metabolism result in accumulation of the drug and prolongation of its effects, which can lead to drug toxicity.
-Trap: (A) is the mirror error of the previous item. The word "inhibitor" misleads because it sounds like it should reduce the drug's effect — it reduces enzyme activity, which raises drug levels.
+Trap: (A) is the mirror error: it gives the inhibitor ketoconazole the inducer's effect, speeding metabolism and lowering drug levels instead of raising them. The word "inhibitor" misleads because it sounds like it should reduce the drug's effect — it reduces enzyme activity, which raises drug levels.
 
 Subtopic: what alters metabolism
 
@@ -482,7 +482,7 @@ C) Palliative
 D) Supplemental
 Answer: B
 Rationale: Empiric therapy is based on clinical probabilities and involves drug administration when a pathologic condition has a high likelihood of occurrence based on the patient's initial presenting symptoms — the chapter's example is an antibiotic active against the most commonly associated organism, started before culture and sensitivity reports are available.
-Trap: (A) is the mirror error of the previous item, and the culture is what gives it away. You do not draw cultures on a patient who has no infection; the pending culture means illness is present and the choice is a probability judgment, not prevention.
+Trap: (A) is the mirror error, calling empiric therapy prophylactic, and the culture is what gives it away. You do not draw cultures on a patient who has no infection; the pending culture means illness is present and the choice is a probability judgment, not prevention.
 
 Topic: therapeutic index, tolerance, and dependence
 Subtopic: therapeutic index
@@ -496,7 +496,7 @@ Answer: B
 Rationale: The therapeutic index is the ratio of a drug's toxic level to the level that provides therapeutic benefits, and it determines the safety of the therapy. With a low therapeutic index the difference between an active dose and a toxic dose is small, which brings a greater likelihood of an adverse reaction and requires closer monitoring. Warfarin and digoxin are the chapter's examples.
 Trap: (A) inverts the scale, and the inversion is built into the wording — "low" sounds like low risk. The index is a ratio, so a small ratio means the therapeutic and toxic doses sit close together.
 
-Q: A different drug is described as having a high therapeutic index. What does this indicate?
+Q: A drug is described as having a high therapeutic index. What does this indicate?
 A) The drug is more dangerous and needs frequent serum levels
 B) The drug has a wide margin between therapeutic and toxic levels and is rarely associated with overdose events
 C) The drug reaches toxic levels after a single dose

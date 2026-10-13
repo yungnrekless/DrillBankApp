@@ -54,6 +54,11 @@ export function stemKey(stem) {
 /**
  * Map every question in a bank to its stem key.
  *
+ * A question whose stem was reworded in place carries its earlier stems in
+ * `aliases`, and those keys map to the same qid. Pages built before the edit
+ * keep recording under the old key until the phone reloads them, and without
+ * the alias those buffered answers would come back unmatched.
+ *
  * @param {Record<string, object>} bank
  * @returns {{byKey: Map<string, string>, collisions: string[][]}} key -> qid,
  *   plus any qid groups that hashed alike (which would misfile attempts)
@@ -62,13 +67,15 @@ export function keyIndex(bank) {
   const byKey = new Map();
   const clashes = new Map();
   for (const [qid, q] of Object.entries(bank)) {
-    const k = stemKey(q.stem);
-    if (byKey.has(k)) {
-      const group = clashes.get(k) || [byKey.get(k)];
-      group.push(qid);
-      clashes.set(k, group);
-    } else {
-      byKey.set(k, qid);
+    const keys = new Set([q.stem, ...(q.aliases || [])].map(stemKey));
+    for (const k of keys) {
+      if (byKey.has(k)) {
+        const group = clashes.get(k) || [byKey.get(k)];
+        group.push(qid);
+        clashes.set(k, group);
+      } else {
+        byKey.set(k, qid);
+      }
     }
   }
   return { byKey, collisions: [...clashes.values()] };

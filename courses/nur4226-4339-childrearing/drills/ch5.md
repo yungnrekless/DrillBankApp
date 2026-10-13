@@ -182,7 +182,7 @@ C) Oucher, 3 to 13 years
 D) Word-Graphic Rating Scale, 8 to 17 years
 Answer: B
 Rationale: The Faces Pain Scale–Revised uses "six cartoon faces ranging from neutral face for 'no pain' to grimacing face 'worst possible pain'" and is for children 5–17 (p. 146).
-Trap: (A) is the mirror error of the previous item, and the starting face is the entire discriminator between these two scales — smiling for Wong-Baker, neutral for the revised scale. Both have six faces and both are cartoons, so nothing else separates them at a glance.
+Trap: (A) is the mirror error, naming Wong-Baker FACES, which starts at a smiling face, and the starting face is the entire discriminator between these two scales — smiling for Wong-Baker, neutral for the revised scale. Both have six faces and both are cartoons, so nothing else separates them at a glance.
 
 Q: A nurse plans to use the Oucher photographic scale with a 5-year-old. What must the child be able to do first?
 A) Count off any two numbers or count by 10s

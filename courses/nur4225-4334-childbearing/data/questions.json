@@ -68,7 +68,7 @@
     ],
     "rationale": "\"500 to 1000 mL of lactated Ringer's solution or normal saline solution may be administered 15 to 30 minutes before induction of the anesthetic to decrease the potential for hypotension caused by sympathetic blockade.\" The mechanism the chapter gives is vasodilation with pooling of blood in the lower extremities, which decreases cardiac output.",
     "type": "single",
-    "trap": "(B) inverts the timing — the whole point of a preload is that it precedes the sympathetic blockade rather than chasing it. (D) has the right volume and the right timing but the wrong fluid, which is the next question.",
+    "trap": "(B) inverts the timing — the whole point of a preload is that it precedes the sympathetic blockade rather than chasing it. (D) has the right volume and the right timing but the wrong fluid, since the bolus should not contain dextrose, which could contribute to neonatal hypoglycemia.",
     "source": "ch17.md"
   },
   "q_0005": {
@@ -110,7 +110,7 @@
   "q_0007": {
     "topic": "maternal hypotension after neuraxial block",
     "subtopic": "recognizing the drop",
-    "stem": "A different woman had a preblock blood pressure of 142/88. After her spinal block her pressure reads 110/64 and the fetal heart rate shows minimal variability. How should the nurse classify this?",
+    "stem": "A woman had a preblock blood pressure of 142/88. After her spinal block her pressure reads 110/64 and the fetal heart rate shows minimal variability. How should the nurse classify this?",
     "options": [
       "Not hypotension, because the systolic pressure remains above 100 mm Hg",
       "Hypotension, because the systolic pressure has fallen more than 20% below her preblock baseline",
@@ -122,8 +122,11 @@
     ],
     "rationale": "Twenty percent of a 142 mm Hg baseline is roughly 28 mm Hg, so anything at or below about 114 meets the percentage criterion. Either criterion alone is sufficient, and this woman's pressure never approaches 100. Absent or minimal fetal heart rate variability is one of the box's listed accompanying signs.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — there the fixed number fired and the percentage did not, here the percentage fires and the fixed number does not. (C) is the reflex of a reader who saw \"or\" and read \"and\"; requiring both criteria would miss both of these patients.",
-    "source": "ch17.md"
+    "trap": "(A) applies only the fixed 100 mm Hg criterion — here the percentage criterion fires and the fixed number does not. (C) is the reflex of a reader who saw \"or\" and read \"and\"; requiring both criteria would miss this patient, and also a woman whose systolic falls to 100 mm Hg or less without a 20% drop.",
+    "source": "ch17.md",
+    "aliases": [
+      "A different woman had a preblock blood pressure of 142/88. After her spinal block her pressure reads 110/64 and the fetal heart rate shows minimal variability. How should the nurse classify this?"
+    ]
   },
   "q_0008": {
     "topic": "maternal hypotension after neuraxial block",
@@ -164,7 +167,7 @@
   "q_0010": {
     "topic": "maternal hypotension after neuraxial block",
     "subtopic": "the emergency sequence",
-    "stem": "Previous measures have not restored the woman's blood pressure and the provider orders a vasopressor. Which order is consistent with the chapter?",
+    "stem": "A woman became hypotensive after a neuraxial block, and lateral positioning, intravenous fluids, oxygen, and leg elevation have not restored her blood pressure. The provider orders a vasopressor. Which order is consistent with the chapter?",
     "options": [
       "Ephedrine 50 to 100 mcg intravenously",
       "Phenylephrine 5 to 10 mg intravenously",
@@ -177,7 +180,10 @@
     "rationale": "The box names both agents with their own units: \"ephedrine 5–10 mg or phenylephrine 50–100 mcg per protocol if previous measures have been ineffective.\" Milligrams for ephedrine, micrograms for phenylephrine.",
     "type": "single",
     "trap": "(A) and (B) each swap the two drugs' units onto the wrong agent, which is a plausible near-miss precisely because the numbers 5-to-10 and 50-to-100 are both correct and only the pairing is wrong. Read the unit, not the number.",
-    "source": "ch17.md"
+    "source": "ch17.md",
+    "aliases": [
+      "Previous measures have not restored the woman's blood pressure and the provider orders a vasopressor. Which order is consistent with the chapter?"
+    ]
   },
   "q_0011": {
     "topic": "maternal hypotension after neuraxial block",
@@ -294,7 +300,7 @@
   "q_0017": {
     "topic": "neuraxial technique selection in labor",
     "subtopic": "block levels by purpose",
-    "stem": "The same woman's labor arrests and a cesarean birth is planned using her existing epidural catheter. Which block level is now required?",
+    "stem": "A woman whose labor epidural provides a T10 to S5 block has an arrested labor, and a cesarean birth is planned using her existing epidural catheter. Which block level is now required?",
     "options": [
       "At least T8 to S1",
       "T10 to S5, which is already established",
@@ -306,8 +312,11 @@
     ],
     "rationale": "For cesarean birth the chapter specifies \"a block from at least T8 to S1,\" which is higher than the T10 to S5 labor block and is why the catheter must be redosed rather than simply continued. Diffusion is determined by the location of the catheter tip, the dose and volume of anesthetic, and the woman's position.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item — assuming a working labor epidural is automatically a surgical block. The equivalent spinal levels move the same direction: T10 at the hips for vaginal birth, up to T6 at the nipple line for cesarean.",
-    "source": "ch17.md"
+    "trap": "(B) assumes a working labor epidural is automatically a surgical block. The equivalent spinal levels move the same direction: T10 at the hips for vaginal birth, up to T6 at the nipple line for cesarean.",
+    "source": "ch17.md",
+    "aliases": [
+      "The same woman's labor arrests and a cesarean birth is planned using her existing epidural catheter. Which block level is now required?"
+    ]
   },
   "q_0018": {
     "topic": "epidural block nursing care",
@@ -402,7 +411,7 @@
   "q_0023": {
     "topic": "epidural and intrathecal opioids",
     "subtopic": "general",
-    "stem": "A second woman receives bupivacaine through her epidural catheter. Which set of findings should the nurse expect, in contrast?",
+    "stem": "A woman receives bupivacaine, a local anesthetic, through her epidural catheter instead of fentanyl alone. Which set of findings should the nurse expect?",
     "options": [
       "Vital signs unaffected, with the pushing reflex fully preserved",
       "No fluid preload needed, because sympathetic tone is unchanged",
@@ -414,8 +423,11 @@
     ],
     "rationale": "The local anesthetic is what blocks the sympathetic fibers, which produces the vasodilation and pooling that the 500 to 1000 mL preload is given to offset, and it is what produces motor block and the loss of contraction awareness that makes coached pushing necessary.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — carrying the opioid-only profile onto the local-anesthetic block. The one honest complication is that opioids alone \"usually do not provide adequate analgesia,\" which is why in practice the two are combined.",
-    "source": "ch17.md"
+    "trap": "(A) carries the profile of epidural fentanyl alone, an opioid, onto the local-anesthetic block. The one honest complication is that opioids alone \"usually do not provide adequate analgesia,\" which is why in practice the two are combined.",
+    "source": "ch17.md",
+    "aliases": [
+      "A second woman receives bupivacaine through her epidural catheter. Which set of findings should the nurse expect, in contrast?"
+    ]
   },
   "q_0024": {
     "topic": "epidural and intrathecal opioids",
@@ -932,7 +944,7 @@
   "q_0052": {
     "topic": "true versus false labor",
     "subtopic": "general",
-    "stem": "A second woman calls with contractions that stop when she walks the hallway and are felt in her abdomen above the umbilicus. Which pattern is she describing?",
+    "stem": "A woman at 39 weeks calls with contractions that stop when she walks the hallway and are felt in her abdomen above the umbilicus. Which pattern is she describing?",
     "options": [
       "True labor, because the contractions are palpable and located anteriorly",
       "False labor, because the contractions stop with walking and are felt above the umbilicus",
@@ -944,8 +956,11 @@
     ],
     "rationale": "False labor contractions \"occur irregularly or become regular only temporarily,\" \"often stop with walking or position change,\" \"can be felt in the back or the abdomen above the umbilicus,\" and \"can often be stopped through the use of comfort measures.\" True labor pain is \"usually felt in the lower back, radiating to the lower portion of the abdomen.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the location clue is the one most often reversed: above the umbilicus is the false-labor location, while the lower back radiating forward is the true-labor one.",
-    "source": "ch19.md"
+    "trap": "(A) reverses the location clue, which is the one most often reversed: above the umbilicus is the false-labor location, while the lower back radiating forward is the true-labor one.",
+    "source": "ch19.md",
+    "aliases": [
+      "A second woman calls with contractions that stop when she walks the hallway and are felt in her abdomen above the umbilicus. Which pattern is she describing?"
+    ]
   },
   "q_0053": {
     "topic": "true versus false labor",
@@ -1034,7 +1049,7 @@
     ],
     "rationale": "The Legal Tip states that \"pregnant women who present with contractions or who may be in labor are considered unstable and must be assessed, stabilized, and treated at the hospital where they present regardless of their insurance status or ability to pay.\" The act is \"a federal regulation enacted to protect pregnant women during an emergency regardless of their insurance status or ability to pay for care.\"",
     "type": "single",
-    "trap": "(B) frames a capacity problem as a legitimate reason to redirect, which is the most plausible-sounding violation because it does not turn on insurance at all. (D) is the next question's error.",
+    "trap": "(B) frames a capacity problem as a legitimate reason to redirect, which is the most plausible-sounding violation because it does not turn on insurance at all. (D) lets the triage nurse's finding discharge her, when a woman presenting to triage is presumed to be in true labor until a qualified health care provider certifies that she is not.",
     "source": "ch19.md"
   },
   "q_0058": {
@@ -1148,7 +1163,7 @@
   "q_0064": {
     "topic": "confirming rupture of membranes",
     "subtopic": "general",
-    "stem": "A nitrazine test on a second woman's vaginal fluid reads olive-green. What does this indicate?",
+    "stem": "A nitrazine test on a woman's vaginal fluid reads olive-green. What does this indicate?",
     "options": [
       "Membranes are probably ruptured",
       "Membranes are probably intact, at a pH of about 6.0",
@@ -1160,8 +1175,11 @@
     ],
     "rationale": "Yellow at pH 5.0, olive-yellow at 5.5, and olive-green at 6.0 all identify \"vaginal and most body fluids that are acidic,\" reading as membranes probably intact.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Note also that false results are possible \"because of presence of bloody show or semen or insufficient amount of amniotic fluid\" — and two of those three push the result toward a false positive, so a blue reading in a woman with bloody show deserves confirmation.",
-    "source": "ch19.md"
+    "trap": "(A) inverts the pH direction: olive-green is the acidic end of the tape, and amniotic fluid is the slightly alkaline one. Note also that false results are possible \"because of presence of bloody show or semen or insufficient amount of amniotic fluid\" — and two of those three push the result toward a false positive, so a blue reading in a woman with bloody show deserves confirmation.",
+    "source": "ch19.md",
+    "aliases": [
+      "A nitrazine test on a second woman's vaginal fluid reads olive-green. What does this indicate?"
+    ]
   },
   "q_0065": {
     "topic": "confirming rupture of membranes",
@@ -1274,7 +1292,7 @@
   "q_0071": {
     "topic": "first stage assessment intervals",
     "subtopic": "general",
-    "stem": "The same table specifies an assessment whose interval tightens more sharply between the early and active phases than the vital signs do. Which is it?",
+    "stem": "According to Table 19.2, which first-stage assessment has an interval that tightens more sharply between the early and active phases than the vital signs do?",
     "options": [
       "Fetal heart rate and pattern",
       "Uterine activity",
@@ -1287,7 +1305,10 @@
     "rationale": "The psychosocial row moves from every 30 minutes in the early phase to every 5 to 15 minutes in the active phase, a sharper tightening than the vital signs' shift from 30-to-60 to 15-to-30 minutes. Uterine activity and fetal heart rate stay at 15 to 30 minutes in both phases.",
     "type": "single",
     "trap": "(A) and (B) pull because they are the assessments that feel most clinically urgent, and both intervals are in fact unchanged between the phases. The row that intensifies most is the one about how the woman is coping.",
-    "source": "ch19.md"
+    "source": "ch19.md",
+    "aliases": [
+      "The same table specifies an assessment whose interval tightens more sharply between the early and active phases than the vital signs do. Which is it?"
+    ]
   },
   "q_0072": {
     "topic": "first stage assessment intervals",
@@ -1386,7 +1407,7 @@
   "q_0077": {
     "topic": "leopold maneuvers and fetal position",
     "subtopic": "general",
-    "stem": "On a different woman, the cephalic prominence is palpated on the same side as the fetal back. What does this indicate?",
+    "stem": "On the fourth Leopold maneuver, the nurse finds the cephalic prominence on the same side as the fetal back. What does this indicate?",
     "options": [
       "The head is flexed and the vertex is presenting",
       "The head is extended and the face is presenting",
@@ -1396,10 +1417,13 @@
     "correct": [
       1
     ],
-    "rationale": "Prominence on the same side as the back means the head is extended and the face presents, which is the inverse of the flexed finding in the previous item.",
+    "rationale": "Prominence on the same side as the back means the head is extended and the face presents, which is the inverse of prominence on the same side as the small parts, where the head is flexed and the vertex presents.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Hold the pairing by the side rather than by the word: small parts means flexed and vertex, back means extended and face.",
-    "source": "ch19.md"
+    "trap": "(A) is the finding for prominence on the same side as the small parts. Hold the pairing by the side rather than by the word: small parts means flexed and vertex, back means extended and face.",
+    "source": "ch19.md",
+    "aliases": [
+      "On a different woman, the cephalic prominence is palpated on the same side as the fetal back. What does this indicate?"
+    ]
   },
   "q_0078": {
     "topic": "leopold maneuvers and fetal position",
@@ -1422,7 +1446,7 @@
   "q_0079": {
     "topic": "leopold maneuvers and fetal position",
     "subtopic": "general",
-    "stem": "The fetal heart rate on a different woman is heard most clearly above the umbilicus. What does this suggest?",
+    "stem": "A nurse finds the fetal heart rate heard most clearly above the maternal umbilicus. What does this suggest?",
     "options": [
       "The transducer has been misplaced and should be moved lower",
       "A breech presentation",
@@ -1434,8 +1458,11 @@
     ],
     "rationale": "In a breech presentation the fetal heart rate \"is most easily heard above the mother's umbilicus.\" The location of the point of maximal intensity follows the presentation rather than the equipment.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item and it is the reflex response of a nurse who expects to find the heart rate low — it treats a diagnostic finding as an equipment problem, and moving the transducer would lose the signal rather than improve it.",
-    "source": "ch19.md"
+    "trap": "(A) is the reflex response of a nurse who expects to find the heart rate low, as in a vertex presentation — it treats a diagnostic finding as an equipment problem, and moving the transducer would lose the signal rather than improve it.",
+    "source": "ch19.md",
+    "aliases": [
+      "The fetal heart rate on a different woman is heard most clearly above the umbilicus. What does this suggest?"
+    ]
   },
   "q_0080": {
     "topic": "uterine contraction assessment",
@@ -1802,7 +1829,7 @@
     ],
     "rationale": "The multiparous threshold without regional anesthesia is 1 hour, so 70 minutes has passed it, and passing it prompts \"consideration of operative vaginal birth\" rather than automatic intervention. The chapter also notes that the clock is hard to start, because the second stage begins at full dilation and \"the precise moment that this occurs is not easily determined because it depends on when a vaginal examination is performed.\"",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, applying the with-anesthesia number to a woman without a block. (B) treats a threshold as a mandate, which the chapter explicitly declines to do while progress and status are reassuring.",
+    "trap": "(C) is the mirror error, applying the with-anesthesia number to a woman without a block. (B) treats a threshold as a mandate, which the chapter explicitly declines to do while progress and status are reassuring.",
     "source": "ch19.md"
   },
   "q_0100": {
@@ -2044,13 +2071,13 @@
     ],
     "rationale": "\"When AMTSL is practiced, oxytocic medication (usually oxytocin) is administered immediately after the baby is born but before the placenta is expelled. Gentle continuous controlled umbilical cord traction and counterpressure are used to support the uterus until the placenta separates,\" and \"immediately after the placenta is expelled, the uterine fundus is massaged.\"",
     "type": "single",
-    "trap": "(A) is the mirror of the next item, and the timing of the uterotonic is the entire difference between the two. Fundal massage happens in both approaches, always after expulsion, so massage is not the discriminator.",
+    "trap": "(A) is the mirror error: in expectant management the uterotonic is given after the placenta is expelled, not before, and that timing is the entire difference between the two approaches. Fundal massage happens in both approaches, always after expulsion, so massage is not the discriminator.",
     "source": "ch19.md"
   },
   "q_0113": {
     "topic": "third stage management",
     "subtopic": "passive versus active management",
-    "stem": "A different provider watches for signs of separation, instructs the woman to push to expel the placenta, and then massages the fundus and gives oxytocin. Which approach is this, and what is the expected timing?",
+    "stem": "A provider watches for signs of separation, instructs the woman to push to expel the placenta, and then massages the fundus and gives oxytocin. Which approach is this, and what is the expected timing?",
     "options": [
       "Active management; the placenta is expelled within 5 minutes",
       "Expectant, or passive, management; the placenta is usually expelled within 15 minutes after the birth",
@@ -2063,7 +2090,10 @@
     "rationale": "Passive management is \"patiently watching for signs that the placenta has separated from the uterine wall spontaneously and monitoring for spontaneous expulsion\"; the woman is instructed to push, \"the placenta is usually expelled within 15 minutes after the birth of the baby,\" and \"as soon as the placenta is expelled, the uterine fundus is massaged, and medication to contract the uterus (usually oxytocin [Pitocin]) is administered.\"",
     "type": "single",
     "trap": "(D) is the mirror error on the recommendation. Active management is what the professional society recommends, and its benefits are \"a shorter duration of third-stage labor, less risk for postpartum hemorrhage, and decreased risk for anemia\" for both the woman and the newborn.",
-    "source": "ch19.md"
+    "source": "ch19.md",
+    "aliases": [
+      "A different provider watches for signs of separation, instructs the woman to push to expel the placenta, and then massages the fundus and gives oxytocin. Which approach is this, and what is the expected timing?"
+    ]
   },
   "q_0114": {
     "topic": "third stage management",
@@ -2374,7 +2404,7 @@
   "q_0131": {
     "topic": "signs of newborn respiratory distress",
     "subtopic": "general",
-    "stem": "A different newborn has bluish lips and oral mucous membranes. How should the nurse interpret this?",
+    "stem": "A newborn has bluish lips and oral mucous membranes. How should the nurse interpret this?",
     "options": [
       "Acrocyanosis, expected in the first 24 hours",
       "Central cyanosis, which is abnormal and signifies hypoxemia",
@@ -2386,8 +2416,11 @@
     ],
     "rationale": "\"Central cyanosis is abnormal and signifies hypoxemia. With central cyanosis, the lips and mucous membranes are bluish (circumoral cyanosis).\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. There is a second reasoning trap embedded here: \"Because central cyanosis is a late sign of distress, newborns usually have significant hypoxemia when cyanosis appears,\" so its absence does not establish adequate oxygenation.",
-    "source": "ch23.md"
+    "trap": "(A) swaps the two kinds of cyanosis: bluish hands and feet with pink lips is acrocyanosis, expected early, while bluish lips and mucous membranes are central. There is a second reasoning trap embedded here: \"Because central cyanosis is a late sign of distress, newborns usually have significant hypoxemia when cyanosis appears,\" so its absence does not establish adequate oxygenation.",
+    "source": "ch23.md",
+    "aliases": [
+      "A different newborn has bluish lips and oral mucous membranes. How should the nurse interpret this?"
+    ]
   },
   "q_0132": {
     "topic": "signs of newborn respiratory distress",
@@ -2570,7 +2603,7 @@
     ],
     "rationale": "Radiation is heat lost to a cooler solid surface \"not in direct contact but in relative proximity,\" which is why \"bassinets and examining tables are placed away from outside windows, and care is taken to avoid direct air drafts.\" Convection, the flow of heat to cooler ambient air, is addressed by keeping newborn care areas between 22°C and 26°C with humidity between 30% and 60%, wrapping infants, and using a cap.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The infant is not touching the window, so proximity rather than contact is doing the work.",
+    "trap": "(A) treats this as conduction, the loss to a cooler surface in direct contact such as an uncovered scale. The infant is not touching the window, so proximity rather than contact is doing the work.",
     "source": "ch23.md"
   },
   "q_0142": {
@@ -2682,7 +2715,7 @@
     ],
     "rationale": "In physiologic jaundice, levels \"progressively increase from 2 mg/dL in cord blood to an average peak of 5 to 6 mg/dL by 72 to 96 hours,\" plateau near 3 mg/dL by one week, and reach adult levels of 2 mg/dL or less by two weeks. Jaundice becomes visible when the total serum bilirubin exceeds 6 to 7 mg/dL. The pathologic criteria are a rise of more than 0.2 mg/dL per hour, a level above the 95th percentile for age in hours, a direct bilirubin above 1.5 to 2 mg/dL, or jaundice lasting more than 2 weeks.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, answering with the number instead of the timing. A total serum bilirubin means nothing without the infant's age in hours, which is what the 95th-percentile criterion formalizes.",
+    "trap": "(A) answers with the number instead of the timing. A total serum bilirubin means nothing without the infant's age in hours, which is what the 95th-percentile criterion formalizes.",
     "source": "ch23.md"
   },
   "q_0148": {
@@ -2736,7 +2769,7 @@
     ],
     "rationale": "Breast milk jaundice \"usually occurs at 5 to 10 days of age. Infants are typically feeding well and gaining weight appropriately,\" and it is attributed to \"factors in the breast milk (e.g., pregnanediol, fatty acids, and β-glucuronidase) that either inhibit the conjugation of bilirubin or decrease the excretion.\" It peaks in the second week and can persist for 3 to 12 weeks, with no signs of hemolysis or liver dysfunction.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the discriminator is how the baby is feeding, not what the baby is being fed. Poor feeding with weight loss in the first week is the early-onset form; feeding well and gaining at 5 to 10 days is the late-onset form.",
+    "trap": "(A) is the early-onset form, breastfeeding-associated jaundice, and the discriminator is how the baby is feeding, not what the baby is being fed. Poor feeding with weight loss in the first week is the early-onset form; feeding well and gaining at 5 to 10 days is the late-onset form.",
     "source": "ch23.md"
   },
   "q_0151": {
@@ -2782,7 +2815,7 @@
   "q_0153": {
     "topic": "vitamin K and newborn coagulation",
     "subtopic": "general",
-    "stem": "Which clotting factors are reduced at birth as a consequence of this mechanism?",
+    "stem": "A newborn's gut lacks the intestinal bacteria needed to synthesize vitamin K. Which clotting factors are reduced at birth as a consequence of this mechanism?",
     "options": [
       "Factors V, VIII, and XIII, at about 50% of adult levels",
       "Factors II, VII, IX, and X, at about 50% of adult levels, while factors V, VIII, and XIII resemble adult ranges",
@@ -2795,7 +2828,10 @@
     "rationale": "\"Levels of vitamin K-dependent clotting factors II, VII, IX, and X at birth are about 50% of adult levels and increase slowly after birth. Levels of factors V, VIII, and XIII at birth resemble adult ranges.\"",
     "type": "single",
     "trap": "(A) swaps the two groups, and (D) names the hemophilia factor, which is the one most students recognize and the one this mechanism does not touch. Only the vitamin K-dependent factors are affected, which is why the vitamin is what gets replaced.",
-    "source": "ch23.md"
+    "source": "ch23.md",
+    "aliases": [
+      "Which clotting factors are reduced at birth as a consequence of this mechanism?"
+    ]
   },
   "q_0154": {
     "topic": "vitamin K and newborn coagulation",
@@ -3905,7 +3941,7 @@
   "q_0215": {
     "topic": "uterine structure and wall layers",
     "subtopic": "uterine divisions",
-    "stem": "The same nurse is then asked which uterine division is the short constricted portion separating the corpus from the cervix, known in obstetrics as the lower uterine segment. Which division does this describe?",
+    "stem": "A nurse reviewing pelvic anatomy is asked which uterine division is the short constricted portion separating the corpus from the cervix, known in obstetrics as the lower uterine segment. Which division does this describe?",
     "options": [
       "The isthmus",
       "The fundus",
@@ -3917,8 +3953,11 @@
     ],
     "rationale": "\"The isthmus, or lower uterine segment, is a short constricted portion that separates the corpus from the cervix\" (p. 48).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, swapping the top of the uterus for the constriction at its base. (D) is the trap the fact bank warns about directly: isthmus is used twice in this chapter, once for the uterus and once for a section of the uterine tube, so read which organ the stem names before matching a name to a location.",
-    "source": "ch4.md"
+    "trap": "(B) swaps the constriction at the base of the uterus for its dome-shaped top, where the uterine tubes enter. (D) is the trap the fact bank warns about directly: isthmus is used twice in this chapter, once for the uterus and once for a section of the uterine tube, so read which organ the stem names before matching a name to a location.",
+    "source": "ch4.md",
+    "aliases": [
+      "The same nurse is then asked which uterine division is the short constricted portion separating the corpus from the cervix, known in obstetrics as the lower uterine segment. Which division does this describe?"
+    ]
   },
   "q_0216": {
     "topic": "uterine structure and wall layers",
@@ -3953,7 +3992,7 @@
     ],
     "rationale": "The inner myometrial fibers, arranged around where the tubes enter and around the internal cervical os, \"help keep the cervix closed during pregnancy\" and \"prevent menstrual blood from flowing back into the uterine tubes during menstruation\" (pp. 48–49).",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item's trap — the outer longitudinal layer expels the fetus, which is the opposite of keeping the cervix closed. All three layers are plausible only until you match each to its stated function.",
+    "trap": "(C) is the outer longitudinal layer, the same layer that tempts a reader asked which layer ligates the placental-site vessels — the outer longitudinal layer expels the fetus, which is the opposite of keeping the cervix closed. All three layers are plausible only until you match each to its stated function.",
     "source": "ch4.md"
   },
   "q_0218": {
@@ -3999,7 +4038,7 @@
   "q_0220": {
     "topic": "uterine tubes and ovaries",
     "subtopic": "endometrial layers",
-    "stem": "The same patient asks what actually draws the released ovum into the tube in the first place. Which structure and section should the nurse name?",
+    "stem": "A patient with a history of tubal surgery asks what actually draws the released ovum into the uterine tube in the first place. Which structure and section should the nurse name?",
     "options": [
       "The fimbriae, the fringed ends of the infundibulum",
       "The fimbriae, the fringed ends of the ampulla",
@@ -4011,8 +4050,11 @@
     ],
     "rationale": "\"The infundibulum has fimbriated (fringed) ends, which pull the ovum into the tube\" (p. 49). Once inside, the ovum is moved \"by rhythmic contractions of muscles of the tubes and by the current produced by the movement of the cilia that line the tubes.\"",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, attaching the right structure to the wrong section. (C) and (D) name the two real transport mechanisms but assign them the job of capture, which belongs to the fimbriae alone.",
-    "source": "ch4.md"
+    "trap": "(B) attaches the right structure to the wrong section: the fimbriae belong to the infundibulum, while the ampulla is where fertilization usually occurs. (C) and (D) name the two real transport mechanisms but assign them the job of capture, which belongs to the fimbriae alone.",
+    "source": "ch4.md",
+    "aliases": [
+      "The same patient asks what actually draws the released ovum into the tube in the first place. Which structure and section should the nurse name?"
+    ]
   },
   "q_0221": {
     "topic": "uterine tubes and ovaries",
@@ -4086,7 +4128,7 @@
     ],
     "rationale": "Puberty \"denotes the entire transitional stage between childhood and sexual maturity\"; menarche \"denotes first menstruation\" and is a single event within it (p. 51).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Working the same distinction from the other end is the point: a learner who holds these two backwards will answer one of the pair correctly by luck and the other wrongly, and only the pair reveals it.",
+    "trap": "(B) is the mirror error: it names the whole transition with menarche, the word for the single event of first menstruation. Working the distinction from both ends is the point: a learner who holds these two terms backwards can get it right by luck when it is asked from one end and wrong when it is asked from the other.",
     "source": "ch4.md"
   },
   "q_0225": {
@@ -4140,7 +4182,7 @@
     ],
     "rationale": "The climacteric is \"a transitional phase during which ovarian function and hormone production decline. This phase spans the years from the onset of premenopausal ovarian decline to the postmenopausal time when symptoms stop\" (p. 54), whereas menopause \"refers only to the last menstrual period.\"",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item and completes the analogy the fact bank draws: menarche is to puberty as menopause is to climacteric. In both pairs, the everyday word names a single event and the technical word names the transition containing it.",
+    "trap": "(B) is the mirror error: it names the whole transition with menopause, which refers only to the last menstrual period. It completes the analogy the fact bank draws: menarche is to puberty as menopause is to climacteric. In both pairs, the everyday word names a single event and the technical word names the transition containing it.",
     "source": "ch4.md"
   },
   "q_0228": {
@@ -4508,7 +4550,7 @@
     ],
     "rationale": "\"At the time of ovulation, cervical mucus is thin and clear. It looks, feels, and stretches like egg white,\" and this stretchable quality is spinnbarkeit (p. 53). \"Preovulatory and postovulatory mucus is viscous (thick) so that sperm penetration is discouraged.\"",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item: the temperature sign confirms ovulation after the fact and is the wrong tool for timing intercourse, while the mucus sign is the prospective one. (C) inverts the source in the way the fact bank flags — thick mucus is the sperm-hostile state, not the fertile one.",
+    "trap": "(B) is the mirror error: the temperature sign confirms ovulation after the fact and is the wrong tool for timing intercourse, while the mucus sign is the prospective one. (C) inverts the source in the way the fact bank flags — thick mucus is the sperm-hostile state, not the fertile one.",
     "source": "ch4.md"
   },
   "q_0248": {
@@ -4644,7 +4686,7 @@
   "q_0255": {
     "topic": "family planning terminology and framing",
     "subtopic": "general",
-    "stem": "The same patient then asks the nurse to explain what the phrase \"birth control\" specifically refers to. Which response is accurate?",
+    "stem": "A patient planning to wait four years before trying to conceive asks the nurse to explain what the phrase \"birth control\" specifically refers to. Which response is accurate?",
     "options": [
       "The device or practice used to decrease the risk of conceiving or bearing offspring",
       "The conscious decision on when to conceive or to avoid pregnancy",
@@ -4656,8 +4698,11 @@
     ],
     "rationale": "Birth control is \"the device and/or practice used to decrease the risk of conceiving or bearing offspring\" (p. 143). It names the thing used, not the decision behind it or the outcome sought.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, handing back the decision when the device was asked for. (D) defines the contraceptive failure rate, which is a separate term from the same page cluster.",
-    "source": "ch8.md"
+    "trap": "(B) defines family planning, handing back the decision when the device was asked for. (D) defines the contraceptive failure rate, which is a separate term from the same page cluster.",
+    "source": "ch8.md",
+    "aliases": [
+      "The same patient then asks the nurse to explain what the phrase \"birth control\" specifically refers to. Which response is accurate?"
+    ]
   },
   "q_0256": {
     "topic": "family planning terminology and framing",
@@ -4894,7 +4939,7 @@
     ],
     "rationale": "Typical effectiveness is \"how effective the method is with typical use,\" as against theoretic effectiveness, which is perfect use (p. 144).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, and (C) is the same error wearing the correct term's own definition as its name — perfect use is the theoretic figure, so an option calling it perfect-use effectiveness is naming theoretic effectiveness in different words.",
+    "trap": "(B) is the mirror error, naming the perfect-use figure when the stem asks how the method performs in real users' hands, and (C) is the same error wearing the correct term's own definition as its name — perfect use is the theoretic figure, so an option calling it perfect-use effectiveness is naming theoretic effectiveness in different words.",
     "source": "ch8.md"
   },
   "q_0269": {
@@ -5158,7 +5203,7 @@
     ],
     "rationale": "\"If performed for reasons of maternal or fetal health or disease, the term therapeutic abortion applies\" (p. 161), as distinct from elective or induced abortion, which is performed at the woman's request.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Both procedures may be identical technically, so the term is decided entirely by the indication, and a stem that supplies a medical indication has already answered the question.",
+    "trap": "(B) is the mirror error: elective abortion is the term for a termination performed at the woman's request, not for one performed for maternal or fetal health. Both procedures may be identical technically, so the term is decided entirely by the indication, and a stem that supplies a medical indication has already answered the question.",
     "source": "ch8.md"
   },
   "q_0283": {
@@ -5326,7 +5371,7 @@
   "q_0292": {
     "topic": "abortion procedures by gestational age",
     "subtopic": "general",
-    "stem": "The second drug in the same regimen works by binding to progesterone receptors and blocking the action of progesterone. Which drug is this, and how is the regimen sequenced?",
+    "stem": "A patient undergoing medical abortion receives a two-drug regimen, one of which works by binding to progesterone receptors and blocking the action of progesterone. Which drug is this, and how is the regimen sequenced?",
     "options": [
       "Mifepristone, formerly known as RU 486, given orally first, followed by buccal or vaginal misoprostol",
       "Misoprostol, formerly known as RU 486, given first, followed by oral mifepristone",
@@ -5338,8 +5383,11 @@
     ],
     "rationale": "Mifepristone, \"formerly known as RU 486, works by binding to progesterone receptors and blocking the action of progesterone, which is necessary for maintaining pregnancy.\" The FDA-approved regimen is \"mifepristone orally, followed by buccal (in the pouch of the cheek) or vaginal misoprostol,\" and the combination is 95% effective in resulting in a complete abortion over a 24- to 72-hour period (p. 162).",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, and it is attractive because softening the cervix first sounds like the logical order. The sequence runs the other way: the progesterone blockade comes first, and the prostaglandin follows. Note also that the side effects of nausea, vomiting, diarrhea, headache, dizziness, fever, and chills are attributed to misoprostol, not to mifepristone.",
-    "source": "ch8.md"
+    "trap": "(C) reverses the sequence, and it is attractive because softening the cervix first sounds like the logical order. The sequence runs the other way: the progesterone blockade comes first, and the prostaglandin follows. Note also that the side effects of nausea, vomiting, diarrhea, headache, dizziness, fever, and chills are attributed to misoprostol, not to mifepristone.",
+    "source": "ch8.md",
+    "aliases": [
+      "The second drug in the same regimen works by binding to progesterone receptors and blocking the action of progesterone. Which drug is this, and how is the regimen sequenced?"
+    ]
   },
   "q_0293": {
     "topic": "abortion procedures by gestational age",
@@ -5490,7 +5538,7 @@
     ],
     "rationale": "The normal cord has two arteries and one vein. \"Approximately 1% of umbilical cords contain only two vessels: one artery and one vein,\" associated with \"fetal cardiovascular, gastrointestinal (esophageal and anal atresia), and urinary tract anomalies\" (p. 238).",
     "type": "single",
-    "trap": "(B) inverts the vessel counts, which is the mirror of the previous item's error. The clinical point is that counting cord vessels at birth is a screening act: the missing artery is what prompts evaluation of three organ systems.",
+    "trap": "(B) inverts the vessel counts, the same artery-vein swap that sends oxygenated blood to the fetus through the umbilical arteries instead of the single vein. The clinical point is that counting cord vessels at birth is a screening act: the missing artery is what prompts evaluation of three organ systems.",
     "source": "ch12.md"
   },
   "q_0301": {
@@ -5514,7 +5562,7 @@
   "q_0302": {
     "topic": "umbilical cord and amniotic fluid",
     "subtopic": "general",
-    "stem": "A different ultrasound reports more than 2 L of amniotic fluid. Which fetal problem should the nurse anticipate?",
+    "stem": "An ultrasound reports more than 2 L of amniotic fluid. Which fetal problem should the nurse anticipate?",
     "options": [
       "A gastrointestinal malformation, since fluid is removed by fetal swallowing",
       "A renal abnormality, since the fetus is producing excessive urine",
@@ -5526,8 +5574,11 @@
     ],
     "rationale": "\"Having more than 2 L of amniotic fluid (hydramnios or polyhydramnios) is associated with gastrointestinal and other malformations\" (p. 237). From the second trimester onward, volume \"is regulated by a balance between fetal fluid production (lung liquid and urine) and fluid resorption through fetal swallowing\" (p. 235).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item and completes the pair. Both findings are volume abnormalities, so only the direction tells you which side of the production-and-removal balance has failed.",
-    "source": "ch12.md"
+    "trap": "(B) belongs to the opposite finding, less than 300 mL of fluid, which points at the kidneys. Both findings are volume abnormalities, so only the direction tells you which side of the production-and-removal balance has failed.",
+    "source": "ch12.md",
+    "aliases": [
+      "A different ultrasound reports more than 2 L of amniotic fluid. Which fetal problem should the nurse anticipate?"
+    ]
   },
   "q_0303": {
     "topic": "umbilical cord and amniotic fluid",
@@ -5652,7 +5703,7 @@
     ],
     "rationale": "Human placental lactogen, also known as human chorionic somatomammotropin, \"is similar to a growth hormone\" and \"stimulates the maternal metabolism to supply nutrients needed for fetal growth.\" It \"increases the resistance to insulin, facilitates glucose transport across the placental membrane, and stimulates breast development to prepare for lactation\" (p. 239).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item — the two protein hormones are easily swapped because both are placental and both are abbreviated from long names. The insulin-resistance clause is the discriminator, and it is what gestational diabetes stems are built on.",
+    "trap": "(B) is the mirror error, giving human chorionic gonadotropin, the hormone a pregnancy test detects, in place of human placental lactogen — the two protein hormones are easily swapped because both are placental and both are abbreviated from long names. The insulin-resistance clause is the discriminator, and it is what gestational diabetes stems are built on.",
     "source": "ch12.md"
   },
   "q_0310": {
@@ -6306,7 +6357,7 @@
   "q_0345": {
     "topic": "named signs of early pregnancy",
     "subtopic": "general",
-    "stem": "At the same visit, the examiner notes softening and compressibility of the lower uterine segment. Which sign does this describe, and what symptom does the resulting uterine position produce?",
+    "stem": "At a first prenatal visit at 6 weeks, the examiner notes softening and compressibility of the lower uterine segment. Which sign does this describe, and what symptom does the resulting uterine position produce?",
     "options": [
       "Hegar sign, which produces exaggerated uterine anteflexion so the fundus presses on the bladder, causing urinary frequency",
       "Goodell sign, which produces cervical friability and postcoital spotting",
@@ -6318,8 +6369,11 @@
     ],
     "rationale": "\"At approximately 6 weeks of gestation, softening and compressibility of the lower uterine segment (uterine isthmus) occurs (Hegar sign),\" which \"results in exaggerated uterine anteflexion during the first 3 months. In this position, the uterine fundus presses on the urinary bladder, causing the woman to experience urinary frequency\" (p. 252).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, trading the two softening signs. This item also connects the sign to a symptom the patient reports, which is why first-trimester urinary frequency is a mechanical finding rather than an infection until dysuria appears.",
-    "source": "ch13.md"
+    "trap": "(B) trades the two softening signs: Goodell is softening of the cervical tip, and Hegar is the lower uterine segment. This item also connects the sign to a symptom the patient reports, which is why first-trimester urinary frequency is a mechanical finding rather than an infection until dysuria appears.",
+    "source": "ch13.md",
+    "aliases": [
+      "At the same visit, the examiner notes softening and compressibility of the lower uterine segment. Which sign does this describe, and what symptom does the resulting uterine position produce?"
+    ]
   },
   "q_0346": {
     "topic": "named signs of early pregnancy",
@@ -7136,7 +7190,7 @@
     ],
     "rationale": "A woman who has had a pregnancy \"that resulted in the birth of a child with an NTD\" should take \"4 mg of folic acid daily,\" beginning \"at least 1 month before attempting to conceive and continuing throughout the first trimester\" (p. 297).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item and delivers a tenfold underdose to the one patient who needs the high dose. (D) gets the dose right and the timing catastrophically wrong: the neural tube has closed long before the second trimester, so a regimen starting then cannot prevent anything.",
+    "trap": "(B) is the mirror error, giving the 0.4 mg dose meant for women with no history of an affected pregnancy, and delivers a tenfold underdose to the one patient who needs the high dose. (D) gets the dose right and the timing catastrophically wrong: the neural tube has closed long before the second trimester, so a regimen starting then cannot prevent anything.",
     "source": "ch15.md"
   },
   "q_0391": {
@@ -8006,7 +8060,7 @@
   "q_0438": {
     "topic": "fetal skull landmarks and molding",
     "subtopic": "the two fontanels",
-    "stem": "On the same examination the nurse palpates a triangular soft spot at the junction of the sutures of the two parietal bones and the occipital bone. Which fontanel is this, and when does it close?",
+    "stem": "During a vaginal examination after rupture of membranes, the nurse palpates a triangular soft spot at the junction of the sutures of the two parietal bones and the occipital bone. Which fontanel is this, and when does it close?",
     "options": [
       "The anterior fontanel, closing by 18 months",
       "The posterior fontanel, closing 6 to 8 weeks after birth",
@@ -8018,8 +8072,11 @@
     ],
     "rationale": "The posterior fontanel is triangular, approximately 1 cm by 2 cm, at the junction of the sutures of the two parietal bones and the occipital bone, and closes 6 to 8 weeks after birth.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item — right fontanel, wrong closure time. The cue that survives a blank moment is that the bigger one takes longer to close: anterior is 3 by 2 cm and closes at 18 months, posterior is 1 by 2 cm and closes at 6 to 8 weeks.",
-    "source": "ch16.md"
+    "trap": "(C) is the right fontanel with the wrong closure time. The cue that survives a blank moment is that the bigger one takes longer to close: anterior is 3 by 2 cm and closes at 18 months, posterior is 1 by 2 cm and closes at 6 to 8 weeks.",
+    "source": "ch16.md",
+    "aliases": [
+      "On the same examination the nurse palpates a triangular soft spot at the junction of the sutures of the two parietal bones and the occipital bone. Which fontanel is this, and when does it close?"
+    ]
   },
   "q_0439": {
     "topic": "fetal skull landmarks and molding",
@@ -8090,7 +8147,7 @@
     ],
     "rationale": "Fig. 16.5C shows \"marked extension (deflection), so that largest diameter, which is too large to permit the head to enter the pelvis, is presenting\" — the occipitomental. The governing rule is stated directly: \"As the head is more extended, the anteroposterior diameter widens, and the head may not be able to enter the true pelvis.\"",
     "type": "single",
-    "trap": "(B) is the mirror error of the next item and the reason this pair exists — moderate extension gives the occipitofrontal, marked extension gives the occipitomental. Both are larger than the flexed diameter, but only one is described as too large to enter at all.",
+    "trap": "(B) is the mirror error, assigning marked extension the diameter that belongs to moderate extension, the military attitude — moderate extension gives the occipitofrontal, marked extension gives the occipitomental. Both are larger than the flexed diameter, but only one is described as too large to enter at all.",
     "source": "ch16.md"
   },
   "q_0443": {
@@ -8108,7 +8165,7 @@
     ],
     "rationale": "Fig. 16.5B labels the military attitude \"moderate extension (military attitude) so that large diameter enters\" — the occipitofrontal.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, jumping straight to the worst case. The chapter grades the three attitudes rather than treating any loss of flexion as equivalent: complete flexion gives 9.5 cm, moderate extension gives the occipitofrontal, marked extension gives the occipitomental.",
+    "trap": "(C) is the mirror error, assigning moderate extension the occipitomental diameter that belongs to marked extension and jumping straight to the worst case. The chapter grades the three attitudes rather than treating any loss of flexion as equivalent: complete flexion gives 9.5 cm, moderate extension gives the occipitofrontal, marked extension gives the occipitomental.",
     "source": "ch16.md"
   },
   "q_0444": {
@@ -8198,7 +8255,7 @@
     ],
     "rationale": "\"Longitudinal lies are either cephalic or breech presentations, depending on the fetal structure that first enters the mother's pelvis.\" The chapter also names what settles the presenting part: \"Factors that determine the presenting part include fetal lie, fetal attitude, and extension or flexion of the fetal head.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — knowing the lie narrows the presentation to two options but does not pick between them. A longitudinal lie is equally compatible with a breech.",
+    "trap": "(A) treats the lie as settling the presentation, the mirror of the transverse-lie rule, where the lie alone does settle the outcome — knowing the lie narrows the presentation to two options but does not pick between them. A longitudinal lie is equally compatible with a breech.",
     "source": "ch16.md"
   },
   "q_0449": {
@@ -8222,7 +8279,7 @@
   "q_0450": {
     "topic": "fetal position notation",
     "subtopic": "reading the three letters",
-    "stem": "A second examination is documented as LSP. What does that notation state?",
+    "stem": "A cervical examination is documented as LSP. What does that notation state about the fetus?",
     "options": [
       "The occiput is presenting in the left posterior quadrant, a vertex presentation",
       "The sacrum is presenting in the left posterior quadrant, a breech presentation",
@@ -8235,7 +8292,10 @@
     "rationale": "The book's second worked example: \"LSP means that the sacrum is the presenting part and is located in the left posterior quadrant.\" The sacrum is the reference point for a breech.",
     "type": "single",
     "trap": "(C) is the trap this notation sets every time — reading the middle S as \"spine\" instead of \"sacrum.\" The middle letter always names the presenting part, and the four values are O for occiput, S for sacrum, M for mentum, and Sc for scapula.",
-    "source": "ch16.md"
+    "source": "ch16.md",
+    "aliases": [
+      "A second examination is documented as LSP. What does that notation state?"
+    ]
   },
   "q_0451": {
     "topic": "fetal position notation",
@@ -8279,7 +8339,7 @@
   "q_0453": {
     "topic": "station, engagement, and synclitism",
     "subtopic": "reading station",
-    "stem": "Two hours later the presenting part is palpated 4 cm below the ischial spines. What does this station indicate?",
+    "stem": "A cervical examination places the lowermost portion of the presenting part 4 cm below the ischial spines. What does this station indicate?",
     "options": [
       "Plus 4, and birth is imminent",
       "Minus 4, and the fetus has not yet engaged",
@@ -8291,8 +8351,11 @@
     ],
     "rationale": "A presenting part below the spines is documented as plus, and the chapter names the threshold directly: \"Birth is imminent when the presenting part is at plus 4 to plus 5 cm.\"",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. An option that treats minus 2 as further along than plus 1, or reads a plus station as not yet descended, has the scale running backwards.",
-    "source": "ch16.md"
+    "trap": "(B) inverts the sign: minus is above the spines, plus is below. An option that treats minus 2 as further along than plus 1, or reads a plus station as not yet descended, has the scale running backwards.",
+    "source": "ch16.md",
+    "aliases": [
+      "Two hours later the presenting part is palpated 4 cm below the ischial spines. What does this station indicate?"
+    ]
   },
   "q_0454": {
     "topic": "station, engagement, and synclitism",
@@ -8384,7 +8447,7 @@
     ],
     "rationale": "\"Extreme asynclitism can cause cephalopelvic disproportion, even in a normal-size pelvis, because the fetal head is positioned so that it cannot descend through the maternal pelvis.\"",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item — having learned that asynclitism is usually helpful, the reflex is to dismiss the extreme form too. The chapter draws the line at extreme, and (B) fails for the same reason: disproportion is about fit, not about measurements alone.",
+    "trap": "(D) is the mirror error — having learned that asynclitism is usually helpful, the reflex is to dismiss the extreme form too. The chapter draws the line at extreme, and (B) fails for the same reason: disproportion is about fit, not about measurements alone.",
     "source": "ch16.md"
   },
   "q_0459": {
@@ -8590,7 +8653,7 @@
     ],
     "rationale": "Assessment of the pelvis is done during the first prenatal evaluation and \"need not be repeated if the pelvis is of adequate size and suitable shape.\"",
     "type": "single",
-    "trap": "(A) sounds conscientious and borrows a real fact from the next item — the joints do relax — but the chapter does not turn that into serial examinations.",
+    "trap": "(A) sounds conscientious and borrows a real fact about the third-trimester pelvic examination — the joints do relax — but the chapter does not turn that into serial examinations.",
     "source": "ch16.md"
   },
   "q_0470": {
@@ -8734,7 +8797,7 @@
     ],
     "rationale": "\"Effacement generally progresses significantly in first-time term pregnancy before more than slight dilation occurs.\" A primigravida who is completely effaced at 1 cm is following the chapter's own description, not stalling.",
     "type": "single",
-    "trap": "(B) is the reflex response to a number that has not moved, and it is what makes this pair worth drilling — the wrong reading converts a normal first labor into a diagnosis.",
+    "trap": "(B) is the reflex response to a number that has not moved, and it is what makes the nulliparous pattern worth drilling — the wrong reading converts a normal first labor into a diagnosis.",
     "source": "ch16.md"
   },
   "q_0478": {
@@ -8752,7 +8815,7 @@
     ],
     "rationale": "\"In subsequent pregnancies, effacement and dilation of the cervix tend to progress together.\" A multipara dilating ahead of her effacement is following the expected pattern for parity.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — applying the nulliparous sequence to a multipara. The rule to hold is that effacement leads in a first labor and the two move together in later ones.",
+    "trap": "(A) is the mirror error — applying the nulliparous sequence to a multipara. The rule to hold is that effacement leads in a first labor and the two move together in later ones.",
     "source": "ch16.md"
   },
   "q_0479": {
@@ -8798,7 +8861,7 @@
   "q_0481": {
     "topic": "primary versus secondary powers",
     "subtopic": "which power does what",
-    "stem": "The same nurse charts the secondary powers. Which statement is accurate?",
+    "stem": "A nurse is charting the forces of labor. Which statement about the secondary powers is accurate?",
     "options": [
       "They are involuntary and become effective in the latent phase of the first stage",
       "They are voluntary bearing-down efforts that have no effect on cervical dilation but are of considerable importance in expelling the infant after the cervix is fully dilated",
@@ -8810,8 +8873,11 @@
     ],
     "rationale": "\"Once the cervix has dilated, voluntary bearing-down efforts by the woman, called the secondary powers, augment the force of the involuntary contractions.\" And the dividing line: \"The secondary powers have no effect on cervical dilation, but they are of considerable importance in the expulsion of the infant from the uterus and vagina after the cervix is fully dilated.\"",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item. The secondary powers augment the primary ones rather than replacing them — the woman pushes with a contraction, not instead of one.",
-    "source": "ch16.md"
+    "trap": "(C) has the secondary powers taking over from the primary powers, the involuntary uterine contractions. The secondary powers augment the primary ones rather than replacing them — the woman pushes with a contraction, not instead of one.",
+    "source": "ch16.md",
+    "aliases": [
+      "The same nurse charts the secondary powers. Which statement is accurate?"
+    ]
   },
   "q_0482": {
     "topic": "primary versus secondary powers",
@@ -8956,7 +9022,7 @@
     ],
     "rationale": "\"In a multiparous woman, lightening may not occur until after uterine contractions are established and true labor is in progress.\" The same parity pattern governs engagement, and for the same reason — more relaxed abdominal musculature does not direct the presenting part into the pelvis before labor.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, applying the nulliparous two-week rule to a multipara and converting a normal finding into a workup.",
+    "trap": "(A) is the mirror error, applying the nulliparous two-week rule to a multipara and converting a normal finding into a workup.",
     "source": "ch16.md"
   },
   "q_0490": {
@@ -9398,7 +9464,7 @@
   "q_0513": {
     "topic": "monitoring frequency standards",
     "subtopic": "auscultation intervals",
-    "stem": "The same low-risk woman reaches the second stage and begins actively pushing. How often should the FHR now be auscultated?",
+    "stem": "A low-risk woman not receiving oxytocin reaches the second stage and begins actively pushing. How often does AWHONN suggest auscultating the FHR?",
     "options": [
       "Every 15 to 30 minutes",
       "Every 15 minutes",
@@ -9411,7 +9477,10 @@
     "rationale": "Box 18.3 gives every 15 minutes during passive fetal descent and every 5 to 15 minutes during active pushing.",
     "type": "single",
     "trap": "(B) is the interval for the other half of the second stage and is the mirror error here. The second stage splits at the start of active pushing, and the interval tightens when it does.",
-    "source": "ch18.md"
+    "source": "ch18.md",
+    "aliases": [
+      "The same low-risk woman reaches the second stage and begins actively pushing. How often should the FHR now be auscultated?"
+    ]
   },
   "q_0514": {
     "topic": "monitoring frequency standards",
@@ -9482,7 +9551,7 @@
     ],
     "rationale": "\"The IUPC can objectively measure the frequency, duration, and intensity of UCs and uterine resting tone,\" converting pressure at the catheter tip into millimeters of mercury.",
     "type": "single",
-    "trap": "(A) and (B) are the mirror error of the previous item — both modes give frequency and duration, so neither is what the internal catheter adds.",
+    "trap": "(A) and (B) are the mirror error: they name what the tocotransducer already measures — both modes give frequency and duration, so neither is what the internal catheter adds.",
     "source": "ch18.md"
   },
   "q_0518": {
@@ -9724,7 +9793,7 @@
     ],
     "rationale": "\"Moderate variability is considered normal. Its presence reliably predicts a normal fetal acid-base balance (absence of fetal metabolic acidemia). Moderate variability indicates that FHR regulation is not affected significantly by interruption of fetal oxygenation.\"",
     "type": "single",
-    "trap": "(C) is the chapter's statement about marked variability, not moderate. Mapping the significance line to the wrong category is the error this pair exists to catch.",
+    "trap": "(C) is the chapter's statement about marked variability, not moderate. Mapping the significance line to the wrong category is the error the moderate-versus-marked distinction exists to catch.",
     "source": "ch18.md"
   },
   "q_0531": {
@@ -9972,7 +10041,7 @@
   "q_0544": {
     "topic": "early and late decelerations",
     "subtopic": "telling them apart on the tracing",
-    "stem": "A second deceleration is also gradual, but it begins after the contraction has started, its lowest point occurs after the peak of the contraction, and it does not return to baseline until after the contraction ends. How is this documented, and what causes it?",
+    "stem": "A deceleration is gradual, begins after the contraction has started, reaches its lowest point after the peak of the contraction, and does not return to baseline until after the contraction ends. How is this documented, and what causes it?",
     "options": [
       "An early deceleration, caused by head compression",
       "A late deceleration, caused by a reflex fetal response to transient hypoxemia during a contraction that reduces delivery of oxygenated blood to the intervillous space",
@@ -9984,8 +10053,11 @@
     ],
     "rationale": "A late deceleration \"begins after the contraction has started, and the lowest point ... occurs after the peak,\" and \"usually does not return to baseline until after the contraction ends.\" It reflects the fetal response to transient or chronic uteroplacental insufficiency.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the cue that separates them is positional rather than causal: \"mirror image\" is early, \"shifted right\" is late. Reasoning from cause cannot be done from a tracing alone.",
-    "source": "ch18.md"
+    "trap": "(A) confuses this with an early deceleration, and the cue that separates the two is positional rather than causal: \"mirror image\" is early, \"shifted right\" is late. Reasoning from cause cannot be done from a tracing alone.",
+    "source": "ch18.md",
+    "aliases": [
+      "A second deceleration is also gradual, but it begins after the contraction has started, its lowest point occurs after the peak of the contraction, and it does not return to baseline until after the contraction ends. How is this documented, and what causes it?"
+    ]
   },
   "q_0545": {
     "topic": "early and late decelerations",
@@ -10452,7 +10524,7 @@
   "q_0570": {
     "topic": "cord blood acid-base determination",
     "subtopic": "when to draw and how to type",
-    "stem": "A second cord gas shows pH 7.10, a normal PCO2, and a base deficit of 14 mmol/L. Which type of acidemia is this, and what does the pH alone tell the nurse?",
+    "stem": "A cord gas shows pH 7.10, a normal PCO2, and a base deficit of 14 mmol/L. Which type of acidemia is this, and what does the pH alone tell the nurse?",
     "options": [
       "Metabolic acidemia; the pH alone cannot type the acidemia because all three types have a pH below 7.20",
       "Respiratory acidemia; the pH alone identifies the type",
@@ -10464,8 +10536,11 @@
     ],
     "rationale": "A normal PCO2 with a base deficit of 12 mmol/L or more is metabolic acidemia. Because respiratory, metabolic, and mixed acidemia all carry a pH below 7.20, the pH establishes that acidemia exists but never which kind.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item — mixed requires both an elevated PCO2 and a base deficit of 12 or more, and this gas has only one of the two abnormal.",
-    "source": "ch18.md"
+    "trap": "(C) overreads the gas — mixed requires both an elevated PCO2 and a base deficit of 12 or more, and this gas has only one of the two abnormal.",
+    "source": "ch18.md",
+    "aliases": [
+      "A second cord gas shows pH 7.10, a normal PCO2, and a base deficit of 14 mmol/L. Which type of acidemia is this, and what does the pH alone tell the nurse?"
+    ]
   },
   "q_0571": {
     "topic": "amnioinfusion and tocolysis",
@@ -10841,7 +10916,7 @@
   "q_0591": {
     "topic": "antenatal glucocorticoid therapy",
     "subtopic": "dose, route, and window",
-    "stem": "A woman asks whether she could take the steroid by mouth instead of by injection, since the injections are painful. What does the chapter direct?",
+    "stem": "A woman at risk of preterm birth is ordered betamethasone and asks whether she could take the steroid by mouth instead of by injection, since the injections are painful. What does the chapter direct?",
     "options": [
       "Oral administration is acceptable if the woman cannot tolerate injections",
       "The medication must be given by IM injection; oral administration is not an acceptable alternative",
@@ -10854,7 +10929,10 @@
     "rationale": "The guide is absolute on route: \"Medication must be given by IM injection; oral administration is not an acceptable alternative,\" and directs a \"deep IM injection in ventral gluteal or vastus lateralis muscle.\" It acknowledges that the \"injection is painful.\"",
     "type": "single",
     "trap": "(A) trades an absolute rule for comfort, and the comfort premise is even conceded by the guide — which is what makes the option attractive.",
-    "source": "ch32.md"
+    "source": "ch32.md",
+    "aliases": [
+      "A woman asks whether she could take the steroid by mouth instead of by injection, since the injections are painful. What does the chapter direct?"
+    ]
   },
   "q_0592": {
     "topic": "antenatal glucocorticoid therapy",
@@ -10911,7 +10989,7 @@
     ],
     "rationale": "\"People with a BMI of 25 or greater are categorized as overweight, people with a BMI of 30 or greater are considered obese, and people with a BMI of 40 or greater are classified as severely obese.\" The chapter lists an increased incidence of postterm pregnancy and longer labor, a greater likelihood that labor will need to be induced, and increased risks for cesarean birth in general and emergency cesarean birth.",
     "type": "single",
-    "trap": "(D) reverses the hemorrhage risk, which the chapter states in the other direction and explains mechanically in the next item.",
+    "trap": "(D) reverses the hemorrhage risk: the chapter gives obese women a higher risk for postpartum hemorrhage, not a lower one.",
     "source": "ch32.md"
   },
   "q_0595": {
@@ -11163,7 +11241,7 @@
   "q_0608": {
     "topic": "prostaglandin cervical ripening",
     "subtopic": "dosing, waiting, and storage",
-    "stem": "How long must oxytocin be delayed after each of these ripening agents?",
+    "stem": "How long must oxytocin be delayed after cervical ripening with misoprostol, and after dinoprostone gel or insert?",
     "options": [
       "No sooner than 4 hours after the last misoprostol dose; 6 to 12 hours after the last dinoprostone gel instillation or 30 to 60 minutes after removal of the insert",
       "No sooner than 30 minutes after misoprostol; 4 hours after any dinoprostone",
@@ -11176,7 +11254,10 @@
     "rationale": "The misoprostol guide directs: \"Initiate oxytocin for induction of labor no sooner than 4 h after the last dose of misoprostol was administered.\" The dinoprostone guide directs: \"Delay the initiation of oxytocin for induction of labor for 6–12 h after the last instillation of the gel or for 30–60 min after removal of the insert.\"",
     "type": "single",
     "trap": "(D) reverses the two waiting periods. The removable insert allows the shortest wait, the gel the longest, and misoprostol sits between them — which tracks the removability of each form.",
-    "source": "ch32.md"
+    "source": "ch32.md",
+    "aliases": [
+      "How long must oxytocin be delayed after each of these ripening agents?"
+    ]
   },
   "q_0609": {
     "topic": "prostaglandin cervical ripening",
@@ -11492,7 +11573,7 @@
     ],
     "rationale": "For a category II or category III tracing the box begins with \"discontinue oxytocin infusion immediately,\" then repositioning, then a 500 mL lactated Ringer's bolus, then considering oxygen at 10 L/min by nonrebreather mask if those measures do not resolve the tracing, then considering terbutaline 0.25 mg subcutaneously, then notifying the provider.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item and is the single most consequential mix-up in this box — halving the dose on an abnormal tracing leaves the stimulus running.",
+    "trap": "(A) is the category I response, and using it here is the single most consequential mix-up in this box — halving the dose on an abnormal tracing leaves the stimulus running.",
     "source": "ch32.md"
   },
   "q_0626": {
@@ -12070,7 +12151,7 @@
   "q_0657": {
     "topic": "gestational age terminology",
     "subtopic": "the ladder from preterm to postterm",
-    "stem": "Match the remaining gestational-age categories to their boundaries. Which statement is correct?",
+    "stem": "Besides early term and full term, the chapter defines late preterm, late term, and postterm. Which statement gives their boundaries correctly?",
     "options": [
       "Late preterm is 34 weeks 0 days to 36 weeks 6 days; late term is 41 weeks 0 days to 41 weeks 6 days; postterm is 42 weeks 0 days and beyond",
       "Late preterm is 32 weeks 0 days to 36 weeks 6 days; late term is 40 weeks; postterm is 41 weeks and beyond",
@@ -12083,7 +12164,10 @@
     "rationale": "Preterm is 20 weeks 0 days to before 37 weeks 0 days, late preterm is 34 weeks 0 days to 36 weeks 6 days, late term is 41 weeks 0 days to 41 weeks 6 days, and postterm is 42 weeks 0 days and beyond.",
     "type": "single",
     "trap": "(C) rounds every boundary to whole weeks, which erases the \"0 days\" and \"6 days\" structure that makes these categories non-overlapping.",
-    "source": "ch14.md"
+    "source": "ch14.md",
+    "aliases": [
+      "Match the remaining gestational-age categories to their boundaries. Which statement is correct?"
+    ]
   },
   "q_0658": {
     "topic": "gestational age terminology",
@@ -12326,7 +12410,7 @@
   "q_0671": {
     "topic": "rh immune globulin schedule",
     "subtopic": "the routine doses",
-    "stem": "The same woman gives birth to an Rh-negative infant. What does the chapter direct regarding the postpartum dose?",
+    "stem": "An Rh-negative woman with a negative antibody screen received Rh immune globulin at 28 weeks and now gives birth to an Rh-negative infant. What does the chapter direct regarding the postpartum dose?",
     "options": [
       "Repeat the 300 mcg dose within 72 hours after birth regardless of the infant's blood type",
       "The repeat dose is indicated if the infant is Rh positive, so it is not given for an Rh-negative infant",
@@ -12338,8 +12422,11 @@
     ],
     "rationale": "\"If the woman gives birth to an Rh-positive infant, the dose of Rh immune globulin is repeated within 72 hours after birth.\" The infant's type is what triggers the postpartum dose.",
     "type": "single",
-    "trap": "(A) is the plausible-but-wrong option this pair exists to catch — the antenatal dose is unconditional and the postpartum dose is not, and holding both as unconditional is the usual simplification.",
-    "source": "ch14.md"
+    "trap": "(A) is the plausible-but-wrong option this item exists to catch — the antenatal dose is unconditional and the postpartum dose is not, and holding both as unconditional is the usual simplification.",
+    "source": "ch14.md",
+    "aliases": [
+      "The same woman gives birth to an Rh-negative infant. What does the chapter direct regarding the postpartum dose?"
+    ]
   },
   "q_0672": {
     "topic": "rh immune globulin schedule",
@@ -13480,7 +13567,7 @@
   "q_0732": {
     "topic": "eclampsia seizure management",
     "subtopic": "recognizing and responding",
-    "stem": "The seizure has ended. What should the nurse do first, and why?",
+    "stem": "A woman with preeclampsia has just finished a tonic-clonic seizure. What should the nurse do first, and why?",
     "options": [
       "Lower the head of the bed and turn the woman onto her side, which helps prevent aspiration of vomitus",
       "Sit her upright to improve ventilation",
@@ -13493,7 +13580,10 @@
     "rationale": "Immediately after the seizure \"the nurse should lower the head of the bed and turn the woman onto her side. This helps prevent aspiration of vomitus.\" Airway, breathing, and pulse are then assessed; if apnea is present the nurse opens the airway, begins bag-mask ventilation, and activates the code, and if respirations are present, secretions are suctioned and oxygen is given at 10 L/min by face mask.",
     "type": "single",
     "trap": "(C) and (D) are both on the post-convulsion list and both come after positioning. The woman has just vomited or may vomit, and the position is what protects her airway while the rest is done.",
-    "source": "ch27.md"
+    "source": "ch27.md",
+    "aliases": [
+      "The seizure has ended. What should the nurse do first, and why?"
+    ]
   },
   "q_0733": {
     "topic": "eclampsia seizure management",
@@ -14160,7 +14250,7 @@
     ],
     "rationale": "\"In a partial mole, one apparently normal ovum is fertilized by two or more sperm,\" producing \"triploidy (69XXY) or quadraploidy (92XXXY).\" \"Partial moles often have embryonic or fetal parts and an amniotic sac,\" with congenital anomalies and severe growth restriction usually present, and \"the risk for persistent GTN is less than with a complete mole.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the karyotype settles it: a diploid 46 chromosome count is complete, triploid or quadraploid is partial.",
+    "trap": "(A) calls a partial mole complete, and the karyotype settles it: a diploid 46 chromosome count is complete, triploid or quadraploid is partial.",
     "source": "ch28.md"
   },
   "q_0769": {
@@ -15202,7 +15292,7 @@
     ],
     "rationale": "\"Oxytocin is usually given immediately after birth to prevent hemorrhage. Ergot products (e.g., methylergonovine [Methergine]) should not be used because they increase blood pressure.\"",
     "type": "single",
-    "trap": "(B) is the overgeneralization the pair exists to prevent. Hemorrhage is itself a threat to a compromised heart, so withholding all uterotonics would create the problem it tries to avoid.",
+    "trap": "(B) is the overgeneralization the oxytocin-versus-ergot distinction exists to prevent. Hemorrhage is itself a threat to a compromised heart, so withholding all uterotonics would create the problem it tries to avoid.",
     "source": "ch30.md"
   },
   "q_0824": {
@@ -15404,7 +15494,7 @@
     ],
     "rationale": "\"Sickle cell trait (SA hemoglobin pattern) is sickling of the RBCs but with a normal RBC life span,\" and \"most people with sickle cell trait are asymptomatic.\" Women with trait \"usually do well in pregnancy\" but carry the listed increased risks. Approximately 1 in 12 Black adults in the United States has sickle cell trait.",
     "type": "single",
-    "trap": "(C) is the overcorrection this pair exists to catch — \"usually do well\" is not the same as \"no added risk,\" and the list of added risks is specific.",
+    "trap": "(C) is the overcorrection the trait-versus-anemia distinction exists to catch — \"usually do well\" is not the same as \"no added risk,\" and the list of added risks is specific.",
     "source": "ch30.md"
   },
   "q_0835": {
@@ -15682,7 +15772,7 @@
     ],
     "rationale": "The Safety Alert states: \"Magnesium sulfate is contraindicated in women with myasthenia gravis because it inhibits the release of acetylcholine and can trigger myasthenic crisis.\" Myasthenia gravis is \"an autoimmune motor (muscle) end-plate disorder that involves acetylcholine use.\"",
     "type": "single",
-    "trap": "(A) is correct for nearly every other woman with preeclampsia, which is what makes this pairing worth holding as an absolute. Because myasthenia gravis does not affect smooth muscle, most women tolerate labor well, though vacuum or forceps assistance may be required and regional analgesia is preferred.",
+    "trap": "(A) is correct for nearly every other woman with preeclampsia, which is what makes the magnesium sulfate contraindication in myasthenia gravis worth holding as an absolute. Because myasthenia gravis does not affect smooth muscle, most women tolerate labor well, though vacuum or forceps assistance may be required and regional analgesia is preferred.",
     "source": "ch30.md"
   },
   "q_0850": {
@@ -17402,7 +17492,7 @@
     ],
     "rationale": "\"Asymmetric growth suggests an acute or late-occurring deprivation such as placental insufficiency,\" and the causes named are hypertension, renal disease, and cardiovascular disease — the mother's history in this stem.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the two are separated by the measurements rather than by the history: symmetric is small everywhere, asymmetric spares the head.",
+    "trap": "(A) is the symmetric pattern, and the two are separated by the measurements rather than by the history: symmetric is small everywhere, asymmetric spares the head.",
     "source": "ch26.md"
   },
   "q_0941": {
@@ -17878,7 +17968,7 @@
     ],
     "rationale": "Afterpains are \"more noticeable after births in which the uterus was overdistended (e.g., large infant, multifetal gestation, polyhydramnios).\"",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item. Overdistention and parity both work in the same direction, and both run opposite to the intuition that a first birth hurts most afterward.",
+    "trap": "(D) reverses the parity relationship: afterpains are more common in subsequent pregnancies, not first ones. Overdistention and parity both work in the same direction, and both run opposite to the intuition that a first birth hurts most afterward.",
     "source": "ch20.md"
   },
   "q_0967": {
@@ -18362,7 +18452,7 @@
     ],
     "rationale": "In nonbreastfeeding women, \"breast distention is caused primarily by the temporary congestion of veins and lymphatics rather than by an accumulation of milk. Milk is present but should not be expressed.\" Engorgement \"resolves spontaneously, and discomfort decreases usually within 24 to 36 hours,\" and \"lactation ceases within a few days to 1 week.\"",
     "type": "single",
-    "trap": "(A) and (C) both stimulate the breast and prolong lactation, which is the opposite of what this woman wants — and it is the most tempting advice because it works for the breastfeeding woman two items earlier.",
+    "trap": "(A) and (C) both stimulate the breast and prolong lactation, which is the opposite of what this woman wants — and it is the most tempting advice because frequent feeding is what resolves engorgement in a breastfeeding woman.",
     "source": "ch20.md"
   },
   "q_0993": {
@@ -18552,7 +18642,7 @@
   "q_1003": {
     "topic": "postpartum assessment findings",
     "subtopic": "reading the fundus",
-    "stem": "The fundus is firm but deviated to the right of midline. What does this indicate, and what should the nurse do first?",
+    "stem": "On postpartum day 1 the nurse palpates a fundus that is firm but deviated to the right of midline. What does this indicate, and what should the nurse do first?",
     "options": [
       "Uterine atony; massage the fundus",
       "A distended bladder; assist the woman to void",
@@ -18565,7 +18655,10 @@
     "rationale": "Table 21.1 gives \"lateral deviation: distended bladder.\" The chapter explains the mechanism: \"a full bladder causes the uterus to be displaced above the umbilicus and well to one side of midline in the abdomen. It also prevents the uterus from contracting normally.\"",
     "type": "single",
     "trap": "(A) treats every fundal abnormality as atony. A firm, deviated fundus is a bladder problem, and massaging it without emptying the bladder leaves the cause in place.",
-    "source": "ch21.md"
+    "source": "ch21.md",
+    "aliases": [
+      "The fundus is firm but deviated to the right of midline. What does this indicate, and what should the nurse do first?"
+    ]
   },
   "q_1004": {
     "topic": "postpartum assessment findings",
@@ -18846,7 +18939,7 @@
   "q_1019": {
     "topic": "fundal massage",
     "subtopic": "making it tolerable and knowing what comes next",
-    "stem": "The uterus remains boggy after massage and clot expulsion. What interventions are likely to be used next?",
+    "stem": "A postpartum woman's uterus remains boggy after fundal massage and clot expulsion. What interventions are likely to be used next?",
     "options": [
       "Administration of intravenous fluids and oxytocic medications",
       "Ice packs to the fundus",
@@ -18859,7 +18952,10 @@
     "rationale": "When massage alone is insufficient, \"additional interventions likely to be used are administration of intravenous fluids and oxytocic medications\" — drugs that stimulate contraction of the uterine smooth muscle.",
     "type": "single",
     "trap": "(B) treats the uterus like an inflamed joint. Cold is used on the perineum for edema, not on the fundus, where contraction is what is needed.",
-    "source": "ch21.md"
+    "source": "ch21.md",
+    "aliases": [
+      "The uterus remains boggy after massage and clot expulsion. What interventions are likely to be used next?"
+    ]
   },
   "q_1020": {
     "topic": "preventing bladder distention",
@@ -20627,7 +20723,7 @@
   "q_1114": {
     "topic": "quantifying blood loss",
     "subtopic": "how loss is measured",
-    "stem": "The uterus is firmly contracted and bleeding continues. What does the search for the source include?",
+    "stem": "After birth, a woman's blood loss appears excessive, but her uterus is firmly contracted and bleeding continues. What does the search for the source include?",
     "options": [
       "Visual or manual inspection of the perineum, vagina, uterus, cervix, or rectum, as well as laboratory studies such as hemoglobin, hematocrit, coagulation studies, and platelet count",
       "Repeat fundal massage only",
@@ -20640,7 +20736,10 @@
     "rationale": "The search includes \"visual or manual inspection of the perineum, vagina, uterus, cervix, or rectum as well as laboratory studies (e.g., hemoglobin, hematocrit, coagulation studies, platelet count).\"",
     "type": "single",
     "trap": "(B) repeats the intervention that has already been shown not to apply, which is the most common way time is lost in a laceration bleed.",
-    "source": "ch33.md"
+    "source": "ch33.md",
+    "aliases": [
+      "The uterus is firmly contracted and bleeding continues. What does the search for the source include?"
+    ]
   },
   "q_1115": {
     "topic": "first-line management of atony",
@@ -20757,7 +20856,7 @@
   "q_1121": {
     "topic": "uterotonic medications",
     "subtopic": "contraindications",
-    "stem": "Why does the chapter describe misoprostol's contraindication line as the mirror image of the other two agents'?",
+    "stem": "Why does the chapter describe misoprostol's contraindication line for postpartum hemorrhage as the mirror image of those for methylergonovine and carboprost?",
     "options": [
       "Because misoprostol has no contraindications",
       "Because its entry reads \"consider use only for clients with hypertension or asthma\" — the two conditions that rule out methylergonovine and carboprost — so when those drugs are unavailable, misoprostol is what remains",
@@ -20770,7 +20869,10 @@
     "rationale": "Misoprostol's contraindication entry reads \"consider use only for clients with hypertension or asthma,\" the mirror image of methylergonovine's hypertension contraindication and carboprost's asthma contraindication. It is dosed at 600 to 1000 mcg once, and \"an advantage of misoprostol is that it can be given rectally, sublingually, or orally.\"",
     "type": "single",
     "trap": "(C) inverts the entry, which would leave a woman with hypertension and asthma with no second-line option at all.",
-    "source": "ch33.md"
+    "source": "ch33.md",
+    "aliases": [
+      "Why does the chapter describe misoprostol's contraindication line as the mirror image of the other two agents'?"
+    ]
   },
   "q_1122": {
     "topic": "uterotonic medications",
@@ -20945,7 +21047,7 @@
   "q_1131": {
     "topic": "coagulopathies and standards of care",
     "subtopic": "when to suspect a coagulopathy",
-    "stem": "During resuscitation, the nurse notes oozing at the intravenous insertion site and petechiae on the arm where the blood pressure cuff was applied. What should this suggest?",
+    "stem": "During resuscitation of a woman with postpartum hemorrhage, the nurse notes oozing at the intravenous insertion site and petechiae on the arm where the blood pressure cuff was applied. What should this suggest?",
     "options": [
       "Normal bruising from the cuff",
       "Disseminated intravascular coagulation, since oozing at sites of incisions or injections and petechiae or ecchymoses in areas not associated with surgery or trauma are signs to watch for",
@@ -20958,7 +21060,10 @@
     "rationale": "The chapter directs the nurse to watch for DIC through \"oozing at the sites of incisions or injections\" and \"the presence of petechiae or ecchymoses in areas not associated with surgery or trauma.\"",
     "type": "single",
     "trap": "(A) explains the petechiae away using the cuff, which is the example the chapter itself uses to show where they appear — the cuff makes them visible rather than causing them.",
-    "source": "ch33.md"
+    "source": "ch33.md",
+    "aliases": [
+      "During resuscitation, the nurse notes oozing at the intravenous insertion site and petechiae on the arm where the blood pressure cuff was applied. What should this suggest?"
+    ]
   },
   "q_1132": {
     "topic": "coagulopathies and standards of care",
@@ -21401,7 +21506,7 @@
     ],
     "rationale": "\"Instead of instructing parents to feed for a set number of minutes, nurses should teach them to look for signs that the baby has finished feeding (e.g., the baby's sucking and swallowing pattern has slowed, the breast is softened, the baby appears content and may fall asleep or release the nipple).\" And: \"The amount of time an infant spends breastfeeding is not a reliable indicator of the amount of milk the infant consumes because some of the time at the breast is spent in nonnutritive sucking.\" The average early feeding is 30 to 40 minutes.",
     "type": "single",
-    "trap": "(C) is the old advice for preventing soreness, and it is the shortest route to the hindmilk problem in the next item.",
+    "trap": "(C) is the old advice for preventing soreness, and it is the shortest route to the hindmilk problem: switching to the second breast too soon keeps the baby from the higher-fat hindmilk.",
     "source": "ch25.md"
   },
   "q_1156": {
@@ -22333,7 +22438,7 @@
   "q_1205": {
     "topic": "parental tasks in the nicu",
     "subtopic": "the five tasks",
-    "stem": "Which tasks complete the chapter's list of five parental tasks in the NICU?",
+    "stem": "Besides anticipatory grief, accepting that the baby is not healthy and full term, and resuming the process of relating to the infant, which tasks complete the chapter's list of five parental tasks in the NICU?",
     "options": [
       "Learning what is unique about this baby — special needs and growth patterns, caregiving needs, and growth and development expectations — and adjusting the home environment, including limiting visitors to minimize exposure to pathogens and possibly altering the environmental temperature",
       "Choosing a pediatrician and arranging insurance",
@@ -22346,7 +22451,10 @@
     "rationale": "The fourth task is \"learning what is unique about this baby,\" covering \"special needs and growth patterns, caregiving needs, and growth and development expectations,\" and the fifth is adjusting the home environment: \"parents are encouraged to limit the number of visitors to minimize exposure of the infant to pathogens. The environmental temperature may have to be altered.\"",
     "type": "single",
     "trap": "(B) and (D) are practical logistics rather than the developmental and caregiving adjustments the chapter frames as tasks.",
-    "source": "ch34.md"
+    "source": "ch34.md",
+    "aliases": [
+      "Which tasks complete the chapter's list of five parental tasks in the NICU?"
+    ]
   },
   "q_1206": {
     "topic": "parental tasks in the nicu",
@@ -23229,7 +23337,7 @@
   "q_1253": {
     "topic": "neonatal abstinence syndrome",
     "subtopic": "recognizing withdrawal",
-    "stem": "Which subacute signs may persist for 4 to 6 months?",
+    "stem": "Which subacute signs of neonatal abstinence syndrome may persist for 4 to 6 months?",
     "options": [
       "Irritability, sleep pattern disturbance, hyperactivity, feeding problems, and hypertonia",
       "Seizures and an exaggerated Moro reflex",
@@ -23242,7 +23350,10 @@
     "rationale": "Box 35.2 lists the subacute signs persisting 4 to 6 months as irritability, sleep pattern disturbance, hyperactivity, feeding problems, and hypertonia.",
     "type": "single",
     "trap": "(D) ends the syndrome at discharge, and the months-long course is what makes parent teaching and follow-up part of the treatment rather than an afterthought.",
-    "source": "ch35.md"
+    "source": "ch35.md",
+    "aliases": [
+      "Which subacute signs may persist for 4 to 6 months?"
+    ]
   },
   "q_1254": {
     "topic": "neonatal abstinence syndrome",
@@ -24846,7 +24957,7 @@
   "q_1340": {
     "topic": "intrapartum and postpartum care in substance use disorder",
     "subtopic": "the clinical picture and the pain rule",
-    "stem": "What approach does the chapter recommend to reduce staff conflict in caring for these women, and what else does it specify?",
+    "stem": "What approach does the chapter recommend to reduce staff conflict in caring for women with an active substance use disorder during the intrapartum and postpartum periods, and what else does it specify?",
     "options": [
       "Developing a standardized plan of care so that clients have limited opportunities to play staff members against one another, promoting mother-infant attachment by identifying the woman's strengths and reinforcing positive maternal feelings and behaviors, and ensuring sufficient staffing for strict surveillance of visitors to prevent unsupervised drug use",
       "Assigning a different nurse each shift",
@@ -24859,7 +24970,10 @@
     "rationale": "\"Developing a standardized plan of care so that clients have limited opportunities to play staff members against one another is helpful.\" And: \"Mother-infant attachment should be promoted by identifying the woman's strengths and reinforcing positive maternal feelings and behaviors,\" with staffing \"sufficient to ensure strict surveillance of visitors and prevent unsupervised drug use.\"",
     "type": "single",
     "trap": "(B) removes the consistency the standardized plan is meant to create, and (D) abandons the attachment work the chapter names as a goal.",
-    "source": "ch31.md"
+    "source": "ch31.md",
+    "aliases": [
+      "What approach does the chapter recommend to reduce staff conflict in caring for these women, and what else does it specify?"
+    ]
   },
   "q_1341": {
     "topic": "intrapartum and postpartum care in substance use disorder",
@@ -25308,7 +25422,7 @@
   "q_1365": {
     "topic": "preventing bladder distention",
     "subtopic": "the first void and the 150-ml rule",
-    "stem": "Over the next 2 hours the same woman voids three times: 60 mL, 80 mL, and 70 mL. Her fundus is above the umbilicus and to the right of midline. How should the nurse interpret this?",
+    "stem": "A woman who gave birth vaginally with epidural anesthesia voids three times over 2 hours: 60 mL, 80 mL, and 70 mL. Her fundus is above the umbilicus and to the right of midline. How should the nurse interpret this?",
     "options": [
       "Each void falls short of the at least 150 mL expected, so adequate emptying has not been documented, and the displaced fundus suggests a distended bladder",
       "Three voids show that the bladder is working, so no further assessment is needed",
@@ -25321,7 +25435,10 @@
     "rationale": "\"The first several voids should be measured to document adequate emptying of the bladder. A volume of at least 150 mL is expected for each voiding.\" \"A full bladder causes the uterus to be displaced above the umbilicus and well to one side of midline in the abdomen. It also prevents the uterus from contracting normally,\" which is why \"Uterine atony and excessive bleeding after birth can be the result of bladder distention.\"",
     "type": "single",
     "trap": "(B) counts voids instead of measuring them. Small amounts do not show that the bladder has emptied, and the chapter's stated reason for measuring is to document that it has.",
-    "source": "ch21.md"
+    "source": "ch21.md",
+    "aliases": [
+      "Over the next 2 hours the same woman voids three times: 60 mL, 80 mL, and 70 mL. Her fundus is above the umbilicus and to the right of midline. How should the nurse interpret this?"
+    ]
   },
   "q_1366": {
     "topic": "perineal care and infection prevention",
@@ -25432,7 +25549,7 @@
     ],
     "rationale": "\"If a thrombus is suspected, as evidenced by warmth, redness, or tenderness in the affected leg, the obstetric HCP should be notified. Meanwhile the woman should be confined to bed, with the affected limb elevated on pillows.\" Early ambulation \"is associated with a reduced incidence of venous thromboembolism (VTE),\" which is why it is encouraged before a thrombus is suspected.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Ambulation prevents VTE, but once a thrombus is suspected the rule reverses to bed rest with the limb elevated.",
+    "trap": "(B) is the mirror error: it applies the prevention rule to a suspected thrombus. Ambulation prevents VTE, but once a thrombus is suspected the rule reverses to bed rest with the limb elevated.",
     "source": "ch21.md"
   },
   "q_1372": {
@@ -25699,7 +25816,7 @@
   "q_1386": {
     "topic": "ppd versus postpartum psychosis",
     "subtopic": "postpartum psychosis",
-    "stem": "While caring for the woman with suspected postpartum psychosis, what does the Nursing Alert require the nurse to do?",
+    "stem": "While caring for a woman with suspected postpartum psychosis, what does the Nursing Alert require the nurse to do?",
     "options": [
       "Ask her specifically whether she has had thoughts about harming her baby",
       "Wait for her to raise any thoughts of harm herself, so as not to suggest them",
@@ -25712,12 +25829,15 @@
     "rationale": "\"Because mothers with postpartum psychosis can harm their infants, extra caution is needed in assessment and intervention. The nurse needs to ask specifically if the mother has had thoughts about harming her baby.\" The chapter adds that nurses \"cannot depend on women to volunteer unsolicited information.\"",
     "type": "single",
     "trap": "(B) sounds tactful and is the error the alert is written against: waiting for her to volunteer it means it may never be said.",
-    "source": "ch31.md"
+    "source": "ch31.md",
+    "aliases": [
+      "While caring for the woman with suspected postpartum psychosis, what does the Nursing Alert require the nurse to do?"
+    ]
   },
   "q_1387": {
     "topic": "ppd versus postpartum psychosis",
     "subtopic": "postpartum psychosis",
-    "stem": "The woman is admitted to an inpatient psychiatric unit and asks to see her baby. What does the chapter say about contact?",
+    "stem": "A woman with postpartum psychosis is admitted to an inpatient psychiatric unit and asks to see her baby. What does the chapter say about contact?",
     "options": [
       "Contact with her baby is usually advantageous if she desires it, but visits must be closely supervised and she should never be left alone with her baby",
       "All contact is prohibited until the psychosis has fully resolved",
@@ -25730,7 +25850,10 @@
     "rationale": "\"It is usually advantageous for the mother to have contact with her baby if she so desires, but visits must be closely supervised. She should never be left alone with her baby.\" Treatment is \"Antipsychotics, mood stabilizers, and benzodiazepines,\" with electroconvulsive therapy for women who do not respond, and \"A medication regimen is continued for at least a year.\" The illness \"is likely to recur in approximately one-third of women after subsequent births.\"",
     "type": "single",
     "trap": "(B) and (C) are the two opposite errors: banning contact entirely loses its benefit, and leaving the pair alone because she seems calm ignores the stated rule that she should never be left alone with her baby.",
-    "source": "ch31.md"
+    "source": "ch31.md",
+    "aliases": [
+      "The woman is admitted to an inpatient psychiatric unit and asks to see her baby. What does the chapter say about contact?"
+    ]
   },
   "q_1388": {
     "topic": "rewarming and hyperthermia in the preterm infant",
@@ -25903,7 +26026,7 @@
     ],
     "rationale": "\"Rates of retinopathy of prematurity and bronchopulmonary dysplasia are reduced when arterial oxygen saturation is carefully targeted (90%–95%).\" \"Individualized target saturation ranges should be determined for each ELBW infant.\" The oxygen-therapy section says the same thing plainly: \"The indiscriminate use of oxygen can be hazardous. Possible complications of oxygen therapy include ROP and BPD.\"",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item: 92% to 94% is Table 34.2's normal value, while the target range is 90% to 95% and is individualized. (B) is the \"keep it at 100 to be safe\" reflex that the Safety Alert exists to stop.",
+    "trap": "(C) confuses the normal value with the target: 92% to 94% is Table 34.2's normal value, while the target range is 90% to 95% and is individualized. (B) is the \"keep it at 100 to be safe\" reflex that the Safety Alert exists to stop.",
     "source": "ch34.md"
   },
   "q_1397": {
@@ -25979,7 +26102,7 @@
     ],
     "rationale": "\"Hypocalcemia and hypomagnesemia can occur in infants of mothers with insulin-dependent diabetes, although they are not usually present until 48 to 72 hours after birth.\" \"The most common physical sign is tremors. Supplemental calcium therapy may be required. Magnesium levels usually return to normal without treatment.\" Hypocalcemia \"is often associated with preterm birth, birth trauma, and perinatal asphyxia.\"",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Hypoglycemia is the early problem, within 1 to 6 hours; tremors on day 2 or 3, after normal glucose values, point toward calcium.",
+    "trap": "(B) puts hypoglycemia on the wrong day. Hypoglycemia is the early problem, within 1 to 6 hours; tremors on day 2 or 3, after normal glucose values, point toward calcium.",
     "source": "ch35.md"
   },
   "q_1401": {
@@ -26003,7 +26126,7 @@
   "q_1402": {
     "topic": "infant of a diabetic mother",
     "subtopic": "size is not maturity",
-    "stem": "The same infant has a round face, a plethoric complexion, and extra fat around the shoulders, and is feeding poorly. A parent says, \"At least he's big, so he must be strong and mature.\" What does the chapter say?",
+    "stem": "A 3900-g newborn of a mother with diabetes, above the 90th percentile for gestational age, has a round face, a plethoric complexion, and extra fat around the shoulders, and is feeding poorly. A parent says, \"At least he's big, so he must be strong and mature.\" What does the chapter say?",
     "options": [
       "Infants of mothers with diabetes can be LGA but physiologically immature; their internal organs are enlarged, but head size is normal because the brain is the only organ that is not enlarged",
       "A large infant is more mature than an average-size infant and needs less monitoring",
@@ -26016,7 +26139,10 @@
     "rationale": "\"At birth the typical LGA infant has a round face, a chubby body, and a plethoric or flushed complexion. The infant has enlarged internal organs (hepatosplenomegaly, splanchnomegaly, cardiomegaly) and increased body fat, especially around the shoulders.\" \"These infants have normal head size; the brain is the only organ that is not enlarged,\" and \"Infants of mothers with diabetes can be LGA but physiologically immature.\" Not every IDM is large: \"women with vascular complications are more likely to have infants who are small for gestational age (SGA).\"",
     "type": "single",
     "trap": "(D) inverts the risk: hypoglycemia \"is most common in the macrosomic or large-for-gestational-age (LGA) infant.\" (B) is the parent's intuition that size means maturity, which the chapter contradicts directly.",
-    "source": "ch35.md"
+    "source": "ch35.md",
+    "aliases": [
+      "The same infant has a round face, a plethoric complexion, and extra fat around the shoulders, and is feeding poorly. A parent says, \"At least he's big, so he must be strong and mature.\" What does the chapter say?"
+    ]
   },
   "q_1403": {
     "topic": "infant of a diabetic mother",
@@ -26123,7 +26249,7 @@
     ],
     "rationale": "\"The most commonly used medications to treat opioid withdrawal are methadone and morphine.\" The Eat, Sleep, Console model maximizes nonpharmacologic therapies and family involvement, \"using pharmacologic treatment such as morphine on an as-needed basis.\"",
     "type": "single",
-    "trap": "(B), (C), and (D) each slip in naloxone, the mirror error of the previous item: it is the drug the Medication Alert forbids for this infant, not one of the two used to treat the withdrawal.",
+    "trap": "(B), (C), and (D) each slip in naloxone, which the Medication Alert forbids for an opioid-exposed newborn and which is not one of the two drugs used to treat the withdrawal.",
     "source": "ch35.md"
   },
   "q_1409": {

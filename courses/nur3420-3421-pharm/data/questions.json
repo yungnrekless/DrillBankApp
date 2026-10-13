@@ -32,7 +32,7 @@
     ],
     "rationale": "Table 10.2 lists peripheral neuropathy among its chronic examples, alongside arthritis, cancer, and lower back pain, and gives chronic pain as persistent or recurring and endless in duration. The chapter defines chronic pain as lasting 3 to 6 months or longer. The physiologic sympathetic response belongs to the acute column only.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item and is the clinically dangerous one. Having just learned that acute pain comes with visible vital sign changes, a learner reads calm vital signs as evidence against pain.",
+    "trap": "(C) is the clinically dangerous one, because it turns the acute-pain rule around. Knowing that acute pain comes with visible vital sign changes, a learner reads calm vital signs as evidence against pain.",
     "source": "ch10.md"
   },
   "q_0003": {
@@ -143,7 +143,7 @@
     ],
     "rationale": "Pain tolerance is the amount of pain a patient can endure without it interfering with normal function and can vary from patient to patient, unlike pain threshold, which the chapter describes as similar for most individuals. If a stem varies by culture, attitude, or environment, it is describing tolerance.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. (C) is the second-order trap the key terms box sets: pain tolerance and drug tolerance share a word but are unrelated concepts, and only the drug one is defined as needing larger doses for the same effect.",
+    "trap": "(A) is the mirror error, swapping threshold and tolerance; threshold is the one the chapter describes as similar for most individuals. (C) is the second-order trap the key terms box sets: pain tolerance and drug tolerance share a word but are unrelated concepts, and only the drug one is defined as needing larger doses for the same effect.",
     "source": "ch10.md"
   },
   "q_0009": {
@@ -179,7 +179,7 @@
     ],
     "rationale": "Physical dependence is the condition in which unpleasant physical withdrawal symptoms occur if a drug taken over a period of time is stopped abruptly or smaller doses are given, and the chapter calls it the physical adaptation of the body to the presence of an opioid. Psychologic dependence, which the chapter equates with addiction, is a pattern of compulsive use with continuous craving and use for effects other than pain relief.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and it is the one that causes real harm. Withdrawal on abrupt discontinuation is expected physiology, not evidence of addiction, and the chapter says outright that psychologic dependence in patients on escalating opioids for cancer pain is unusual.",
+    "trap": "(A) is the mirror error, reading physical dependence as addiction, and it is the one that causes real harm. Withdrawal on abrupt discontinuation is expected physiology, not evidence of addiction, and the chapter says outright that psychologic dependence in patients on escalating opioids for cancer pain is unusual.",
     "source": "ch10.md"
   },
   "q_0011": {
@@ -251,7 +251,7 @@
     ],
     "rationale": "Table 10.3 gives C fibers as having no myelin sheath, small fiber size, and slow conduction, producing dull and nonlocalized pain. Opening of the gate is affected by the stimulation of C fibers, which allows impulses to be transmitted to the brain and pain to be sensed.",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item, and every attribute it lists is genuinely true of A fibers, which is what makes it attractive. A fibers carry sharp, well-localized pain and close the gate. (A) attaches one fiber's name to the other fiber's attributes.",
+    "trap": "(D) is the mirror error, describing the fiber that relieves pain rather than the one carrying it, and every attribute it lists is genuinely true of A fibers, which is what makes it attractive. A fibers carry sharp, well-localized pain and close the gate. (A) attaches one fiber's name to the other fiber's attributes.",
     "source": "ch10.md"
   },
   "q_0015": {
@@ -511,7 +511,7 @@
     ],
     "rationale": "Table 10.5 gives kappa as producing spinal analgesia, sedation, and miosis, with ketocyclazocine as its prototypical agonist. Delta is the sparse row, listing analgesia only, with enkephalins as its prototype.",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item. Cue: mu is supraspinal analgesia plus respiratory depression and euphoria, which are the two effects that make opioids dangerous and abusable, and kappa is spinal analgesia plus miosis.",
+    "trap": "(D) is the mirror error, pinning kappa's miosis to mu. Cue: mu is supraspinal analgesia plus respiratory depression and euphoria, which are the two effects that make opioids dangerous and abusable, and kappa is spinal analgesia plus miosis.",
     "source": "ch10.md"
   },
   "q_0029": {
@@ -587,7 +587,7 @@
     ],
     "rationale": "An antagonist binds to a pain receptor but does not reduce pain signals, and functions as a competitive antagonist because it competes with and reverses the effects of agonist and agonist-antagonist drugs at the receptor sites. An agonist by contrast binds an opioid pain receptor and causes an analgesic response.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. A partial agonist still produces a response, only a weaker one; an antagonist produces none and undoes what is already bound.",
+    "trap": "(B) is the mirror error, mistaking a partial agonist for a blocker. A partial agonist still produces a response, only a weaker one; an antagonist produces none and undoes what is already bound.",
     "source": "ch10.md"
   },
   "q_0033": {
@@ -737,7 +737,7 @@
   "q_0041": {
     "topic": "opioid indications and contraindications",
     "subtopic": "stated allergy versus adverse effect",
-    "stem": "A different patient reports that morphine once caused sudden wheezing, hypotension, and swelling that required epinephrine. What does the chapter support here?",
+    "stem": "A patient reports that morphine once caused sudden wheezing, hypotension, and swelling that required epinephrine. What does the chapter support here?",
     "options": [
       "Documenting the reaction as an adverse effect and rechallenging with morphine",
       "Treating this as a true allergic reaction and selecting an opioid of an unrelated chemical structure, such as fentanyl",
@@ -749,8 +749,11 @@
     ],
     "rationale": "Knowing the chemical structure of the different opioids is important in determining the appropriate drug for patients who experience significant allergic reactions to a specific opioid, and the chapter's example is that a patient with anaphylaxis from morphine may appropriately receive a drug with an unrelated structure such as fentanyl.",
     "type": "single",
-    "trap": "(C) and (D) are the mirror error of the previous item, over-corrected: this reaction really is an allergy, but both drugs offered sit in the morphine-like group on Table 10.4. A smaller dose and a lower potency are irrelevant to a structural cross-reaction.",
-    "source": "ch10.md"
+    "trap": "(C) and (D) recognize the allergy but miss the structural rule: this reaction really is an allergy, but both drugs offered sit in the morphine-like group on Table 10.4. A smaller dose and a lower potency are irrelevant to a structural cross-reaction.",
+    "source": "ch10.md",
+    "aliases": [
+      "A different patient reports that morphine once caused sudden wheezing, hypotension, and swelling that required epinephrine. What does the chapter support here?"
+    ]
   },
   "q_0042": {
     "topic": "opioid indications and contraindications",
@@ -1195,7 +1198,7 @@
     ],
     "rationale": "Acetaminophen is not usually associated with the cardiovascular effects such as edema or the platelet effects such as bleeding seen with aspirin and other NSAIDs, and it does not cause the aspirin-related gastrointestinal tract irritation or bleeding or the aspirin-related acid-base changes.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. (D) reverses one of the drug's three contraindications, which are known drug allergy, severe liver disease, and glucose-6-phosphate dehydrogenase deficiency.",
+    "trap": "(B) is the mirror error, inverting the one property acetaminophen lacks: in contrast to the NSAIDs, it has no antiinflammatory effects. (D) reverses one of the drug's three contraindications, which are known drug allergy, severe liver disease, and glucose-6-phosphate dehydrogenase deficiency.",
     "source": "ch10.md"
   },
   "q_0066": {
@@ -1406,7 +1409,7 @@
   "q_0077": {
     "topic": "anesthesia terminology and scope",
     "subtopic": "general versus local anesthesia",
-    "stem": "The neighbor is having a forearm laceration sutured after infiltration with lidocaine and asks whether she too could stop breathing. Which response is accurate?",
+    "stem": "A patient having a forearm laceration sutured after infiltration with lidocaine has heard that general anesthesia requires a breathing tube and asks whether she too could stop breathing. Which response is accurate?",
     "options": [
       "Local anesthesia does not involve paralysis of respiratory function; it eliminates pain sensation only in the tissues innervated by the anesthetized nerves",
       "Local anesthesia depresses the CNS enough that a ventilator must be at the bedside for every procedure",
@@ -1418,8 +1421,11 @@
     ],
     "rationale": "Local anesthesia is a drug-induced state in which peripheral or spinal nerve impulses are altered to reduce or eliminate pain and other sensations in tissues innervated by those nerves. The chapter contrasts it directly with general anesthesia: local anesthesia does not involve paralysis of respiratory function but only elimination of pain sensation in the tissues innervated by anesthetized nerves.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item and also smuggles in the moderate sedation definition, which is the one that pairs altered consciousness with a preserved respiratory drive. Local anesthesia leaves consciousness intact as well.",
-    "source": "ch11.md"
+    "trap": "(C) borrows complete loss of consciousness from general anesthesia and also smuggles in the moderate sedation definition, which is the one that pairs altered consciousness with a preserved respiratory drive. Local anesthesia leaves consciousness intact as well.",
+    "source": "ch11.md",
+    "aliases": [
+      "The neighbor is having a forearm laceration sutured after infiltration with lidocaine and asks whether she too could stop breathing. Which response is accurate?"
+    ]
   },
   "q_0078": {
     "topic": "anesthesia terminology and scope",
@@ -1454,7 +1460,7 @@
     ],
     "rationale": "Both the key term and the key points file moderate sedation under the general heading: it is a milder form of general anesthesia resulting in partial or complete loss of consciousness but without reducing normal respiratory drive. Moderate sedation, conscious sedation, and procedural sedation are synonymous terms.",
     "type": "single",
-    "trap": "(A) pulls because everything about moderate sedation's clinical use reads local — outpatient, awake, self-ventilating. Pair it against the previous item to hold both: spinal anesthesia feels central and is classified local; moderate sedation feels local and is classified general.",
+    "trap": "(A) pulls because everything about moderate sedation's clinical use reads local — outpatient, awake, self-ventilating. Pair it against spinal anesthesia to hold both: spinal anesthesia feels central and is classified local; moderate sedation feels local and is classified general.",
     "source": "ch11.md"
   },
   "q_0080": {
@@ -1571,7 +1577,7 @@
     ],
     "rationale": "Because potency varies directly with lipid solubility, the water-soluble member of a pair is predicted to be the weaker anesthetic. It is the lipid-soluble drug that crosses the blood-brain barrier readily to concentrate in the high-lipid nerve cell membranes.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, inverting the same axis from the other end. (C) overreaches in a way the chapter itself refuses: many theories have been proposed, the drugs vary widely in chemical structure, and Overton-Meyer has been used to explain only some of the properties of anesthetic drugs.",
+    "trap": "(B) inverts the Overton-Meyer axis, crediting water solubility rather than lipid solubility with potency. (C) overreaches in a way the chapter itself refuses: many theories have been proposed, the drugs vary widely in chemical structure, and Overton-Meyer has been used to explain only some of the properties of anesthetic drugs.",
     "source": "ch11.md"
   },
   "q_0086": {
@@ -1798,7 +1804,7 @@
     ],
     "rationale": "Box 11.6 lists dantrolene among the drugs with additive effects on neuromuscular blocking drugs, alongside aminoglycosides, clindamycin, calcium channel blockers, inhalation anesthetics, local anesthetics, and magnesium.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item and comes from the same drug's other role. Dantrolene has two opposite-feeling jobs on adjacent pages: for malignant hyperthermia it is the treatment, but for neuromuscular blockade it deepens and prolongs the paralysis. Note also that dantrolene's mechanism, dose, and route are all deferred to Chapter 12; this chapter gives only its name and class.",
+    "trap": "(B) is the mirror error and comes from the same drug's other role. Dantrolene has two opposite-feeling jobs on adjacent pages: for malignant hyperthermia it is the treatment, but for neuromuscular blockade it deepens and prolongs the paralysis. Note also that dantrolene's mechanism, dose, and route are all deferred to Chapter 12; this chapter gives only its name and class.",
     "source": "ch11.md"
   },
   "q_0098": {
@@ -1834,7 +1840,7 @@
     ],
     "rationale": "Nondepolarizing NMBDs also bind to acetylcholine receptors at the neuromuscular junction, but instead of mimicking acetylcholine they block its actions. The nerve cell membrane is not depolarized, the muscle fibers are not stimulated, and skeletal muscle contraction does not occur. Cisatracurium, rocuronium, vecuronium, and pancuronium are all nondepolarizing.",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item, keeping the agonist language for the antagonist drug. Both classes bind the same receptor, which is what makes the pair confusable, and succinylcholine is the only depolarizing NMBD in the chapter.",
+    "trap": "(D) is the mirror error, carrying succinylcholine's agonist language over to the antagonist drug. Both classes bind the same receptor, which is what makes the pair confusable, and succinylcholine is the only depolarizing NMBD in the chapter.",
     "source": "ch11.md"
   },
   "q_0100": {
@@ -1870,7 +1876,7 @@
     ],
     "rationale": "The chapter states the exception directly: succinylcholine is not reversed with acetylcholinesterase inhibitors because of its short duration of action and natural breakdown. Its duration after a single dose is only 5 to 9 minutes because of rapid breakdown by cholinesterase, the enzyme responsible for metabolizing it.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item — sugammadex is the selective relaxant binding agent for rocuronium or vecuronium, both nondepolarizing. Giving an anticholinesterase for succinylcholine applies the right drug to the wrong mechanism, since succinylcholine is an agonist already producing the block rather than a competitor waiting to be displaced.",
+    "trap": "(C) borrows the nondepolarizing reversal agent — sugammadex is the selective relaxant binding agent for rocuronium or vecuronium, both nondepolarizing. Giving an anticholinesterase for succinylcholine applies the right drug to the wrong mechanism, since succinylcholine is an agonist already producing the block rather than a competitor waiting to be displaced.",
     "source": "ch11.md"
   },
   "q_0102": {
@@ -1960,7 +1966,7 @@
     ],
     "rationale": "Recovery of muscular activity after discontinuation of anesthesia usually occurs in the reverse order of the paralysis; thus the diaphragm is ordinarily the first to regain function.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, applying the paralysis order to recovery. The muscle that fails last recovers first, which is precisely why extubation decisions are not made on hand grip alone.",
+    "trap": "(B) is the mirror error, applying the paralysis order to recovery. The muscle that fails last recovers first, which is precisely why extubation decisions are not made on hand grip alone.",
     "source": "ch11.md"
   },
   "q_0107": {
@@ -2060,7 +2066,7 @@
     ],
     "rationale": "The lidocaine drug profile addresses this directly: some patients report allergic or anaphylactic reactions to the \"caines,\" and in those situations it may be wise to try a local anesthetic of the ester type. Lidocaine is an amide, so the alternate class is the ester family.",
     "type": "single",
-    "trap": "(C) is the mirror error of the earlier ester-to-amide item — it changes the product but not the chemical class, which is the only variable that matters here. The switch has to cross the ester-amide line in whichever direction the reaction came from.",
+    "trap": "(C) is the classic half-switch — it changes the product but not the chemical class, which is the only variable that matters here. The switch has to cross the ester-amide line in whichever direction the reaction came from.",
     "source": "ch11.md"
   },
   "q_0112": {
@@ -2240,7 +2246,7 @@
     ],
     "rationale": "The chapter states that \"any of these drugs can function along a continuum as a sedative and/or hypnotic and/or anxiolytic, depending on the dosage and patient sensitivity,\" and that hypnotics cause sleep and have \"a much more potent effect\" on the CNS (p. 184).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — it freezes the label to the molecule instead of to the dose. (C) invents a class restriction; the continuum statement is made about the sedative-hypnotics generally, benzodiazepines included.",
+    "trap": "(A) is the fixed-label error — it freezes the label to the molecule instead of to the dose. (C) invents a class restriction; the continuum statement is made about the sedative-hypnotics generally, benzodiazepines included.",
     "source": "ch12.md"
   },
   "q_0122": {
@@ -2312,7 +2318,7 @@
     ],
     "rationale": "REM rebound is excessive REM sleep following discontinuation of a sleep-altering drug (p. 183). With the barbiturates the chapter is explicit that during rebound \"the proportion of REM sleep is increased and nightmares often ensue\" (p. 189).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Interference happens while the patient is on the drug and yields less REM with daytime fatigue; rebound happens after stopping and yields more REM with vivid dreams. (D) is the neighboring withdrawal phenomenon, but it names too much wakefulness rather than too much dreaming.",
+    "trap": "(A) is the mirror error, naming the on-drug phenomenon for one that follows stopping. Interference happens while the patient is on the drug and yields less REM with daytime fatigue; rebound happens after stopping and yields more REM with vivid dreams. (D) is the other withdrawal phenomenon, but it names too much wakefulness rather than too much dreaming.",
     "source": "ch12.md"
   },
   "q_0126": {
@@ -2486,7 +2492,7 @@
   "q_0135": {
     "topic": "benzodiazepine overdose and flumazenil reversal",
     "subtopic": "matching the antidote to the class",
-    "stem": "The patient in the next bed took an overdose of an opioid analgesic and is unresponsive with a respiratory rate of 6 breaths/min. Which reversal drug applies to him?",
+    "stem": "A patient who took an overdose of an opioid analgesic is unresponsive with a respiratory rate of 6 breaths/min. Which reversal drug applies to him?",
     "options": [
       "Flumazenil",
       "Naloxone",
@@ -2498,8 +2504,11 @@
     ],
     "rationale": "The chapter pairs the two antidotes deliberately: flumazenil reverses the benzodiazepines by competing for benzodiazepine receptor binding, while naloxone is the opioid antagonist carried in Chapter 10. Flumazenil has no action at opioid receptors.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and it is the most common error in this chapter because both drugs are competitive antagonists given for CNS depressant overdose. Match the antidote to the drug class, not to the symptom.",
-    "source": "ch12.md"
+    "trap": "(A) is the benzodiazepine antidote, and it is the most common error in this chapter because both drugs are competitive antagonists given for CNS depressant overdose. Match the antidote to the drug class, not to the symptom.",
+    "source": "ch12.md",
+    "aliases": [
+      "The patient in the next bed took an overdose of an opioid analgesic and is unresponsive with a respiratory rate of 6 breaths/min. Which reversal drug applies to him?"
+    ]
   },
   "q_0136": {
     "topic": "benzodiazepine overdose and flumazenil reversal",
@@ -2570,7 +2579,7 @@
     ],
     "rationale": "Table 12.4 lists rifampin with increased metabolism and decreased benzodiazepine effects. Rifampin is the one row of that table that runs against all the others, which is why it is printed there; the chapter also names rifampin as reducing the efficacy of ramelteon by speeding its metabolism (p. 188).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — it applies the grapefruit and azole direction to an inducer. Inducers speed metabolism and cause treatment failure; inhibitors slow it and cause toxicity.",
+    "trap": "(A) is the mirror error — it applies the grapefruit and azole direction to an inducer. Inducers speed metabolism and cause treatment failure; inhibitors slow it and cause toxicity.",
     "source": "ch12.md"
   },
   "q_0140": {
@@ -2810,7 +2819,7 @@
     ],
     "rationale": "The interaction table gives monoamine oxidase inhibitors the result of prolonged barbiturate effects. Every other listed interaction is either additive CNS depression, as with alcohol, antihistamines, benzodiazepines, opioids, and tranquilizers, or induction-driven failure of the other drug, as with the anticoagulants and the oral contraceptives (p. 190).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item — it applies the induction direction, in which the other drug loses effect, to the one row where the arrow points back at the barbiturate.",
+    "trap": "(B) is the mirror error — it applies the induction direction, in which the other drug loses effect, to the one row where the arrow points back at the barbiturate.",
     "source": "ch12.md"
   },
   "q_0153": {
@@ -2867,7 +2876,7 @@
     ],
     "rationale": "Only one compound, dantrolene, acts directly on skeletal muscle; it works on the excitation-contraction coupling of muscle fibers and not at the level of the CNS, by decreasing the amount of calcium released from storage sites in the sarcoplasmic reticula of muscle fibers. Intravenous dantrolene is used for the management of skeletal muscle spasms that accompany the crisis condition known as malignant hyperthermia (p. 191).",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — it offers a centrally acting drug for a crisis occurring in the muscle fiber itself. Baclofen's pump and test dose are real facts attached to the wrong problem.",
+    "trap": "(A) is the mirror error — it offers a centrally acting drug for a crisis occurring in the muscle fiber itself. Baclofen's pump and test dose are real facts attached to the wrong problem.",
     "source": "ch12.md"
   },
   "q_0156": {
@@ -2957,7 +2966,7 @@
     ],
     "rationale": "Intravenous administration of a barbiturate requires dilution of the drug with normal saline, and most of these drugs are not to be given any faster than 1 mg/kg/min. Too rapid an infusion of a barbiturate may produce profound hypotension and marked respiratory depression, and the Key Points warn that too rapid an infusion may precipitate respiratory or cardiac arrest (pp. 194 and 196).",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item — it is diazepam's fixed time-per-dose rule, whereas the barbiturate rule is weight based. (D) names one of the chapter's stated incompatibilities, listed alongside amphotericin B and hydromorphone.",
+    "trap": "(C) is the mirror error — it is diazepam's fixed time-per-dose rule, whereas the barbiturate rule is weight based. (D) names one of the chapter's stated incompatibilities, listed alongside amphotericin B and hydromorphone.",
     "source": "ch12.md"
   },
   "q_0161": {
@@ -3039,7 +3048,7 @@
   "q_0165": {
     "topic": "branches of pharmacology",
     "subtopic": "kinetics versus dynamics",
-    "stem": "The same monograph states that the drug slows heart rate by binding beta-1 receptors and reducing the rate at which cardiac cells contract. Which branch of pharmacology does that statement belong to?",
+    "stem": "A drug monograph states that the drug slows heart rate by binding beta-1 receptors and reducing the rate at which cardiac cells contract. Which branch of pharmacology does that statement belong to?",
     "options": [
       "Pharmacokinetics",
       "Pharmacodynamics",
@@ -3051,8 +3060,11 @@
     ],
     "rationale": "Pharmacodynamics is the study of the biochemical and physiologic interactions of drugs at their sites of activity; it examines the effect of the drug on the body. Receptor binding at the site of action is the definition case.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Nothing here describes the drug's journey through the body — it describes what the drug does once it has arrived.",
-    "source": "ch2.md"
+    "trap": "(A) is the kinetics-dynamics swap. Nothing here describes the drug's journey through the body — it describes what the drug does once it has arrived.",
+    "source": "ch2.md",
+    "aliases": [
+      "The same monograph states that the drug slows heart rate by binding beta-1 receptors and reducing the rate at which cardiac cells contract. Which branch of pharmacology does that statement belong to?"
+    ]
   },
   "q_0166": {
     "topic": "branches of pharmacology",
@@ -3093,7 +3105,7 @@
   "q_0168": {
     "topic": "drug names and approval",
     "subtopic": "chemical, generic, and trade names",
-    "stem": "The same patient asks who decides what a drug's generic name will be. Which response is accurate?",
+    "stem": "A patient asks who decides what a drug's generic name will be. Which response is accurate?",
     "options": [
       "The manufacturer chooses it, with marketability in mind",
       "The United States Adopted Names Council assigns it, and it is not protected by trademark",
@@ -3105,8 +3117,11 @@
     ],
     "rationale": "The generic or nonproprietary name is given to a drug by the United States Adopted Names Council. It is much shorter and simpler than the chemical name and is not protected by trademark.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — marketability drives the trade name, not the generic one. (D) describes the chemical name, which is the one that states composition and molecular structure.",
-    "source": "ch2.md"
+    "trap": "(A) confuses the generic name with the trade name — marketability drives the trade name, not the generic one. (D) describes the chemical name, which is the one that states composition and molecular structure.",
+    "source": "ch2.md",
+    "aliases": [
+      "The same patient asks who decides what a drug's generic name will be. Which response is accurate?"
+    ]
   },
   "q_0169": {
     "topic": "drug names and approval",
@@ -3205,7 +3220,7 @@
   "q_0174": {
     "topic": "dosage forms and dissolution",
     "subtopic": "oral absorption ranking",
-    "stem": "Of those same four formulations, which will be absorbed most slowly?",
+    "stem": "Four oral formulations of the same drug are stocked. Which will be absorbed most slowly?",
     "options": [
       "Enteric-coated tablet",
       "Oral soluble wafer",
@@ -3218,7 +3233,10 @@
     "rationale": "An enteric coating prevents the tablet from being broken down in the acidic pH of the stomach, so the drug is not absorbed until it reaches the higher, more alkaline pH of the intestines. That property produces slower dissolution and therefore slower absorption.",
     "type": "single",
     "trap": "(D) is the reflex pick for anyone ranking by how solid the form looks. A plain capsule sits in the middle of Table 2.1; the enteric-coated tablet is last because the delay is engineered, not incidental.",
-    "source": "ch2.md"
+    "source": "ch2.md",
+    "aliases": [
+      "Of those same four formulations, which will be absorbed most slowly?"
+    ]
   },
   "q_0175": {
     "topic": "dosage forms and dissolution",
@@ -3441,7 +3459,7 @@
     ],
     "rationale": "Fat-soluble drugs have a larger volume of distribution and low blood concentrations, because they disperse out of the blood into fat and other tissues.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The relationship is inverse in both directions, and the practical danger is reading a low blood level on a lipophilic drug as \"not enough drug on board.\"",
+    "trap": "(A) is the mirror error: it gives the lipophilic drug the hydrophilic pattern of a small volume of distribution and high blood concentrations. The relationship is inverse in both directions, and the practical danger is reading a low blood level on a lipophilic drug as \"not enough drug on board.\"",
     "source": "ch2.md"
   },
   "q_0187": {
@@ -3495,7 +3513,7 @@
     ],
     "rationale": "Ketoconazole is the chapter's named P-450 inhibitor. Decreases in drug metabolism result in accumulation of the drug and prolongation of its effects, which can lead to drug toxicity.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The word \"inhibitor\" misleads because it sounds like it should reduce the drug's effect — it reduces enzyme activity, which raises drug levels.",
+    "trap": "(A) is the mirror error: it gives the inhibitor ketoconazole the inducer's effect, speeding metabolism and lowering drug levels instead of raising them. The word \"inhibitor\" misleads because it sounds like it should reduce the drug's effect — it reduces enzyme activity, which raises drug levels.",
     "source": "ch2.md"
   },
   "q_0190": {
@@ -3823,7 +3841,7 @@
     ],
     "rationale": "Empiric therapy is based on clinical probabilities and involves drug administration when a pathologic condition has a high likelihood of occurrence based on the patient's initial presenting symptoms — the chapter's example is an antibiotic active against the most commonly associated organism, started before culture and sensitivity reports are available.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and the culture is what gives it away. You do not draw cultures on a patient who has no infection; the pending culture means illness is present and the choice is a probability judgment, not prevention.",
+    "trap": "(A) is the mirror error, calling empiric therapy prophylactic, and the culture is what gives it away. You do not draw cultures on a patient who has no infection; the pending culture means illness is present and the choice is a probability judgment, not prevention.",
     "source": "ch2.md"
   },
   "q_0208": {
@@ -3847,7 +3865,7 @@
   "q_0209": {
     "topic": "therapeutic index, tolerance, and dependence",
     "subtopic": "therapeutic index",
-    "stem": "A different drug is described as having a high therapeutic index. What does this indicate?",
+    "stem": "A drug is described as having a high therapeutic index. What does this indicate?",
     "options": [
       "The drug is more dangerous and needs frequent serum levels",
       "The drug has a wide margin between therapeutic and toxic levels and is rarely associated with overdose events",
@@ -3860,7 +3878,10 @@
     "rationale": "Drugs with a high therapeutic index are rarely associated with overdose events, and the chapter's example is amoxicillin.",
     "type": "single",
     "trap": "(A) is the mirror error. Consistent monitoring belongs to the low-index drugs — warfarin, digoxin, and the aminoglycosides and vancomycin taken up in Chapter 39 — precisely because their margin is narrow.",
-    "source": "ch2.md"
+    "source": "ch2.md",
+    "aliases": [
+      "A different drug is described as having a high therapeutic index. What does this indicate?"
+    ]
   },
   "q_0210": {
     "topic": "therapeutic index, tolerance, and dependence",
@@ -4150,7 +4171,7 @@
   "q_0225": {
     "topic": "diuretic classes and nephron sites of action",
     "subtopic": "site of action by class",
-    "stem": "The same patient's home hydrochlorothiazide is restarted at discharge. Which nephron segment does it act on?",
+    "stem": "A patient with heart failure who received intravenous furosemide in the hospital has her home hydrochlorothiazide restarted at discharge. Which nephron segment does hydrochlorothiazide act on?",
     "options": [
       "The thick ascending limb of the loop of Henle",
       "The distal convoluted tubule, where it inhibits the resorption of sodium, potassium, and chloride",
@@ -4162,8 +4183,11 @@
     ],
     "rationale": "The primary site of action of the thiazides and thiazide-like drugs is the distal convoluted tubule, where they inhibit the resorption of sodium, potassium, and chloride (p. 452). That segment handles only the remaining 5% to 10% of filtered sodium, which is why thiazides are less potent than loop diuretics.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. (D) is mannitol's major site of action, offered here because both drugs are described as acting on more than one structure.",
-    "source": "ch28.md"
+    "trap": "(A) is furosemide's site, the classic loop/thiazide swap. (D) is mannitol's major site of action, offered here because both drugs are described as acting on more than one structure.",
+    "source": "ch28.md",
+    "aliases": [
+      "The same patient's home hydrochlorothiazide is restarted at discharge. Which nephron segment does it act on?"
+    ]
   },
   "q_0226": {
     "topic": "diuretic classes and nephron sites of action",
@@ -4227,7 +4251,7 @@
   "q_0229": {
     "topic": "potassium-wasting versus potassium-sparing diuretics",
     "subtopic": "dietary teaching in both directions",
-    "stem": "The same patient is later switched from hydrochlorothiazide to spironolactone, and her daughter asks whether she should keep buying bananas and orange juice. Which response is correct?",
+    "stem": "A patient taking hydrochlorothiazide for hypertension, taught to eat potassium-rich foods, is switched to spironolactone, and her daughter asks whether she should keep buying bananas and orange juice. Which response is correct?",
     "options": [
       "Yes, keep them up, because every diuretic causes potassium to be lost in the urine",
       "No, because spironolactone keeps potassium in the body and the risk with it is a high potassium level",
@@ -4239,8 +4263,11 @@
     ],
     "rationale": "The potassium-sparing diuretics spare potassium rather than wasting it, so the problem that may occur is hyperkalemia rather than hypokalemia (p. 455), and the teaching to encourage potassium-rich foods is explicitly suspended when potassium-sparing diuretics are used.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, and it is the classic reversal — \"eat foods high in potassium\" offered to a spironolactone patient. (C) reasons from aldosterone in the wrong direction: aldosterone regulates sodium and water balance by trading sodium for potassium, so blocking its receptors holds potassium in, not out.",
-    "source": "ch28.md"
+    "trap": "(A) carries over the hydrochlorothiazide teaching, and it is the classic reversal — \"eat foods high in potassium\" offered to a spironolactone patient. (C) reasons from aldosterone in the wrong direction: aldosterone regulates sodium and water balance by trading sodium for potassium, so blocking its receptors holds potassium in, not out.",
+    "source": "ch28.md",
+    "aliases": [
+      "The same patient is later switched from hydrochlorothiazide to spironolactone, and her daughter asks whether she should keep buying bananas and orange juice. Which response is correct?"
+    ]
   },
   "q_0230": {
     "topic": "potassium-wasting versus potassium-sparing diuretics",
@@ -4316,7 +4343,7 @@
     ],
     "rationale": "The clause \"excluding the potassium-sparing diuretics\" is load-bearing (p. 453): the hypokalemia-to-digoxin-toxicity chain does not apply to spironolactone, triamterene, or amiloride, because those drugs produce hyperkalemia rather than hypokalemia.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, generalizing a rule that the chapter states with an exclusion built into it. (D) overcorrects in the other direction — spironolactone very much affects potassium, just in the opposite direction from what the student assumed.",
+    "trap": "(A) is the mirror error, treating every diuretic as lowering potassium and raising digoxin toxicity risk, generalizing a rule that the chapter states with an exclusion built into it. (D) overcorrects in the other direction — spironolactone very much affects potassium, just in the opposite direction from what the student assumed.",
     "source": "ch28.md"
   },
   "q_0234": {
@@ -4352,7 +4379,7 @@
     ],
     "rationale": "Metolazone appears to be more potent than the thiazide diuretics and remains effective to a creatinine clearance as low as 10 mL/min (p. 453), which is why it is the thiazide-like drug combined with a loop diuretic in moderate to severe heart failure. The plain thiazides should not be used once clearance falls below the 30 to 50 mL/min range.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, reaching for the prototypical thiazide because it is the one everybody knows. (B) and (D) are the same error wearing different names — every drug on this list except metolazone loses effect well above a clearance of 15.",
+    "trap": "(A) is the renal-threshold error, reaching for the prototypical thiazide because it is the one everybody knows, though the plain thiazides fail once clearance falls below the 30 to 50 mL/min range. (B) and (D) are the same error wearing different names — every drug on this list except metolazone loses effect well above a clearance of 15.",
     "source": "ch28.md"
   },
   "q_0236": {
@@ -4406,7 +4433,7 @@
     ],
     "rationale": "The thiazide metabolic signature includes elevated levels of calcium, lipids, glucose, and uric acid (p. 452), and idiopathic hypercalciuria sits in the thiazide indication list alongside hypertension, edema, and diabetes insipidus.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item — it states the loop diuretic's calcium effect and attaches it to the thiazide. Both statements are printed in this chapter, five pages apart, which is exactly what makes the pair swappable.",
+    "trap": "(B) is the mirror error — it states the loop diuretic's calcium effect, increased renal excretion of calcium, and attaches it to the thiazide. Both statements are printed in this chapter, five pages apart, which is exactly what makes the two statements swappable.",
     "source": "ch28.md"
   },
   "q_0239": {
@@ -4520,7 +4547,7 @@
     ],
     "rationale": "Triamterene may reduce folic acid levels and cause the formation of kidney stones and urinary casts, and may also precipitate megaloblastic anemia, though adverse effects from triamterene are rare (p. 451).",
     "type": "single",
-    "trap": "(A), (C), and (D) are all spironolactone's endocrine effects, and this item is the mirror of the previous one: both drug profiles are printed on the same page, both are real, and the error is assigning the steroid effects to the non-steroid drug.",
+    "trap": "(A), (C), and (D) are all spironolactone's endocrine effects, which follow from its being a synthetic steroid: the spironolactone and triamterene profiles are printed on the same page, both are real, and the error is assigning the steroid effects to the non-steroid drug.",
     "source": "ch28.md"
   },
   "q_0245": {
@@ -4562,7 +4589,7 @@
   "q_0247": {
     "topic": "mannitol and acetazolamide therapy",
     "subtopic": "matching the drug to where the fluid or pressure is",
-    "stem": "The same patient's pulmonary edema is not improving, and mannitol is suggested. What does the nurse recognize?",
+    "stem": "A patient with heart failure in acute pulmonary edema is not improving, and mannitol is suggested. What does the nurse recognize?",
     "options": [
       "Pulmonary edema is a contraindication to mannitol, and loop diuretics are used instead",
       "Mannitol is appropriate because it works along the entire nephron",
@@ -4574,8 +4601,11 @@
     ],
     "rationale": "Mannitol's contraindications are known drug allergy, severe renal disease, pulmonary edema — with loop diuretics used instead — and active intracranial bleeding (p. 450). Its own adverse effects include pulmonary congestion, so it can worsen the presenting problem.",
     "type": "single",
-    "trap": "(C) is true of mannitol and irrelevant here, which is what makes it attractive to a student reasoning from the low-potassium worry in the previous scenario. Electrolyte sparing does not override a printed contraindication.",
-    "source": "ch28.md"
+    "trap": "(C) is true of mannitol and irrelevant here, which is what makes it attractive to a student worried about potassium loss during diuresis. Electrolyte sparing does not override a printed contraindication.",
+    "source": "ch28.md",
+    "aliases": [
+      "The same patient's pulmonary edema is not improving, and mannitol is suggested. What does the nurse recognize?"
+    ]
   },
   "q_0248": {
     "topic": "mannitol and acetazolamide therapy",
@@ -4592,7 +4622,7 @@
     ],
     "rationale": "Mannitol is indicated to reduce intracranial pressure and treat cerebral edema, along with the early oliguric phase of acute renal failure, excretion of toxic substances, and intraocular pressure unresponsive to other drugs (pp. 449 to 450).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item — fluid in the lungs is the furosemide answer, and pressure in the head or the eye is the mannitol answer. (C) attaches a true drug to a false reason: mannitol is explicitly not indicated for peripheral edema, because it does not promote sufficient sodium excretion.",
+    "trap": "(B) is the mirror error, swapping the two drugs' indications — fluid in the lungs is the furosemide answer, and pressure in the head or the eye is the mannitol answer. (C) attaches a true drug to a false reason: mannitol is explicitly not indicated for peripheral edema, because it does not promote sufficient sodium excretion.",
     "source": "ch28.md"
   },
   "q_0249": {
@@ -4711,7 +4741,7 @@
   "q_0255": {
     "topic": "body fluid compartments and blood fluid terms",
     "subtopic": "serum versus plasma",
-    "stem": "The same patient is now to receive two units of fresh frozen plasma. Which statement about plasma is accurate?",
+    "stem": "A patient is to receive two units of fresh frozen plasma. Which statement about plasma is accurate?",
     "options": [
       "It is the cell-free fraction that remains after fibrinogen has been removed by clotting",
       "It is the watery, straw-colored liquid component of lymph and blood in which the leukocytes, erythrocytes, and platelets are suspended",
@@ -4723,8 +4753,11 @@
     ],
     "rationale": "Plasma is the watery, straw-colored fluid component of lymph and blood in which the leukocytes, erythrocytes, and platelets are suspended, and it retains fibrinogen — which is exactly why fresh frozen plasma is the product given to replace clotting factors.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, swapping the serum definition onto plasma. (C) defines transcellular fluid and (D) defines interstitial fluid, both of which are compartment words rather than blood-component words.",
-    "source": "ch29.md"
+    "trap": "(A) is the serum definition swapped onto plasma. (C) defines transcellular fluid and (D) defines interstitial fluid, both of which are compartment words rather than blood-component words.",
+    "source": "ch29.md",
+    "aliases": [
+      "The same patient is now to receive two units of fresh frozen plasma. Which statement about plasma is accurate?"
+    ]
   },
   "q_0256": {
     "topic": "iv fluid tonicity and types of dehydration",
@@ -4765,7 +4798,7 @@
   "q_0258": {
     "topic": "iv fluid tonicity and types of dehydration",
     "subtopic": "where water moves with each tonicity",
-    "stem": "The same patient is later switched to 3% sodium chloride. What fluid movement should the nurse now expect?",
+    "stem": "A patient receiving 0.45% sodium chloride is switched to 3% sodium chloride. What fluid movement should the nurse now expect?",
     "options": [
       "Fluid moves out of the vein into the cells, which swell and may burst",
       "Fluid moves from the interstitial space into the veins, and the cells shrink as water leaves them",
@@ -4777,8 +4810,11 @@
     ],
     "rationale": "A hypertonic solution has a higher concentration of solutes outside the cell, so fluid is drawn from the interstitial fluid into the veins and the cells shrink. This is why 3% and 5% sodium chloride are classed as hypertonic and flagged high-alert.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — it is the hypotonic answer attached to the hypertonic solution. The reliable cue for a *fluid* is to name where the water goes, and hypertonic pulls water toward the vein.",
-    "source": "ch29.md"
+    "trap": "(A) is the mirror error — it is the hypotonic answer attached to the hypertonic solution. The reliable cue for a *fluid* is to name where the water goes, and hypertonic pulls water toward the vein.",
+    "source": "ch29.md",
+    "aliases": [
+      "The same patient is later switched to 3% sodium chloride. What fluid movement should the nurse now expect?"
+    ]
   },
   "q_0259": {
     "topic": "iv fluid tonicity and types of dehydration",
@@ -4801,7 +4837,7 @@
   "q_0260": {
     "topic": "iv fluid tonicity and types of dehydration",
     "subtopic": "the same three words as a type of dehydration",
-    "stem": "A different patient has spiked a fever with profuse perspiration over the past 12 hours. Which type of dehydration does this represent?",
+    "stem": "A patient has spiked a fever with profuse perspiration over the past 12 hours. Which type of dehydration does this represent?",
     "options": [
       "Isotonic dehydration, because sodium and water are lost in equal proportion",
       "Hypotonic dehydration, because sodium loss is greater than water loss",
@@ -4813,8 +4849,11 @@
     ],
     "rationale": "Hypertonic dehydration is water loss greater than sodium loss, thus dehydrating the cells, and the chapter's example is fever with perspiration. Hypotonic dehydration is the opposite case — sodium loss greater than water loss, with fluid pulled from outside the cells into the cells — and its examples are renal insufficiency and inadequate aldosterone.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, carrying the vomiting-and-diarrhea answer onto a case where only water is being lost. (D) is the same word as the key with the definition inverted, which is the reason the tonicity words must be read as a rule about which loss is greater rather than recognized on sight.",
-    "source": "ch29.md"
+    "trap": "(A) carries the vomiting-and-diarrhea answer onto a case where only water is being lost. (D) is the same word as the key with the definition inverted, which is the reason the tonicity words must be read as a rule about which loss is greater rather than recognized on sight.",
+    "source": "ch29.md",
+    "aliases": [
+      "A different patient has spiked a fever with profuse perspiration over the past 12 hours. Which type of dehydration does this represent?"
+    ]
   },
   "q_0261": {
     "topic": "crystalloid colloid and blood product selection",
@@ -4926,7 +4965,7 @@
     ],
     "rationale": "Hyperkalemia is generally a serum potassium above 5.5 mEq/L and its effects are generally related to the heart: generalized fatigue, weakness, paresthesia, palpitations, and paralysis, with ventricular fibrillation and cardiac arrest once the level exceeds 7 mEq/L. Defective renal excretion is the most common cause, and potassium-sparing diuretics and ACE inhibitors are named contributors.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, attaching the hypokalemia cluster to a high value. The chapter is also internally inconsistent on the cutoff — one page gives greater than 5.5 and the safety box gives greater than 5 — so carry both: above 5 is reportable and above 5.5 is toxic and dangerous.",
+    "trap": "(A) is the mirror error, attaching the hypokalemia cluster — hypotension, lethargy, confusion, nausea, and ileus — to a high value. The chapter is also internally inconsistent on the cutoff — one page gives greater than 5.5 and the safety box gives greater than 5 — so carry both: above 5 is reportable and above 5.5 is toxic and dangerous.",
     "source": "ch29.md"
   },
   "q_0267": {
@@ -5034,7 +5073,7 @@
     ],
     "rationale": "The key terms box defines active transport as the active, energy-requiring movement of a substance between different tissues via pumping mechanisms contained within cell membranes. The energy requirement and the pump are what separate it from diffusion.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Diffusion also moves a substance between tissues, so the phrase in that option is true but does not discriminate; the discriminator is energy, and diffusion needs none.",
+    "trap": "(A) is the mirror error, naming diffusion for an energy-requiring process. Diffusion also moves a substance between tissues, so the phrase in that option is true but does not discriminate; the discriminator is energy, and diffusion needs none.",
     "source": "ch3.md"
   },
   "q_0273": {
@@ -5070,7 +5109,7 @@
     ],
     "rationale": "During the last trimester the greatest percentage of maternally absorbed drug gets to the fetus, and the chapter attributes this to enhanced blood flow to the fetus, increased fetal surface area, and an increased amount of free drug in the mother's circulation.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The first trimester is when exposure is most damaging, not when the most drug arrives — early damage is structural because organs are being built, while late transfer is quantitative because blood flow and surface area are maximal.",
+    "trap": "(A) is the mirror error: it gives the first trimester the last trimester's peak in drug transfer. The first trimester is when exposure is most damaging, not when the most drug arrives — early damage is structural because organs are being built, while late transfer is quantitative because blood flow and surface area are maximal.",
     "source": "ch3.md"
   },
   "q_0275": {
@@ -5130,7 +5169,7 @@
   "q_0278": {
     "topic": "fda pregnancy safety categories",
     "subtopic": "distinguishing the five letters",
-    "stem": "A second drug's label states that studies indicate no risk to the animal fetus and that information for humans is not available. Which category is this?",
+    "stem": "A drug's label states that studies indicate no risk to the animal fetus and that information for humans is not available. Which pregnancy safety category is this?",
     "options": [
       "Category A",
       "Category B",
@@ -5142,8 +5181,11 @@
     ],
     "rationale": "Table 3.1 defines category B as studies indicating no risk to the animal fetus, with information for humans not available. The animal finding is favorable and the human data are simply missing.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item. Both categories say human information is unavailable, so the shared clause cannot discriminate; the direction of the animal finding is what does.",
-    "source": "ch3.md"
+    "trap": "(C) is the classic B-C swap. Both categories say human information is unavailable, so the shared clause cannot discriminate; the direction of the animal finding is what does.",
+    "source": "ch3.md",
+    "aliases": [
+      "A second drug's label states that studies indicate no risk to the animal fetus and that information for humans is not available. Which category is this?"
+    ]
   },
   "q_0279": {
     "topic": "fda pregnancy safety categories",
@@ -5545,7 +5587,7 @@
     ],
     "rationale": "The older adult absorption findings state that blood flow to the GI tract is reduced by 40% to 50% because of decreased cardiac output and decreased perfusion, and the body text adds that by 65 years of age there is an approximately 50% reduction in blood flow to the gastrointestinal tract.",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item. The two 40% to 50% figures in this chapter describe different organs in different phases, and the only way to keep them apart is to attach each number to its organ rather than to the number itself.",
+    "trap": "(D) is the mirror error, assigning the gastrointestinal blood flow figure to excretion, the phase where the chapter attaches the same 40% to 50% figure to glomerular filtration rate. The two 40% to 50% figures in this chapter describe different organs in different phases, and the only way to keep them apart is to attach each number to its organ rather than to the number itself.",
     "source": "ch3.md"
   },
   "q_0301": {
@@ -5617,7 +5659,7 @@
     ],
     "rationale": "The key terms box defines polypharmacy as the use of many different drugs concurrently in treating a patient who often has several health problems, and the chapter attributes it to the more frequent occurrence of chronic diseases together with the multiple drug options available. As the number of medications increases, so does the risk for drug interaction and adverse drug reactions.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Nothing in this stem describes a drug added to counteract another drug's effect, and the stem says so explicitly; without that causal link the situation is a count, not a cascade. The chapter also recommends using only one pharmacy so that monitoring for drug interactions and duplicate therapy can occur.",
+    "trap": "(B) is the mirror error, reading a prescribing cascade into what is only polypharmacy. Nothing in this stem describes a drug added to counteract another drug's effect, and the stem says so explicitly; without that causal link the situation is a count, not a cascade. The chapter also recommends using only one pharmacy so that monitoring for drug interactions and duplicate therapy can occur.",
     "source": "ch3.md"
   },
   "q_0305": {
@@ -5743,7 +5785,7 @@
     ],
     "rationale": "The pediatric box states that fat content is lower in young patients because of greater total body water, and the older adult box states that fat content is increased because of decreased lean body mass. The body text adds an approximately 20% reduction in muscle mass between 25 and 65 years of age with a corresponding 20% increase in body fat.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, reversing both halves at once. Fat and water move in opposite directions to each other and in opposite directions at the two ends of life, so a fat-soluble drug behaves in an older adult the way a water-soluble drug behaves in an infant.",
+    "trap": "(A) is the mirror error, reversing both halves at once by giving the infant the higher fat content and the older adult the lower. Fat and water move in opposite directions to each other and in opposite directions at the two ends of life, so a fat-soluble drug behaves in an older adult the way a water-soluble drug behaves in an infant.",
     "source": "ch3.md"
   },
   "q_0312": {
@@ -5808,7 +5850,7 @@
   "q_0315": {
     "topic": "infection terminology and gram stain",
     "subtopic": "colonization versus infection",
-    "stem": "Two days later the same pressure injury is red and swollen, the patient has a fever with chills, purulent drainage is present, and the white blood cell count is elevated. How should the nurse interpret this change?",
+    "stem": "A patient's pressure injury grew Staphylococcus aureus on swab two days ago with no signs of infection; now the wound is red and swollen, the patient has a fever with chills, purulent drainage is present, and the white blood cell count is elevated. How should the nurse interpret this change?",
     "options": [
       "Colonization, which still does not require antibiotic treatment",
       "Infection, because microorganisms are now invading and multiplying in body tissue",
@@ -5820,8 +5862,11 @@
     ],
     "rationale": "Infections are invasions and multiplications of microorganisms in body tissues. The chapter's classic signs and symptoms are \"fever, chills, sweats, redness, pain and swelling, fatigue, weight loss, increased white blood cell (WBC) count, and the formation of pus,\" and this patient now has most of them.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The same organism in the same wound crossed from colonization into infection when the overt signs appeared, so the presence of bacteria is never the discriminator — the signs are.",
-    "source": "ch38.md"
+    "trap": "(A) carries the earlier colonization reading forward. The same organism in the same wound crossed from colonization into infection when the overt signs appeared, so the presence of bacteria is never the discriminator — the signs are.",
+    "source": "ch38.md",
+    "aliases": [
+      "Two days later the same pressure injury is red and swollen, the patient has a fever with chills, purulent drainage is present, and the white blood cell count is elevated. How should the nurse interpret this change?"
+    ]
   },
   "q_0316": {
     "topic": "infection terminology and gram stain",
@@ -5910,13 +5955,13 @@
     ],
     "rationale": "Empiric therapy is administration based on the practitioner's judgment of the pathogens most likely to be causing an apparent infection, used \"to avoid treatment delay before specific culture information has been obtained.\" The chapter names suspected acute meningitis as its own example of an infection whose risk of severe complications is too high to wait on.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. This patient already has an apparent infection, so nothing is being prevented; the drug is treating something real whose name is still unknown.",
+    "trap": "(A) is the mirror error of confusing empiric with prophylactic therapy, since both begin before any organism has been named. This patient already has an apparent infection, so nothing is being prevented; the drug is treating something real whose name is still unknown.",
     "source": "ch38.md"
   },
   "q_0321": {
     "topic": "antibiotic therapy types and response",
     "subtopic": "empiric, definitive, and prophylactic therapy",
-    "stem": "Culture and sensitivity results return and identify the organism, and the prescriber narrows the regimen. Which statement best explains this change?",
+    "stem": "A patient's antibiotic was started before any culture results were back; culture and sensitivity results now identify the organism, and the prescriber narrows the regimen. Which statement best explains this change?",
     "options": [
       "Definitive therapy uses the most narrow-spectrum, least toxic drug based on sensitivity results",
       "Definitive therapy uses the broadest-spectrum drug available to prevent relapse",
@@ -5929,7 +5974,10 @@
     "rationale": "Definitive therapy is administration based on known results of culture and sensitivity testing, which are usually available in 48 to 72 hours, \"using the most narrow-spectrum, least toxic drug based on sensitivity results.\" Overuse of broad-spectrum antibiotics contributes to resistance.",
     "type": "single",
     "trap": "(B) inverts the spectrum rule, and it is the intuitive inversion because broader coverage feels safer in an already sick patient. Broad coverage is what empiric therapy buys while waiting; definitive therapy gives it up on purpose.",
-    "source": "ch38.md"
+    "source": "ch38.md",
+    "aliases": [
+      "Culture and sensitivity results return and identify the organism, and the prescriber narrows the regimen. Which statement best explains this change?"
+    ]
   },
   "q_0322": {
     "topic": "antibiotic therapy types and response",
@@ -5994,7 +6042,7 @@
   "q_0325": {
     "topic": "antibiotic mechanisms and cidal versus static",
     "subtopic": "bactericidal versus bacteriostatic",
-    "stem": "The same patient's second drug is doxycycline, which binds the bacterial ribosome so the organism cannot make protein and cannot multiply while host defenses clear it. How should the nurse describe this action?",
+    "stem": "A patient is receiving doxycycline, which binds the bacterial ribosome so the organism cannot make protein and cannot multiply while host defenses clear it. How should the nurse describe this action?",
     "options": [
       "Bactericidal, because loss of protein synthesis is always fatal to bacteria",
       "Bacteriostatic, because it inhibits growth rather than killing the bacteria",
@@ -6006,8 +6054,11 @@
     ],
     "rationale": "Tetracyclines are bacteriostatic drugs that inhibit bacterial protein synthesis by binding to the 30S bacterial ribosome. Bacteriostatic antibiotics \"do not actually kill bacteria but rather inhibit their growth.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, upgrading a static drug to a cidal one. (D) pulls on a separate confusion: the ribosome is inside the cell, and no protein synthesis inhibitor is a cell wall drug.",
-    "source": "ch38.md"
+    "trap": "(A) upgrades a static drug to a cidal one. (D) pulls on a separate confusion: the ribosome is inside the cell, and no protein synthesis inhibitor is a cell wall drug.",
+    "source": "ch38.md",
+    "aliases": [
+      "The same patient's second drug is doxycycline, which binds the bacterial ribosome so the organism cannot make protein and cannot multiply while host defenses clear it. How should the nurse describe this action?"
+    ]
   },
   "q_0326": {
     "topic": "antibiotic mechanisms and cidal versus static",
@@ -6042,7 +6093,7 @@
     ],
     "rationale": "Macrolides are bacteriostatic drugs that inhibit protein synthesis by binding reversibly to the 50S ribosomal subunits of susceptible microorganisms, although \"in high enough concentrations they may be bactericidal to some susceptible bacteria.\"",
     "type": "single",
-    "trap": "(B) is the swap this pair exists for. Macrolides and tetracyclines are both protein synthesis inhibitors and both bacteriostatic, so the subunit number is the only discriminator: macrolides bind 50S, tetracyclines bind 30S.",
+    "trap": "(B) is the swap the macrolide-tetracycline distinction exists to catch. Macrolides and tetracyclines are both protein synthesis inhibitors and both bacteriostatic, so the subunit number is the only discriminator: macrolides bind 50S, tetracyclines bind 30S.",
     "source": "ch38.md"
   },
   "q_0328": {
@@ -6299,7 +6350,7 @@
   "q_0341": {
     "topic": "beta-lactam ring and enzyme inhibitors",
     "subtopic": "beta-lactamase versus its inhibitors",
-    "stem": "The order is changed to piperacillin/tazobactam. What is tazobactam's role in this product?",
+    "stem": "A culture report notes that the organism produces beta-lactamase, and the order is changed to piperacillin/tazobactam. What is tazobactam's role in this product?",
     "options": [
       "A second antibiotic that broadens gram-negative coverage",
       "A beta-lactamase inhibitor that binds the bacterial enzyme so it cannot break down the penicillin",
@@ -6312,7 +6363,10 @@
     "rationale": "Clavulanic acid, tazobactam, sulbactam, and avibactam are the four beta-lactamase inhibitors, medications combined with certain penicillin drugs to block the effect of beta-lactamase enzymes. They \"bind with the beta-lactamase enzyme itself to prevent the enzyme from breaking down the penicillin molecule, although they are not always effective.\"",
     "type": "single",
     "trap": "(C) is cilastatin's job, not an inhibitor's: cilastatin inhibits dehydropeptidase, an enzyme in the kidneys, so that imipenem is not broken down. Cue: inhibitors block a bacterial enzyme, cilastatin blocks a kidney enzyme. (A) is attractive because this product genuinely has wide coverage, but that width comes from piperacillin being an extended-spectrum penicillin.",
-    "source": "ch38.md"
+    "source": "ch38.md",
+    "aliases": [
+      "The order is changed to piperacillin/tazobactam. What is tazobactam's role in this product?"
+    ]
   },
   "q_0342": {
     "topic": "beta-lactam ring and enzyme inhibitors",
@@ -6394,7 +6448,7 @@
   "q_0346": {
     "topic": "penicillin subclasses and routes",
     "subtopic": "natural penicillins",
-    "stem": "The same patient later requires a single intramuscular injection to treat syphilis. Which preparation is appropriate, and what must the nurse never do with it?",
+    "stem": "A patient requires a single intramuscular injection to treat syphilis. Which preparation is appropriate, and what must the nurse never do with it?",
     "options": [
       "penicillin V potassium; never give it with food",
       "penicillin G benzathine; never give it intravenously, because its consistency is too thick and such use can be fatal",
@@ -6406,8 +6460,11 @@
     ],
     "rationale": "Penicillin G has three salt forms — benzathine, procaine, and potassium. The benzathine and procaine salts are longer-acting intramuscular injections, \"especially helpful for treating the sexually transmitted disease syphilis, because often only one injection is needed.\" The warning attached to them is explicit: \"Never give these preparations intravenously, because their consistency is too thick for intravenous administration, and such use can be fatal.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, sending the oral form down the injectable path. (C) reverses the administration rule for the thick salts: they are given into a large muscle mass with a 21- to 23-gauge needle, and the site that is prohibited is the dorsogluteal.",
-    "source": "ch38.md"
+    "trap": "(A) sends the oral form down the injectable path. (C) reverses the administration rule for the thick salts: they are given into a large muscle mass with a 21- to 23-gauge needle, and the site that is prohibited is the dorsogluteal.",
+    "source": "ch38.md",
+    "aliases": [
+      "The same patient later requires a single intramuscular injection to treat syphilis. Which preparation is appropriate, and what must the nurse never do with it?"
+    ]
   },
   "q_0347": {
     "topic": "penicillin subclasses and routes",
@@ -6614,7 +6671,7 @@
     ],
     "rationale": "Cefepime is the prototypical fourth-generation cephalosporin and \"most closely resembles ceftazidime,\" but with \"increased activity against many Enterobacter species (gram-negative) as well as gram-positive organisms\"; the chapter's own drug table credits it with better gram-positive coverage than the third generation. The Clinical Pearl describes generations 1 through 3, and a named-drug fact overrides a trend.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — carrying a general trend past the range it actually describes. (D) belongs to ceftaroline, the fifth-generation drug and the only cephalosporin that treats MRSA.",
+    "trap": "(A) is the mirror error — carrying the trend of falling gram-positive coverage past the first three generations it actually describes. (D) belongs to ceftaroline, the fifth-generation drug and the only cephalosporin that treats MRSA.",
     "source": "ch38.md"
   },
   "q_0358": {
@@ -7120,7 +7177,7 @@
     ],
     "rationale": "The key term box gives two numbered senses of superinfection. The second is \"a secondary microbial infection that occurs in addition to an earlier primary infection, often because of weakening of the patient's immune system function by the first infection,\" and the chapter's example is a patient with a viral respiratory infection who develops a secondary bacterial infection.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, which described the other sense. Thrush or vaginal candidiasis during antibiotic therapy is overgrowth of the patient's own flora, while this pneumonia arrived from outside; the two senses share a name and not an event.",
+    "trap": "(B) is the mirror error, describing the other sense of superinfection. Thrush or vaginal candidiasis during antibiotic therapy is overgrowth of the patient's own flora, while this pneumonia arrived from outside; the two senses share a name and not an event.",
     "source": "ch38.md"
   },
   "q_0385": {
@@ -7205,7 +7262,7 @@
   "q_0389": {
     "topic": "resistant organism vocabulary and treatment",
     "subtopic": "which organism resists what",
-    "stem": "A different patient has an MRSA bloodstream infection. Which drug appears on the chapter's MRSA treatment list but not on its VRE list?",
+    "stem": "A patient has an MRSA bloodstream infection. Which drug appears on the chapter's MRSA treatment list but not on its VRE list?",
     "options": [
       "vancomycin",
       "daptomycin",
@@ -7217,8 +7274,11 @@
     ],
     "rationale": "Box 39.1 gives vancomycin, daptomycin, linezolid, tedizolid, telavancin, oritavancin, dalbavancin, and ceftaroline for MRSA, but only daptomycin, linezolid, and tedizolid for VRE. Vancomycin is separately named as the antibiotic of choice for the treatment of MRSA infection.",
     "type": "single",
-    "trap": "This is the mirror error of the previous item. (B), (C), and (D) are the three drugs the two lists share, so a learner who remembers only that the lists overlap will pick one of them; the discriminator is what MRSA gets that VRE cannot.",
-    "source": "ch39.md"
+    "trap": "(B), (C), and (D) are the three drugs the two lists share, so a learner who remembers only that the lists overlap will pick one of them; the discriminator is what MRSA gets that VRE cannot.",
+    "source": "ch39.md",
+    "aliases": [
+      "A different patient has an MRSA bloodstream infection. Which drug appears on the chapter's MRSA treatment list but not on its VRE list?"
+    ]
   },
   "q_0390": {
     "topic": "resistant organism vocabulary and treatment",
@@ -7241,7 +7301,7 @@
   "q_0391": {
     "topic": "resistant organism vocabulary and treatment",
     "subtopic": "the ESBL to CRO escalation",
-    "stem": "A week later the same patient's culture grows a carbapenem-resistant organism, and meropenem is ordered. Which agents does the chapter name as the remaining options for this infection?",
+    "stem": "A patient whose urine culture grew an extended-spectrum beta-lactamase-producing Klebsiella now has a culture that grows a carbapenem-resistant organism, and meropenem is ordered. Which agents does the chapter name as the remaining options for this infection?",
     "options": [
       "colistin and tigecycline",
       "carbapenems such as meropenem",
@@ -7253,8 +7313,11 @@
     ],
     "rationale": "Box 39.1 names colistin and tigecycline as the treatment for carbapenem-resistant organisms. The chapter tells the escalation as cause and effect: heavy carbapenem use against ESBL producers drove bacteria to produce carbapenemase, which renders all carbapenems ineffective, leaving few known antibiotics.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item — carbapenems are the correct escalation for ESBL, and a learner who banked that rule will apply it one organism too far. A carbapenem for a carbapenem-resistant organism names the exact drug class the organism is defined by resisting.",
-    "source": "ch39.md"
+    "trap": "(B) is the ESBL answer — carbapenems are the correct escalation for ESBL, and a learner who banked that rule will apply it one organism too far. A carbapenem for a carbapenem-resistant organism names the exact drug class the organism is defined by resisting.",
+    "source": "ch39.md",
+    "aliases": [
+      "A week later the same patient's culture grows a carbapenem-resistant organism, and meropenem is ordered. Which agents does the chapter name as the remaining options for this infection?"
+    ]
   },
   "q_0392": {
     "topic": "resistant organism vocabulary and treatment",
@@ -7385,7 +7448,7 @@
   "q_0399": {
     "topic": "aminoglycoside therapeutic drug monitoring",
     "subtopic": "concentration-dependent versus time-dependent killing",
-    "stem": "A different antibiotic's monograph states that prolonged high plasma concentrations are required for effective bacterial kill, which is why it is infused frequently rather than once daily. Which property is this, and which classes does the chapter say show it?",
+    "stem": "An antibiotic's monograph states that prolonged high plasma concentrations are required for effective bacterial kill, which is why it is infused frequently rather than once daily. Which property is this, and which classes does the chapter say show it?",
     "options": [
       "Time-dependent killing, and it is the property of most antibiotic classes",
       "Time-dependent killing, and it is unique to the aminoglycosides",
@@ -7397,8 +7460,11 @@
     ],
     "rationale": "The key term box defines time-dependent killing as a property of most antibiotic classes whereby prolonged high plasma drug concentrations are required for effective bacterial kill, and cross-references it to concentration-dependent killing. The two definitions point at each other in the source text.",
     "type": "single",
-    "trap": "This is the mirror error of the previous item, and (B) is where it lands: a learner who has just attached a monitoring rule to aminoglycosides tends to attach the second property to them as well. The aminoglycosides are the concentration-dependent exception; most other classes, including the beta-lactams, are time-dependent.",
-    "source": "ch39.md"
+    "trap": "(B) is where the swap lands: a learner who has attached concentration-dependent killing to aminoglycosides tends to attach the second property to them as well. The aminoglycosides are the concentration-dependent exception; most other classes, including the beta-lactams, are time-dependent.",
+    "source": "ch39.md",
+    "aliases": [
+      "A different antibiotic's monograph states that prolonged high plasma concentrations are required for effective bacterial kill, which is why it is infused frequently rather than once daily. Which property is this, and which classes does the chapter say show it?"
+    ]
   },
   "q_0400": {
     "topic": "aminoglycoside therapeutic drug monitoring",
@@ -7421,7 +7487,7 @@
   "q_0401": {
     "topic": "aminoglycoside therapeutic drug monitoring",
     "subtopic": "when peaks and troughs are drawn",
-    "stem": "Another patient receives gentamicin three times daily. Which sampling schedule matches the chapter's rule for traditional dosing?",
+    "stem": "A patient receives gentamicin three times daily. Which sampling schedule matches the chapter's rule for traditional dosing?",
     "options": [
       "Peak 30 to 60 minutes after a 30-minute infusion, and trough just before the next dose",
       "Peak 8 to 12 hours after the dose, and no trough",
@@ -7433,8 +7499,11 @@
     ],
     "rationale": "With traditional three-times-daily dosing both peak and trough levels are measured. Samples for peak levels are drawn 30 to 60 minutes after a 30-minute infusion, and samples for trough levels are drawn just before the next dose.",
     "type": "single",
-    "trap": "This is the mirror error of the previous item, and (D) is its full inversion — a peak drawn just before the next dose has the two definitions reversed. A trough is the lowest level and therefore comes at the end of the interval; a peak is the highest and comes shortly after the infusion.",
-    "source": "ch39.md"
+    "trap": "(C) is the once-daily rule, and (D) is the full inversion — a peak drawn just before the next dose has the two definitions reversed. A trough is the lowest level and therefore comes at the end of the interval; a peak is the highest and comes shortly after the infusion.",
+    "source": "ch39.md",
+    "aliases": [
+      "Another patient receives gentamicin three times daily. Which sampling schedule matches the chapter's rule for traditional dosing?"
+    ]
   },
   "q_0402": {
     "topic": "aminoglycoside therapeutic drug monitoring",
@@ -7898,7 +7967,7 @@
   "q_0427": {
     "topic": "vancomycin monitoring and administration",
     "subtopic": "red man syndrome versus hypersensitivity",
-    "stem": "A different vancomycin patient develops hives, then stridor, wheezing, and a falling blood pressure. Which interpretation is correct?",
+    "stem": "A patient receiving IV vancomycin develops hives, then stridor, wheezing, and a falling blood pressure. Which interpretation is correct?",
     "options": [
       "This is a hypersensitivity reaction, because laryngeal edema and bronchospasm are outside the red man picture",
       "This is red man syndrome, because hypotension occurs with rapid infusion",
@@ -7910,8 +7979,11 @@
     ],
     "rationale": "The assessment section describes the hypersensitivity spectrum as ranging from mild reactions with rash, pruritus, or hives to severe reactions with laryngeal edema, bronchospasm, hypotension, and possible cardiac arrest. Red man syndrome is confined to flushing and itching of the head, face, neck, and upper trunk.",
     "type": "single",
-    "trap": "This is the mirror error of the previous item, and (B) is where it lands: a learner who has just banked the rule that vancomycin flushing is harmless will apply it to a genuine airway reaction. Hypotension appears in both pictures, so it does not discriminate; laryngeal edema and bronchospasm do.",
-    "source": "ch39.md"
+    "trap": "(B) is the red man reading misapplied: a learner who has banked the rule that vancomycin flushing is harmless will apply it to a genuine airway reaction. Hypotension appears in both pictures, so it does not discriminate; laryngeal edema and bronchospasm do.",
+    "source": "ch39.md",
+    "aliases": [
+      "A different vancomycin patient develops hives, then stridor, wheezing, and a falling blood pressure. Which interpretation is correct?"
+    ]
   },
   "q_0428": {
     "topic": "vancomycin monitoring and administration",
@@ -7947,7 +8019,7 @@
     ],
     "rationale": "The dosage table footnote states flatly that oral vancomycin is not absorbed and is used only for Clostridioides difficile diarrhea. Because the oral formulation is poorly absorbed from the gastrointestinal tract, it is used for its local effects on the tract's surface.",
     "type": "single",
-    "trap": "This is the mirror error of the previous item. (C) inverts the absorption fact that makes the whole rule work — the oral form is useful in the gut precisely because it stays there, not despite it.",
+    "trap": "This is the route-table error of sending vancomycin intravenously for an infection that lives in the gut lumen. (C) inverts the absorption fact that makes the whole rule work — the oral form is useful in the gut precisely because it stays there, not despite it.",
     "source": "ch39.md"
   },
   "q_0430": {
@@ -8019,7 +8091,7 @@
     ],
     "rationale": "Pharmacogenomics is \"the study of genetics in drug response.\" The chapter cross-references Chapter 8 for it. Ethnopharmacology is the broader field, defined as the effect of ethnicity on absorption, metabolism, distribution, and excretion as well as genetic variation.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. The key-term definition of polymorphism lists age, sex, size, and body composition, not genes, so a stem naming a specific gene variant is not asking about polymorphism.",
+    "trap": "(B) is the mirror error, naming drug polymorphism for the study of a gene variant. The key-term definition of polymorphism lists age, sex, size, and body composition, not genes, so a stem naming a specific gene variant is not asking about polymorphism.",
     "source": "ch4.md"
   },
   "q_0434": {
@@ -8043,7 +8115,7 @@
   "q_0435": {
     "topic": "ethnopharmacology and drug response variation",
     "subtopic": "acetylator status",
-    "stem": "A slow acetylator is prescribed that same drug at a standard dose. Which risk is the nurse monitoring for?",
+    "stem": "A slow acetylator is prescribed a drug that undergoes acetylation, at a standard dose. Which risk is the nurse monitoring for?",
     "options": [
       "Toxicity from drug accumulation",
       "Subtherapeutic levels from rapid clearance",
@@ -8055,8 +8127,11 @@
     ],
     "rationale": "Slow acetylation is decreased metabolism, so the drug accumulates and toxicity is the risk. Chapter 2 lists the same pair in its Table 2.6, fast acetylator with increased metabolism and slow acetylator with decreased, and Chapter 38 names slow acetylation as one of its two genetic host factors alongside G6PD deficiency.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Slow acetylation is the accumulation side of this pair; rapid clearance and subtherapeutic levels belong to the fast acetylator.",
-    "source": "ch4.md"
+    "trap": "(B) attaches the rapid acetylator's risk to the slow acetylator. Slow acetylation is the accumulation side of this pair; rapid clearance and subtherapeutic levels belong to the fast acetylator.",
+    "source": "ch4.md",
+    "aliases": [
+      "A slow acetylator is prescribed that same drug at a standard dose. Which risk is the nurse monitoring for?"
+    ]
   },
   "q_0436": {
     "topic": "ethnopharmacology and drug response variation",
@@ -8203,7 +8278,7 @@
     ],
     "rationale": "Table 4.1 pairs the Kefauver-Harris Amendments with the thalidomide tragedy and states they required manufacturers to \"demonstrate both therapeutic efficacy and safety\" of new drugs.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item. An option crediting Kefauver-Harris with the investigational new drug process has the two acts crossed; that process came from the 1938 act, and efficacy is what 1962 added on top of safety.",
+    "trap": "(C) is the mirror error: it pairs the thalidomide tragedy with the 1938 act, which the sulfanilamide elixir tragedy produced. An option crediting Kefauver-Harris with the investigational new drug process has the two acts crossed; that process came from the 1938 act, and efficacy is what 1962 added on top of safety.",
     "source": "ch4.md"
   },
   "q_0444": {
@@ -8281,7 +8356,7 @@
   "q_0448": {
     "topic": "clinical drug trial phases",
     "subtopic": "who is enrolled in each phase",
-    "stem": "The same drug moves on to a study enrolling a small number of volunteers who actually have hypertension. What is this phase determining?",
+    "stem": "A new antihypertensive that has completed testing in small numbers of healthy subjects moves on to a study enrolling a small number of volunteers who actually have hypertension. What is this phase determining?",
     "options": [
       "The optimal dosage range and pharmacokinetics in healthy volunteers",
       "The drug's effectiveness and any adverse effects, with therapeutic dosage ranges refined",
@@ -8293,8 +8368,11 @@
     ],
     "rationale": "Phase II uses \"small numbers of volunteers who have the disease that the drug is designed to diagnose or treat,\" to \"determine the drug's effectiveness and identify any adverse effects,\" and \"therapeutic dosage ranges are refined during this phase.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The switch from healthy subjects to subjects who have the disease is the boundary between phases I and II, and the change in purpose follows from it.",
-    "source": "ch4.md"
+    "trap": "(A) is the phase I answer. The switch from healthy subjects to subjects who have the disease is the boundary between phases I and II, and the change in purpose follows from it.",
+    "source": "ch4.md",
+    "aliases": [
+      "The same drug moves on to a study enrolling a small number of volunteers who actually have hypertension. What is this phase determining?"
+    ]
   },
   "q_0449": {
     "topic": "clinical drug trial phases",
@@ -8353,7 +8431,7 @@
   "q_0452": {
     "topic": "investigational study design and informed consent",
     "subtopic": "blinding and bias",
-    "stem": "In a second study, neither the research staff nor the subjects know which subjects receive the real drug. What is this design called, and what does it add?",
+    "stem": "In a drug study, neither the research staff nor the subjects know which subjects receive the real drug. What is this design called, and what does it add over a design in which only the subjects are unaware?",
     "options": [
       "A double-blind investigational drug study, minimizing bias on the part of both the investigator and the subject",
       "A blinded investigational drug study, minimizing bias on the part of the subject only",
@@ -8365,8 +8443,11 @@
     ],
     "rationale": "The key term defines a double-blind study as one in which \"both the investigator(s) and the subjects\" are purposely unaware, minimizing bias \"on the part of both.\" Dosage forms often look identical except for a secret code, which is revealed at the end of the study and can be broken earlier by the principal investigator in a clinical emergency.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Both definitions turn on the word bias, which is why the chapter gives bias its own key term, defined as \"any systematic error in a measurement process.\"",
-    "source": "ch4.md"
+    "trap": "(B) is the single-blind answer. Both definitions turn on the word bias, which is why the chapter gives bias its own key term, defined as \"any systematic error in a measurement process.\"",
+    "source": "ch4.md",
+    "aliases": [
+      "In a second study, neither the research staff nor the subjects know which subjects receive the real drug. What is this design called, and what does it add?"
+    ]
   },
   "q_0453": {
     "topic": "investigational study design and informed consent",
@@ -8473,7 +8554,7 @@
     ],
     "rationale": "Class III is the least severe recall class, defined as use that \"is not likely to result in any significant health problems.\" The chapter gives three recall classes, not four.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. (D) invents a fourth class by borrowing the length of the five-schedule controlled substance list; the recall system stops at three.",
+    "trap": "(B) is the mirror error, putting the least serious recall at class I, which is the most serious. (D) invents a fourth class by borrowing the length of the five-schedule controlled substance list; the recall system stops at three.",
     "source": "ch4.md"
   },
   "q_0459": {
@@ -8639,7 +8720,7 @@
     ],
     "rationale": "Negligence is the failure to act in a reasonable and prudent manner, and nothing in that definition requires professional status. Malpractice is the narrower subset committed by \"a professional and/or individual with specialized education and training.\"",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item: harm alone does not convert a failure into malpractice, the actor's professional standing does. (C) substitutes the setting for the actor, which is the same mistake in different clothing.",
+    "trap": "(B) is the mirror error, reading malpractice into a layperson's negligence: harm alone does not convert a failure into malpractice, the actor's professional standing does. (C) substitutes the setting for the actor, which is the same mistake in different clothing.",
     "source": "ch4.md"
   },
   "q_0468": {
@@ -8733,7 +8814,7 @@
     ],
     "rationale": "Beneficence is \"the ethical principle of doing or actively promoting good,\" with its related nursing action given as \"determining how the patient is best served.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Doing good and refraining from harm are separate duties, which is why the box lists them as two principles rather than one.",
+    "trap": "(A) is the mirror error, naming nonmaleficence, the duty to do no harm, for an act of actively promoting good. Doing good and refraining from harm are separate duties, which is why the box lists them as two principles rather than one.",
     "source": "ch4.md"
   },
   "q_0473": {
@@ -8833,7 +8914,7 @@
   "q_0478": {
     "topic": "antiviral terminology and viral genome vocabulary",
     "subtopic": "general versus specific drug terms",
-    "stem": "The same nurse must identify which of those two drugs belongs to the narrower category the chapter reserves for HIV therapy. Which statement is accurate?",
+    "stem": "A patient's medication list includes acyclovir for recurrent genital herpes and zidovudine for HIV infection. Which of those two drugs belongs to the narrower category the chapter reserves for HIV therapy?",
     "options": [
       "Only zidovudine is an antiretroviral, because antiretroviral names drugs that work against retroviruses such as HIV",
       "Only acyclovir is an antiretroviral, because herpesviruses replicate by reverse transcription",
@@ -8845,8 +8926,11 @@
     ],
     "rationale": "Retroviruses are the family Retroviridae, they carry RNA as their genome, and they replicate using reverse transcriptase; HIV is named as the currently most clinically significant retrovirus. Acyclovir's targets, HSV-1, HSV-2, and varicella-zoster virus, are herpesviruses and replicate without reverse transcriptase.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, collapsing the general term into the specific one so that everything antiviral gets called antiretroviral. (B) hands reverse transcription to the herpesviruses, which is the same confusion running the other way.",
-    "source": "ch40.md"
+    "trap": "(C) collapses the general term into the specific one so that everything antiviral gets called antiretroviral. (B) hands reverse transcription to the herpesviruses, which is the same confusion running the other way.",
+    "source": "ch40.md",
+    "aliases": [
+      "The same nurse must identify which of those two drugs belongs to the narrower category the chapter reserves for HIV therapy. Which statement is accurate?"
+    ]
   },
   "q_0479": {
     "topic": "antiviral terminology and viral genome vocabulary",
@@ -8905,7 +8989,7 @@
   "q_0482": {
     "topic": "influenza antiviral selection",
     "subtopic": "spectrum by drug",
-    "stem": "The prescriber asks which antiviral would actually cover this patient's influenza B. Which pair of drugs is effective against both influenza A and influenza B?",
+    "stem": "A patient has laboratory-confirmed influenza B. Which pair of drugs is effective against both influenza A and influenza B?",
     "options": [
       "Amantadine and rimantadine",
       "Oseltamivir and zanamivir",
@@ -8917,8 +9001,11 @@
     ],
     "rationale": "Table 40.1 gives zanamivir and oseltamivir for influenza A and B. Both are neuraminidase inhibitors, and the chapter explains that this enzyme \"enables budding virions to escape from infected cells,\" so blocking it traps new virions in the cell they were made in.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, since the two adamantanes are the influenza A only pair. (D) names two hepatitis B drugs, and (C) names two herpesvirus drugs, both of which read as plausible only if the drug is not sorted by the virus it treats.",
-    "source": "ch40.md"
+    "trap": "(A) is the influenza A only pair, the two adamantanes. (D) names two hepatitis B drugs, and (C) names two herpesvirus drugs, both of which read as plausible only if the drug is not sorted by the virus it treats.",
+    "source": "ch40.md",
+    "aliases": [
+      "The prescriber asks which antiviral would actually cover this patient's influenza B. Which pair of drugs is effective against both influenza A and influenza B?"
+    ]
   },
   "q_0483": {
     "topic": "influenza antiviral selection",
@@ -8971,7 +9058,7 @@
     ],
     "rationale": "Acyclovir is a nucleoside analogue for HSV-1, HSV-2, and varicella-zoster virus, and the chapter calls it \"the drug of choice\" for both initial and recurrent episodes. Trifluridine's indication in Table 40.1 is herpes simplex keratitis specifically, not herpes simplex at any site.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, generalizing ganciclovir from CMV to the whole herpesvirus family. Note also that the chapter cautions \"there can be anatomic overlap between the two types,\" so an option claiming HSV-1 can never cause genital lesions would be a distractor rather than a fact.",
+    "trap": "(A) is the mirror error of the acyclovir-ganciclovir swap, generalizing ganciclovir from CMV to the whole herpesvirus family. Note also that the chapter cautions \"there can be anatomic overlap between the two types,\" so an option claiming HSV-1 can never cause genital lesions would be a distractor rather than a fact.",
     "source": "ch40.md"
   },
   "q_0486": {
@@ -9061,7 +9148,7 @@
     ],
     "rationale": "Sofosbuvir is \"the first-in-class RNA polymerase inhibitor\" for chronic hepatitis C and the first treatment \"that can be given without interferon,\" but it is used with ribavirin and is \"not to be used as monotherapy.\" Harvoni, sofosbuvir with ledipasvir, was the separate milestone: \"the first treatment for hepatitis C that does not require the combined use of ribavirin,\" one pill once a day.",
     "type": "single",
-    "trap": "(C) is the reflex pick because \"without interferon\" and \"as monotherapy\" sound like the same claim, and they are two different claims about two different drugs. (B) is the mirror error of the previous item, sorting a hepatitis C drug into the hepatitis B group; the cue is that hepatitis B gets entecavir, lamivudine, and tenofovir while hepatitis C gets the -buvir, -asvir, and -previr combinations headed by sofosbuvir.",
+    "trap": "(C) is the reflex pick because \"without interferon\" and \"as monotherapy\" sound like the same claim, and they are two different claims about two different drugs. (B) is the mirror error, sorting a hepatitis C drug into the hepatitis B group; the cue is that hepatitis B gets entecavir, lamivudine, and tenofovir while hepatitis C gets the -buvir, -asvir, and -previr combinations headed by sofosbuvir.",
     "source": "ch40.md"
   },
   "q_0491": {
@@ -9103,7 +9190,7 @@
   "q_0493": {
     "topic": "antiretroviral classes and mechanisms",
     "subtopic": "the three viral enzymes and the class suffixes",
-    "stem": "A different patient is taking indinavir. Which enzyme does this drug inhibit?",
+    "stem": "A patient is taking indinavir. Which enzyme does this drug inhibit?",
     "options": [
       "Integrase, and the suffix -navir marks that class",
       "Protease, which chemically separates the new viral RNA from viral protein molecules",
@@ -9115,8 +9202,11 @@
     ],
     "rationale": "Protease inhibitors work by \"inhibiting the protease retroviral enzyme,\" and protease \"serves to chemically separate the new viral RNA from viral protein molecules\"; the key-terms box adds that a protease cleaves the peptide bonds linking amino acids. The suffix -navir marks this class, as -tegravir marks the integrase inhibitors.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, attaching the -navir suffix to the integrase class. (D) is the half-right pick that catches more students: it names the correct class but gives integrase's job, so the enzyme name alone is not enough to answer on.",
-    "source": "ch40.md"
+    "trap": "(A) attaches the -navir suffix to the integrase class. (D) is the half-right pick that catches more students: it names the correct class but gives integrase's job, so the enzyme name alone is not enough to answer on.",
+    "source": "ch40.md",
+    "aliases": [
+      "A different patient is taking indinavir. Which enzyme does this drug inhibit?"
+    ]
   },
   "q_0494": {
     "topic": "antiretroviral classes and mechanisms",
@@ -9169,7 +9259,7 @@
     ],
     "rationale": "Maraviroc works by \"selectively and reversibly binding to the type 5 chemokine coreceptors located on the CD4 cells,\" is the only drug in its class, requires an FDA-approved medication guide before dispensing, and carries \"hepatotoxicity with allergic-type features.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, since fusion inhibition is enfuvirtide's mechanism and maraviroc binds the host cell's coreceptor rather than the virus. (C) states raltegravir's CYP3A4 exemption and (D) states indinavir's signature toxicity, both real facts moved onto the wrong drug.",
+    "trap": "(A) is the mirror error of the enfuvirtide-maraviroc twinning, since fusion inhibition is enfuvirtide's mechanism and maraviroc binds the host cell's coreceptor rather than the virus. (C) states raltegravir's CYP3A4 exemption and (D) states indinavir's signature toxicity, both real facts moved onto the wrong drug.",
     "source": "ch40.md"
   },
   "q_0497": {
@@ -9193,7 +9283,7 @@
   "q_0498": {
     "topic": "hiv monitoring and prophylaxis regimens",
     "subtopic": "the two numbers",
-    "stem": "The same patient's viral load report reads fewer than 50 copies/mL. How should the nurse interpret this result?",
+    "stem": "A patient with HIV has a viral load report that reads fewer than 50 copies/mL. How should the nurse interpret this result?",
     "options": [
       "It represents an undetectable viral load and a primary goal of antiretroviral therapy",
       "It is the threshold for beginning prophylaxis against opportunistic infections",
@@ -9205,8 +9295,11 @@
     ],
     "rationale": "A viral load below 50 copies/mL is \"an undetectable\" viral load and \"a primary goal of antiretroviral therapy.\" Evidence of drug resistance is a different pattern entirely, a falling CD4 count and a rising viral load moving in opposite directions at the same time.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, swapping the two numbers so that the therapy target becomes the prophylaxis trigger. (D) is the eradication distractor the chapter plants throughout, since these drugs suppress but do not cure the infection and undetectable is not the same as eliminated.",
-    "source": "ch40.md"
+    "trap": "(B) swaps this number with the CD4 count of 200 cells/mm3, so that the therapy target becomes the prophylaxis trigger. (D) is the eradication distractor the chapter plants throughout, since these drugs suppress but do not cure the infection and undetectable is not the same as eliminated.",
+    "source": "ch40.md",
+    "aliases": [
+      "The same patient's viral load report reads fewer than 50 copies/mL. How should the nurse interpret this result?"
+    ]
   },
   "q_0499": {
     "topic": "hiv monitoring and prophylaxis regimens",
@@ -9241,7 +9334,7 @@
     ],
     "rationale": "PrEP is tenofovir and emtricitabine taken daily before exposure by people at \"very high risk,\" and it is \"up to 90%\" effective \"if it is used as prescribed.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, applying the postexposure regimen to a preexposure situation because Truvada sits inside both. (C) is wrong for a mechanistic reason worth holding onto: reverse transcriptase \"has a high rate of errors,\" which allows frequent genetic mutations and hampers the development of an effective vaccine.",
+    "trap": "(A) is the mirror error, applying the postexposure regimen to a preexposure situation because Truvada sits inside both. (C) is wrong for a mechanistic reason worth holding onto: reverse transcriptase \"has a high rate of errors,\" which allows frequent genetic mutations and hampers the development of an effective vaccine.",
     "source": "ch40.md"
   },
   "q_0501": {
@@ -9297,7 +9390,7 @@
     ],
     "rationale": "The chapter states that \"a patient... immunocompromised because of a bone marrow transplant might be better treated using foscarnet,\" because ganciclovir's dose-limiting toxicity is bone marrow suppression and this patient's marrow is already the compromised organ.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, swapping the two organ toxicities so the same drug is chosen for the opposite reason. (D) is wrong twice over: zidovudine is an HIV drug, and its major dose-limiting adverse effect is also bone marrow suppression, which is the reason a patient is often switched off it.",
+    "trap": "(A) is the mirror error, swapping the two organ toxicities: it chooses ganciclovir on the claim that its dose-limiting toxicity is renal, when renal toxicity belongs to foscarnet and cidofovir. (D) is wrong twice over: zidovudine is an HIV drug, and its major dose-limiting adverse effect is also bone marrow suppression, which is the reason a patient is often switched off it.",
     "source": "ch40.md"
   },
   "q_0504": {
@@ -9378,7 +9471,7 @@
   "q_0508": {
     "topic": "fungal infections and mycosis types",
     "subtopic": "yeasts versus molds",
-    "stem": "A second report describes a fungus made of long, branching filaments that entwine to form a complex branched structure. What is that structure called, and what type of fungus is this?",
+    "stem": "A microbiology report describes a fungus made of long, branching filaments that entwine to form a complex branched structure. What is that structure called, and what type of fungus is this?",
     "options": [
       "A mycelium, and the fungus is a mold",
       "A mycelium, and the fungus is a yeast",
@@ -9390,8 +9483,11 @@
     ],
     "rationale": "Molds are multicellular fungi characterized by long, branching filaments called hyphae, which entwine to form a complex branched structure known as a mycelium. The key points restate the yeast and mold contrast verbatim and add that yeasts may be harmful, causing infections, or helpful, aiding in baking or brewing beer.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, keeping the right structure but attaching it to the single-celled fungus. (C) swaps the individual filament for the entwined mass; both hypha and mycelium are defined inside the Molds key-term entry rather than as their own terms, which is why they get skimmed past.",
-    "source": "ch42.md"
+    "trap": "(B) keeps the right structure but attaches it to the single-celled fungus. (C) swaps the individual filament for the entwined mass; both hypha and mycelium are defined inside the Molds key-term entry rather than as their own terms, which is why they get skimmed past.",
+    "source": "ch42.md",
+    "aliases": [
+      "A second report describes a fungus made of long, branching filaments that entwine to form a complex branched structure. What is that structure called, and what type of fungus is this?"
+    ]
   },
   "q_0509": {
     "topic": "fungal infections and mycosis types",
@@ -9484,7 +9580,7 @@
     ],
     "rationale": "\"Vaginal candidiasis, commonly called a yeast infection, often affects pregnant women, women with diabetes mellitus, women taking antibiotics, and women taking oral contraceptives.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, handing the thrush list to the vaginal form. Antibiotic use is the only item on both lists, which is precisely why antibiotic use alone cannot discriminate between the two.",
+    "trap": "(A) is the mirror error, handing the thrush list — newborns and immunocompromised patients — to the vaginal form. Antibiotic use is the only item on both lists, which is precisely why antibiotic use alone cannot discriminate between the two.",
     "source": "ch42.md"
   },
   "q_0514": {
@@ -9574,7 +9670,7 @@
     ],
     "rationale": "\"The imidazoles and triazoles are often referred to by the more general term azole antifungals.\" Table 42.3 files its whole interaction block under that heading precisely so it covers all six of those drugs at once.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item: having learned that ketoconazole is the odd one out of the triazole list, students push it outside the umbrella term as well. Being the only imidazole does not make ketoconazole a non-azole.",
+    "trap": "(A) is the mirror error of the imidazole-triazole correction: having learned that ketoconazole is the odd one out of the triazole list, students push it outside the umbrella term as well. Being the only imidazole does not make ketoconazole a non-azole.",
     "source": "ch42.md"
   },
   "q_0519": {
@@ -9961,7 +10057,7 @@
     ],
     "rationale": "Table 42.3's final azole row lists phenytoin, rifampin, phenobarbital, and carbamazepine with the effect \"decreased levels of azole antifungals.\" Those four are enzyme inducers, which speed metabolism and lower the level of the affected drug — here the antifungal itself.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, applying the inhibitor direction to inducers. The four named drugs do not become toxic; they make the antifungal stop working, which is a treatment failure rather than a toxicity, and that is a much quieter problem to detect.",
+    "trap": "(A) is the mirror error, applying the azoles' enzyme-inhibitor direction, which raises the other drug's level, to inducers. The four named drugs do not become toxic; they make the antifungal stop working, which is a treatment failure rather than a toxicity, and that is a much quieter problem to detect.",
     "source": "ch42.md"
   },
   "q_0540": {
@@ -10209,7 +10305,7 @@
   "q_0553": {
     "topic": "inflammation and the arachidonic acid pathway",
     "subtopic": "how injury becomes inflammation",
-    "stem": "The same patient asks why simply moving the ankle through its normal range now hurts, when that motion never hurt before the injury. Which explanation is correct?",
+    "stem": "A patient whose sprained ankle became red, swollen, warm, and painful within hours asks why simply moving the ankle through its normal range now hurts, when that motion never hurt before the injury. Which explanation is correct?",
     "options": [
       "Prostaglandin-induced hyperalgesia has made stimuli that would normally not be painful, such as moving a joint through its natural range of motion, painful",
       "The leukotrienes released by the injury bind directly to pain receptors in the joint capsule",
@@ -10222,7 +10318,10 @@
     "rationale": "The chapter attributes the pain of inflammation to prostaglandin-induced hyperalgesia, or excessive sensitivity, and uses range-of-motion pain as its own example.",
     "type": "single",
     "trap": "(C) is the reflex pick because this looks like the allodynia defined in Ch 10, where a lowered pain threshold comes from nerve damage. Both chapters describe lowered pain thresholds, but the cause here is inflammatory prostaglandins acting on an intact nerve.",
-    "source": "ch44.md"
+    "source": "ch44.md",
+    "aliases": [
+      "The same patient asks why simply moving the ankle through its normal range now hurts, when that motion never hurt before the injury. Which explanation is correct?"
+    ]
   },
   "q_0554": {
     "topic": "inflammation and the arachidonic acid pathway",
@@ -10245,7 +10344,7 @@
   "q_0555": {
     "topic": "inflammation and the arachidonic acid pathway",
     "subtopic": "prostacyclin versus thromboxane",
-    "stem": "A second mediator in the same pathway is made by prostacyclin synthetase in the blood vessel wall. What does that mediator do?",
+    "stem": "Prostacyclin synthetase in the blood vessel wall makes a mediator in the same pathway as platelet thromboxane. What does that mediator do?",
     "options": [
       "Decreases platelet aggregation and causes vasodilation",
       "Increases platelet aggregation and causes vasoconstriction",
@@ -10257,8 +10356,11 @@
     ],
     "rationale": "Fig. 44.1 places prostacyclin in the blood vessel wall and labels its effects as decreased platelet aggregation and vasodilation, the mirror image of thromboxane's.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Same branch, same enzyme, opposite effects on both the platelet and the vessel, which is exactly why the pair is testable.",
-    "source": "ch44.md"
+    "trap": "(B) gives thromboxane's effects. Same branch, same enzyme, opposite effects on both the platelet and the vessel, which is exactly why the pair is testable.",
+    "source": "ch44.md",
+    "aliases": [
+      "A second mediator in the same pathway is made by prostacyclin synthetase in the blood vessel wall. What does that mediator do?"
+    ]
   },
   "q_0556": {
     "topic": "inflammation and the arachidonic acid pathway",
@@ -10299,7 +10401,7 @@
   "q_0558": {
     "topic": "cox-1 versus cox-2",
     "subtopic": "which isoform you want to keep",
-    "stem": "The same patient asks which enzyme the ibuprofen was blocking in order to help the arthritis in the first place. Which response is accurate?",
+    "stem": "A patient who developed a bleeding gastric ulcer after 6 months of daily ibuprofen for osteoarthritis asks which enzyme the ibuprofen was blocking in order to help the arthritis in the first place. Which response is accurate?",
     "options": [
       "COX-2, which produces the prostaglandins involved in inflammatory processes",
       "COX-1, which produces the prostaglandins involved in inflammatory processes",
@@ -10311,8 +10413,11 @@
     ],
     "rationale": "COX-2 produces prostaglandins involved in inflammatory processes, so blocking it is the desired therapeutic action; blocking COX-1 is what produces the ulceration.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. The same student who blames COX-2 for ulcers will credit COX-1 with the antiinflammatory benefit, and both halves have to be right to get either one right.",
-    "source": "ch44.md"
+    "trap": "(B) crosses the isoforms. A student who blames COX-2 for ulcers will credit COX-1 with the antiinflammatory benefit, and both halves have to be right to get either one right.",
+    "source": "ch44.md",
+    "aliases": [
+      "The same patient asks which enzyme the ibuprofen was blocking in order to help the arthritis in the first place. Which response is accurate?"
+    ]
   },
   "q_0559": {
     "topic": "cox-1 versus cox-2",
@@ -10335,7 +10440,7 @@
   "q_0560": {
     "topic": "cox-1 versus cox-2",
     "subtopic": "the cox-2 inhibitors",
-    "stem": "The patient now taking celecoxib says, \"So I can stop worrying about my stomach entirely.\" Which response is accurate?",
+    "stem": "A patient with a history of peptic ulcer disease who was switched from naproxen to celecoxib says, \"So I can stop worrying about my stomach entirely.\" Which response is accurate?",
     "options": [
       "COX-2 inhibitors are not totally devoid of gastrointestinal toxicity; gastritis and upper gastrointestinal bleeding have been reported, though much less frequently than with older NSAIDs",
       "That is correct, since celecoxib has no effect on the gastrointestinal tract at all",
@@ -10348,7 +10453,10 @@
     "rationale": "The chapter states that COX-2 inhibitors are not totally devoid of gastrointestinal toxicity and that gastritis and upper gastrointestinal bleeding have been reported with their use, although much less frequently than with the older NSAIDs.",
     "type": "single",
     "trap": "(B) overstates the chapter in the direction the drug was marketed. The claim is a reduced prevalence of gastrointestinal adverse effects, never their absence.",
-    "source": "ch44.md"
+    "source": "ch44.md",
+    "aliases": [
+      "The patient now taking celecoxib says, \"So I can stop worrying about my stomach entirely.\" Which response is accurate?"
+    ]
   },
   "q_0561": {
     "topic": "cox-1 versus cox-2",
@@ -10423,7 +10531,7 @@
     ],
     "rationale": "The chapter states that other NSAIDs lack these antiplatelet effects, and that NSAIDs may counteract the cardioprotective effects of aspirin. The substitution both removes the protection and interferes with it.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, and it is the reasonable-sounding one: same class, same enzyme, so surely the same effect at some dose. The irreversibility is a property of aspirin alone and no dose of ibuprofen reproduces it.",
+    "trap": "(C) is the mirror error, crediting ibuprofen with aspirin's antiplatelet effect, and it is the reasonable-sounding one: same class, same enzyme, so surely the same effect at some dose. The irreversibility is a property of aspirin alone and no dose of ibuprofen reproduces it.",
     "source": "ch44.md"
   },
   "q_0565": {
@@ -10534,7 +10642,7 @@
     ],
     "rationale": "The chapter draws this contrast directly: unlike opioids, NSAIDs show a ceiling effect, while opioids may be titrated almost indefinitely to increasingly higher levels, especially in terminally ill patients with severe pain.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item. Note that the generalization about opioids has named exceptions in Ch 10, where codeine is the only agonist to possess a ceiling effect and the agonists-antagonists have one as well.",
+    "trap": "(C) is the mirror error, denying NSAIDs the ceiling effect that opioids lack. Note that the generalization about opioids has named exceptions in Ch 10, where codeine is the only agonist to possess a ceiling effect and the agonists-antagonists have one as well.",
     "source": "ch44.md"
   },
   "q_0571": {
@@ -10652,7 +10760,7 @@
   "q_0577": {
     "topic": "choosing an nsaid for the patient",
     "subtopic": "ketorolac",
-    "stem": "The same patient is still using ketorolac on postoperative day 5 and asks to continue it for another week at home. Which response is correct?",
+    "stem": "A patient in recovery from opioid addiction who was given ketorolac for severe pain after orthopedic surgery is still using it on postoperative day 5 and asks to continue it for another week at home. Which response is correct?",
     "options": [
       "Ketorolac is indicated for short-term use up to 5 days only, because of its potential adverse effects on the kidney and gastrointestinal tract",
       "Ketorolac may be continued for up to 30 days if renal function is normal",
@@ -10665,7 +10773,10 @@
     "rationale": "The Clinical Pearl states that ketorolac can be used for only 5 days. It is indicated for short-term use up to 5 days, is not indicated for treatment of minor pain or chronic pain, and the limit exists because of its potential adverse effects on the kidney and gastrointestinal tract. The dosage table caps combined oral and intravenous treatment at 5 days.",
     "type": "single",
     "trap": "(D) reverses the drug's indication. Ketorolac is for moderate to severe acute pain such as that from orthopedic injuries or surgery, and it is chronic and minor pain that are excluded.",
-    "source": "ch44.md"
+    "source": "ch44.md",
+    "aliases": [
+      "The same patient is still using ketorolac on postoperative day 5 and asks to continue it for another week at home. Which response is correct?"
+    ]
   },
   "q_0578": {
     "topic": "choosing an nsaid for the patient",
@@ -10830,7 +10941,7 @@
     ],
     "rationale": "In 2015 the FDA strengthened the warning, adding that patients treated with NSAIDs after a first heart attack are more likely to die in the first year, that there is an increased risk for heart failure, and that patients without heart disease or risk factors are also at increased risk for heart attack or stroke.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item and reads the \"greater risk\" clause as an \"only\" clause. The box says patients with cardiovascular disease may be at greater risk, which is a comparison among patients, not a limit on who is at risk.",
+    "trap": "(B) is the mirror error, restricting the warning to patients with existing cardiovascular disease, and reads the \"greater risk\" clause as an \"only\" clause. The box says patients with cardiovascular disease may be at greater risk, which is a comparison among patients, not a limit on who is at risk.",
     "source": "ch44.md"
   },
   "q_0587": {
@@ -10942,7 +11053,7 @@
     ],
     "rationale": "In children the most common manifestations are hyperventilation and central nervous system effects such as dizziness, drowsiness, and behavioral changes. Metabolic acidosis and respiratory alkalosis often occur to varying degrees in chronic salicylate intoxication, and hypoglycemia may also arise and can be life threatening.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Adults ring, children breathe and change behavior, so requiring the adult finding in a child throws the diagnosis away.",
+    "trap": "(B) is the mirror error, treating tinnitus as required in a child. Adults ring, children breathe and change behavior, so requiring the adult finding in a child throws the diagnosis away.",
     "source": "ch44.md"
   },
   "q_0593": {
@@ -11359,7 +11470,7 @@
   "q_0615": {
     "topic": "gout pathophysiology and drug targets",
     "subtopic": "which drug fixes which defect",
-    "stem": "A different patient's gout is attributed to underexcretion of uric acid, and probenecid is prescribed. How does it work, and what limits its use?",
+    "stem": "A patient's gout is attributed to underexcretion of uric acid, and probenecid is prescribed. How does it work, and what limits its use?",
     "options": [
       "It binds the transporter in the proximal convoluted renal tubule that returns uric acid to the blood, so uric acid stays in the urine; it is ineffective and not to be used in renal impairment",
       "It inhibits xanthine oxidase, so less uric acid is made; it is ineffective in hepatic impairment",
@@ -11371,8 +11482,11 @@
     ],
     "rationale": "Probenecid inhibits the reabsorption of uric acid in the kidney and thus increases its excretion, binding the special transporter protein in the proximal convoluted renal tubule that takes uric acid from the urine and places it back into the blood. The probenecid is then reabsorbed while the uric acid remains in the urine and is excreted. It is ineffective and is not to be used in patients with renal impairment.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, swapping the uricosuric and the xanthine oxidase inhibitor. The contraindication follows from the mechanism: a drug that works in the kidney needs a working kidney, which is why the limiting organ is renal, not hepatic.",
-    "source": "ch44.md"
+    "trap": "(B) swaps the uricosuric and the xanthine oxidase inhibitor. The contraindication follows from the mechanism: a drug that works in the kidney needs a working kidney, which is why the limiting organ is renal, not hepatic.",
+    "source": "ch44.md",
+    "aliases": [
+      "A different patient's gout is attributed to underexcretion of uric acid, and probenecid is prescribed. How does it work, and what limits its use?"
+    ]
   },
   "q_0616": {
     "topic": "gout pathophysiology and drug targets",
@@ -11555,13 +11669,13 @@
     ],
     "rationale": "Cell cycle–specific denotes antineoplastic drugs that are cytotoxic during a specific phase of the cellular growth cycle; the antimetabolites are the example, working primarily in the S phase during which DNA synthesis is most active. Chapter 45 covers the cell cycle–specific drugs and Chapter 46 the nonspecific ones, and the chapter states that split outright on p. 706.",
     "type": "single",
-    "trap": "(C) reaches the right label by the wrong reasoning and will carry a learner to the wrong answer on the mirror item. The book defeats potency reasoning itself: regardless of the cell cycle characteristics of a drug, it is more effective on rapidly growing tumors. Specific and nonspecific describe when a drug kills, not how hard.",
+    "trap": "(C) reaches the right label by the wrong reasoning and will carry a learner to the wrong answer when classifying the cell cycle–nonspecific drug. The book defeats potency reasoning itself: regardless of the cell cycle characteristics of a drug, it is more effective on rapidly growing tumors. Specific and nonspecific describe when a drug kills, not how hard.",
     "source": "ch45.md"
   },
   "q_0626": {
     "topic": "cell cycle specificity in cancer chemotherapy",
     "subtopic": "specific versus nonspecific action",
-    "stem": "The second drug in that regimen is described as cytotoxic in any phase of the cellular growth cycle. What does that tell the nurse?",
+    "stem": "A combination regimen pairs a drug that is cytotoxic only while DNA is being synthesized with a second drug that is cytotoxic in any phase of the cellular growth cycle. What does that tell the nurse about the second drug?",
     "options": [
       "It is cell cycle–nonspecific, and being phase-indifferent does not make it the stronger of the two drugs",
       "It is cell cycle–specific, since acting in every phase means it must be targeted to each one",
@@ -11573,8 +11687,11 @@
     ],
     "rationale": "Antineoplastic drugs that are cytotoxic in any phase of the cycle are cell cycle–nonspecific. The chapter adds that drugs may have actions falling into both categories, and that regardless of the cell cycle characteristics of a drug, it is more effective on rapidly growing tumors (p. 706).",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, now attaching potency to the other label. (D) inverts the chapter's one comparative claim, which is that rapid growth predicts response for both categories alike.",
-    "source": "ch45.md"
+    "trap": "(C) is potency reasoning, attaching strength to the phase-indifferent label. (D) inverts the chapter's one comparative claim, which is that rapid growth predicts response for both categories alike.",
+    "source": "ch45.md",
+    "aliases": [
+      "The second drug in that regimen is described as cytotoxic in any phase of the cellular growth cycle. What does that tell the nurse?"
+    ]
   },
   "q_0627": {
     "topic": "cell cycle specificity in cancer chemotherapy",
@@ -11695,7 +11812,7 @@
   "q_0633": {
     "topic": "cell cycle–specific drug classes and mechanisms",
     "subtopic": "mechanism by class",
-    "stem": "The same patient is later switched to paclitaxel. How does its action on microtubules differ from vincristine's?",
+    "stem": "A patient previously treated with vincristine is switched to paclitaxel. How does its action on microtubules differ from vincristine's?",
     "options": [
       "Paclitaxel causes the formation of nonfunctional microtubules, which halts mitosis during metaphase",
       "Paclitaxel binds tubulin and prevents microtubules from assembling at all",
@@ -11707,8 +11824,11 @@
     ],
     "rationale": "The taxanes cause the formation of nonfunctional microtubules, which halts mitosis during metaphase (p. 712). Both taxanes and vincas are mitotic inhibitors reaching the same endpoint — a cell that cannot complete mitosis — by opposite routes.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Prevented assembly is the vinca mechanism; a built but nonfunctional spindle is the taxane one. The name cue is that vincas come from periwinkle and taxanes carry the \"-taxel\" stem from the yew.",
-    "source": "ch45.md"
+    "trap": "(B) gives paclitaxel the vinca mechanism. Prevented assembly is the vinca mechanism; a built but nonfunctional spindle is the taxane one. The name cue is that vincas come from periwinkle and taxanes carry the \"-taxel\" stem from the yew.",
+    "source": "ch45.md",
+    "aliases": [
+      "The same patient is later switched to paclitaxel. How does its action on microtubules differ from vincristine's?"
+    ]
   },
   "q_0634": {
     "topic": "cell cycle–specific drug classes and mechanisms",
@@ -11743,7 +11863,7 @@
     ],
     "rationale": "Etoposide and teniposide are derivatives of epipodophyllotoxin and act by inhibiting the enzyme topoisomerase II, which causes breaks in DNA strands (p. 712).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, with the numeral flipped. Note also that the book files the topoisomerase II inhibitors under the mitotic-inhibitor heading on p. 712 while listing them separately in its key points, so an option that calls etoposide a mitotic inhibitor is not thereby wrong.",
+    "trap": "(B) is the mirror error, with the numeral flipped: it gives etoposide the camptothecins' topoisomerase I. Note also that the book files the topoisomerase II inhibitors under the mitotic-inhibitor heading on p. 712 while listing them separately in its key points, so an option that calls etoposide a mitotic inhibitor is not thereby wrong.",
     "source": "ch45.md"
   },
   "q_0636": {
@@ -11785,7 +11905,7 @@
   "q_0638": {
     "topic": "chemotherapy-induced myelosuppression and nadir",
     "subtopic": "naming the condition and the moment",
-    "stem": "The same patient's counts return with a low white blood cell count, a low hemoglobin, and a low platelet count all at once. Which term names the condition producing all three?",
+    "stem": "A patient who received chemotherapy 14 days ago has counts that return with a low white blood cell count, a low hemoglobin, and a low platelet count all at once. Which term names the condition producing all three?",
     "options": [
       "Myelosuppression, the suppression of bone marrow function",
       "Nadir, since the nadir is what makes all three counts fall",
@@ -11797,8 +11917,11 @@
     ],
     "rationale": "Myelosuppression, also known as bone marrow suppression, results from destruction of the rapidly dividing cellular precursors of white blood cells, red blood cells, and platelets, and leads to leukopenia, anemia, and thrombocytopenia (p. 707).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. Myelosuppression is the condition and the nadir is the moment, which is why the key-terms box prints them side by side. \"Why are all three cell lines low\" wants myelosuppression; \"when is the risk greatest\" wants nadir.",
-    "source": "ch45.md"
+    "trap": "(B) confuses the moment with the condition. Myelosuppression is the condition and the nadir is the moment, which is why the key-terms box prints them side by side. \"Why are all three cell lines low\" wants myelosuppression; \"when is the risk greatest\" wants nadir.",
+    "source": "ch45.md",
+    "aliases": [
+      "The same patient's counts return with a low white blood cell count, a low hemoglobin, and a low platelet count all at once. Which term names the condition producing all three?"
+    ]
   },
   "q_0639": {
     "topic": "chemotherapy-induced myelosuppression and nadir",
@@ -11988,7 +12111,7 @@
   "q_0649": {
     "topic": "tumor lysis syndrome and uric acid prophylaxis",
     "subtopic": "the two rescues and what each rescues from",
-    "stem": "The same patient's uric acid is already markedly elevated. Which drug acts on uric acid that has already formed?",
+    "stem": "A patient about to begin induction chemotherapy for acute leukemia already has a markedly elevated uric acid. Which drug acts on uric acid that has already formed?",
     "options": [
       "Rasburicase, an enzyme that degrades uric acid to more soluble end products",
       "Allopurinol, which degrades the uric acid already present in the circulation",
@@ -12000,8 +12123,11 @@
     ],
     "rationale": "Rasburicase is an enzyme that degrades uric acid to more soluble end products, while allopurinol prevents uric acid from being formed by inhibiting xanthine oxidase. Both are indicated for the hyperuricemia associated with tumor lysis syndrome (p. 709).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. The two drugs address the same problem from opposite ends: allopurinol stops uric acid from being made, rasburicase destroys what is already there.",
-    "source": "ch45.md"
+    "trap": "(B) gives allopurinol rasburicase's job. The two drugs address the same problem from opposite ends: allopurinol stops uric acid from being made, rasburicase destroys what is already there.",
+    "source": "ch45.md",
+    "aliases": [
+      "The same patient's uric acid is already markedly elevated. Which drug acts on uric acid that has already formed?"
+    ]
   },
   "q_0650": {
     "topic": "tumor lysis syndrome and uric acid prophylaxis",
@@ -12072,7 +12198,7 @@
     ],
     "rationale": "Box 45.1 lists cytarabine under 1000 mg/m2 in the low tier and cytarabine over 1000 mg/m2 in the high tier. Most of this chapter's cell cycle–specific drugs cluster in the low tier; the high tier is dominated by the alkylating and platinum drugs covered in Chapter 46 (p. 707).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, reading the drug's most common listing and stopping before the dose qualifier. The threshold is printed next to the drug name for exactly this reason.",
+    "trap": "(B) is the dose-tier error, reading the drug's low-tier listing and stopping before the dose qualifier. The threshold is printed next to the drug name for exactly this reason.",
     "source": "ch45.md"
   },
   "q_0654": {
@@ -12096,7 +12222,7 @@
   "q_0655": {
     "topic": "cell cycle-nonspecific antineoplastic classification",
     "subtopic": "specific versus nonspecific action",
-    "stem": "The same patient's sister is receiving a drug her oncologist called cell cycle-specific. What does that label establish about the sister's drug?",
+    "stem": "A patient's sister is receiving a drug her oncologist called cell cycle-specific. What does that label establish about the sister's drug?",
     "options": [
       "It acts only while cells are in particular phases of the cell growth cycle",
       "It acts on cancer cells no matter which phase of the cycle they are in",
@@ -12108,8 +12234,11 @@
     ],
     "rationale": "The specific/nonspecific split is what divides these two chapters: Chapter 45's drugs are effective during specific phases in the cell growth cycle, while this chapter's drugs work regardless of phase (p. 726).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, and it is easy to slide into right after \"nonspecific\" has just been explained. (C) repeats the tumor-type swap in the opposite direction.",
-    "source": "ch46.md"
+    "trap": "(B) is the cell cycle-nonspecific definition, and it is easy to slide into because the two labels differ only by a prefix. (C) repeats the tumor-type swap in the opposite direction.",
+    "source": "ch46.md",
+    "aliases": [
+      "The same patient's sister is receiving a drug her oncologist called cell cycle-specific. What does that label establish about the sister's drug?"
+    ]
   },
   "q_0656": {
     "topic": "cell cycle-nonspecific antineoplastic classification",
@@ -12170,7 +12299,7 @@
   "q_0659": {
     "topic": "alkylating and cytotoxic antibiotic mechanisms",
     "subtopic": "how each class damages DNA",
-    "stem": "The same patient is later switched to doxorubicin and asks whether the new drug works the same way. Which mechanism belongs to the cytotoxic antibiotics?",
+    "stem": "A patient who was receiving mechlorethamine, an alkylating drug, is switched to doxorubicin and asks whether the new drug works the same way. Which mechanism belongs to the cytotoxic antibiotics?",
     "options": [
       "Intercalation, in which the drug is inserted between the two strands of a DNA molecule and ultimately blocks DNA synthesis",
       "Alkylation, in which alkyl groups are transferred to DNA so that abnormal bonds form between adjacent strands",
@@ -12182,8 +12311,11 @@
     ],
     "rationale": "Cytotoxic antibiotics work by intercalation, \"inserted between the two strands of a DNA molecule, ultimately blocking DNA synthesis\"; they also inhibit the enzyme topoisomerase II, and many generate free radicals (p. 729).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item and (C) restates it in bifunctional terms. The word \"antibiotic\" is the other pull here: these are natural substances produced by the mold Streptomyces that kill cancer cells, not anti-infectives, and inhibiting topoisomerase II does not make them topoisomerase inhibitors.",
-    "source": "ch46.md"
+    "trap": "(B) is the alkylating mechanism and (C) restates it in bifunctional terms. The word \"antibiotic\" is the other pull here: these are natural substances produced by the mold Streptomyces that kill cancer cells, not anti-infectives, and inhibiting topoisomerase II does not make them topoisomerase inhibitors.",
+    "source": "ch46.md",
+    "aliases": [
+      "The same patient is later switched to doxorubicin and asks whether the new drug works the same way. Which mechanism belongs to the cytotoxic antibiotics?"
+    ]
   },
   "q_0660": {
     "topic": "alkylating and cytotoxic antibiotic mechanisms",
@@ -12242,7 +12374,7 @@
   "q_0663": {
     "topic": "antineoplastic drug-specific toxicities",
     "subtopic": "doxorubicin versus bleomycin",
-    "stem": "Another patient on the unit is receiving bleomycin. Which assessment is the priority for this drug?",
+    "stem": "A patient on the unit is receiving bleomycin. Which assessment is the priority for this drug?",
     "options": [
       "Respiratory function, since bleomycin causes pulmonary fibrosis and pneumonitis",
       "Cardiac function, since bleomycin causes cardiomyopathy at large cumulative doses",
@@ -12254,8 +12386,11 @@
     ],
     "rationale": "Table 46.5 gives pulmonary fibrosis and pneumonitis for bleomycin, and the chapter states that cytotoxic antibiotics generally cause bone marrow suppression, with \"the one exception is bleomycin, which instead causes pulmonary toxicity\" (pp. 729-730).",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item; the cue is that \"doxo\" hits the cardiac muscle while \"bleo\" blows out the lungs. (D) is the class rule that hides this drug - it is true of the cytotoxic antibiotics generally, and bleomycin is the stated exception to it.",
-    "source": "ch46.md"
+    "trap": "(B) is doxorubicin's toxicity; the cue is that \"doxo\" hits the cardiac muscle while \"bleo\" blows out the lungs. (D) is the class rule that hides this drug - it is true of the cytotoxic antibiotics generally, and bleomycin is the stated exception to it.",
+    "source": "ch46.md",
+    "aliases": [
+      "Another patient on the unit is receiving bleomycin. Which assessment is the priority for this drug?"
+    ]
   },
   "q_0664": {
     "topic": "antineoplastic drug-specific toxicities",
@@ -12401,7 +12536,7 @@
     ],
     "rationale": "Active immunization works through an antigen-antibody response similar to that after antigen exposure in the natural disease process, so the host must respond before any protection exists. Table 49.1 characterizes active immunity as long-lasting or permanent, in contrast to the transitory protection of passive immunization.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, applying passive immunization's fast-onset-then-fade profile to a toxoid. (A) sells active immunization on speed, which is exactly the property it does not have.",
+    "trap": "(C) is the mirror error, applying passive immunization's fast-onset-then-fade profile to a toxoid. (A) sells active immunization on speed, which is exactly the property it does not have.",
     "source": "ch49.md"
   },
   "q_0672": {
@@ -12530,7 +12665,7 @@
     ],
     "rationale": "Only partial immunity is conferred by killed or inactivated vaccines, and the chapter states that they must be given periodic booster shots. Varicella vaccine is named among the live attenuated products, which the chapter credits with lifelong immunity.",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item, assigning lifelong immunity to the inactivated product. (C) confuses inactivated with passive; an inactivated vaccine still makes the host produce its own antibodies, so it is an active immunizing drug.",
+    "trap": "(D) is the mirror error, assigning the live attenuated vaccine's lifelong immunity to the inactivated product. (C) confuses inactivated with passive; an inactivated vaccine still makes the host produce its own antibodies, so it is an active immunizing drug.",
     "source": "ch49.md"
   },
   "q_0679": {
@@ -12566,7 +12701,7 @@
     ],
     "rationale": "Tdap contains reduced diphtheria toxoid and is described as a booster vaccine for older children, adolescents, and adults. DTaP is restricted to pediatric patients 6 weeks to 6 years of age and is indicated for initial immunizations.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, reading the capital letters as a marker of adult strength rather than of antigen content. (C) mislabels an antitoxin as active, when antitoxins are one of the three passive categories.",
+    "trap": "(A) is the mirror error of the DTaP-Tdap swap, reading the capital letters as a marker of adult strength rather than of antigen content. (C) mislabels an antitoxin as active, when antitoxins are one of the three passive categories.",
     "source": "ch49.md"
   },
   "q_0681": {
@@ -12602,7 +12737,7 @@
     ],
     "rationale": "The chapter prints an explicit override for this product: pregnancy is not considered a contraindication to hepatitis B vaccination. The general caution about immunizing drugs in pregnancy is aimed at live virus products such as the measles-mumps-rubella vaccine.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, generalizing one live-vaccine rule into a blanket ban; the printed exceptions exist to break that blanket, and rabies vaccination after exposure is another the chapter says to give anyway.",
+    "trap": "(A) is the mirror error, generalizing one live-vaccine rule — the measles-mumps-rubella contraindication in pregnancy — into a blanket ban; the printed exceptions exist to break that blanket, and rabies vaccination after exposure is another the chapter says to give anyway.",
     "source": "ch49.md"
   },
   "q_0683": {
@@ -12754,7 +12889,7 @@
     ],
     "rationale": "Peptic ulcer disease is defined as a general term for gastric or duodenal ulcers that involve digestion of the GI mucosa by the enzyme pepsin, and the chapter states that ulceration is driven by the proteolytic actions of pepsin together with the caustic effects of hydrochloric acid.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, naming the inactive precursor as the active digester and relocating it to the wrong cell. (C) drops pepsin entirely, but the chapter calls these acid-peptic disorders precisely because both the enzyme and the acid are involved.",
+    "trap": "(A) is the mirror error, naming the inactive precursor as the active digester and relocating it to the wrong cell. (C) drops pepsin entirely, but the chapter calls these acid-peptic disorders precisely because both the enzyme and the acid are involved.",
     "source": "ch50.md"
   },
   "q_0691": {
@@ -12778,7 +12913,7 @@
   "q_0692": {
     "topic": "parietal cell receptors and sites of drug action",
     "subtopic": "the three receptors and their second messengers",
-    "stem": "The same patient asks what happens at the acetylcholine and gastrin receptors of the parietal cell. Which statement is accurate?",
+    "stem": "A patient started on an H2 receptor antagonist asks what happens at the parietal cell's other two stimulating receptors, for acetylcholine and gastrin. Which statement is accurate?",
     "options": [
       "Both use cyclic AMP as their second messenger, exactly as histamine does",
       "Both use calcium ions rather than cyclic AMP as the second messenger",
@@ -12790,8 +12925,11 @@
     ],
     "rationale": "The chapter states the contrast explicitly: for acetylcholine and for gastrin, the second messenger that drives the proton pump is not cAMP but is instead calcium ions. Only the histamine arm runs through adenylate cyclase and cAMP.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, generalizing the histamine pathway to all three receptors. (C) splits the pair, which is what students pick when they remember that something differs but not which arm.",
-    "source": "ch50.md"
+    "trap": "(A) generalizes the histamine pathway, which runs through cyclic AMP, to all three receptors. (C) splits the pair, which is what students pick when they remember that something differs but not which arm.",
+    "source": "ch50.md",
+    "aliases": [
+      "The same patient asks what happens at the acetylcholine and gastrin receptors of the parietal cell. Which statement is accurate?"
+    ]
   },
   "q_0693": {
     "topic": "parietal cell receptors and sites of drug action",
@@ -13046,7 +13184,7 @@
     ],
     "rationale": "Aluminum-containing and calcium-containing antacids cause constipation, and many aluminum- and calcium-based formulations include magnesium, which not only contributes to acid-neutralizing capacity but also counteracts the constipating effects of aluminum and calcium. The chapter describes the net effect of the combination as a balancing out of both adverse effects.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The chapter's human need statements map constipation to aluminum-containing antacids and diarrhea to magnesium-containing antacids, one to one.",
+    "trap": "(A) is the mirror error, attaching magnesium's laxative effect to the aluminum antacid. The chapter's human need statements map constipation to aluminum-containing antacids and diarrhea to magnesium-containing antacids, one to one.",
     "source": "ch50.md"
   },
   "q_0707": {
@@ -13168,7 +13306,7 @@
   "q_0713": {
     "topic": "antacid drug interactions and dose spacing",
     "subtopic": "the four interaction mechanisms",
-    "stem": "The same antacid also raises urinary pH. What is the effect on other drugs there?",
+    "stem": "An antacid that raises gastric pH also raises urinary pH. What is the effect on other drugs in the urine?",
     "options": [
       "Excretion of acidic drugs increases and excretion of basic drugs decreases",
       "Excretion of basic drugs increases and excretion of acidic drugs decreases",
@@ -13180,8 +13318,11 @@
     ],
     "rationale": "Increased urinary pH increases the excretion of acidic drugs and decreases the excretion of basic drugs. In the urine, pH governs excretion, whereas in the stomach the same pH change governs absorption.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item. The two pH statements are written in deliberate parallel, so reversing one produces something that looks exactly like the other.",
-    "source": "ch50.md"
+    "trap": "(B) is the stomach rule carried into the urine. The two pH statements are written in deliberate parallel, so reversing one produces something that looks exactly like the other.",
+    "source": "ch50.md",
+    "aliases": [
+      "The same antacid also raises urinary pH. What is the effect on other drugs there?"
+    ]
   },
   "q_0714": {
     "topic": "antacid drug interactions and dose spacing",
@@ -13531,7 +13672,7 @@
   "q_0733": {
     "topic": "nausea pathway and antiemetic terminology",
     "subtopic": "chemoreceptor trigger zone versus vomiting center",
-    "stem": "A patient asks which part of the brain actually sets off the retching and vomiting once the signal has arrived. Which structure should the nurse name?",
+    "stem": "A patient asks which part of the brain actually sets off the retching and vomiting. Which structure should the nurse name?",
     "options": [
       "The chemoreceptor trigger zone, because it senses emetogenic substances in the blood",
       "The vomiting center in the medulla, because it initiates the physiologic events that lead to nausea and vomiting",
@@ -13543,8 +13684,11 @@
     ],
     "rationale": "The vomiting center is defined as the area of the brain involved in stimulating the physiologic events that lead to nausea and vomiting, and the body text says it is responsible for initiating those events. Fig. 52.1 places it in the medulla.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. The CTZ senses and signals; the VC initiates. Because both key-term definitions begin identically, the discriminator has to come from the verbs.",
-    "source": "ch52.md"
+    "trap": "(A) is the reflex pick because both structures sit on the same pathway. The CTZ senses and signals; the VC initiates. Because both key-term definitions begin identically, the discriminator has to come from the verbs.",
+    "source": "ch52.md",
+    "aliases": [
+      "A patient asks which part of the brain actually sets off the retching and vomiting once the signal has arrived. Which structure should the nurse name?"
+    ]
   },
   "q_0734": {
     "topic": "nausea pathway and antiemetic terminology",
@@ -13621,7 +13765,7 @@
     ],
     "rationale": "Dimenhydrinate is one of the antihistamine antiemetics along with meclizine and diphenhydramine. Table 52.3 says antihistamines block histamine 1 receptors, thereby preventing ACh from binding in the vestibular nuclei, and these drugs also have potent anticholinergic activity. Table 52.4 gives this class dizziness, drowsiness, and confusion plus blurred vision, dilated pupils, dry mouth, and urinary retention.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, handing the anticholinergic's direct receptor blockade to the antihistamine. Same destination, different door: anticholinergics block acetylcholine directly, antihistamines get there through histamine 1.",
+    "trap": "(A) is the mirror error, handing the anticholinergic's direct receptor blockade to the antihistamine. Same destination, different door: anticholinergics block acetylcholine directly, antihistamines get there through histamine 1.",
     "source": "ch52.md"
   },
   "q_0738": {
@@ -13675,7 +13819,7 @@
     ],
     "rationale": "Table 52.2 gives the antidopaminergics the indications psychotic disorders including mania, schizophrenia, and anxiety, intractable hiccups, and nausea and vomiting. Prochlorperazine, especially in the injectable form, is used frequently in the hospital setting.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Since both classes block dopamine in the chemoreceptor trigger zone, the stem's cue decides: gastric emptying, reflux, or motility points to the prokinetic, while psychosis, hiccups, or an injectable hospital antiemetic points to the antidopaminergic.",
+    "trap": "(A) is the mirror error, picking the prokinetic because it empties the stomach when the stem's needs point to the antidopaminergic. Since both classes block dopamine in the chemoreceptor trigger zone, the stem's cue decides: gastric emptying, reflux, or motility points to the prokinetic, while psychosis, hiccups, or an injectable hospital antiemetic points to the antidopaminergic.",
     "source": "ch52.md"
   },
   "q_0741": {
@@ -13751,7 +13895,7 @@
     ],
     "rationale": "The meclizine profile states that it treats the dizziness, vertigo, and nausea and vomiting associated with motion sickness, and it is the only drug in the chapter's dosage table carrying a separate treatment-of-vertigo indication.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item. Both drugs treat motion sickness, both are contraindicated in narrow-angle glaucoma, and both sedate, so the stem's cue decides: a patch or travel points to scopolamine, while the word vertigo points to meclizine.",
+    "trap": "(A) is the mirror error, swapping scopolamine in for meclizine. Both drugs treat motion sickness, both are contraindicated in narrow-angle glaucoma, and both sedate, so the stem's cue decides: a patch or travel points to scopolamine, while the word vertigo points to meclizine.",
     "source": "ch52.md"
   },
   "q_0745": {
@@ -13805,7 +13949,7 @@
     ],
     "rationale": "Dronabinol is the only commercially available tetrahydrocannabinoid, a synthetic derivative approved in 1985, and is generally used as a second-line drug after treatment with other antiemetics has failed. It also stimulates appetite and promotes weight gain in patients with AIDS and cancer.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, and it is unusually seductive because it names the same drug with only the sequence inverted. (C) names the phosphorated carbohydrate solution, which is explicitly not sufficient for nausea as severe as that associated with cancer chemotherapy.",
+    "trap": "(B) is the mirror error, and it is unusually seductive because it names the right drug with only the sequence inverted: dronabinol is second-line, not first-line. (C) names the phosphorated carbohydrate solution, which is explicitly not sufficient for nausea as severe as that associated with cancer chemotherapy.",
     "source": "ch52.md"
   },
   "q_0748": {
@@ -13868,7 +14012,7 @@
   "q_0751": {
     "topic": "antiemetic prophylaxis and timing",
     "subtopic": "postoperative versus chemotherapy anchors",
-    "stem": "The same serotonin blocker is ordered for a patient about to receive chemotherapy. When should it be given?",
+    "stem": "A serotonin blocker is ordered to prevent nausea and vomiting in a patient about to receive chemotherapy. When should it be given?",
     "options": [
       "30 to 60 minutes before the start of chemotherapy",
       "30 minutes before the end of the chemotherapy infusion",
@@ -13880,8 +14024,11 @@
     ],
     "rationale": "For chemotherapy the chapter gives 30 to 60 minutes before the start of chemotherapy, and states more generally that antiemetics are given 30 to 60 minutes before a chemotherapy drug is administered and may also be given during the treatment.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, dragging the surgical anchor onto a chemotherapy stem. (D) fails the chapter's default of prophylaxis rather than rescue.",
-    "source": "ch52.md"
+    "trap": "(B) drags the postoperative anchor, 30 minutes before the end of surgery, onto a chemotherapy stem. (D) fails the chapter's default of prophylaxis rather than rescue.",
+    "source": "ch52.md",
+    "aliases": [
+      "The same serotonin blocker is ordered for a patient about to receive chemotherapy. When should it be given?"
+    ]
   },
   "q_0752": {
     "topic": "antiemetic prophylaxis and timing",
@@ -13952,7 +14099,7 @@
     ],
     "rationale": "The Safety and Quality Improvement box titled Right Route Is Essential states that hydroxyzine is given orally or intramuscularly only, and that intravenous, intraarterial, or subcutaneous administration of hydroxyzine can result in significant tissue damage, thrombosis, and gangrene.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, carrying promethazine's dilution rule across to hydroxyzine. These two drugs are the safety box's two examples and they sit one word apart: for promethazine the intravenous route is allowed but not preferred, while for hydroxyzine it is never allowed.",
+    "trap": "(A) is the mirror error, carrying promethazine's dilution rule across to hydroxyzine. These two drugs are the safety box's two examples and they sit one word apart: for promethazine the intravenous route is allowed but not preferred, while for hydroxyzine it is never allowed.",
     "source": "ch52.md"
   },
   "q_0756": {
@@ -14099,7 +14246,7 @@
     ],
     "rationale": "Parenteral nutrition is used \"only when oral or enteral support is impossible or when the gastrointestinal absorptive or functional capacity is not sufficient,\" and it \"bypasses the entire gastrointestinal system, which eliminates the need for absorption, metabolism, and excretion.\" Documented insufficient absorptive capacity is the stated trigger.",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item — the enteral preference is conditional on a gut that can absorb, not absolute, and treating it as absolute is what keeps a malabsorbing patient undernourished.",
+    "trap": "(D) is the mirror error — the enteral preference is conditional on a gut that can absorb, not absolute, and treating it as absolute is what keeps a malabsorbing patient undernourished.",
     "source": "ch55.md"
   },
   "q_0764": {
@@ -14192,7 +14339,7 @@
     ],
     "rationale": "Table 55.1 defines jejunostomy as a \"feeding tube surgically inserted into the jejunum,\" while the nasojejunal route reaches the same organ from the nose without surgery. The second half of each name gives the destination organ and the first half gives the method.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — it names the right organ by the wrong method. Reading only the organ half of these words is what makes all four cells of Table 55.1 interchangeable to a student.",
+    "trap": "(A) is the mirror error — it names the right organ by the wrong method. Reading only the organ half of these words is what makes all four cells of Table 55.1 interchangeable to a student.",
     "source": "ch55.md"
   },
   "q_0769": {
@@ -14228,7 +14375,7 @@
     ],
     "rationale": "Box 55.1 lists elemental formulations as requiring \"minimal digestion\" and leaving \"minimal residue,\" indicated for malabsorption, partial bowel obstruction, irritable bowel disease, radiation enteritis, bowel fistula, and short bowel syndrome.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — polymeric is correct only when digestion is intact, and a stem naming malabsorption has already ruled that out. Matching the formula to the gut's remaining capacity is the whole decision.",
+    "trap": "(A) is the mirror error — polymeric is correct only when digestion is intact, and a stem naming malabsorption has already ruled that out. Matching the formula to the gut's remaining capacity is the whole decision.",
     "source": "ch55.md"
   },
   "q_0771": {
@@ -14282,7 +14429,7 @@
     ],
     "rationale": "Central total parenteral nutrition uses \"a large central vein ... usually the subclavian or internal jugular\" for a \"prolonged period, usually longer than 7 to 10 days,\" carries dextrose of 10% to 35% and more than 2000 kcal per day, and can be continued at home. Large nutritional requirements from metabolic stress or hypermetabolism are a stated indication.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — every one of the three numbers in this stem violates a peripheral limit, and picking the peripheral route because it is quicker to start is the reflex when a patient looks unstable.",
+    "trap": "(A) is the mirror error, sending a central-sized order through a peripheral vein — every one of the three numbers in this stem violates a peripheral limit, and picking the peripheral route because it is quicker to start is the reflex when a patient looks unstable.",
     "source": "ch55.md"
   },
   "q_0774": {
@@ -14372,7 +14519,7 @@
     ],
     "rationale": "Essential amino acids are defined as \"those amino acids that cannot be manufactured by the body,\" and Box 55.3 lists eight of them: isoleucine, leucine, lysine, methionine, phenylalanine, threonine, tryptophan, and valine. The body is able to manufacture \"all but eight.\"",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item, stating the nonessential definition under the essential label; the two definitions differ only in whether the body can make the compound. Nonessential also does not mean unnecessary, only that it is not dietarily required.",
+    "trap": "(C) is the mirror error, stating the nonessential definition under the essential label; the two definitions differ only in whether the body can make the compound. Nonessential also does not mean unnecessary, only that it is not dietarily required.",
     "source": "ch55.md"
   },
   "q_0779": {
@@ -14446,7 +14593,7 @@
     ],
     "rationale": "If parenteral nutrition \"is discontinued abruptly, rebound hypoglycemia may result.\" The chapter's prevention rules are a gradual reduction of the intravenous feeding rate to allow the pancreas time to adapt, and, when the feeding must stop immediately, \"providing infusions of 5% to 10% glucose.\"",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — a bag that has stopped is the opposite problem from a bag running too fast, yet hyperglycemia is the complication students associate with the therapy. Hanging plain saline or simply waiting for pharmacy is the same error in a different form: neither bridges the glucose.",
+    "trap": "(A) is the mirror error — a bag that has stopped is the opposite problem from a bag running too fast, yet hyperglycemia is the complication students associate with the therapy. Hanging plain saline or simply waiting for pharmacy is the same error in a different form: neither bridges the glucose.",
     "source": "ch55.md"
   },
   "q_0783": {
@@ -14557,7 +14704,7 @@
     ],
     "rationale": "The absorption of \"tetracyclines and quinolones is decreased, as a result of chemical inactivation,\" and these drugs \"must be given at least 2 hours before or after tube feedings.\" The Clinical Pearl states that enteral feedings interact with quinolone and tetracycline antibiotics and phenytoin and need to be separated by 2 hours.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — same interval, wrong object moved. For these antibiotics the drug is scheduled around the feeding, while for phenytoin the feeding is held around the drug.",
+    "trap": "(A) is the mirror error — same interval, wrong object moved. For these antibiotics the drug is scheduled around the feeding, while for phenytoin the feeding is held around the drug.",
     "source": "ch55.md"
   },
   "q_0789": {
@@ -14637,7 +14784,7 @@
   "q_0793": {
     "topic": "otc, legend, and complementary medicine terms",
     "subtopic": "alternative, complementary, and integrative use",
-    "stem": "A second patient declines the recommended chemotherapy entirely and treats the diagnosis with herbal preparations alone. Which term names what this patient is doing?",
+    "stem": "A patient declines the recommended chemotherapy entirely and treats the diagnosis with herbal preparations alone. Which term names what this patient is doing?",
     "options": [
       "Complementary medicine",
       "Integrative medicine",
@@ -14649,8 +14796,11 @@
     ],
     "rationale": "Alternative medicine is \"herbal medicine, chiropractic, acupuncture, massage, reflexology, and any other therapies traditionally not emphasized in Western medical schools.\" It becomes complementary only when used simultaneously with, rather than instead of, standard Western medicine.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — this patient stopped the conventional therapy, so nothing is being complemented. (B) fails a second way: integrative is simply the chapter's other name for complementary, so whenever both appear as options the discriminator lies elsewhere in the stem.",
-    "source": "ch7.md"
+    "trap": "(A) fits a patient who adds herbs to conventional therapy — this patient stopped the conventional therapy, so nothing is being complemented. (B) fails a second way: integrative is simply the chapter's other name for complementary, so whenever both appear as options the discriminator lies elsewhere in the stem.",
+    "source": "ch7.md",
+    "aliases": [
+      "A second patient declines the recommended chemotherapy entirely and treats the diagnosis with herbal preparations alone. Which term names what this patient is doing?"
+    ]
   },
   "q_0794": {
     "topic": "otc, legend, and complementary medicine terms",
@@ -14834,7 +14984,7 @@
     ],
     "rationale": "Box 7.1's safety profile requires a \"high therapeutic index,\" the ratio of toxic to therapeutic dosage, and its practicality heading requires drugs that are \"easy to use\" and \"easy to monitor.\" A narrow margin requiring serum levels fails both headings at once.",
     "type": "single",
-    "trap": "(B) is the mirror error of the previous item, reading a narrow margin as tight control rather than as no room for error. (D) overshoots in the opposite direction: \"more than 40 medications that were previously available by prescription only have been reclassified to OTC status,\" so prior prescription status is the starting point of the process rather than a disqualifier.",
+    "trap": "(B) is the mirror error of the high-therapeutic-index rule, reading a narrow margin as tight control rather than as no room for error. (D) overshoots in the opposite direction: \"more than 40 medications that were previously available by prescription only have been reclassified to OTC status,\" so prior prescription status is the starting point of the process rather than a disqualifier.",
     "source": "ch7.md"
   },
   "q_0804": {
@@ -14906,7 +15056,7 @@
     ],
     "rationale": "The chapter associates NSAIDs with \"gastrointestinal ulceration, kidney dysfunction, myocardial infarction, and stroke.\" In 2009 the FDA began requiring specific labeling for acetaminophen, aspirin, and NSAIDs, which is the regulatory response to this cluster of risks.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item — liver failure is the acetaminophen profile, and the chapter never assigns it to NSAIDs. (C) is a third, separate profile: aspirin alone is tied to Reye syndrome, and only in children.",
+    "trap": "(A) is the mirror error, crossing the two drug profiles — liver failure is the acetaminophen profile, and the chapter never assigns it to NSAIDs. (C) is a third, separate profile: aspirin alone is tied to Reye syndrome, and only in children.",
     "source": "ch7.md"
   },
   "q_0808": {
@@ -15017,7 +15167,7 @@
     ],
     "rationale": "The chapter states that \"overall health care costs tend to decrease ... due to a direct reduction in drug costs, elimination of prescriber office visits, and avoidance of pharmacy dispensing fees.\"",
     "type": "single",
-    "trap": "(D) is the mirror error of the previous item: third-party payers usually do not cover OTC products at all, and that is precisely why the patient's own cost rises while the system's falls. (A) confuses volume of purchases with total cost.",
+    "trap": "(D) has the right direction for the wrong reason: third-party payers usually do not cover OTC products at all, and that is precisely why the patient's own cost rises while the system's falls. (A) confuses volume of purchases with total cost.",
     "source": "ch7.md"
   },
   "q_0814": {
@@ -15110,7 +15260,7 @@
     ],
     "rationale": "Table 7.3's ginger root row reads \"at high dosages, possible interference with cardiac, antidiabetic, or anticoagulant drugs.\" No other row in the table is dose-conditional, so the qualifier belongs to ginger alone.",
     "type": "single",
-    "trap": "(A) is the mirror error of the previous item, crossing hawthorn's glycoside effect onto ginger and stripping off the dose qualifier that distinguishes them. (C) is valerian's row and (D) is cranberry's.",
+    "trap": "(A) is the mirror error, crossing hawthorn's glycoside effect onto ginger and stripping off the dose qualifier that distinguishes them. (C) is valerian's row and (D) is cranberry's.",
     "source": "ch7.md"
   },
   "q_0819": {
@@ -15146,7 +15296,7 @@
     ],
     "rationale": "Table 7.3's grapefruit row states that it \"decreases metabolism of drugs used for erectile dysfunction, estrogens, and some psychotherapeutic drugs\" and \"increases risk for toxicity of immunosuppressants, HMG-CoA reductase inhibitors, and some psychotherapeutic drugs.\" The same row notes that grapefruit \"increases intensity and duration of effects of caffeine.\"",
     "type": "single",
-    "trap": "(A) is the reflex inversion, because the word \"decreases\" sitting next to \"juice\" fools people into predicting a weaker drug effect; decreased metabolism means more drug and a stronger effect. (C) is the mirror error of the previous item, handing grapefruit cranberry's renal mechanism.",
+    "trap": "(A) is the reflex inversion, because the word \"decreases\" sitting next to \"juice\" fools people into predicting a weaker drug effect; decreased metabolism means more drug and a stronger effect. (C) is the mirror error, handing grapefruit cranberry's renal mechanism.",
     "source": "ch7.md"
   },
   "q_0821": {
@@ -15218,7 +15368,7 @@
     ],
     "rationale": "The chapter states that ephedra carries \"possible cardiovascular and stroke risks\" and was \"officially banned by the FDA in April 2004.\" That ban is one of the chapter's demonstrations that the FDA is not powerless over supplements.",
     "type": "single",
-    "trap": "(C) is the mirror error of the previous item — a warning letter that left the product on the market is kava's outcome, not ephedra's. (A) moves kava's organ onto ephedra while keeping ephedra's removal from the market.",
+    "trap": "(C) is the mirror error — a warning letter that left the product on the market is kava's outcome, not ephedra's. (A) moves kava's organ onto ephedra while keeping ephedra's removal from the market.",
     "source": "ch7.md"
   },
   "q_0825": {

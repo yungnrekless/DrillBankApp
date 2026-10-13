@@ -59,7 +59,7 @@ C) First-pass elimination, because a carrier protein is involved
 D) Protein binding, because the drug is attached to a protein
 Answer: B
 Rationale: The key terms box defines active transport as the active, energy-requiring movement of a substance between different tissues via pumping mechanisms contained within cell membranes. The energy requirement and the pump are what separate it from diffusion.
-Trap: (A) is the mirror error of the previous item. Diffusion also moves a substance between tissues, so the phrase in that option is true but does not discriminate; the discriminator is energy, and diffusion needs none.
+Trap: (A) is the mirror error, naming diffusion for an energy-requiring process. Diffusion also moves a substance between tissues, so the phrase in that option is true but does not discriminate; the discriminator is energy, and diffusion needs none.
 
 Subtopic: which trimester carries which risk
 
@@ -79,7 +79,7 @@ C) The placenta has begun to actively pump drug toward the fetus
 D) The fetal liver now metabolizes drug faster than the mother's
 Answer: B
 Rationale: During the last trimester the greatest percentage of maternally absorbed drug gets to the fetus, and the chapter attributes this to enhanced blood flow to the fetus, increased fetal surface area, and an increased amount of free drug in the mother's circulation.
-Trap: (A) is the mirror error of the previous item. The first trimester is when exposure is most damaging, not when the most drug arrives — early damage is structural because organs are being built, while late transfer is quantitative because blood flow and surface area are maximal.
+Trap: (A) is the mirror error: it gives the first trimester the last trimester's peak in drug transfer. The first trimester is when exposure is most damaging, not when the most drug arrives — early damage is structural because organs are being built, while late transfer is quantitative because blood flow and surface area are maximal.
 
 Subtopic: when drug therapy must continue anyway
 
@@ -113,14 +113,14 @@ Answer: C
 Rationale: Table 3.1 assigns category C to drugs for which adverse effects were reported in the animal fetus and information for humans is not available.
 Trap: (B) is the classic swap, because categories B and C share the identical phrase about human information being unavailable. Category B is the good news about animals, meaning no risk; category C is the bad news about animals, meaning adverse effects were reported.
 
-Q: A second drug's label states that studies indicate no risk to the animal fetus and that information for humans is not available. Which category is this?
+Q: A drug's label states that studies indicate no risk to the animal fetus and that information for humans is not available. Which pregnancy safety category is this?
 A) Category A
 B) Category B
 C) Category C
 D) Category X
 Answer: B
 Rationale: Table 3.1 defines category B as studies indicating no risk to the animal fetus, with information for humans not available. The animal finding is favorable and the human data are simply missing.
-Trap: (C) is the mirror error of the previous item. Both categories say human information is unavailable, so the shared clause cannot discriminate; the direction of the animal finding is what does.
+Trap: (C) is the classic B-C swap. Both categories say human information is unavailable, so the shared clause cannot discriminate; the direction of the animal finding is what does.
 
 Q: A pregnant patient with a serious infection is prescribed a drug for which possible fetal risk in humans has been reported. The patient asks whether this means the drug is forbidden in pregnancy. Which response is correct?
 A) It is forbidden, since human fetal risk has been reported
@@ -340,7 +340,7 @@ C) Metabolism
 D) Excretion
 Answer: A
 Rationale: The older adult absorption findings state that blood flow to the GI tract is reduced by 40% to 50% because of decreased cardiac output and decreased perfusion, and the body text adds that by 65 years of age there is an approximately 50% reduction in blood flow to the gastrointestinal tract.
-Trap: (D) is the mirror error of the previous item. The two 40% to 50% figures in this chapter describe different organs in different phases, and the only way to keep them apart is to attach each number to its organ rather than to the number itself.
+Trap: (D) is the mirror error, assigning the gastrointestinal blood flow figure to excretion, the phase where the chapter attaches the same 40% to 50% figure to glomerular filtration rate. The two 40% to 50% figures in this chapter describe different organs in different phases, and the only way to keep them apart is to attach each number to its organ rather than to the number itself.
 
 Subtopic: metabolism and the aging brain
 
@@ -381,7 +381,7 @@ C) A therapeutic duplication
 D) An adverse drug withdrawal event
 Answer: A
 Rationale: The key terms box defines polypharmacy as the use of many different drugs concurrently in treating a patient who often has several health problems, and the chapter attributes it to the more frequent occurrence of chronic diseases together with the multiple drug options available. As the number of medications increases, so does the risk for drug interaction and adverse drug reactions.
-Trap: (B) is the mirror error of the previous item. Nothing in this stem describes a drug added to counteract another drug's effect, and the stem says so explicitly; without that causal link the situation is a count, not a cascade. The chapter also recommends using only one pharmacy so that monitoring for drug interactions and duplicate therapy can occur.
+Trap: (B) is the mirror error, reading a prescribing cascade into what is only polypharmacy. Nothing in this stem describes a drug added to counteract another drug's effect, and the stem says so explicitly; without that causal link the situation is a count, not a cascade. The chapter also recommends using only one pharmacy so that monitoring for drug interactions and duplicate therapy can occur.
 
 Subtopic: dosing and prescribing safeguards
 
@@ -451,7 +451,7 @@ C) Fat content is identical at both ends of the lifespan
 D) Fat content is lower at both ends of the lifespan
 Answer: B
 Rationale: The pediatric box states that fat content is lower in young patients because of greater total body water, and the older adult box states that fat content is increased because of decreased lean body mass. The body text adds an approximately 20% reduction in muscle mass between 25 and 65 years of age with a corresponding 20% increase in body fat.
-Trap: (A) is the mirror error of the previous item, reversing both halves at once. Fat and water move in opposite directions to each other and in opposite directions at the two ends of life, so a fat-soluble drug behaves in an older adult the way a water-soluble drug behaves in an infant.
+Trap: (A) is the mirror error, reversing both halves at once by giving the infant the higher fat content and the older adult the lower. Fat and water move in opposite directions to each other and in opposite directions at the two ends of life, so a fat-soluble drug behaves in an older adult the way a water-soluble drug behaves in an infant.
 
 Subtopic: what the two ends share
 

@@ -55,14 +55,14 @@ Answer: B
 Rationale: The AAP 2016 guidelines quoted on p. 2 state that "For infants less than 18 months of age, no screen time is recommended except for video calling with a grandparent or loved one." The guidelines deliberately "shift the importance from what is on the screen to who is viewing the information with the young child."
 Trap: (C) is the reflex pick because "educational content" is the compromise parents expect a nurse to offer, and it is exactly the framing the 2016 revision abandoned. Under 18 months the recommendation is about the interaction, not the content.
 
-Q: The same mother returns two years later with the child, now 3 years old, and asks the same question. What is the accurate response?
+Q: A mother asks whether letting her 3-year-old watch cartoons on a tablet is acceptable. Based on the 2016 AAP media guidelines, what is the accurate response?
 A) No screen time is recommended until 5 years of age
 B) Screen time may now be unlimited as long as a parent is in the room
 C) Technology should be used sparingly before 5 years of age, and a parent should always participate during screen-time viewing
 D) Screen time limits no longer apply once the child can speak in sentences
 Answer: C
 Rationale: The same guidance continues past 18 months in a different form: "Parents should be advised to use technology sparingly before 5 years of age and to always participate during screen-time viewing" (p. 2).
-Trap: (A) is the mirror error of the previous item — it carries the under-18-month prohibition forward to an age where the rule has changed to sparing, co-viewed use. (B) drops the "sparingly" half and keeps only the participation half.
+Trap: (A) is the mirror error — it carries the under-18-month prohibition forward to an age where the rule has changed to sparing, co-viewed use. (B) drops the "sparingly" half and keeps only the participation half.
 
 Subtopic: nutrition and oral health promotion
 
@@ -104,14 +104,14 @@ Answer: B
 Rationale: Obesity in children and adolescents is defined as "a body mass index (BMI) at or greater than the 95th percentile for youth of the same age and gender" (p. 3). The 96th percentile is above that cut point.
 Trap: (A) is the reflex pick from a learner who remembers that two categories exist but places the boundary a tier too high. The 95th percentile is the obesity line, not the top of the overweight range.
 
-Q: A sibling of that child plots at the 88th percentile. How is this classified?
+Q: A child's BMI plots at the 88th percentile for age and sex. How is this classified?
 A) Obese
 B) Overweight
 C) Normal weight
 D) Underweight for age
 Answer: B
 Rationale: Overweight is "a BMI at or above the 85th percentile and below the 95th percentile for children and teens of the same age and sex" (p. 3). The 88th percentile falls inside that band.
-Trap: (A) is the mirror error of the previous item, and the fact bank names it the classic one — a distractor placing obesity at the 85th percentile. The 85th percentile opens the overweight band; it does not reach obesity.
+Trap: (A) is the classic error the fact bank names — a distractor placing obesity at the 85th percentile. The 85th percentile opens the overweight band; it does not reach obesity.
 
 Q: A provider documents that an obese adolescent has "cardiometabolic changes." Which cluster does that term name?
 A) Hypertension, altered glucose metabolism, dyslipidemia, and abdominal obesity
@@ -167,7 +167,7 @@ C) Fourth
 D) It does not appear in the top five for this age group
 Answer: A
 Rationale: Table 1.1 ranks motor vehicle first for females ages 1 to 4 at 2.4 per 100,000, ahead of drowning at 1.8.
-Trap: (B) is the mirror error of the previous item. The 1-to-4 band is the one interval in Table 1.1 where the leading injury differs by sex — drowning in males, motor vehicle in females — so carrying the male answer across is the error the pair is built to catch.
+Trap: (B) is the mirror error: it demotes motor vehicle to second, carrying across the male ranking in which drowning leads. The 1-to-4 band is the one interval in Table 1.1 where the leading injury differs by sex — drowning in males, motor vehicle in females — so carrying the male answer across is the error this distinction is built to catch.
 
 Q: A community health nurse is planning injury prevention for a group of 5- to 9-year-olds and wants to address the activity with the greatest fatality risk in this age band. Which should she target?
 A) Bicycling, with emphasis on helmet use for traumatic head injury
@@ -256,14 +256,14 @@ Answer: C
 Rationale: "The presence of a gun in a household increases the risk of suicide by about fivefold and the risk of homicide by about threefold" (pp. 5–6).
 Trap: (B) is the reflex pick because it is the other multiplier in the same sentence. The two numbers are attached to different outcomes and the fact bank flags swapping them explicitly.
 
-Q: The same parent asks about the risk of homicide. By approximately how much does a gun in the household raise it?
+Q: A parent who keeps a handgun in the home asks about the risk of homicide. By approximately how much does a gun in the household raise it?
 A) Threefold
 B) Fivefold
 C) Sevenfold
 D) It does not change homicide risk, only suicide risk
 Answer: A
-Rationale: The same sentence gives homicide risk as increased "by about threefold" (pp. 5–6).
-Trap: (B) is the mirror error of the previous item, and it is the more dangerous direction to hold backwards because the larger multiplier attaches to the outcome parents are less likely to anticipate.
+Rationale: "The presence of a gun in a household increases the risk of suicide by about fivefold and the risk of homicide by about threefold" (pp. 5–6).
+Trap: (B) is the suicide multiplier swapped onto homicide, and it is the more dangerous direction to hold backwards because the larger multiplier attaches to the outcome parents are less likely to anticipate.
 
 Q: A nurse works with children in a neighborhood with frequent community violence. A colleague says the children there "are used to it by now." What is the accurate response?
 A) Habituation does reduce the stress response after repeated exposure
@@ -311,7 +311,7 @@ C) Postneonatal mortality, 5.82 per 1000 live births
 D) Childhood mortality, 1.88 per 100,000 population
 Answer: B
 Rationale: Postneonatal mortality covers deaths from "28 days to 11 months"; the 2014 rate was 1.88 per 1000 live births (p. 6).
-Trap: (A) is the mirror error of the previous item — the boundary between the two subdivisions is 28 days, not 6 months, and both are subdivisions of the same infant mortality rate.
+Trap: (A) is the mirror error, filing a 6-month-old death under neonatal mortality — the boundary between the two subdivisions is 28 days, not 6 months, and both are subdivisions of the same infant mortality rate.
 
 Subtopic: causes and disparities
 
@@ -410,14 +410,14 @@ Answer: B
 Rationale: "Professionals enable families by creating opportunities and means for all family members to display their current abilities and competencies and to acquire new ones to meet the needs of the child and family" (p. 7). Creating the opportunity and the means is enabling.
 Trap: (A) is the reflex pick and is the other half of the pair. The axis is who is acting: enabling is what the professional creates, empowerment is what the family comes to hold.
 
-Q: The same parents later tell the nurse they finally feel in charge of their child's care again and can see that their own efforts made the difference. Which concept does this illustrate?
+Q: Parents whom a nurse trained in their child's home dressing changes later say they finally feel in charge of their child's care again and can see that their own efforts made the difference. Which concept does this illustrate?
 A) Enabling
 B) Empowerment
 C) Coordination
 D) Nonmaleficence
 Answer: B
 Rationale: Empowerment "describes the interaction of professionals with families in such a way that families maintain or acquire a sense of control over their family lives and acknowledge positive changes that result from helping behaviors that foster their own strengths, abilities, and actions" (p. 7).
-Trap: (A) is the mirror error of the previous item. The tell is the sense of control residing in the family and the family recognizing its own contribution — that is empowerment, not the opportunity that made it possible.
+Trap: (A) is the mirror error — enabling describes the nurse's training sessions, not the parents' sense of control. The tell is the sense of control residing in the family and the family recognizing its own contribution — that is empowerment, not the opportunity that made it possible.
 
 Q: Which are key elements of family-centered care as Box 1.4 states them? (Select all that apply.)
 A) Facilitating family-professional collaboration at all levels of hospital, home, and community care
@@ -503,7 +503,7 @@ C) An appropriate boundary
 D) Effective time management under staffing constraints
 Answer: B
 Rationale: The underinvolvement column names nurses who "restrict parent or visitor access to children, using excuses such as the unit is too busy" and who focus on technical aspects and lose "sight of the person who is the patient."
-Trap: (A) is the mirror error of the previous item, and (C) is the more tempting one — the fact bank warns that a distractor treating only overinvolvement as a problem misses half the concept. Both directions are nontherapeutic.
+Trap: (A) is the mirror error, labeling an underinvolvement pattern as overinvolvement, and (C) is the more tempting one — the fact bank warns that a distractor treating only overinvolvement as a problem misses half the concept. Both directions are nontherapeutic.
 
 Q: Which behaviors belong to the overinvolvement pattern described in the Nursing Care Guidelines? (Select all that apply.)
 A) Restricting parent access to children because the unit is busy
@@ -572,7 +572,7 @@ C) Nurse educator
 D) Charge nurse
 Answer: B
 Rationale: Clinical nurse specialists are "master's-prepared nurses who function in a variety of settings in both the direct and indirect role. They model expert direct family-centered patient care" (p. 8).
-Trap: (A) is the mirror error of the previous item. Both roles are advanced practice and both work across settings; the printed discriminators are prescribing for the PNP and the direct-plus-indirect modeling role for the CNS.
+Trap: (A) is the mirror error, giving the clinical nurse specialist's description to the pediatric nurse practitioner. Both roles are advanced practice and both work across settings; the printed discriminators are prescribing for the PNP and the direct-plus-indirect modeling role for the CNS.
 
 Subtopic: ethical decision making
 
@@ -585,14 +585,14 @@ Answer: B
 Rationale: Nonmaleficence is "the obligation to minimize or prevent harm" (p. 10).
 Trap: (A) is the reflex pick because both concern the patient's good and the two words are learned together. Preventing harm is nonmaleficence; actively promoting well-being is beneficence.
 
-Q: The same team initiates a therapy expected to substantially improve a child's function. Which moral value most directly underlies this decision?
+Q: A team initiates a therapy expected to substantially improve a child's function. Which moral value most directly underlies this decision?
 A) Nonmaleficence
 B) Beneficence
 C) Justice
 D) Autonomy
 Answer: B
-Rationale: Beneficence is "the obligation to promote the patient's well-being" (p. 10). The other two of the four values are autonomy, "the patient's right to be self-governing," and justice, "the concept of fairness."
-Trap: (A) is the mirror error of the previous item. Both items describe defensible care; the axis is whether the obligation being met is to avoid harm or to produce good.
+Rationale: Beneficence is "the obligation to promote the patient's well-being" (p. 10), and nonmaleficence is "the obligation to minimize or prevent harm." The other two of the four values are autonomy, "the patient's right to be self-governing," and justice, "the concept of fairness."
+Trap: (A) is the mirror error: withholding a treatment to prevent suffering would be nonmaleficence. Both describe defensible care; the axis is whether the obligation being met is to avoid harm or to produce good.
 
 Q: Two experienced nurses reach different conclusions about the same pediatric case, and each can justify her position. How does the chapter frame this?
 A) One of them has misapplied the ethical framework and needs correction
@@ -623,14 +623,14 @@ Answer: A
 Rationale: Table 1.4 defines high-quality evidence as "Consistent evidence from well-performed RCTs or exceptionally strong evidence from unbiased observational studies."
 Trap: (B) pulls because learners hedge toward the middle tier when a rating scale has four levels. Moderate is reserved for RCTs "with important limitations (inconsistent results, flaws in methodology, indirect evidence, or imprecise results)."
 
-Q: A second guideline rests on unsystematic clinical observations for one of its critical outcomes. How is this rated on the GRADE criteria?
+Q: A practice guideline rests on unsystematic clinical observations for one of its critical outcomes. How is this rated on the GRADE criteria?
 A) Low quality
 B) Very low quality
 C) Moderate quality
 D) It cannot be rated
 Answer: B
 Rationale: Table 1.4 defines very low quality as "Evidence for at least one of the critical outcomes from unsystematic clinical observations or very indirect evidence." Low quality requires at least observational studies, RCTs with serious flaws, or indirect evidence.
-Trap: (A) is the mirror error of the previous item and is the near neighbor on the scale. The discriminator is *unsystematic* observation, which drops it below the low tier.
+Trap: (A) is the near neighbor on the scale. The discriminator is *unsystematic* observation, which drops it below the low tier.
 
 Q: A guideline states that the desirable effects of an intervention are closely balanced with its undesirable effects. How is the resulting recommendation graded?
 A) Strong
@@ -679,14 +679,14 @@ Answer: B
 Rationale: A potential health problem is "a risk state that requires nursing intervention to prevent the development of an actual problem," and "To differentiate actual from potential health problems, the word risk is included in the nursing diagnosis statement (e.g., Risk for Infection)" (p. 11). Interventions for a risk state are directed toward reducing risk factors.
 Trap: (A) treats risk as a severity grade rather than a status marker. It is the presence or absence of the problem that the word distinguishes, not how bad it is.
 
-Q: The same child now has fever, erythema at the insertion site, and a rising white count. How does the diagnosis change, and what drives interventions now?
+Q: A child with a new central line, diagnosed as Risk for Infection, now has fever, erythema at the insertion site, and a rising white count. How does the diagnosis change, and what drives interventions now?
 A) It remains a risk diagnosis, and interventions continue to target risk factors
 B) It becomes an actual problem, supported by signs and symptoms — a cluster of cues and defining characteristics — and interventions target illness management
 C) It becomes a medical rather than a nursing diagnosis, so nursing interventions no longer apply
 D) It remains a risk diagnosis until the culture returns
 Answer: B
 Rationale: Signs and symptoms are "a cluster of cues and defining characteristics that are derived from patient assessment and indicate actual health problems," whereas risk factors "predispose a child and family to a dysfunctional health pattern and are limited to individuals at greater risk than the population as a whole" (p. 11).
-Trap: (A) is the mirror error of the previous item — carrying the risk framing forward after defining characteristics have appeared. The presence of cues, not the presence of a culture result, is what converts a risk state to an actual problem.
+Trap: (A) carries the risk framing forward after defining characteristics have appeared. The presence of cues, not the presence of a culture result, is what converts a risk state to an actual problem.
 
 Q: A nurse cannot decide between two diagnostic categories for a child. Which concept does the chapter offer to resolve this?
 A) The critical defining characteristic, which is essential for the diagnosis to be made and helps differentiate between diagnostic categories
@@ -736,14 +736,14 @@ Answer: B
 Rationale: Table 1.5 defines appropriate treatment for children with URI as the percentage "who were diagnosed with upper respiratory infection (URI) and were not dispensed an antibiotic prescription on or 3 days after the episode." The measure is constructed so that the desirable action is non-prescription.
 Trap: (A) is the reflex pick because most quality measures count services delivered, and this one counts a service correctly withheld. Reading the direction of a measure before interpreting the number is the skill being tested.
 
-Q: A second measure in the same report tracks children 2 to 18 years diagnosed with pharyngitis who were ordered an antibiotic. What does the measure require in addition?
+Q: A pediatric quality report tracks children 2 to 18 years diagnosed with pharyngitis who were ordered an antibiotic. What does the measure require in addition?
 A) That a follow-up visit occurred within 3 days
 B) That a group A streptococcus test was received for the episode
 C) That the antibiotic was a narrow-spectrum agent
 D) That the child had no antibiotic prescription in the preceding 30 days
 Answer: B
 Rationale: Table 1.5 defines appropriate testing for children with pharyngitis as the percentage "who were diagnosed with pharyngitis, ordered an antibiotic, and received a group A streptococcus (strep) test for the episode."
-Trap: (C) is clinically sensible antibiotic stewardship and is not what this measure counts. The pharyngitis measure is about confirming the indication, while the URI measure is about avoiding the prescription entirely.
+Trap: (C) is clinically sensible antibiotic stewardship and is not what this measure counts. The pharyngitis measure is about confirming the indication, while the companion upper respiratory infection measure is about avoiding the prescription entirely.
 
 Q: A nurse asks what the childhood immunization status quality measure is anchored to. What is the endpoint?
 A) Completion of the listed vaccine series by the child's second birthday

@@ -75,14 +75,14 @@ Answer: B
 Rationale: A construct is a broader category or idea that may encompass several concepts. In the chapter's example the construct resources encompasses the concepts social support and household income.
 Trap: Reversing construct and concept is the standard swap in this chapter. The construct is the broader of the two, and the concept sits inside it.
 
-Q: In that same framework, emotional support is scored by summing a three-item subscale of the Functional Social Support Questionnaire. What is emotional support?
+Q: A research team diagrams its framework with resources at the top, social support and household income beneath it, and emotional support beneath those; emotional support is scored by summing a three-item subscale of the Functional Social Support Questionnaire. What is emotional support?
 A) The construct
 B) The concept
 C) The phenomenon
 D) The variable
 Answer: D
 Rationale: A variable is defined so that it is measurable and its numerical values can vary from one instance to another, and it is more specific than a concept. Emotional support is the variable; the FSSQ subscale is the measurement method.
-Trap: This is the mirror image of the construct item. Sort the three by breadth, not by which term appears in the sentence: construct is broadest, concept sits under it, variable is the narrow measurable one.
+Trap: (A) and (B) name the broader levels of this same framework. Sort the three by breadth, not by which term appears in the sentence: construct is broadest, concept sits under it, variable is the narrow measurable one.
 
 Q: A nurse discusses the experience of chronic pain in general terms, apart from any specific patient. This way of thinking is best described as which of the following?
 A) Concrete

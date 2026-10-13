@@ -513,7 +513,7 @@
   "q_0028": {
     "topic": "homelessness",
     "subtopic": "effects on health",
-    "stem": "The chapter attributes diabetes and nutritional deficits in this population to which cause?",
+    "stem": "The chapter attributes diabetes and nutritional deficits among people experiencing homelessness to which cause?",
     "options": [
       "Being on their feet for long hours daily",
       "Shelter and fast food being high in sodium",
@@ -525,7 +525,10 @@
     ],
     "rationale": "Diabetes and nutritional deficits are attributed to shelter and fast food being high in sodium.",
     "type": "single",
-    "source": "ch25.md"
+    "source": "ch25.md",
+    "aliases": [
+      "The chapter attributes diabetes and nutritional deficits in this population to which cause?"
+    ]
   },
   "q_0029": {
     "topic": "homelessness",
@@ -568,7 +571,7 @@
   "q_0031": {
     "topic": "homelessness",
     "subtopic": "effects on health",
-    "stem": "Conditions such as TB and HIV/AIDS are described as extremely difficult to treat or control in this population for what stated reason?",
+    "stem": "Conditions such as TB and HIV/AIDS are described as extremely difficult to treat or control among people experiencing homelessness for what stated reason?",
     "options": [
       "They require regular uninterrupted treatment, which is not possible without adequate housing",
       "They are excluded from emergency department protocols",
@@ -580,7 +583,10 @@
     ],
     "rationale": "Conditions needing regular uninterrupted treatment, such as TB and HIV/AIDS, are extremely difficult to treat or control without adequate housing.",
     "type": "single",
-    "source": "ch25.md"
+    "source": "ch25.md",
+    "aliases": [
+      "Conditions such as TB and HIV/AIDS are described as extremely difficult to treat or control in this population for what stated reason?"
+    ]
   },
   "q_0032": {
     "topic": "homelessness",
@@ -1297,7 +1303,7 @@
   "q_0071": {
     "topic": "levels of prevention",
     "subtopic": "applying the three levels",
-    "stem": "What does the chapter say about sorting services for these high-risk groups into the three levels of prevention?",
+    "stem": "What does the chapter say about sorting services for high-risk groups such as people experiencing homelessness into the three levels of prevention?",
     "options": [
       "The three levels sort cleanly once the target population is identified",
       "It is difficult to separate them, because interventions can be assigned to more than one level",
@@ -1310,7 +1316,10 @@
     "rationale": "The chapter states plainly that it is difficult to separate services for these high-risk groups into three levels because interventions can be assigned to more than one. Affordable housing may qualify as primary prevention but could also be an important secondary or tertiary intervention.",
     "type": "single",
     "trap": "Expect a question that tests this ambiguity rather than clean sorting. If an item seems to demand one level for affordable housing, the chapter's own position is that it can sit in more than one.",
-    "source": "ch25.md"
+    "source": "ch25.md",
+    "aliases": [
+      "What does the chapter say about sorting services for these high-risk groups into the three levels of prevention?"
+    ]
   },
   "q_0072": {
     "topic": "levels of prevention",
@@ -2489,7 +2498,7 @@
   "q_0137": {
     "topic": "cultural considerations in migrant care",
     "subtopic": "relational concepts and folk medicine",
-    "stem": "Which are named common folk illnesses in this cultural framework? Select all that apply.",
+    "stem": "Which are named common folk illnesses in Mexican health-seeking patterns? Select all that apply.",
     "options": [
       "Mal de ojo (evil eye)",
       "Susto (fright)",
@@ -2503,12 +2512,15 @@
     ],
     "rationale": "The four named folk illnesses are mal de ojo, susto, empacho, and caída de mollera (fallen fontanel). Nervios is discussed separately as a stress-related term, not listed among the four folk illnesses.",
     "type": "sata",
-    "source": "ch24.md"
+    "source": "ch24.md",
+    "aliases": [
+      "Which are named common folk illnesses in this cultural framework? Select all that apply."
+    ]
   },
   "q_0138": {
     "topic": "cultural considerations in migrant care",
     "subtopic": "relational concepts and folk medicine",
-    "stem": "In this cultural framework, who is typically considered the caretaker and who is typically considered the major decision maker within the family?",
+    "stem": "In Mexican families as the chapter describes them, who is typically considered the caretaker and who is typically considered the major decision maker?",
     "options": [
       "The man is the caretaker; the woman is the decision maker",
       "The woman is the caretaker; the man is the major decision maker",
@@ -2520,7 +2532,10 @@
     ],
     "rationale": "The woman is considered the caretaker and the man is considered the major decision maker — though the chapter notes women in certain families have significant influence over most matters, including health decisions.",
     "type": "single",
-    "source": "ch24.md"
+    "source": "ch24.md",
+    "aliases": [
+      "In this cultural framework, who is typically considered the caretaker and who is typically considered the major decision maker within the family?"
+    ]
   },
   "q_0139": {
     "topic": "cultural considerations in migrant care",
@@ -8169,7 +8184,7 @@
   "q_0455": {
     "topic": "disease surveillance",
     "subtopic": "process vs. outcome data",
-    "stem": "A health department tracks the incidence rate of new influenza cases in that same population over the same year. What type of data is this?",
+    "stem": "A health department tracks the incidence rate of new influenza cases in its population over a given year. What type of data is this?",
     "options": [
       "Process data",
       "Outcome data",
@@ -8181,8 +8196,11 @@
     ],
     "rationale": "Outcome data focus on changes in health status; incidence rates of influenza are the textbook's own example of outcome data.",
     "type": "single",
-    "trap": "This is the mirror image of the vaccination-proportion item. Process = what is done (an action/service); outcome = what happened to health status as a result. ---",
-    "source": "ch17.md"
+    "trap": "Do not confuse this with the proportion of the population vaccinated, which is process data. Process = what is done (an action/service); outcome = what happened to health status as a result. ---",
+    "source": "ch17.md",
+    "aliases": [
+      "A health department tracks the incidence rate of new influenza cases in that same population over the same year. What type of data is this?"
+    ]
   },
   "q_0456": {
     "topic": "notifiable disease reporting",
@@ -14264,7 +14282,7 @@
     ],
     "rationale": "Enforcement refers to the government actions, paired with compliance, that are the next steps for controlling pollution — the development and enforcement of standards and regulations that limit pollution.",
     "type": "single",
-    "trap": "Option A is the definition of compliance, not enforcement — the same swap risk as the companion question.",
+    "trap": "Option A is the definition of compliance, not enforcement — swapping the definitions of compliance and enforcement is the chapter's named trap.",
     "source": "ch8.md"
   },
   "q_0796": {

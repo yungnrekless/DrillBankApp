@@ -299,7 +299,7 @@ C) A permitted level of emissions or a maximum contaminant level allowed
 D) A legally binding document such as a stormwater or construction permit
 Answer: B
 Rationale: Enforcement refers to the government actions, paired with compliance, that are the next steps for controlling pollution — the development and enforcement of standards and regulations that limit pollution.
-Trap: Option A is the definition of compliance, not enforcement — the same swap risk as the companion question.
+Trap: Option A is the definition of compliance, not enforcement — swapping the definitions of compliance and enforcement is the chapter's named trap.
 
 Q: An environmental standard may be expressed in which of the following ways? Select all that apply.
 A) A permitted level of emissions
